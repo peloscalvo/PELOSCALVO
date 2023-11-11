@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsMultidatos" targetNamespace="PELOSCALVO" xmlns:mstns="PELOSCALVO" xmlns="PELOSCALVO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsMultidatos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsMultidatos" msprop:Generator_UserDSName="DsMultidatos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtFamiliaProductos" msprop:Generator_TableClassName="DtFamiliaProductosDataTable" msprop:Generator_TableVarName="tableDtFamiliaProductos" msprop:Generator_RowChangedName="DtFamiliaProductosRowChanged" msprop:Generator_TablePropName="DtFamiliaProductos" msprop:Generator_RowDeletingName="DtFamiliaProductosRowDeleting" msprop:Generator_RowChangingName="DtFamiliaProductosRowChanging" msprop:Generator_RowEvHandlerName="DtFamiliaProductosRowChangeEventHandler" msprop:Generator_RowDeletedName="DtFamiliaProductosRowDeleted" msprop:Generator_RowClassName="DtFamiliaProductosRow" msprop:Generator_UserTableName="DtFamiliaProductos" msprop:Generator_RowEvArgName="DtFamiliaProductosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FamiliaProductos" msprop:Generator_ColumnVarNameInTable="columnFamiliaProductos" msprop:Generator_ColumnPropNameInRow="FamiliaProductos" msprop:Generator_ColumnPropNameInTable="FamiliaProductosColumn" msprop:Generator_UserColumnName="FamiliaProductos" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtArchivoDatosMulti" msprop:Generator_TableClassName="DtArchivoDatosMultiDataTable" msprop:Generator_TableVarName="tableDtArchivoDatosMulti" msprop:Generator_TablePropName="DtArchivoDatosMulti" msprop:Generator_RowDeletingName="DtArchivoDatosMultiRowDeleting" msprop:Generator_RowChangingName="DtArchivoDatosMultiRowChanging" msprop:Generator_RowEvHandlerName="DtArchivoDatosMultiRowChangeEventHandler" msprop:Generator_RowDeletedName="DtArchivoDatosMultiRowDeleted" msprop:Generator_UserTableName="DtArchivoDatosMulti" msprop:Generator_RowChangedName="DtArchivoDatosMultiRowChanged" msprop:Generator_RowEvArgName="DtArchivoDatosMultiRowChangeEvent" msprop:Generator_RowClassName="DtArchivoDatosMultiRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" minOccurs="0" />
+              <xs:element name="NombreArchivoDatos" msprop:Generator_ColumnVarNameInTable="columnNombreArchivoDatos" msprop:Generator_ColumnPropNameInRow="NombreArchivoDatos" msprop:Generator_ColumnPropNameInTable="NombreArchivoDatosColumn" msprop:Generator_UserColumnName="NombreArchivoDatos" type="xs:string" minOccurs="0" />
+              <xs:element name="DirectorioArchivoDatos" msprop:Generator_ColumnVarNameInTable="columnDirectorioArchivoDatos" msprop:Generator_ColumnPropNameInRow="DirectorioArchivoDatos" msprop:Generator_ColumnPropNameInTable="DirectorioArchivoDatosColumn" msprop:Generator_UserColumnName="DirectorioArchivoDatos" type="xs:string" minOccurs="0" />
+              <xs:element name="DescripcionArchivoDatos" msprop:Generator_ColumnVarNameInTable="columnDescripcionArchivoDatos" msprop:Generator_ColumnPropNameInRow="DescripcionArchivoDatos" msprop:Generator_ColumnPropNameInTable="DescripcionArchivoDatosColumn" msprop:Generator_UserColumnName="DescripcionArchivoDatos" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtInicioMulti" msprop:Generator_TableClassName="DtInicioMultiDataTable" msprop:Generator_TableVarName="tableDtInicioMulti" msprop:Generator_TablePropName="DtInicioMulti" msprop:Generator_RowDeletingName="DtInicioMultiRowDeleting" msprop:Generator_RowChangingName="DtInicioMultiRowChanging" msprop:Generator_RowEvHandlerName="DtInicioMultiRowChangeEventHandler" msprop:Generator_RowDeletedName="DtInicioMultiRowDeleted" msprop:Generator_UserTableName="DtInicioMulti" msprop:Generator_RowChangedName="DtInicioMultiRowChanged" msprop:Generator_RowEvArgName="DtInicioMultiRowChangeEvent" msprop:Generator_RowClassName="DtInicioMultiRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ArchivoInicioFacturas" msprop:Generator_ColumnVarNameInTable="columnArchivoInicioFacturas" msprop:Generator_ColumnPropNameInRow="ArchivoInicioFacturas" msprop:Generator_ColumnPropNameInTable="ArchivoInicioFacturasColumn" msprop:Generator_UserColumnName="ArchivoInicioFacturas" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpresaInicio" msprop:Generator_ColumnVarNameInTable="columnEmpresaInicio" msprop:Generator_ColumnPropNameInRow="EmpresaInicio" msprop:Generator_ColumnPropNameInTable="EmpresaInicioColumn" msprop:Generator_UserColumnName="EmpresaInicio" type="xs:string" minOccurs="0" />
+              <xs:element name="EjercicioInicio" msprop:Generator_ColumnVarNameInTable="columnEjercicioInicio" msprop:Generator_ColumnPropNameInRow="EjercicioInicio" msprop:Generator_ColumnPropNameInTable="EjercicioInicioColumn" msprop:Generator_UserColumnName="EjercicioInicio" type="xs:string" minOccurs="0" />
+              <xs:element name="SerieInicio" msprop:Generator_ColumnVarNameInTable="columnSerieInicio" msprop:Generator_ColumnPropNameInRow="SerieInicio" msprop:Generator_ColumnPropNameInTable="SerieInicioColumn" msprop:Generator_UserColumnName="SerieInicio" type="xs:string" minOccurs="0" />
+              <xs:element name="NombreArchivoDatos" msprop:Generator_ColumnVarNameInTable="columnNombreArchivoDatos" msprop:Generator_ColumnPropNameInRow="NombreArchivoDatos" msprop:Generator_ColumnPropNameInTable="NombreArchivoDatosColumn" msprop:Generator_UserColumnName="NombreArchivoDatos" type="xs:string" minOccurs="0" />
+              <xs:element name="RutaArchivoDatos" msprop:Generator_ColumnVarNameInTable="columnRutaArchivoDatos" msprop:Generator_ColumnPropNameInRow="RutaArchivoDatos" msprop:Generator_ColumnPropNameInTable="RutaArchivoDatosColumn" msprop:Generator_UserColumnName="RutaArchivoDatos" type="xs:string" minOccurs="0" />
+              <xs:element name="SerieProvinciaInicio" msprop:Generator_ColumnVarNameInTable="columnSerieProvinciaInicio" msprop:Generator_ColumnPropNameInRow="SerieProvinciaInicio" msprop:Generator_ColumnPropNameInTable="SerieProvinciaInicioColumn" msprop:Generator_UserColumnName="SerieProvinciaInicio" type="xs:string" minOccurs="0" />
+              <xs:element name="SeriePaisInicio" msprop:Generator_ColumnVarNameInTable="columnSeriePaisInicio" msprop:Generator_ColumnPropNameInRow="SeriePaisInicio" msprop:Generator_ColumnPropNameInTable="SeriePaisInicioColumn" msprop:Generator_UserColumnName="SeriePaisInicio" type="xs:string" minOccurs="0" />
+              <xs:element name="ArchivoArticulos" msprop:Generator_ColumnVarNameInTable="columnArchivoArticulos" msprop:Generator_ColumnPropNameInRow="ArchivoArticulos" msprop:Generator_ColumnPropNameInTable="ArchivoArticulosColumn" msprop:Generator_UserColumnName="ArchivoArticulos" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoExtensionArticulos" msprop:Generator_ColumnVarNameInTable="columnTipoExtensionArticulos" msprop:Generator_ColumnPropNameInRow="TipoExtensionArticulos" msprop:Generator_ColumnPropNameInTable="TipoExtensionArticulosColumn" msprop:Generator_UserColumnName="TipoExtensionArticulos" type="xs:string" minOccurs="0" />
+              <xs:element name="ArchivoClientes" msprop:Generator_ColumnVarNameInTable="columnArchivoClientes" msprop:Generator_ColumnPropNameInRow="ArchivoClientes" msprop:Generator_ColumnPropNameInTable="ArchivoClientesColumn" msprop:Generator_UserColumnName="ArchivoClientes" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
