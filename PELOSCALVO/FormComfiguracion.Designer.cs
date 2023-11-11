@@ -3053,9 +3053,7 @@ namespace PELOSCALVO
             this.empresaConfiTextBox.ReadOnly = true;
             this.empresaConfiTextBox.Size = new System.Drawing.Size(290, 20);
             this.empresaConfiTextBox.TabIndex = 35;
-            this.empresaConfiTextBox.TextChanged += new System.EventHandler(this.empresaConfiTextBox_TextChanged);
             this.empresaConfiTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.empresaConfiTextBox_KeyPress);
-            this.empresaConfiTextBox.Leave += new System.EventHandler(this.empresaConfiTextBox_Leave);
             // 
             // idEmpresaTextBox
             // 
@@ -3713,7 +3711,6 @@ namespace PELOSCALVO
             this.ejerciciosDeAñoTextBox.ReadOnly = true;
             this.ejerciciosDeAñoTextBox.Size = new System.Drawing.Size(221, 20);
             this.ejerciciosDeAñoTextBox.TabIndex = 45;
-            this.ejerciciosDeAñoTextBox.TextChanged += new System.EventHandler(this.ejerciciosDeAñoTextBox_TextChanged);
             this.ejerciciosDeAñoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ejerciciosDeAñoTextBox_KeyPress);
             // 
             // empresaENLACETextBox
@@ -3830,7 +3827,6 @@ namespace PELOSCALVO
             this.CambiarDeEmpresa1.Name = "CambiarDeEmpresa1";
             this.CambiarDeEmpresa1.Size = new System.Drawing.Size(233, 21);
             this.CambiarDeEmpresa1.TabIndex = 42;
-            this.CambiarDeEmpresa1.SelectedIndexChanged += new System.EventHandler(this.CambiarDeEmpresa1_SelectedIndexChanged);
             // 
             // tabMENU
             // 

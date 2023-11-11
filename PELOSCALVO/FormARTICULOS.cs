@@ -13,7 +13,6 @@ namespace PELOSCALVO
 {
     public partial class FormARTICULOS : Form
     {
-
         double Coste = 0;
         double Ganancia = 0;
         double CastiDesc = 0;
@@ -96,8 +95,9 @@ namespace PELOSCALVO
                             {
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@ID", this.idArticulo.Text);
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
-                                this.dtPreciosDataGridView.Rows.RemoveAt(this.dtPreciosDataGridView.CurrentCell.RowIndex);
-                                this.dtPreciosDataGridView.Refresh();
+                                this.dtPreciosDataGridView.Rows.RemoveAt(this.dtPreciosDataGridView.CurrentCell.RowIndex);       
+                                this.dtArticulosBindingSource.EndEdit();
+                                Validate();
                                 MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
@@ -123,26 +123,28 @@ namespace PELOSCALVO
             try
             {
 
-
-                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString() != string.Empty)
+                if (dtConfiguracionPrincipalBindingSource.Count > 0)
                 {
-                    this.CastyLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString();
-                    this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString();
-                }
-                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString() != string.Empty)
-                {
-                    this.SuarezLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString();
-                    this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString();
-                }
-                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString() != string.Empty)
-                {
-                    this.BenitoLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString();
-                    this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString();
-                }
-                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString() != string.Empty)
-                {
-                    this.ValenteLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString();
-                    this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString();
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString() != string.Empty)
+                    {
+                        this.CastyLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString();
+                    }
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString() != string.Empty)
+                    {
+                        this.SuarezLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString();
+                    }
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString() != string.Empty)
+                    {
+                        this.BenitoLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString();
+                    }
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString() != string.Empty)
+                    {
+                        this.ValenteLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString();
+                    }
                 }
             }
             catch (Exception)
@@ -304,25 +306,17 @@ namespace PELOSCALVO
 
         }
 
-
-
         private void FormARTICULOS_MouseEnter(object sender, EventArgs e)
         {
             FormMenuPrincipal.menu2principal.panelventas.Visible = false;
             FormMenuPrincipal.menu2principal.panelSUBventas.Visible = false;
         }
-
-        private void TabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnNuevoArticulo_Click(object sender, EventArgs e)
         {
             BORRARerrores();
             try
             {
-                LimpiarTextox();
+              //  LimpiarTextox();
                 this.FiltrarBajas.Text = "Todos";
                 this.dtPreciosDataGridView.Refresh();
                 this.dtPreciosDataGridView.Sort(this.dtPreciosDataGridView.Columns[0], ListSortDirection.Ascending);
@@ -372,7 +366,6 @@ namespace PELOSCALVO
 
         private void BtnGuardarArticulo_Click(object sender, EventArgs e)
         {
-
             if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
             {
                 this.dtPreciosDataGridView.Focus();
@@ -384,12 +377,10 @@ namespace PELOSCALVO
                         MessageBox.Show("Falta ID De Registro", "ID !!!!! ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
-                    //email_bien_escrito();
                     if (VALIDARcamposArticulos())
                     {
                         if (MessageBox.Show(" ¿Aceptar Guardar ? ", " GUARDAR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-
                             int i = 0;
                             foreach (DataGridViewRow fila in this.dtPreciosDataGridView.Rows)
                             {
@@ -432,7 +423,6 @@ namespace PELOSCALVO
                             this.dtPreciosDataGridView.Focus();
 
                         }
-
 
                     }
                 }
@@ -483,8 +473,6 @@ namespace PELOSCALVO
                 }
             }
         }
-
-
         private void BtnSalirArticulo_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(" ¿Salir Articulos ? ", " ARTICULOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -534,42 +522,42 @@ namespace PELOSCALVO
                 this.tabControl1Articulo.SelectedIndex = 0;
             }
 
-
         }
 
         private void CosteTextBox_Validated(object sender, EventArgs e)
         {
             ValidarCalculosPrecios();
         }
-
-
         private void CosteTextBox_Enter(object sender, EventArgs e)
         {
             this.CosteTextBox.Text = this.CosteTextBox.Text.Replace("€", "");
         }
-
-
         private void BtnEliminarArticulo_Click(object sender, EventArgs e)
         {
             if (this.dtArticulosBindingSource.Count > 0)
             {
                 if (MessageBox.Show(" Desea Eliminar Este Articulo ", "ELIMINAR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Validate();
-                    this.dtArticulosBindingSource.EndEdit();
-                    ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + " De Articulos" + "." + FormMenuPrincipal.menu2principal.InfoExtension.Text;
-                    if (ClsConexionSql.SibaseDatosSql == false)
+                    try
                     {
-                        EliminarArticuloBb();
-                    }
-                    else
+                        if (ClsConexionSql.SibaseDatosSql == false)
+                        {
+                            EliminarArticuloBb();
+                        }
+                        else
 
-                    {
-                        EliminarArticuloSql();
+                        {
+                            EliminarArticuloSql();
+                        }
+                        if (this.dtArticulosBindingSource.Count > 0)
+                        {
+                            this.dtPreciosDataGridView.CurrentCell = this.dtPreciosDataGridView.Rows[0].Cells[0];
+                        }
                     }
-                    if (this.dtArticulosBindingSource.Count > 0)
+                    catch (Exception)
                     {
-                        this.dtPreciosDataGridView.CurrentCell = this.dtPreciosDataGridView.Rows[0].Cells[0];
+
+                      //  throw;
                     }
                     this.dtPreciosDataGridView.Refresh();
                 }
@@ -591,7 +579,8 @@ namespace PELOSCALVO
                             NuevaConexion.ComandoSql.Parameters.AddWithValue("@ID", this.idArticulo.Text);
                             NuevaConexion.ComandoSql.ExecuteNonQuery();
                             this.dtPreciosDataGridView.Rows.RemoveAt(this.dtPreciosDataGridView.CurrentCell.RowIndex);
-                            this.dtPreciosDataGridView.Refresh();
+                            this.dtArticulosBindingSource.EndEdit();
+                            Validate();
                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 

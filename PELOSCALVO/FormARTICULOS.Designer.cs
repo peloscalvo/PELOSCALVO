@@ -834,8 +834,6 @@ namespace PELOSCALVO
             this.tabPage2Articulo.TabIndex = 1;
             this.tabPage2Articulo.Text = "Datos";
             this.tabPage2Articulo.UseVisualStyleBackColor = true;
-            this.tabPage2Articulo.Click += new System.EventHandler(this.TabPage2_Click);
-            // 
             // panelDesc1
             // 
             this.panelDesc1.BackColor = System.Drawing.Color.WhiteSmoke;

@@ -269,16 +269,12 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.NombreEmpresaReguistro.Text) ? (object)DBNull.Value : this.NombreEmpresaReguistro.Text);
                 if (this.cobradaFacturaCheckBox.Checked == true)
                 {
-
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CobradaFactura", "Cobrado");///canbiar valor a cobrada
                 }
                 else
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CobradaFactura", "");///canbiar valor a cobrada
                 }
-
-
-
                 try
                 {
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
@@ -1028,7 +1024,7 @@ namespace PELOSCALVO
 
                     if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[this.empresaENLACEComboBox.SelectedIndex]["NombreEmpresaReguistro"].ToString() != string.Empty)
                     {
-                        EmpresaV = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[this.empresaENLACEComboBox.SelectedIndex]["NombreEmpresaReguistro"].ToString();
+                      //  EmpresaV = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[this.empresaENLACEComboBox.SelectedIndex]["NombreEmpresaReguistro"].ToString();
                         // this.NombreEmpresaReguistro.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[this.empresaENLACEComboBox.SelectedIndex]["NombreEmpresaReguistro"].ToString();
                     }
                     if (EmpresaV == string.Empty)
@@ -2068,7 +2064,7 @@ namespace PELOSCALVO
                 if (NombreItem.Contains("Nueva linea En Blanco"))
                 {
                     NombreItem = NombreItem.Replace("Nueva linea En Blanco", "");
-                    Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex;
+                    Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex+1;
                     // DataRow FilaNueva = new DataTable(dtd);
                     DataTable dt = (DataTable)this.dtDetallesFacturaBindingSource.DataSource;
                     var row = dt.NewRow();
@@ -2184,6 +2180,11 @@ namespace PELOSCALVO
         {
             ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura + "\\" + ClasDatos.NombreFactura + "-" + this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text + ".Xml";
             //MessageBox.Show(ClasDatos.ArchivoInicioFacturas);
+        }
+
+        private void empresaENLACEComboBox_Validated(object sender, EventArgs e)
+        {
+            ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura + "\\" + ClasDatos.NombreFactura + "-" + this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text + ".Xml";
         }
     }
 }

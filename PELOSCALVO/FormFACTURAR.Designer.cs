@@ -669,7 +669,7 @@ namespace PELOSCALVO
             this.empresaENLACEComboBox.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.empresaENLACEComboBox.DisplayMember = "EmpresaConfi";
             this.empresaENLACEComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaENLACEComboBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.empresaENLACEComboBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.empresaENLACEComboBox.FormattingEnabled = true;
             this.empresaENLACEComboBox.Location = new System.Drawing.Point(69, 7);
             this.empresaENLACEComboBox.Name = "empresaENLACEComboBox";
@@ -681,6 +681,7 @@ namespace PELOSCALVO
             this.empresaENLACEComboBox.Leave += new System.EventHandler(this.empresaENLACEComboBox_Leave);
             this.empresaENLACEComboBox.MouseEnter += new System.EventHandler(this.empresaENLACEComboBox_MouseEnter);
             this.empresaENLACEComboBox.MouseLeave += new System.EventHandler(this.empresaENLACEComboBox_MouseLeave);
+            this.empresaENLACEComboBox.Validated += new System.EventHandler(this.empresaENLACEComboBox_Validated);
             // 
             // dtConfiBindingSource
             // 
