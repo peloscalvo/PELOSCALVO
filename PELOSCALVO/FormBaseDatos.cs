@@ -365,7 +365,7 @@ namespace PELOSCALVO
                 this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
             }
             if (!File.Exists(ClasDatos.RutaMultidatos))
-            {
+            {          
                 MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaMultidatos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.BtnBuscarServidor.Enabled = false;
                 this.BtnGuardarDatosArchivos.Enabled = false;
@@ -982,7 +982,7 @@ namespace PELOSCALVO
 
         private void SerieArticulosText_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieArticulosText.Text + "." + this.TipoExtension_b.Text;
+
         }
 
         private void BtnGuardarDatosArchivos_Click(object sender, EventArgs e)
@@ -1052,11 +1052,16 @@ namespace PELOSCALVO
                     ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
                     ActualizarArticulosDB();
                     ActualizarClientes_DB();
+                    string Rutacorreos = Directory.GetCurrentDirectory() + "\\" +ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
+                    if (File.Exists(Rutacorreos))
+                    {
+                        FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);
+                    }
+               
+                   // ClasCorreos.ListaCorreosCliente.lista.Add();               
                     FormMenuPrincipal.menu2principal.InfoArticulo.Text = this.SerieArticulosText.Text;
                     FormMenuPrincipal.menu2principal.InfoClientes.Text = this.SerieClientesText2.Text;
                     FormMenuPrincipal.menu2principal.InfoExtension.Text = this.TipoExtension_b.Text;
-
-
                     MessageBox.Show("Configuracion Guardarda Y Lista Para Usar", "GUARDAR CONFIGURACION", MessageBoxButtons.OK);
                     this.CheckAtivarServidor.Checked = false;
                     this.CheckActivarDb.Checked = true;
@@ -1079,7 +1084,7 @@ namespace PELOSCALVO
 
         private void SerieClientesText2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieClientesText2.Text + "." + this.TipoExtension_b.Text;
+
         }
 
 
@@ -1346,14 +1351,25 @@ namespace PELOSCALVO
 
         private void BtnCrearTbArticulos_Click(object sender, EventArgs e)
         {
-            if (this.TipoExtension_b.Text == "DBF" & this.NombreArchivoDatos.Text != "Datos App Peloscalvo")
+            if (this.NombreArchivoDatos.Text != "Datos App Peloscalvo")
             {
                 MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
                 return;
             }
+
             BORRARerror_Archivos();
             if (VALIDARcampos_Archivos())
             {
+                if (this.TipoExtension_b.Text == "DBF")
+                {
+                    ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieArticulosText.Text + "." + this.TipoExtension_b.Text;
+                    ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieClientesText2.Text + "." + this.TipoExtension_b.Text;
+                }
+                else
+                {
+                    ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
+                    ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
+                }
                 if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     string cadena = "";

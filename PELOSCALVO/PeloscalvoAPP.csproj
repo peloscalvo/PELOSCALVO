@@ -247,6 +247,12 @@
     <Compile Include="FormComfiguracion.Designer.cs">
       <DependentUpon>FormComfiguracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCorreos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCorreos.Designer.cs">
+      <DependentUpon>FormCorreos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrearArchivos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,12 @@
     </Compile>
     <Compile Include="FormCrearBaseDatos.Designer.cs">
       <DependentUpon>FormCrearBaseDatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEnviarCorreos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEnviarCorreos.designer.cs">
+      <DependentUpon>FormEnviarCorreos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormFACTURAR.cs">
       <SubType>Form</SubType>
@@ -319,11 +331,17 @@
     <EmbeddedResource Include="FormComfiguracion.resx">
       <DependentUpon>FormComfiguracion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCorreos.resx">
+      <DependentUpon>FormCorreos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCrearArchivos.resx">
       <DependentUpon>FormCrearArchivos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearBaseDatos.resx">
       <DependentUpon>FormCrearBaseDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEnviarCorreos.resx">
+      <DependentUpon>FormEnviarCorreos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFACTURAR.resx">
       <DependentUpon>FormFACTURAR.cs</DependentUpon>
@@ -543,10 +561,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaCorreo\CapaCorreo.csproj">
-      <Project>{be410152-25ae-4d05-83e8-4b4a4d32b39c}</Project>
-      <Name>CapaCorreo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Comun\Comun.csproj">
       <Project>{d12f74c5-178e-4355-998b-e62579194fc8}</Project>
       <Name>Comun</Name>

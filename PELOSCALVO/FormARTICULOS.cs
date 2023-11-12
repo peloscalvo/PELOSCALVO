@@ -159,6 +159,7 @@ namespace PELOSCALVO
 
         private void FormARTICULOS_Load(object sender, EventArgs e)
         {
+
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal))
             {
                 MessageBox.Show("Debe Restructurar Sistema", "DIRECTORIO " + ClasDatos.RutaDatosPrincipal + " NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

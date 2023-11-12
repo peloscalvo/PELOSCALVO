@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClasCorreos.cs" />
     <Compile Include="ClasArticulos.cs" />
     <Compile Include="ClasSi_Existe_Fatu.cs" />
     <Compile Include="Program.cs" />

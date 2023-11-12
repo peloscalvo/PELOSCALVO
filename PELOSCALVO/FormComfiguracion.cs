@@ -2897,6 +2897,13 @@ namespace PELOSCALVO
         {
             this.dataGridProveedores.Enabled = true;
         }
+
+        private void baseDatosLocalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCorreos frm = new FormCorreos();
+            frm.BringToFront();
+            frm.ShowDialog()
+        }
     }
 }
 

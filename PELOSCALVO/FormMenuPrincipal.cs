@@ -1,4 +1,4 @@
-﻿using CapaCorreo;
+﻿
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -7,12 +7,13 @@ using System.Windows.Forms;
 using System.Xml;
 using Conexiones;
 using System.Threading;
+using System.Data;
 
 namespace PELOSCALVO
 {
     public partial class FormMenuPrincipal : Form
     {
-
+        public  DataSet dsCorreos = new DataSet();
         public static FormMenuPrincipal menu2principal;
         public byte SiOpenFatu = 0;
         public byte SiOpenArti = 0;
@@ -120,6 +121,17 @@ namespace PELOSCALVO
                     else
                     {
                         CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
+
+                    }
+                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml"))
+                    {
+                        this.dsCorreos.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
+
+
+                    }
+                    else
+                    {
+                        CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
 
                     }
                 }
@@ -318,8 +330,8 @@ namespace PELOSCALVO
 
         private void btnMembresia_Click(object sender, EventArgs e)
         {
-            CapaCorreo.FormCorreo frmCorreo = new FormCorreo();
-            frmCorreo.ShowDialog();
+            FormEnviarCorreos frmCorreo = new FormEnviarCorreos();
+               frmCorreo.ShowDialog();
         }
 
         private void btnARTICULOS_Click(object sender, EventArgs e)

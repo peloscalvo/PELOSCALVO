@@ -355,6 +355,7 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idProveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.baseDatosLocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             descripcionArchivoDatosLabel = new System.Windows.Forms.Label();
             directorioArchivoDatosLabel = new System.Windows.Forms.Label();
             nombreArchivoDatosLabel = new System.Windows.Forms.Label();
@@ -1409,7 +1410,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(670, 486);
+            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(653, 488);
             this.BtnCancelarAlmacen.Name = "BtnCancelarAlmacen";
             this.BtnCancelarAlmacen.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarAlmacen.TabIndex = 59;
@@ -1575,7 +1576,7 @@ namespace PELOSCALVO
             this.BtnActualizarAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizarAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnActualizarAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(475, 486);
+            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(458, 488);
             this.BtnActualizarAlmacenes.Name = "BtnActualizarAlmacenes";
             this.BtnActualizarAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnActualizarAlmacenes.TabIndex = 49;
@@ -1595,7 +1596,7 @@ namespace PELOSCALVO
             this.BtnVolverAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(818, 486);
+            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(801, 488);
             this.BtnVolverAlmacenes.Name = "BtnVolverAlmacenes";
             this.BtnVolverAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverAlmacenes.TabIndex = 48;
@@ -3899,6 +3900,7 @@ namespace PELOSCALVO
             this.abrirBaseDatosToolStripMenuItem,
             this.abrirPdfToolStripMenuItem,
             this.añadirBaseDatosToolStripMenuItem,
+            this.baseDatosLocalToolStripMenuItem,
             this.crearBaseDatosSqlLocalToolStripMenuItem,
             this.imprimirReportesToolStripMenuItem,
             this.editarModificarToolStripMenuItem});
@@ -4334,6 +4336,13 @@ namespace PELOSCALVO
             this.idProveedoresDataGridViewTextBoxColumn.ReadOnly = true;
             this.idProveedoresDataGridViewTextBoxColumn.Width = 153;
             // 
+            // baseDatosLocalToolStripMenuItem
+            // 
+            this.baseDatosLocalToolStripMenuItem.Name = "baseDatosLocalToolStripMenuItem";
+            this.baseDatosLocalToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.baseDatosLocalToolStripMenuItem.Text = "Base Datos Local";
+            this.baseDatosLocalToolStripMenuItem.Click += new System.EventHandler(this.baseDatosLocalToolStripMenuItem_Click);
+            // 
             // FormComfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4667,5 +4676,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox Enlace_Proveedor;
         private System.Windows.Forms.TextBox NombreProveedor;
         private System.Windows.Forms.Button BtnCancelarProveedores;
+        private System.Windows.Forms.ToolStripMenuItem baseDatosLocalToolStripMenuItem;
     }
 }
