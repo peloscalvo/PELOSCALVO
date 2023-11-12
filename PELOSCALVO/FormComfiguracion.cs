@@ -2902,7 +2902,7 @@ namespace PELOSCALVO
         {
             FormCorreos frm = new FormCorreos();
             frm.BringToFront();
-            frm.ShowDialog()
+            frm.ShowDialog();
         }
     }
 }

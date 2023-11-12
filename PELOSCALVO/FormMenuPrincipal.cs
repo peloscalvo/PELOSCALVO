@@ -14,6 +14,7 @@ namespace PELOSCALVO
     public partial class FormMenuPrincipal : Form
     {
         public  DataSet dsCorreos = new DataSet();
+        public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
         public byte SiOpenFatu = 0;
         public byte SiOpenArti = 0;
@@ -690,7 +691,7 @@ namespace PELOSCALVO
             {
                 if (this.PanelInfo.Tag.ToString() == "ABRIR")
                 {
-                    if (this.PanelInfo.Width == 855)
+                    if (this.PanelInfo.Width == 862)
                     {
                         this.TimerCerrarPanel.Stop();
                     }

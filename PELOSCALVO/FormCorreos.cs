@@ -18,7 +18,7 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.dsCorreos != null)
                 {
-                    this.DatagridCorreosEmpresa.DataSource = FormMenuPrincipal.menu2principal.dsCorreos;
+                    this.DatagridCorreosEmpresa.DataSource = FormMenuPrincipal.menu2principal.CorreosBindisource;
                     this.DataGridCorreoCliente.DataSource = FormMenuPrincipal.menu2principal.dsCorreos;
                     //  if(DatagriCorreosEmpresa.RowCount<= 0)
                     //{
@@ -29,7 +29,7 @@ namespace PELOSCALVO
             catch (Exception)
             {
 
-               // throw;
+                // throw;
             }
         }
         private bool EspacioDiscosCorreo_EMP(string nombreDisco, int Espacio)
@@ -73,27 +73,31 @@ namespace PELOSCALVO
 
         private void DatagriCorreosEmpresa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex > 0)
             {
-                string Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string Correo = "";
                 try
                 {
-                    if (this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
+                    if (e.RowIndex < this.DatagridCorreosEmpresa.RowCount - 1)
                     {
-                        Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    }
-
-                    if (e.ColumnIndex == 7)
-                    {
-                        if (e.RowIndex < this.DatagridCorreosEmpresa.RowCount - 1)
+                        if (this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
                         {
+                            Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        }
+
+                        if (e.ColumnIndex == 7)
+                        {
+
                             if (MessageBox.Show("Desea Eliminar Este Correo ?? " + "\n" + "\n" + Correo, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             {
-                                this.DatagridCorreosEmpresa.Rows.Remove(this.DatagridCorreosEmpresa.CurrentRow);
-                                this.DatagridCorreosEmpresa.Refresh();
+
                                 if (File.Exists(this.Rutacorreos))
                                 {
+
+                                    FormMenuPrincipal.menu2principal.CorreosBindisource.DataSource = FormMenuPrincipal.menu2principal.dsCorreos;
                                     FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);
+                                    this.DatagridCorreosEmpresa.Rows.Remove(this.DatagridCorreosEmpresa.CurrentRow);
+                                    this.DatagridCorreosEmpresa.Refresh();
                                 }
                                 MessageBox.Show(Correo + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
                             }
@@ -114,24 +118,26 @@ namespace PELOSCALVO
             {
                 try
                 {
-                    string Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    if (this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
+                    string Correo = "";
+                    if (e.RowIndex < this.DatagridCorreosEmpresa.RowCount - 1)
                     {
-                        Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    }
-
-
-                    if (e.ColumnIndex == 7)
-                    {
-                        if (e.RowIndex < this.DatagridCorreosEmpresa.RowCount - 1)
+                        if (this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
                         {
+                            Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        }
+
+
+                        if (e.ColumnIndex == 4)
+                        {
+
                             if (MessageBox.Show("Desea Eliminar Este Correo ?? " + "\n" + "\n" + Correo, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             {
-                                this.DatagridCorreosEmpresa.Rows.Remove(this.DatagridCorreosEmpresa.CurrentRow);
-                                this.DatagridCorreosEmpresa.Refresh();
+
                                 if (File.Exists(this.Rutacorreos))
                                 {
                                     FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);
+                                    this.DatagridCorreosEmpresa.Rows.Remove(this.DatagridCorreosEmpresa.CurrentRow);
+                                    this.DatagridCorreosEmpresa.Refresh();
                                 }
                                 MessageBox.Show(Correo + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
                             }
@@ -157,7 +163,7 @@ namespace PELOSCALVO
                 {
                     this.DataGridCorreoCliente.EndEdit();
                     Validate();
-                    FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(Rutacorreos);
+                    FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);
                     MessageBox.Show("Se Actualizo Con Exito", "CORREO EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
