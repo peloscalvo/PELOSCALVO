@@ -1046,7 +1046,7 @@ namespace PELOSCALVO
                     string nombreBasedatos = this.NombreArchivoDatos.Text;
                     if (this.TipoExtension_b.Text == "DBF")
                     {
-                        nombreBasedatos = "";
+                        nombreBasedatos = SerieClientesText2.Text;
                     }
                     ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
                     ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
@@ -1242,13 +1242,13 @@ namespace PELOSCALVO
             Random r = new Random();
             int valor = r.Next(10, 90000000);
             string TablaArticulos = "Prueba+" + valor.ToString();
-            string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key NOT NUL, [Referencia] varchar," +
+            string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                 "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                 "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                 ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                 " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                 ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-            string ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "]([EnlaceFactura] varchar primary key NOT NULL, [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+            string ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "]([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
            "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
              "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
            "[IvaImpuesto] int,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
@@ -1259,7 +1259,7 @@ namespace PELOSCALVO
 "[DireccionEmpresa] varchar(60) ,[LocalidadEmpresa] varchar(50) ,[CodigoPostalEmpresa] varchar(25) ,[ProvinciaEmpresa] varchar(30) ," +
 "[TelefonoEmpresa] varchar(20) ,[CorreoEmpresa] varchar(30) ,[WepEmpresa] varchar(40) ,[RegimenIvaEmpresa] varchar(30) ," +
 " [PaisEmpresa] varchar(40) ,[SerieDeFacturacionEmpresa] varchar(10) ,[Telefono2Empresa] varchar(25) ,[MovilEmpresa] varchar(25) ," +
-" [CifEmpresa] varchar(20) ,[NombreEmpresaReguistro]  primary key NOT NUL,[ImagenEmpresa] byte  ) " +
+" [CifEmpresa] varchar(20) ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] byte  ) " +
 
 "CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar(60) , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar(60) ," +
 "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar(60) ," +
@@ -1325,9 +1325,8 @@ namespace PELOSCALVO
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
                         this.NombreArchivoDatos.Text = fi.Name;
-                        ClasDatos.Clientes = Path.GetFullPath(BuscarArchivo.FileName.ToString()) + "\\" + BuscarArchivo.FileName;
-                        ClasDatos.Articulos = Path.GetFullPath(BuscarArchivo.FileName.ToString()) + "\\" + BuscarArchivo.FileName;
-                        MessageBox.Show(ClasDatos.Articulos);
+                        ClasDatos.Clientes = Path.GetFullPath(BuscarArchivo.FileName.ToString());
+                        ClasDatos.Articulos = Path.GetFullPath(BuscarArchivo.FileName.ToString());
                     }
                     else
                     {
@@ -1391,7 +1390,7 @@ namespace PELOSCALVO
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
                     string TablaArticulos = "Prueba+" + valor.ToString();
-                    string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key NOT NUL, [Referencia] varchar," +
+                    string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +

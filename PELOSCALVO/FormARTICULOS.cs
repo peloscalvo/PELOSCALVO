@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace PELOSCALVO
 {
-    public partial class FormARTICULOS : Form
+    public partial class FormArticulos : Form
     {
         double Coste = 0;
         double Ganancia = 0;
@@ -24,12 +24,12 @@ namespace PELOSCALVO
         double iva = 0;
         double Pvp2Desc = 0;
         string articulos2 = "1";
-        public static FormARTICULOS menu2Articulos;
+        public static FormArticulos menu2Articulos;
         Boolean SiBajaarti = false;
-        public FormARTICULOS()
+        public FormArticulos()
         {
             InitializeComponent();
-            FormARTICULOS.menu2Articulos = this;
+            FormArticulos.menu2Articulos = this;
         }
         private bool EspacioDiscos(string nombreDisco, int Espacio)
         {
@@ -1119,11 +1119,11 @@ namespace PELOSCALVO
             if (this.idArticulo.Tag.ToString() == "MODIFICAR")
             {
                 consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE,GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY,SUAREZDESC = @SUAREZDESC," +
-                  "SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDESC = @VALENTEDESC,VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO,STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
+                  "SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES,VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO,STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
             }
             if (this.idArticulo.Tag.ToString() == "NUEVO")
             {
-                consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA, @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDESC, @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
+                consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA, @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES, @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
 
             }
 
@@ -1149,7 +1149,7 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@SUAREZ", string.IsNullOrEmpty(this.SuarezLabel2.Text) ? (object)DBNull.Value : this.SuarezLabel2.Text.Replace("€", ""));
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@BENITODESC", string.IsNullOrEmpty(this.BenitoDescTextBox.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@BENITO", string.IsNullOrEmpty(this.BenitoLabel2.Text) ? (object)DBNull.Value : this.BenitoLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTEDESC", string.IsNullOrEmpty(this.ValenteDescTextBox.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTEDES", string.IsNullOrEmpty(this.ValenteDescTextBox.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTE", string.IsNullOrEmpty(this.ValenteLabel2.Text) ? (object)DBNull.Value : this.ValenteLabel2.Text.Replace("€", ""));
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PLUSDESC", string.IsNullOrEmpty(this.PlusDescTextBox.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PLUS", string.IsNullOrEmpty(this.PlusLabel2.Text) ? (object)DBNull.Value : this.PlusLabel2.Text.Replace("€", ""));
@@ -1195,11 +1195,11 @@ namespace PELOSCALVO
             if (this.idArticulo.Tag.ToString() == "MODIFICAR")
             {
                 Consulta = "UPDATE " + TipoTabla + " SET Id = @Id,REFERENCIA = @REFERENCIA  , DESCRIPCCI =  @DESCRIPCCI ,COSTE = @COSTE,GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY,SUAREZDESC = @SUAREZDESC," +
-                  "SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDESC = @VALENTEDESC,VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO,STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
+                  "SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES,VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO,STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
             }
             if (this.idArticulo.Tag.ToString() == "NUEVO")
             {
-                Consulta = "INSERT INTO " + TipoTabla + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA, @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDESC, @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE,@MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
+                Consulta = "INSERT INTO " + TipoTabla + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA, @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES, @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE,@MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
 
             }
             // ClsConexionDb.CadenaConexion = cadena;/// no necesita enviar ya conecto
@@ -1225,7 +1225,7 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@SUAREZ", string.IsNullOrEmpty(this.SuarezLabel2.Text) ? (object)DBNull.Value : this.SuarezLabel2.Text.Replace("€", ""));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@BENITODESC", string.IsNullOrEmpty(this.BenitoDescTextBox.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@BENITO", string.IsNullOrEmpty(this.BenitoLabel2.Text) ? (object)DBNull.Value : this.BenitoLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTEDESC", string.IsNullOrEmpty(this.ValenteDescTextBox.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTEDES", string.IsNullOrEmpty(this.ValenteDescTextBox.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTE", string.IsNullOrEmpty(this.ValenteLabel2.Text) ? (object)DBNull.Value : this.ValenteLabel2.Text.Replace("€", ""));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PLUSDESC", string.IsNullOrEmpty(this.PlusDescTextBox.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PLUS", string.IsNullOrEmpty(this.PlusLabel2.Text) ? (object)DBNull.Value : this.PlusLabel2.Text.Replace("€", ""));

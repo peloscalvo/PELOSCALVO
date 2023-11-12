@@ -347,7 +347,7 @@ namespace PELOSCALVO
             }
             if (this.SiOpenArti == 0)
             {
-                FormARTICULOS frm = new FormARTICULOS();
+                FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
                 frm.Dock = DockStyle.Fill;
                 frm.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -360,10 +360,10 @@ namespace PELOSCALVO
             else
             {
 
-                if (FormARTICULOS.menu2Articulos.WindowState == FormWindowState.Maximized)
+                if (FormArticulos.menu2Articulos.WindowState == FormWindowState.Maximized)
                 {
-                    FormARTICULOS.menu2Articulos.WindowState = FormWindowState.Maximized;
-                    FormARTICULOS.menu2Articulos.BringToFront();
+                    FormArticulos.menu2Articulos.WindowState = FormWindowState.Maximized;
+                    FormArticulos.menu2Articulos.BringToFront();
                 }
             }
         }
@@ -411,7 +411,7 @@ namespace PELOSCALVO
             }
             ClasDatos.NombreFactura = "Factura";
             ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal + " FN5";
-            FormFACTURAR frm = new FormFACTURAR();
+            FormFacturar frm = new FormFacturar();
             if (this.SiOpenFatu == 0)
             {
                 this.panelMenu.Width = this.panelMenu.Width = 55;
@@ -468,7 +468,7 @@ namespace PELOSCALVO
 
             if (this.SiOpenUser == 0)
             {
-                FormARTICULOS frm = new FormARTICULOS();
+                FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
                 frm.Dock = DockStyle.Fill;
                 this.panelContenedorForm.Controls.Add(frm);
@@ -495,7 +495,7 @@ namespace PELOSCALVO
             {
                 ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal + " FN1";
                 ClasDatos.NombreFactura = "Nota";
-                FormFACTURAR frm = new FormFACTURAR();
+                FormFacturar frm = new FormFacturar();
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
@@ -510,10 +510,10 @@ namespace PELOSCALVO
             }
             else
             {
-                if (FormFACTURAR.menu2FACTURAR.WindowState == FormWindowState.Maximized)
+                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Maximized)
                 {
-                    FormFACTURAR.menu2FACTURAR.WindowState = FormWindowState.Maximized;
-                    FormFACTURAR.menu2FACTURAR.BringToFront();
+                    FormFacturar.menu2FACTURAR.WindowState = FormWindowState.Maximized;
+                    FormFacturar.menu2FACTURAR.BringToFront();
                 }
 
             }
@@ -533,7 +533,7 @@ namespace PELOSCALVO
             {
                 ClasDatos.NombreFactura = "Presupuesto";
                 ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal + " FN4";
-                FormFACTURAR frm = new FormFACTURAR();
+                FormFacturar frm = new FormFacturar();
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
@@ -563,7 +563,7 @@ namespace PELOSCALVO
             {
                 ClasDatos.NombreFactura = "Nota-2";
                 ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal  + " FN2";
-                FormFACTURAR frm = new FormFACTURAR();
+                FormFacturar frm = new FormFacturar();
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
@@ -593,7 +593,7 @@ namespace PELOSCALVO
             {
                 ClasDatos.NombreFactura = "Albaran";
                 ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal  + " FN3";
-                FormFACTURAR frm = new FormFACTURAR();
+                FormFacturar frm = new FormFacturar();
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;

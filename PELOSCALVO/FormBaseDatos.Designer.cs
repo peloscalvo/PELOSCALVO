@@ -384,6 +384,7 @@ namespace PELOSCALVO
             this.NombreArchivoDatos.ReadOnly = true;
             this.NombreArchivoDatos.Size = new System.Drawing.Size(271, 20);
             this.NombreArchivoDatos.TabIndex = 92;
+            this.NombreArchivoDatos.Tag = "NO";
             this.NombreArchivoDatos.Text = "Datos App Peloscalvo";
             // 
             // SerieArticulosText

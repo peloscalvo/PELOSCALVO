@@ -22,7 +22,7 @@ namespace PELOSCALVO
             printPreviewControl1.ResetText();
             printPreviewControl1.Refresh();
             PictureBox logo = new PictureBox();
-            logo.Image= FormFACTURAR.menu2FACTURAR.imagenEmpresaPicture2.Image;
+            logo.Image= FormFacturar.menu2FACTURAR.imagenEmpresaPicture2.Image;
             //StringFormat stringFormat = new StringFormat();
             //stringFormat.Alignment = StringAlignment.Center;
             //stringFormat.LineAlignment = StringAlignment.Center;
@@ -36,20 +36,20 @@ namespace PELOSCALVO
             };
             int margenIzqu = e.MarginBounds.Left;
             int margenDere = e.MarginBounds.Right;
-            int NumeroEmpresa1 = FormFACTURAR.menu2FACTURAR.empresaENLACEComboBox.SelectedIndex;
+            int NumeroEmpresa1 = FormFacturar.menu2FACTURAR.empresaENLACEComboBox.SelectedIndex;
             string ApodoImpr = "";
             string nombreCliente = "";
             string EmpresaImpri = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["EmpresaConfi"].ToString();
             // Bitmap logo1 = PELOSCALVO.Properties.Resources.logo;
             string Empresadire = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["DireccionEmpresa"].ToString();
             // Bitmap aa   = con(FormFACTURAR.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["ImagenEmpresa"].ToString());
-            if (FormFACTURAR.menu2FACTURAR.apodoTextBox.Text != string.Empty)
+            if (FormFacturar.menu2FACTURAR.apodoTextBox.Text != string.Empty)
             {
-                ApodoImpr = FormFACTURAR.menu2FACTURAR.apodoTextBox.Text;
+                ApodoImpr = FormFacturar.menu2FACTURAR.apodoTextBox.Text;
             }
-            if (FormFACTURAR.menu2FACTURAR.nombreTextBox.Text != string.Empty)
+            if (FormFacturar.menu2FACTURAR.nombreTextBox.Text != string.Empty)
             {
-                nombreCliente = FormFACTURAR.menu2FACTURAR.nombreTextBox.Text;
+                nombreCliente = FormFacturar.menu2FACTURAR.nombreTextBox.Text;
             }
             Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
             Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
@@ -88,12 +88,12 @@ namespace PELOSCALVO
             e.Graphics.DrawRectangle(TñLinea, 22, 240, 795, 814);
             e.Graphics.DrawRectangle(TñLinea2, 655, 1080, 150, 70);
             e.Graphics.DrawString(nombreCliente + " -- " + ApodoImpr, BookAntiqua, Brushes.Black, margenIzqu - 70, 135);
-            e.Graphics.DrawString("Fecha:" + FormFACTURAR.menu2FACTURAR.FechaFacturaDate.Text, Arial10, Brushes.Black, 658, 135 + saltoAbajo1);
+            e.Graphics.DrawString("Fecha:" + FormFacturar.menu2FACTURAR.FechaFacturaDate.Text, Arial10, Brushes.Black, 658, 135 + saltoAbajo1);
             // e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.fechaFacturaTextBox.Text, Arial10, Brushes.Black, 740, 90 + saltoAbajo1,formato);
             saltoAbajo1 = saltoAbajo1 + 13;
-            e.Graphics.DrawString("Numero:" + FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
+            e.Graphics.DrawString("Numero:" + FormFacturar.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
             //e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 740,112 + saltoAbajo1,formato);
-            e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.direccionTextBox.Text, BookAntiqua, Brushes.Black, margenIzqu - 70, 135 + saltoAbajo1);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.direccionTextBox.Text, BookAntiqua, Brushes.Black, margenIzqu - 70, 135 + saltoAbajo1);
             // saltoAbajo1 = saltoAbajo1 + saltoAbajo1;
             int saltoref = 220;
             int iab = 0;
@@ -104,7 +104,7 @@ namespace PELOSCALVO
             e.Graphics.DrawString("Desc/", Arial10, Brushes.Black, 664, saltoref);
             e.Graphics.DrawString("Iva", Arial10, Brushes.Black, 708, saltoref);
             e.Graphics.DrawString("Importe", Arial10, Brushes.Black, 760, saltoref);
-            foreach (DataGridViewRow row in FormFACTURAR.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows)
+            foreach (DataGridViewRow row in FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows)
             {
                 //Referencia
                 e.Graphics.DrawString(row.Cells[0].FormattedValue.ToString(), fntTxt, Brushes.Black, margenIzqu - 76, saltoAbajo + SaltoDetallesAbj);
@@ -126,16 +126,16 @@ namespace PELOSCALVO
                 iab = iab + 1;
                 SaltoDetallesAbj = SaltoDetallesAbj + 18;
             }
-            e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.subTotalLabel2.Text, ArialNegrita10, Brushes.Black, 795, 1090, formato);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.subTotalLabel2.Text, ArialNegrita10, Brushes.Black, 795, 1090, formato);
             //rect = new RectangleF(1, 1110, 795, 870);
-            e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.baseIvaLabel2.Text, ArialNegrita10, Brushes.Black, 795, 1110, formato);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.baseIvaLabel2.Text, ArialNegrita10, Brushes.Black, 795, 1110, formato);
             // rect = new RectangleF(1, 1130, 795, 870);
-            e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.TotalFactura1.Text, ArialNegrita10, Brushes.Black, 795, 1130, formato);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.TotalFactura1.Text, ArialNegrita10, Brushes.Black, 795, 1130, formato);
             e.Graphics.DrawString("Sub Total", ArialNegrita10, Brushes.Black, 588, 1090);
             e.Graphics.DrawString("Iva", ArialNegrita10, Brushes.Black, 588, 1110);
             e.Graphics.DrawString("Total", ArialNegrita10, Brushes.Black, 588, 1130);
             e.HasMorePages = false;
-            String NombreArchivo = FormFACTURAR.menu2FACTURAR.nombreTextBox.Text + " " + FormFACTURAR.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text;
+            String NombreArchivo = FormFacturar.menu2FACTURAR.nombreTextBox.Text + " " + FormFacturar.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFacturar.menu2FACTURAR.numeroFacturaTextBox.Text;
             //printNota.PrinterSettings.PrintFileName = "c:\\"+NombreArchivo +".Pdf";
             printPreviewControl1.Document.DocumentName = "c:\\" + NombreArchivo + ".Pdf";
 
@@ -199,7 +199,7 @@ namespace PELOSCALVO
             PrintDocument pd = new PrintDocument();
             if (ClasDatos.OkFacturar == true)
             {
-                NombreArchivo = FormFACTURAR.menu2FACTURAR.nombreTextBox.Text + " " + FormFACTURAR.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text;
+                NombreArchivo = FormFacturar.menu2FACTURAR.nombreTextBox.Text + " " + FormFacturar.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFacturar.menu2FACTURAR.numeroFacturaTextBox.Text;
                 pd.PrintPage += new PrintPageEventHandler(printNota_PrintPage);
                 pd.PrinterSettings.PrintFileName = "c:\\" + NombreArchivo + ".Pdf";
                 printNota.DocumentName = NombreArchivo + ".Pdf";
@@ -281,59 +281,59 @@ namespace PELOSCALVO
                 //goto Etiqueta1;
             }
             //foreach(DataRow FILA in FormFACTURAR.menu2FACTURAR.dtDetallesFacturaBindingSource)
-            for (i = ClasDatos.count; i <= FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows.Count - 1; i++)
+            for (i = ClasDatos.count; i <= FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows.Count - 1; i++)
             {
-                if (FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[1].Value != null)
+                if (FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[1].Value != null)
                 {
-                    e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[1].Value.ToString(), fntTxt, Brushes.Black, 10, saltoAbajo + SaltoDetallesAbj);
+                    e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[1].Value.ToString(), fntTxt, Brushes.Black, 10, saltoAbajo + SaltoDetallesAbj);
 
                 }
-                if (FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[2].Value != null)
+                if (FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[2].Value != null)
                 {
-                    e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[2].Value.ToString(), fntTxt, Brushes.Black, 200, saltoAbajo + SaltoDetallesAbj);
+                    e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[2].Value.ToString(), fntTxt, Brushes.Black, 200, saltoAbajo + SaltoDetallesAbj);
 
                 }
                 if (FormImprimirTodo.Menu2Imprimirtodo.checkArticulosCoste.ThreeState == false)
                 {
-                    if (FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[3].Value != null)
+                    if (FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[3].Value != null)
                     {
-                        if (FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[3].Value != DBNull.Value)
+                        if (FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[3].Value != DBNull.Value)
                         {
 
-                            e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[3].FormattedValue.ToString(), fntTxt, Brushes.Black, 590, saltoAbajo + SaltoDetallesAbj, formato);
+                            e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[3].FormattedValue.ToString(), fntTxt, Brushes.Black, 590, saltoAbajo + SaltoDetallesAbj, formato);
 
                         }
                     }
 
                 }
 
-                e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[6].FormattedValue.ToString(), fntTxt, Brushes.Black, 700, saltoAbajo + SaltoDetallesAbj, formato);
+                e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[6].FormattedValue.ToString(), fntTxt, Brushes.Black, 700, saltoAbajo + SaltoDetallesAbj, formato);
                 if (FormImprimirTodo.Menu2Imprimirtodo.checkPreciosCastyImpri.ThreeState == false)
                 {
-                    if (FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[6].Value != null)
+                    if (FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[6].Value != null)
                     {
-                        if (FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[6].Value != DBNull.Value)
+                        if (FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[6].Value != DBNull.Value)
                         {
-                            e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[6].FormattedValue.ToString(), fntTxt, Brushes.Black, 800, saltoAbajo + SaltoDetallesAbj, formato);
+                            e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[6].FormattedValue.ToString(), fntTxt, Brushes.Black, 800, saltoAbajo + SaltoDetallesAbj, formato);
                         }
                     }
 
                 }
                 if (FormImprimirTodo.Menu2Imprimirtodo.checkPreciosSuarezImpr.ThreeState == false)
                 {
-                    e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[7].FormattedValue.ToString(), fntTxt, Brushes.Black, 900, saltoAbajo + SaltoDetallesAbj, formato);
+                    e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[7].FormattedValue.ToString(), fntTxt, Brushes.Black, 900, saltoAbajo + SaltoDetallesAbj, formato);
                 }
                 if (FormImprimirTodo.Menu2Imprimirtodo.checkPreciosBenitoImpri.ThreeState == false)
                 {
-                    e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[8].FormattedValue.ToString(), fntTxt, Brushes.Black, 1000, saltoAbajo + SaltoDetallesAbj, formato);
+                    e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[8].FormattedValue.ToString(), fntTxt, Brushes.Black, 1000, saltoAbajo + SaltoDetallesAbj, formato);
                 }
                 if (FormImprimirTodo.Menu2Imprimirtodo.checkPreciosValenteImpri.ThreeState == false)
                 {
-                    e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[9].FormattedValue.ToString(), fntTxt, Brushes.Black, 1100, saltoAbajo + SaltoDetallesAbj, formato);
+                    e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[9].FormattedValue.ToString(), fntTxt, Brushes.Black, 1100, saltoAbajo + SaltoDetallesAbj, formato);
                 }
                 if (FormImprimirTodo.Menu2Imprimirtodo.checkPreciosValenteImpri.ThreeState == false)
                 {
-                    e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[10].FormattedValue.ToString(), fntTxt, Brushes.Black, 1300, saltoAbajo + SaltoDetallesAbj, formato);
+                    e.Graphics.DrawString(FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[10].FormattedValue.ToString(), fntTxt, Brushes.Black, 1300, saltoAbajo + SaltoDetallesAbj, formato);
                 }
                 // e.Graphics.DrawString(FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows[i].Cells[11].FormattedValue.ToString(), fntTxt, Brushes.Black, 1300, saltoAbajo + SaltoDetallesAbj, formato);
 
@@ -346,7 +346,7 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (SaltoDetallesAbj >= e.MarginBounds.Bottom || ClasDatos.count <= FormARTICULOS.menu2Articulos.dtPreciosDataGridView.Rows.Count - 40)
+            if (SaltoDetallesAbj >= e.MarginBounds.Bottom || ClasDatos.count <= FormArticulos.menu2Articulos.dtPreciosDataGridView.Rows.Count - 40)
             {
                 //if(printDialog1.)
                 e.HasMorePages = true;
@@ -394,7 +394,7 @@ namespace PELOSCALVO
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             PaintEventArgs myPaintArgs = new PaintEventArgs(e.Graphics, new Rectangle(new Point(1, 1), this.Size));
-            this.InvokePaint(FormFACTURAR.menu2FACTURAR.dtDetallesFacturaDataGridView, myPaintArgs);
+            this.InvokePaint(FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView, myPaintArgs);
             e.HasMorePages = false;
         }
 

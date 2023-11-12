@@ -20,7 +20,7 @@ namespace PELOSCALVO
         public static string Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\";
         public static string Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\";
         public static string QUEform = "";
-        public static FormFACTURAR FormFACTURAR33;
+        public static FormFacturar FormFACTURAR33;
         public static int count = 0;
 
     }

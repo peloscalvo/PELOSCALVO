@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using Comun;
 
 namespace PELOSCALVO
 {
@@ -50,12 +51,14 @@ namespace PELOSCALVO
             {
                 try
                 {
+
                     if (File.Exists(this.Rutacorreos))
                     {
                         this.DatagridCorreosEmpresa.EndEdit();
                         Validate();
-
-                        FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);
+                        var dataSet = Comun.DataGrid_2.GetDataSet(DatagridCorreosEmpresa);
+                        dataSet.WriteXml(File.OpenWrite(this.Rutacorreos));
+                       // FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);
                         MessageBox.Show("Se Actualizo Con Exito", "correos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -73,7 +76,7 @@ namespace PELOSCALVO
 
         private void DatagriCorreosEmpresa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 string Correo = "";
                 try

@@ -35,14 +35,6 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCorreos));
             this.DatagridCorreosEmpresa = new System.Windows.Forms.DataGridView();
-            this.NombreEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CorreoEletronico = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.smtp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Puerto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Timeof = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnGuardarCorreo_EMP = new System.Windows.Forms.Button();
@@ -59,6 +51,14 @@ namespace PELOSCALVO
             this.Direcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CorreoEletronico_cli = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.NombreEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CorreoEletronico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.smtp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Puerto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Timeof = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EliminarCorreoE = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DatagridCorreosEmpresa)).BeginInit();
             this.TabCorreos.SuspendLayout();
             this.PageEmpresa.SuspendLayout();
@@ -89,7 +89,7 @@ namespace PELOSCALVO
             this.smtp,
             this.Puerto,
             this.Timeof,
-            this.dataGridViewImageColumn6});
+            this.EliminarCorreoE});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -107,64 +107,6 @@ namespace PELOSCALVO
             this.DatagridCorreosEmpresa.Size = new System.Drawing.Size(958, 350);
             this.DatagridCorreosEmpresa.TabIndex = 52;
             this.DatagridCorreosEmpresa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagriCorreosEmpresa_CellClick);
-            // 
-            // NombreEmpresa
-            // 
-            this.NombreEmpresa.FillWeight = 200F;
-            this.NombreEmpresa.HeaderText = "Nombre Empresa";
-            this.NombreEmpresa.Name = "NombreEmpresa";
-            this.NombreEmpresa.Width = 200;
-            // 
-            // CorreoEletronico
-            // 
-            this.CorreoEletronico.FillWeight = 170F;
-            this.CorreoEletronico.HeaderText = "Correo Eletronico";
-            this.CorreoEletronico.Name = "CorreoEletronico";
-            this.CorreoEletronico.Width = 170;
-            // 
-            // Usuario
-            // 
-            this.Usuario.FillWeight = 140F;
-            this.Usuario.HeaderText = "Usuario";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.Width = 140;
-            // 
-            // Contraseña
-            // 
-            this.Contraseña.FillWeight = 90F;
-            this.Contraseña.HeaderText = "contraseña";
-            this.Contraseña.Name = "Contraseña";
-            this.Contraseña.Width = 90;
-            // 
-            // smtp
-            // 
-            this.smtp.FillWeight = 130F;
-            this.smtp.HeaderText = "Datos Del Servidor";
-            this.smtp.Name = "smtp";
-            this.smtp.Width = 130;
-            // 
-            // Puerto
-            // 
-            this.Puerto.HeaderText = "Puerto";
-            this.Puerto.Name = "Puerto";
-            // 
-            // Timeof
-            // 
-            this.Timeof.FillWeight = 80F;
-            this.Timeof.HeaderText = "Timeof";
-            this.Timeof.Name = "Timeof";
-            this.Timeof.Width = 80;
-            // 
-            // dataGridViewImageColumn6
-            // 
-            this.dataGridViewImageColumn6.FillWeight = 98F;
-            this.dataGridViewImageColumn6.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn6.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.dataGridViewImageColumn6.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
-            this.dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewImageColumn6.Width = 129;
             // 
             // dataGridViewImageColumn1
             // 
@@ -389,6 +331,64 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // NombreEmpresa
+            // 
+            this.NombreEmpresa.FillWeight = 200F;
+            this.NombreEmpresa.HeaderText = "Nombre Empresa";
+            this.NombreEmpresa.Name = "NombreEmpresa";
+            this.NombreEmpresa.Width = 200;
+            // 
+            // CorreoEletronico
+            // 
+            this.CorreoEletronico.FillWeight = 170F;
+            this.CorreoEletronico.HeaderText = "Correo Eletronico";
+            this.CorreoEletronico.Name = "CorreoEletronico";
+            this.CorreoEletronico.Width = 170;
+            // 
+            // Usuario
+            // 
+            this.Usuario.FillWeight = 140F;
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.Width = 140;
+            // 
+            // Contraseña
+            // 
+            this.Contraseña.FillWeight = 90F;
+            this.Contraseña.HeaderText = "contraseña";
+            this.Contraseña.Name = "Contraseña";
+            this.Contraseña.Width = 90;
+            // 
+            // smtp
+            // 
+            this.smtp.FillWeight = 130F;
+            this.smtp.HeaderText = "Datos Del Servidor";
+            this.smtp.Name = "smtp";
+            this.smtp.Width = 130;
+            // 
+            // Puerto
+            // 
+            this.Puerto.HeaderText = "Puerto";
+            this.Puerto.Name = "Puerto";
+            // 
+            // Timeof
+            // 
+            this.Timeof.FillWeight = 80F;
+            this.Timeof.HeaderText = "Timeof";
+            this.Timeof.Name = "Timeof";
+            this.Timeof.Width = 80;
+            // 
+            // EliminarCorreoE
+            // 
+            this.EliminarCorreoE.FillWeight = 98F;
+            this.EliminarCorreoE.HeaderText = "Eliminar";
+            this.EliminarCorreoE.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.EliminarCorreoE.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EliminarCorreoE.Name = "EliminarCorreoE";
+            this.EliminarCorreoE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EliminarCorreoE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EliminarCorreoE.Width = 129;
+            // 
             // FormCorreos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,14 +415,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridView DatagridCorreosEmpresa;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreEmpresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CorreoEletronico;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Contraseña;
-        private System.Windows.Forms.DataGridViewTextBoxColumn smtp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Puerto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Timeof;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
         private System.Windows.Forms.TabControl TabCorreos;
         private System.Windows.Forms.TabPage PageInicio;
         private System.Windows.Forms.TabPage PageEmpresa;
@@ -435,5 +427,13 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         public System.Windows.Forms.Button BtnVolver_cli;
         public System.Windows.Forms.Button BtnGuardarCorreoCli;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreEmpresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CorreoEletronico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contraseña;
+        private System.Windows.Forms.DataGridViewTextBoxColumn smtp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Puerto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Timeof;
+        private System.Windows.Forms.DataGridViewImageColumn EliminarCorreoE;
     }
 }
