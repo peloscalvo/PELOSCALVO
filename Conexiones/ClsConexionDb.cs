@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace Conexiones
 {
@@ -19,10 +19,10 @@ namespace Conexiones
                 this.conexionDb = new OleDbConnection(ClsConexionDb.CadenaConexion);
                 ComandoDb = new OleDbCommand(consulta, conexionDb);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.Message.ToString(), "(((ERROR))) Base Datos Archivo");
+               /// MessageBox.Show(ex.Message.ToString(), "(((ERROR))) Base Datos Archivo");
             }
         }
         public bool SiConexionDb
@@ -39,9 +39,9 @@ namespace Conexiones
 
                     }
      
-                    catch (Exception ex)
+                    catch (Exception )
                     {
-                      MessageBox.Show(ex.Message.ToString());
+                     // MessageBox.Show(ex.Message.ToString());
                         return false;
                     }
 

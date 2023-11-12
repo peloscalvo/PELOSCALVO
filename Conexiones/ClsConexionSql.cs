@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace Conexiones
 {
@@ -17,9 +17,9 @@ namespace Conexiones
                 this.conexionSql = new SqlConnection(ClsConexionSql.CadenaConexion);
                 this.ComandoSql = new SqlCommand(consulta, this.conexionSql);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message.ToString(), "ERROR CONEXION");
+              //  MessageBox.Show(ex.Message.ToString(), "ERROR CONEXION");
             }
 
         }

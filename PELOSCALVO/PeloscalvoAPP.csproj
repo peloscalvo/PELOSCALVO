@@ -562,11 +562,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Comun\Comun.csproj">
-      <Project>{d12f74c5-178e-4355-998b-e62579194fc8}</Project>
+      <Project>{d3cb2ceb-1162-4e51-bcca-a7a6bdb43768}</Project>
       <Name>Comun</Name>
     </ProjectReference>
     <ProjectReference Include="..\Conexiones\Conexiones.csproj">
-      <Project>{e974efc7-93e1-4e55-baad-f70e29573433}</Project>
+      <Project>{40c5fcf0-eefc-4bca-9717-343e991f6005}</Project>
       <Name>Conexiones</Name>
     </ProjectReference>
   </ItemGroup>
