@@ -32,7 +32,7 @@ namespace PELOSCALVO
             DtCorreos.Columns.Add("smtp");
             DtCorreos.Columns.Add("Puerto");
             DtCorreos.Columns.Add("Timeof");
-            DataRow fila = DtCorreos.NewRow();
+           // DataRow fila = DtCorreos.NewRow();
             dsCorreos.Tables.Add(DtCorreos);
     
            // fila["NombreEmpresa"] = "faf";

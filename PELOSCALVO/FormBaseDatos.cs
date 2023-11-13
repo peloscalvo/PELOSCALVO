@@ -198,10 +198,10 @@ namespace PELOSCALVO
                 {
                     OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.articulos.DtArticulos);
-                   // SqlCommand cmd = new SqlCommand(ClsConexionDb.CadenaConexion);
+                    // SqlCommand cmd = new SqlCommand(ClsConexionDb.CadenaConexion);
                     OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-                   // DataTable TablaArticulos = new DataTable();
-                  //  BindingSource bsArticulos = new BindingSource();
+                    // DataTable TablaArticulos = new DataTable();
+                    //  BindingSource bsArticulos = new BindingSource();
                     ClasArticulos.ListaArticulos.lista.Clear();
                     if (reader.HasRows)
                     {
@@ -323,10 +323,7 @@ namespace PELOSCALVO
                             {
                                 item.Fatu = Convert.ToBoolean(reader["Fatu"]);
                             }
-                            else
-                            {
-                                item.Fatu = Convert.ToBoolean(false);
-                            }
+
 
                             // item.IdFILA = Convert.ToInt32(reader["IdFILA"]);
                             ClasArticulos.ListaArticulos.lista.Add(item);
@@ -365,7 +362,7 @@ namespace PELOSCALVO
                 this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
             }
             if (!File.Exists(ClasDatos.RutaMultidatos))
-            {          
+            {
                 MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaMultidatos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.BtnBuscarServidor.Enabled = false;
                 this.BtnGuardarDatosArchivos.Enabled = false;
@@ -989,19 +986,19 @@ namespace PELOSCALVO
         {
             BORRARerror_Archivos();
             string nombreBasedatos = this.NombreArchivoDatos.Text;
-    
+
             if (VALIDARcampos_Archivos())
             {
                 if (MessageBox.Show("Desea Conectar Archivo Local" + "\n" + "Dbf - Mdb - Accdb  ", "GUARDAR", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
                     if (this.TipoExtension_b.Text == "DBF")
                     {
-                        nombreBasedatos = SerieClientesText2.Text;
+                        nombreBasedatos = this.SerieClientesText2.Text;
                     }
-                    if (TabArchivos.Tag.ToString() == "SI")
+                    if (this.TabArchivos.Tag.ToString() == "SI")
                     {
-                        ClasDatos.Clientes = NombreArchivoDatos.Text;
-                        ClasDatos.Articulos = NombreArchivoDatos.Text;
+                        ClasDatos.Clientes = this.NombreArchivoDatos.Text;
+                        ClasDatos.Articulos = this.NombreArchivoDatos.Text;
                     }
                     else
                     {
@@ -1058,17 +1055,17 @@ namespace PELOSCALVO
                     {
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.ReadXml(ClasDatos.RutaConfiguracionXml);
                     }
- 
+
 
                     ActualizarArticulosDB();
                     ActualizarClientes_DB();
-                    string Rutacorreos = Directory.GetCurrentDirectory() + "\\" +ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
+                    string Rutacorreos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
                     if (File.Exists(Rutacorreos))
                     {
                         FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);
                     }
-               
-                   // ClasCorreos.ListaCorreosCliente.lista.Add();               
+
+                    // ClasCorreos.ListaCorreosCliente.lista.Add();               
                     FormMenuPrincipal.menu2principal.InfoArticulo.Text = this.SerieArticulosText.Text;
                     FormMenuPrincipal.menu2principal.InfoClientes.Text = this.SerieClientesText2.Text;
                     FormMenuPrincipal.menu2principal.InfoExtension.Text = this.TipoExtension_b.Text;
@@ -1256,31 +1253,33 @@ namespace PELOSCALVO
                 ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                 " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                 ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-            string ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "]([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+            string ConsultaFacturacion = "CREATE TABLE [" + TipoNota+ valor + "]([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar 250,[Nombre] varchar," +
            "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
              "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
            "[IvaImpuesto] int,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
          "[FechaCobro]varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
      "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar)";
 
-            string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] INTEGER , [EmpresaConfi] varchar 60 , [NombreEmpresa] varchar 60 ," +
-"[DireccionEmpresa] varchar 60 ,[LocalidadEmpresa] varchar 50 ,[CodigoPostalEmpresa] varchar 25 ,[ProvinciaEmpresa] varchar 30 ," +
-"[TelefonoEmpresa] varchar 20 ,[CorreoEmpresa] varchar 30 ,[WepEmpresa] varchar 40 ,[RegimenIvaEmpresa] varchar 30 ," +
-" [PaisEmpresa] varchar 40 ,[SerieDeFacturacionEmpresa] varchar 10 ,[Telefono2Empresa] varchar 25 ,[MovilEmpresa] varchar 25 ," +
-" [CifEmpresa] varchar 20 ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] byte  ) " +
+               string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] INTEGER , [EmpresaConfi] varchar 60 , [NombreEmpresa] varchar 60 ," +
+               "[DireccionEmpresa] varchar 60 ,[LocalidadEmpresa] varchar 50 ,[CodigoPostalEmpresa] varchar 25 ,[ProvinciaEmpresa] varchar 30 ," +
+             "[TelefonoEmpresa] varchar 20 ,[CorreoEmpresa] varchar 30 ,[WepEmpresa] varchar 40 ,[RegimenIvaEmpresa] varchar 30 ," +
+           " [PaisEmpresa] varchar 40 ,[SerieDeFacturacionEmpresa] varchar 10 ,[Telefono2Empresa] varchar 25 ,[MovilEmpresa] varchar 25 ," +
+           " [CifEmpresa] varchar 20 ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] varchar  ) ";
 
-"CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar 60 , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar 60 ," +
-"[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar 60 ," +
-" CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+          string TablaDtconfi=        "CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar 60 , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar 60 ," +
+              "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar 60 ," +
+                 " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
             string ConsultaTablas = "CREATE TABLE [DtAlmacenes]( [Id_almacenes] INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
         " CONSTRAINT F_DtAlmacenes" + valor + " FOREIGN KEY(Enlace_Almacenes)REFERENCES " + TipoNota + "(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
+
+            ClsConexionDb.CadenaConexion = cadena;
+            ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
+            ClsConexionDb.CadenaConexion = cadena;
             try
             {
-                ClsConexionDb.CadenaConexion = cadena;
-                ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
-                ClsConexionDb.CadenaConexion = cadena;
+
 
                 if (NuevaConexion2.SiConexionDb)
                 {
@@ -1288,6 +1287,15 @@ namespace PELOSCALVO
                     NuevaConexion2.ComandoDb.ExecuteNonQuery();
 
                 }
+            }
+            catch (Exception ex)
+            {
+
+
+                MessageBox.Show(ex.Message, "ERROR"+ ConsultaArticulos);
+            }
+            try
+            {
                 NuevaConexion2 = new ClsConexionDb(ConsultaFacturacion);
                 if (NuevaConexion2.SiConexionDb)
                 {
@@ -1295,6 +1303,15 @@ namespace PELOSCALVO
                     NuevaConexion2.ComandoDb.ExecuteNonQuery();
 
                 }
+            }
+            catch (Exception ex)
+            {
+
+
+                MessageBox.Show(ex.Message, "ERROR"+ ConsultaFacturacion);
+            }
+            try
+            {
                 NuevaConexion2 = new ClsConexionDb(ConsultaEmpresas);
                 if (NuevaConexion2.SiConexionDb)
                 {
@@ -1307,8 +1324,35 @@ namespace PELOSCALVO
             {
 
 
-                MessageBox.Show(ex.Message, "ERROR");
+                MessageBox.Show(ex.Message, "ERROR"+ ConsultaEmpresas);
             }
+            try
+            {
+                NuevaConexion2 = new ClsConexionDb(TablaDtconfi);
+                if (NuevaConexion2.SiConexionDb)
+                {
+
+                    NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+                MessageBox.Show(ex.Message, "ERROR"+ TablaDtconfi);
+            }
+            finally
+            {
+                if (NuevaConexion2.CerrarConexionDB)
+                {
+
+                    NuevaConexion2.ComandoDb.Parameters.Clear();
+
+                }
+            }
+           
+
 
 
         }
@@ -1335,7 +1379,7 @@ namespace PELOSCALVO
                         this.NombreArchivoDatos.Text = fi.Name;
                         ClasDatos.Clientes = Path.GetFullPath(BuscarArchivo.FileName.ToString());
                         ClasDatos.Articulos = Path.GetFullPath(BuscarArchivo.FileName.ToString());
-                        TabArchivos.Tag = "SI";
+                        this.TabArchivos.Tag = "SI";
                     }
                     else
                     {
@@ -1378,7 +1422,7 @@ namespace PELOSCALVO
                     ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                     ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                 }
-                if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     string cadena = "";
                     if (this.TipoExtension_b.Text == "accdb")
@@ -1416,7 +1460,7 @@ namespace PELOSCALVO
                         {
 
                             NuevaConexion2.ComandoDb.ExecuteNonQuery();
-                            MessageBox.Show("Creada Con exito"+"\n"+SerieArticulosText.Text, "CREAR TABLA", MessageBoxButtons.OK);
+                            MessageBox.Show("Creada Con exito" + "\n" + this.SerieArticulosText.Text, "CREAR TABLA", MessageBoxButtons.OK);
                         }
 
                     }
@@ -1449,7 +1493,7 @@ namespace PELOSCALVO
             BORRARerror_Archivos();
             if (VALIDARcampos_Archivos())
             {
-                if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     string cadena = "";
                     if (this.TipoExtension_b.Text == "accdb")
@@ -1487,7 +1531,7 @@ namespace PELOSCALVO
                         {
 
                             NuevaConexion2.ComandoDb.ExecuteNonQuery();
-                            MessageBox.Show("Creada Con exito" + "\n" + SerieArticulosText.Text, "CREAR TABLA", MessageBoxButtons.OK);
+                            MessageBox.Show("Creada Con exito" + "\n" + this.SerieArticulosText.Text, "CREAR TABLA", MessageBoxButtons.OK);
                         }
 
                     }

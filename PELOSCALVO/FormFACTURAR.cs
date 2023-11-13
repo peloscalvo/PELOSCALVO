@@ -881,7 +881,7 @@ namespace PELOSCALVO
                         // this.empresaENLACEComboBox.Focus();
                         if (FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["EjercicioInicio"].ToString() != string.Empty)
                         {
-                            this.empresaENLACEComboBox.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["EmpresaInicio"].ToString();
+                            this.EmpresaPrincipal.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["EmpresaInicio"].ToString();
                         }
                         if (FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["EjercicioInicio"].ToString() != string.Empty)
                         {
@@ -1011,56 +1011,21 @@ namespace PELOSCALVO
             {
                 this.SerieText.Text = "A";
             }
-            this.NombreEmpresaReguistro.Visible = false;
+           // this.NombreEmpresaReguistro.Visible = false;
             // this.PanelArriba.Tag = "SI";
         }
 
         private void EmpresaENLACEComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string EmpresaV = "NO";
-            if (this.PanelArriba.Tag.ToString() == "SI")
-            {
-                if (this.empresaENLACEComboBox.SelectedIndex >= 0)
-                {
 
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[this.empresaENLACEComboBox.SelectedIndex]["NombreEmpresaReguistro"].ToString() != string.Empty)
-                    {
-                      //  EmpresaV = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[this.empresaENLACEComboBox.SelectedIndex]["NombreEmpresaReguistro"].ToString();
-                        // this.NombreEmpresaReguistro.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[this.empresaENLACEComboBox.SelectedIndex]["NombreEmpresaReguistro"].ToString();
-                    }
-                    if (EmpresaV == string.Empty)
-                    {
-                        MessageBox.Show("Faltan Datos o Datos Erradicos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    // ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura + "\\" + ClasDatos.NombreFactura + "-" + this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text + ".Xml";
-                    this.dtNuevaFacturaDataGridView.Refresh();
-
-                }
-
-                this.dsfacturas.Clear();
-
-                if (ClsConexionSql.SibaseDatosSql)
-                {
-                    ActualizarFacturaSql();
-                }
-                else
-                {
-                    if (File.Exists(ClasDatos.ArchivoInicioFacturas))
-                    {
-                        this.dsfacturas.ReadXml(ClasDatos.ArchivoInicioFacturas);
-                    }
-                }
-
-
-            }
+    
         }
 
         private void EjerciciosDeAñoComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (this.PanelArriba.Tag.ToString() == "SI")
             {
-                if (this.empresaENLACEComboBox.SelectedIndex >= 0)
+                if (this.EmpresaPrincipal.SelectedIndex >= 0)
                 {
                     this.dsfacturas.Clear();
                     if (this.NombreEmpresaReguistro.Text == string.Empty)
@@ -2064,9 +2029,9 @@ namespace PELOSCALVO
                     NombreItem = NombreItem.Replace("Lineablanco", "");
 
                 }
-                if (NombreItem.Contains("Nueva linea En Blanco"))
+                if (NombreItem.Contains("Lineablanco"))
                 {
-                    NombreItem = NombreItem.Replace("Nueva linea En Blanco", "");
+                    NombreItem = NombreItem.Replace("Lineablanco", "");
                     Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex+1;
                     // DataRow FilaNueva = new DataTable(dtd);
                     DataTable dt = (DataTable)this.dtDetallesFacturaBindingSource.DataSource;
@@ -2152,12 +2117,12 @@ namespace PELOSCALVO
 
         private void empresaENLACEComboBox_MouseEnter(object sender, EventArgs e)
         {
-            this.NombreEmpresaReguistro.Visible = true;
+           // this.NombreEmpresaReguistro.Visible = true;
         }
 
         private void empresaENLACEComboBox_MouseLeave(object sender, EventArgs e)
         {
-            this.NombreEmpresaReguistro.Visible = false;
+            //this.NombreEmpresaReguistro.Visible = false;
         }
 
         private void empresaENLACEComboBox_Click(object sender, EventArgs e)
@@ -2189,6 +2154,37 @@ namespace PELOSCALVO
         private void empresaENLACEComboBox_Validated(object sender, EventArgs e)
         {
             ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura + "\\" + ClasDatos.NombreFactura + "-" + this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text + ".Xml";
+        }
+
+        private void EmpresaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         
+            if (this.PanelArriba.Tag.ToString() == "SI")
+            {
+                if (this.EmpresaPrincipal.SelectedIndex >= 0)
+                {
+                    this.dsfacturas.Clear();
+
+                    if (ClsConexionSql.SibaseDatosSql)
+                    {
+                        ActualizarFacturaSql();
+                    }
+                    else
+                    {
+                        if (File.Exists(ClasDatos.ArchivoInicioFacturas))
+                        {
+                            this.dsfacturas.ReadXml(ClasDatos.ArchivoInicioFacturas);
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+        private void EmpresaPrincipal_Enter(object sender, EventArgs e)
+        {
+            this.PanelArriba.Tag = "SI";
         }
     }
 }

@@ -94,7 +94,6 @@ namespace PELOSCALVO
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.ejerciciosDeAñoComboBox = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalDtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.empresaENLACEComboBox = new System.Windows.Forms.ComboBox();
             this.dtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage1Factura = new System.Windows.Forms.TabPage();
             this.EnlaceFactu = new System.Windows.Forms.Label();
@@ -197,6 +196,7 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -275,7 +275,7 @@ namespace PELOSCALVO
             // empresaENLACELabel
             // 
             empresaENLACELabel.AutoSize = true;
-            empresaENLACELabel.Location = new System.Drawing.Point(12, 12);
+            empresaENLACELabel.Location = new System.Drawing.Point(5, 10);
             empresaENLACELabel.Name = "empresaENLACELabel";
             empresaENLACELabel.Size = new System.Drawing.Size(51, 13);
             empresaENLACELabel.TabIndex = 4;
@@ -579,13 +579,13 @@ namespace PELOSCALVO
             // 
             this.PanelArriba.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelArriba.Controls.Add(this.EmpresaPrincipal);
             this.PanelArriba.Controls.Add(label1);
             this.PanelArriba.Controls.Add(this.NombreEmpresaReguistro);
             this.PanelArriba.Controls.Add(this.SerieText);
             this.PanelArriba.Controls.Add(ejerciciosDeAñoLabel);
             this.PanelArriba.Controls.Add(this.ejerciciosDeAñoComboBox);
             this.PanelArriba.Controls.Add(empresaENLACELabel);
-            this.PanelArriba.Controls.Add(this.empresaENLACEComboBox);
             this.PanelArriba.Location = new System.Drawing.Point(0, 0);
             this.PanelArriba.Name = "PanelArriba";
             this.PanelArriba.Size = new System.Drawing.Size(1287, 35);
@@ -662,26 +662,6 @@ namespace PELOSCALVO
             // 
             this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "DtConfiguracionPrincipal_DtConfi";
             this.dtConfiguracionPrincipalDtConfiBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            // 
-            // empresaENLACEComboBox
-            // 
-            this.empresaENLACEComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
-            this.empresaENLACEComboBox.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.empresaENLACEComboBox.DisplayMember = "EmpresaConfi";
-            this.empresaENLACEComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaENLACEComboBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.empresaENLACEComboBox.FormattingEnabled = true;
-            this.empresaENLACEComboBox.Location = new System.Drawing.Point(69, 7);
-            this.empresaENLACEComboBox.Name = "empresaENLACEComboBox";
-            this.empresaENLACEComboBox.Size = new System.Drawing.Size(408, 21);
-            this.empresaENLACEComboBox.TabIndex = 5;
-            this.empresaENLACEComboBox.Tag = "";
-            this.empresaENLACEComboBox.SelectedIndexChanged += new System.EventHandler(this.EmpresaENLACEComboBox_SelectedIndexChanged);
-            this.empresaENLACEComboBox.Click += new System.EventHandler(this.empresaENLACEComboBox_Click);
-            this.empresaENLACEComboBox.Leave += new System.EventHandler(this.empresaENLACEComboBox_Leave);
-            this.empresaENLACEComboBox.MouseEnter += new System.EventHandler(this.empresaENLACEComboBox_MouseEnter);
-            this.empresaENLACEComboBox.MouseLeave += new System.EventHandler(this.empresaENLACEComboBox_MouseLeave);
-            this.empresaENLACEComboBox.Validated += new System.EventHandler(this.empresaENLACEComboBox_Validated);
             // 
             // dtConfiBindingSource
             // 
@@ -2015,6 +1995,20 @@ namespace PELOSCALVO
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
             // 
+            // EmpresaPrincipal
+            // 
+            this.EmpresaPrincipal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
+            this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.EmpresaPrincipal.DisplayMember = "EmpresaConfi";
+            this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EmpresaPrincipal.FormattingEnabled = true;
+            this.EmpresaPrincipal.Location = new System.Drawing.Point(62, 7);
+            this.EmpresaPrincipal.Name = "EmpresaPrincipal";
+            this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 21);
+            this.EmpresaPrincipal.TabIndex = 73;
+            this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
+            this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
+            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2140,7 +2134,6 @@ namespace PELOSCALVO
         public System.Windows.Forms.TextBox localidadTextBox;
         public System.Windows.Forms.ComboBox provinciaComboBox;
         public System.Windows.Forms.BindingSource dtDetallesFactura2BindingSource;
-        public System.Windows.Forms.ComboBox empresaENLACEComboBox;
         public System.Windows.Forms.TextBox numeroFacturaTextBox;
         public System.Windows.Forms.ComboBox pais_FactComboBox;
         public DsCONFIGURACCION dsCONFIGURACCION;
@@ -2208,5 +2201,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnlaceDetalle;
+        private System.Windows.Forms.ComboBox EmpresaPrincipal;
     }
 }

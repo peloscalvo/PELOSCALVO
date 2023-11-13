@@ -171,13 +171,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsClientes.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DsCONFIGURACCION.cs">
-      <DependentUpon>DsCONFIGURACCION.xsd</DependentUpon>
+    <Compile Include="DsConfiguracion.cs">
+      <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DsCONFIGURACCION.Designer.cs">
+    <Compile Include="DsConfiguracion.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DsCONFIGURACCION.xsd</DependentUpon>
+      <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </Compile>
     <Compile Include="DsMulti2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -392,16 +392,16 @@
     <None Include="DsClientes.xss">
       <DependentUpon>DsClientes.xsd</DependentUpon>
     </None>
-    <None Include="DsCONFIGURACCION.xsc">
-      <DependentUpon>DsCONFIGURACCION.xsd</DependentUpon>
+    <None Include="DsConfiguracion.xsc">
+      <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </None>
-    <None Include="DsCONFIGURACCION.xsd">
+    <None Include="DsConfiguracion.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsCONFIGURACCION.Designer.cs</LastGenOutput>
+      <LastGenOutput>DsConfiguracion.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DsCONFIGURACCION.xss">
-      <DependentUpon>DsCONFIGURACCION.xsd</DependentUpon>
+    <None Include="DsConfiguracion.xss">
+      <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </None>
     <None Include="DsMulti2.xsc">
       <DependentUpon>DsMulti2.xsd</DependentUpon>

@@ -18,7 +18,9 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.dsCorreos != null)
                 {
-                    this.DatagridCorreosEmpresa.DataSource = FormMenuPrincipal.menu2principal.dsCorreos;
+                    BindingSource CorreosbindingSource = new BindingSource();
+                    CorreosbindingSource.DataSource= FormMenuPrincipal.menu2principal.DtCorreos;
+                    this.DatagridCorreosEmpresa.DataSource = CorreosbindingSource.DataSource;
                     this.DataGridCorreoCliente.DataSource = FormMenuPrincipal.menu2principal.dsCorreos;
                     //  if(DatagriCorreosEmpresa.RowCount<= 0)
                     //{
@@ -55,9 +57,9 @@ namespace PELOSCALVO
                     {
                         this.DatagridCorreosEmpresa.EndEdit();
                         Validate();
-                        var dataSet = Comun.DataGrid_2.GetDataSet(this.DatagridCorreosEmpresa);
-                        // dataSet.WriteXml(File.OpenWrite(this.Rutacorreos));
-                        FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);
+                        //var dataSet = Comun.DataGrid_2.GetDataSet(this.DatagridCorreosEmpresa);
+                       // ME.WriteXml(File.OpenWrite(this.Rutacorreos));
+                        FormMenuPrincipal.menu2principal.DtCorreos.WriteXml(this.Rutacorreos);
                         MessageBox.Show("Se Actualizo Con Exito", "correos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

@@ -55,7 +55,7 @@ namespace PELOSCALVO
             try
             {
 
-                if (I >= 200)
+                if (I >= 50)
                 {
                     this.TimerStop.Stop();
                     //Hide();
