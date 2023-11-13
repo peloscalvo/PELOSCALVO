@@ -14,7 +14,8 @@ namespace PELOSCALVO
     public partial class FormMenuPrincipal : Form
     {
         public  DataSet dsCorreos = new DataSet();
-        public BindingSource CorreosBindisource = new BindingSource();
+        public DataTable DtCorreos = new DataTable();      
+       // public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
         public byte SiOpenFatu = 0;
         public byte SiOpenArti = 0;
@@ -24,6 +25,17 @@ namespace PELOSCALVO
         int V1, PX, PV;
         public FormMenuPrincipal()
         {
+            DtCorreos.Columns.Add("NombreEmpresa");
+            DtCorreos.Columns.Add("CorreoEletronico");
+            DtCorreos.Columns.Add("Usuario");
+            DtCorreos.Columns.Add("Contraseña");
+            DtCorreos.Columns.Add("smtp");
+            DtCorreos.Columns.Add("Puerto");
+            DtCorreos.Columns.Add("Timeof");
+            DataRow fila = DtCorreos.NewRow();
+            dsCorreos.Tables.Add(DtCorreos);
+    
+           // fila["NombreEmpresa"] = "faf";
             InitializeComponent();
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);

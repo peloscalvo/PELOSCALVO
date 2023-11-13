@@ -196,7 +196,8 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
             this.dtArticulosBindingSource.Filter = "[BAJA]" + "=" + Convert.ToBoolean("false");
-            FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = @"[Descripcci]";
+            dtArticulosBindingSource.Sort= "[Descripcci]";
+          //  FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = "[Descripcci]";
             if (ClsConexionSql.SibaseDatosSql == false)
             {
                 if (!File.Exists(ClasDatos.RutaConfiguracionXml))
@@ -901,46 +902,35 @@ namespace PELOSCALVO
 
         private void FiltrarBajas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.RegistLbel.Tag.ToString() == "stop")
+            if (this.RegistLbel.Tag.ToString() != "stop" && this.FiltrarBajas.SelectedIndex >= 0)
             {
-                return;
-            }
-            // this.bsArticulos.DataSource = this.dtPreciosDataGridView.DataSource;
-
-
-            if (this.FiltrarBajas.SelectedIndex >= 0)
-            {
-                // string Baja = @"[Baja]";
-                string concepto = @"[Descripcci]";
-                string fieldName = string.Concat("[", this.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
-                if (this.FiltrarBajas.SelectedIndex == 0)
-                {
-                    this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
-                    this.SiBajaarti = false;
-                    this.dtArticulosBindingSource.Filter = fieldName + "=" + this.SiBajaarti;
-                    FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
-                }
-                if (this.FiltrarBajas.SelectedIndex == 1)
-                {
-                    this.SiBajaarti = true;
-                    this.dtArticulosBindingSource.Filter = fieldName + "=" + this.SiBajaarti;
-                    FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
-                }
-                if (this.FiltrarBajas.SelectedIndex == 2)
-                {
-                    this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
-                    this.dtArticulosBindingSource.Filter = "";
-                    FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
-                    this.dtPreciosDataGridView.EndEdit();
-                    ColorearBajas();
-
-
-                }
-                this.ContadorDatos3.Text = this.dtPreciosDataGridView.Rows.Count.ToString();
-                ValidarCalculosPrecios();
-                Validate();
-                AñadirId();
-
+                    string concepto = @"[Descripcci]";
+                    string fieldName = string.Concat("[", this.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
+                    if (this.FiltrarBajas.SelectedIndex == 0)
+                    {
+                        this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
+                        this.SiBajaarti = false;
+                        this.dtArticulosBindingSource.Filter = fieldName + "=" + this.SiBajaarti;
+                        FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
+                    }
+                    if (this.FiltrarBajas.SelectedIndex == 1)
+                    {
+                        this.SiBajaarti = true;
+                        this.dtArticulosBindingSource.Filter = fieldName + "=" + this.SiBajaarti;
+                        FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
+                    }
+                    if (this.FiltrarBajas.SelectedIndex == 2)
+                    {
+                        this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
+                        this.dtArticulosBindingSource.Filter = "";
+                        FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
+                        this.dtPreciosDataGridView.EndEdit();
+                        ColorearBajas();
+                    }
+                    this.ContadorDatos3.Text = this.dtPreciosDataGridView.Rows.Count.ToString();
+                    ValidarCalculosPrecios();
+                    Validate();
+                    AñadirId();           
             }
 
         }
@@ -1268,38 +1258,33 @@ namespace PELOSCALVO
         }
         private void FiltrarFamiliaArt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.RegistLbel.Tag.ToString() == "stop")
+            if (this.RegistLbel.Tag.ToString() != "stop" && this.BtnGuardarArticulo.Enabled == false)
             {
-                return;
-            }
-            if (this.BtnGuardarArticulo.Enabled == false)
-            {
-
-                try
-                {
-                    if (this.FiltrarFamiliaArt.SelectedIndex >= 0)
+                   try
                     {
-                        this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
-                        string FilaFamilia = string.Concat("[", FormMenuPrincipal.menu2principal.articulos.DtArticulos.Columns["Familia"].ColumnName, "]");
-                        string baja = string.Concat("[", FormMenuPrincipal.menu2principal.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
-                        FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = FilaFamilia;
-
-                        this.dtArticulosBindingSource.Filter = FilaFamilia + " LIKE '%" + this.FiltrarFamiliaArt.Text + "%'" + "and " + baja + "=" + this.SiBajaarti;
-
-                        if (this.FiltrarBajas.SelectedIndex == 2)
+                        if (this.FiltrarFamiliaArt.SelectedIndex >= 0)
                         {
-                            ColorearBajas();
+                            this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
+                            string FilaFamilia = string.Concat("[", FormMenuPrincipal.menu2principal.articulos.DtArticulos.Columns["Familia"].ColumnName, "]");
+                            string baja = string.Concat("[", FormMenuPrincipal.menu2principal.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
+                            FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = FilaFamilia;
+
+                            this.dtArticulosBindingSource.Filter = FilaFamilia + " LIKE '%" + this.FiltrarFamiliaArt.Text + "%'" + "and " + baja + "=" + this.SiBajaarti;
+
+                            if (this.FiltrarBajas.SelectedIndex == 2)
+                            {
+                                ColorearBajas();
+                            }
                         }
                     }
-                }
-                catch (Exception)
-                {
+                    catch (Exception)
+                    {
 
-                    //  throw;
-                }
+                        //  throw;
+                    }
+      
             }
         }
-
 
         private void CheckFamiliaArt_Click(object sender, EventArgs e)
         {

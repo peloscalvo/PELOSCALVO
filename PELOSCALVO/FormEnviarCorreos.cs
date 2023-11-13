@@ -32,8 +32,8 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.dsCorreos != null)
                 {
-                    TxtNombreCliente.DisplayMember = "22";
-                    TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.dsCorreos;
+                    TxtNombreCliente.DisplayMember = "CorreoEletronico";
+                    TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
                 }
                 if (File.Exists(Rutacorreos))
                 {

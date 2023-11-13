@@ -834,6 +834,7 @@ namespace PELOSCALVO
             this.tabPage2Articulo.TabIndex = 1;
             this.tabPage2Articulo.Text = "Datos";
             this.tabPage2Articulo.UseVisualStyleBackColor = true;
+            // 
             // panelDesc1
             // 
             this.panelDesc1.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1489,7 +1490,7 @@ namespace PELOSCALVO
             this.CheckFamiliaArt.UseVisualStyleBackColor = true;
             this.CheckFamiliaArt.Click += new System.EventHandler(this.CheckFamiliaArt_Click);
             // 
-            // FormARTICULOS
+            // FormArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1507,7 +1508,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.dtPreciosDataGridView);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormARTICULOS";
+            this.Name = "FormArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ARTICULOS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

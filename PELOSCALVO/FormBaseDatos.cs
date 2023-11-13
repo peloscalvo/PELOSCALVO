@@ -988,54 +988,69 @@ namespace PELOSCALVO
         private void BtnGuardarDatosArchivos_Click(object sender, EventArgs e)
         {
             BORRARerror_Archivos();
-            if (this.TipoExtension_b.Text == "DBF")
-            {
-                if (!File.Exists(ClasDatos.Articulos))
-                {
-
-
-                    if (MessageBox.Show(this.SerieArticulosText.Text + this.TipoExtension_b.Text + "\n" + " Archivo No Existe  ", " CREAR NUEVO ? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
-                        if (this.SerieArticulosText.SelectedIndex > 5)
-                        {
-                            if (this.TipoExtension_b.Text == "DBF")
-                            {
-                                MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
-                                return;
-                            }
-                        }
-                        ClasDatos.QUEform = "BASE_DATOS_CLIENTES";
-                        FormCrearArchivos frm = new FormCrearArchivos();
-                        frm.ShowDialog();
-
-                    }
-
-                }
-                if (!File.Exists(ClasDatos.Clientes))
-                {
-                    if (MessageBox.Show(this.SerieClientesText2.Text + this.TipoExtension_b.Text + "\n" + " Archivo No Existe  ", " CREAR NUEVO ? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
-                        if (this.SerieArticulosText.SelectedIndex > 5)
-                        {
-                            if (this.TipoExtension_b.Text == "DBF")
-                            {
-                                MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
-                                return;
-                            }
-                        }
-                        ClasDatos.QUEform = "BASE_DATOS_CLIENTES";
-                        FormCrearArchivos frm = new FormCrearArchivos();
-                        frm.ShowDialog();
-
-                    }
-                    return;
-                }
-            }
+            string nombreBasedatos = this.NombreArchivoDatos.Text;
+    
             if (VALIDARcampos_Archivos())
             {
                 if (MessageBox.Show("Desea Conectar Archivo Local" + "\n" + "Dbf - Mdb - Accdb  ", "GUARDAR", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
+                    if (this.TipoExtension_b.Text == "DBF")
+                    {
+                        nombreBasedatos = SerieClientesText2.Text;
+                    }
+                    if (TabArchivos.Tag.ToString() == "SI")
+                    {
+                        ClasDatos.Clientes = NombreArchivoDatos.Text;
+                        ClasDatos.Articulos = NombreArchivoDatos.Text;
+                    }
+                    else
+                    {
+                        ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
+                        ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
+                    }
+                    if (this.TipoExtension_b.Text == "DBF")
+                    {
+                        if (!File.Exists(ClasDatos.Articulos))
+                        {
 
+
+                            if (MessageBox.Show(this.SerieArticulosText.Text + this.TipoExtension_b.Text + "\n" + " Archivo No Existe  ", " CREAR NUEVO ? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            {
+                                if (this.SerieArticulosText.SelectedIndex > 5)
+                                {
+                                    if (this.TipoExtension_b.Text == "DBF")
+                                    {
+                                        MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
+                                        return;
+                                    }
+                                }
+                                ClasDatos.QUEform = "BASE_DATOS_CLIENTES";
+                                FormCrearArchivos frm = new FormCrearArchivos();
+                                frm.ShowDialog();
+
+                            }
+
+                        }
+                        if (!File.Exists(ClasDatos.Clientes))
+                        {
+                            if (MessageBox.Show(this.SerieClientesText2.Text + this.TipoExtension_b.Text + "\n" + " Archivo No Existe  ", " CREAR NUEVO ? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            {
+                                if (this.SerieArticulosText.SelectedIndex > 5)
+                                {
+                                    if (this.TipoExtension_b.Text == "DBF")
+                                    {
+                                        MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
+                                        return;
+                                    }
+                                }
+                                ClasDatos.QUEform = "BASE_DATOS_CLIENTES";
+                                FormCrearArchivos frm = new FormCrearArchivos();
+                                frm.ShowDialog();
+
+                            }
+                            return;
+                        }
+                    }
                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                     FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
@@ -1043,13 +1058,8 @@ namespace PELOSCALVO
                     {
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.ReadXml(ClasDatos.RutaConfiguracionXml);
                     }
-                    string nombreBasedatos = this.NombreArchivoDatos.Text;
-                    if (this.TipoExtension_b.Text == "DBF")
-                    {
-                        nombreBasedatos = SerieClientesText2.Text;
-                    }
-                    ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
-                    ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
+ 
+
                     ActualizarArticulosDB();
                     ActualizarClientes_DB();
                     string Rutacorreos = Directory.GetCurrentDirectory() + "\\" +ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
@@ -1220,8 +1230,6 @@ namespace PELOSCALVO
             string cadena = "";
             if (this.TipoExtension_b.Text == "accdb")
             {
-
-
                 cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
             }
             if (this.TipoExtension_b.Text == "mdb")
@@ -1255,17 +1263,17 @@ namespace PELOSCALVO
          "[FechaCobro]varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
      "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar)";
 
-            string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] INTEGER , [EmpresaConfi] varchar(60) , [NombreEmpresa] varchar(60) ," +
-"[DireccionEmpresa] varchar(60) ,[LocalidadEmpresa] varchar(50) ,[CodigoPostalEmpresa] varchar(25) ,[ProvinciaEmpresa] varchar(30) ," +
-"[TelefonoEmpresa] varchar(20) ,[CorreoEmpresa] varchar(30) ,[WepEmpresa] varchar(40) ,[RegimenIvaEmpresa] varchar(30) ," +
-" [PaisEmpresa] varchar(40) ,[SerieDeFacturacionEmpresa] varchar(10) ,[Telefono2Empresa] varchar(25) ,[MovilEmpresa] varchar(25) ," +
-" [CifEmpresa] varchar(20) ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] byte  ) " +
+            string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] INTEGER , [EmpresaConfi] varchar 60 , [NombreEmpresa] varchar 60 ," +
+"[DireccionEmpresa] varchar 60 ,[LocalidadEmpresa] varchar 50 ,[CodigoPostalEmpresa] varchar 25 ,[ProvinciaEmpresa] varchar 30 ," +
+"[TelefonoEmpresa] varchar 20 ,[CorreoEmpresa] varchar 30 ,[WepEmpresa] varchar 40 ,[RegimenIvaEmpresa] varchar 30 ," +
+" [PaisEmpresa] varchar 40 ,[SerieDeFacturacionEmpresa] varchar 10 ,[Telefono2Empresa] varchar 25 ,[MovilEmpresa] varchar 25 ," +
+" [CifEmpresa] varchar 20 ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] byte  ) " +
 
-"CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar(60) , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar(60) ," +
-"[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar(60) ," +
+"CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar 60 , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar 60 ," +
+"[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar 60 ," +
 " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
-            string ConsultaTablas = "CREATE TABLE [DtAlmacenes]( [Id_almacenes]INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
+            string ConsultaTablas = "CREATE TABLE [DtAlmacenes]( [Id_almacenes] INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
         " CONSTRAINT F_DtAlmacenes" + valor + " FOREIGN KEY(Enlace_Almacenes)REFERENCES " + TipoNota + "(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
             try
@@ -1327,6 +1335,7 @@ namespace PELOSCALVO
                         this.NombreArchivoDatos.Text = fi.Name;
                         ClasDatos.Clientes = Path.GetFullPath(BuscarArchivo.FileName.ToString());
                         ClasDatos.Articulos = Path.GetFullPath(BuscarArchivo.FileName.ToString());
+                        TabArchivos.Tag = "SI";
                     }
                     else
                     {
@@ -1389,7 +1398,7 @@ namespace PELOSCALVO
                     }
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
-                    string TablaArticulos = "Prueba+" + valor.ToString();
+                    string TablaArticulos = "Articulos+" + valor.ToString();
                     string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
@@ -1461,7 +1470,7 @@ namespace PELOSCALVO
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
                     string TablaCliente = "Cliente+" + valor.ToString();
-                    string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key NOT NUL, [Referencia] varchar," +
+                    string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +

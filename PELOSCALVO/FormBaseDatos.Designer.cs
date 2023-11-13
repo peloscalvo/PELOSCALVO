@@ -336,6 +336,7 @@ namespace PELOSCALVO
             this.TabArchivos.Padding = new System.Windows.Forms.Padding(3);
             this.TabArchivos.Size = new System.Drawing.Size(733, 315);
             this.TabArchivos.TabIndex = 2;
+            this.TabArchivos.Tag = "NO";
             this.TabArchivos.Text = "CONFIGURAR ARCHIVOS";
             // 
             // BtnCrearTbCliente
@@ -384,7 +385,7 @@ namespace PELOSCALVO
             this.NombreArchivoDatos.ReadOnly = true;
             this.NombreArchivoDatos.Size = new System.Drawing.Size(271, 20);
             this.NombreArchivoDatos.TabIndex = 92;
-            this.NombreArchivoDatos.Tag = "NO";
+            this.NombreArchivoDatos.Tag = "";
             this.NombreArchivoDatos.Text = "Datos App Peloscalvo";
             // 
             // SerieArticulosText

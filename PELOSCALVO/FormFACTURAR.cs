@@ -747,6 +747,7 @@ namespace PELOSCALVO
                     }
                     else
                     {
+                        this.dsfacturas.Clear();
                         ActualizarFacturaSql();
                     }
 
@@ -1061,7 +1062,7 @@ namespace PELOSCALVO
             {
                 if (this.empresaENLACEComboBox.SelectedIndex >= 0)
                 {
-
+                    this.dsfacturas.Clear();
                     if (this.NombreEmpresaReguistro.Text == string.Empty)
                     {
                         MessageBox.Show("Faltan Datos o Datos Erradicos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1094,6 +1095,7 @@ namespace PELOSCALVO
             {
                 if (this.panelBotones.Enabled == true)
                 {
+                    this.dsfacturas.Clear();
                     if (this.SerieText.SelectedIndex >= 0)
                     {
 
@@ -1109,7 +1111,7 @@ namespace PELOSCALVO
 
                 }
 
-                this.dsfacturas.Clear();
+
                 if (ClsConexionSql.SibaseDatosSql)
                 {
                     ActualizarFacturaSql();
@@ -1118,6 +1120,7 @@ namespace PELOSCALVO
                 {
                     if (File.Exists(ClasDatos.ArchivoInicioFacturas))
                     {
+                        this.dsfacturas.Clear();
                         this.dsfacturas.ReadXml(ClasDatos.ArchivoInicioFacturas);
                     }
                 }
@@ -2051,7 +2054,7 @@ namespace PELOSCALVO
                     //  this.dtDetallesFacturaBindingSource.Insert(1, this.dtDetallesFacturaBindingSource.AddNew());
 
 
-                    //  this.dtDetallesFacturaBindingSource.Insert(Fila, this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value.ToString());
+                    // this.dtDetallesFacturaBindingSource.Insert(Fila, this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value.ToString());
                     //dtDetallesFacturaDataGridView.Rows.Insert(0, dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value );
                     // borrar(int.Parse(id));
 
@@ -2069,7 +2072,8 @@ namespace PELOSCALVO
                     DataTable dt = (DataTable)this.dtDetallesFacturaBindingSource.DataSource;
                     var row = dt.NewRow();
                     //this.dtDetallesFacturaBindingSource.Insert(Fila, row);
-                    this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
+                   // this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
+                    this.dtDetallesFacturaBindingSource.Insert(Fila, row);
                 }
                 if (NombreItem.Contains("EliminarLinea"))
                 {

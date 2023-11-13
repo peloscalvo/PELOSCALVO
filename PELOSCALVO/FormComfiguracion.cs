@@ -2900,7 +2900,7 @@ namespace PELOSCALVO
 
         private void baseDatosLocalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCorreos frm = new FormCorreos();
+            FormCrearCorreos frm = new FormCrearCorreos();
             frm.BringToFront();
             frm.ShowDialog();
         }
