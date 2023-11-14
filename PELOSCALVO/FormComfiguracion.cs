@@ -1078,30 +1078,13 @@ namespace PELOSCALVO
         }
         private void BtnGuardarEmpresas_Click_1(object sender, EventArgs e)
         {
-            if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
+            if (this.dtConfiguracionPrincipalBindingSource.Count <= 0 && string.IsNullOrEmpty(this.empresaConfiComboBox.Text))
             {
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (this.BtnNuevaEmpresa.Tag.ToString() == "Actualizar")
-            {
-                if (string.IsNullOrEmpty(this.EmpresaReguistro.Text))
-                {
-                    MessageBox.Show("Datos erroneos fallo", "EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            if (!string.IsNullOrEmpty(this.empresaConfiComboBox.Text))
-            {
-                ClasDatos.ArchivoInicioFacturas = this.nombreEmpresaTextBox.Text + " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
 
-            }
-            else
-            {
-                MessageBox.Show("Eliga Empresa Valida", "EMPRESA");
-                return;
-            }
-            if (EspacioDiscosConfi(ClasDatos.Clientes, 10))
+            if (EspacioDiscosConfi(ClasDatos.RutaConfiguracionXml, 25))
             {
                 try
                 {
@@ -1133,14 +1116,11 @@ namespace PELOSCALVO
                 {
                     if (MessageBox.Show(" ¿Aceptar Guardar Empresa ? ", " GUARDAR EMPRESA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        if (this.panelBotonesArchivo.Tag.ToString() == "SI")
-                        {
-                            if (this.empresaConfiTextBox.Text != string.Empty)
-                            {
-
+                        ClasDatos.ArchivoInicioFacturas = this.nombreEmpresaTextBox.Text + " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
+                        if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
+                        {            
                                 this.EmpresaReguistro.Text = this.empresaConfiTextBox.Text;
-                                //FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[0]["NombreEmpresaReguistro"] = this.empresaConfiTextBox.Text;
-                            }
+      
                         }
 
 
@@ -1151,9 +1131,6 @@ namespace PELOSCALVO
                             this.dtTarifaTipoDataGridView.Rows[i].Cells[0].Value = i + 1;
                         }
                         this.dtTarifaTipoDataGridView.Rows[8].Cells[1].Value = "IVA";
-
-
-                        //this.dtConfiguracionPrincipalBindingSource.EndEdit();
                         this.dtConfiDtTarifaTipoBindingSource.EndEdit();
                         try
                         {
@@ -2469,7 +2446,7 @@ namespace PELOSCALVO
                         if (e.RowIndex < this.dataGridProvincias.RowCount - 1)
                         {
                             if (MessageBox.Show("Desea Eliminar Este Provincia ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {                                             
+                            {
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
                                     this.dataGridProvincias.Rows.Remove(this.dataGridProvincias.CurrentRow);
@@ -2541,7 +2518,7 @@ namespace PELOSCALVO
                         if (MessageBox.Show("Desea Eliminar Este Obra ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (EspacioDiscosConfi(ClasDatos.RutaConfiguracionXml, 20))
-                            {                                               
+                            {
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
                                     this.dataGridObras.Rows.Remove(this.dataGridObras.CurrentRow);
@@ -2908,6 +2885,14 @@ namespace PELOSCALVO
             FormCrearCorreos frm = new FormCrearCorreos();
             frm.BringToFront();
             frm.ShowDialog();
+        }
+
+        private void empresaConfiTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
+            {
+                EmpresaReguistro.Text = empresaConfiTextBox.Text;
+            }
         }
     }
 }

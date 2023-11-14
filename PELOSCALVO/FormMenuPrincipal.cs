@@ -33,7 +33,7 @@ namespace PELOSCALVO
             DtCorreos.Columns.Add("smtp");
             DtCorreos.Columns.Add("Puerto");
             DtCorreos.Columns.Add("Timeof");
-            DtCorreos.Columns.Add("Eliminar",typeof(Bitmap));
+           // DtCorreos.Columns.Add("Eliminar",typeof(Bitmap));
             // DataRow fila = DtCorreos.NewRow();
             dsCorreos.Tables.Add(DtCorreos);
     

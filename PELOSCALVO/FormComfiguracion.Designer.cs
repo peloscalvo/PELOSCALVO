@@ -315,8 +315,8 @@ namespace PELOSCALVO
             this.abrirBaseDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añadirBaseDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Abrir_Correos = new System.Windows.Forms.ToolStripMenuItem();
             this.crearBaseDatosSqlLocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Abrir_Correos = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirReportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarModificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -650,7 +650,7 @@ namespace PELOSCALVO
             // empresaConfiLabel2
             // 
             empresaConfiLabel2.AutoSize = true;
-            empresaConfiLabel2.Location = new System.Drawing.Point(30, 271);
+            empresaConfiLabel2.Location = new System.Drawing.Point(26, 300);
             empresaConfiLabel2.Name = "empresaConfiLabel2";
             empresaConfiLabel2.Size = new System.Drawing.Size(51, 13);
             empresaConfiLabel2.TabIndex = 34;
@@ -677,7 +677,7 @@ namespace PELOSCALVO
             // telefonoEmpresaLabel
             // 
             telefonoEmpresaLabel.AutoSize = true;
-            telefonoEmpresaLabel.Location = new System.Drawing.Point(29, 376);
+            telefonoEmpresaLabel.Location = new System.Drawing.Point(25, 383);
             telefonoEmpresaLabel.Name = "telefonoEmpresaLabel";
             telefonoEmpresaLabel.Size = new System.Drawing.Size(52, 13);
             telefonoEmpresaLabel.TabIndex = 45;
@@ -713,7 +713,7 @@ namespace PELOSCALVO
             // nombreEmpresaLabel
             // 
             nombreEmpresaLabel.AutoSize = true;
-            nombreEmpresaLabel.Location = new System.Drawing.Point(12, 300);
+            nombreEmpresaLabel.Location = new System.Drawing.Point(6, 271);
             nombreEmpresaLabel.Name = "nombreEmpresaLabel";
             nombreEmpresaLabel.Size = new System.Drawing.Size(71, 13);
             nombreEmpresaLabel.TabIndex = 35;
@@ -1410,7 +1410,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(636, 490);
+            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(619, 492);
             this.BtnCancelarAlmacen.Name = "BtnCancelarAlmacen";
             this.BtnCancelarAlmacen.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarAlmacen.TabIndex = 59;
@@ -1576,7 +1576,7 @@ namespace PELOSCALVO
             this.BtnActualizarAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizarAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnActualizarAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(441, 490);
+            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(424, 492);
             this.BtnActualizarAlmacenes.Name = "BtnActualizarAlmacenes";
             this.BtnActualizarAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnActualizarAlmacenes.TabIndex = 49;
@@ -1596,7 +1596,7 @@ namespace PELOSCALVO
             this.BtnVolverAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(784, 490);
+            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(767, 492);
             this.BtnVolverAlmacenes.Name = "BtnVolverAlmacenes";
             this.BtnVolverAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverAlmacenes.TabIndex = 48;
@@ -3054,6 +3054,7 @@ namespace PELOSCALVO
             this.empresaConfiTextBox.ReadOnly = true;
             this.empresaConfiTextBox.Size = new System.Drawing.Size(290, 20);
             this.empresaConfiTextBox.TabIndex = 35;
+            this.empresaConfiTextBox.TextChanged += new System.EventHandler(this.empresaConfiTextBox_TextChanged);
             this.empresaConfiTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.empresaConfiTextBox_KeyPress);
             // 
             // idEmpresaTextBox
@@ -3934,19 +3935,19 @@ namespace PELOSCALVO
             this.añadirBaseDatosToolStripMenuItem.Text = "&Añadir Archivos Datos";
             this.añadirBaseDatosToolStripMenuItem.Click += new System.EventHandler(this.añadirBaseDatosToolStripMenuItem_Click);
             // 
-            // Abrir_Correos
-            // 
-            this.Abrir_Correos.Name = "Abrir_Correos";
-            this.Abrir_Correos.Size = new System.Drawing.Size(205, 22);
-            this.Abrir_Correos.Text = "&Abrir Correos Eletronicos";
-            this.Abrir_Correos.Click += new System.EventHandler(this.baseDatosLocalToolStripMenuItem_Click);
-            // 
             // crearBaseDatosSqlLocalToolStripMenuItem
             // 
             this.crearBaseDatosSqlLocalToolStripMenuItem.Name = "crearBaseDatosSqlLocalToolStripMenuItem";
             this.crearBaseDatosSqlLocalToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.crearBaseDatosSqlLocalToolStripMenuItem.Text = "&Base Datos Sql local";
             this.crearBaseDatosSqlLocalToolStripMenuItem.Click += new System.EventHandler(this.crearBaseDatosSqlLocalToolStripMenuItem_Click);
+            // 
+            // Abrir_Correos
+            // 
+            this.Abrir_Correos.Name = "Abrir_Correos";
+            this.Abrir_Correos.Size = new System.Drawing.Size(205, 22);
+            this.Abrir_Correos.Text = "&Abrir Correos Eletronicos";
+            this.Abrir_Correos.Click += new System.EventHandler(this.baseDatosLocalToolStripMenuItem_Click);
             // 
             // imprimirReportesToolStripMenuItem
             // 

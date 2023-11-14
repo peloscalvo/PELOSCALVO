@@ -854,19 +854,23 @@ namespace PELOSCALVO
         private void CheckActivarDb_Click(object sender, EventArgs e)
         {
             BORRARerror_Archivos();
-            if (VALIDARcampos_Archivos())
+            if (ClsConexionDb.CadenaConexion !=string.Empty)
             {
-                this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
-                this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
-                this.CheckAtivarServidor.Checked = false;
-                if (this.CheckActivarDb.Checked == false)
+                if (VALIDARcampos_Archivos())
                 {
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                    this.CheckAtivarServidor.Checked = false;
+                    if (this.CheckActivarDb.Checked == false)
+                    {
 
-                    this.CheckActivarDb.Checked = true;
-                    ClsConexionSql.SibaseDatosSql = false;
+                        this.CheckActivarDb.Checked = true;
+                        ClsConexionSql.SibaseDatosSql = false;
 
+                    }
                 }
             }
+ 
         }
 
         private void Servidor_Validated(object sender, EventArgs e)
@@ -1048,6 +1052,7 @@ namespace PELOSCALVO
                             return;
                         }
                     }
+                    FormMenuPrincipal.menu2principal.dsCorreos.Clear();
                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                     FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
@@ -1178,12 +1183,18 @@ namespace PELOSCALVO
 
                     try
                     {
+                        FormMenuPrincipal.menu2principal.dsCorreos.Clear();
                         FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                         FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                         ActualizarPrincipal_Sql();//EMPRESAS Y EJERCICIOS
                         ActualizarArticulosSql();
                         ActualizarClientes_Sql_B();
+                        string Rutacorreos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
+                        if (File.Exists(Rutacorreos))
+                        {
+                            FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);
+                        }
                         FormMenuPrincipal.menu2principal.InfoArticulo.Text = this.SerieArticulosText.Text;
                         FormMenuPrincipal.menu2principal.InfoClientes.Text = this.SerieClientesText2.Text;
                         FormMenuPrincipal.menu2principal.InfoExtension.Text = "SERVIDOR EN RED";
@@ -1382,6 +1393,7 @@ namespace PELOSCALVO
                         ClasDatos.Clientes = Path.GetFullPath(BuscarArchivo.FileName.ToString());
                         ClasDatos.Articulos = Path.GetFullPath(BuscarArchivo.FileName.ToString());
                         this.TabArchivos.Tag = "SI";
+                        NombreArchivoDatos.BackColor = Color.Bisque;
                     }
                     else
                     {
@@ -1414,73 +1426,76 @@ namespace PELOSCALVO
             BORRARerror_Archivos();
             if (VALIDARcampos_Archivos())
             {
-                if (this.TipoExtension_b.Text == "DBF")
+                if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieArticulosText.Text + "." + this.TipoExtension_b.Text;
-                    ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieClientesText2.Text + "." + this.TipoExtension_b.Text;
+
+                    if (this.TabArchivos.Tag.ToString() == "SI")
+                {
+                    ClasDatos.Articulos = NombreArchivoDatos.Text;
+                    ClasDatos.Clientes = NombreArchivoDatos.Text;
                 }
                 else
                 {
                     ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                     ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                 }
-                if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    string cadena = "";
-                    if (this.TipoExtension_b.Text == "accdb")
+                    if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-
-
-                        cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-                    }
-                    if (this.TipoExtension_b.Text == "mdb")
-                    {
-
-                        cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-                    }
-                    if (this.TipoExtension_b.Text == "DBF")
-                    {
-                        cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
-                    }
-                    Random r = new Random();
-                    int valor = r.Next(10, 90000000);
-                    string TablaArticulos = "Articulos+" + valor.ToString();
-                    string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
-                        "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
-                        "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
-                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
-                        " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
-                        ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                    ClsConexionDb.CadenaConexion = cadena;
-                    ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
-                    ClsConexionDb.CadenaConexion = cadena;
-                    try
-                    {
-
-
-                        if (NuevaConexion2.SiConexionDb)
+                        string cadena = "";
+                        if (this.TipoExtension_b.Text == "accdb")
                         {
 
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-                            MessageBox.Show("Creada Con exito" + "\n" + this.SerieArticulosText.Text, "CREAR TABLA", MessageBoxButtons.OK);
+
+                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
+                        }
+                        if (this.TipoExtension_b.Text == "mdb")
+                        {
+
+                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
+                        }
+                        if (this.TipoExtension_b.Text == "DBF")
+                        {
+                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
+                        }
+                        Random r = new Random();
+                        int valor = r.Next(10, 90000000);
+                        string TablaArticulos = "Articulos+" + valor.ToString();
+                        string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                            "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
+                            "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
+                            ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
+                            " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
+                            ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
+                        ClsConexionDb.CadenaConexion = cadena;
+                        ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
+                        ClsConexionDb.CadenaConexion = cadena;
+                        try
+                        {
+
+
+                            if (NuevaConexion2.SiConexionDb)
+                            {
+
+                                NuevaConexion2.ComandoDb.ExecuteNonQuery();
+                                MessageBox.Show("Creada Con exito" + "\n" + this.SerieArticulosText.Text, "CREAR TABLA", MessageBoxButtons.OK);
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+
+
+                            MessageBox.Show(ex.Message, "ERROR");
+                        }
+                        finally
+                        {
+                            if (NuevaConexion2.CerrarConexionDB)
+                            {
+                                NuevaConexion2.ComandoDb.Parameters.Clear();
+                            }
                         }
 
                     }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR");
-                    }
-                    finally
-                    {
-                        if (NuevaConexion2.CerrarConexionDB)
-                        {
-                            NuevaConexion2.ComandoDb.Parameters.Clear();
-                        }
-                    }
-
-
                 }
             }
         }
@@ -1497,6 +1512,16 @@ namespace PELOSCALVO
             {
                 if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    if (this.TabArchivos.Tag.ToString() == "SI")
+                    {
+                        ClasDatos.Articulos = NombreArchivoDatos.Text;
+                        ClasDatos.Clientes = NombreArchivoDatos.Text;
+                    }
+                    else
+                    {
+                        ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
+                        ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
+                    }
                     string cadena = "";
                     if (this.TipoExtension_b.Text == "accdb")
                     {
@@ -1554,6 +1579,36 @@ namespace PELOSCALVO
 
                 }
             }
+        }
+
+        private void BtnRestablecer_Click(object sender, EventArgs e)
+        {
+            if (this.TabArchivos.Tag.ToString() == "SI")
+            {
+                if (MessageBox.Show("Restaurar Conexiones y Activar Archivos locales", "CERRAR CONEXIONES Y RESTAURAR", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    NombreArchivoDatos.Text = "Datos App Peloscalvo";
+                    TabArchivos.Tag = "NO";
+                    NombreArchivoDatos.BackColor = SystemColors.Control;
+                    Conexiones.ClsConexionSql.SibaseDatosSql = false;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                    this.CheckAtivarServidor.Checked = false;
+                    this.CheckActivarDb.Checked = false;
+                    MessageBox.Show("Se Restauro Con Exito "+"n/"+"Carge Otra vez los Datos", "RESTAURAR");
+                }
+            }
+           
+        }
+
+        private void BtnRestablecer_Enter(object sender, EventArgs e)
+        {
+            Info_Res.Visible = true;
+        }
+
+        private void BtnRestablecer_Leave(object sender, EventArgs e)
+        {
+            Info_Res.Visible = true;
         }
     }
 }

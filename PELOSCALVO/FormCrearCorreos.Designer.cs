@@ -35,6 +35,7 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCrearCorreos));
             this.DatagridCorreosEmpresa = new System.Windows.Forms.DataGridView();
+            this.EliminarCorreoE = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnGuardarCorreo_EMP = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@ namespace PELOSCALVO
             this.Direcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CorreoEletronico_cli = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.EliminarCorreoE = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DatagridCorreosEmpresa)).BeginInit();
             this.TabCorreos.SuspendLayout();
             this.PageEmpresa.SuspendLayout();
@@ -94,6 +94,17 @@ namespace PELOSCALVO
             this.DatagridCorreosEmpresa.Size = new System.Drawing.Size(958, 350);
             this.DatagridCorreosEmpresa.TabIndex = 52;
             this.DatagridCorreosEmpresa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagriCorreosEmpresa_CellClick);
+            // 
+            // EliminarCorreoE
+            // 
+            this.EliminarCorreoE.FillWeight = 98F;
+            this.EliminarCorreoE.HeaderText = "Eliminar";
+            this.EliminarCorreoE.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.EliminarCorreoE.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EliminarCorreoE.Name = "EliminarCorreoE";
+            this.EliminarCorreoE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EliminarCorreoE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EliminarCorreoE.Width = 129;
             // 
             // dataGridViewImageColumn1
             // 
@@ -318,17 +329,6 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // EliminarCorreoE
-            // 
-            this.EliminarCorreoE.FillWeight = 98F;
-            this.EliminarCorreoE.HeaderText = "Eliminar";
-            this.EliminarCorreoE.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.EliminarCorreoE.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.EliminarCorreoE.Name = "EliminarCorreoE";
-            this.EliminarCorreoE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EliminarCorreoE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EliminarCorreoE.Width = 129;
-            // 
             // FormCrearCorreos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,7 +336,10 @@ namespace PELOSCALVO
             this.ClientSize = new System.Drawing.Size(972, 489);
             this.Controls.Add(this.TabCorreos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCrearCorreos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Correos Eletronicos";
             this.Load += new System.EventHandler(this.FormCorreos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DatagridCorreosEmpresa)).EndInit();

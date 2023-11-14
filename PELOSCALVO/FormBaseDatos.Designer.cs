@@ -87,6 +87,8 @@ namespace PELOSCALVO
             this.Autenticacion = new System.Windows.Forms.ComboBox();
             this.TabArchivoSql = new System.Windows.Forms.TabControl();
             this.BtnPrueba = new System.Windows.Forms.Button();
+            this.BtnRestablecer = new System.Windows.Forms.Button();
+            this.Info_Res = new System.Windows.Forms.Label();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
@@ -232,7 +234,6 @@ namespace PELOSCALVO
             // 
             this.CheckActivarDb.AutoCheck = false;
             this.CheckActivarDb.AutoSize = true;
-            this.CheckActivarDb.Checked = true;
             this.CheckActivarDb.Location = new System.Drawing.Point(37, 13);
             this.CheckActivarDb.Name = "CheckActivarDb";
             this.CheckActivarDb.Size = new System.Drawing.Size(61, 17);
@@ -317,6 +318,8 @@ namespace PELOSCALVO
             // TabArchivos
             // 
             this.TabArchivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TabArchivos.Controls.Add(this.Info_Res);
+            this.TabArchivos.Controls.Add(this.BtnRestablecer);
             this.TabArchivos.Controls.Add(this.BtnCrearTbCliente);
             this.TabArchivos.Controls.Add(this.BtnCrearTbArticulos);
             this.TabArchivos.Controls.Add(this.BtnExaminarB);
@@ -510,6 +513,7 @@ namespace PELOSCALVO
             // 
             this.BtnGuardarArchivo_Sql.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnGuardarArchivo_Sql.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGuardarArchivo_Sql.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGuardarArchivo_Sql.FlatAppearance.BorderSize = 0;
             this.BtnGuardarArchivo_Sql.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
             this.BtnGuardarArchivo_Sql.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
@@ -530,6 +534,7 @@ namespace PELOSCALVO
             // 
             this.BtnGuardarDatosArchivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnGuardarDatosArchivos.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGuardarDatosArchivos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGuardarDatosArchivos.FlatAppearance.BorderSize = 0;
             this.BtnGuardarDatosArchivos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
             this.BtnGuardarDatosArchivos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
@@ -590,6 +595,7 @@ namespace PELOSCALVO
             this.BtnGuardarServidores.AllowDrop = true;
             this.BtnGuardarServidores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnGuardarServidores.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGuardarServidores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGuardarServidores.FlatAppearance.BorderSize = 0;
             this.BtnGuardarServidores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
             this.BtnGuardarServidores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
@@ -760,6 +766,33 @@ namespace PELOSCALVO
             this.BtnPrueba.UseVisualStyleBackColor = true;
             this.BtnPrueba.Click += new System.EventHandler(this.BtnPrueba_Click);
             // 
+            // BtnRestablecer
+            // 
+            this.BtnRestablecer.BackColor = System.Drawing.Color.DarkKhaki;
+            this.BtnRestablecer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnRestablecer.Location = new System.Drawing.Point(643, 160);
+            this.BtnRestablecer.Name = "BtnRestablecer";
+            this.BtnRestablecer.Size = new System.Drawing.Size(75, 23);
+            this.BtnRestablecer.TabIndex = 97;
+            this.BtnRestablecer.Text = "&Restablecer";
+            this.BtnRestablecer.UseVisualStyleBackColor = false;
+            this.BtnRestablecer.Click += new System.EventHandler(this.BtnRestablecer_Click);
+            this.BtnRestablecer.Enter += new System.EventHandler(this.BtnRestablecer_Enter);
+            this.BtnRestablecer.Leave += new System.EventHandler(this.BtnRestablecer_Leave);
+            // 
+            // Info_Res
+            // 
+            this.Info_Res.AutoSize = true;
+            this.Info_Res.BackColor = System.Drawing.Color.Gold;
+            this.Info_Res.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Info_Res.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Info_Res.Location = new System.Drawing.Point(435, 165);
+            this.Info_Res.Name = "Info_Res";
+            this.Info_Res.Size = new System.Drawing.Size(201, 15);
+            this.Info_Res.TabIndex = 98;
+            this.Info_Res.Text = "Cierra toda Conexion y Restablece datos";
+            this.Info_Res.Visible = false;
+            // 
             // FormBaseDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -847,5 +880,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox NombreArchivoDatos;
         private System.Windows.Forms.Button BtnCrearTbArticulos;
         private System.Windows.Forms.Button BtnCrearTbCliente;
+        private System.Windows.Forms.Button BtnRestablecer;
+        private System.Windows.Forms.Label Info_Res;
     }
 }

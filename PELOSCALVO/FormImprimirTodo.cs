@@ -412,7 +412,7 @@ namespace PELOSCALVO
             };
             int margenIzqu = e.MarginBounds.Left;
             int margenDere = e.MarginBounds.Right;
-            int NumeroEmpresa1 = FormFacturar.menu2FACTURAR.empresaENLACEComboBox.SelectedIndex;
+            int NumeroEmpresa1 = FormFacturar.menu2FACTURAR.EmpresaPrincipal.SelectedIndex;
             string ApodoImpr = "";
             string nombreCliente = "";
             string EmpresaImpri = FormFacturar.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["EmpresaConfi"].ToString();

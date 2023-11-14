@@ -2202,6 +2202,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnlaceDetalle;
-        private System.Windows.Forms.ComboBox EmpresaPrincipal;
+        public System.Windows.Forms.ComboBox EmpresaPrincipal;
     }
 }

@@ -10,6 +10,12 @@ namespace PELOSCALVO
         public FormCrearCorreos()
         {
             DatagridCorreosEmpresa.Columns[6].DisplayIndex=7;
+            DatagridCorreosEmpresa.Columns[0].Width = 190;//NombreEmpresa
+            DatagridCorreosEmpresa.Columns[1].Width = 130;//CorreoEletronico
+            DatagridCorreosEmpresa.Columns[2].Width = 160;//Usuario
+            DatagridCorreosEmpresa.Columns[3].Width = 100;//Contraseña
+            DatagridCorreosEmpresa.Columns[4].Width = 140;//smtp
+            DatagridCorreosEmpresa.Columns[0].Width = 60;//Puerto
             InitializeComponent();
         }
 
