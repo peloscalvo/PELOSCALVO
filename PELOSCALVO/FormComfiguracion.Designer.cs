@@ -315,6 +315,7 @@ namespace PELOSCALVO
             this.abrirBaseDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añadirBaseDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Abrir_Correos = new System.Windows.Forms.ToolStripMenuItem();
             this.crearBaseDatosSqlLocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirReportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarModificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -355,7 +356,6 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idProveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.baseDatosLocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             descripcionArchivoDatosLabel = new System.Windows.Forms.Label();
             directorioArchivoDatosLabel = new System.Windows.Forms.Label();
             nombreArchivoDatosLabel = new System.Windows.Forms.Label();
@@ -1410,7 +1410,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(653, 488);
+            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(636, 490);
             this.BtnCancelarAlmacen.Name = "BtnCancelarAlmacen";
             this.BtnCancelarAlmacen.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarAlmacen.TabIndex = 59;
@@ -1576,7 +1576,7 @@ namespace PELOSCALVO
             this.BtnActualizarAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizarAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnActualizarAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(458, 488);
+            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(441, 490);
             this.BtnActualizarAlmacenes.Name = "BtnActualizarAlmacenes";
             this.BtnActualizarAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnActualizarAlmacenes.TabIndex = 49;
@@ -1596,7 +1596,7 @@ namespace PELOSCALVO
             this.BtnVolverAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(801, 488);
+            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(784, 490);
             this.BtnVolverAlmacenes.Name = "BtnVolverAlmacenes";
             this.BtnVolverAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverAlmacenes.TabIndex = 48;
@@ -3900,8 +3900,8 @@ namespace PELOSCALVO
             this.abrirBaseDatosToolStripMenuItem,
             this.abrirPdfToolStripMenuItem,
             this.añadirBaseDatosToolStripMenuItem,
-            this.baseDatosLocalToolStripMenuItem,
             this.crearBaseDatosSqlLocalToolStripMenuItem,
+            this.Abrir_Correos,
             this.imprimirReportesToolStripMenuItem,
             this.editarModificarToolStripMenuItem});
             this.toolArchivo.Name = "toolArchivo";
@@ -3912,39 +3912,46 @@ namespace PELOSCALVO
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.verToolStripMenuItem.Text = "&Ver";
             // 
             // abrirBaseDatosToolStripMenuItem
             // 
             this.abrirBaseDatosToolStripMenuItem.Name = "abrirBaseDatosToolStripMenuItem";
-            this.abrirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.abrirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.abrirBaseDatosToolStripMenuItem.Text = "&Abrir Base Datos";
             // 
             // abrirPdfToolStripMenuItem
             // 
             this.abrirPdfToolStripMenuItem.Name = "abrirPdfToolStripMenuItem";
-            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.abrirPdfToolStripMenuItem.Text = "&Abrir P.d.f";
             // 
             // añadirBaseDatosToolStripMenuItem
             // 
             this.añadirBaseDatosToolStripMenuItem.Name = "añadirBaseDatosToolStripMenuItem";
-            this.añadirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.añadirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.añadirBaseDatosToolStripMenuItem.Text = "&Añadir Archivos Datos";
             this.añadirBaseDatosToolStripMenuItem.Click += new System.EventHandler(this.añadirBaseDatosToolStripMenuItem_Click);
+            // 
+            // Abrir_Correos
+            // 
+            this.Abrir_Correos.Name = "Abrir_Correos";
+            this.Abrir_Correos.Size = new System.Drawing.Size(205, 22);
+            this.Abrir_Correos.Text = "&Abrir Correos Eletronicos";
+            this.Abrir_Correos.Click += new System.EventHandler(this.baseDatosLocalToolStripMenuItem_Click);
             // 
             // crearBaseDatosSqlLocalToolStripMenuItem
             // 
             this.crearBaseDatosSqlLocalToolStripMenuItem.Name = "crearBaseDatosSqlLocalToolStripMenuItem";
-            this.crearBaseDatosSqlLocalToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.crearBaseDatosSqlLocalToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.crearBaseDatosSqlLocalToolStripMenuItem.Text = "&Base Datos Sql local";
             this.crearBaseDatosSqlLocalToolStripMenuItem.Click += new System.EventHandler(this.crearBaseDatosSqlLocalToolStripMenuItem_Click);
             // 
             // imprimirReportesToolStripMenuItem
             // 
             this.imprimirReportesToolStripMenuItem.Name = "imprimirReportesToolStripMenuItem";
-            this.imprimirReportesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.imprimirReportesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.imprimirReportesToolStripMenuItem.Text = "&Imprimir Reportes";
             this.imprimirReportesToolStripMenuItem.Click += new System.EventHandler(this.imprimirReportesToolStripMenuItem_Click);
             // 
@@ -3958,7 +3965,7 @@ namespace PELOSCALVO
             this.provinciasToolStripMenuItem1,
             this.otrosToolStripMenuItem});
             this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
-            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
             // 
             // almacenesToolStripMenuItem
@@ -4336,13 +4343,6 @@ namespace PELOSCALVO
             this.idProveedoresDataGridViewTextBoxColumn.ReadOnly = true;
             this.idProveedoresDataGridViewTextBoxColumn.Width = 153;
             // 
-            // baseDatosLocalToolStripMenuItem
-            // 
-            this.baseDatosLocalToolStripMenuItem.Name = "baseDatosLocalToolStripMenuItem";
-            this.baseDatosLocalToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.baseDatosLocalToolStripMenuItem.Text = "Base Datos Local";
-            this.baseDatosLocalToolStripMenuItem.Click += new System.EventHandler(this.baseDatosLocalToolStripMenuItem_Click);
-            // 
             // FormComfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4676,6 +4676,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox Enlace_Proveedor;
         private System.Windows.Forms.TextBox NombreProveedor;
         private System.Windows.Forms.Button BtnCancelarProveedores;
-        private System.Windows.Forms.ToolStripMenuItem baseDatosLocalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Abrir_Correos;
     }
 }

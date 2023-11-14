@@ -13,8 +13,8 @@ namespace PELOSCALVO
 {
     public partial class FormMenuPrincipal : Form
     {
-        public  DataSet dsCorreos = new DataSet();
-        public DataTable DtCorreos = new DataTable();      
+        public  DataSet dsCorreos = new DataSet("Dscorreos");
+        public DataTable DtCorreos = new DataTable("DtCorreos");      
        // public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
         public byte SiOpenFatu = 0;
@@ -25,6 +25,7 @@ namespace PELOSCALVO
         int V1, PX, PV;
         public FormMenuPrincipal()
         {
+           
             DtCorreos.Columns.Add("NombreEmpresa");
             DtCorreos.Columns.Add("CorreoEletronico");
             DtCorreos.Columns.Add("Usuario");
@@ -32,7 +33,8 @@ namespace PELOSCALVO
             DtCorreos.Columns.Add("smtp");
             DtCorreos.Columns.Add("Puerto");
             DtCorreos.Columns.Add("Timeof");
-           // DataRow fila = DtCorreos.NewRow();
+            DtCorreos.Columns.Add("Eliminar",typeof(Bitmap));
+            // DataRow fila = DtCorreos.NewRow();
             dsCorreos.Tables.Add(DtCorreos);
     
            // fila["NombreEmpresa"] = "faf";

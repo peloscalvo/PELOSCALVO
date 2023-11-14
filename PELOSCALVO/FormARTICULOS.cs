@@ -122,28 +122,28 @@ namespace PELOSCALVO
 
             try
             {
-
+                int Fila = EmpresaArticulos.SelectedIndex;
                 if (dtConfiguracionPrincipalBindingSource.Count > 0)
                 {
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2+Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.CastyLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2]["TarifaTipo"].ToString();
+                        this.CastyLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2+Fila]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2+Fila]["TarifaTipo"].ToString();
                     }
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3+Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.SuarezLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3]["TarifaTipo"].ToString();
+                        this.SuarezLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3+Fila]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3+Fila]["TarifaTipo"].ToString();
                     }
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4+Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.BenitoLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString();
+                        this.BenitoLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
                     }
                     if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.ValenteLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString();
+                        this.ValenteLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5 + Fila]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5 + Fila]["TarifaTipo"].ToString();
                     }
                 }
             }
@@ -1391,7 +1391,7 @@ namespace PELOSCALVO
             if (this.tarifaTipoArticulos.Items.Count >= 6)
             {
 
-                LlenarDescuentos();
+               LlenarDescuentos();
             }
         }
 

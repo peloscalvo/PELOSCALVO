@@ -86,9 +86,10 @@ namespace PELOSCALVO
             this.dtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsfacturas = new PELOSCALVO.Dtfacturas();
             this.PanelArriba = new System.Windows.Forms.Panel();
-            this.NombreEmpresaReguistro = new System.Windows.Forms.Label();
+            this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
+            this.NombreEmpresaReguistro = new System.Windows.Forms.Label();
             this.SerieText = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
@@ -196,7 +197,6 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -592,14 +592,19 @@ namespace PELOSCALVO
             this.PanelArriba.TabIndex = 2;
             this.PanelArriba.Tag = "NO";
             // 
-            // NombreEmpresaReguistro
+            // EmpresaPrincipal
             // 
-            this.NombreEmpresaReguistro.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
-            this.NombreEmpresaReguistro.Location = new System.Drawing.Point(483, 9);
-            this.NombreEmpresaReguistro.Name = "NombreEmpresaReguistro";
-            this.NombreEmpresaReguistro.Size = new System.Drawing.Size(272, 23);
-            this.NombreEmpresaReguistro.TabIndex = 72;
-            this.NombreEmpresaReguistro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EmpresaPrincipal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
+            this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.EmpresaPrincipal.DisplayMember = "EmpresaConfi";
+            this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EmpresaPrincipal.FormattingEnabled = true;
+            this.EmpresaPrincipal.Location = new System.Drawing.Point(62, 7);
+            this.EmpresaPrincipal.Name = "EmpresaPrincipal";
+            this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 21);
+            this.EmpresaPrincipal.TabIndex = 73;
+            this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
+            this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -610,6 +615,16 @@ namespace PELOSCALVO
             // 
             this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
             this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // NombreEmpresaReguistro
+            // 
+            this.NombreEmpresaReguistro.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
+            this.NombreEmpresaReguistro.Location = new System.Drawing.Point(460, 9);
+            this.NombreEmpresaReguistro.Name = "NombreEmpresaReguistro";
+            this.NombreEmpresaReguistro.Size = new System.Drawing.Size(272, 23);
+            this.NombreEmpresaReguistro.TabIndex = 72;
+            this.NombreEmpresaReguistro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NombreEmpresaReguistro.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
             // 
             // SerieText
             // 
@@ -1994,20 +2009,6 @@ namespace PELOSCALVO
             // dtClientesBindingSource
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
-            // 
-            // EmpresaPrincipal
-            // 
-            this.EmpresaPrincipal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
-            this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.EmpresaPrincipal.DisplayMember = "EmpresaConfi";
-            this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.EmpresaPrincipal.FormattingEnabled = true;
-            this.EmpresaPrincipal.Location = new System.Drawing.Point(62, 7);
-            this.EmpresaPrincipal.Name = "EmpresaPrincipal";
-            this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 21);
-            this.EmpresaPrincipal.TabIndex = 73;
-            this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
-            this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
             // 
             // FormFacturar
             // 

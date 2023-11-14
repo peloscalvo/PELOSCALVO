@@ -1674,10 +1674,10 @@ namespace PELOSCALVO
 
                     if (File.Exists(ClasDatos.RutaMultidatos))
                     {
-                        FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
-                        this.dataGridViewDatos.Rows.Remove(this.dataGridViewDatos.CurrentRow);
                         this.dtArchivoDatosMultiBindingSource.EndEdit();
                         this.dataGridViewDatos.EndEdit();
+                        this.dataGridViewDatos.Rows.Remove(this.dataGridViewDatos.CurrentRow);
+                        FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
                         MessageBox.Show("Se Elimino Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -1769,8 +1769,8 @@ namespace PELOSCALVO
 
                     if (File.Exists(ClasDatos.RutaConfiguracionXml))
                     {
-                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
                         this.dtConfiguracionPrincipalDataGridView.Rows.Remove(this.dtConfiguracionPrincipalDataGridView.CurrentRow);
+                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
                         MessageBox.Show("Se Elimino Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -1805,10 +1805,10 @@ namespace PELOSCALVO
 
                     if (File.Exists(ClasDatos.RutaConfiguracionXml))
                     {
-                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
                         this.dtConfiDataGridView.Rows.Remove(this.dtConfiDataGridView.CurrentRow);
                         this.dtConfiBindingSource.EndEdit();
                         this.dtConfiDataGridView.EndEdit();
+                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
                         MessageBox.Show("Se Elimino Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -1958,15 +1958,14 @@ namespace PELOSCALVO
                             if (MessageBox.Show("Desea Eliminar Este Pais ?? " + "\n" + "\n" + paisPais, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             {
 
-
-                                this.dataGridPaises.Rows.Remove(this.dataGridPaises.CurrentRow);
-                                this.dtPaisesBindingSource.EndEdit();
-                                this.dataGridPaises.Refresh();
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
+                                    this.dataGridPaises.Rows.Remove(this.dataGridPaises.CurrentRow);
+                                    this.dtPaisesBindingSource.EndEdit();
                                     FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
                                 }
                                 MessageBox.Show(paisPais + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
+                                this.dataGridPaises.Refresh();
                             }
 
                         }
@@ -2470,15 +2469,15 @@ namespace PELOSCALVO
                         if (e.RowIndex < this.dataGridProvincias.RowCount - 1)
                         {
                             if (MessageBox.Show("Desea Eliminar Este Provincia ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
-                                this.dataGridProvincias.Rows.Remove(this.dataGridProvincias.CurrentRow);
-                                this.dtProvinciasBindingSource.EndEdit();
-                                this.dataGridProvincias.Refresh();
+                            {                                             
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
+                                    this.dataGridProvincias.Rows.Remove(this.dataGridProvincias.CurrentRow);
+                                    this.dtProvinciasBindingSource.EndEdit();
                                     FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
                                 }
                                 MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
+                                this.dataGridProvincias.Refresh();
                             }
                         }
                     }
@@ -2541,14 +2540,17 @@ namespace PELOSCALVO
                     {
                         if (MessageBox.Show("Desea Eliminar Este Obra ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            this.dataGridObras.Rows.Remove(this.dataGridObras.CurrentRow);
-                            this.dtObrasBindingSource.EndEdit();
-                            this.dataGridObras.Refresh();
-                            if (File.Exists(ClasDatos.RutaMulti2))
-                            {
-                                FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
+                            if (EspacioDiscosConfi(ClasDatos.RutaConfiguracionXml, 20))
+                            {                                               
+                                if (File.Exists(ClasDatos.RutaMulti2))
+                                {
+                                    this.dataGridObras.Rows.Remove(this.dataGridObras.CurrentRow);
+                                    this.dtObrasBindingSource.EndEdit();
+                                    FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
+                                }
+                                MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
+                                this.dataGridObras.Refresh();
                             }
-                            MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
                         }
                     }
                 }
@@ -2657,14 +2659,17 @@ namespace PELOSCALVO
 
                         if (MessageBox.Show("Desea Eliminar Este Almacen ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            this.dataGridAlmacenes.Rows.Remove(this.dataGridAlmacenes.CurrentRow);
-                            this.dtAlmacenesBindingSource.EndEdit();
-                            this.dataGridAlmacenes.Refresh();
-                            if (File.Exists(ClasDatos.RutaConfiguracionXml))
+                            if (EspacioDiscosConfi(ClasDatos.RutaConfiguracionXml, 20))
                             {
-                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
+                                if (File.Exists(ClasDatos.RutaConfiguracionXml))
+                                {
+                                    this.dataGridAlmacenes.Rows.Remove(this.dataGridAlmacenes.CurrentRow);
+                                    this.dtAlmacenesBindingSource.EndEdit();
+                                    FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
+                                }
+                                MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
+                                this.dataGridAlmacenes.Refresh();
                             }
-                            MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
                         }
                     }
                 }

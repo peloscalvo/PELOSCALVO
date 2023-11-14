@@ -1224,135 +1224,137 @@ namespace PELOSCALVO
         private void BtnPrueba_Click(object sender, EventArgs e)
         {
             //////    prueba prueba
-            string cadena = "";
-            if (this.TipoExtension_b.Text == "accdb")
-            {
-                cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-            }
-            if (this.TipoExtension_b.Text == "mdb")
-            {
-
-                cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-            }
-            if (this.TipoExtension_b.Text == "DBF")
-            {
-                //consulta = "Select * from " + "Tarifa1dea";
-                cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
-            }
-            string TipoNota = "DtNuevaTotaldatos";
-            if (ClasDatos.NombreFactura != string.Empty)
-            {
-                TipoNota = "Dt" + ClasDatos.NombreFactura;
-            }
-            Random r = new Random();
-            int valor = r.Next(10, 90000000);
-            string TablaArticulos = "Prueba+" + valor.ToString();
-            string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
-                "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
-                "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
-                ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
-                " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
-                ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-            string ConsultaFacturacion = "CREATE TABLE [" + TipoNota+ valor + "]([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar 250,[Nombre] varchar," +
-           "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
-             "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
-           "[IvaImpuesto] int,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
-         "[FechaCobro]varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-     "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar)";
-
-               string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] INTEGER , [EmpresaConfi] varchar 60 , [NombreEmpresa] varchar 60 ," +
-               "[DireccionEmpresa] varchar 60 ,[LocalidadEmpresa] varchar 50 ,[CodigoPostalEmpresa] varchar 25 ,[ProvinciaEmpresa] varchar 30 ," +
-             "[TelefonoEmpresa] varchar 20 ,[CorreoEmpresa] varchar 30 ,[WepEmpresa] varchar 40 ,[RegimenIvaEmpresa] varchar 30 ," +
-           " [PaisEmpresa] varchar 40 ,[SerieDeFacturacionEmpresa] varchar 10 ,[Telefono2Empresa] varchar 25 ,[MovilEmpresa] varchar 25 ," +
-           " [CifEmpresa] varchar 20 ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] varchar  ) ";
-
-          string TablaDtconfi=        "CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar 60 , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar 60 ," +
-              "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar 60 ," +
-                 " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
-
-            string ConsultaTablas = "CREATE TABLE [DtAlmacenes]( [Id_almacenes] INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
-        " CONSTRAINT F_DtAlmacenes" + valor + " FOREIGN KEY(Enlace_Almacenes)REFERENCES " + TipoNota + "(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
-
-
-            ClsConexionDb.CadenaConexion = cadena;
-            ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
-            ClsConexionDb.CadenaConexion = cadena;
-            try
-            {
-
-
-                if (NuevaConexion2.SiConexionDb)
+          if(  VALIDARcampos_Archivos())
+                {
+                string cadena = "";
+                if (this.TipoExtension_b.Text == "accdb")
+                {
+                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
+                }
+                if (this.TipoExtension_b.Text == "mdb")
                 {
 
-                    NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
+                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
                 }
-            }
-            catch (Exception ex)
-            {
+                if (this.TipoExtension_b.Text == "DBF")
+                {
+                    //consulta = "Select * from " + "Tarifa1dea";
+                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
+                }
+                string TipoNota = "DtNuevaTotaldatos";
+                if (ClasDatos.NombreFactura != string.Empty)
+                {
+                    TipoNota = "Dt" + ClasDatos.NombreFactura;
+                }
+                Random r = new Random();
+                int valor = r.Next(10, 90000000);
+                string TablaArticulos = "Prueba+" + valor.ToString();
+                string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos +valor +"] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                    "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
+                    "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
+                    ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
+                    " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
+                    ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
+                string ConsultaFacturacion = "CREATE TABLE [" + TipoNota + valor + "]([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+               "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
+                 "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
+               "[IvaImpuesto] int,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
+             "[FechaCobro]varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
+         "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar)";
+
+                string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal"+valor+"]( [IdEmpresa] INTEGER , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
+                "[DireccionEmpresa] varchar  ,[LocalidadEmpresa] varchar  ,[CodigoPostalEmpresa] varchar  ,[ProvinciaEmpresa] varchar ," +
+              "[TelefonoEmpresa] varchar  ,[CorreoEmpresa] varchar  ,[WepEmpresa] varchar  ,[RegimenIvaEmpresa] varchar  ," +
+            " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
+            " [CifEmpresa] varchar  ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] bit  ) ";
+
+                string TablaDtconfi = "CREATE TABLE[DtConfi] ([ConfiguraccionBasica" + valor + "] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
+                    "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar  ," +
+                       " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal"+valor+"(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+
+                string ConsultaTablas = "CREATE TABLE [DtAlmacenes" + valor + "]( [Id_almacenes] INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
+            " CONSTRAINT F_DtAlmacenes" + valor + " FOREIGN KEY(Enlace_Almacenes)REFERENCES " + TipoNota +valor+ "(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
 
-                MessageBox.Show(ex.Message, "ERROR"+ ConsultaArticulos);
-            }
-            try
-            {
-                NuevaConexion2 = new ClsConexionDb(ConsultaFacturacion);
-                if (NuevaConexion2.SiConexionDb)
+                ClsConexionDb.CadenaConexion = cadena;
+                ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
+                ClsConexionDb.CadenaConexion = cadena;
+                try
                 {
 
-                    NuevaConexion2.ComandoDb.ExecuteNonQuery();
 
+                    if (NuevaConexion2.SiConexionDb)
+                    {
+
+                        NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-
-
-                MessageBox.Show(ex.Message, "ERROR"+ ConsultaFacturacion);
-            }
-            try
-            {
-                NuevaConexion2 = new ClsConexionDb(ConsultaEmpresas);
-                if (NuevaConexion2.SiConexionDb)
+                catch (Exception ex)
                 {
 
-                    NuevaConexion2.ComandoDb.ExecuteNonQuery();
 
+                    MessageBox.Show(ex.Message, "ERROR" + ConsultaArticulos);
                 }
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                    NuevaConexion2 = new ClsConexionDb(ConsultaFacturacion);
+                    if (NuevaConexion2.SiConexionDb)
+                    {
 
+                        NuevaConexion2.ComandoDb.ExecuteNonQuery();
 
-                MessageBox.Show(ex.Message, "ERROR"+ ConsultaEmpresas);
-            }
-            try
-            {
-                NuevaConexion2 = new ClsConexionDb(TablaDtconfi);
-                if (NuevaConexion2.SiConexionDb)
+                    }
+                }
+                catch (Exception ex)
                 {
 
-                    NuevaConexion2.ComandoDb.ExecuteNonQuery();
 
+                    MessageBox.Show(ex.Message, "ERROR" + ConsultaFacturacion);
                 }
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                    NuevaConexion2 = new ClsConexionDb(ConsultaEmpresas);
+                    if (NuevaConexion2.SiConexionDb)
+                    {
 
+                        NuevaConexion2.ComandoDb.ExecuteNonQuery();
 
-                MessageBox.Show(ex.Message, "ERROR"+ TablaDtconfi);
-            }
-            finally
-            {
-                if (NuevaConexion2.CerrarConexionDB)
+                    }
+                }
+                catch (Exception ex)
                 {
 
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
 
+                    MessageBox.Show(ex.Message, "ERROR" + ConsultaEmpresas);
                 }
-            }
-           
+                try
+                {
+                    NuevaConexion2 = new ClsConexionDb(TablaDtconfi);
+                    if (NuevaConexion2.SiConexionDb)
+                    {
 
+                        NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+
+                    MessageBox.Show(ex.Message, "ERROR" + TablaDtconfi);
+                }
+                finally
+                {
+                    if (NuevaConexion2.CerrarConexionDB)
+                    {
+
+                        NuevaConexion2.ComandoDb.Parameters.Clear();
+
+                    }
+                }
+
+            }
 
 
         }

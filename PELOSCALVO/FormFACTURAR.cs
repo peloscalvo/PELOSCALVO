@@ -423,7 +423,7 @@ namespace PELOSCALVO
                                 NuevaConexionDetalle.ComandoSql.ExecuteNonQuery();
                                 NuevaConexionDetalle.ComandoSql.Parameters.Clear();
                                 i++;
-                                 VALIDAR_Dtdetalle2 = "  Se Guardo Correctamente";
+                                VALIDAR_Dtdetalle2 = "  Se Guardo Correctamente";
                             }
 
 
@@ -449,9 +449,9 @@ namespace PELOSCALVO
 
             if (VALIDAR_DATOS == "ERROR")
             {
-                MessageBox.Show( VALIDAR_Dtfactura +"\n"+VALIDAR_Dtdetalle+"\n"+VALIDAR_Dtdetalle2, "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(VALIDAR_Dtfactura + "\n" + VALIDAR_Dtdetalle + "\n" + VALIDAR_Dtdetalle2, "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // RestaraurarOjetosFatu();
-                BtnCancelarfactura.Enabled = true;
+                this.BtnCancelarfactura.Enabled = true;
             }
             else
             {
@@ -791,8 +791,8 @@ namespace PELOSCALVO
         private void ActualizarFacturaSql()
         {
             // string consulta = "SELECT * from DtNuevaFactura";
-            string consulta = "select * FROM Dt"+ClasDatos.NombreFactura+" where  EmpresaEnlace = '" + this.NombreEmpresaReguistro.Text + " and" + "' Dt"+ClasDatos.NombreFactura+".EjercicioTipo ' = " + this.ejerciciosDeAñoComboBox.Text + " and " + "' Dt" + ClasDatos.NombreFactura + ".SerieTipo ' = " + this.SerieText.Text + "'";
-            string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura ;
+            string consulta = "select * FROM Dt" + ClasDatos.NombreFactura + " where  EmpresaEnlace = '" + this.NombreEmpresaReguistro.Text + " and" + "' Dt" + ClasDatos.NombreFactura + ".EjercicioTipo ' = " + this.ejerciciosDeAñoComboBox.Text + " and " + "' Dt" + ClasDatos.NombreFactura + ".SerieTipo ' = " + this.SerieText.Text + "'";
+            string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
             string consultaDetalle2 = "SELECT * from DtDetalles2_" + ClasDatos.NombreFactura;
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
 
@@ -1011,14 +1011,14 @@ namespace PELOSCALVO
             {
                 this.SerieText.Text = "A";
             }
-           // this.NombreEmpresaReguistro.Visible = false;
+            // this.NombreEmpresaReguistro.Visible = false;
             // this.PanelArriba.Tag = "SI";
         }
 
         private void EmpresaENLACEComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-    
+
         }
 
         private void EjerciciosDeAñoComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -1505,7 +1505,7 @@ namespace PELOSCALVO
         private void FormFACTURAR_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.PanelArriba.Tag = "N0";
-            if (this.BtnGuardarFactura.Enabled == true & this.BtnSalirFactura.Visible == false)
+            if (this.BtnGuardarFactura.Enabled == true)
             {
                 e.Cancel = true;
             }
@@ -1901,9 +1901,6 @@ namespace PELOSCALVO
             {
                 if (MessageBox.Show(" ¿Eliminar: " + ClasDatos.NombreFactura, " ELIMINAR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-
-                    // this.dtfacturas.DtNuevaFactura.ChildRelations.RemoveAt(this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex);
-
                     if (ClsConexionSql.SibaseDatosSql)
                     {
                         String Consulta = "DELETE FROM [DtNuevaFactura] WHERE ElaceFactura=" + Convert.ToInt32(this.EnlaceFactu.Text);
@@ -1919,7 +1916,7 @@ namespace PELOSCALVO
                             catch (Exception ex)
                             {
 
-                                MessageBox.Show(ex.Message, "ERROR AL GUARDAR DATOS TABLA DETALLE2");
+                                MessageBox.Show(ex.Message, "ERROR ELIMINAR FACTURA");
                             }
                             finally
                             {
@@ -1934,62 +1931,23 @@ namespace PELOSCALVO
                     {
                         if (File.Exists(ClasDatos.ArchivoInicioFacturas))
                         {
-                            //this.dtfacturas.DtDetallesFactura.Clear();
-                            //dtDetallesFacturaBindingSource.AddNew();
-                            int FILA = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
-                            int TFilas = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count;
-                            XmlDocument doc = new XmlDocument();
-                            if (File.Exists(ClasDatos.ArchivoInicioFacturas))
+                            try
                             {
-                                doc.Load(ClasDatos.ArchivoInicioFacturas);
-                                try
-                                {
-                                    foreach (XmlNode n1 in doc.DocumentElement.ChildNodes)
-                                    {
-                                        XmlNodeList elemList = doc.GetElementsByTagName("DtDetallesFactura");
-                                        //MessageBox.Show(NombreEmpresa7.ToString()+1);
-                                        foreach (XmlNode n2 in elemList)
-                                        {
-                                            if (n2.ChildNodes.Item(0).Name == "EnlaceDetalle")
-                                            {
-                                                String NombreId = n2.ChildNodes.Item(0).InnerText;
-                                                //MessageBox.Show(n2.ChildNodes.Item(0).Value+ n2.ChildNodes.Item(1).Value);
-                                                if (NombreId.ToString() == this.numeroFacturaTextBox.Text.ToString())
-                                                {
-
-                                                    // n2.RemoveAll();
-                                                    //  MessageBox.Show(this.empresaConfiTextBox.Text.ToString(), "YA EXISTE ESTA EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                                                }
-
-
-
-                                            }
-
-                                        }
-
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-
-                                    MessageBox.Show(ex.Message.ToString());
-                                }
+                                this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
+                                this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
+                                MessageBox.Show("Eliminado con exito", "ELIMINAR");
+                                this.dtNuevaFacturaDataGridView.Refresh();
                             }
+                            catch (Exception ex)
+                            {
 
-
-                            this.dtDetallesFacturaDataGridView.Rows.RemoveAt(this.dtDetallesFacturaDataGridView.RowCount - 2);
-                            this.dtDetallesFacturaBindingSource.AddNew();
-                            this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
-                            this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
-                            this.dtNuevaFacturaDataGridView.EndEdit();
-                            this.dtDetallesFacturaDataGridView.EndEdit();
+                                MessageBox.Show(ex.Message, "ELIMINAR FACTURA");
+                            }
+                            
                         }
                     }
 
-                    MessageBox.Show("Eliminado con exito", "ELIMINAR");
-                    this.dtNuevaFacturaDataGridView.Refresh();
+
                 }
 
             }
@@ -1997,15 +1955,18 @@ namespace PELOSCALVO
 
         private void dtDetallesFacturaDataGridView2_Validated(object sender, EventArgs e)
         {
-            if (this.dtDetallesFacturaDataGridView2.CurrentCell.ColumnIndex == 2 || this.dtDetallesFacturaDataGridView2.CurrentCell.ColumnIndex == 4)
+            if (dtDetallesFacturaDataGridView2.CurrentCell.RowIndex >= 0)
             {
-                int i = this.dtDetallesFacturaDataGridView2.CurrentCell.RowIndex;
-                if (this.dtDetallesFacturaDataGridView2.Rows[i].Cells[4].Value.ToString() == "0" || this.dtDetallesFacturaDataGridView2.Rows[i].Cells[2].Value.ToString() == "0")
+
+                if (this.dtDetallesFacturaDataGridView2.CurrentCell.ColumnIndex == 2 || this.dtDetallesFacturaDataGridView2.CurrentCell.ColumnIndex == 4)
                 {
-                    this.dtDetallesFacturaDataGridView2.Rows[i].Cells[6].Value = DBNull.Value;
+                    int i = this.dtDetallesFacturaDataGridView2.CurrentCell.RowIndex;
+                    if (this.dtDetallesFacturaDataGridView2.Rows[i].Cells[4].Value.ToString() == "0" || this.dtDetallesFacturaDataGridView2.Rows[i].Cells[2].Value.ToString() == "0")
+                    {
+                        this.dtDetallesFacturaDataGridView2.Rows[i].Cells[6].Value = DBNull.Value;
+                    }
                 }
             }
-
         }
         private void MenuDatagriClick(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -2032,12 +1993,12 @@ namespace PELOSCALVO
                 if (NombreItem.Contains("Lineablanco"))
                 {
                     NombreItem = NombreItem.Replace("Lineablanco", "");
-                    Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex+1;
+                    Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex + 1;
                     // DataRow FilaNueva = new DataTable(dtd);
                     DataTable dt = (DataTable)this.dtDetallesFacturaBindingSource.DataSource;
                     var row = dt.NewRow();
                     //this.dtDetallesFacturaBindingSource.Insert(Fila, row);
-                   // this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
+                    // this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
                     this.dtDetallesFacturaBindingSource.Insert(Fila, row);
                 }
                 if (NombreItem.Contains("EliminarLinea"))
@@ -2115,21 +2076,6 @@ namespace PELOSCALVO
             }
         }
 
-        private void empresaENLACEComboBox_MouseEnter(object sender, EventArgs e)
-        {
-           // this.NombreEmpresaReguistro.Visible = true;
-        }
-
-        private void empresaENLACEComboBox_MouseLeave(object sender, EventArgs e)
-        {
-            //this.NombreEmpresaReguistro.Visible = false;
-        }
-
-        private void empresaENLACEComboBox_Click(object sender, EventArgs e)
-        {
-            this.PanelArriba.Tag = "SI";
-        }
-
         private void ejerciciosDeAñoComboBox_Click(object sender, EventArgs e)
         {
             this.PanelArriba.Tag = "SI";
@@ -2145,46 +2091,49 @@ namespace PELOSCALVO
             MessageBox.Show(this.NombreEmpresaReguistro.Text);
         }
 
-        private void empresaENLACEComboBox_Leave(object sender, EventArgs e)
-        {
-            ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura + "\\" + ClasDatos.NombreFactura + "-" + this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text + ".Xml";
-            //MessageBox.Show(ClasDatos.ArchivoInicioFacturas);
-        }
-
-        private void empresaENLACEComboBox_Validated(object sender, EventArgs e)
-        {
-            ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura + "\\" + ClasDatos.NombreFactura + "-" + this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text + ".Xml";
-        }
-
         private void EmpresaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
-            if (this.PanelArriba.Tag.ToString() == "SI")
-            {
-                if (this.EmpresaPrincipal.SelectedIndex >= 0)
-                {
-                    this.dsfacturas.Clear();
-
-                    if (ClsConexionSql.SibaseDatosSql)
-                    {
-                        ActualizarFacturaSql();
-                    }
-                    else
-                    {
-                        if (File.Exists(ClasDatos.ArchivoInicioFacturas))
-                        {
-                            this.dsfacturas.ReadXml(ClasDatos.ArchivoInicioFacturas);
-                        }
-                    }
 
 
-                }
-            }
         }
 
         private void EmpresaPrincipal_Enter(object sender, EventArgs e)
         {
             this.PanelArriba.Tag = "SI";
+        }
+
+        private void NombreEmpresaReguistro_TextChanged(object sender, EventArgs e)
+        {
+            if (this.PanelArriba.Tag.ToString() == "SI")
+            {
+                if (this.EmpresaPrincipal.SelectedIndex >= 0)
+                {
+                    try
+                    {
+                        ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura + "\\" + ClasDatos.NombreFactura + "-" + this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text + ".Xml";
+                        this.dsfacturas.Clear();
+
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            ActualizarFacturaSql();
+                        }
+                        else
+                        {
+                            if (File.Exists(ClasDatos.ArchivoInicioFacturas))
+                            {
+                                this.dsfacturas.ReadXml(ClasDatos.ArchivoInicioFacturas);
+                            }
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw new Exception("ERROR");
+                    }
+
+                }
+            }
         }
     }
 }

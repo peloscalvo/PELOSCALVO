@@ -12,6 +12,7 @@ namespace PELOSCALVO
         {
             InitializeComponent();
             FormBienvenida.menu2 = this;
+            this.TransparencyKey = this.BackColor;
         }
         private void login(object sender, FormClosedEventArgs e)
         {
@@ -19,7 +20,7 @@ namespace PELOSCALVO
         }
         private void FormBienvenida_Load(object sender, EventArgs e)
         {
-            this.TransparencyKey = this.BackColor;
+           // this.TransparencyKey = this.BackColor;
             TimerStop.Start();
 
         }
