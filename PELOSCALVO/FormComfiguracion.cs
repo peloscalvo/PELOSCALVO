@@ -1117,13 +1117,7 @@ namespace PELOSCALVO
                     if (MessageBox.Show(" ¿Aceptar Guardar Empresa ? ", " GUARDAR EMPRESA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         ClasDatos.ArchivoInicioFacturas = this.nombreEmpresaTextBox.Text + " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
-                        if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
-                        {            
-                                this.EmpresaReguistro.Text = this.empresaConfiTextBox.Text;
-      
-                        }
-
-
+    
                         for (int i = 0; i <= 8; i++)
                         {
                             this.dtConfiDtTarifaTipoBindingSource.AddNew();
@@ -1153,6 +1147,7 @@ namespace PELOSCALVO
 
                             if (File.Exists(ClasDatos.RutaConfiguracionXml))
                             {
+                                dtConfiguracionPrincipalBindingSource.EndEdit();
                                 Validate();
                                 FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
                                 MessageBox.Show("Se Guardo Correctamente", "GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Information);

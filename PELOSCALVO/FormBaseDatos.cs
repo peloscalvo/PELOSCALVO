@@ -1259,32 +1259,32 @@ namespace PELOSCALVO
                 }
                 Random r = new Random();
                 int valor = r.Next(10, 90000000);
-                string TablaArticulos = "Prueba+" + valor.ToString();
-                string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos +valor +"] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                string TablaArticulos = "lISTAdeARTICULOS+" + valor.ToString();
+                string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos +valor +"] ([Id] INTEGER  primary key , [Referencia] varchar," +
                     "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                     "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                     ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                     " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                     ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                string ConsultaFacturacion = "CREATE TABLE [" + TipoNota + valor + "]([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+                string ConsultaFacturacion = "CREATE TABLE [" + TipoNota + valor + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
                "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
                  "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
                "[IvaImpuesto] int,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
-             "[FechaCobro]varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
+             "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
          "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar)";
 
-                string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal"+valor+"]( [IdEmpresa] INTEGER , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
+                string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal"+valor+"] ([IdEmpresa] INTEGER , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
                 "[DireccionEmpresa] varchar  ,[LocalidadEmpresa] varchar  ,[CodigoPostalEmpresa] varchar  ,[ProvinciaEmpresa] varchar ," +
               "[TelefonoEmpresa] varchar  ,[CorreoEmpresa] varchar  ,[WepEmpresa] varchar  ,[RegimenIvaEmpresa] varchar  ," +
             " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
-            " [CifEmpresa] varchar  ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] bit  ) ";
+            " [CifEmpresa] varchar  ,[NombreEmpresaReguistro]  primary key ,[ImagenEmpresa] varchar  ) ";
 
                 string TablaDtconfi = "CREATE TABLE[DtConfi] ([ConfiguraccionBasica" + valor + "] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                     "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar  ," +
                        " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal"+valor+"(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                 string ConsultaTablas = "CREATE TABLE [DtAlmacenes" + valor + "]( [Id_almacenes] INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
-            " CONSTRAINT F_DtAlmacenes" + valor + " FOREIGN KEY(Enlace_Almacenes)REFERENCES " + TipoNota +valor+ "(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+            " CONSTRAINT F_DtAlmacenes" + valor + " FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal" + valor+ "(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
 
                 ClsConexionDb.CadenaConexion = cadena;
@@ -1583,32 +1583,30 @@ namespace PELOSCALVO
 
         private void BtnRestablecer_Click(object sender, EventArgs e)
         {
-            if (this.TabArchivos.Tag.ToString() == "SI")
+            if (MessageBox.Show("Restaurar Conexiones y Activar Archivos locales", "CERRAR CONEXIONES Y RESTAURAR", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                if (MessageBox.Show("Restaurar Conexiones y Activar Archivos locales", "CERRAR CONEXIONES Y RESTAURAR", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    NombreArchivoDatos.Text = "Datos App Peloscalvo";
-                    TabArchivos.Tag = "NO";
-                    NombreArchivoDatos.BackColor = SystemColors.Control;
-                    Conexiones.ClsConexionSql.SibaseDatosSql = false;
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
-                    this.CheckAtivarServidor.Checked = false;
-                    this.CheckActivarDb.Checked = false;
-                    MessageBox.Show("Se Restauro Con Exito "+"n/"+"Carge Otra vez los Datos", "RESTAURAR");
-                }
+                NombreArchivoDatos.Text = "Datos App Peloscalvo";
+                TabArchivos.Tag = "NO";
+                NombreArchivoDatos.BackColor = SystemColors.Control;
+                Conexiones.ClsConexionSql.SibaseDatosSql = false;
+                this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
+                this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                this.CheckAtivarServidor.Checked = false;
+                this.CheckActivarDb.Checked = false;
+                MessageBox.Show("Se Restauro Con Exito " + "n/" + "Carge Otra vez los Datos", "RESTAURAR");
             }
-           
         }
 
-        private void BtnRestablecer_Enter(object sender, EventArgs e)
+        private void BtnRestablecer_MouseEnter(object sender, EventArgs e)
         {
             Info_Res.Visible = true;
         }
 
-        private void BtnRestablecer_Leave(object sender, EventArgs e)
+
+
+        private void TabArchivos_MouseEnter(object sender, EventArgs e)
         {
-            Info_Res.Visible = true;
+            Info_Res.Visible = false;
         }
     }
 }

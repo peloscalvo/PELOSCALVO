@@ -9,7 +9,7 @@ namespace PELOSCALVO
         string Rutacorreos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
         public FormCrearCorreos()
         {
-            DatagridCorreosEmpresa.Columns[6].DisplayIndex=7;
+           // DatagridCorreosEmpresa.Columns[6].DisplayIndex=7;
             DatagridCorreosEmpresa.Columns[0].Width = 190;//NombreEmpresa
             DatagridCorreosEmpresa.Columns[1].Width = 130;//CorreoEletronico
             DatagridCorreosEmpresa.Columns[2].Width = 160;//Usuario
