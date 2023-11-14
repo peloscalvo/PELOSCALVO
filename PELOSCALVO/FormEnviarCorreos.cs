@@ -32,8 +32,8 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.dsCorreos != null)
                 {
-                    TxtNombreCliente.DisplayMember = "CorreoEletronico";
-                    TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
+                    CorreoEmpresa.DisplayMember = "CorreoEletronico";
+                    CorreoEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;           
                 }
                 if (File.Exists(Rutacorreos))
                 {
@@ -62,11 +62,13 @@ namespace PELOSCALVO
                 try
                 {
                     login = new NetworkCredential(UsuarioCorreo.Text, ContraseñaCorreo.Text);
-                    ClienteCorreo = new SmtpClient(StmpCorreo.Text);
+                    ClienteCorreo = new SmtpClient(SmtpCorreo.Text);
                     ClienteCorreo.Port = Convert.ToInt32(PuertoCorreo.Text);
                     ClienteCorreo.EnableSsl = ChekSSL.Checked;
                     ClienteCorreo.Credentials = login;
-                    MensageCorreo = new MailMessage { From = new MailAddress(UsuarioCorreo.Text + StmpCorreo.Text.Replace("smptp.", "@"), UsuarioCorreo.Text, Encoding.UTF8) };
+                    ClienteCorreo.Timeout =Convert.ToInt32( TiempoEspera.Text);
+                    MensageCorreo = new MailMessage { From = new MailAddress(CorreoEmpresa.Text + SmtpCorreo.Text.Replace("smptp.", "@"), CorreoEmpresa.Text, Encoding.UTF8) };
+                  
                     MensageCorreo.To.Add(new MailAddress(TxtNombreCliente.Text));
                     if (!string.IsNullOrEmpty(TxtCC.Text))
                     {
@@ -74,6 +76,7 @@ namespace PELOSCALVO
 
                     }
                     // MensageCorreo.Attachments.Add("faf")
+                
                     MensageCorreo.Subject = TxtSuject.Text;
                     MensageCorreo.Body = Mensage.Text;
                     MensageCorreo.BodyEncoding = Encoding.UTF8;
@@ -130,10 +133,10 @@ namespace PELOSCALVO
                 ok = false;
                 ErrorCorreo.SetError(PuertoCorreo, "Campo Vacio Rellene");
             }
-            if (StmpCorreo.Text == string.Empty)
+            if (SmtpCorreo.Text == string.Empty)
             {
                 ok = false;
-                ErrorCorreo.SetError(StmpCorreo, "Campo Vacio Rellene");
+                ErrorCorreo.SetError(SmtpCorreo, "Campo Vacio Rellene");
             }
             return ok;
         }
@@ -164,6 +167,74 @@ namespace PELOSCALVO
         {
 
             MessageBox.Show(Directory.GetCurrentDirectory());
+        }
+        private void LimpiarCamposEmpresa()
+        {
+            UsuarioCorreo.Text = string.Empty;
+            ContraseñaCorreo.Text = string.Empty;
+            PuertoCorreo.Text = string.Empty;
+            SmtpCorreo.Text = string.Empty;
+        }
+        private void CorreoEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(CorreoEmpresa.SelectedIndex >= 0)
+            {
+                LimpiarCamposEmpresa();
+                int II = CorreoEmpresa.SelectedIndex;
+                var fila = FormMenuPrincipal.menu2principal.dsCorreos;
+                if (fila.Tables["Dtcorreos"].Rows[II]["smtp"].ToString() != string.Empty)
+                {
+                    SmtpCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["smtp"].ToString();
+                }
+                if (fila.Tables["Dtcorreos"].Rows[II]["Usuario"].ToString() != string.Empty)
+                {
+                    UsuarioCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Usuario"].ToString();
+                }
+                if (fila.Tables["Dtcorreos"].Rows[II]["Contraseña"].ToString() != string.Empty)
+                {
+                    ContraseñaCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Contraseña"].ToString();
+                }
+                if (fila.Tables["Dtcorreos"].Rows[II]["Puerto"].ToString() != string.Empty)
+                {
+                    PuertoCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Puerto"].ToString();
+                }
+                if (fila.Tables["Dtcorreos"].Rows[II]["Timeof"].ToString() != string.Empty)
+                {
+                    PuertoCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Timeof"].ToString();
+                }
+            }
+        }
+
+        private void PuertoCorreo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TiempoEspera_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

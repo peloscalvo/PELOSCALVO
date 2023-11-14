@@ -806,7 +806,7 @@ namespace PELOSCALVO
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormBaseDatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Base Datos";
+            this.Text = "Conectar Base Datos";
             this.Load += new System.EventHandler(this.FormBaseDatos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtServidorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsServidor)).EndInit();

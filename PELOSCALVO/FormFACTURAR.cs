@@ -1014,7 +1014,64 @@ namespace PELOSCALVO
             // this.NombreEmpresaReguistro.Visible = false;
             // this.PanelArriba.Tag = "SI";
         }
+        private void ActualizarFaturas_DB()
+        {
+            String NombreBaseDatos = ClasDatos.NombreFactura;
+            if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
+            {
+                NombreBaseDatos = "";
+            }
 
+            if (File.Exists(ClasDatos.ArchivoInicioFacturas))
+
+            {
+                String TipoTabla = "["+ "Dt"+ ClasDatos.NombreFactura + "]";
+                string consulta = "";
+                string cadena = "";
+                String Archivo = "";
+                if (this.TipoExtension_b.Text == "accdb")
+                {
+                    consulta = "Select * from " + TipoTabla;
+                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Clientes;
+                }
+                if (this.TipoExtension_b.Text == "mdb")
+                {
+                    consulta = "Select * from " + TipoTabla;
+                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Clientes;
+                }
+                if (this.TipoExtension_b.Text == "DBF")
+                {
+                    consulta = "Select * from " + this.SerieClientesText2.Text;
+                    //consulta = "Select * from " + "Tarifa1dea";
+                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
+                }
+                ClsConexionDb.CadenaConexion = cadena;
+                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                try
+                {
+
+                    if (NuevaConexion.SiConexionDb)
+                    {
+                        OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
+                        AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsClientes.DtClientes);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message, "ERROR");
+                }
+                finally
+                {
+                    if (NuevaConexion.CerrarConexionDB)
+                    {
+
+                    }
+                }
+                //  this.ContadorDatosClientes.Text = this.dtArticulosBindingSource.Count.ToString();
+            }
+        }
         private void EmpresaENLACEComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 

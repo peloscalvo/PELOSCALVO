@@ -1741,6 +1741,7 @@ namespace PELOSCALVO
 
                     if (File.Exists(ClasDatos.RutaConfiguracionXml))
                     {
+                        dtConfiguracionPrincipalDataGridView.EndEdit();
                         this.dtConfiguracionPrincipalDataGridView.Rows.Remove(this.dtConfiguracionPrincipalDataGridView.CurrentRow);
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
                         MessageBox.Show("Se Elimino Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1777,9 +1778,9 @@ namespace PELOSCALVO
 
                     if (File.Exists(ClasDatos.RutaConfiguracionXml))
                     {
-                        this.dtConfiDataGridView.Rows.Remove(this.dtConfiDataGridView.CurrentRow);
                         this.dtConfiBindingSource.EndEdit();
                         this.dtConfiDataGridView.EndEdit();
+                        this.dtConfiDataGridView.Rows.Remove(this.dtConfiDataGridView.CurrentRow);
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
                         MessageBox.Show("Se Elimino Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1915,8 +1916,12 @@ namespace PELOSCALVO
             {
                 if (this.dataGridPaises.RowCount >= 0)
                 {
+                    string paisPais = "Pais";
+                    if (this.dataGridPaises.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
+                    {
+                        paisPais = this.dataGridPaises.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    }
 
-                    string paisPais = this.dataGridPaises.Rows[e.RowIndex].Cells[0].Value.ToString();
                     if (e.ColumnIndex == 1)
                     {
 
@@ -1932,8 +1937,8 @@ namespace PELOSCALVO
 
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
-                                    this.dataGridPaises.Rows.Remove(this.dataGridPaises.CurrentRow);
                                     this.dtPaisesBindingSource.EndEdit();
+                                    this.dataGridPaises.Rows.Remove(this.dataGridPaises.CurrentRow);
                                     FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
                                 }
                                 MessageBox.Show(paisPais + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
@@ -2444,8 +2449,8 @@ namespace PELOSCALVO
                             {
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
-                                    this.dataGridProvincias.Rows.Remove(this.dataGridProvincias.CurrentRow);
                                     this.dtProvinciasBindingSource.EndEdit();
+                                    this.dataGridProvincias.Rows.Remove(this.dataGridProvincias.CurrentRow);                       
                                     FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
                                 }
                                 MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
@@ -2463,8 +2468,12 @@ namespace PELOSCALVO
             {
                 if (this.dataGridProveedores.RowCount >= 0)
                 {
-
-                    string provi = this.dataGridProveedores.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    string provi = "Proveedores";
+                    if (this.dataGridProveedores.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
+                    {
+                        provi = this.dataGridProveedores.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    }
+   
                     if (e.ColumnIndex == 2)
                     {
 
@@ -2478,15 +2487,15 @@ namespace PELOSCALVO
 
 
                             if (MessageBox.Show("Desea Eliminar Este Provedor ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
-                                this.dataGridProveedores.Rows.Remove(this.dataGridProveedores.CurrentRow);
-                                this.dtProveedoresBindingSource.EndEdit();
-                                this.dataGridProveedores.Refresh();
-                                if (File.Exists(ClasDatos.RutaConfiguracionXml))
+                            {                                                                                
+                               if (File.Exists(ClasDatos.RutaConfiguracionXml))
                                 {
+                                    this.dtProveedoresBindingSource.EndEdit();
+                                    this.dataGridProveedores.Rows.Remove(this.dataGridProveedores.CurrentRow);
                                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaConfiguracionXml);
                                 }
                                 MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
+                                this.dataGridProveedores.Refresh();
                             }
                         }
                     }
@@ -2499,7 +2508,12 @@ namespace PELOSCALVO
             if (e.RowIndex >= 0)
             {
 
-                string provi = this.dataGridObras.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string provi = " Obra";
+                if (this.dataGridObras.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
+                {
+                    provi = this.dataGridObras.Rows[e.RowIndex].Cells[1].Value.ToString();
+                }
+ 
                 if (e.ColumnIndex == 2)
                 {
 
@@ -2516,8 +2530,8 @@ namespace PELOSCALVO
                             {
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
-                                    this.dataGridObras.Rows.Remove(this.dataGridObras.CurrentRow);
                                     this.dtObrasBindingSource.EndEdit();
+                                    this.dataGridObras.Rows.Remove(this.dataGridObras.CurrentRow);
                                     FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
                                 }
                                 MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
@@ -2615,8 +2629,12 @@ namespace PELOSCALVO
         {
             if (e.RowIndex >= 0)
             {
+                string provi = "ALMACENES";
+                if (this.dataGridAlmacenes.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
+                {
+                    provi = this.dataGridAlmacenes.Rows[e.RowIndex].Cells[1].Value.ToString();
+                }
 
-                string provi = this.dataGridAlmacenes.Rows[e.RowIndex].Cells[1].Value.ToString();
                 if (e.ColumnIndex == 2)
                 {
 
@@ -2653,7 +2671,11 @@ namespace PELOSCALVO
             if (e.RowIndex >= 0)
             {
 
-                string provi = this.DataGridFamilias.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string provi = "Familia";
+                if (this.DataGridFamilias.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
+                {
+                     provi = this.DataGridFamilias.Rows[e.RowIndex].Cells[0].Value.ToString();
+                }
                 if (e.ColumnIndex == 1)
                 {
 
@@ -2668,14 +2690,15 @@ namespace PELOSCALVO
 
                         if (MessageBox.Show("Desea Eliminar Familia Producto ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            this.DataGridFamilias.Rows.Remove(this.DataGridFamilias.CurrentRow);
-                            this.dtFamiliaProductosBindingSource.EndEdit();
-                            this.DataGridFamilias.Refresh();
+                                               
                             if (File.Exists(ClasDatos.RutaMultidatos))
                             {
+                                this.dtFamiliaProductosBindingSource.EndEdit();
+                                this.DataGridFamilias.Rows.Remove(this.DataGridFamilias.CurrentRow);
                                 FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
                             }
                             MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
+                            this.DataGridFamilias.Refresh();
                         }
                     }
                 }
