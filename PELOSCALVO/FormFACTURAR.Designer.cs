@@ -594,7 +594,6 @@ namespace PELOSCALVO
             // 
             // EmpresaPrincipal
             // 
-            this.EmpresaPrincipal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
             this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.EmpresaPrincipal.DisplayMember = "EmpresaConfi";
             this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -604,7 +603,9 @@ namespace PELOSCALVO
             this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 21);
             this.EmpresaPrincipal.TabIndex = 73;
             this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
+            this.EmpresaPrincipal.SelectedValueChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedValueChanged);
             this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
+            this.EmpresaPrincipal.MouseEnter += new System.EventHandler(this.EmpresaPrincipal_MouseEnter);
             // 
             // dtConfiguracionPrincipalBindingSource
             // 

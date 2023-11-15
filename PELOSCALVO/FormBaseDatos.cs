@@ -1000,15 +1000,17 @@ namespace PELOSCALVO
                 {
                     if (this.TipoExtension_b.Text == "DBF")
                     {
-                        nombreBasedatos = this.SerieClientesText2.Text;
+                        nombreBasedatos = "";
                     }
                     if (this.TabArchivos.Tag.ToString() == "SI")
                     {
                         ClasDatos.Clientes = this.NombreArchivoDatos.Text;
                         ClasDatos.Articulos = this.NombreArchivoDatos.Text;
+                        ClasDatos.ArchivoInicioFacturas = "";
                     }
                     else
                     {
+                        ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                         ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
                         ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
                     }
