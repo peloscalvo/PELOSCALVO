@@ -89,6 +89,7 @@ namespace PELOSCALVO
             this.Autenticacion = new System.Windows.Forms.ComboBox();
             this.TabArchivoSql = new System.Windows.Forms.TabControl();
             this.BtnPrueba = new System.Windows.Forms.Button();
+            this.BtnTablas = new System.Windows.Forms.Button();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
@@ -794,11 +795,22 @@ namespace PELOSCALVO
             this.BtnPrueba.UseVisualStyleBackColor = true;
             this.BtnPrueba.Click += new System.EventHandler(this.BtnPrueba_Click);
             // 
+            // BtnTablas
+            // 
+            this.BtnTablas.Location = new System.Drawing.Point(617, 369);
+            this.BtnTablas.Name = "BtnTablas";
+            this.BtnTablas.Size = new System.Drawing.Size(75, 23);
+            this.BtnTablas.TabIndex = 87;
+            this.BtnTablas.Text = "Tablas";
+            this.BtnTablas.UseVisualStyleBackColor = true;
+            this.BtnTablas.Click += new System.EventHandler(this.BtnTablas_Click);
+            // 
             // FormBaseDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(849, 453);
+            this.Controls.Add(this.BtnTablas);
             this.Controls.Add(this.BtnPrueba);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
@@ -883,5 +895,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCrearTbCliente;
         private System.Windows.Forms.Button BtnRestablecer;
         private System.Windows.Forms.Label Info_Res;
+        private System.Windows.Forms.Button BtnTablas;
     }
 }
