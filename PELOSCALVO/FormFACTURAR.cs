@@ -1063,7 +1063,7 @@ namespace PELOSCALVO
             if (this.panelBotones.Enabled == true)
             {
                 this.dsfacturas.Clear();
-                if (this.SerieText.Text != string.Empty && this.NombreEmpresaReguistro.Text == string.Empty)
+                if ( this.NombreEmpresaReguistro.Text == string.Empty && this.ejerciciosDeAñoComboBox.Text == string.Empty && this.SerieText.Text == string.Empty)
                 {
                     MessageBox.Show("Faltan Datos o Datos Erradicos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -1480,14 +1480,6 @@ namespace PELOSCALVO
 
         private void BtnImprimirFactura_Click(object sender, EventArgs e)
         {
-            //for (int i = 0; i <= dtDetallesFacturaDataGridView.RowCount-1; i++)
-            //{
-            //  dt.Rows.Add(dtDetallesFacturaDataGridView.Rows[i].Cells[0].Value, dtDetallesFacturaDataGridView.Rows[i].Cells[1].Value,
-            //     dtDetallesFacturaDataGridView.Rows[i].Cells[2].Value, dtDetallesFacturaDataGridView.Rows[i].Cells[3].Value, 
-            //       dtDetallesFacturaDataGridView.Rows[i].Cells[4].Value, dtDetallesFacturaDataGridView.Rows[i].Cells[5].Value, dtDetallesFacturaDataGridView.Rows[i].Cells[6].Value);
-
-            // }
-            //FormReporteFactura.menu2Reporte.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("", dt));   
             if (this.dtNuevaFacturaBindingSource.Count <= 0)
             {
                 MessageBox.Show("Nada Que Imprimir ", " IMPRIMIR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1769,11 +1761,9 @@ namespace PELOSCALVO
         {
 
             this.dtDetallesFacturaDataGridView.Columns["ImporteDetalle"].DefaultCellStyle.Format = "C" + this.Numimporte.Value;
-            if (ClasDatos.NombreFactura == "Nota 2")
+            if (ClasDatos.NombreFactura == "Nota2")
             {
-
                 this.dtDetallesFacturaDataGridView2.Columns[6].DefaultCellStyle.Format = "C" + this.Numimporte.Value;
-
             }
 
 
@@ -1850,9 +1840,6 @@ namespace PELOSCALVO
                     if (this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].EditedFormattedValue.ToString() != string.Empty)
                     {
                         string Referencia = this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].EditedFormattedValue.ToString();
-                        //Referencia.ToUpper((System.Globalization.CultureInfo)this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value);
-                        // Referencia = Referencia.ToUpper();
-                        //this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value = Referencia.ToUpper();
 
                     }
 
@@ -1908,7 +1895,7 @@ namespace PELOSCALVO
                 {
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-                        String Consulta = "DELETE FROM [DtNuevaFactura] WHERE ElaceFactura=" + Convert.ToInt32(this.EnlaceFactu.Text);
+                        String Consulta = "DELETE FROM [Dt"+ClasDatos.NombreFactura+"] WHERE ElaceFactura=" + Convert.ToInt32(this.EnlaceFactu.Text);
 
                         ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
                         if (NuevaConexion.SiConexionSql)
@@ -1938,7 +1925,7 @@ namespace PELOSCALVO
                         {
                             try
                             {
-                                this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
+                               // this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
                                 this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
                                 MessageBox.Show("Eliminado con exito", "ELIMINAR");
                                 this.dtNuevaFacturaDataGridView.Refresh();
