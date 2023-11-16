@@ -40,6 +40,8 @@ namespace PELOSCALVO
             this.label4 = new System.Windows.Forms.Label();
             this.TxtCC = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.TiempoEspera = new System.Windows.Forms.TextBox();
             this.CorreoEmpresa = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.BtnVerPass = new System.Windows.Forms.Button();
@@ -56,17 +58,25 @@ namespace PELOSCALVO
             this.dtCorreoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.TxtNombreCliente = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.TiempoEspera = new System.Windows.Forms.TextBox();
+            this.ControlCorreo = new System.Windows.Forms.TabControl();
+            this.TabCorreoE = new System.Windows.Forms.TabPage();
+            this.TabConfiCorreo = new System.Windows.Forms.TabPage();
+            this.ListaAdjuntos = new System.Windows.Forms.ListView();
+            this.BtnExaminarCorreo = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.BtnLimpiarAdjuntos = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtCorreoBindingSource)).BeginInit();
+            this.ControlCorreo.SuspendLayout();
+            this.TabCorreoE.SuspendLayout();
+            this.TabConfiCorreo.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 24);
+            this.label1.Location = new System.Drawing.Point(16, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 1;
@@ -74,9 +84,9 @@ namespace PELOSCALVO
             // 
             // BtnEnviar
             // 
-            this.BtnEnviar.Location = new System.Drawing.Point(639, 459);
+            this.BtnEnviar.Location = new System.Drawing.Point(697, 425);
             this.BtnEnviar.Name = "BtnEnviar";
-            this.BtnEnviar.Size = new System.Drawing.Size(129, 23);
+            this.BtnEnviar.Size = new System.Drawing.Size(64, 23);
             this.BtnEnviar.TabIndex = 2;
             this.BtnEnviar.Text = "Enviar";
             this.BtnEnviar.UseVisualStyleBackColor = true;
@@ -85,7 +95,7 @@ namespace PELOSCALVO
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 103);
+            this.label2.Location = new System.Drawing.Point(-2, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 4;
@@ -93,7 +103,7 @@ namespace PELOSCALVO
             // 
             // Mensage
             // 
-            this.Mensage.Location = new System.Drawing.Point(67, 100);
+            this.Mensage.Location = new System.Drawing.Point(54, 85);
             this.Mensage.Multiline = true;
             this.Mensage.Name = "Mensage";
             this.Mensage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -103,7 +113,7 @@ namespace PELOSCALVO
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 77);
+            this.label3.Location = new System.Drawing.Point(8, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 6;
@@ -111,7 +121,7 @@ namespace PELOSCALVO
             // 
             // TxtSuject
             // 
-            this.TxtSuject.Location = new System.Drawing.Point(67, 74);
+            this.TxtSuject.Location = new System.Drawing.Point(54, 59);
             this.TxtSuject.Name = "TxtSuject";
             this.TxtSuject.Size = new System.Drawing.Size(608, 20);
             this.TxtSuject.TabIndex = 5;
@@ -119,7 +129,7 @@ namespace PELOSCALVO
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 51);
+            this.label4.Location = new System.Drawing.Point(24, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 13);
             this.label4.TabIndex = 8;
@@ -127,7 +137,7 @@ namespace PELOSCALVO
             // 
             // TxtCC
             // 
-            this.TxtCC.Location = new System.Drawing.Point(67, 48);
+            this.TxtCC.Location = new System.Drawing.Point(54, 33);
             this.TxtCC.Name = "TxtCC";
             this.TxtCC.Size = new System.Drawing.Size(608, 20);
             this.TxtCC.TabIndex = 7;
@@ -148,11 +158,30 @@ namespace PELOSCALVO
             this.groupBox1.Controls.Add(this.PuertoCorreo);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.UsuarioCorreo);
-            this.groupBox1.Location = new System.Drawing.Point(67, 295);
+            this.groupBox1.Location = new System.Drawing.Point(46, 171);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(684, 154);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(623, 102);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(43, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Espera:";
+            // 
+            // TiempoEspera
+            // 
+            this.TiempoEspera.Location = new System.Drawing.Point(591, 118);
+            this.TiempoEspera.Name = "TiempoEspera";
+            this.TiempoEspera.Size = new System.Drawing.Size(77, 20);
+            this.TiempoEspera.TabIndex = 23;
+            this.TiempoEspera.Text = "45";
+            this.TiempoEspera.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TiempoEspera.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TiempoEspera_KeyPress);
             // 
             // CorreoEmpresa
             // 
@@ -270,7 +299,7 @@ namespace PELOSCALVO
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(693, 241);
+            this.button1.Location = new System.Drawing.Point(668, 221);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 19;
@@ -282,46 +311,102 @@ namespace PELOSCALVO
             // TxtNombreCliente
             // 
             this.TxtNombreCliente.FormattingEnabled = true;
-            this.TxtNombreCliente.Location = new System.Drawing.Point(67, 21);
+            this.TxtNombreCliente.Location = new System.Drawing.Point(54, 6);
             this.TxtNombreCliente.Name = "TxtNombreCliente";
             this.TxtNombreCliente.Size = new System.Drawing.Size(608, 21);
             this.TxtNombreCliente.TabIndex = 20;
             // 
-            // label10
+            // ControlCorreo
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(623, 102);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 13);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Espera:";
+            this.ControlCorreo.Controls.Add(this.TabCorreoE);
+            this.ControlCorreo.Controls.Add(this.TabConfiCorreo);
+            this.ControlCorreo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ControlCorreo.Location = new System.Drawing.Point(0, 0);
+            this.ControlCorreo.Name = "ControlCorreo";
+            this.ControlCorreo.SelectedIndex = 0;
+            this.ControlCorreo.Size = new System.Drawing.Size(801, 490);
+            this.ControlCorreo.TabIndex = 21;
             // 
-            // TiempoEspera
+            // TabCorreoE
             // 
-            this.TiempoEspera.Location = new System.Drawing.Point(591, 118);
-            this.TiempoEspera.Name = "TiempoEspera";
-            this.TiempoEspera.Size = new System.Drawing.Size(77, 20);
-            this.TiempoEspera.TabIndex = 23;
-            this.TiempoEspera.Text = "45";
-            this.TiempoEspera.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TiempoEspera.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TiempoEspera_KeyPress);
+            this.TabCorreoE.Controls.Add(this.BtnLimpiarAdjuntos);
+            this.TabCorreoE.Controls.Add(this.label11);
+            this.TabCorreoE.Controls.Add(this.BtnExaminarCorreo);
+            this.TabCorreoE.Controls.Add(this.ListaAdjuntos);
+            this.TabCorreoE.Controls.Add(this.TxtNombreCliente);
+            this.TabCorreoE.Controls.Add(this.button1);
+            this.TabCorreoE.Controls.Add(this.label1);
+            this.TabCorreoE.Controls.Add(this.BtnEnviar);
+            this.TabCorreoE.Controls.Add(this.Mensage);
+            this.TabCorreoE.Controls.Add(this.label4);
+            this.TabCorreoE.Controls.Add(this.label2);
+            this.TabCorreoE.Controls.Add(this.TxtCC);
+            this.TabCorreoE.Controls.Add(this.TxtSuject);
+            this.TabCorreoE.Controls.Add(this.label3);
+            this.TabCorreoE.Location = new System.Drawing.Point(4, 22);
+            this.TabCorreoE.Name = "TabCorreoE";
+            this.TabCorreoE.Padding = new System.Windows.Forms.Padding(3);
+            this.TabCorreoE.Size = new System.Drawing.Size(793, 464);
+            this.TabCorreoE.TabIndex = 0;
+            this.TabCorreoE.Text = "Enviar";
+            this.TabCorreoE.UseVisualStyleBackColor = true;
+            // 
+            // TabConfiCorreo
+            // 
+            this.TabConfiCorreo.Controls.Add(this.groupBox1);
+            this.TabConfiCorreo.Location = new System.Drawing.Point(4, 22);
+            this.TabConfiCorreo.Name = "TabConfiCorreo";
+            this.TabConfiCorreo.Padding = new System.Windows.Forms.Padding(3);
+            this.TabConfiCorreo.Size = new System.Drawing.Size(793, 371);
+            this.TabConfiCorreo.TabIndex = 1;
+            this.TabConfiCorreo.Text = "Configuracion";
+            this.TabConfiCorreo.UseVisualStyleBackColor = true;
+            // 
+            // ListaAdjuntos
+            // 
+            this.ListaAdjuntos.HideSelection = false;
+            this.ListaAdjuntos.Location = new System.Drawing.Point(54, 310);
+            this.ListaAdjuntos.Name = "ListaAdjuntos";
+            this.ListaAdjuntos.Size = new System.Drawing.Size(608, 111);
+            this.ListaAdjuntos.TabIndex = 21;
+            this.ListaAdjuntos.UseCompatibleStateImageBehavior = false;
+            // 
+            // BtnExaminarCorreo
+            // 
+            this.BtnExaminarCorreo.Location = new System.Drawing.Point(668, 310);
+            this.BtnExaminarCorreo.Name = "BtnExaminarCorreo";
+            this.BtnExaminarCorreo.Size = new System.Drawing.Size(75, 23);
+            this.BtnExaminarCorreo.TabIndex = 95;
+            this.BtnExaminarCorreo.Text = "&Examinar";
+            this.BtnExaminarCorreo.UseVisualStyleBackColor = true;
+            this.BtnExaminarCorreo.Click += new System.EventHandler(this.BtnExaminarCorreo_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(300, 294);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(143, 16);
+            this.label11.TabIndex = 96;
+            this.label11.Text = "Archivos Adjuntos";
+            // 
+            // BtnLimpiarAdjuntos
+            // 
+            this.BtnLimpiarAdjuntos.Location = new System.Drawing.Point(598, 287);
+            this.BtnLimpiarAdjuntos.Name = "BtnLimpiarAdjuntos";
+            this.BtnLimpiarAdjuntos.Size = new System.Drawing.Size(64, 23);
+            this.BtnLimpiarAdjuntos.TabIndex = 97;
+            this.BtnLimpiarAdjuntos.Text = "&Limpiar";
+            this.BtnLimpiarAdjuntos.UseVisualStyleBackColor = true;
+            this.BtnLimpiarAdjuntos.Click += new System.EventHandler(this.BtnLimpiarAdjuntos_Click);
             // 
             // FormEnviarCorreos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 502);
-            this.Controls.Add(this.TxtNombreCliente);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.TxtCC);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.TxtSuject);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.Mensage);
-            this.Controls.Add(this.BtnEnviar);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ControlCorreo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -333,8 +418,11 @@ namespace PELOSCALVO
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtCorreoBindingSource)).EndInit();
+            this.ControlCorreo.ResumeLayout(false);
+            this.TabCorreoE.ResumeLayout(false);
+            this.TabCorreoE.PerformLayout();
+            this.TabConfiCorreo.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -366,6 +454,13 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TiempoEspera;
+        private System.Windows.Forms.TabControl ControlCorreo;
+        private System.Windows.Forms.TabPage TabCorreoE;
+        private System.Windows.Forms.ListView ListaAdjuntos;
+        private System.Windows.Forms.TabPage TabConfiCorreo;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button BtnExaminarCorreo;
+        private System.Windows.Forms.Button BtnLimpiarAdjuntos;
     }
 }
 

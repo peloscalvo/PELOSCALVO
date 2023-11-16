@@ -585,9 +585,8 @@ namespace PELOSCALVO
             this.TipoExtension_b.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipoExtension_b.FormattingEnabled = true;
             this.TipoExtension_b.Items.AddRange(new object[] {
-            "DBF",
-            "mdb",
-            "accdb"});
+            "accdb",
+            "mdb"});
             this.TipoExtension_b.Location = new System.Drawing.Point(355, 123);
             this.TipoExtension_b.Name = "TipoExtension_b";
             this.TipoExtension_b.Size = new System.Drawing.Size(95, 21);

@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
-using System.IO;
+using System.Text;
+using System.Windows.Forms;
 
 namespace PELOSCALVO
 {
@@ -32,17 +27,15 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.dsCorreos != null)
                 {
-                    CorreoEmpresa.DisplayMember = "CorreoEletronico";
-                    CorreoEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;           
+                    this.CorreoEmpresa.DisplayMember = "CorreoEletronico";
+                    this.CorreoEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
+                    this.TxtNombreCliente.DisplayMember = "CorreoEletronico_cli";
+                    this.TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
                 }
-                if (FormMenuPrincipal.menu2principal.dsCorreosCliente != null)
+
+                if (File.Exists(this.Rutacorreos))
                 {
-                    TxtNombreCliente.DisplayMember = "CorreoEletronico_cli";
-                    TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
-                }
-                if (File.Exists(Rutacorreos))
-                {
-                    FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);
+                    // FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);
 
                 }
                 else
@@ -66,31 +59,38 @@ namespace PELOSCALVO
             {
                 try
                 {
-                    login = new NetworkCredential(UsuarioCorreo.Text, ContraseñaCorreo.Text);
-                    ClienteCorreo = new SmtpClient(SmtpCorreo.Text);
-                    ClienteCorreo.Port = Convert.ToInt32(PuertoCorreo.Text);
-                    ClienteCorreo.EnableSsl = ChekSSL.Checked;
-                    ClienteCorreo.Credentials = login;
-                    ClienteCorreo.Timeout =Convert.ToInt32( TiempoEspera.Text);
-                    MensageCorreo = new MailMessage { From = new MailAddress(CorreoEmpresa.Text + SmtpCorreo.Text.Replace("smptp.", "@"), CorreoEmpresa.Text, Encoding.UTF8) };
-                  
-                    MensageCorreo.To.Add(new MailAddress(TxtNombreCliente.Text));
-                    if (!string.IsNullOrEmpty(TxtCC.Text))
+                    this.login = new NetworkCredential(this.UsuarioCorreo.Text, this.ContraseñaCorreo.Text);
+                    this.ClienteCorreo = new SmtpClient(this.SmtpCorreo.Text);
+                    this.ClienteCorreo.Port = Convert.ToInt32(this.PuertoCorreo.Text);
+                    this.ClienteCorreo.EnableSsl = this.ChekSSL.Checked;
+                    this.ClienteCorreo.Credentials = this.login;
+                    this.ClienteCorreo.Timeout = Convert.ToInt32(this.TiempoEspera.Text);
+                    this.MensageCorreo = new MailMessage { From = new MailAddress(this.CorreoEmpresa.Text + this.SmtpCorreo.Text.Replace("smptp.", "@"), this.CorreoEmpresa.Text, Encoding.UTF8) };
+
+                    this.MensageCorreo.To.Add(new MailAddress(this.TxtNombreCliente.Text));
+                    if (!string.IsNullOrEmpty(this.TxtCC.Text))
                     {
-                        MensageCorreo.To.Add(TxtCC.Text);
+                        this.MensageCorreo.To.Add(this.TxtCC.Text);
 
                     }
                     // MensageCorreo.Attachments.Add("faf")
-                
-                    MensageCorreo.Subject = TxtSuject.Text;
-                    MensageCorreo.Body = Mensage.Text;
-                    MensageCorreo.BodyEncoding = Encoding.UTF8;
-                    MensageCorreo.IsBodyHtml = true;
-                    MensageCorreo.Priority = MailPriority.Normal;
-                    MensageCorreo.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-                    ClienteCorreo.SendCompleted += new SendCompletedEventHandler(EnviarCorreo);
+                    foreach (var item in ListaAdjuntos.Items)
+                    {
+                        if(item.ToString() != string.Empty)
+                        {
+                            Attachment Archivo_adju = new Attachment(item.ToString());
+                            MensageCorreo.Attachments.Add(Archivo_adju);
+                        }
+                    }
+                    this.MensageCorreo.Subject = this.TxtSuject.Text;
+                    this.MensageCorreo.Body = this.Mensage.Text;
+                    this.MensageCorreo.BodyEncoding = Encoding.UTF8;
+                    this.MensageCorreo.IsBodyHtml = true;
+                    this.MensageCorreo.Priority = MailPriority.Normal;
+                    this.MensageCorreo.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                    this.ClienteCorreo.SendCompleted += new SendCompletedEventHandler(EnviarCorreo);
                     string Stado = " Enviando....";
-                    ClienteCorreo.SendAsync(MensageCorreo, Stado);
+                    this.ClienteCorreo.SendAsync(this.MensageCorreo, Stado);
                 }
                 catch (Exception ex)
                 {
@@ -100,71 +100,71 @@ namespace PELOSCALVO
             }
         }
 
-        private static void EnviarCorreo(object sender,AsyncCompletedEventArgs e)
+        private static void EnviarCorreo(object sender, AsyncCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
-                MessageBox.Show(e.UserState+" Cancelado","CANCELADO",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show(e.UserState + " Cancelado", "CANCELADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if(e.Error != null)
+            if (e.Error != null)
             {
-                MessageBox.Show(String.Format(" {0}{1} " ,e.UserState , e.Error), "CANCELADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(String.Format(" {0}{1} ", e.UserState, e.Error), "CANCELADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show(e.UserState + " Enviado Con Exito", "Enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private  bool ValidarCorreoEnv()
+        private bool ValidarCorreoEnv()
         {
             bool ok = true;
-            if (TxtNombreCliente.Text == string.Empty)
+            if (this.TxtNombreCliente.Text == string.Empty)
             {
                 ok = false;
-                ErrorCorreo.SetError ( TxtNombreCliente, "Campo Vacio Rellene");
+                this.ErrorCorreo.SetError(this.TxtNombreCliente, "Campo Vacio Rellene");
             }
-            if (UsuarioCorreo.Text == string.Empty)
+            if (this.UsuarioCorreo.Text == string.Empty)
             {
                 ok = false;
-                ErrorCorreo.SetError(UsuarioCorreo, "Campo Vacio Rellene");
+                this.ErrorCorreo.SetError(this.UsuarioCorreo, "Campo Vacio Rellene");
             }
-            if (ContraseñaCorreo.Text == string.Empty)
+            if (this.ContraseñaCorreo.Text == string.Empty)
             {
                 ok = false;
-                ErrorCorreo.SetError(ContraseñaCorreo, "Campo Vacio Rellene");
+                this.ErrorCorreo.SetError(this.ContraseñaCorreo, "Campo Vacio Rellene");
             }
-            if (PuertoCorreo.Text == string.Empty)
+            if (this.PuertoCorreo.Text == string.Empty)
             {
                 ok = false;
-                ErrorCorreo.SetError(PuertoCorreo, "Campo Vacio Rellene");
+                this.ErrorCorreo.SetError(this.PuertoCorreo, "Campo Vacio Rellene");
             }
-            if (SmtpCorreo.Text == string.Empty)
+            if (this.SmtpCorreo.Text == string.Empty)
             {
                 ok = false;
-                ErrorCorreo.SetError(SmtpCorreo, "Campo Vacio Rellene");
+                this.ErrorCorreo.SetError(this.SmtpCorreo, "Campo Vacio Rellene");
             }
             return ok;
         }
         private void borrarCorreoEnv()
         {
-                ErrorCorreo.SetError(TxtNombreCliente, "");
-                ErrorCorreo.SetError(UsuarioCorreo, "");
-            ErrorCorreo.SetError(ContraseñaCorreo, "");
-                ErrorCorreo.SetError(PuertoCorreo, "");
+            this.ErrorCorreo.SetError(this.TxtNombreCliente, "");
+            this.ErrorCorreo.SetError(this.UsuarioCorreo, "");
+            this.ErrorCorreo.SetError(this.ContraseñaCorreo, "");
+            this.ErrorCorreo.SetError(this.PuertoCorreo, "");
         }
         private void BtnVerPass_Click(object sender, EventArgs e)
         {
-            if (BtnVerPass.Tag.ToString() == "SI")
+            if (this.BtnVerPass.Tag.ToString() == "SI")
             {
-                ContraseñaCorreo.Tag= "NO";
-                ContraseñaCorreo.PasswordChar = '\0';
-                BtnEnviar.Text = "Ocultar";
+                this.ContraseñaCorreo.Tag = "NO";
+                this.ContraseñaCorreo.PasswordChar = '\0';
+                this.BtnEnviar.Text = "Ocultar";
             }
             else
             {
-                ContraseñaCorreo.PasswordChar = '*';
-                ContraseñaCorreo.Tag = "SI";
-                BtnEnviar.Text = "Ver";
+                this.ContraseñaCorreo.PasswordChar = '*';
+                this.ContraseñaCorreo.Tag = "SI";
+                this.BtnEnviar.Text = "Ver";
             }
         }
 
@@ -175,37 +175,37 @@ namespace PELOSCALVO
         }
         private void LimpiarCamposEmpresa()
         {
-            UsuarioCorreo.Text = string.Empty;
-            ContraseñaCorreo.Text = string.Empty;
-            PuertoCorreo.Text = string.Empty;
-            SmtpCorreo.Text = string.Empty;
+            this.UsuarioCorreo.Text = string.Empty;
+            this.ContraseñaCorreo.Text = string.Empty;
+            this.PuertoCorreo.Text = string.Empty;
+            this.SmtpCorreo.Text = string.Empty;
         }
         private void CorreoEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(CorreoEmpresa.SelectedIndex >= 0)
+            if (this.CorreoEmpresa.SelectedIndex >= 0)
             {
                 LimpiarCamposEmpresa();
-                int II = CorreoEmpresa.SelectedIndex;
+                int II = this.CorreoEmpresa.SelectedIndex;
                 var fila = FormMenuPrincipal.menu2principal.dsCorreos;
                 if (fila.Tables["Dtcorreos"].Rows[II]["smtp"].ToString() != string.Empty)
                 {
-                    SmtpCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["smtp"].ToString();
+                    this.SmtpCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["smtp"].ToString();
                 }
                 if (fila.Tables["Dtcorreos"].Rows[II]["Usuario"].ToString() != string.Empty)
                 {
-                    UsuarioCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Usuario"].ToString();
+                    this.UsuarioCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Usuario"].ToString();
                 }
                 if (fila.Tables["Dtcorreos"].Rows[II]["Contraseña"].ToString() != string.Empty)
                 {
-                    ContraseñaCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Contraseña"].ToString();
+                    this.ContraseñaCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Contraseña"].ToString();
                 }
                 if (fila.Tables["Dtcorreos"].Rows[II]["Puerto"].ToString() != string.Empty)
                 {
-                    PuertoCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Puerto"].ToString();
+                    this.PuertoCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Puerto"].ToString();
                 }
                 if (fila.Tables["Dtcorreos"].Rows[II]["Timeof"].ToString() != string.Empty)
                 {
-                    PuertoCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Timeof"].ToString();
+                    this.PuertoCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Timeof"].ToString();
                 }
             }
         }
@@ -240,6 +240,35 @@ namespace PELOSCALVO
             {
                 e.Handled = true;
             }
+        }
+
+        private void BtnExaminarCorreo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog BuscarArchivo = new OpenFileDialog();//Datos App Peloscalvo - copia.accdb
+                BuscarArchivo.Title = "Buscar Archivo Datos App";
+                BuscarArchivo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                BuscarArchivo.Filter = BuscarArchivo.Filter = @"All Files|*.*|Text File (.txt)|*.txt|access File (.accdb ,.mdb)|*.accdb;*.mdb|PDF (.pdf)|*.pdf|Office Files|*.doc;*.xls;*.ppt|Spreadsheet (.xls ,.xlsx)|  *.xls ;*.xlsx|Presentation (.pptx ,.ppt)|*.pptx;*.ppt";
+                if (BuscarArchivo.ShowDialog() == DialogResult.OK)
+                {
+                    ListaAdjuntos.Items.Add(Path.GetDirectoryName(BuscarArchivo.FileName.ToString()));
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Puede Que este Artivo Sea el Correcto" + "\n" + ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+            }
+        }
+
+        private void BtnLimpiarAdjuntos_Click(object sender, EventArgs e)
+        {
+            ListaAdjuntos.Items.Clear();
         }
     }
 }

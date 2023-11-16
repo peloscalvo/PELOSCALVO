@@ -14,7 +14,6 @@ namespace PELOSCALVO
     {
         public DataSet dsCorreos = new DataSet("Dscorreos");
         public DataTable DtCorreos = new DataTable("DtCorreos");
-        public DataSet dsCorreosCliente = new DataSet("DscorreosCliente");
         public DataTable DtCorreosCliente = new DataTable("DtCorreosCliente");
         // public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
@@ -40,7 +39,7 @@ namespace PELOSCALVO
             this.DtCorreosCliente.Columns.Add("EmpresaNombre");
             this.DtCorreosCliente.Columns.Add("Direcion");
             this.DtCorreosCliente.Columns.Add("CorreoEletronico_cli");
-            this.dsCorreosCliente.Tables.Add(this.DtCorreosCliente);
+            this.dsCorreos.Tables.Add(this.DtCorreosCliente);
             // fila["NombreEmpresa"] = "faf";
             InitializeComponent();
             FormMenuPrincipal.menu2principal = this;
@@ -146,6 +145,17 @@ namespace PELOSCALVO
                     else
                     {
                         CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
+
+                    }
+                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "DscorreosCliente.Xml"))
+                    {
+                        this.dsCorreos.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "DscorreosCliente.Xml");
+
+
+                    }
+                    else
+                    {
+                        CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "DscorreosCliente.Xml");
 
                     }
                 }

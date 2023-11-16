@@ -76,7 +76,7 @@ namespace PELOSCALVO
         }
         private void EliminarArticuloBb()
         {
-            if (File.Exists(ClasDatos.Articulos))
+            if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
                 try
                 {
@@ -200,7 +200,7 @@ namespace PELOSCALVO
           //  FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = "[Descripcci]";
             if (ClsConexionSql.SibaseDatosSql == false)
             {
-                if (!File.Exists(ClasDatos.RutaEmpresas))
+                if (!File.Exists(ClasDatos.RutaBaseDatosDb))
                 {
                     MessageBox.Show("Falta Archivo De Datos", "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -371,7 +371,7 @@ namespace PELOSCALVO
             if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
             {
                 this.dtPreciosDataGridView.Focus();
-                if (EspacioDiscos(ClasDatos.Articulos, 200))
+                if (EspacioDiscos(ClasDatos.RutaMultidatos, 200))
                 {
                     BORRARerrores();
                     if (this.idArticulo.Text == string.Empty)
@@ -413,11 +413,14 @@ namespace PELOSCALVO
                                 GuardarArticulosSQL();
                             }
                             else
-                            {
-                                ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + " De Articulos" + "." + FormMenuPrincipal.menu2principal.InfoExtension.Text;
-                                if (File.Exists(ClasDatos.Articulos))
+                            { 
+                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
                                 {
                                     GuardarArticulosDB();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El Archivo No Se Encuentra" + "\n" + ClasDatos.RutaBaseDatosDb, "ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 }
                             }
                             this.ContadorDatos3.Text = this.dtPreciosDataGridView.Rows.Count.ToString();
@@ -430,10 +433,7 @@ namespace PELOSCALVO
                 }
 
             }
-            else
-            {
-                MessageBox.Show("El Archivo No Se Encuentra" + "\n" + ClasDatos.Articulos, "ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+    
         }
 
         private void BtnCancelarArticulo_Click(object sender, EventArgs e)

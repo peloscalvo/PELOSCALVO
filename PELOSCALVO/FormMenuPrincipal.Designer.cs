@@ -115,6 +115,8 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsServidor = new PELOSCALVO.DsServidor();
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
+            this.InfoBaseDatos = new System.Windows.Forms.Label();
+            this.InfoCarpeta = new System.Windows.Forms.Label();
             this.panelContenedorPrincipal.SuspendLayout();
             this.panelContenedorForm.SuspendLayout();
             this.PanelInfo.SuspendLayout();
@@ -193,6 +195,8 @@ namespace PELOSCALVO
             // Panel_info2
             // 
             this.Panel_info2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.Panel_info2.Controls.Add(this.InfoCarpeta);
+            this.Panel_info2.Controls.Add(this.InfoBaseDatos);
             this.Panel_info2.Controls.Add(this.panel6);
             this.Panel_info2.Controls.Add(this.panel7);
             this.Panel_info2.Location = new System.Drawing.Point(12, 13);
@@ -1271,6 +1275,31 @@ namespace PELOSCALVO
             this.dsMulti2.DataSetName = "DsMulti2";
             this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // InfoBaseDatos
+            // 
+            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoBaseDatos.Location = new System.Drawing.Point(458, 17);
+            this.InfoBaseDatos.Name = "InfoBaseDatos";
+            this.InfoBaseDatos.Size = new System.Drawing.Size(341, 23);
+            this.InfoBaseDatos.TabIndex = 93;
+            this.InfoBaseDatos.Tag = "stop";
+            // 
+            // InfoCarpeta
+            // 
+            this.InfoCarpeta.AutoSize = true;
+            this.InfoCarpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoCarpeta.ForeColor = System.Drawing.Color.White;
+            this.InfoCarpeta.Location = new System.Drawing.Point(440, 46);
+            this.InfoCarpeta.Name = "InfoCarpeta";
+            this.InfoCarpeta.Size = new System.Drawing.Size(0, 20);
+            this.InfoCarpeta.TabIndex = 94;
+            this.InfoCarpeta.Tag = "";
+            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1291,6 +1320,7 @@ namespace PELOSCALVO
             this.panelContenedorForm.ResumeLayout(false);
             this.PanelInfo.ResumeLayout(false);
             this.Panel_info2.ResumeLayout(false);
+            this.Panel_info2.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -1408,6 +1438,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label RegistLbel;
         private System.Windows.Forms.Label ContadorClientes;
         public System.Windows.Forms.Panel Panel_info2;
+        public System.Windows.Forms.Label InfoCarpeta;
+        public System.Windows.Forms.Label InfoBaseDatos;
     }
 }
 

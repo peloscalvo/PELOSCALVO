@@ -76,9 +76,7 @@ namespace PELOSCALVO
         {
             try
             {
-
-                ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + NombreArchivoClonar.Text + " De Articulos" + "." + tipoExtension.Text;
-                if (File.Exists(ClasDatos.Articulos))
+                if (File.Exists(ClasDatos.RutaBaseDatosDb))
                 {
                     if (NombreArchivoClonar.Text != string.Empty)
                     {
@@ -90,12 +88,12 @@ namespace PELOSCALVO
                         if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "accdb")
                         {
                             consulta = "Delete * from " +"["+ TipoTabla+"]";// + "  WHERE ID= @ID";
-                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
+                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                         }
                         if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "mdb")
                         {
                             consulta = "Delete * from " + "["+ TipoTabla+"]";
-                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
+                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                         }
                         if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
                         {

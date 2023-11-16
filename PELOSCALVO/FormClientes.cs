@@ -409,7 +409,7 @@ namespace PELOSCALVO
                 {
 
                     this.panelBotonesClientes.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaEmpresas, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 if (!File.Exists(ClasDatos.RutaMultidatos))
@@ -442,7 +442,7 @@ namespace PELOSCALVO
             BORRARerrores();
             //email_bien_escrito();
 
-            if (EspacioDiscosCli(ClasDatos.Clientes, 10))
+            if (EspacioDiscosCli(ClasDatos.RutaMultidatos, 10))
             {
                 if (VALIDARcampos())
                 {
@@ -567,13 +567,14 @@ namespace PELOSCALVO
 
         private void BtnBuscarCliente_Click(object sender, EventArgs e)
         {
-            ClasDatos.OkFacturar = false;
-            ClasDatos.QUEform = "Clientes";
-            if (!File.Exists(ClasDatos.Clientes))
+      
+            if (!File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                MessageBox.Show(ClasDatos.Clientes, "NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ClasDatos.RutaBaseDatosDb, "NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            ClasDatos.OkFacturar = false;
+            ClasDatos.QUEform = "Clientes";
             FormBuscarClientes form = new FormBuscarClientes();
             form.ShowDialog();
         }

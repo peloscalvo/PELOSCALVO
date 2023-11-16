@@ -10,15 +10,12 @@ namespace PELOSCALVO
         // public static string DirectorioActual = Directory.GetCurrentDirectory();
         public static string RutaFactura = "";
         public static string RutaDatosPrincipal = "Datos";
-        public static string RutaEmpresas = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "Configuracion.Xml";
+        public static string RutaBaseDatosDb = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "Datos App Peloscalvo.accdb";
         public static string RutaMultidatos = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "MultiDatos.Xml";
         public static string RutaMulti2 = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "Multi2.Xml";
-        public static string ArchivoInicioFacturas;
         public static string NombreFactura = "Factura";
         public static string Datos1Datos2 = "";
         public static Boolean OkFacturar = false;
-        public static string Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\";
-        public static string Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\";
         public static string QUEform = "";
         public static FormFacturar FormFACTURAR33;
         public static int count = 0;

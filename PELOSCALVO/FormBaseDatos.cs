@@ -107,28 +107,7 @@ namespace PELOSCALVO
             this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
             this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
         }
-        private void AñadirDatos()
-        {
-            string nombreBasedatos = this.NombreArchivoDatos.Text;
-            if (this.TipoExtension_b.Text == "DBF")
-            {
-                nombreBasedatos = "";
-            }
-            if (this.TabArchivos.Tag.ToString() == "SI")
-            {
-                ClasDatos.Clientes = this.NombreArchivoDatos.Text;
-                ClasDatos.Articulos = this.NombreArchivoDatos.Text;
-                ClasDatos.ArchivoInicioFacturas = this.NombreArchivoDatos.Text;
-                ClasDatos.RutaEmpresas = this.NombreArchivoDatos.Text;
-            }
-            else
-            {
-                ClasDatos.RutaEmpresas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" +nombreBasedatos + "." + this.TipoExtension_b.Text;
-                ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
-                ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
-                ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + nombreBasedatos + "." + this.TipoExtension_b.Text;
-            }
-        }
+
         private void BuscarEmpresas()
         {
             int TTempresas = FormMenuPrincipal.menu2principal.dtConfiguracionPrincipalBindingSource.Count - 1;
@@ -280,25 +259,9 @@ namespace PELOSCALVO
         public void ActualizarArticulosDB()
         {
             String TipoTabla = "[" + this.SerieArticulosText.Text + " De Articulos" + "]";
-            string consulta = "";
-            string cadena = "";
-            if (this.TipoExtension_b.Text == "accdb")
-            {
+            string consulta = "Select * from " + TipoTabla;
 
-                consulta = "Select * from " + TipoTabla;
-                cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-            }
-            if (this.TipoExtension_b.Text == "mdb")
-            {
-                consulta = "Select * from " + TipoTabla;
-                cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-            }
-            if (this.TipoExtension_b.Text == "DBF")
-            {
-                consulta = "Select * from " + this.SerieArticulosText.Text;
-                //consulta = "Select * from " + "Tarifa1dea";
-                cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
-            }
+            string cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
             ClsConexionDb.CadenaConexion = cadena;
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
@@ -471,26 +434,29 @@ namespace PELOSCALVO
                 this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
             }
             string Rutacorreos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
-            if (File.Exists(Rutacorreos))
+            if (!File.Exists(Rutacorreos))
             {
-                FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);
+                MessageBox.Show("Falta Archivo " + "\n" + Rutacorreos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.BtnBuscarServidor.Enabled = false;
+                this.BtnGuardarDatosArchivos.Enabled = false;
+             
             }
             if (!File.Exists(ClasDatos.RutaMultidatos))
             {
                 MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaMultidatos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.BtnBuscarServidor.Enabled = false;
                 this.BtnGuardarDatosArchivos.Enabled = false;
-                return;
+        
             }
             if (FormMenuPrincipal.menu2principal.dsServidor != null)
             {
                 this.dtServidorBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsServidor;
             }
-            if (!ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql == false)
             {
-                if (!File.Exists(ClasDatos.RutaEmpresas))
+                if (!File.Exists(ClasDatos.RutaBaseDatosDb))
                 {
-                    MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaEmpresas, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaBaseDatosDb, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
             }
@@ -508,48 +474,6 @@ namespace PELOSCALVO
                 this.SerieClientesText2.Text = FormMenuPrincipal.menu2principal.InfoClientes.Text;
             }
 
-
-            try
-            {
-                int TTempresas = FormMenuPrincipal.menu2principal.dtConfiguracionPrincipalBindingSource.Count - 1;
-                if (TTempresas >= 0)
-                {
-                    String variable1 = " De Articulos";
-                    string VariableCliente = " De Clientes";
-                    if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
-                    {
-                        variable1 = "";
-                    }
-                    string Ruta;
-                    string RutaCliente;
-                    string Archivo;
-                    for (int bn = 0; bn <= TTempresas; bn++)
-                    {
-                        if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[bn]["EmpresaConfi"].ToString() != null)
-                        {
-                            Archivo = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[bn]["EmpresaConfi"].ToString();
-                            Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + Archivo + variable1 + "." + FormMenuPrincipal.menu2principal.InfoExtension.Text;
-                            RutaCliente = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + Archivo + VariableCliente + "." + FormMenuPrincipal.menu2principal.InfoExtension.Text;
-                            if (File.Exists(Ruta))
-                            {
-                                this.SerieArticulosText.Items.Add(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[bn]["EmpresaConfi"].ToString());
-                            }
-                            if (File.Exists(RutaCliente))
-                            {
-                                this.SerieClientesText2.Items.Add(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[bn]["EmpresaConfi"].ToString());
-                            }
-
-                        }
-                    }
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "ERROR CARGAR COMBOVOX");
-            }
             try
             {
                 if (this.Servidor.Items.Count < 4)
@@ -595,29 +519,12 @@ namespace PELOSCALVO
                 NombreBaseDatos = "";
             }
 
-            if (File.Exists(ClasDatos.Clientes))
+            if (File.Exists(ClasDatos.RutaBaseDatosDb))
 
             {
                 String TipoTabla = "[" + this.SerieClientesText2.Text + " De Clientes" + "]";
-                string consulta = "";
-                string cadena = "";
-                String Archivo = this.SerieClientesText2.Text;
-                if (this.TipoExtension_b.Text == "accdb")
-                {
-                    consulta = "Select * from " + TipoTabla;
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Clientes;
-                }
-                if (this.TipoExtension_b.Text == "mdb")
-                {
-                    consulta = "Select * from " + TipoTabla;
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Clientes;
-                }
-                if (this.TipoExtension_b.Text == "DBF")
-                {
-                    consulta = "Select * from " + this.SerieClientesText2.Text;
-                    //consulta = "Select * from " + "Tarifa1dea";
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
-                }
+                String consulta = "Select * from " + TipoTabla;
+                String cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                 ClsConexionDb.CadenaConexion = cadena;
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
@@ -1080,90 +987,28 @@ namespace PELOSCALVO
         private void BtnGuardarDatosArchivos_Click(object sender, EventArgs e)
         {
             BORRARerror_Archivos();
-
-
             if (VALIDARcampos_Archivos())
             {
                 if (MessageBox.Show("Desea Conectar Archivo Local" + "\n" + "Dbf - Mdb - Accdb  ", "GUARDAR", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
-                    AñadirDatos(); 
-                    if (this.TipoExtension_b.Text == "DBF")
-                    {
-                        if (!File.Exists(ClasDatos.Articulos))
-                        {
+                    ClasDatos.RutaBaseDatosDb = this.NombreArchivoDatos.Text;
 
-
-                            if (MessageBox.Show(this.SerieArticulosText.Text + this.TipoExtension_b.Text + "\n" + " Archivo No Existe  ", " CREAR NUEVO ? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
-                                if (this.SerieArticulosText.SelectedIndex > 5)
-                                {
-                                    if (this.TipoExtension_b.Text == "DBF")
-                                    {
-                                        MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
-                                        return;
-                                    }
-                                }
-                                ClasDatos.QUEform = "BASE_DATOS_CLIENTES";
-                                FormCrearArchivos frm = new FormCrearArchivos();
-                                frm.ShowDialog();
-
-                            }
-
-                        }
-                        if (!File.Exists(ClasDatos.Clientes))
-                        {
-                            if (MessageBox.Show(this.SerieClientesText2.Text + this.TipoExtension_b.Text + "\n" + " Archivo No Existe  ", " CREAR NUEVO ? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
-                                if (this.SerieArticulosText.SelectedIndex > 5)
-                                {
-                                    if (this.TipoExtension_b.Text == "DBF")
-                                    {
-                                        MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
-                                        return;
-                                    }
-                                }
-                                ClasDatos.QUEform = "BASE_DATOS_CLIENTES";
-                                FormCrearArchivos frm = new FormCrearArchivos();
-                                frm.ShowDialog();
-
-                            }
-                            return;
-                        }
-                    }
-                    FormMenuPrincipal.menu2principal.dsCorreos.Clear();
+                   // FormMenuPrincipal.menu2principal.dsCorreos.Clear();
                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                     FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
 
-                    if (File.Exists(ClasDatos.RutaEmpresas))
-                    {
-                        // FormMenuPrincipal.menu2principal.dsCONFIGURACCION.ReadXml(ClasDatos.RutaConfiguracionXml);
-                    }
-                    if (File.Exists(ClasDatos.ArchivoInicioFacturas))
+                    if (File.Exists(ClasDatos.RutaBaseDatosDb))
                     {
                         ActualizarPrincipal_Db();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show(ClasDatos.ArchivoInicioFacturas, "ARCHIVO NO EXISTE", MessageBoxButtons.OK);
-                    }
-                    if (File.Exists(ClasDatos.Articulos))
-                    {
                         ActualizarArticulosDB();
-                    }
-                    else
-                    {
-                        MessageBox.Show(ClasDatos.Articulos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK);
-                    }
-                    if (File.Exists(ClasDatos.Clientes))
-                    {
                         ActualizarClientes_DB();
                     }
                     else
                     {
-                        MessageBox.Show(ClasDatos.Clientes, "ARCHIVO NO EXISTE", MessageBoxButtons.OK);
+                        MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO EXISTE", MessageBoxButtons.OK);
                     }
+
                     // ClasCorreos.ListaCorreosCliente.lista.Add();               
                     FormMenuPrincipal.menu2principal.InfoArticulo.Text = this.SerieArticulosText.Text;
                     FormMenuPrincipal.menu2principal.InfoClientes.Text = this.SerieClientesText2.Text;
@@ -1180,7 +1025,6 @@ namespace PELOSCALVO
 
         private void TipoExtension_b_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieClientesText2.Text + "." + this.TipoExtension_b.Text;
 
         }
 
@@ -1270,40 +1114,20 @@ namespace PELOSCALVO
             {
                 if (MessageBox.Show("Desea Conectar Archivo En Red" + "\n" + " ((( SERVIDOR ))) ", "GUARDAR", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                   // AñadirDatos();
+                    // AñadirDatos();
                     try
                     {
-                        FormMenuPrincipal.menu2principal.dsCorreos.Clear();
                         FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                         FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                         ActualizarPrincipal_Sql();//EMPRESAS Y EJERCICIOS
                         ActualizarArticulosSql();
                         ActualizarClientes_Sql_B();
-                        string Rutacorreos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
-                        if (File.Exists(Rutacorreos))
-                        {
-                            FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);
-                        }
                         FormMenuPrincipal.menu2principal.InfoArticulo.Text = this.SerieArticulosText.Text;
                         FormMenuPrincipal.menu2principal.InfoClientes.Text = this.SerieClientesText2.Text;
                         FormMenuPrincipal.menu2principal.InfoExtension.Text = "SERVIDOR EN RED";
-                        String variableArticulo = " De Articulos";
-                        String variableCliente = " De Clientes";
-                        if (this.TipoExtension_b.Text == "DBF")
-                        {
-                            variableArticulo = "";
-                            variableCliente = "";
-                        }
-                        if (this.SerieArticulosText.Text != string.Empty && this.SerieArticulosText.Text != string.Empty)
-                        {
-                            ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieArticulosText.Text + variableArticulo + "." + this.TipoExtension_b.Text;
-                            ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.SerieClientesText2.Text + variableCliente + "." + this.TipoExtension_b.Text;
-
-                        }
                         ClsConexionSql.SibaseDatosSql = true;
                         MessageBox.Show("Configuracion Guardarda Y Lista Para Usar", "GUARDAR CONFIGURACION", MessageBoxButtons.OK);
-
                         CanbiarOjetos();
                     }
                     catch (Exception ex)
@@ -1323,20 +1147,7 @@ namespace PELOSCALVO
             if (VALIDARcampos_Archivos())
             {
                 string cadena = "";
-                if (this.TipoExtension_b.Text == "accdb")
-                {
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-                }
-                if (this.TipoExtension_b.Text == "mdb")
-                {
-
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-                }
-                if (this.TipoExtension_b.Text == "DBF")
-                {
-                    //consulta = "Select * from " + "Tarifa1dea";
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
-                }
+                cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                 string TipoNota = "DtNuevaTotaldatos";
                 if (ClasDatos.NombreFactura != string.Empty)
                 {
@@ -1475,8 +1286,9 @@ namespace PELOSCALVO
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
                         this.NombreArchivoDatos.Text = fi.Name;
-                        ClasDatos.Clientes = Path.GetFullPath(BuscarArchivo.FileName.ToString());
-                        ClasDatos.Articulos = Path.GetFullPath(BuscarArchivo.FileName.ToString());
+                        ClasDatos.RutaBaseDatosDb = Path.GetFullPath(BuscarArchivo.FileName.ToString());
+                        FormMenuPrincipal.menu2principal.InfoCarpeta.Text = Path.GetDirectoryName(BuscarArchivo.FileName.ToString());
+                        FormMenuPrincipal.menu2principal.InfoBaseDatos.Text = Path.GetFileName(BuscarArchivo.FileName.ToString());
                         this.TabArchivos.Tag = "SI";
                         this.NombreArchivoDatos.BackColor = Color.Bisque;
                     }
@@ -1516,32 +1328,16 @@ namespace PELOSCALVO
 
                     if (this.TabArchivos.Tag.ToString() == "SI")
                     {
-                        ClasDatos.Articulos = this.NombreArchivoDatos.Text;
-                        ClasDatos.Clientes = this.NombreArchivoDatos.Text;
+                        ClasDatos.RutaBaseDatosDb = this.NombreArchivoDatos.Text;
                     }
                     else
                     {
-                        ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
-                        ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
+                        ClasDatos.RutaBaseDatosDb = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                     }
                     if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         string cadena = "";
-                        if (this.TipoExtension_b.Text == "accdb")
-                        {
-
-
-                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-                        }
-                        if (this.TipoExtension_b.Text == "mdb")
-                        {
-
-                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-                        }
-                        if (this.TipoExtension_b.Text == "DBF")
-                        {
-                            cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
-                        }
+                        cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                         Random r = new Random();
                         int valor = r.Next(10, 90000000);
                         string TablaArticulos = "Articulos+" + valor.ToString();
@@ -1599,30 +1395,14 @@ namespace PELOSCALVO
                 {
                     if (this.TabArchivos.Tag.ToString() == "SI")
                     {
-                        ClasDatos.Articulos = this.NombreArchivoDatos.Text;
-                        ClasDatos.Clientes = this.NombreArchivoDatos.Text;
+                        ClasDatos.RutaBaseDatosDb = this.NombreArchivoDatos.Text;
                     }
                     else
                     {
-                        ClasDatos.Articulos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
-                        ClasDatos.Clientes = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
+                        ClasDatos.RutaBaseDatosDb = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                     }
                     string cadena = "";
-                    if (this.TipoExtension_b.Text == "accdb")
-                    {
-
-
-                        cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Clientes;
-                    }
-                    if (this.TipoExtension_b.Text == "mdb")
-                    {
-
-                        cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Clientes;
-                    }
-                    if (this.TipoExtension_b.Text == "DBF")
-                    {
-                        cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
-                    }
+                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
                     string TablaCliente = "Cliente+" + valor.ToString();
@@ -1707,20 +1487,7 @@ namespace PELOSCALVO
             if (VALIDARcampos_Archivos())
             {
                 string cadena = "";
-                if (this.TipoExtension_b.Text == "accdb")
-                {
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-                }
-                if (this.TipoExtension_b.Text == "mdb")
-                {
-
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.Articulos;
-                }
-                if (this.TipoExtension_b.Text == "DBF")
-                {
-                    //consulta = "Select * from " + "Tarifa1dea";
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + ";Extended Properties=dBASE IV;";
-                }
+                cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                 string TipoNota = "DtNota";
                 if (ClasDatos.NombreFactura != string.Empty)
                 {
@@ -1751,7 +1518,7 @@ namespace PELOSCALVO
                 "[DireccionEmpresa] varchar  ,[LocalidadEmpresa] varchar  ,[CodigoPostalEmpresa] varchar  ,[ProvinciaEmpresa] varchar ," +
               "[TelefonoEmpresa] varchar  ,[CorreoEmpresa] varchar  ,[WepEmpresa] varchar  ,[RegimenIvaEmpresa] varchar  ," +
             " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
-            " [CifEmpresa] varchar  ,[NombreEmpresaReguistro] varchar primary key ,[ImagenEmpresa] varchar ) ";
+            " [CifEmpresa] varchar  ,[NombreEmpresaReguistro] varchar primary key ,[ImagenEmpresa] IMAGE ) ";
 
                 string TablaDtconfi = "CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                     "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar  ," +
@@ -1761,7 +1528,7 @@ namespace PELOSCALVO
                    " CONSTRAINT F_DtAlmacenes" + valor + " FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                  "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER,[Proveedores] varchar ,[Enlace_Proveedores] varchar, " +
-                  " CONSTRAINT F_DtProveedores" + valor + " FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )"; 
+                  " CONSTRAINT F_DtProveedores" + valor + " FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
 
                 ClsConexionDb.CadenaConexion = cadena;

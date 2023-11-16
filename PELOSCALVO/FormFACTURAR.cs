@@ -598,7 +598,7 @@ namespace PELOSCALVO
                     {
                         try
                         {
-                            if (File.Exists(ClasDatos.ArchivoInicioFacturas))
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
                                 this.dsfacturas.Tables["DtNuevaFactura"].Rows[FILAcelda]["TipoNOTA"] = ClasDatos.NombreFactura;
                                 this.dsfacturas.Tables["DtNuevaFactura"].Rows[FILAcelda]["IvaImpuesto"] = this.tipoInpuestoIVANumericUpDown.Value;
@@ -609,7 +609,7 @@ namespace PELOSCALVO
                                 this.dtDetallesFacturaBindingSource.EndEdit();
                                 this.dtDetallesFactura2BindingSource.EndEdit();
                                 Validate();
-                                this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
+                                //  this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
 
                             }
                             else
@@ -623,8 +623,9 @@ namespace PELOSCALVO
                                 this.dtDetallesFacturaBindingSource.EndEdit();
                                 this.dtDetallesFactura2BindingSource.EndEdit();
                                 Validate();
-                                FormMenuPrincipal.menu2principal.CrearArchivosXml(ClasDatos.ArchivoInicioFacturas);
-                                this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
+                                ///CREAR GUARDAR DB
+                                // FormMenuPrincipal.menu2principal.CrearArchivosXml(ClasDatos.ArchivoInicioFacturas);
+                                //  this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
 
                             }
                             RestaraurarOjetosFatu();
@@ -866,7 +867,7 @@ namespace PELOSCALVO
                 if (!File.Exists(ClasDatos.RutaMulti2))
                 {
                     this.panelBotones.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaEmpresas, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
 
                 }
@@ -894,31 +895,31 @@ namespace PELOSCALVO
                         }
 
 
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            ActualizarFacturaSql();
-                      
-                        }
-                        else  
-                        {
-                            // ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\"+
-                            //  "\\" + ClasDatos.NombreFactura + "."+FormMenuPrincipal.menu2principal.InfoExtension.Text;
-
-                            if (File.Exists(ClasDatos.ArchivoInicioFacturas))
-                            {
-                                ActualizarFaturas_DB();
-                            }
-                            else
-                            {
-                                MessageBox.Show(ClasDatos.ArchivoInicioFacturas, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                this.panelBotones.Enabled = false;
-                                return;
-                            }
-                        }
 
                     }
 
+
+                    if (ClsConexionSql.SibaseDatosSql)
+                    {
+                        ActualizarFacturaSql();
+
+                    }
+                    else
+                    {
+                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                        {
+                            ActualizarFaturas_DB();
+                        }
+                        else
+                        {
+                            MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.panelBotones.Enabled = false;
+                            return;
+                        }
+                    }
+
                 }
+
                 else
                 {
                     MessageBox.Show("Falta Archivo De Datos", "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -972,28 +973,7 @@ namespace PELOSCALVO
                 }
 
             }
-            if (ClsConexionSql.SibaseDatosSql)
-            {
-                ActualizarFacturaSql();
-            }
-            else
-            {
 
-                if (File.Exists(ClasDatos.ArchivoInicioFacturas))
-                {
-
-                    ActualizarFaturas_DB();
-                }
-                else
-                {
-                    this.panelBotones.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.ArchivoInicioFacturas, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-
-                }
-
-
-            }
 
             if (this.NombreEmpresaReguistro.Text == string.Empty)
             {
@@ -1009,7 +989,7 @@ namespace PELOSCALVO
         }
         private void ActualizarFaturas_DB()
         {
-            if (File.Exists(ClasDatos.ArchivoInicioFacturas))
+            if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
                 // string consulta = "SELECT * from DtNuevaFactura";
                 string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.NombreEmpresaReguistro.Text + "'";
@@ -1048,7 +1028,7 @@ namespace PELOSCALVO
             else
             {
                 this.panelBotones.Enabled = false;
-                MessageBox.Show("Archivo : " + ClasDatos.ArchivoInicioFacturas, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Archivo : " + ClasDatos.RutaBaseDatosDb, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
 
             }
@@ -1525,10 +1505,13 @@ namespace PELOSCALVO
             {
                 if (e.ColumnIndex == 1)
                 {
-                    if (!File.Exists(ClasDatos.Articulos))
+                    if (!ClsConexionSql.SibaseDatosSql)
                     {
-                        MessageBox.Show(" Archivo ARTICULOS No Existe ", " FALTA ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
+                       if (!File.Exists(ClasDatos.RutaBaseDatosDb))
+                        {
+                            MessageBox.Show(" Archivo ARTICULOS No Existe ", " FALTA ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            return;
+                        }
                     }
                     ClasDatos.ValorBuscado = e.RowIndex;
                     int numeroFILA = this.dtNuevaFacturaDataGridView.Rows.Count;
@@ -1906,7 +1889,6 @@ namespace PELOSCALVO
                     if (ClsConexionSql.SibaseDatosSql)
                     {
                         String Consulta = "DELETE FROM [Dt" + ClasDatos.NombreFactura + "] WHERE ElaceFactura=" + Convert.ToInt32(this.EnlaceFactu.Text);
-
                         ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
                         if (NuevaConexion.SiConexionSql)
                         {
@@ -1914,6 +1896,10 @@ namespace PELOSCALVO
                             {
                                 NuevaConexion.ComandoSql.ExecuteNonQuery();
                                 this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
+                                dtNuevaFacturaBindingSource.EndEdit();
+                                Validate();
+                                MessageBox.Show("Eliminado con exito", "ELIMINAR");
+                                this.dtNuevaFacturaDataGridView.Refresh();
                             }
                             catch (Exception ex)
                             {
@@ -1931,19 +1917,33 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                        if (File.Exists(ClasDatos.ArchivoInicioFacturas))
+                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
-                            try
+                            String Consulta = "DELETE FROM [Dt" + ClasDatos.NombreFactura + "] WHERE ElaceFactura=" + Convert.ToInt32(this.EnlaceFactu.Text);
+                            ClsConexionDb NuevaConexion = new ClsConexionDb(Consulta);
+                            if (NuevaConexion.SiConexionDb)
                             {
-                                // this.dsfacturas.WriteXml(ClasDatos.ArchivoInicioFacturas);
-                                this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
-                                MessageBox.Show("Eliminado con exito", "ELIMINAR");
-                                this.dtNuevaFacturaDataGridView.Refresh();
-                            }
-                            catch (Exception ex)
-                            {
+                                try
+                                {
+                                    NuevaConexion.ComandoDb.ExecuteNonQuery();
+                                    this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
+                                    dtNuevaFacturaBindingSource.EndEdit();
+                                    Validate();
+                                    MessageBox.Show("Eliminado con exito", "ELIMINAR");
+                                    this.dtNuevaFacturaDataGridView.Refresh();
+                                }
+                                catch (Exception ex)
+                                {
 
-                                MessageBox.Show(ex.Message, "ELIMINAR FACTURA");
+                                    MessageBox.Show(ex.Message, "ERROR ELIMINAR FACTURA");
+                                }
+                                finally
+                                {
+                                    if (NuevaConexion.CerrarConexionDB)
+                                    {
+
+                                    }
+                                }
                             }
 
                         }

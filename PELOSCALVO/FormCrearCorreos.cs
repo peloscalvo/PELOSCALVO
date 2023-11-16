@@ -37,13 +37,20 @@ namespace PELOSCALVO
             try
             {
                 DatagridCorreosEmpresa.Columns[0].DisplayIndex = 7;
-                DatagridCorreosEmpresa.Columns[1].Width = 190;//NombreEmpresa
-                DatagridCorreosEmpresa.Columns[2].Width = 190;//CorreoEletronico
-                DatagridCorreosEmpresa.Columns[3].Width = 140;//Usuario
-                DatagridCorreosEmpresa.Columns[4].Width = 120;//Contraseña
-                DatagridCorreosEmpresa.Columns[5].Width = 120;//smtp
-                DatagridCorreosEmpresa.Columns[6].Width = 60;//tiempoespera
-                DatagridCorreosEmpresa.Columns[7].Width = 60;//tiempoespera
+                DatagridCorreosEmpresa.Columns[0].Width = 190;//NombreEmpresa
+                DatagridCorreosEmpresa.Columns[1].Width = 140;//CorreoEletronico
+                DatagridCorreosEmpresa.Columns[2].Width = 120;//Usuario
+                DatagridCorreosEmpresa.Columns[3].Width = 120;//Contraseña
+                DatagridCorreosEmpresa.Columns[4].Width = 60;//smtp
+                DatagridCorreosEmpresa.Columns[5].Width = 60;//tiempoespera
+                //DatagridCorreosEmpresa.Columns[6].Width = 60;//eliminar
+
+                DataGridCorreoCliente.Columns[0].DisplayIndex = 4;
+                DataGridCorreoCliente.Columns[0].Width = 190;//RazonSocial
+                DataGridCorreoCliente.Columns[1].Width = 140;//EmpresaNombre
+                DataGridCorreoCliente.Columns[2].Width = 140;//Direcion
+                DataGridCorreoCliente.Columns[3].Width = 120;//CorreoEletronico_cli
+               // DataGridCorreoCliente.Columns[4].Width = 140;//eliminar
                 //DatagridCorreosEmpresa.Columns[0].Width = 60;//Puerto
             }
             catch (Exception ex)

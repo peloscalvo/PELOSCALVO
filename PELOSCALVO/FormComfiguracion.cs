@@ -206,10 +206,7 @@ namespace PELOSCALVO
                             dir.CreateSubdirectory(ClasDatos.RutaDatosPrincipal + " FN" + i);
                         }
                     }
-                    if (!File.Exists(ClasDatos.RutaEmpresas))
-                    {
-                        FormMenuPrincipal.menu2principal.CrearArchivosXml(ClasDatos.RutaEmpresas);///solo crear no Abrir
-                    }
+
                     if (!File.Exists(ClasDatos.RutaMultidatos))
                     {
                         FormMenuPrincipal.menu2principal.CrearArchivosXml(ClasDatos.RutaMultidatos);
@@ -289,17 +286,17 @@ namespace PELOSCALVO
                 MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "DEBE RESTRUCTURAR ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
-            if (!File.Exists(ClasDatos.RutaEmpresas))
+            if (!File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                MessageBox.Show("Archivo : " + ClasDatos.RutaEmpresas, "DEBE RESTRUCTURAR ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Archivo : " + ClasDatos.RutaBaseDatosDb, "FALTA ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
 
             if (ClsConexionSql.SibaseDatosSql)
             {
-               // this.tooInicio.Visible = false;
-               // this.archivoArticulosComboBox.Items.Clear();
-               // this.archivoClientesComboBox.Items.Clear();
+                // this.tooInicio.Visible = false;
+                // this.archivoArticulosComboBox.Items.Clear();
+                // this.archivoClientesComboBox.Items.Clear();
             }
             try
             {
@@ -317,7 +314,7 @@ namespace PELOSCALVO
                     this.rutaArchivoDatosTextBox.Text = Directory.GetCurrentDirectory();
                     this.dtArchivoDatosMultiBindingSource.EndEdit();
                     this.dataGridViewDatos.EndEdit();
-                    if (EspacioDiscosConfi(ClasDatos.RutaEmpresas, 20))
+                    if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
                     {
                         if (File.Exists(ClasDatos.RutaMultidatos))
                         {
@@ -379,7 +376,7 @@ namespace PELOSCALVO
 
         private void btnGuardarFAMILIA_Click(object sender, EventArgs e)
         {
-            if (EspacioDiscosConfi(ClasDatos.RutaEmpresas, 20))
+            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
             {
 
                 if (File.Exists(ClasDatos.RutaMultidatos))
@@ -493,14 +490,14 @@ namespace PELOSCALVO
                     else
                     {
 
-                        if (EspacioDiscosConfi(ClasDatos.RutaEmpresas, 20))
+                        if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 20))
                         {
-                            if (File.Exists(ClasDatos.RutaEmpresas))
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
                                 Validate();
                                 this.dtConfiDtTarifaTipoBindingSource.EndEdit();
                                 this.dtTarifaTipoDataGridView.EndEdit();
-                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaEmpresas);
+                                // FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaBaseDatosDb);
                                 MessageBox.Show("Guardado Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
@@ -583,18 +580,12 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (!string.IsNullOrEmpty(this.empresaConfiComboBox.Text))
-            {
-                ClasDatos.ArchivoInicioFacturas = this.nombreEmpresaTextBox.Text + " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
-
-            }
-            else
+            if (string.IsNullOrEmpty(this.empresaConfiComboBox.Text))
             {
                 MessageBox.Show("Eliga Empresa Valida", "EMPRESA");
-                return;
             }
 
-            if (EspacioDiscosConfi(ClasDatos.RutaEmpresas, 10))
+            if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
             {
                 this.dtConfiDataGridView.EndEdit();
                 int i = 0;
@@ -631,11 +622,11 @@ namespace PELOSCALVO
 
                         if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtInicio.Rows.Count <= 0)
                         {
-                            FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtInicio.Rows.Add(ClasDatos.ArchivoInicioFacturas + ".Xml");
+                            FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtInicio.Rows.Add(ClasDatos.RutaBaseDatosDb);
                         }
                         else
                         {
-                            FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtInicio"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.ArchivoInicioFacturas + ".Xml";
+                            FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtInicio"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.RutaBaseDatosDb;
                             // dsCONFIGURACCION.DtInicio.Rows[0]["ArchivoInicioFacturas"] = ClaseCompartida.ArchivoInicioFacturas + ".Xml";
                         }
 
@@ -693,12 +684,12 @@ namespace PELOSCALVO
                         else
                         {
 
-                            if (File.Exists(ClasDatos.RutaEmpresas))
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
                                 this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
                                 this.dtConfiDataGridView.EndEdit();
                                 Validate();
-                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaEmpresas);
+                                // FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaBaseDatosDb);
                                 MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 RestaurarOjetosDtconfi();
                             }
@@ -918,7 +909,7 @@ namespace PELOSCALVO
         }
         private void GuardarEmpresasSql()
         {
-            if (EspacioDiscosConfi(ClasDatos.Articulos, 20))
+            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
             {
                 String ConsultaDescuetos = "";
                 string consulta = "";
@@ -1027,7 +1018,7 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (EspacioDiscosConfi(ClasDatos.RutaEmpresas, 25))
+            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 25))
             {
                 try
                 {
@@ -1059,8 +1050,7 @@ namespace PELOSCALVO
                 {
                     if (MessageBox.Show(" ¿Aceptar Guardar Empresa ? ", " GUARDAR EMPRESA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        ClasDatos.ArchivoInicioFacturas = this.nombreEmpresaTextBox.Text + " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
-    
+
                         for (int i = 0; i <= 8; i++)
                         {
                             this.dtConfiDtTarifaTipoBindingSource.AddNew();
@@ -1088,11 +1078,11 @@ namespace PELOSCALVO
                         else
                         {
 
-                            if (File.Exists(ClasDatos.RutaEmpresas))
+                            if (File.Exists(ClasDatos.RutaMultidatos))
                             {
-                                dtConfiguracionPrincipalBindingSource.EndEdit();
+                                this.dtConfiguracionPrincipalBindingSource.EndEdit();
                                 Validate();
-                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaEmpresas);
+                                //  FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaBaseDatosDb);
                                 MessageBox.Show("Se Guardo Correctamente", "GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 RestaurarOjetosEmpresa();
                             }
@@ -1101,16 +1091,10 @@ namespace PELOSCALVO
                                 MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 this.panelEmpresas.Enabled = false;
                             }
-
                         }
-
                     }
-
-
                 }
             }
-
-
 
         }
         private void RestaurarOjetosEmpresa()
@@ -1267,7 +1251,7 @@ namespace PELOSCALVO
                         FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieInicio"] = this.SerieInicio.Text;
                         FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"] = this.provinciaInicio.Text;
                         FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"] = this.PaisInicio.Text;
-                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.RutaEmpresas;
+                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.RutaBaseDatosDb;
                     }
                     else
                     {
@@ -1465,13 +1449,13 @@ namespace PELOSCALVO
                     }
                     this.dtInicioMultiBindingSource.EndEdit();
                     this.dataGridViewDatos.EndEdit();
-                   // ClasDatos.RutaEmpresas = this.directorioArchivoDatosTextBox.Text + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Configuracion.Xml";
-                   // ClasDatos.ArchivoInicioFacturas = ClasDatos.RutaEmpresas;
+                    // ClasDatos.RutaEmpresas = this.directorioArchivoDatosTextBox.Text + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Configuracion.Xml";
+                    // ClasDatos.ArchivoInicioFacturas = ClasDatos.RutaEmpresas;
                     if (this.dtInicioMultiBindingSource.Count > 0)
                     {
                         FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["NombreArchivoDatos"] = this.nombreArchivoDatosTextBox.Text;
                         FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["RutaArchivoDatos"] = this.directorioArchivoDatosTextBox.Text;
-                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.RutaEmpresas;
+                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.RutaBaseDatosDb;
                     }
 
 
@@ -1540,8 +1524,7 @@ namespace PELOSCALVO
                             {
                                 FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["NombreArchivoDatos"] = this.nombreArchivoDatosTextBox.Text;
                                 FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["RutaArchivoDatos"] = this.directorioArchivoDatosTextBox.Text;
-                                FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.ArchivoInicioFacturas;
-                                ClasDatos.ArchivoInicioFacturas = this.directorioArchivoDatosTextBox.Text;
+                                FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.RutaBaseDatosDb;
                                 if (File.Exists(ClasDatos.RutaMultidatos))
                                 {
                                     FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
@@ -1670,31 +1653,37 @@ namespace PELOSCALVO
         }
         private void EliminarEmpresaBb()
         {
-            if (File.Exists(ClasDatos.RutaEmpresas))
+
+            if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
+                string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= '@NombreEmpresaReguistro'";
+                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
- 
-                        string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= '@NombreEmpresaReguistro'";
-                        //  ClsConexionDb.CadenaConexion = cadena;
-                        ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                    {
+                        if (NuevaConexion.SiConexionDb)
                         {
-                            if (NuevaConexion.SiConexionDb)
-                            {
-                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresaReguistro", this.IdEmpresa.Text);
-                                NuevaConexion.ComandoDb.ExecuteNonQuery();
-                                this.dtConfiguracionPrincipalDataGridView.Rows.RemoveAt(this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex);
-                                this.dtConfiguracionPrincipalBindingSource.EndEdit();
-                                Validate();
-                                MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresaReguistro", this.IdEmpresa.Text);
+                            NuevaConexion.ComandoDb.ExecuteNonQuery();
+                            this.dtConfiguracionPrincipalDataGridView.Rows.RemoveAt(this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex);
+                            this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                            Validate();
+                            MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+                    }
 
-          
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
+                }
+                finally
+                {
+                    if (NuevaConexion.CerrarConexionDB)
+                    {
+
+                    }
                 }
 
             }
@@ -1705,16 +1694,48 @@ namespace PELOSCALVO
 
             }
         }
-        private void EliminarProveedorBb()
+        private void EliminarEmpresaSql()
         {
-            if (File.Exists(ClasDatos.RutaEmpresas))
+            string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= '@NombreEmpresaReguistro'";
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+            try
             {
-                try
+                {
+                    if (NuevaConexion.SiConexionSql)
+                    {
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreEmpresaReguistro", this.IdEmpresa.Text);
+                        NuevaConexion.ComandoSql.ExecuteNonQuery();
+                        this.dtConfiguracionPrincipalDataGridView.Rows.RemoveAt(this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex);
+                        this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                        Validate();
+                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionSql)
                 {
 
-                    string consulta = "Delete from  [DtProveedores]   WHERE Enlace_Proveedores= '@Enlace_Proveedores'";
-                    //  ClsConexionDb.CadenaConexion = cadena;
-                    ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                }
+            }
+
+
+        }
+        private void EliminarProveedorBb()
+        {
+            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+            {
+                string consulta = "Delete from  [DtProveedores]   WHERE Enlace_Proveedores= '@Enlace_Proveedores'";
+                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                try
+                {
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
@@ -1733,6 +1754,13 @@ namespace PELOSCALVO
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
+                finally
+                {
+                    if (NuevaConexion.CerrarConexionDB)
+                    {
+
+                    }
+                }
 
             }
             else
@@ -1742,9 +1770,43 @@ namespace PELOSCALVO
 
             }
         }
+        private void EliminarProveedorSql()
+        {
+
+            string consulta = "Delete from  [DtProveedores]   WHERE Enlace_Proveedores= '@Enlace_Proveedores'";
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+            try
+            {
+                {
+                    if (NuevaConexion.SiConexionSql)
+                    {
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", this.IdEmpresa.Text);
+                        NuevaConexion.ComandoSql.ExecuteNonQuery();
+                        this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
+                        this.dtProveedoresBindingSource.EndEdit();
+                        Validate();
+                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionSql)
+                {
+
+                }
+            }
+
+        }
         private void EliminarAlmacenBb()
         {
-            if (File.Exists(ClasDatos.RutaEmpresas))
+            if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
                 try
                 {
@@ -1779,6 +1841,41 @@ namespace PELOSCALVO
 
             }
         }
+        private void EliminarAlmacenSQL()
+        {
+            string consulta = "Delete from  [DtAlmacenes]   WHERE Enlace_Almacenes= '@Enlace_Almacenes'";
+            //  ClsConexionDb.CadenaConexion = cadena;
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+            try
+            {
+                {
+                    if (NuevaConexion.SiConexionSql)
+                    {
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Almacenes", this.IdEmpresa.Text);
+                        NuevaConexion.ComandoSql.ExecuteNonQuery();
+                        this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
+                        this.dtProveedoresBindingSource.EndEdit();
+                        Validate();
+                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionSql)
+                {
+
+                }
+            }
+
+
+        }
         private void BtnEliminarEmpresa_Click(object sender, EventArgs e)
         {
             if (this.dtConfiguracionPrincipalBindingSource.Count > 0)
@@ -1788,21 +1885,13 @@ namespace PELOSCALVO
 
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-                       // elinimarEmpsa();
+                        // elinimarEmpsa();
                     }
                     else
                     {
-                        if (File.Exists(ClasDatos.RutaEmpresas))
-                        {
-                            EliminarEmpresaBb();
-           
-                        }
-                        else
-                        {
-                            MessageBox.Show(" No Se Pudo Eliminar", "FALTA ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        EliminarEmpresaBb();
                     }
-  
+
 
                 }
             }
@@ -1829,12 +1918,17 @@ namespace PELOSCALVO
                 if (MessageBox.Show("Desea Eliminar La Configuracion", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
 
-                    if (File.Exists(ClasDatos.RutaEmpresas))
+                    if (ClsConexionSql.SibaseDatosSql)
                     {
+
+                    }
+                    else
+                    {
+                        ///MODIFICAR
                         this.dtConfiBindingSource.EndEdit();
                         this.dtConfiDataGridView.EndEdit();
                         this.dtConfiDataGridView.Rows.Remove(this.dtConfiDataGridView.CurrentRow);
-                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaEmpresas);
+                        //  FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaEmpresas);
                         MessageBox.Show("Se Elimino Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -1886,7 +1980,7 @@ namespace PELOSCALVO
 
         private void BtnActualizarPaises_Click(object sender, EventArgs e)
         {
-            if (EspacioDiscosConfi(ClasDatos.Clientes, 10))
+            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 10))
             {
                 if (ClsConexionSql.SibaseDatosSql)
                 {
@@ -2314,7 +2408,7 @@ namespace PELOSCALVO
                 }
             }
         }
-            private void GuardarAlmacenesSql()
+        private void GuardarAlmacenesSql()
         {
             string consulta = "";
             if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
@@ -2476,13 +2570,13 @@ namespace PELOSCALVO
                     try
                     {
 
-                        if (File.Exists(ClasDatos.RutaEmpresas))
+                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
-                            Validate();
+                            //  Validate();
                             this.dtAlmacenesBindingSource.EndEdit();
                             this.dataGridAlmacenes.EndEdit();
 
-                            FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaEmpresas);
+                            ///  FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaEmpresas);
                             MessageBox.Show("Se Actualizo Con Exito", "ALMACENES", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -2510,7 +2604,7 @@ namespace PELOSCALVO
 
         private void BtnGuardarObras_Click(object sender, EventArgs e)
         {
-            if (EspacioDiscosConfi(ClasDatos.RutaEmpresas, 30))
+            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 30))
             {
                 if (File.Exists(ClasDatos.RutaMulti2))
                 {
@@ -2540,7 +2634,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Eliga Empresa Valida", "EMPRESA");
                 return;
             }
-            if (EspacioDiscosConfi(ClasDatos.RutaEmpresas, 30))
+            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 30))
             {
                 if (ClsConexionSql.SibaseDatosSql)
                 {
@@ -2548,7 +2642,7 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    if (File.Exists(ClasDatos.RutaEmpresas))
+                    if (File.Exists(ClasDatos.RutaBaseDatosDb))
                     {
                         GuardarProveedoresDb();
                     }
@@ -2589,7 +2683,7 @@ namespace PELOSCALVO
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
                                     this.dtProvinciasBindingSource.EndEdit();
-                                    this.dataGridProvincias.Rows.Remove(this.dataGridProvincias.CurrentRow);                       
+                                    this.dataGridProvincias.Rows.Remove(this.dataGridProvincias.CurrentRow);
                                     FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
                                 }
                                 MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
@@ -2605,7 +2699,7 @@ namespace PELOSCALVO
         {
             if (e.RowIndex >= 0)
             {
- 
+
             }
         }
 
@@ -2619,7 +2713,7 @@ namespace PELOSCALVO
                 {
                     provi = this.dataGridObras.Rows[e.RowIndex].Cells[1].Value.ToString();
                 }
- 
+
                 if (e.ColumnIndex == 2)
                 {
 
@@ -2632,7 +2726,7 @@ namespace PELOSCALVO
                     {
                         if (MessageBox.Show("Desea Eliminar Este Obra ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            if (EspacioDiscosConfi(ClasDatos.RutaEmpresas, 20))
+                            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
                             {
                                 if (File.Exists(ClasDatos.RutaMulti2))
                                 {
@@ -2735,7 +2829,7 @@ namespace PELOSCALVO
         {
             if (e.RowIndex >= 0)
             {
-    
+
             }
         }
 
@@ -2747,7 +2841,7 @@ namespace PELOSCALVO
                 string provi = "Familia";
                 if (this.DataGridFamilias.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
                 {
-                     provi = this.DataGridFamilias.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    provi = this.DataGridFamilias.Rows[e.RowIndex].Cells[0].Value.ToString();
                 }
                 if (e.ColumnIndex == 1)
                 {
@@ -2763,7 +2857,7 @@ namespace PELOSCALVO
 
                         if (MessageBox.Show("Desea Eliminar Familia Producto ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                                               
+
                             if (File.Exists(ClasDatos.RutaMultidatos))
                             {
                                 this.dtFamiliaProductosBindingSource.EndEdit();
@@ -2922,7 +3016,7 @@ namespace PELOSCALVO
             this.BtnNuevoAlmacen.Tag = "Nuevo";
             try
             {
-                dataGridProveedores.Enabled = true;
+                this.dataGridProveedores.Enabled = true;
                 int numeroFILA = this.dataGridProveedores.Rows.Count;
                 this.dtProveedoresBindingSource.AddNew();
                 if (this.dataGridProveedores.CurrentCell.RowIndex == 0)
@@ -2999,23 +3093,23 @@ namespace PELOSCALVO
         {
             if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
             {
-                EmpresaReguistro.Text = empresaConfiTextBox.Text;
+                this.EmpresaReguistro.Text = this.empresaConfiTextBox.Text;
             }
         }
 
         private void BtnEliminarAlmacen_Click(object sender, EventArgs e)
         {
-            if (dataGridAlmacenes.RowCount >= 0)
+            if (this.dataGridAlmacenes.RowCount >= 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-                        // elinimarEmpsa();
+                        EliminarAlmacenSQL();
                     }
                     else
                     {
-                        if (File.Exists(ClasDatos.RutaEmpresas))
+                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
                             EliminarAlmacenBb();
 
@@ -3031,7 +3125,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarProveedor_Click(object sender, EventArgs e)
         {
-            if (dataGridProveedores.RowCount >= 0)
+            if (this.dataGridProveedores.RowCount >= 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -3042,7 +3136,7 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                        if (File.Exists(ClasDatos.RutaEmpresas))
+                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
                             EliminarProveedorBb();
 
