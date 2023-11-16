@@ -19,10 +19,10 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.dsCorreos != null)
                 {
-                    BindingSource CorreosbindingSource = new BindingSource();
-                    CorreosbindingSource.DataSource= FormMenuPrincipal.menu2principal.DtCorreos;
-                    this.DatagridCorreosEmpresa.DataSource = CorreosbindingSource.DataSource;
-                    this.DataGridCorreoCliente.DataSource = FormMenuPrincipal.menu2principal.dsCorreos;
+                   // BindingSource CorreosbindingSource = new BindingSource();
+                   // CorreosbindingSource.DataSource= FormMenuPrincipal.menu2principal.DtCorreos;
+                    this.DatagridCorreosEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
+                    this.DataGridCorreoCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
                     //  if(DatagriCorreosEmpresa.RowCount<= 0)
                     //{
                     //    DataGridCorreoCliente.Rows[0].Cells[0].Value=""

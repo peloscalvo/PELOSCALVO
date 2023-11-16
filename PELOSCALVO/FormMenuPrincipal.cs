@@ -1,21 +1,22 @@
 ﻿
+using Conexiones;
 using System;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
-using Conexiones;
-using System.Threading;
-using System.Data;
 
 namespace PELOSCALVO
 {
     public partial class FormMenuPrincipal : Form
     {
-        public  DataSet dsCorreos = new DataSet("Dscorreos");
-        public DataTable DtCorreos = new DataTable("DtCorreos");      
-       // public BindingSource CorreosBindisource = new BindingSource();
+        public DataSet dsCorreos = new DataSet("Dscorreos");
+        public DataTable DtCorreos = new DataTable("DtCorreos");
+        public DataSet dsCorreosCliente = new DataSet("DscorreosCliente");
+        public DataTable DtCorreosCliente = new DataTable("DtCorreosCliente");
+        // public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
         public byte SiOpenFatu = 0;
         public byte SiOpenArti = 0;
@@ -25,19 +26,22 @@ namespace PELOSCALVO
         int V1, PX, PV;
         public FormMenuPrincipal()
         {
-           
-            DtCorreos.Columns.Add("NombreEmpresa");
-            DtCorreos.Columns.Add("CorreoEletronico");
-            DtCorreos.Columns.Add("Usuario");
-            DtCorreos.Columns.Add("Contraseña");
-            DtCorreos.Columns.Add("smtp");
-            DtCorreos.Columns.Add("Puerto");
-            DtCorreos.Columns.Add("Timeof");
-           // DtCorreos.Columns.Add("Eliminar",typeof(Bitmap));
-            // DataRow fila = DtCorreos.NewRow();
-            dsCorreos.Tables.Add(DtCorreos);
-    
-           // fila["NombreEmpresa"] = "faf";
+
+            this.DtCorreos.Columns.Add("NombreEmpresa");
+            this.DtCorreos.Columns.Add("CorreoEletronico");
+            this.DtCorreos.Columns.Add("Usuario");
+            this.DtCorreos.Columns.Add("Contraseña");
+            this.DtCorreos.Columns.Add("smtp");
+            this.DtCorreos.Columns.Add("Puerto");
+            this.DtCorreos.Columns.Add("Timeof");
+            this.dsCorreos.Tables.Add(this.DtCorreos);
+
+            this.DtCorreosCliente.Columns.Add("RazonSocial");
+            this.DtCorreosCliente.Columns.Add("EmpresaNombre");
+            this.DtCorreosCliente.Columns.Add("Direcion");
+            this.DtCorreosCliente.Columns.Add("CorreoEletronico_cli");
+            this.dsCorreosCliente.Tables.Add(this.DtCorreosCliente);
+            // fila["NombreEmpresa"] = "faf";
             InitializeComponent();
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);
@@ -255,8 +259,8 @@ namespace PELOSCALVO
                 {
 
                     //  Application.Exit();
-                    this.Close();
-                  //  Hide();
+                    Close();
+                    //  Hide();
 
                 }
 
@@ -305,7 +309,7 @@ namespace PELOSCALVO
             catch (Exception)
             {
 
-               // throw;
+                // throw;
             }
 
         }
@@ -346,7 +350,7 @@ namespace PELOSCALVO
         private void btnMembresia_Click(object sender, EventArgs e)
         {
             FormEnviarCorreos frmCorreo = new FormEnviarCorreos();
-               frmCorreo.ShowDialog();
+            frmCorreo.ShowDialog();
         }
 
         private void btnARTICULOS_Click(object sender, EventArgs e)
@@ -576,7 +580,7 @@ namespace PELOSCALVO
             if (this.SiOpenFatu == 0)
             {
                 ClasDatos.NombreFactura = "Nota-2";
-                ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal  + " FN2";
+                ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal + " FN2";
                 FormFacturar frm = new FormFacturar();
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
@@ -606,7 +610,7 @@ namespace PELOSCALVO
             if (this.SiOpenFatu == 0)
             {
                 ClasDatos.NombreFactura = "Albaran";
-                ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal  + " FN3";
+                ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal + " FN3";
                 FormFacturar frm = new FormFacturar();
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;

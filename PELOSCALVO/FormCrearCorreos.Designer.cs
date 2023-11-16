@@ -47,10 +47,6 @@ namespace PELOSCALVO
             this.BtnVolver_cli = new System.Windows.Forms.Button();
             this.BtnGuardarCorreoCli = new System.Windows.Forms.Button();
             this.DataGridCorreoCliente = new System.Windows.Forms.DataGridView();
-            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmpresaNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CorreoEletronico_cli = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DatagridCorreosEmpresa)).BeginInit();
             this.TabCorreos.SuspendLayout();
@@ -272,10 +268,6 @@ namespace PELOSCALVO
             this.DataGridCorreoCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridCorreoCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridCorreoCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RazonSocial,
-            this.EmpresaNombre,
-            this.Direcion,
-            this.CorreoEletronico_cli,
             this.dataGridViewImageColumn3});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -294,30 +286,6 @@ namespace PELOSCALVO
             this.DataGridCorreoCliente.Size = new System.Drawing.Size(958, 350);
             this.DataGridCorreoCliente.TabIndex = 53;
             this.DataGridCorreoCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCorreoCliente_CellClick);
-            // 
-            // RazonSocial
-            // 
-            this.RazonSocial.FillWeight = 260F;
-            this.RazonSocial.HeaderText = "Razon Social";
-            this.RazonSocial.Name = "RazonSocial";
-            // 
-            // EmpresaNombre
-            // 
-            this.EmpresaNombre.FillWeight = 260F;
-            this.EmpresaNombre.HeaderText = "Empresa";
-            this.EmpresaNombre.Name = "EmpresaNombre";
-            // 
-            // Direcion
-            // 
-            this.Direcion.FillWeight = 160F;
-            this.Direcion.HeaderText = "Direccion";
-            this.Direcion.Name = "Direcion";
-            // 
-            // CorreoEletronico_cli
-            // 
-            this.CorreoEletronico_cli.FillWeight = 150F;
-            this.CorreoEletronico_cli.HeaderText = "Correo eletronico";
-            this.CorreoEletronico_cli.Name = "CorreoEletronico_cli";
             // 
             // dataGridViewImageColumn3
             // 
@@ -363,13 +331,9 @@ namespace PELOSCALVO
         private System.Windows.Forms.TabPage PageEmpresa;
         private System.Windows.Forms.TabPage PageClientes;
         private System.Windows.Forms.DataGridView DataGridCorreoCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpresaNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CorreoEletronico_cli;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         public System.Windows.Forms.Button BtnVolver_cli;
         public System.Windows.Forms.Button BtnGuardarCorreoCli;
         private System.Windows.Forms.DataGridViewImageColumn EliminarCorreoE;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
     }
 }

@@ -200,7 +200,7 @@ namespace PELOSCALVO
           //  FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = "[Descripcci]";
             if (ClsConexionSql.SibaseDatosSql == false)
             {
-                if (!File.Exists(ClasDatos.RutaConfiguracionXml))
+                if (!File.Exists(ClasDatos.RutaEmpresas))
                 {
                     MessageBox.Show("Falta Archivo De Datos", "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;

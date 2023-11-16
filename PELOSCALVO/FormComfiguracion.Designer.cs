@@ -65,8 +65,6 @@ namespace PELOSCALVO
             System.Windows.Forms.Label movilEmpresaLabel;
             System.Windows.Forms.Label telefono2EmpresaLabel;
             System.Windows.Forms.Label cifEmpresaLabel;
-            System.Windows.Forms.Label serieClientesLabel;
-            System.Windows.Forms.Label serieArticulosLabel;
             System.Windows.Forms.Label imagenEmpresaLabel;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label añoDeEjercicioLabel;
@@ -132,6 +130,9 @@ namespace PELOSCALVO
             this.tabProveedores = new System.Windows.Forms.TabPage();
             this.BtnCancelarProveedores = new System.Windows.Forms.Button();
             this.PanelProveedores = new System.Windows.Forms.Panel();
+            this.Enlace_Proveedor = new System.Windows.Forms.Label();
+            this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtConfiguracionPrincipalDtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Id_proveedor = new System.Windows.Forms.Label();
             this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PanelElementosProveedor = new System.Windows.Forms.Panel();
@@ -139,7 +140,6 @@ namespace PELOSCALVO
             this.BtnBuscarProveedor = new System.Windows.Forms.Button();
             this.BtnNuevoProveedor = new System.Windows.Forms.Button();
             this.BtnModificarProveedor = new System.Windows.Forms.Button();
-            this.Enlace_Proveedor = new System.Windows.Forms.TextBox();
             this.NombreProveedor = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.BtnGuardarProveedores = new System.Windows.Forms.Button();
@@ -147,21 +147,17 @@ namespace PELOSCALVO
             this.dataGridProveedores = new System.Windows.Forms.DataGridView();
             this.idProveedoresDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtConfiguracionPrincipalDtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Almacenes = new System.Windows.Forms.TabPage();
             this.BtnCancelarAlmacen = new System.Windows.Forms.Button();
             this.panelAlmacenes = new System.Windows.Forms.Panel();
+            this.Enlace_almacen = new System.Windows.Forms.Label();
             this.id_almacenes = new System.Windows.Forms.Label();
             this.BotonesAlmacenes = new System.Windows.Forms.Panel();
             this.BtnEliminarAlmacen = new System.Windows.Forms.Button();
             this.BtnBuscarAlmacen = new System.Windows.Forms.Button();
             this.BtnNuevoAlmacen = new System.Windows.Forms.Button();
             this.BtnModificarAlmacen = new System.Windows.Forms.Button();
-            this.enlace_AlmacenesTextBox = new System.Windows.Forms.TextBox();
             this.almacenesTextBox = new System.Windows.Forms.TextBox();
             this.SelecionarEmpresa2 = new System.Windows.Forms.ComboBox();
             this.BtnActualizarAlmacenes = new System.Windows.Forms.Button();
@@ -169,8 +165,6 @@ namespace PELOSCALVO
             this.dataGridAlmacenes = new System.Windows.Forms.DataGridView();
             this.idalmacenesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.almacenesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Enlace_Almacenes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPageProvincias = new System.Windows.Forms.TabPage();
             this.BtnActualizarProvincias = new System.Windows.Forms.Button();
@@ -247,8 +241,6 @@ namespace PELOSCALVO
             this.panel1 = new System.Windows.Forms.Panel();
             this.imagenEmpresaPictureBox = new System.Windows.Forms.PictureBox();
             this.BtnImagenEmpresa = new System.Windows.Forms.Button();
-            this.serieArticulosComboBox = new System.Windows.Forms.ComboBox();
-            this.serieClientesComboBox = new System.Windows.Forms.ComboBox();
             this.cifEmpresaTextBox = new System.Windows.Forms.TextBox();
             this.telefono2EmpresaTextBox = new System.Windows.Forms.TextBox();
             this.movilEmpresaTextBox = new System.Windows.Forms.TextBox();
@@ -391,8 +383,6 @@ namespace PELOSCALVO
             movilEmpresaLabel = new System.Windows.Forms.Label();
             telefono2EmpresaLabel = new System.Windows.Forms.Label();
             cifEmpresaLabel = new System.Windows.Forms.Label();
-            serieClientesLabel = new System.Windows.Forms.Label();
-            serieArticulosLabel = new System.Windows.Forms.Label();
             imagenEmpresaLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             añoDeEjercicioLabel = new System.Windows.Forms.Label();
@@ -426,11 +416,11 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1Confi)).BeginInit();
             this.tabProveedores.SuspendLayout();
             this.PanelProveedores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).BeginInit();
             this.PanelElementosProveedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProveedores)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).BeginInit();
             this.Almacenes.SuspendLayout();
             this.panelAlmacenes.SuspendLayout();
             this.BotonesAlmacenes.SuspendLayout();
@@ -782,24 +772,6 @@ namespace PELOSCALVO
             cifEmpresaLabel.TabIndex = 65;
             cifEmpresaLabel.Text = "Cif:";
             // 
-            // serieClientesLabel
-            // 
-            serieClientesLabel.AutoSize = true;
-            serieClientesLabel.Location = new System.Drawing.Point(680, 377);
-            serieClientesLabel.Name = "serieClientesLabel";
-            serieClientesLabel.Size = new System.Drawing.Size(74, 13);
-            serieClientesLabel.TabIndex = 68;
-            serieClientesLabel.Text = "Serie Clientes:";
-            // 
-            // serieArticulosLabel
-            // 
-            serieArticulosLabel.AutoSize = true;
-            serieArticulosLabel.Location = new System.Drawing.Point(677, 401);
-            serieArticulosLabel.Name = "serieArticulosLabel";
-            serieArticulosLabel.Size = new System.Drawing.Size(77, 13);
-            serieArticulosLabel.TabIndex = 69;
-            serieArticulosLabel.Text = "Serie Articulos:";
-            // 
             // imagenEmpresaLabel
             // 
             imagenEmpresaLabel.AutoSize = true;
@@ -1099,10 +1071,10 @@ namespace PELOSCALVO
             // 
             // PanelProveedores
             // 
+            this.PanelProveedores.Controls.Add(this.Enlace_Proveedor);
             this.PanelProveedores.Controls.Add(this.Id_proveedor);
             this.PanelProveedores.Controls.Add(label9);
             this.PanelProveedores.Controls.Add(this.PanelElementosProveedor);
-            this.PanelProveedores.Controls.Add(this.Enlace_Proveedor);
             this.PanelProveedores.Controls.Add(label10);
             this.PanelProveedores.Controls.Add(label11);
             this.PanelProveedores.Controls.Add(this.NombreProveedor);
@@ -1110,7 +1082,24 @@ namespace PELOSCALVO
             this.PanelProveedores.Name = "PanelProveedores";
             this.PanelProveedores.Size = new System.Drawing.Size(478, 178);
             this.PanelProveedores.TabIndex = 59;
-            this.PanelProveedores.Visible = false;
+            // 
+            // Enlace_Proveedor
+            // 
+            this.Enlace_Proveedor.AutoSize = true;
+            this.Enlace_Proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtProveedoresBindingSource, "Enlace_Proveedores", true));
+            this.Enlace_Proveedor.Location = new System.Drawing.Point(57, 72);
+            this.Enlace_Proveedor.Name = "Enlace_Proveedor";
+            this.Enlace_Proveedor.Size = new System.Drawing.Size(0, 13);
+            this.Enlace_Proveedor.TabIndex = 59;
+            // 
+            // dtProveedoresBindingSource
+            // 
+            this.dtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
+            // 
+            // dtConfiguracionPrincipalDtProveedoresBindingSource
+            // 
+            this.dtConfiguracionPrincipalDtProveedoresBindingSource.DataMember = "DtConfiguracionPrincipal_DtProveedores";
+            this.dtConfiguracionPrincipalDtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // Id_proveedor
             // 
@@ -1158,6 +1147,7 @@ namespace PELOSCALVO
             this.BtnEliminarProveedor.Text = "Eliminar";
             this.BtnEliminarProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnEliminarProveedor.UseVisualStyleBackColor = false;
+            this.BtnEliminarProveedor.Click += new System.EventHandler(this.BtnEliminarProveedor_Click);
             // 
             // BtnBuscarProveedor
             // 
@@ -1218,15 +1208,6 @@ namespace PELOSCALVO
             this.BtnModificarProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnModificarProveedor.UseVisualStyleBackColor = false;
             this.BtnModificarProveedor.Click += new System.EventHandler(this.BtnModificarProveedor_Click);
-            // 
-            // Enlace_Proveedor
-            // 
-            this.Enlace_Proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Enlace_Almacenes", true));
-            this.Enlace_Proveedor.Location = new System.Drawing.Point(74, 69);
-            this.Enlace_Proveedor.Name = "Enlace_Proveedor";
-            this.Enlace_Proveedor.ReadOnly = true;
-            this.Enlace_Proveedor.Size = new System.Drawing.Size(275, 20);
-            this.Enlace_Proveedor.TabIndex = 57;
             // 
             // NombreProveedor
             // 
@@ -1291,6 +1272,7 @@ namespace PELOSCALVO
             // dataGridProveedores
             // 
             this.dataGridProveedores.AllowDrop = true;
+            this.dataGridProveedores.AllowUserToAddRows = false;
             this.dataGridProveedores.AutoGenerateColumns = false;
             this.dataGridProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridProveedores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(140)))));
@@ -1308,8 +1290,6 @@ namespace PELOSCALVO
             this.dataGridProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idProveedoresDataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn5,
-            this.dataGridViewImageColumn3,
-            this.dataGridViewImageColumn4,
             this.dataGridViewTextBoxColumn11});
             this.dataGridProveedores.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1320,10 +1300,13 @@ namespace PELOSCALVO
             dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridProveedores.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dataGridProveedores.Enabled = false;
             this.dataGridProveedores.Location = new System.Drawing.Point(47, 15);
             this.dataGridProveedores.MultiSelect = false;
             this.dataGridProveedores.Name = "dataGridProveedores";
-            this.dataGridProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridProveedores.ReadOnly = true;
+            this.dataGridProveedores.RowHeadersVisible = false;
+            this.dataGridProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridProveedores.Size = new System.Drawing.Size(886, 315);
             this.dataGridProveedores.TabIndex = 48;
             this.dataGridProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProveedores_CellClick);
@@ -1334,6 +1317,7 @@ namespace PELOSCALVO
             this.idProveedoresDataGridViewTextBoxColumn1.DataPropertyName = "Id_Proveedores";
             this.idProveedoresDataGridViewTextBoxColumn1.HeaderText = "Id";
             this.idProveedoresDataGridViewTextBoxColumn1.Name = "idProveedoresDataGridViewTextBoxColumn1";
+            this.idProveedoresDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -1342,25 +1326,7 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn5.HeaderText = "Proveedores";
             this.dataGridViewTextBoxColumn5.MaxInputLength = 100;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.HeaderText = "Editar";
-            this.dataGridViewImageColumn3.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.ReadOnly = true;
-            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewImageColumn4
-            // 
-            this.dataGridViewImageColumn4.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn4.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.dataGridViewImageColumn4.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            this.dataGridViewImageColumn4.ReadOnly = true;
-            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -1368,16 +1334,8 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn11.FillWeight = 40F;
             this.dataGridViewTextBoxColumn11.HeaderText = "Enlace";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.Visible = false;
-            // 
-            // dtConfiguracionPrincipalDtProveedoresBindingSource
-            // 
-            this.dtConfiguracionPrincipalDtProveedoresBindingSource.DataMember = "DtConfiguracionPrincipal_DtProveedores";
-            this.dtConfiguracionPrincipalDtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            // 
-            // dtProveedoresBindingSource
-            // 
-            this.dtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
             // 
             // Almacenes
             // 
@@ -1410,7 +1368,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(602, 494);
+            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(551, 500);
             this.BtnCancelarAlmacen.Name = "BtnCancelarAlmacen";
             this.BtnCancelarAlmacen.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarAlmacen.TabIndex = 59;
@@ -1421,10 +1379,10 @@ namespace PELOSCALVO
             // 
             // panelAlmacenes
             // 
+            this.panelAlmacenes.Controls.Add(this.Enlace_almacen);
             this.panelAlmacenes.Controls.Add(this.id_almacenes);
             this.panelAlmacenes.Controls.Add(enlace_AlmacenesLabel1);
             this.panelAlmacenes.Controls.Add(this.BotonesAlmacenes);
-            this.panelAlmacenes.Controls.Add(this.enlace_AlmacenesTextBox);
             this.panelAlmacenes.Controls.Add(id_almacenesLabel);
             this.panelAlmacenes.Controls.Add(almacenesLabel);
             this.panelAlmacenes.Controls.Add(this.almacenesTextBox);
@@ -1432,7 +1390,15 @@ namespace PELOSCALVO
             this.panelAlmacenes.Name = "panelAlmacenes";
             this.panelAlmacenes.Size = new System.Drawing.Size(478, 178);
             this.panelAlmacenes.TabIndex = 58;
-            this.panelAlmacenes.Visible = false;
+            // 
+            // Enlace_almacen
+            // 
+            this.Enlace_almacen.AutoSize = true;
+            this.Enlace_almacen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Enlace_Almacenes", true));
+            this.Enlace_almacen.Location = new System.Drawing.Point(71, 72);
+            this.Enlace_almacen.Name = "Enlace_almacen";
+            this.Enlace_almacen.Size = new System.Drawing.Size(0, 13);
+            this.Enlace_almacen.TabIndex = 59;
             // 
             // id_almacenes
             // 
@@ -1442,7 +1408,7 @@ namespace PELOSCALVO
             this.id_almacenes.Size = new System.Drawing.Size(100, 23);
             this.id_almacenes.TabIndex = 58;
             this.id_almacenes.Text = "0";
-            this.id_almacenes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.id_almacenes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BotonesAlmacenes
             // 
@@ -1475,6 +1441,7 @@ namespace PELOSCALVO
             this.BtnEliminarAlmacen.Text = "Eliminar";
             this.BtnEliminarAlmacen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnEliminarAlmacen.UseVisualStyleBackColor = false;
+            this.BtnEliminarAlmacen.Click += new System.EventHandler(this.BtnEliminarAlmacen_Click);
             // 
             // BtnBuscarAlmacen
             // 
@@ -1536,22 +1503,13 @@ namespace PELOSCALVO
             this.BtnModificarAlmacen.UseVisualStyleBackColor = false;
             this.BtnModificarAlmacen.Click += new System.EventHandler(this.BtnModificarAlmacen_Click);
             // 
-            // enlace_AlmacenesTextBox
-            // 
-            this.enlace_AlmacenesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Enlace_Almacenes", true));
-            this.enlace_AlmacenesTextBox.Location = new System.Drawing.Point(74, 69);
-            this.enlace_AlmacenesTextBox.Name = "enlace_AlmacenesTextBox";
-            this.enlace_AlmacenesTextBox.ReadOnly = true;
-            this.enlace_AlmacenesTextBox.Size = new System.Drawing.Size(275, 20);
-            this.enlace_AlmacenesTextBox.TabIndex = 57;
-            // 
             // almacenesTextBox
             // 
             this.almacenesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Almacenes", true));
             this.almacenesTextBox.Location = new System.Drawing.Point(74, 43);
             this.almacenesTextBox.Name = "almacenesTextBox";
             this.almacenesTextBox.ReadOnly = true;
-            this.almacenesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.almacenesTextBox.Size = new System.Drawing.Size(374, 20);
             this.almacenesTextBox.TabIndex = 56;
             // 
             // SelecionarEmpresa2
@@ -1576,7 +1534,7 @@ namespace PELOSCALVO
             this.BtnActualizarAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizarAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnActualizarAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(407, 494);
+            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(356, 500);
             this.BtnActualizarAlmacenes.Name = "BtnActualizarAlmacenes";
             this.BtnActualizarAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnActualizarAlmacenes.TabIndex = 49;
@@ -1596,7 +1554,7 @@ namespace PELOSCALVO
             this.BtnVolverAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(750, 494);
+            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(699, 500);
             this.BtnVolverAlmacenes.Name = "BtnVolverAlmacenes";
             this.BtnVolverAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverAlmacenes.TabIndex = 48;
@@ -1608,6 +1566,8 @@ namespace PELOSCALVO
             // dataGridAlmacenes
             // 
             this.dataGridAlmacenes.AllowDrop = true;
+            this.dataGridAlmacenes.AllowUserToAddRows = false;
+            this.dataGridAlmacenes.AllowUserToDeleteRows = false;
             this.dataGridAlmacenes.AllowUserToResizeRows = false;
             this.dataGridAlmacenes.AutoGenerateColumns = false;
             this.dataGridAlmacenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -1626,8 +1586,6 @@ namespace PELOSCALVO
             this.dataGridAlmacenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idalmacenesDataGridViewTextBoxColumn,
             this.almacenesDataGridViewTextBoxColumn,
-            this.dataGridViewImageColumn1,
-            this.dataGridViewImageColumn2,
             this.Enlace_Almacenes});
             this.dataGridAlmacenes.DataSource = this.dtAlmacenesBindingSource;
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1638,10 +1596,13 @@ namespace PELOSCALVO
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridAlmacenes.Enabled = false;
             this.dataGridAlmacenes.Location = new System.Drawing.Point(24, 24);
             this.dataGridAlmacenes.MultiSelect = false;
             this.dataGridAlmacenes.Name = "dataGridAlmacenes";
-            this.dataGridAlmacenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridAlmacenes.ReadOnly = true;
+            this.dataGridAlmacenes.RowHeadersVisible = false;
+            this.dataGridAlmacenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridAlmacenes.Size = new System.Drawing.Size(886, 304);
             this.dataGridAlmacenes.TabIndex = 47;
             this.dataGridAlmacenes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAlmacenes_CellClick);
@@ -1663,27 +1624,7 @@ namespace PELOSCALVO
             this.almacenesDataGridViewTextBoxColumn.HeaderText = "Almacenes";
             this.almacenesDataGridViewTextBoxColumn.MaxInputLength = 80;
             this.almacenesDataGridViewTextBoxColumn.Name = "almacenesDataGridViewTextBoxColumn";
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.FillWeight = 102.4521F;
-            this.dataGridViewImageColumn1.HeaderText = "Editar";
-            this.dataGridViewImageColumn1.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.FillWeight = 100.3075F;
-            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn2.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.almacenesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Enlace_Almacenes
             // 
@@ -1691,6 +1632,7 @@ namespace PELOSCALVO
             this.Enlace_Almacenes.FillWeight = 40.23725F;
             this.Enlace_Almacenes.HeaderText = "Enlace";
             this.Enlace_Almacenes.Name = "Enlace_Almacenes";
+            this.Enlace_Almacenes.ReadOnly = true;
             this.Enlace_Almacenes.Visible = false;
             // 
             // TabPageProvincias
@@ -2807,11 +2749,7 @@ namespace PELOSCALVO
             this.tabPageEmpresas.Controls.Add(this.EmpresaReguistro);
             this.tabPageEmpresas.Controls.Add(this.BtnEliminarImagenE);
             this.tabPageEmpresas.Controls.Add(this.panel1);
-            this.tabPageEmpresas.Controls.Add(serieArticulosLabel);
             this.tabPageEmpresas.Controls.Add(this.BtnImagenEmpresa);
-            this.tabPageEmpresas.Controls.Add(this.serieArticulosComboBox);
-            this.tabPageEmpresas.Controls.Add(serieClientesLabel);
-            this.tabPageEmpresas.Controls.Add(this.serieClientesComboBox);
             this.tabPageEmpresas.Controls.Add(cifEmpresaLabel);
             this.tabPageEmpresas.Controls.Add(this.cifEmpresaTextBox);
             this.tabPageEmpresas.Controls.Add(this.telefono2EmpresaTextBox);
@@ -2909,42 +2847,6 @@ namespace PELOSCALVO
             this.BtnImagenEmpresa.TabIndex = 68;
             this.BtnImagenEmpresa.UseVisualStyleBackColor = true;
             this.BtnImagenEmpresa.Click += new System.EventHandler(this.BtnImagenEmpresa_Click);
-            // 
-            // serieArticulosComboBox
-            // 
-            this.serieArticulosComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "SerieArticulos", true));
-            this.serieArticulosComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.serieArticulosComboBox.Enabled = false;
-            this.serieArticulosComboBox.FormattingEnabled = true;
-            this.serieArticulosComboBox.Items.AddRange(new object[] {
-            "Tarifa1",
-            "Tarifa2",
-            "Tarifa3",
-            "Tarifa4",
-            "Tarifa5",
-            "Tarifa6"});
-            this.serieArticulosComboBox.Location = new System.Drawing.Point(760, 398);
-            this.serieArticulosComboBox.Name = "serieArticulosComboBox";
-            this.serieArticulosComboBox.Size = new System.Drawing.Size(210, 21);
-            this.serieArticulosComboBox.TabIndex = 70;
-            // 
-            // serieClientesComboBox
-            // 
-            this.serieClientesComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "SerieClientes", true));
-            this.serieClientesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.serieClientesComboBox.Enabled = false;
-            this.serieClientesComboBox.FormattingEnabled = true;
-            this.serieClientesComboBox.Items.AddRange(new object[] {
-            "Listado1",
-            "Listado2",
-            "Listado3",
-            "Listado4",
-            "Listado5",
-            "Listado6"});
-            this.serieClientesComboBox.Location = new System.Drawing.Point(760, 371);
-            this.serieClientesComboBox.Name = "serieClientesComboBox";
-            this.serieClientesComboBox.Size = new System.Drawing.Size(210, 21);
-            this.serieClientesComboBox.TabIndex = 69;
             // 
             // cifEmpresaTextBox
             // 
@@ -4060,14 +3962,14 @@ namespace PELOSCALVO
             // datosDeInicioToolStripMenuItem
             // 
             this.datosDeInicioToolStripMenuItem.Name = "datosDeInicioToolStripMenuItem";
-            this.datosDeInicioToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.datosDeInicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.datosDeInicioToolStripMenuItem.Text = "Consultar Datos";
             this.datosDeInicioToolStripMenuItem.Click += new System.EventHandler(this.datosDeInicioToolStripMenuItem_Click);
             // 
             // configurarDatosToolStripMenuItem
             // 
             this.configurarDatosToolStripMenuItem.Name = "configurarDatosToolStripMenuItem";
-            this.configurarDatosToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.configurarDatosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.configurarDatosToolStripMenuItem.Text = "Configurar Datos";
             this.configurarDatosToolStripMenuItem.Click += new System.EventHandler(this.configurarDatosToolStripMenuItem_Click);
             // 
@@ -4377,11 +4279,11 @@ namespace PELOSCALVO
             this.tabProveedores.PerformLayout();
             this.PanelProveedores.ResumeLayout(false);
             this.PanelProveedores.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).EndInit();
             this.PanelElementosProveedor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProveedores)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).EndInit();
             this.Almacenes.ResumeLayout(false);
             this.Almacenes.PerformLayout();
             this.panelAlmacenes.ResumeLayout(false);
@@ -4509,8 +4411,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox imagenEmpresaPictureBox;
         private System.Windows.Forms.Button BtnImagenEmpresa;
-        private System.Windows.Forms.ComboBox serieArticulosComboBox;
-        private System.Windows.Forms.ComboBox serieClientesComboBox;
         private System.Windows.Forms.TextBox cifEmpresaTextBox;
         private System.Windows.Forms.TextBox telefono2EmpresaTextBox;
         private System.Windows.Forms.TextBox movilEmpresaTextBox;
@@ -4600,7 +4500,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.MenuStrip miniToolStrip;
         public System.Windows.Forms.Button BtnActualizarAlmacenes;
         public System.Windows.Forms.Button BtnVolverAlmacenes;
-        private System.Windows.Forms.DataGridView dataGridAlmacenes;
         private System.Windows.Forms.ComboBox SelecionarEmpresa2;
         private System.Windows.Forms.DataGridView dataGridProveedores;
         private System.Windows.Forms.BindingSource dtProveedoresBindingSource;
@@ -4643,16 +4542,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewImageColumn EliminarFamilia;
         private System.Windows.Forms.BindingSource dtAlmacenesBindingSource;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idalmacenesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn almacenesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Enlace_Almacenes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProveedoresDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.Panel panelDatosInicio;
         private System.Windows.Forms.ToolStripMenuItem crearBaseDatosSqlLocalToolStripMenuItem;
         private System.Windows.Forms.Label EmpresaReguistro;
@@ -4662,7 +4551,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnBuscarAlmacen;
         private System.Windows.Forms.Button BtnNuevoAlmacen;
         private System.Windows.Forms.Button BtnModificarAlmacen;
-        private System.Windows.Forms.TextBox enlace_AlmacenesTextBox;
         private System.Windows.Forms.TextBox almacenesTextBox;
         private System.Windows.Forms.Label id_almacenes;
         private System.Windows.Forms.Button BtnCancelarAlmacen;
@@ -4674,9 +4562,17 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnBuscarProveedor;
         private System.Windows.Forms.Button BtnNuevoProveedor;
         private System.Windows.Forms.Button BtnModificarProveedor;
-        private System.Windows.Forms.TextBox Enlace_Proveedor;
         private System.Windows.Forms.TextBox NombreProveedor;
         private System.Windows.Forms.Button BtnCancelarProveedores;
         private System.Windows.Forms.ToolStripMenuItem Abrir_Correos;
+        private System.Windows.Forms.Label Enlace_almacen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idalmacenesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn almacenesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Enlace_Almacenes;
+        private System.Windows.Forms.Label Enlace_Proveedor;
+        private System.Windows.Forms.DataGridView dataGridAlmacenes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProveedoresDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
     }
 }

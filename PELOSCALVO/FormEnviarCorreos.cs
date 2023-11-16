@@ -35,6 +35,11 @@ namespace PELOSCALVO
                     CorreoEmpresa.DisplayMember = "CorreoEletronico";
                     CorreoEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;           
                 }
+                if (FormMenuPrincipal.menu2principal.dsCorreosCliente != null)
+                {
+                    TxtNombreCliente.DisplayMember = "CorreoEletronico_cli";
+                    TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
+                }
                 if (File.Exists(Rutacorreos))
                 {
                     FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);

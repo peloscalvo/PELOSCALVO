@@ -10,7 +10,7 @@ namespace PELOSCALVO
         // public static string DirectorioActual = Directory.GetCurrentDirectory();
         public static string RutaFactura = "";
         public static string RutaDatosPrincipal = "Datos";
-        public static string RutaConfiguracionXml = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "Configuracion.Xml";
+        public static string RutaEmpresas = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "Configuracion.Xml";
         public static string RutaMultidatos = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "MultiDatos.Xml";
         public static string RutaMulti2 = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "Multi2.Xml";
         public static string ArchivoInicioFacturas;
