@@ -580,7 +580,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (string.IsNullOrEmpty(this.empresaConfiComboBox.Text))
+            if (string.IsNullOrEmpty(this.empresaENLACETextBox.Text))
             {
                 MessageBox.Show("Eliga Empresa Valida", "EMPRESA");
             }

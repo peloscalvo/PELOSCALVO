@@ -86,10 +86,10 @@ namespace PELOSCALVO
             this.dtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsfacturas = new PELOSCALVO.Dtfacturas();
             this.PanelArriba = new System.Windows.Forms.Panel();
-            this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
-            this.NombreEmpresaReguistro = new System.Windows.Forms.Label();
+            this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
+            this.NombreEmpresaConfi = new System.Windows.Forms.Label();
             this.SerieText = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
@@ -198,7 +198,6 @@ namespace PELOSCALVO
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtConfiBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.empresaConfiComboBox = new System.Windows.Forms.ComboBox();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -582,10 +581,9 @@ namespace PELOSCALVO
             // 
             this.PanelArriba.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelArriba.Controls.Add(this.empresaConfiComboBox);
             this.PanelArriba.Controls.Add(this.EmpresaPrincipal);
             this.PanelArriba.Controls.Add(label1);
-            this.PanelArriba.Controls.Add(this.NombreEmpresaReguistro);
+            this.PanelArriba.Controls.Add(this.NombreEmpresaConfi);
             this.PanelArriba.Controls.Add(this.SerieText);
             this.PanelArriba.Controls.Add(ejerciciosDeAñoLabel);
             this.PanelArriba.Controls.Add(this.ejerciciosDeAñoComboBox);
@@ -595,21 +593,6 @@ namespace PELOSCALVO
             this.PanelArriba.Size = new System.Drawing.Size(1287, 35);
             this.PanelArriba.TabIndex = 2;
             this.PanelArriba.Tag = "NO";
-            // 
-            // EmpresaPrincipal
-            // 
-            this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.EmpresaPrincipal.DisplayMember = "EmpresaConfi";
-            this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.EmpresaPrincipal.FormattingEnabled = true;
-            this.EmpresaPrincipal.Location = new System.Drawing.Point(62, 7);
-            this.EmpresaPrincipal.Name = "EmpresaPrincipal";
-            this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 21);
-            this.EmpresaPrincipal.TabIndex = 73;
-            this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
-            this.EmpresaPrincipal.SelectedValueChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedValueChanged);
-            this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
-            this.EmpresaPrincipal.MouseEnter += new System.EventHandler(this.EmpresaPrincipal_MouseEnter);
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -621,15 +604,31 @@ namespace PELOSCALVO
             this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
             this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // NombreEmpresaReguistro
+            // EmpresaPrincipal
             // 
-            this.NombreEmpresaReguistro.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
-            this.NombreEmpresaReguistro.Location = new System.Drawing.Point(460, 9);
-            this.NombreEmpresaReguistro.Name = "NombreEmpresaReguistro";
-            this.NombreEmpresaReguistro.Size = new System.Drawing.Size(272, 23);
-            this.NombreEmpresaReguistro.TabIndex = 72;
-            this.NombreEmpresaReguistro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.NombreEmpresaReguistro.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
+            this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.EmpresaPrincipal.DisplayMember = "NombreEmpresaReguistro";
+            this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EmpresaPrincipal.FormattingEnabled = true;
+            this.EmpresaPrincipal.Location = new System.Drawing.Point(62, 7);
+            this.EmpresaPrincipal.Name = "EmpresaPrincipal";
+            this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 21);
+            this.EmpresaPrincipal.TabIndex = 73;
+            this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
+            this.EmpresaPrincipal.SelectedValueChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedValueChanged);
+            this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
+            this.EmpresaPrincipal.MouseEnter += new System.EventHandler(this.EmpresaPrincipal_MouseEnter);
+            this.EmpresaPrincipal.MouseLeave += new System.EventHandler(this.EmpresaPrincipal_MouseLeave);
+            // 
+            // NombreEmpresaConfi
+            // 
+            this.NombreEmpresaConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
+            this.NombreEmpresaConfi.Location = new System.Drawing.Point(445, 9);
+            this.NombreEmpresaConfi.Name = "NombreEmpresaConfi";
+            this.NombreEmpresaConfi.Size = new System.Drawing.Size(372, 23);
+            this.NombreEmpresaConfi.TabIndex = 72;
+            this.NombreEmpresaConfi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NombreEmpresaConfi.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
             // 
             // SerieText
             // 
@@ -2020,18 +2019,6 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalDtConfiBindingSource1.DataMember = "DtConfiguracionPrincipal_DtConfi";
             this.dtConfiguracionPrincipalDtConfiBindingSource1.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
-            // empresaConfiComboBox
-            // 
-            this.empresaConfiComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.empresaConfiComboBox.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.empresaConfiComboBox.DisplayMember = "EmpresaConfi";
-            this.empresaConfiComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaConfiComboBox.FormattingEnabled = true;
-            this.empresaConfiComboBox.Location = new System.Drawing.Point(518, 10);
-            this.empresaConfiComboBox.Name = "empresaConfiComboBox";
-            this.empresaConfiComboBox.Size = new System.Drawing.Size(282, 21);
-            this.empresaConfiComboBox.TabIndex = 74;
-            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2191,7 +2178,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtAlmacenesBindingSource;
-        private System.Windows.Forms.Label NombreEmpresaReguistro;
+        private System.Windows.Forms.Label NombreEmpresaConfi;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -2227,6 +2214,5 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn EnlaceDetalle;
         public System.Windows.Forms.ComboBox EmpresaPrincipal;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtConfiBindingSource1;
-        private System.Windows.Forms.ComboBox empresaConfiComboBox;
     }
 }

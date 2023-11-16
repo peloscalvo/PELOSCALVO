@@ -270,7 +270,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoNOTA", string.IsNullOrEmpty(this.labelTipoNota.Text) ? (object)DBNull.Value : this.labelTipoNota.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? "A" : this.SerieText.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.NombreEmpresaReguistro.Text) ? (object)DBNull.Value : this.NombreEmpresaReguistro.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.NombreEmpresaConfi.Text) ? (object)DBNull.Value : this.NombreEmpresaConfi.Text);
                 if (this.cobradaFacturaCheckBox.Checked == true)
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CobradaFactura", "Cobrado");///canbiar valor a cobrada
@@ -511,7 +511,7 @@ namespace PELOSCALVO
                 Salto_Atras:
                     Random r = new Random();
                     int VALOR_MAS = r.Next(50000, 100000000);
-                    this.EnlaceFactu.Text = this.NombreEmpresaReguistro.Text + " " + this.ejerciciosDeAñoComboBox.Text + " / " + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
+                    this.EnlaceFactu.Text = this.NombreEmpresaConfi.Text + " " + this.ejerciciosDeAñoComboBox.Text + " / " + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
                     this.FechaFacturaDate.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
                     this.dtNuevaFacturaDataGridView.Rows[this.dtNuevaFacturaDataGridView.Rows.Count - 1].Selected = true;
                     // this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
@@ -788,7 +788,7 @@ namespace PELOSCALVO
         private void ActualizarFacturaSql()
         {
             // string consulta = "SELECT * from DtNuevaFactura";
-            string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.NombreEmpresaReguistro.Text + "'";
+            string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.NombreEmpresaConfi.Text + "'";
             string consultaDetalle = "SELECT * from [DtDetalles_" + ClasDatos.NombreFactura + "]";
             string consultaDetalle2 = "SELECT * from [DtDetalles2_" + ClasDatos.NombreFactura + "]";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -822,7 +822,7 @@ namespace PELOSCALVO
         }
         private void FormFACTURAR_Load(object sender, EventArgs e)
         {
-
+            
             this.labelTipoNota.Text = ClasDatos.NombreFactura;
             this.Text = ClasDatos.NombreFactura;
             // ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.NombreFactura + FormMenuPrincipal.menu2principal.InfoExtension.Text;
@@ -975,7 +975,7 @@ namespace PELOSCALVO
             }
 
 
-            if (this.NombreEmpresaReguistro.Text == string.Empty)
+            if (this.NombreEmpresaConfi.Text == string.Empty)
             {
                 MessageBox.Show("Faltan Datos o Datos Erradicos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.panelBotones.Enabled = false;
@@ -992,7 +992,7 @@ namespace PELOSCALVO
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
                 // string consulta = "SELECT * from DtNuevaFactura";
-                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.NombreEmpresaReguistro.Text + "'";
+                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.NombreEmpresaConfi.Text + "'";
                 string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
                 string consultaDetalle2 = "SELECT * from DtDetalles2_" + ClasDatos.NombreFactura;
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -1052,12 +1052,12 @@ namespace PELOSCALVO
             if (this.PanelArriba.Tag.ToString() == "SI")
             {
                 this.dsfacturas.Clear();
-                if (this.NombreEmpresaReguistro.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
+                if (this.NombreEmpresaConfi.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
                 {
                     try
                     {
 
-                        string Enlace = this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text;
+                        string Enlace = this.NombreEmpresaConfi.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text;
                         this.dtNuevaFacturaBindingSource.Filter = "( [EnlaceFactura]   LIKE '%" + Enlace + "%'" + ")";
                         this.dtNuevaFacturaDataGridView.Refresh();
                     }
@@ -2090,7 +2090,7 @@ namespace PELOSCALVO
 
         private void tipoInpuestoIVALabel1_MouseEnter(object sender, EventArgs e)
         {
-            MessageBox.Show(this.NombreEmpresaReguistro.Text);
+            MessageBox.Show(this.NombreEmpresaConfi.Text);
         }
 
         private void EmpresaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
@@ -2101,7 +2101,7 @@ namespace PELOSCALVO
 
         private void EmpresaPrincipal_Enter(object sender, EventArgs e)
         {
-
+            this.PanelArriba.Tag = "SI";
         }
 
         private void NombreEmpresaReguistro_TextChanged(object sender, EventArgs e)
@@ -2122,11 +2122,18 @@ namespace PELOSCALVO
         private void EmpresaPrincipal_MouseEnter(object sender, EventArgs e)
         {
             this.PanelArriba.Tag = "SI";
+            NombreEmpresaConfi.Visible = true;
+
         }
 
         private void EmpresaPrincipal_SelectedValueChanged(object sender, EventArgs e)
         {
             // FiltrarFactura();
+        }
+
+        private void EmpresaPrincipal_MouseLeave(object sender, EventArgs e)
+        {
+            NombreEmpresaConfi.Visible = false;
         }
     }
 }

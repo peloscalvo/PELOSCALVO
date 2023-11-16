@@ -52,8 +52,10 @@ namespace PELOSCALVO
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.ErrorVer = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TabArchivos = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.BtnTablas = new System.Windows.Forms.Button();
             this.Info_Res = new System.Windows.Forms.Label();
             this.BtnRestablecer = new System.Windows.Forms.Button();
             this.BtnCrearTbCliente = new System.Windows.Forms.Button();
@@ -88,8 +90,6 @@ namespace PELOSCALVO
             this.ActualizarServidores = new System.Windows.Forms.Button();
             this.Autenticacion = new System.Windows.Forms.ComboBox();
             this.TabArchivoSql = new System.Windows.Forms.TabControl();
-            this.BtnPrueba = new System.Windows.Forms.Button();
-            this.BtnTablas = new System.Windows.Forms.Button();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
@@ -109,8 +109,8 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TabArchivos.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.TabServidor.SuspendLayout();
             this.panelSql1.SuspendLayout();
@@ -305,20 +305,10 @@ namespace PELOSCALVO
             // 
             this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Red;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(357, 367);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(97, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 85;
-            this.pictureBox1.TabStop = false;
-            // 
             // TabArchivos
             // 
             this.TabArchivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TabArchivos.Controls.Add(this.panel3);
             this.TabArchivos.Controls.Add(this.Info_Res);
             this.TabArchivos.Controls.Add(this.BtnRestablecer);
             this.TabArchivos.Controls.Add(this.BtnCrearTbCliente);
@@ -343,6 +333,35 @@ namespace PELOSCALVO
             this.TabArchivos.Tag = "NO";
             this.TabArchivos.Text = "CONFIGURAR ARCHIVOS";
             this.TabArchivos.MouseEnter += new System.EventHandler(this.TabArchivos_MouseEnter);
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.BtnTablas);
+            this.panel3.Location = new System.Drawing.Point(626, 19);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(172, 90);
+            this.panel3.TabIndex = 99;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(120, 13);
+            this.label9.TabIndex = 94;
+            this.label9.Text = "Crear Todas Las Tablas";
+            // 
+            // BtnTablas
+            // 
+            this.BtnTablas.Location = new System.Drawing.Point(41, 49);
+            this.BtnTablas.Name = "BtnTablas";
+            this.BtnTablas.Size = new System.Drawing.Size(75, 23);
+            this.BtnTablas.TabIndex = 87;
+            this.BtnTablas.Text = "Tablas";
+            this.BtnTablas.UseVisualStyleBackColor = true;
+            this.BtnTablas.Click += new System.EventHandler(this.BtnTablas_Click);
             // 
             // Info_Res
             // 
@@ -426,12 +445,11 @@ namespace PELOSCALVO
             this.SerieArticulosText.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieArticulosText.FormattingEnabled = true;
             this.SerieArticulosText.Items.AddRange(new object[] {
-            "Tarifa1",
-            "Tarifa2",
-            "Tarifa3",
-            "Tarifa4",
-            "Tarifa5",
-            "Tarifa6"});
+            "Tarifa De Articulos 1",
+            "Tarifa De Articulos 2",
+            "Tarifa De Articulos 3",
+            "Tarifa De Articulos 4",
+            "Tarifa De Articulos 5"});
             this.SerieArticulosText.Location = new System.Drawing.Point(150, 56);
             this.SerieArticulosText.Name = "SerieArticulosText";
             this.SerieArticulosText.Size = new System.Drawing.Size(300, 21);
@@ -525,12 +543,11 @@ namespace PELOSCALVO
             this.SerieClientesText2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieClientesText2.FormattingEnabled = true;
             this.SerieClientesText2.Items.AddRange(new object[] {
-            "Listado1",
-            "Listado2",
-            "Listado3",
-            "Listado4",
-            "Listado5",
-            "Listado6"});
+            "Listado De Clientes 1",
+            "Listado De Clientes 1",
+            "Listado De Clientes 1",
+            "Listado De Clientes 1",
+            "Listado De Clientes 1"});
             this.SerieClientesText2.Location = new System.Drawing.Point(150, 96);
             this.SerieClientesText2.Name = "SerieClientesText2";
             this.SerieClientesText2.Size = new System.Drawing.Size(300, 21);
@@ -784,34 +801,11 @@ namespace PELOSCALVO
             this.TabArchivoSql.Size = new System.Drawing.Size(849, 341);
             this.TabArchivoSql.TabIndex = 83;
             // 
-            // BtnPrueba
-            // 
-            this.BtnPrueba.Location = new System.Drawing.Point(516, 370);
-            this.BtnPrueba.Name = "BtnPrueba";
-            this.BtnPrueba.Size = new System.Drawing.Size(75, 23);
-            this.BtnPrueba.TabIndex = 86;
-            this.BtnPrueba.Text = "prueba";
-            this.BtnPrueba.UseVisualStyleBackColor = true;
-            this.BtnPrueba.Click += new System.EventHandler(this.BtnPrueba_Click);
-            // 
-            // BtnTablas
-            // 
-            this.BtnTablas.Location = new System.Drawing.Point(617, 369);
-            this.BtnTablas.Name = "BtnTablas";
-            this.BtnTablas.Size = new System.Drawing.Size(75, 23);
-            this.BtnTablas.TabIndex = 87;
-            this.BtnTablas.Text = "Tablas";
-            this.BtnTablas.UseVisualStyleBackColor = true;
-            this.BtnTablas.Click += new System.EventHandler(this.BtnTablas_Click);
-            // 
             // FormBaseDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(849, 453);
-            this.Controls.Add(this.BtnTablas);
-            this.Controls.Add(this.BtnPrueba);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TabArchivoSql);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -830,9 +824,10 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.TabArchivos.ResumeLayout(false);
             this.TabArchivos.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.TabServidor.ResumeLayout(false);
@@ -857,7 +852,6 @@ namespace PELOSCALVO
         public System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
         private System.Windows.Forms.PictureBox PictureServidor;
         private System.Windows.Forms.PictureBox PictureArchivo;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabControl TabArchivoSql;
         private System.Windows.Forms.TabPage TabServidor;
         public System.Windows.Forms.Button BtnGuardarServidores;
@@ -885,7 +879,6 @@ namespace PELOSCALVO
         public System.Windows.Forms.Button BtnGuardarArchivo_Sql;
         private System.Windows.Forms.Label ContadorFactu;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button BtnPrueba;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button BtnExaminarB;
         private System.Windows.Forms.Label label6;
@@ -895,5 +888,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnRestablecer;
         private System.Windows.Forms.Label Info_Res;
         private System.Windows.Forms.Button BtnTablas;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label9;
     }
 }

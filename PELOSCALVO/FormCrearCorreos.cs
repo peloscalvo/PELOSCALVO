@@ -108,13 +108,13 @@ namespace PELOSCALVO
                 string Correo = "";
                 try
                 {
-                    if (e.ColumnIndex == 8)
+                    if (e.ColumnIndex == 0)
                     {
                         if (e.RowIndex < this.DatagridCorreosEmpresa.RowCount - 1)
                         {
-                            if (this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
+                            if (this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[2].Value.ToString() != string.Empty)
                             {
-                                Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[0].Value.ToString();
+                                Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[2].Value.ToString();
                             }
                         }
                         if (MessageBox.Show("Desea Eliminar Este Correo ?? " + "\n" + "\n" + Correo, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
@@ -148,22 +148,22 @@ namespace PELOSCALVO
                 try
                 {
                     string Correo = "";
-                        if (e.ColumnIndex == 4)
+                        if (e.ColumnIndex == 0)
                         {
-                        if (e.RowIndex < this.DatagridCorreosEmpresa.RowCount - 1)
+                        if (e.RowIndex < this.DataGridCorreoCliente.RowCount - 1)
                         {
-                            if (this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
+                            if (this.DataGridCorreoCliente.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
                             {
-                                Correo = this.DatagridCorreosEmpresa.Rows[e.RowIndex].Cells[1].Value.ToString();
+                                Correo = this.DataGridCorreoCliente.Rows[e.RowIndex].Cells[1].Value.ToString();
                             }
                         }
                             if (MessageBox.Show("Desea Eliminar Este Correo ?? " + "\n" + "\n" + Correo, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             {
                                 if (File.Exists(this.Rutacorreos))
                                 {
-                                this.DatagridCorreosEmpresa.Rows.Remove(this.DatagridCorreosEmpresa.CurrentRow);
+                                this.DataGridCorreoCliente.Rows.Remove(this.DataGridCorreoCliente.CurrentRow);
                                 FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);                    
-                                    this.DatagridCorreosEmpresa.Refresh();
+                                    this.DataGridCorreoCliente.Refresh();
                                 }
                                 MessageBox.Show(Correo + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
                             }

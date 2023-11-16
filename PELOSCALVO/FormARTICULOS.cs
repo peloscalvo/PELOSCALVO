@@ -82,11 +82,7 @@ namespace PELOSCALVO
                 {
                     if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
                     {
-                        String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + " De Articulos" + "]";
-                        if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
-                        {
-                            TipoTabla = FormMenuPrincipal.menu2principal.InfoArticulo.Text;
-                        }
+                        String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text  + "]";
                         string consulta = "Delete from " + TipoTabla + "  WHERE ID= @ID";
                         //  ClsConexionDb.CadenaConexion = cadena;
                         ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -572,7 +568,7 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
                 {
-                    String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + " De Articulos" + "]";
+                    String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "]";
                     string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @ID";
                     ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
                     {
@@ -1100,11 +1096,7 @@ namespace PELOSCALVO
 
         private void GuardarArticulosDB()
         {
-            String TipoTabla = FormMenuPrincipal.menu2principal.InfoArticulo.Text + " De Articulos";
-            if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
-            {
-                TipoTabla = FormMenuPrincipal.menu2principal.InfoArticulo.Text;
-            }
+            String TipoTabla = FormMenuPrincipal.menu2principal.InfoArticulo.Text;
             string consulta = "";
             if (this.idArticulo.Tag.ToString() == "MODIFICAR")
             {
@@ -1180,7 +1172,7 @@ namespace PELOSCALVO
         }
         private void GuardarArticulosSQL()
         {
-            String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + " De Articulos]";
+            String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "]";
             string Consulta = "";
             if (this.idArticulo.Tag.ToString() == "MODIFICAR")
             {

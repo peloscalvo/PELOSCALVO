@@ -147,17 +147,6 @@ namespace PELOSCALVO
                         CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
 
                     }
-                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "DscorreosCliente.Xml"))
-                    {
-                        this.dsCorreos.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "DscorreosCliente.Xml");
-
-
-                    }
-                    else
-                    {
-                        CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "DscorreosCliente.Xml");
-
-                    }
                 }
                 catch (Exception ex)
                 {
