@@ -409,7 +409,7 @@ namespace PELOSCALVO
                 {
 
                     this.panelBotonesClientes.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaConfiguracionXml, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Archivo : " + ClasDatos.RutaEmpresas, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 if (!File.Exists(ClasDatos.RutaMultidatos))

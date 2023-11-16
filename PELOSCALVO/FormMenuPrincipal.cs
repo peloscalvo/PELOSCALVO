@@ -74,7 +74,7 @@ namespace PELOSCALVO
         }
         private void CrearArchivos_Xml_Principal()
         {
-            if (EspacioDiscosPrincipal(ClasDatos.RutaConfiguracionXml, 30))
+            if (EspacioDiscosPrincipal(ClasDatos.RutaMultidatos, 30))
             {
                 try
                 {
@@ -94,12 +94,7 @@ namespace PELOSCALVO
                             MessageBox.Show("Sistema Restructurado Con Exito", "SISTEMA FACTURACION", MessageBoxButtons.OK);
                         }
                     }
-                    if (!File.Exists(ClasDatos.RutaConfiguracionXml))
-                    {
-                        CrearArchivosXml(ClasDatos.RutaConfiguracionXml);///solo crear no Abrir
-
-
-                    }
+ 
                     if (File.Exists(ClasDatos.RutaMultidatos))
                     {
                         this.dsMultidatos.ReadXml(ClasDatos.RutaMultidatos);

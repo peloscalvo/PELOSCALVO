@@ -67,7 +67,7 @@ namespace PELOSCALVO
         }
         private void BtnGuardarCorreo_EMP_Click(object sender, EventArgs e)
         {
-            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaConfiguracionXml, 30))
+            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaMulti2, 30))
             {
                 try
                 {
@@ -173,7 +173,7 @@ namespace PELOSCALVO
 
         private void BtnGuardarCorreoCli_Click(object sender, EventArgs e)
         {
-            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaConfiguracionXml, 30))
+            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaMultidatos, 30))
             {
                 if (File.Exists(ClasDatos.RutaMulti2))
                 {

@@ -866,7 +866,7 @@ namespace PELOSCALVO
                 if (!File.Exists(ClasDatos.RutaMulti2))
                 {
                     this.panelBotones.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaConfiguracionXml, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Archivo : " + ClasDatos.RutaEmpresas, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
 
                 }
@@ -894,32 +894,26 @@ namespace PELOSCALVO
                         }
 
 
-                        if (ClsConexionSql.SibaseDatosSql == false)
+                        if (ClsConexionSql.SibaseDatosSql)
                         {
+                            ActualizarFacturaSql();
+                      
+                        }
+                        else  
+                        {
+                            // ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\"+
+                            //  "\\" + ClasDatos.NombreFactura + "."+FormMenuPrincipal.menu2principal.InfoExtension.Text;
 
-                            ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura + "\\" + ClasDatos.NombreFactura + "-" + this.NombreEmpresaReguistro.Text + this.ejerciciosDeAñoComboBox.Text + this.SerieText.Text + ".Xml";
-
-                            string path = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaFactura;
-                            if (Directory.Exists(path))
+                            if (File.Exists(ClasDatos.ArchivoInicioFacturas))
                             {
-                                if (File.Exists(ClasDatos.ArchivoInicioFacturas))
-                                {
-                                    this.dsfacturas.ReadXml(ClasDatos.ArchivoInicioFacturas);
-
-                                }
+                                ActualizarFaturas_DB();
                             }
                             else
                             {
-                                MessageBox.Show("Debe Restructurar Sistema", "DIRECTORIO    " + ClasDatos.RutaFactura + "  NO EXISTE");
+                                MessageBox.Show(ClasDatos.ArchivoInicioFacturas, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 this.panelBotones.Enabled = false;
                                 return;
                             }
-
-
-                        }
-                        else  //// si es sql activar letra
-                        {
-
                         }
 
                     }
@@ -987,7 +981,7 @@ namespace PELOSCALVO
 
                 if (File.Exists(ClasDatos.ArchivoInicioFacturas))
                 {
-             
+
                     ActualizarFaturas_DB();
                 }
                 else
@@ -1058,7 +1052,7 @@ namespace PELOSCALVO
                 return;
 
             }
-    
+
 
         }
         private void EmpresaENLACEComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -1092,7 +1086,7 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message.ToString());
                     }
-           
+
 
                 }
                 else
