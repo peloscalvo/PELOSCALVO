@@ -1522,6 +1522,11 @@ namespace PELOSCALVO
                 }
             }
         }
+
+        private void TabArchivos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

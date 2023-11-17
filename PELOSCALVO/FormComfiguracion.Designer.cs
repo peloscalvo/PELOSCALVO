@@ -349,15 +349,15 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idProveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabTablas = new System.Windows.Forms.TabPage();
             this.DataGridTablas = new System.Windows.Forms.DataGridView();
-            this.dsMultidatosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtNombresTablasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreTablaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dtNombresTablasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMultidatosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idProveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             descripcionArchivoDatosLabel = new System.Windows.Forms.Label();
             directorioArchivoDatosLabel = new System.Windows.Forms.Label();
             nombreArchivoDatosLabel = new System.Windows.Forms.Label();
@@ -467,8 +467,8 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
             this.TabTablas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTablas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNombresTablasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // descripcionArchivoDatosLabel
@@ -1382,7 +1382,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(534, 502);
+            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(517, 504);
             this.BtnCancelarAlmacen.Name = "BtnCancelarAlmacen";
             this.BtnCancelarAlmacen.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarAlmacen.TabIndex = 59;
@@ -1548,7 +1548,7 @@ namespace PELOSCALVO
             this.BtnActualizarAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizarAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnActualizarAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(339, 502);
+            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(322, 504);
             this.BtnActualizarAlmacenes.Name = "BtnActualizarAlmacenes";
             this.BtnActualizarAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnActualizarAlmacenes.TabIndex = 49;
@@ -1568,7 +1568,7 @@ namespace PELOSCALVO
             this.BtnVolverAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(682, 502);
+            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(665, 504);
             this.BtnVolverAlmacenes.Name = "BtnVolverAlmacenes";
             this.BtnVolverAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverAlmacenes.TabIndex = 48;
@@ -4254,14 +4254,6 @@ namespace PELOSCALVO
             this.dtObrasBindingSource.DataMember = "DtObras";
             this.dtObrasBindingSource.DataSource = this.dsMulti2;
             // 
-            // idProveedoresDataGridViewTextBoxColumn
-            // 
-            this.idProveedoresDataGridViewTextBoxColumn.DataPropertyName = "Id_Proveedores";
-            this.idProveedoresDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idProveedoresDataGridViewTextBoxColumn.Name = "idProveedoresDataGridViewTextBoxColumn";
-            this.idProveedoresDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idProveedoresDataGridViewTextBoxColumn.Width = 153;
-            // 
             // TabTablas
             // 
             this.TabTablas.Controls.Add(this.DataGridTablas);
@@ -4315,16 +4307,6 @@ namespace PELOSCALVO
             this.DataGridTablas.Size = new System.Drawing.Size(1006, 374);
             this.DataGridTablas.TabIndex = 50;
             // 
-            // dsMultidatosBindingSource
-            // 
-            this.dsMultidatosBindingSource.DataSource = this.dsMultidatos;
-            this.dsMultidatosBindingSource.Position = 0;
-            // 
-            // dtNombresTablasBindingSource
-            // 
-            this.dtNombresTablasBindingSource.DataMember = "DtNombresTablas";
-            this.dtNombresTablasBindingSource.DataSource = this.dsMultidatosBindingSource;
-            // 
             // idDataGridViewTextBoxColumn1
             // 
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
@@ -4359,6 +4341,24 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn2.ReadOnly = true;
             this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dtNombresTablasBindingSource
+            // 
+            this.dtNombresTablasBindingSource.DataMember = "DtNombresTablas";
+            this.dtNombresTablasBindingSource.DataSource = this.dsMultidatosBindingSource;
+            // 
+            // dsMultidatosBindingSource
+            // 
+            this.dsMultidatosBindingSource.DataSource = this.dsMultidatos;
+            this.dsMultidatosBindingSource.Position = 0;
+            // 
+            // idProveedoresDataGridViewTextBoxColumn
+            // 
+            this.idProveedoresDataGridViewTextBoxColumn.DataPropertyName = "Id_Proveedores";
+            this.idProveedoresDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idProveedoresDataGridViewTextBoxColumn.Name = "idProveedoresDataGridViewTextBoxColumn";
+            this.idProveedoresDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idProveedoresDataGridViewTextBoxColumn.Width = 153;
             // 
             // FormComfiguracion
             // 
@@ -4444,8 +4444,8 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
             this.TabTablas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTablas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNombresTablasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

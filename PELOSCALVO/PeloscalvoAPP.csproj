@@ -265,6 +265,18 @@
     <Compile Include="FormCrearBaseDatos.Designer.cs">
       <DependentUpon>FormCrearBaseDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCrearTablasDb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearTablasDb.Designer.cs">
+      <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmpresas.Designer.cs">
+      <DependentUpon>FormEmpresas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEnviarCorreos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +288,12 @@
     </Compile>
     <Compile Include="FormFacturar.Designer.cs">
       <DependentUpon>FormFacturar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFamiliaProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFamiliaProductos.Designer.cs">
+      <DependentUpon>FormFamiliaProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormImprimirTodo.cs">
       <SubType>Form</SubType>
@@ -339,6 +357,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearBaseDatos.resx">
       <DependentUpon>FormCrearBaseDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearTablasDb.resx">
+      <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmpresas.resx">
+      <DependentUpon>FormEmpresas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEnviarCorreos.resx">
       <DependentUpon>FormEnviarCorreos.cs</DependentUpon>

@@ -74,7 +74,7 @@ namespace PELOSCALVO
 
                     }
                     // MensageCorreo.Attachments.Add("faf")
-                    foreach (var item in ListaAdjuntos.Items)
+                    foreach (var item in ListaDeAdjuntos.Items)
                     {
                         if(item.ToString() != string.Empty)
                         {
@@ -142,6 +142,10 @@ namespace PELOSCALVO
             {
                 ok = false;
                 this.ErrorCorreo.SetError(this.SmtpCorreo, "Campo Vacio Rellene");
+            }
+            if(ok== false)
+            {
+                ControlCorreo.SelectedIndex = 1;
             }
             return ok;
         }
@@ -252,7 +256,7 @@ namespace PELOSCALVO
                 BuscarArchivo.Filter = BuscarArchivo.Filter = @"All Files|*.*|Text File (.txt)|*.txt|access File (.accdb ,.mdb)|*.accdb;*.mdb|PDF (.pdf)|*.pdf|Office Files|*.doc;*.xls;*.ppt|Spreadsheet (.xls ,.xlsx)|  *.xls ;*.xlsx|Presentation (.pptx ,.ppt)|*.pptx;*.ppt";
                 if (BuscarArchivo.ShowDialog() == DialogResult.OK)
                 {
-                    ListaAdjuntos.Items.Add(Path.GetDirectoryName(BuscarArchivo.FileName.ToString()));
+                    ListaDeAdjuntos.Items.Add(Path.GetFullPath(BuscarArchivo.FileName.ToString()));
 
 
                 }
@@ -268,7 +272,7 @@ namespace PELOSCALVO
 
         private void BtnLimpiarAdjuntos_Click(object sender, EventArgs e)
         {
-            ListaAdjuntos.Items.Clear();
+            ListaDeAdjuntos.Items.Clear();
         }
     }
 }

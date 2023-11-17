@@ -60,11 +60,11 @@ namespace PELOSCALVO
             this.TxtNombreCliente = new System.Windows.Forms.ComboBox();
             this.ControlCorreo = new System.Windows.Forms.TabControl();
             this.TabCorreoE = new System.Windows.Forms.TabPage();
-            this.TabConfiCorreo = new System.Windows.Forms.TabPage();
-            this.ListaAdjuntos = new System.Windows.Forms.ListView();
-            this.BtnExaminarCorreo = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.BtnLimpiarAdjuntos = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.BtnExaminarCorreo = new System.Windows.Forms.Button();
+            this.TabConfiCorreo = new System.Windows.Forms.TabPage();
+            this.ListaDeAdjuntos = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtCorreoBindingSource)).BeginInit();
@@ -329,10 +329,10 @@ namespace PELOSCALVO
             // 
             // TabCorreoE
             // 
+            this.TabCorreoE.Controls.Add(this.ListaDeAdjuntos);
             this.TabCorreoE.Controls.Add(this.BtnLimpiarAdjuntos);
             this.TabCorreoE.Controls.Add(this.label11);
             this.TabCorreoE.Controls.Add(this.BtnExaminarCorreo);
-            this.TabCorreoE.Controls.Add(this.ListaAdjuntos);
             this.TabCorreoE.Controls.Add(this.TxtNombreCliente);
             this.TabCorreoE.Controls.Add(this.button1);
             this.TabCorreoE.Controls.Add(this.label1);
@@ -351,35 +351,15 @@ namespace PELOSCALVO
             this.TabCorreoE.Text = "Enviar";
             this.TabCorreoE.UseVisualStyleBackColor = true;
             // 
-            // TabConfiCorreo
+            // BtnLimpiarAdjuntos
             // 
-            this.TabConfiCorreo.Controls.Add(this.groupBox1);
-            this.TabConfiCorreo.Location = new System.Drawing.Point(4, 22);
-            this.TabConfiCorreo.Name = "TabConfiCorreo";
-            this.TabConfiCorreo.Padding = new System.Windows.Forms.Padding(3);
-            this.TabConfiCorreo.Size = new System.Drawing.Size(793, 371);
-            this.TabConfiCorreo.TabIndex = 1;
-            this.TabConfiCorreo.Text = "Configuracion";
-            this.TabConfiCorreo.UseVisualStyleBackColor = true;
-            // 
-            // ListaAdjuntos
-            // 
-            this.ListaAdjuntos.HideSelection = false;
-            this.ListaAdjuntos.Location = new System.Drawing.Point(54, 310);
-            this.ListaAdjuntos.Name = "ListaAdjuntos";
-            this.ListaAdjuntos.Size = new System.Drawing.Size(608, 111);
-            this.ListaAdjuntos.TabIndex = 21;
-            this.ListaAdjuntos.UseCompatibleStateImageBehavior = false;
-            // 
-            // BtnExaminarCorreo
-            // 
-            this.BtnExaminarCorreo.Location = new System.Drawing.Point(668, 310);
-            this.BtnExaminarCorreo.Name = "BtnExaminarCorreo";
-            this.BtnExaminarCorreo.Size = new System.Drawing.Size(75, 23);
-            this.BtnExaminarCorreo.TabIndex = 95;
-            this.BtnExaminarCorreo.Text = "&Examinar";
-            this.BtnExaminarCorreo.UseVisualStyleBackColor = true;
-            this.BtnExaminarCorreo.Click += new System.EventHandler(this.BtnExaminarCorreo_Click);
+            this.BtnLimpiarAdjuntos.Location = new System.Drawing.Point(598, 310);
+            this.BtnLimpiarAdjuntos.Name = "BtnLimpiarAdjuntos";
+            this.BtnLimpiarAdjuntos.Size = new System.Drawing.Size(64, 23);
+            this.BtnLimpiarAdjuntos.TabIndex = 97;
+            this.BtnLimpiarAdjuntos.Text = "&Limpiar";
+            this.BtnLimpiarAdjuntos.UseVisualStyleBackColor = true;
+            this.BtnLimpiarAdjuntos.Click += new System.EventHandler(this.BtnLimpiarAdjuntos_Click);
             // 
             // label11
             // 
@@ -391,15 +371,39 @@ namespace PELOSCALVO
             this.label11.TabIndex = 96;
             this.label11.Text = "Archivos Adjuntos";
             // 
-            // BtnLimpiarAdjuntos
+            // BtnExaminarCorreo
             // 
-            this.BtnLimpiarAdjuntos.Location = new System.Drawing.Point(598, 287);
-            this.BtnLimpiarAdjuntos.Name = "BtnLimpiarAdjuntos";
-            this.BtnLimpiarAdjuntos.Size = new System.Drawing.Size(64, 23);
-            this.BtnLimpiarAdjuntos.TabIndex = 97;
-            this.BtnLimpiarAdjuntos.Text = "&Limpiar";
-            this.BtnLimpiarAdjuntos.UseVisualStyleBackColor = true;
-            this.BtnLimpiarAdjuntos.Click += new System.EventHandler(this.BtnLimpiarAdjuntos_Click);
+            this.BtnExaminarCorreo.Location = new System.Drawing.Point(668, 310);
+            this.BtnExaminarCorreo.Name = "BtnExaminarCorreo";
+            this.BtnExaminarCorreo.Size = new System.Drawing.Size(75, 23);
+            this.BtnExaminarCorreo.TabIndex = 95;
+            this.BtnExaminarCorreo.Text = "&Examinar";
+            this.BtnExaminarCorreo.UseVisualStyleBackColor = true;
+            this.BtnExaminarCorreo.Click += new System.EventHandler(this.BtnExaminarCorreo_Click);
+            // 
+            // TabConfiCorreo
+            // 
+            this.TabConfiCorreo.Controls.Add(this.groupBox1);
+            this.TabConfiCorreo.Location = new System.Drawing.Point(4, 22);
+            this.TabConfiCorreo.Name = "TabConfiCorreo";
+            this.TabConfiCorreo.Padding = new System.Windows.Forms.Padding(3);
+            this.TabConfiCorreo.Size = new System.Drawing.Size(793, 464);
+            this.TabConfiCorreo.TabIndex = 1;
+            this.TabConfiCorreo.Text = "Configuracion";
+            this.TabConfiCorreo.UseVisualStyleBackColor = true;
+            // 
+            // ListaDeAdjuntos
+            // 
+            this.ListaDeAdjuntos.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListaDeAdjuntos.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.ListaDeAdjuntos.FormattingEnabled = true;
+            this.ListaDeAdjuntos.HorizontalScrollbar = true;
+            this.ListaDeAdjuntos.ItemHeight = 20;
+            this.ListaDeAdjuntos.Location = new System.Drawing.Point(54, 312);
+            this.ListaDeAdjuntos.MultiColumn = true;
+            this.ListaDeAdjuntos.Name = "ListaDeAdjuntos";
+            this.ListaDeAdjuntos.Size = new System.Drawing.Size(527, 124);
+            this.ListaDeAdjuntos.TabIndex = 98;
             // 
             // FormEnviarCorreos
             // 
@@ -456,11 +460,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox TiempoEspera;
         private System.Windows.Forms.TabControl ControlCorreo;
         private System.Windows.Forms.TabPage TabCorreoE;
-        private System.Windows.Forms.ListView ListaAdjuntos;
         private System.Windows.Forms.TabPage TabConfiCorreo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button BtnExaminarCorreo;
         private System.Windows.Forms.Button BtnLimpiarAdjuntos;
+        private System.Windows.Forms.ListBox ListaDeAdjuntos;
     }
 }
 

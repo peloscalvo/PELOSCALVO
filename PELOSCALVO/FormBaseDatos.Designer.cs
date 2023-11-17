@@ -332,6 +332,7 @@ namespace PELOSCALVO
             this.TabArchivos.TabIndex = 2;
             this.TabArchivos.Tag = "NO";
             this.TabArchivos.Text = "CONFIGURAR ARCHIVOS";
+            this.TabArchivos.Click += new System.EventHandler(this.TabArchivos_Click);
             this.TabArchivos.MouseEnter += new System.EventHandler(this.TabArchivos_MouseEnter);
             // 
             // panel3
