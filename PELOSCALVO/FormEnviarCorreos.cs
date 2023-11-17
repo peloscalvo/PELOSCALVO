@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
@@ -59,6 +60,8 @@ namespace PELOSCALVO
             {
                 try
                 {
+                    this.InfoProcesoText.BackColor = Color.FromArgb(234, 210, 8);
+                    this.InfoProcesoText.Text = " Enviando Datos.............. .......Espere Un Momento !!!!!!!";
                     this.login = new NetworkCredential(this.UsuarioCorreo.Text, this.ContraseñaCorreo.Text);
                     this.ClienteCorreo = new SmtpClient(this.SmtpCorreo.Text);
                     this.ClienteCorreo.Port = Convert.ToInt32(this.PuertoCorreo.Text);
@@ -74,12 +77,12 @@ namespace PELOSCALVO
 
                     }
                     // MensageCorreo.Attachments.Add("faf")
-                    foreach (var item in ListaDeAdjuntos.Items)
+                    foreach (var item in this.ListaDeAdjuntos.Items)
                     {
-                        if(item.ToString() != string.Empty)
+                        if (item.ToString() != string.Empty)
                         {
                             Attachment Archivo_adju = new Attachment(item.ToString());
-                            MensageCorreo.Attachments.Add(Archivo_adju);
+                            this.MensageCorreo.Attachments.Add(Archivo_adju);
                         }
                     }
                     this.MensageCorreo.Subject = this.TxtSuject.Text;
@@ -91,6 +94,10 @@ namespace PELOSCALVO
                     this.ClienteCorreo.SendCompleted += new SendCompletedEventHandler(EnviarCorreo);
                     string Stado = " Enviando....";
                     this.ClienteCorreo.SendAsync(this.MensageCorreo, Stado);
+                   // MessageBox.Show("Mensaje Enviado", "CORREO ELETRONICO");
+                    this.InfoProcesoText.Text = "Listo";
+                    this.InfoProcesoText.Refresh();
+                    this.InfoProcesoText.BackColor = this.BackColor;
                 }
                 catch (Exception ex)
                 {
@@ -143,9 +150,9 @@ namespace PELOSCALVO
                 ok = false;
                 this.ErrorCorreo.SetError(this.SmtpCorreo, "Campo Vacio Rellene");
             }
-            if(ok== false)
+            if (ok == false)
             {
-                ControlCorreo.SelectedIndex = 1;
+                this.ControlCorreo.SelectedIndex = 1;
             }
             return ok;
         }
@@ -160,15 +167,15 @@ namespace PELOSCALVO
         {
             if (this.BtnVerPass.Tag.ToString() == "SI")
             {
-                this.ContraseñaCorreo.Tag = "NO";
+                this.BtnVerPass.Tag = "NO";
                 this.ContraseñaCorreo.PasswordChar = '\0';
-                this.BtnEnviar.Text = "Ocultar";
+                this.BtnVerPass.Text = "Ocultar";
             }
             else
             {
                 this.ContraseñaCorreo.PasswordChar = '*';
-                this.ContraseñaCorreo.Tag = "SI";
-                this.BtnEnviar.Text = "Ver";
+                this.BtnVerPass.Tag = "SI";
+                this.BtnVerPass.Text = "Ver";
             }
         }
 
@@ -256,7 +263,7 @@ namespace PELOSCALVO
                 BuscarArchivo.Filter = BuscarArchivo.Filter = @"All Files|*.*|Text File (.txt)|*.txt|access File (.accdb ,.mdb)|*.accdb;*.mdb|PDF (.pdf)|*.pdf|Office Files|*.doc;*.xls;*.ppt|Spreadsheet (.xls ,.xlsx)|  *.xls ;*.xlsx|Presentation (.pptx ,.ppt)|*.pptx;*.ppt";
                 if (BuscarArchivo.ShowDialog() == DialogResult.OK)
                 {
-                    ListaDeAdjuntos.Items.Add(Path.GetFullPath(BuscarArchivo.FileName.ToString()));
+                    this.ListaDeAdjuntos.Items.Add(Path.GetFullPath(BuscarArchivo.FileName.ToString()));
 
 
                 }
@@ -272,7 +279,7 @@ namespace PELOSCALVO
 
         private void BtnLimpiarAdjuntos_Click(object sender, EventArgs e)
         {
-            ListaDeAdjuntos.Items.Clear();
+            this.ListaDeAdjuntos.Items.Clear();
         }
     }
 }

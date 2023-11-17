@@ -60,11 +60,12 @@ namespace PELOSCALVO
             this.TxtNombreCliente = new System.Windows.Forms.ComboBox();
             this.ControlCorreo = new System.Windows.Forms.TabControl();
             this.TabCorreoE = new System.Windows.Forms.TabPage();
+            this.InfoProcesoText = new System.Windows.Forms.Label();
+            this.ListaDeAdjuntos = new System.Windows.Forms.ListBox();
             this.BtnLimpiarAdjuntos = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.BtnExaminarCorreo = new System.Windows.Forms.Button();
             this.TabConfiCorreo = new System.Windows.Forms.TabPage();
-            this.ListaDeAdjuntos = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtCorreoBindingSource)).BeginInit();
@@ -329,6 +330,7 @@ namespace PELOSCALVO
             // 
             // TabCorreoE
             // 
+            this.TabCorreoE.Controls.Add(this.InfoProcesoText);
             this.TabCorreoE.Controls.Add(this.ListaDeAdjuntos);
             this.TabCorreoE.Controls.Add(this.BtnLimpiarAdjuntos);
             this.TabCorreoE.Controls.Add(this.label11);
@@ -351,6 +353,32 @@ namespace PELOSCALVO
             this.TabCorreoE.Text = "Enviar";
             this.TabCorreoE.UseVisualStyleBackColor = true;
             // 
+            // InfoProcesoText
+            // 
+            this.InfoProcesoText.AutoSize = true;
+            this.InfoProcesoText.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.InfoProcesoText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoProcesoText.Location = new System.Drawing.Point(3, 436);
+            this.InfoProcesoText.Margin = new System.Windows.Forms.Padding(3);
+            this.InfoProcesoText.Name = "InfoProcesoText";
+            this.InfoProcesoText.Padding = new System.Windows.Forms.Padding(2, 4, 2, 5);
+            this.InfoProcesoText.Size = new System.Drawing.Size(40, 25);
+            this.InfoProcesoText.TabIndex = 99;
+            this.InfoProcesoText.Text = "Listo";
+            // 
+            // ListaDeAdjuntos
+            // 
+            this.ListaDeAdjuntos.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListaDeAdjuntos.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.ListaDeAdjuntos.FormattingEnabled = true;
+            this.ListaDeAdjuntos.HorizontalScrollbar = true;
+            this.ListaDeAdjuntos.ItemHeight = 20;
+            this.ListaDeAdjuntos.Location = new System.Drawing.Point(54, 306);
+            this.ListaDeAdjuntos.MultiColumn = true;
+            this.ListaDeAdjuntos.Name = "ListaDeAdjuntos";
+            this.ListaDeAdjuntos.Size = new System.Drawing.Size(527, 124);
+            this.ListaDeAdjuntos.TabIndex = 98;
+            // 
             // BtnLimpiarAdjuntos
             // 
             this.BtnLimpiarAdjuntos.Location = new System.Drawing.Point(598, 310);
@@ -365,7 +393,7 @@ namespace PELOSCALVO
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(300, 294);
+            this.label11.Location = new System.Drawing.Point(300, 288);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(143, 16);
             this.label11.TabIndex = 96;
@@ -391,19 +419,6 @@ namespace PELOSCALVO
             this.TabConfiCorreo.TabIndex = 1;
             this.TabConfiCorreo.Text = "Configuracion";
             this.TabConfiCorreo.UseVisualStyleBackColor = true;
-            // 
-            // ListaDeAdjuntos
-            // 
-            this.ListaDeAdjuntos.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListaDeAdjuntos.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ListaDeAdjuntos.FormattingEnabled = true;
-            this.ListaDeAdjuntos.HorizontalScrollbar = true;
-            this.ListaDeAdjuntos.ItemHeight = 20;
-            this.ListaDeAdjuntos.Location = new System.Drawing.Point(54, 312);
-            this.ListaDeAdjuntos.MultiColumn = true;
-            this.ListaDeAdjuntos.Name = "ListaDeAdjuntos";
-            this.ListaDeAdjuntos.Size = new System.Drawing.Size(527, 124);
-            this.ListaDeAdjuntos.TabIndex = 98;
             // 
             // FormEnviarCorreos
             // 
@@ -465,6 +480,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnExaminarCorreo;
         private System.Windows.Forms.Button BtnLimpiarAdjuntos;
         private System.Windows.Forms.ListBox ListaDeAdjuntos;
+        private System.Windows.Forms.Label InfoProcesoText;
     }
 }
 
