@@ -1368,7 +1368,7 @@ namespace PELOSCALVO
                     cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
 
                     Random r = new Random();
-                    int valor = r.Next(10, 90000000);
+                    int valor = r.Next(10, 900000);
 
                     string ConsultaArticulos = "CREATE TABLE ["+SerieArticulosText.Text+"] ([Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
@@ -1376,7 +1376,13 @@ namespace PELOSCALVO
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-
+                    string TablaCliente = SerieClientesText2.Text;
+                    string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                        "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
+                        "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
+                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
+                        " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
+                        ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
                     string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal] ([IdEmpresa] INTEGER , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
                     "[DireccionEmpresa] varchar  ,[LocalidadEmpresa] varchar  ,[CodigoPostalEmpresa] varchar  ,[ProvinciaEmpresa] varchar ," +
                   "[TelefonoEmpresa] varchar  ,[CorreoEmpresa] varchar  ,[WepEmpresa] varchar  ,[RegimenIvaEmpresa] varchar  ," +
@@ -1393,8 +1399,10 @@ namespace PELOSCALVO
                     string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER,[Proveedores] varchar ,[Enlace_Proveedores] varchar, " +
                       " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
-
-                    ClsConexionDb.CadenaConexion = cadena;
+                    string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER, [FamiliaProductos] varchar)";
+                    string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER,[PaisesPaises] varchar)";
+                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER, [ProvinciasProvincias] varchar)"; 
+                    string TablaObra = "CREATE TABLE[DtObras] ([Id_Obras] INTEGER ,[Obras])";
                     ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
                     ClsConexionDb.CadenaConexion = cadena;
                     try
@@ -1412,6 +1420,23 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message, "ERROR TABLA ARTICULOS");
                     }
+                     NuevaConexion2 = new ClsConexionDb(ConsultaCliente);
+                 
+                    try
+                    {
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA CLIENTES");
+                    }
                     string TipoNota = "DtNota";
                     string Tabladetalle = "DtDetalles_Nota";
                     string ConsultaFacturacion = "";
@@ -1421,7 +1446,7 @@ namespace PELOSCALVO
                         if (i == 2)
                         {
                             TipoNota = "DtNota-2";
-                            Tabladetalle = "DtDetalles_Nota-2";
+                            Tabladetalle = "DtDetalles2_Nota-2";
                         }
                         if (i == 3)
                         {
@@ -1438,7 +1463,8 @@ namespace PELOSCALVO
                             TipoNota = "DtFactura";
                             Tabladetalle = "DtDetalles_Fatura";
                         }
-                         ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+                         valor = r.Next(10, 900000);
+                        ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
                        "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
                           "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
                         "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
@@ -1546,6 +1572,38 @@ namespace PELOSCALVO
 
 
                         MessageBox.Show(ex.Message, "ERROR" + "DtConfi");
+                    }
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(ConsultaFamilia);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA FAMILIAS");
+                    }
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(TablaPais);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA PAISES");
                     }
                     finally
                     {

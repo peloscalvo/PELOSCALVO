@@ -388,6 +388,8 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnObras;
             
+            private global::System.Data.DataColumn columnId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtObrasDataTable() {
@@ -439,6 +441,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -474,11 +484,12 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtObrasRow AddDtObrasRow(string Obras) {
+            public DtObrasRow AddDtObrasRow(string Obras, string Id) {
                 DtObrasRow rowDtObrasRow = ((DtObrasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Obras};
+                        Obras,
+                        Id};
                 rowDtObrasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtObrasRow);
                 return rowDtObrasRow;
@@ -503,6 +514,7 @@ namespace PELOSCALVO {
             internal void InitVars() {
                 this.columnId_Obras = base.Columns["Id_Obras"];
                 this.columnObras = base.Columns["Obras"];
+                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -512,6 +524,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnId_Obras);
                 this.columnObras = new global::System.Data.DataColumn("Obras", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObras);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columnId_Obras.AutoIncrement = true;
                 this.columnId_Obras.AutoIncrementSeed = 1;
                 this.columnId_Obras.Caption = "Id_almacenes";
@@ -651,6 +665,8 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnPaisesPaises;
             
+            private global::System.Data.DataColumn columnId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtPaisesDataTable() {
@@ -694,6 +710,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -729,10 +753,11 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtPaisesRow AddDtPaisesRow(string PaisesPaises) {
+            public DtPaisesRow AddDtPaisesRow(string PaisesPaises, string Id) {
                 DtPaisesRow rowDtPaisesRow = ((DtPaisesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        PaisesPaises};
+                        PaisesPaises,
+                        Id};
                 rowDtPaisesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtPaisesRow);
                 return rowDtPaisesRow;
@@ -756,6 +781,7 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnPaisesPaises = base.Columns["PaisesPaises"];
+                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -763,6 +789,8 @@ namespace PELOSCALVO {
             private void InitClass() {
                 this.columnPaisesPaises = new global::System.Data.DataColumn("PaisesPaises", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPaisesPaises);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -898,6 +926,8 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnProvinciasProvincias;
             
+            private global::System.Data.DataColumn columnId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtProvinciasDataTable() {
@@ -941,6 +971,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -976,10 +1014,11 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtProvinciasRow AddDtProvinciasRow(string ProvinciasProvincias) {
+            public DtProvinciasRow AddDtProvinciasRow(string ProvinciasProvincias, string Id) {
                 DtProvinciasRow rowDtProvinciasRow = ((DtProvinciasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ProvinciasProvincias};
+                        ProvinciasProvincias,
+                        Id};
                 rowDtProvinciasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtProvinciasRow);
                 return rowDtProvinciasRow;
@@ -1003,6 +1042,7 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnProvinciasProvincias = base.Columns["ProvinciasProvincias"];
+                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1010,6 +1050,8 @@ namespace PELOSCALVO {
             private void InitClass() {
                 this.columnProvinciasProvincias = new global::System.Data.DataColumn("ProvinciasProvincias", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProvinciasProvincias);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1149,7 +1191,7 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnCorreoTiempoLimite;
             
-            private global::System.Data.DataColumn columnDataColumn1;
+            private global::System.Data.DataColumn columnId;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1210,9 +1252,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DataColumn1Column {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnDataColumn1;
+                    return this.columnId;
                 }
             }
             
@@ -1253,13 +1295,13 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public dtCorreoRow AdddtCorreoRow(string CorreoNombreServidor, string CorreoPuerto, string CorreoTiempoLimite, string DataColumn1) {
+            public dtCorreoRow AdddtCorreoRow(string CorreoNombreServidor, string CorreoPuerto, string CorreoTiempoLimite, string Id) {
                 dtCorreoRow rowdtCorreoRow = ((dtCorreoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CorreoNombreServidor,
                         CorreoPuerto,
                         CorreoTiempoLimite,
-                        DataColumn1};
+                        Id};
                 rowdtCorreoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtCorreoRow);
                 return rowdtCorreoRow;
@@ -1285,7 +1327,7 @@ namespace PELOSCALVO {
                 this.columnCorreoNombreServidor = base.Columns["CorreoNombreServidor"];
                 this.columnCorreoPuerto = base.Columns["CorreoPuerto"];
                 this.columnCorreoTiempoLimite = base.Columns["CorreoTiempoLimite"];
-                this.columnDataColumn1 = base.Columns["DataColumn1"];
+                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1297,8 +1339,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnCorreoPuerto);
                 this.columnCorreoTiempoLimite = new global::System.Data.DataColumn("CorreoTiempoLimite", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCorreoTiempoLimite);
-                this.columnDataColumn1 = new global::System.Data.DataColumn("DataColumn1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataColumn1);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1473,6 +1515,22 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Id {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtObras.IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtObras\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtObras.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsId_ObrasNull() {
                 return this.IsNull(this.tableDtObras.Id_ObrasColumn);
             }
@@ -1493,6 +1551,18 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetObrasNull() {
                 this[this.tableDtObras.ObrasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIdNull() {
+                return this.IsNull(this.tableDtObras.IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIdNull() {
+                this[this.tableDtObras.IdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1528,6 +1598,22 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Id {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtPaises.IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtPaises\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtPaises.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsPaisesPaisesNull() {
                 return this.IsNull(this.tableDtPaises.PaisesPaisesColumn);
             }
@@ -1536,6 +1622,18 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPaisesPaisesNull() {
                 this[this.tableDtPaises.PaisesPaisesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIdNull() {
+                return this.IsNull(this.tableDtPaises.IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIdNull() {
+                this[this.tableDtPaises.IdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1572,6 +1670,22 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Id {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtProvincias.IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtProvincias\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtProvincias.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsProvinciasProvinciasNull() {
                 return this.IsNull(this.tableDtProvincias.ProvinciasProvinciasColumn);
             }
@@ -1580,6 +1694,18 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetProvinciasProvinciasNull() {
                 this[this.tableDtProvincias.ProvinciasProvinciasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIdNull() {
+                return this.IsNull(this.tableDtProvincias.IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIdNull() {
+                this[this.tableDtProvincias.IdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1647,17 +1773,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DataColumn1 {
+            public string Id {
                 get {
                     try {
-                        return ((string)(this[this.tabledtCorreo.DataColumn1Column]));
+                        return ((string)(this[this.tabledtCorreo.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DataColumn1\' de la tabla \'dtCorreo\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'dtCorreo\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtCorreo.DataColumn1Column] = value;
+                    this[this.tabledtCorreo.IdColumn] = value;
                 }
             }
             
@@ -1699,14 +1825,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDataColumn1Null() {
-                return this.IsNull(this.tabledtCorreo.DataColumn1Column);
+            public bool IsIdNull() {
+                return this.IsNull(this.tabledtCorreo.IdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDataColumn1Null() {
-                this[this.tabledtCorreo.DataColumn1Column] = global::System.Convert.DBNull;
+            public void SetIdNull() {
+                this[this.tabledtCorreo.IdColumn] = global::System.Convert.DBNull;
             }
         }
         
