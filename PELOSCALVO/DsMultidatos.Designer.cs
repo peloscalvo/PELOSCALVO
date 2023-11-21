@@ -26,8 +26,6 @@ namespace PELOSCALVO {
         
         private DtFamiliaProductosDataTable tableDtFamiliaProductos;
         
-        private DtArchivoDatosMultiDataTable tableDtArchivoDatosMulti;
-        
         private DtInicioMultiDataTable tableDtInicioMulti;
         
         private DtNombresTablasDataTable tableDtNombresTablas;
@@ -63,9 +61,6 @@ namespace PELOSCALVO {
                 if ((ds.Tables["DtFamiliaProductos"] != null)) {
                     base.Tables.Add(new DtFamiliaProductosDataTable(ds.Tables["DtFamiliaProductos"]));
                 }
-                if ((ds.Tables["DtArchivoDatosMulti"] != null)) {
-                    base.Tables.Add(new DtArchivoDatosMultiDataTable(ds.Tables["DtArchivoDatosMulti"]));
-                }
                 if ((ds.Tables["DtInicioMulti"] != null)) {
                     base.Tables.Add(new DtInicioMultiDataTable(ds.Tables["DtInicioMulti"]));
                 }
@@ -97,16 +92,6 @@ namespace PELOSCALVO {
         public DtFamiliaProductosDataTable DtFamiliaProductos {
             get {
                 return this.tableDtFamiliaProductos;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DtArchivoDatosMultiDataTable DtArchivoDatosMulti {
-            get {
-                return this.tableDtArchivoDatosMulti;
             }
         }
         
@@ -200,9 +185,6 @@ namespace PELOSCALVO {
                 if ((ds.Tables["DtFamiliaProductos"] != null)) {
                     base.Tables.Add(new DtFamiliaProductosDataTable(ds.Tables["DtFamiliaProductos"]));
                 }
-                if ((ds.Tables["DtArchivoDatosMulti"] != null)) {
-                    base.Tables.Add(new DtArchivoDatosMultiDataTable(ds.Tables["DtArchivoDatosMulti"]));
-                }
                 if ((ds.Tables["DtInicioMulti"] != null)) {
                     base.Tables.Add(new DtInicioMultiDataTable(ds.Tables["DtInicioMulti"]));
                 }
@@ -248,12 +230,6 @@ namespace PELOSCALVO {
                     this.tableDtFamiliaProductos.InitVars();
                 }
             }
-            this.tableDtArchivoDatosMulti = ((DtArchivoDatosMultiDataTable)(base.Tables["DtArchivoDatosMulti"]));
-            if ((initTable == true)) {
-                if ((this.tableDtArchivoDatosMulti != null)) {
-                    this.tableDtArchivoDatosMulti.InitVars();
-                }
-            }
             this.tableDtInicioMulti = ((DtInicioMultiDataTable)(base.Tables["DtInicioMulti"]));
             if ((initTable == true)) {
                 if ((this.tableDtInicioMulti != null)) {
@@ -278,8 +254,6 @@ namespace PELOSCALVO {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDtFamiliaProductos = new DtFamiliaProductosDataTable();
             base.Tables.Add(this.tableDtFamiliaProductos);
-            this.tableDtArchivoDatosMulti = new DtArchivoDatosMultiDataTable();
-            base.Tables.Add(this.tableDtArchivoDatosMulti);
             this.tableDtInicioMulti = new DtInicioMultiDataTable();
             base.Tables.Add(this.tableDtInicioMulti);
             this.tableDtNombresTablas = new DtNombresTablasDataTable();
@@ -289,12 +263,6 @@ namespace PELOSCALVO {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeDtFamiliaProductos() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeDtArchivoDatosMulti() {
             return false;
         }
         
@@ -367,9 +335,6 @@ namespace PELOSCALVO {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtFamiliaProductosRowChangeEventHandler(object sender, DtFamiliaProductosRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void DtArchivoDatosMultiRowChangeEventHandler(object sender, DtArchivoDatosMultiRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtInicioMultiRowChangeEventHandler(object sender, DtInicioMultiRowChangeEvent e);
@@ -474,7 +439,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtFamiliaProductosRow AddDtFamiliaProductosRow(string FamiliaProductos, string Id) {
+            public DtFamiliaProductosRow AddDtFamiliaProductosRow(string FamiliaProductos, int Id) {
                 DtFamiliaProductosRow rowDtFamiliaProductosRow = ((DtFamiliaProductosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         FamiliaProductos,
@@ -510,7 +475,7 @@ namespace PELOSCALVO {
             private void InitClass() {
                 this.columnFamiliaProductos = new global::System.Data.DataColumn("FamiliaProductos", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFamiliaProductos);
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
             }
             
@@ -598,295 +563,6 @@ namespace PELOSCALVO {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DtFamiliaProductosDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DtArchivoDatosMultiDataTable : global::System.Data.TypedTableBase<DtArchivoDatosMultiRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnNombreArchivoDatos;
-            
-            private global::System.Data.DataColumn columnDirectorioArchivoDatos;
-            
-            private global::System.Data.DataColumn columnDescripcionArchivoDatos;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtArchivoDatosMultiDataTable() {
-                this.TableName = "DtArchivoDatosMulti";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DtArchivoDatosMultiDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected DtArchivoDatosMultiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NombreArchivoDatosColumn {
-                get {
-                    return this.columnNombreArchivoDatos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DirectorioArchivoDatosColumn {
-                get {
-                    return this.columnDirectorioArchivoDatos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DescripcionArchivoDatosColumn {
-                get {
-                    return this.columnDescripcionArchivoDatos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtArchivoDatosMultiRow this[int index] {
-                get {
-                    return ((DtArchivoDatosMultiRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtArchivoDatosMultiRowChangeEventHandler DtArchivoDatosMultiRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtArchivoDatosMultiRowChangeEventHandler DtArchivoDatosMultiRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtArchivoDatosMultiRowChangeEventHandler DtArchivoDatosMultiRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtArchivoDatosMultiRowChangeEventHandler DtArchivoDatosMultiRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddDtArchivoDatosMultiRow(DtArchivoDatosMultiRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtArchivoDatosMultiRow AddDtArchivoDatosMultiRow(int Id, string NombreArchivoDatos, string DirectorioArchivoDatos, string DescripcionArchivoDatos) {
-                DtArchivoDatosMultiRow rowDtArchivoDatosMultiRow = ((DtArchivoDatosMultiRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Id,
-                        NombreArchivoDatos,
-                        DirectorioArchivoDatos,
-                        DescripcionArchivoDatos};
-                rowDtArchivoDatosMultiRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDtArchivoDatosMultiRow);
-                return rowDtArchivoDatosMultiRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DtArchivoDatosMultiDataTable cln = ((DtArchivoDatosMultiDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DtArchivoDatosMultiDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnNombreArchivoDatos = base.Columns["NombreArchivoDatos"];
-                this.columnDirectorioArchivoDatos = base.Columns["DirectorioArchivoDatos"];
-                this.columnDescripcionArchivoDatos = base.Columns["DescripcionArchivoDatos"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnNombreArchivoDatos = new global::System.Data.DataColumn("NombreArchivoDatos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombreArchivoDatos);
-                this.columnDirectorioArchivoDatos = new global::System.Data.DataColumn("DirectorioArchivoDatos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDirectorioArchivoDatos);
-                this.columnDescripcionArchivoDatos = new global::System.Data.DataColumn("DescripcionArchivoDatos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescripcionArchivoDatos);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtArchivoDatosMultiRow NewDtArchivoDatosMultiRow() {
-                return ((DtArchivoDatosMultiRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DtArchivoDatosMultiRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DtArchivoDatosMultiRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DtArchivoDatosMultiRowChanged != null)) {
-                    this.DtArchivoDatosMultiRowChanged(this, new DtArchivoDatosMultiRowChangeEvent(((DtArchivoDatosMultiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DtArchivoDatosMultiRowChanging != null)) {
-                    this.DtArchivoDatosMultiRowChanging(this, new DtArchivoDatosMultiRowChangeEvent(((DtArchivoDatosMultiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DtArchivoDatosMultiRowDeleted != null)) {
-                    this.DtArchivoDatosMultiRowDeleted(this, new DtArchivoDatosMultiRowChangeEvent(((DtArchivoDatosMultiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DtArchivoDatosMultiRowDeleting != null)) {
-                    this.DtArchivoDatosMultiRowDeleting(this, new DtArchivoDatosMultiRowChangeEvent(((DtArchivoDatosMultiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveDtArchivoDatosMultiRow(DtArchivoDatosMultiRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DsMultidatos ds = new DsMultidatos();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DtArchivoDatosMultiDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1124,7 +800,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtInicioMultiRow AddDtInicioMultiRow(string ArchivoInicioFacturas, string EmpresaInicio, string EjercicioInicio, string SerieInicio, string NombreArchivoDatos, string RutaArchivoDatos, string SerieProvinciaInicio, string SeriePaisInicio, string ArchivoArticulos, string TipoExtensionArticulos, string ArchivoClientes, string Id) {
+            public DtInicioMultiRow AddDtInicioMultiRow(string ArchivoInicioFacturas, string EmpresaInicio, string EjercicioInicio, string SerieInicio, string NombreArchivoDatos, string RutaArchivoDatos, string SerieProvinciaInicio, string SeriePaisInicio, string ArchivoArticulos, string TipoExtensionArticulos, string ArchivoClientes, int Id) {
                 DtInicioMultiRow rowDtInicioMultiRow = ((DtInicioMultiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ArchivoInicioFacturas,
@@ -1200,7 +876,7 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnTipoExtensionArticulos);
                 this.columnArchivoClientes = new global::System.Data.DataColumn("ArchivoClientes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnArchivoClientes);
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
             }
             
@@ -1624,10 +1300,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Id {
+            public int Id {
                 get {
                     try {
-                        return ((string)(this[this.tableDtFamiliaProductos.IdColumn]));
+                        return ((int)(this[this.tableDtFamiliaProductos.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtFamiliaProductos\' es DBNull.", e);
@@ -1660,136 +1336,6 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIdNull() {
                 this[this.tableDtFamiliaProductos.IdColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DtArchivoDatosMultiRow : global::System.Data.DataRow {
-            
-            private DtArchivoDatosMultiDataTable tableDtArchivoDatosMulti;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DtArchivoDatosMultiRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDtArchivoDatosMulti = ((DtArchivoDatosMultiDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id {
-                get {
-                    try {
-                        return ((int)(this[this.tableDtArchivoDatosMulti.IdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtArchivoDatosMulti\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtArchivoDatosMulti.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string NombreArchivoDatos {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtArchivoDatosMulti.NombreArchivoDatosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NombreArchivoDatos\' de la tabla \'DtArchivoDatosMulti\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtArchivoDatosMulti.NombreArchivoDatosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DirectorioArchivoDatos {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtArchivoDatosMulti.DirectorioArchivoDatosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DirectorioArchivoDatos\' de la tabla \'DtArchivoDatosMulti\'" +
-                                " es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtArchivoDatosMulti.DirectorioArchivoDatosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DescripcionArchivoDatos {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtArchivoDatosMulti.DescripcionArchivoDatosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DescripcionArchivoDatos\' de la tabla \'DtArchivoDatosMulti" +
-                                "\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtArchivoDatosMulti.DescripcionArchivoDatosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIdNull() {
-                return this.IsNull(this.tableDtArchivoDatosMulti.IdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIdNull() {
-                this[this.tableDtArchivoDatosMulti.IdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNombreArchivoDatosNull() {
-                return this.IsNull(this.tableDtArchivoDatosMulti.NombreArchivoDatosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNombreArchivoDatosNull() {
-                this[this.tableDtArchivoDatosMulti.NombreArchivoDatosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDirectorioArchivoDatosNull() {
-                return this.IsNull(this.tableDtArchivoDatosMulti.DirectorioArchivoDatosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDirectorioArchivoDatosNull() {
-                this[this.tableDtArchivoDatosMulti.DirectorioArchivoDatosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDescripcionArchivoDatosNull() {
-                return this.IsNull(this.tableDtArchivoDatosMulti.DescripcionArchivoDatosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDescripcionArchivoDatosNull() {
-                this[this.tableDtArchivoDatosMulti.DescripcionArchivoDatosColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1989,10 +1535,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Id {
+            public int Id {
                 get {
                     try {
-                        return ((string)(this[this.tableDtInicioMulti.IdColumn]));
+                        return ((int)(this[this.tableDtInicioMulti.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtInicioMulti\' es DBNull.", e);
@@ -2239,40 +1785,6 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtFamiliaProductosRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class DtArchivoDatosMultiRowChangeEvent : global::System.EventArgs {
-            
-            private DtArchivoDatosMultiRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtArchivoDatosMultiRowChangeEvent(DtArchivoDatosMultiRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtArchivoDatosMultiRow Row {
                 get {
                     return this.eventRow;
                 }

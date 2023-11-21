@@ -132,10 +132,13 @@ namespace PELOSCALVO
         {
 
             string consulta = "SELECT * from [DtConfiguracionPrincipal]  ";
-            string consulta2 = "SELECT * from [DtConfi]";
-            string consulta3 = "SELECT * from[DtTarifaTipo]";
+            string consultaConfi = "SELECT * from [DtConfi]";
+            string consultaTarifa= "SELECT * from[DtTarifaTipo]";
             string ConsultaAlmacenes = "SELECT * from [DtAlmacenes]";
             string ConsultaProveedores = "SELECT * from [DtProveedores]";
+            string ConsultaOBRA = "SELECT * from [DtObras]";
+            string ConsultaProvincia = "SELECT * from [DtProvincias]";
+            string ConsultaPais = "SELECT * from [DtPaises]";
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             NuevaConexion = new ClsConexionDb(consulta);
 
@@ -146,14 +149,20 @@ namespace PELOSCALVO
 
                     OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal);
-                    AdactaPelos = new OleDbDataAdapter(consulta2, ClsConexionDb.CadenaConexion);
+                    AdactaPelos = new OleDbDataAdapter(consultaConfi, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi);
-                    AdactaPelos = new OleDbDataAdapter(consulta3, ClsConexionDb.CadenaConexion);
+                    AdactaPelos = new OleDbDataAdapter(consultaTarifa, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo);
                     AdactaPelos = new OleDbDataAdapter(ConsultaAlmacenes, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes);
                     AdactaPelos = new OleDbDataAdapter(ConsultaProveedores, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores);
+                    AdactaPelos = new OleDbDataAdapter(ConsultaOBRA, ClsConexionDb.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtObras);
+                    AdactaPelos = new OleDbDataAdapter(ConsultaProvincia, ClsConexionDb.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias);
+                    AdactaPelos = new OleDbDataAdapter(ConsultaPais, ClsConexionDb.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtPaises);
                     AdactaPelos.Dispose();
 
                     this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
@@ -1392,6 +1401,9 @@ namespace PELOSCALVO
                     string TablaDtconfi = "CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                         "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar  ," +
                            " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+                    string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([IdTarifa] INTEGER , [TarifaTipo] varchar, [EnlaceTarifa] varchar " +
+                        "CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+
 
                     string ConsultaAlmacen = "CREATE TABLE [DtAlmacenes]( [Id_almacenes] INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
                        " CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
@@ -1402,7 +1414,16 @@ namespace PELOSCALVO
                     string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER, [FamiliaProductos] varchar)";
                     string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER,[PaisesPaises] varchar)";
                     string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER, [ProvinciasProvincias] varchar)"; 
-                    string TablaObra = "CREATE TABLE[DtObras] ([Id_Obras] INTEGER ,[Obras])";
+                    string TablaObra = "CREATE TABLE[DtObras] ([Id_Obras] INTEGER ,[Obras] varchar)";
+                    string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER ,[ArchivoInicioFacturas] varchar," +
+                        "[EmpresaInicio] varchar,[EjercicioInicio] varchar,[SerieInicio] varchar,[NombreArchivoDatos] varchar" +
+                       "[RutaArchivoDatos] varchar,[SerieProvinciaInicio] varchar, [SeriePaisInicio] varchar,[ArchivoArticulos] varchar" +
+                       "[TipoExtensionArticulos] varchar,[ArchivoClientes] varchar)";
+
+                    string  TablaCorreo_E = "   CREATE TABLE [DtCorreos]([Id] INTEGER, [NombreEmpresa] varchar, [CorreoEletronico] varchar" +
+                        ", [Usuario] varchar, [Contraseña] varchar, [smtp] varchar, [Puerto] INTEGER, [Timeof] INTEGER)";
+                    string TablaCorreo_Cli = "   CREATE TABLE [DtCorreosCliente]([Id] INTEGER, [RazonSocial] varchar, [EmpresaNombre] varchar" +
+                       ", [Direcion] varchar, [CorreoEletronico_cli] varchar)";
                     ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
                     ClsConexionDb.CadenaConexion = cadena;
                     try
@@ -1539,7 +1560,7 @@ namespace PELOSCALVO
                     {
 
 
-                        MessageBox.Show(ex.Message, "ERROR" + "EMPRESAS");
+                        MessageBox.Show(ex.Message, "ERROR" + "ALMACENES");
                     }
                     try
                     {
@@ -1575,6 +1596,22 @@ namespace PELOSCALVO
                     }
                     try
                     {
+                        NuevaConexion2 = new ClsConexionDb(TablaTarifa);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA TIPO TARIFA");
+                    }
+                    try
+                    {
                         NuevaConexion2 = new ClsConexionDb(ConsultaFamilia);
                         if (NuevaConexion2.SiConexionDb)
                         {
@@ -1604,6 +1641,86 @@ namespace PELOSCALVO
 
 
                         MessageBox.Show(ex.Message, "ERROR TABLA PAISES");
+                    }
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(TablaObra);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA OBRAS");
+                    }
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(TablaProvincia);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA PROVINCIAS");
+                    }
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(TablaInicio);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA INICIO");
+                    }
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(TablaCorreo_E);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA CORREO EMPRESA");
+                    }
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(TablaCorreo_Cli);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA CORREO CLIENTES");
                     }
                     finally
                     {

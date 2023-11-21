@@ -26,19 +26,21 @@ namespace PELOSCALVO
         public FormMenuPrincipal()
         {
 
-            this.DtCorreos.Columns.Add("NombreEmpresa");
-            this.DtCorreos.Columns.Add("CorreoEletronico");
-            this.DtCorreos.Columns.Add("Usuario");
-            this.DtCorreos.Columns.Add("Contraseña");
-            this.DtCorreos.Columns.Add("smtp");
-            this.DtCorreos.Columns.Add("Puerto");
-            this.DtCorreos.Columns.Add("Timeof");
+            this.DtCorreos.Columns.Add("Id",typeof(int));
+            this.DtCorreos.Columns.Add("NombreEmpresa",typeof(string));
+            this.DtCorreos.Columns.Add("CorreoEletronico", typeof(string));
+            this.DtCorreos.Columns.Add("Usuario", typeof(string));
+            this.DtCorreos.Columns.Add("Contraseña", typeof(string));
+            this.DtCorreos.Columns.Add("smtp", typeof(string));
+            this.DtCorreos.Columns.Add("Puerto", typeof(int));
+            this.DtCorreos.Columns.Add("Timeof", typeof(int));
             this.dsCorreos.Tables.Add(this.DtCorreos);
 
-            this.DtCorreosCliente.Columns.Add("RazonSocial");
-            this.DtCorreosCliente.Columns.Add("EmpresaNombre");
-            this.DtCorreosCliente.Columns.Add("Direcion");
-            this.DtCorreosCliente.Columns.Add("CorreoEletronico_cli");
+            this.DtCorreosCliente.Columns.Add("Id",typeof(int));
+            this.DtCorreosCliente.Columns.Add("RazonSocial", typeof(string));
+            this.DtCorreosCliente.Columns.Add("EmpresaNombre", typeof(string));
+            this.DtCorreosCliente.Columns.Add("Direcion", typeof(string));
+            this.DtCorreosCliente.Columns.Add("CorreoEletronico_cli", typeof(string));
             this.dsCorreos.Tables.Add(this.DtCorreosCliente);
             // fila["NombreEmpresa"] = "faf";
             InitializeComponent();
