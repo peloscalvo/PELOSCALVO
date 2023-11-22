@@ -29,19 +29,20 @@ namespace PELOSCALVO
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label labelARTICULOS;
             System.Windows.Forms.Label labelCLIENTES;
             System.Windows.Forms.Label tipoExtensionArticulosLabel;
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.BtnTablas = new System.Windows.Forms.Button();
+            this.BtnTablasCrear = new System.Windows.Forms.Button();
             this.Info_Res = new System.Windows.Forms.Label();
-            this.BtnCrearTbCliente = new System.Windows.Forms.Button();
-            this.BtnCrearTbArticulos = new System.Windows.Forms.Button();
-            this.BtnExaminarB = new System.Windows.Forms.Button();
+            this.BtnCrearTablaCli = new System.Windows.Forms.Button();
+            this.BtnCrearTablaArti = new System.Windows.Forms.Button();
+            this.BtnExaminarT = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.NombreArchivoDatos = new System.Windows.Forms.TextBox();
-            this.SerieArticulosText = new System.Windows.Forms.ComboBox();
+            this.NombreArchivo_T = new System.Windows.Forms.TextBox();
+            this.ArticulosTxt = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.ContadorFactu = new System.Windows.Forms.Label();
@@ -49,103 +50,19 @@ namespace PELOSCALVO
             this.label7 = new System.Windows.Forms.Label();
             this.RegistLbel = new System.Windows.Forms.Label();
             this.ContadorClientes = new System.Windows.Forms.Label();
-            this.SerieClientesText2 = new System.Windows.Forms.ComboBox();
-            this.TipoExtension_b = new System.Windows.Forms.ComboBox();
-            this.BtnRestablecer = new System.Windows.Forms.Button();
+            this.ClientesTxt = new System.Windows.Forms.ComboBox();
+            this.ExtensionTxt = new System.Windows.Forms.ComboBox();
+            this.BtnRestablecer_t = new System.Windows.Forms.Button();
             this.BtnSalirT = new System.Windows.Forms.Button();
+            this.ErrorVer = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BtnConectar = new System.Windows.Forms.Button();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.BtnTablas);
-            this.panel3.Location = new System.Drawing.Point(661, 38);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(172, 90);
-            this.panel3.TabIndex = 115;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 13);
-            this.label9.TabIndex = 94;
-            this.label9.Text = "Crear Todas Las Tablas";
-            // 
-            // BtnTablas
-            // 
-            this.BtnTablas.Location = new System.Drawing.Point(41, 49);
-            this.BtnTablas.Name = "BtnTablas";
-            this.BtnTablas.Size = new System.Drawing.Size(75, 23);
-            this.BtnTablas.TabIndex = 87;
-            this.BtnTablas.Text = "Tablas";
-            this.BtnTablas.UseVisualStyleBackColor = true;
-            // 
-            // Info_Res
-            // 
-            this.Info_Res.AutoSize = true;
-            this.Info_Res.BackColor = System.Drawing.Color.Gold;
-            this.Info_Res.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Info_Res.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Info_Res.Location = new System.Drawing.Point(525, 233);
-            this.Info_Res.Name = "Info_Res";
-            this.Info_Res.Size = new System.Drawing.Size(201, 15);
-            this.Info_Res.TabIndex = 114;
-            this.Info_Res.Text = "Cierra toda Conexion y Restablece datos";
-            this.Info_Res.Visible = false;
-            // 
-            // BtnCrearTbCliente
-            // 
-            this.BtnCrearTbCliente.Location = new System.Drawing.Point(458, 112);
-            this.BtnCrearTbCliente.Name = "BtnCrearTbCliente";
-            this.BtnCrearTbCliente.Size = new System.Drawing.Size(75, 23);
-            this.BtnCrearTbCliente.TabIndex = 113;
-            this.BtnCrearTbCliente.Text = "&Crear";
-            this.BtnCrearTbCliente.UseVisualStyleBackColor = true;
-            // 
-            // BtnCrearTbArticulos
-            // 
-            this.BtnCrearTbArticulos.Location = new System.Drawing.Point(458, 72);
-            this.BtnCrearTbArticulos.Name = "BtnCrearTbArticulos";
-            this.BtnCrearTbArticulos.Size = new System.Drawing.Size(75, 23);
-            this.BtnCrearTbArticulos.TabIndex = 112;
-            this.BtnCrearTbArticulos.Text = "&Crear";
-            this.BtnCrearTbArticulos.UseVisualStyleBackColor = true;
-            // 
-            // BtnExaminarB
-            // 
-            this.BtnExaminarB.Location = new System.Drawing.Point(440, 33);
-            this.BtnExaminarB.Name = "BtnExaminarB";
-            this.BtnExaminarB.Size = new System.Drawing.Size(75, 23);
-            this.BtnExaminarB.TabIndex = 111;
-            this.BtnExaminarB.Text = "&Examinar";
-            this.BtnExaminarB.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 38);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 13);
-            this.label6.TabIndex = 110;
-            this.label6.Text = "Nombre Archivo principal:";
-            // 
-            // NombreArchivoDatos
-            // 
-            this.NombreArchivoDatos.Location = new System.Drawing.Point(152, 35);
-            this.NombreArchivoDatos.Name = "NombreArchivoDatos";
-            this.NombreArchivoDatos.ReadOnly = true;
-            this.NombreArchivoDatos.Size = new System.Drawing.Size(271, 20);
-            this.NombreArchivoDatos.TabIndex = 109;
-            this.NombreArchivoDatos.Tag = "";
-            this.NombreArchivoDatos.Text = "Datos App Peloscalvo";
             // 
             // labelARTICULOS
             // 
@@ -172,21 +89,121 @@ namespace PELOSCALVO
             labelCLIENTES.Text = "CLIENTES";
             labelCLIENTES.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // SerieArticulosText
+            // tipoExtensionArticulosLabel
             // 
-            this.SerieArticulosText.DisplayMember = "A";
-            this.SerieArticulosText.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SerieArticulosText.FormattingEnabled = true;
-            this.SerieArticulosText.Items.AddRange(new object[] {
+            tipoExtensionArticulosLabel.AutoSize = true;
+            tipoExtensionArticulosLabel.Location = new System.Drawing.Point(295, 142);
+            tipoExtensionArticulosLabel.Name = "tipoExtensionArticulosLabel";
+            tipoExtensionArticulosLabel.Size = new System.Drawing.Size(56, 13);
+            tipoExtensionArticulosLabel.TabIndex = 105;
+            tipoExtensionArticulosLabel.Text = "Extension:";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.BtnTablasCrear);
+            this.panel3.Location = new System.Drawing.Point(661, 38);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(172, 90);
+            this.panel3.TabIndex = 115;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(120, 13);
+            this.label9.TabIndex = 94;
+            this.label9.Text = "Crear Todas Las Tablas";
+            // 
+            // BtnTablasCrear
+            // 
+            this.BtnTablasCrear.Location = new System.Drawing.Point(41, 49);
+            this.BtnTablasCrear.Name = "BtnTablasCrear";
+            this.BtnTablasCrear.Size = new System.Drawing.Size(75, 23);
+            this.BtnTablasCrear.TabIndex = 87;
+            this.BtnTablasCrear.Text = "Tablas";
+            this.BtnTablasCrear.UseVisualStyleBackColor = true;
+            this.BtnTablasCrear.Click += new System.EventHandler(this.BtnTablasCrear_Click);
+            // 
+            // Info_Res
+            // 
+            this.Info_Res.AutoSize = true;
+            this.Info_Res.BackColor = System.Drawing.Color.Gold;
+            this.Info_Res.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Info_Res.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Info_Res.Location = new System.Drawing.Point(525, 233);
+            this.Info_Res.Name = "Info_Res";
+            this.Info_Res.Size = new System.Drawing.Size(201, 15);
+            this.Info_Res.TabIndex = 114;
+            this.Info_Res.Text = "Cierra toda Conexion y Restablece datos";
+            this.Info_Res.Visible = false;
+            // 
+            // BtnCrearTablaCli
+            // 
+            this.BtnCrearTablaCli.Location = new System.Drawing.Point(458, 112);
+            this.BtnCrearTablaCli.Name = "BtnCrearTablaCli";
+            this.BtnCrearTablaCli.Size = new System.Drawing.Size(75, 23);
+            this.BtnCrearTablaCli.TabIndex = 113;
+            this.BtnCrearTablaCli.Text = "&Crear";
+            this.BtnCrearTablaCli.UseVisualStyleBackColor = true;
+            this.BtnCrearTablaCli.Click += new System.EventHandler(this.BtnCrearTablaCli_Click);
+            // 
+            // BtnCrearTablaArti
+            // 
+            this.BtnCrearTablaArti.Location = new System.Drawing.Point(458, 72);
+            this.BtnCrearTablaArti.Name = "BtnCrearTablaArti";
+            this.BtnCrearTablaArti.Size = new System.Drawing.Size(75, 23);
+            this.BtnCrearTablaArti.TabIndex = 112;
+            this.BtnCrearTablaArti.Text = "&Crear";
+            this.BtnCrearTablaArti.UseVisualStyleBackColor = true;
+            this.BtnCrearTablaArti.Click += new System.EventHandler(this.BtnCrearTablaArti_Click);
+            // 
+            // BtnExaminarT
+            // 
+            this.BtnExaminarT.Location = new System.Drawing.Point(440, 33);
+            this.BtnExaminarT.Name = "BtnExaminarT";
+            this.BtnExaminarT.Size = new System.Drawing.Size(75, 23);
+            this.BtnExaminarT.TabIndex = 111;
+            this.BtnExaminarT.Text = "&Examinar";
+            this.BtnExaminarT.UseVisualStyleBackColor = true;
+            this.BtnExaminarT.Click += new System.EventHandler(this.BtnExaminarT_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 38);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(128, 13);
+            this.label6.TabIndex = 110;
+            this.label6.Text = "Nombre Archivo principal:";
+            // 
+            // NombreArchivo_T
+            // 
+            this.NombreArchivo_T.Location = new System.Drawing.Point(152, 35);
+            this.NombreArchivo_T.Name = "NombreArchivo_T";
+            this.NombreArchivo_T.ReadOnly = true;
+            this.NombreArchivo_T.Size = new System.Drawing.Size(271, 20);
+            this.NombreArchivo_T.TabIndex = 109;
+            this.NombreArchivo_T.Tag = "NO";
+            this.NombreArchivo_T.Text = "Datos App Peloscalvo";
+            // 
+            // ArticulosTxt
+            // 
+            this.ArticulosTxt.DisplayMember = "A";
+            this.ArticulosTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ArticulosTxt.FormattingEnabled = true;
+            this.ArticulosTxt.Items.AddRange(new object[] {
             "Tarifa De Articulos 1",
             "Tarifa De Articulos 2",
             "Tarifa De Articulos 3",
             "Tarifa De Articulos 4",
             "Tarifa De Articulos 5"});
-            this.SerieArticulosText.Location = new System.Drawing.Point(152, 72);
-            this.SerieArticulosText.Name = "SerieArticulosText";
-            this.SerieArticulosText.Size = new System.Drawing.Size(300, 21);
-            this.SerieArticulosText.TabIndex = 100;
+            this.ArticulosTxt.Location = new System.Drawing.Point(152, 72);
+            this.ArticulosTxt.Name = "ArticulosTxt";
+            this.ArticulosTxt.Size = new System.Drawing.Size(300, 21);
+            this.ArticulosTxt.TabIndex = 100;
             // 
             // panel2
             // 
@@ -268,53 +285,46 @@ namespace PELOSCALVO
             this.ContadorClientes.Text = "0";
             this.ContadorClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // SerieClientesText2
+            // ClientesTxt
             // 
-            this.SerieClientesText2.DisplayMember = "A";
-            this.SerieClientesText2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SerieClientesText2.FormattingEnabled = true;
-            this.SerieClientesText2.Items.AddRange(new object[] {
+            this.ClientesTxt.DisplayMember = "A";
+            this.ClientesTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ClientesTxt.FormattingEnabled = true;
+            this.ClientesTxt.Items.AddRange(new object[] {
             "Listado De Clientes 1",
             "Listado De Clientes 1",
             "Listado De Clientes 1",
             "Listado De Clientes 1",
             "Listado De Clientes 1"});
-            this.SerieClientesText2.Location = new System.Drawing.Point(152, 112);
-            this.SerieClientesText2.Name = "SerieClientesText2";
-            this.SerieClientesText2.Size = new System.Drawing.Size(300, 21);
-            this.SerieClientesText2.TabIndex = 101;
+            this.ClientesTxt.Location = new System.Drawing.Point(152, 112);
+            this.ClientesTxt.Name = "ClientesTxt";
+            this.ClientesTxt.Size = new System.Drawing.Size(300, 21);
+            this.ClientesTxt.TabIndex = 101;
             // 
-            // tipoExtensionArticulosLabel
+            // ExtensionTxt
             // 
-            tipoExtensionArticulosLabel.AutoSize = true;
-            tipoExtensionArticulosLabel.Location = new System.Drawing.Point(295, 142);
-            tipoExtensionArticulosLabel.Name = "tipoExtensionArticulosLabel";
-            tipoExtensionArticulosLabel.Size = new System.Drawing.Size(56, 13);
-            tipoExtensionArticulosLabel.TabIndex = 105;
-            tipoExtensionArticulosLabel.Text = "Extension:";
-            // 
-            // TipoExtension_b
-            // 
-            this.TipoExtension_b.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TipoExtension_b.FormattingEnabled = true;
-            this.TipoExtension_b.Items.AddRange(new object[] {
+            this.ExtensionTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ExtensionTxt.FormattingEnabled = true;
+            this.ExtensionTxt.Items.AddRange(new object[] {
             "accdb",
             "mdb"});
-            this.TipoExtension_b.Location = new System.Drawing.Point(357, 139);
-            this.TipoExtension_b.Name = "TipoExtension_b";
-            this.TipoExtension_b.Size = new System.Drawing.Size(95, 21);
-            this.TipoExtension_b.TabIndex = 106;
+            this.ExtensionTxt.Location = new System.Drawing.Point(357, 139);
+            this.ExtensionTxt.Name = "ExtensionTxt";
+            this.ExtensionTxt.Size = new System.Drawing.Size(95, 21);
+            this.ExtensionTxt.TabIndex = 106;
             // 
-            // BtnRestablecer
+            // BtnRestablecer_t
             // 
-            this.BtnRestablecer.BackColor = System.Drawing.Color.DarkKhaki;
-            this.BtnRestablecer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BtnRestablecer.Location = new System.Drawing.Point(732, 228);
-            this.BtnRestablecer.Name = "BtnRestablecer";
-            this.BtnRestablecer.Size = new System.Drawing.Size(75, 23);
-            this.BtnRestablecer.TabIndex = 116;
-            this.BtnRestablecer.Text = "&Restablecer";
-            this.BtnRestablecer.UseVisualStyleBackColor = false;
+            this.BtnRestablecer_t.BackColor = System.Drawing.Color.DarkKhaki;
+            this.BtnRestablecer_t.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnRestablecer_t.Location = new System.Drawing.Point(732, 228);
+            this.BtnRestablecer_t.Name = "BtnRestablecer_t";
+            this.BtnRestablecer_t.Size = new System.Drawing.Size(75, 23);
+            this.BtnRestablecer_t.TabIndex = 116;
+            this.BtnRestablecer_t.Text = "&Restablecer";
+            this.BtnRestablecer_t.UseVisualStyleBackColor = false;
+            this.BtnRestablecer_t.Click += new System.EventHandler(this.BtnRestablecer_t_Click);
+            this.BtnRestablecer_t.MouseEnter += new System.EventHandler(this.BtnRestablecer_t_MouseEnter);
             // 
             // BtnSalirT
             // 
@@ -337,33 +347,63 @@ namespace PELOSCALVO
             this.BtnSalirT.UseVisualStyleBackColor = false;
             this.BtnSalirT.Click += new System.EventHandler(this.BtnSalirT_Click);
             // 
+            // ErrorVer
+            // 
+            this.ErrorVer.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.ErrorVer.ContainerControl = this;
+            // 
+            // BtnConectar
+            // 
+            this.BtnConectar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnConectar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnConectar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnConectar.FlatAppearance.BorderSize = 0;
+            this.BtnConectar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnConectar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnConectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConectar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnConectar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnConectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnConectar.Location = new System.Drawing.Point(644, 315);
+            this.BtnConectar.Name = "BtnConectar";
+            this.BtnConectar.Size = new System.Drawing.Size(108, 42);
+            this.BtnConectar.TabIndex = 118;
+            this.BtnConectar.Text = "&Conectar";
+            this.BtnConectar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnConectar.UseVisualStyleBackColor = false;
+            this.BtnConectar.Click += new System.EventHandler(this.BtnConectar_Click);
+            // 
             // FormCrearTablasDb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 469);
+            this.Controls.Add(this.BtnConectar);
             this.Controls.Add(this.BtnSalirT);
-            this.Controls.Add(this.BtnRestablecer);
+            this.Controls.Add(this.BtnRestablecer_t);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.Info_Res);
-            this.Controls.Add(this.BtnCrearTbCliente);
-            this.Controls.Add(this.BtnCrearTbArticulos);
-            this.Controls.Add(this.BtnExaminarB);
+            this.Controls.Add(this.BtnCrearTablaCli);
+            this.Controls.Add(this.BtnCrearTablaArti);
+            this.Controls.Add(this.BtnExaminarT);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.NombreArchivoDatos);
+            this.Controls.Add(this.NombreArchivo_T);
             this.Controls.Add(labelARTICULOS);
             this.Controls.Add(labelCLIENTES);
-            this.Controls.Add(this.SerieArticulosText);
+            this.Controls.Add(this.ArticulosTxt);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.SerieClientesText2);
+            this.Controls.Add(this.ClientesTxt);
             this.Controls.Add(tipoExtensionArticulosLabel);
-            this.Controls.Add(this.TipoExtension_b);
+            this.Controls.Add(this.ExtensionTxt);
             this.Name = "FormCrearTablasDb";
-            this.Text = "FormCrearTablasDb";
+            this.Text = "Crear Tablas Db";
+            this.Load += new System.EventHandler(this.FormCrearTablasDb_Load);
+            this.MouseEnter += new System.EventHandler(this.FormCrearTablasDb_MouseEnter);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,14 +413,14 @@ namespace PELOSCALVO
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button BtnTablas;
+        private System.Windows.Forms.Button BtnTablasCrear;
         private System.Windows.Forms.Label Info_Res;
-        private System.Windows.Forms.Button BtnCrearTbCliente;
-        private System.Windows.Forms.Button BtnCrearTbArticulos;
-        private System.Windows.Forms.Button BtnExaminarB;
+        private System.Windows.Forms.Button BtnCrearTablaCli;
+        private System.Windows.Forms.Button BtnCrearTablaArti;
+        private System.Windows.Forms.Button BtnExaminarT;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox NombreArchivoDatos;
-        public System.Windows.Forms.ComboBox SerieArticulosText;
+        private System.Windows.Forms.TextBox NombreArchivo_T;
+        public System.Windows.Forms.ComboBox ArticulosTxt;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label ContadorFactu;
@@ -388,9 +428,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label RegistLbel;
         private System.Windows.Forms.Label ContadorClientes;
-        public System.Windows.Forms.ComboBox SerieClientesText2;
-        public System.Windows.Forms.ComboBox TipoExtension_b;
-        private System.Windows.Forms.Button BtnRestablecer;
+        public System.Windows.Forms.ComboBox ClientesTxt;
+        public System.Windows.Forms.ComboBox ExtensionTxt;
+        private System.Windows.Forms.Button BtnRestablecer_t;
         private System.Windows.Forms.Button BtnSalirT;
+        private System.Windows.Forms.ErrorProvider ErrorVer;
+        public System.Windows.Forms.Button BtnConectar;
     }
 }

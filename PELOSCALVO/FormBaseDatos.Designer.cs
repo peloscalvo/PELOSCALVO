@@ -90,6 +90,7 @@ namespace PELOSCALVO
             this.ActualizarServidores = new System.Windows.Forms.Button();
             this.Autenticacion = new System.Windows.Forms.ComboBox();
             this.TabArchivoSql = new System.Windows.Forms.TabControl();
+            this.BtnLeer = new System.Windows.Forms.Button();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
@@ -308,6 +309,7 @@ namespace PELOSCALVO
             // TabArchivos
             // 
             this.TabArchivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TabArchivos.Controls.Add(this.BtnLeer);
             this.TabArchivos.Controls.Add(this.panel3);
             this.TabArchivos.Controls.Add(this.Info_Res);
             this.TabArchivos.Controls.Add(this.BtnRestablecer);
@@ -802,6 +804,16 @@ namespace PELOSCALVO
             this.TabArchivoSql.Size = new System.Drawing.Size(849, 341);
             this.TabArchivoSql.TabIndex = 83;
             // 
+            // BtnLeer
+            // 
+            this.BtnLeer.Location = new System.Drawing.Point(751, 136);
+            this.BtnLeer.Name = "BtnLeer";
+            this.BtnLeer.Size = new System.Drawing.Size(75, 23);
+            this.BtnLeer.TabIndex = 100;
+            this.BtnLeer.Text = "&Leer";
+            this.BtnLeer.UseVisualStyleBackColor = true;
+            this.BtnLeer.Click += new System.EventHandler(this.BtnLeer_Click);
+            // 
             // FormBaseDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -891,5 +903,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnTablas;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button BtnLeer;
     }
 }

@@ -269,9 +269,6 @@ namespace PELOSCALVO
         {
             String TipoTabla = "[" + this.SerieArticulosText.Text + "]";
             string consulta = "Select * from " + TipoTabla;
-
-            string cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
-            ClsConexionDb.CadenaConexion = cadena;
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
@@ -1009,6 +1006,7 @@ namespace PELOSCALVO
                         ClasDatos.RutaBaseDatosDb = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                     }
 
+                    ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     // FormMenuPrincipal.menu2principal.dsCorreos.Clear();
                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
@@ -1225,8 +1223,7 @@ namespace PELOSCALVO
                 }
                 if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    string cadena = "";
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
+
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
                     string TablaArticulos = this.SerieArticulosText.Text;
@@ -1236,9 +1233,8 @@ namespace PELOSCALVO
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                    ClsConexionDb.CadenaConexion = cadena;
+                    ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
-                    ClsConexionDb.CadenaConexion = cadena;
                     try
                     {
                         if (NuevaConexion2.SiConexionDb)
@@ -1285,8 +1281,7 @@ namespace PELOSCALVO
                     {
                         ClasDatos.RutaBaseDatosDb = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                     }
-                    string cadena = "";
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
+
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
                     string TablaCliente = "Cliente+" + valor.ToString();
@@ -1296,9 +1291,8 @@ namespace PELOSCALVO
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                    ClsConexionDb.CadenaConexion = cadena;
+                    ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaCliente);
-                    ClsConexionDb.CadenaConexion = cadena;
                     try
                     {
 
@@ -1373,8 +1367,7 @@ namespace PELOSCALVO
             {
                 if (MessageBox.Show("Desea Crear Las Tablas Para Nueva Base Datos ", "CREAR TABLAS NUEVAS", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
-                    string cadena = "";
-                    cadena = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
+           
 
                     Random r = new Random();
                     int valor = r.Next(10, 900000);
@@ -1426,8 +1419,9 @@ namespace PELOSCALVO
                        ", [Direcion] varchar, [CorreoEletronico_cli] varchar)";
                     string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER, [Usuario] varchar, [Nombre] varchar" +
                           ", [Direcion] varchar, [Cargo] varchar, [Varios] varchar [CorreoEletronico] varchar)";
+       
+                    ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
-                    ClsConexionDb.CadenaConexion = cadena;
                     try
                     {
                         if (NuevaConexion2.SiConexionDb)
@@ -1754,6 +1748,11 @@ namespace PELOSCALVO
         }
 
         private void TabArchivos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnLeer_Click(object sender, EventArgs e)
         {
 
         }
