@@ -1424,6 +1424,8 @@ namespace PELOSCALVO
                         ", [Usuario] varchar, [Contraseña] varchar, [smtp] varchar, [Puerto] INTEGER, [Timeof] INTEGER)";
                     string TablaCorreo_Cli = "   CREATE TABLE [DtCorreosCliente]([Id] INTEGER, [RazonSocial] varchar, [EmpresaNombre] varchar" +
                        ", [Direcion] varchar, [CorreoEletronico_cli] varchar)";
+                    string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER, [Usuario] varchar, [Nombre] varchar" +
+                          ", [Direcion] varchar, [Cargo] varchar, [Varios] varchar [CorreoEletronico] varchar)";
                     ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
                     ClsConexionDb.CadenaConexion = cadena;
                     try
@@ -1722,15 +1724,30 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message, "ERROR TABLA CORREO CLIENTES");
                     }
-                    finally
+                    try
                     {
-                        if (NuevaConexion2.CerrarConexionDB)
+                        NuevaConexion2 = new ClsConexionDb(TablaUser);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA USUARIOS");
+                    }
+
+                    if (NuevaConexion2.CerrarConexionDB)
                         {
 
                             NuevaConexion2.ComandoDb.Parameters.Clear();
 
                         }
-                    }
+                    
                     MessageBox.Show("Se Termino De crar Tablas");
                 }
             }
