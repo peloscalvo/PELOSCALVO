@@ -811,6 +811,114 @@ namespace PELOSCALVO
 
             return memo2.GetBuffer();
         }
+        private void GuardarEmpresasDb()
+        {
+            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
+            {
+                String ConsultaDescuetos = "";
+                string consulta = "";
+                if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
+                {
+                    ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([IdTarifa],[TarifaTipo],[EnlaceTarifa]) VALUES( @IdTarifa, @TarifaTipo, @EnlaceTarifa)";
+                    consulta = "  INSERT INTO [DtConfiguracionPrincipal]([EmpresaConfi],[IdEmpresa],[NombreEmpresa],[DireccionEmpresa],[LocalidadEmpresa]" +
+                 " ,[CodigoPostalEmpresa],[ProvinciaEmpresa],[TelefonoEmpresa],[CorreoEmpresa],[WepEmpresa] ,[RegimenIvaEmpresa]" +
+                     " ,[PaisEmpresa],[SerieDeFacturacionEmpresa],[Telefono2Empresa],[MovilEmpresa],[CifEmpresa],[NombreEmpresaReguistro]" +
+                     "  ,[ImagenEmpresa])  VALUES( @EmpresaConfi, @IdEmpresa, @NombreEmpresa, @DireccionEmpresa, @LocalidadEmpresa," +
+                       " @CodigoPostalEmpresa, @ProvinciaEmpresa, @TelefonoEmpresa, @CorreoEmpresa, @WepEmpresa, @RegimenIvaEmpresa," +
+                       " @PaisEmpresa, @SerieDeFacturacionEmpresa, @Telefono2Empresa, @MovilEmpresa, @CifEmpresa," +
+                        " @NombreEmpresaReguistro, @ImagenEmpresa)";
+
+
+                }
+                else
+                {
+                    ConsultaDescuetos = " UPDATE [DtTarifaTipo] SET [IdTarifa] = @IdTarifa,[TarifaTipo] =@TarifaTipo,[EnlaceTarifa]= @EnlaceTarifa";
+                    consulta = "UPDATE [DtConfiguracionPrincipal] SET [EmpresaConfi] = @EmpresaConfi,[IdEmpresa] = @IdEmpresa, [NombreEmpresa] = @NombreEmpresa, " +
+                        "[DireccionEmpresa] = @DireccionEmpresa, [LocalidadEmpresa] = @LocalidadEmpresa,[CodigoPostalEmpresa] = @CodigoPostalEmpresa,  [ProvinciaEmpresa] = @ProvinciaEmpresa, " +
+                        " [TelefonoEmpresa] = @TelefonoEmpresa, [CorreoEmpresa] = @CorreoEmpresa,  [WepEmpresa] = @WepEmpresa, [RegimenIvaEmpresa] = @RegimenIvaEmpresa, [PaisEmpresa] = @PaisEmpresa, " +
+                        " [SerieDeFacturacionEmpresa] = @SerieDeFacturacionEmpresa, [Telefono2Empresa] = @Telefono2Empresa, [MovilEmpresa] = @MovilEmpresa, [CifEmpresa] = @CifEmpresa, " +
+                        " [NombreEmpresaReguistro] = @NombreEmpresaReguistro,[ImagenEmpresa] = @ImagenEmpresa  WHERE NombreEmpresaReguistro = @NombreEmpresaReguistro";
+                }
+                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+
+
+                try
+                {
+                    if (NuevaConexion.SiConexionDb)
+                    {
+
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaConfi", string.IsNullOrEmpty(this.empresaConfiTextBox.Text) ? (object)DBNull.Value : this.empresaConfiTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEmpresa", string.IsNullOrEmpty(this.idEmpresaTextBox.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresaTextBox.Text));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.nombreEmpresaTextBox.Text) ? (object)DBNull.Value : this.nombreEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DireccionEmpresa", string.IsNullOrEmpty(this.direccionEmpresaTextBox.Text) ? (object)DBNull.Value : this.direccionEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@LocalidadEmpresa", string.IsNullOrEmpty(this.localidadEmpresaTextBox.Text) ? (object)DBNull.Value : this.localidadEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CodigoPostalEmpresa", string.IsNullOrEmpty(this.codigoPostalEmpresaTextBox.Text) ? (object)DBNull.Value : this.codigoPostalEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@ProvinciaEmpresa", string.IsNullOrEmpty(this.provinciaEmpresaComboBox.Text) ? (object)DBNull.Value : this.provinciaEmpresaComboBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TelefonoEmpresa", string.IsNullOrEmpty(this.telefonoEmpresaTextBox.Text) ? (object)DBNull.Value : this.telefonoEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CorreoEmpresa", string.IsNullOrEmpty(this.correoEmpresaTextBox.Text) ? (object)DBNull.Value : this.correoEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@WepEmpresa", string.IsNullOrEmpty(this.wepEmpresaTextBox.Text) ? (object)DBNull.Value : this.wepEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@RegimenIvaEmpresa", string.IsNullOrEmpty(this.regimenIvaEmpresaComboBox.Text) ? (object)DBNull.Value : this.regimenIvaEmpresaComboBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PaisEmpresa", string.IsNullOrEmpty(this.paisEmpresaComboBox.Text) ? (object)DBNull.Value : this.paisEmpresaComboBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieDeFacturacionEmpresa", string.IsNullOrEmpty(this.serieDeFacturacionEmpresaComboBox.Text) ? (object)DBNull.Value : this.serieDeFacturacionEmpresaComboBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@Telefono2Empresa", string.IsNullOrEmpty(this.telefono2EmpresaTextBox.Text) ? (object)DBNull.Value : this.telefono2EmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@MovilEmpresa", string.IsNullOrEmpty(this.movilEmpresaTextBox.Text) ? (object)DBNull.Value : this.movilEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CifEmpresa", string.IsNullOrEmpty(this.cifEmpresaTextBox.Text) ? (object)DBNull.Value : this.cifEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresaReguistro", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                        //  NuevaConexion.ComandoSql.Parameters.AddWithValue("@ImagenEmpresa", (imagenEmpresaPictureBox.Image) == null ? (object) DBNull.Value :Convert.ToByte( ConvertirImagen(imagenEmpresaPictureBox)));
+                        byte[] IMAGENnUEVA = ConvertirImagen(this.imagenEmpresaPictureBox);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
+                        NuevaConexion.ComandoDb.ExecuteNonQuery();
+ 
+                        RestaurarOjetosEmpresa();
+                        MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message, "EMPRESAS");
+                }
+                finally
+                {              
+                        NuevaConexion.ComandoDb.Parameters.Clear();
+                   
+                }
+                NuevaConexion = new ClsConexionDb(ConsultaDescuetos);////Guarda Descuentos Clientes
+                try
+                {
+                    if (NuevaConexion.SiConexionDb)
+                    {
+                        foreach (DataGridViewRow row in this.dtTarifaTipoDataGridView.Rows)
+                        {
+
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdTarifa", string.IsNullOrEmpty(row.Cells[0].Value.ToString()) ? (object)DBNull.Value : Convert.ToInt32(row.Cells[0].Value.ToString()));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(row.Cells[1].Value.ToString()) ? (object)DBNull.Value : row.Cells[1].Value.ToString());
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                            NuevaConexion.ComandoDb.ExecuteNonQuery();
+                            NuevaConexion.ComandoDb.Parameters.Clear();
+                        }
+
+
+                    }
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR DESCUENTOS CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message, "DESCUENTOS");
+                }
+                finally
+                {
+                    if (NuevaConexion.CerrarConexionDB)
+                    {
+                        NuevaConexion.ComandoDb.Parameters.Clear();
+                    }
+                }
+            }
+
+
+        }
         private void GuardarEmpresasSql()
         {
             if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
@@ -868,7 +976,7 @@ namespace PELOSCALVO
                         byte[] IMAGENnUEVA = ConvertirImagen(this.imagenEmpresaPictureBox);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
-                        NuevaConexion.ComandoSql.Parameters.Clear();
+                  
                         RestaurarOjetosEmpresa();
                         MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -880,10 +988,7 @@ namespace PELOSCALVO
                 }
                 finally
                 {
-                    if (NuevaConexion.CerrarConexionSql)
-                    {
-
-                    }
+                    NuevaConexion.ComandoSql.Parameters.Clear();
                 }
                 NuevaConexion = new ClsConexionSql(ConsultaDescuetos);////Guarda Descuentos Clientes
                 try
@@ -897,7 +1002,7 @@ namespace PELOSCALVO
                             NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(row.Cells[1].Value.ToString()) ? (object)DBNull.Value : row.Cells[1].Value.ToString());
                             NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
                             NuevaConexion.ComandoSql.ExecuteNonQuery();
-                            NuevaConexion.ComandoSql.Parameters.Clear();
+                           
                         }
 
 
@@ -909,6 +1014,13 @@ namespace PELOSCALVO
                 {
 
                     MessageBox.Show(ex.Message, "DESCUENTOS");
+                }
+                finally
+                {
+                    if (NuevaConexion.CerrarConexionSql)
+                    {
+                        NuevaConexion.ComandoSql.Parameters.Clear();
+                    }
                 }
             }
 
@@ -982,13 +1094,9 @@ namespace PELOSCALVO
                         else
                         {
 
-                            if (File.Exists(ClasDatos.RutaMultidatos))
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                this.dtConfiguracionPrincipalBindingSource.EndEdit();
-                                Validate();
-                                //  FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaBaseDatosDb);
-                                MessageBox.Show("Se Guardo Correctamente", "GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                RestaurarOjetosEmpresa();
+                                GuardarAlmacenesDb();
                             }
                             else
                             {

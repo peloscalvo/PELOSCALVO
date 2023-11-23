@@ -541,8 +541,8 @@ namespace PELOSCALVO
                                 {
                                     if (i == 2)
                                     {
-                                        TablaFactu = "DtNota-2";
-                                        Tabladetalle = "DtDetalles_Nota-2";
+                                        TablaFactu = "DtNota2";
+                                        Tabladetalle = "DtDetalles_Nota2";
                                     }
                                     if (i == 3)
                                     {

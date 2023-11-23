@@ -575,7 +575,7 @@ namespace PELOSCALVO
             }
             if (this.SiOpenFatu == 0)
             {
-                ClasDatos.NombreFactura = "Nota-2";
+                ClasDatos.NombreFactura = "Nota2";
                 ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal + " FN2";
                 FormFacturar frm = new FormFacturar();
                 this.panelMenu.Width = this.panelMenu.Width = 55;

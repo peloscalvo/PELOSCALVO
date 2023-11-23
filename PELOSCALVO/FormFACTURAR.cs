@@ -1318,13 +1318,12 @@ namespace PELOSCALVO
                     }
 
                 }
-                else
-                {
-                    this.panelBotones.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaBaseDatosDb, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-
-                }
+            }
+            else
+            {
+                this.panelBotones.Enabled = false;
+                MessageBox.Show("Archivo : " + ClasDatos.RutaBaseDatosDb, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
 
             }
         }
@@ -1336,9 +1335,10 @@ namespace PELOSCALVO
 
         private void EjerciciosDeAñoComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
-            FiltrarFactura();
-
+            if (this.PanelArriba.Tag.ToString() == "SI")
+            {
+                FiltrarFactura();
+            }
         }
         private void FiltrarFactura()
         {
@@ -2373,7 +2373,7 @@ namespace PELOSCALVO
 
         private void ejerciciosDeAñoComboBox_Click(object sender, EventArgs e)
         {
-            this.PanelArriba.Tag = "SI";
+           
         }
 
         private void SerieText_Click(object sender, EventArgs e)
@@ -2415,7 +2415,8 @@ namespace PELOSCALVO
         private void EmpresaPrincipal_MouseEnter(object sender, EventArgs e)
         {
             this.PanelArriba.Tag = "SI";
-            NombreEmpresaConfi.Visible = true;
+            // NombreEmpresaConfi.Visible = true;
+           // NombreEmpresaConfi.ForeColor = color;
 
         }
 
@@ -2427,6 +2428,16 @@ namespace PELOSCALVO
         private void EmpresaPrincipal_MouseLeave(object sender, EventArgs e)
         {
            // NombreEmpresaConfi.Visible = false;
+        }
+
+        private void ejerciciosDeAñoComboBox_Click_1(object sender, EventArgs e)
+        {
+            this.PanelArriba.Tag = "SI";
+        }
+
+        private void EmpresaPrincipal_Click(object sender, EventArgs e)
+        {
+            this.PanelArriba.Tag = "SI";
         }
     }
 }

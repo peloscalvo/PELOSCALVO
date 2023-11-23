@@ -31,7 +31,7 @@ namespace PELOSCALVO
                     this.MultiFormatoImprimir.Text = "Albaran";
                     this.MultiFormatoImprimir.Enabled = false;
                 }
-                if (ClasDatos.NombreFactura == "Nota-2")
+                if (ClasDatos.NombreFactura == "Nota2")
                 {
                     this.MultiFormatoImprimir.Items.Add("Nota 2");
                     this.MultiFormatoImprimir.Text = "Nota 2";

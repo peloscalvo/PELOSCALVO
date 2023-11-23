@@ -608,6 +608,7 @@ namespace PELOSCALVO
             this.EmpresaPrincipal.TabIndex = 73;
             this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
             this.EmpresaPrincipal.SelectedValueChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedValueChanged);
+            this.EmpresaPrincipal.Click += new System.EventHandler(this.EmpresaPrincipal_Click);
             this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
             this.EmpresaPrincipal.MouseEnter += new System.EventHandler(this.EmpresaPrincipal_MouseEnter);
             this.EmpresaPrincipal.MouseLeave += new System.EventHandler(this.EmpresaPrincipal_MouseLeave);
@@ -677,7 +678,7 @@ namespace PELOSCALVO
             this.ejerciciosDeAñoComboBox.Size = new System.Drawing.Size(195, 21);
             this.ejerciciosDeAñoComboBox.TabIndex = 8;
             this.ejerciciosDeAñoComboBox.SelectedIndexChanged += new System.EventHandler(this.EjerciciosDeAñoComboBox_SelectedIndexChanged_1);
-            this.ejerciciosDeAñoComboBox.Click += new System.EventHandler(this.ejerciciosDeAñoComboBox_Click);
+            this.ejerciciosDeAñoComboBox.Click += new System.EventHandler(this.ejerciciosDeAñoComboBox_Click_1);
             // 
             // dtConfiguracionPrincipalDtConfiBindingSource
             // 
