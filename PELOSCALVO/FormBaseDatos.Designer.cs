@@ -53,6 +53,7 @@ namespace PELOSCALVO
             this.ErrorVer = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TabArchivos = new System.Windows.Forms.TabPage();
+            this.BtnLeer = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.BtnTablas = new System.Windows.Forms.Button();
@@ -90,7 +91,6 @@ namespace PELOSCALVO
             this.ActualizarServidores = new System.Windows.Forms.Button();
             this.Autenticacion = new System.Windows.Forms.ComboBox();
             this.TabArchivoSql = new System.Windows.Forms.TabControl();
-            this.BtnLeer = new System.Windows.Forms.Button();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
@@ -336,6 +336,16 @@ namespace PELOSCALVO
             this.TabArchivos.Text = "CONFIGURAR ARCHIVOS";
             this.TabArchivos.Click += new System.EventHandler(this.TabArchivos_Click);
             this.TabArchivos.MouseEnter += new System.EventHandler(this.TabArchivos_MouseEnter);
+            // 
+            // BtnLeer
+            // 
+            this.BtnLeer.Location = new System.Drawing.Point(751, 136);
+            this.BtnLeer.Name = "BtnLeer";
+            this.BtnLeer.Size = new System.Drawing.Size(75, 23);
+            this.BtnLeer.TabIndex = 100;
+            this.BtnLeer.Text = "&Leer";
+            this.BtnLeer.UseVisualStyleBackColor = true;
+            this.BtnLeer.Click += new System.EventHandler(this.BtnLeer_Click);
             // 
             // panel3
             // 
@@ -803,16 +813,6 @@ namespace PELOSCALVO
             this.TabArchivoSql.SelectedIndex = 0;
             this.TabArchivoSql.Size = new System.Drawing.Size(849, 341);
             this.TabArchivoSql.TabIndex = 83;
-            // 
-            // BtnLeer
-            // 
-            this.BtnLeer.Location = new System.Drawing.Point(751, 136);
-            this.BtnLeer.Name = "BtnLeer";
-            this.BtnLeer.Size = new System.Drawing.Size(75, 23);
-            this.BtnLeer.TabIndex = 100;
-            this.BtnLeer.Text = "&Leer";
-            this.BtnLeer.UseVisualStyleBackColor = true;
-            this.BtnLeer.Click += new System.EventHandler(this.BtnLeer_Click);
             // 
             // FormBaseDatos
             // 

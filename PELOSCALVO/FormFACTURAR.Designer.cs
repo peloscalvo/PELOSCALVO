@@ -86,9 +86,9 @@ namespace PELOSCALVO
             this.dtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsfacturas = new PELOSCALVO.Dtfacturas();
             this.PanelArriba = new System.Windows.Forms.Panel();
+            this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
-            this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             this.NombreEmpresaConfi = new System.Windows.Forms.Label();
             this.SerieText = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -594,6 +594,24 @@ namespace PELOSCALVO
             this.PanelArriba.TabIndex = 2;
             this.PanelArriba.Tag = "NO";
             // 
+            // EmpresaPrincipal
+            // 
+            this.EmpresaPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.EmpresaPrincipal.DisplayMember = "EmpresaConfi";
+            this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EmpresaPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmpresaPrincipal.FormattingEnabled = true;
+            this.EmpresaPrincipal.Location = new System.Drawing.Point(62, 7);
+            this.EmpresaPrincipal.Name = "EmpresaPrincipal";
+            this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 24);
+            this.EmpresaPrincipal.TabIndex = 73;
+            this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
+            this.EmpresaPrincipal.SelectedValueChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedValueChanged);
+            this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
+            this.EmpresaPrincipal.MouseEnter += new System.EventHandler(this.EmpresaPrincipal_MouseEnter);
+            this.EmpresaPrincipal.MouseLeave += new System.EventHandler(this.EmpresaPrincipal_MouseLeave);
+            // 
             // dtConfiguracionPrincipalBindingSource
             // 
             this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
@@ -604,28 +622,12 @@ namespace PELOSCALVO
             this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
             this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // EmpresaPrincipal
-            // 
-            this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.EmpresaPrincipal.DisplayMember = "NombreEmpresaReguistro";
-            this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.EmpresaPrincipal.FormattingEnabled = true;
-            this.EmpresaPrincipal.Location = new System.Drawing.Point(62, 7);
-            this.EmpresaPrincipal.Name = "EmpresaPrincipal";
-            this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 21);
-            this.EmpresaPrincipal.TabIndex = 73;
-            this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
-            this.EmpresaPrincipal.SelectedValueChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedValueChanged);
-            this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
-            this.EmpresaPrincipal.MouseEnter += new System.EventHandler(this.EmpresaPrincipal_MouseEnter);
-            this.EmpresaPrincipal.MouseLeave += new System.EventHandler(this.EmpresaPrincipal_MouseLeave);
-            // 
             // NombreEmpresaConfi
             // 
-            this.NombreEmpresaConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
+            this.NombreEmpresaConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
             this.NombreEmpresaConfi.Location = new System.Drawing.Point(445, 9);
             this.NombreEmpresaConfi.Name = "NombreEmpresaConfi";
-            this.NombreEmpresaConfi.Size = new System.Drawing.Size(372, 23);
+            this.NombreEmpresaConfi.Size = new System.Drawing.Size(356, 23);
             this.NombreEmpresaConfi.TabIndex = 72;
             this.NombreEmpresaConfi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.NombreEmpresaConfi.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);

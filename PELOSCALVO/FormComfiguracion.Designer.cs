@@ -795,7 +795,7 @@ namespace PELOSCALVO
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(691, 15);
+            label1.Location = new System.Drawing.Point(669, 15);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(51, 13);
             label1.TabIndex = 41;
@@ -1536,7 +1536,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(398, 518);
+            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(381, 520);
             this.BtnCancelarAlmacen.Name = "BtnCancelarAlmacen";
             this.BtnCancelarAlmacen.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarAlmacen.TabIndex = 59;
@@ -1702,7 +1702,7 @@ namespace PELOSCALVO
             this.BtnActualizarAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizarAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnActualizarAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(203, 518);
+            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(186, 520);
             this.BtnActualizarAlmacenes.Name = "BtnActualizarAlmacenes";
             this.BtnActualizarAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnActualizarAlmacenes.TabIndex = 49;
@@ -1722,7 +1722,7 @@ namespace PELOSCALVO
             this.BtnVolverAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(546, 518);
+            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(529, 520);
             this.BtnVolverAlmacenes.Name = "BtnVolverAlmacenes";
             this.BtnVolverAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverAlmacenes.TabIndex = 48;
@@ -3566,9 +3566,9 @@ namespace PELOSCALVO
             this.CambiarDeEmpresa1.DisplayMember = "EmpresaConfi";
             this.CambiarDeEmpresa1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CambiarDeEmpresa1.FormattingEnabled = true;
-            this.CambiarDeEmpresa1.Location = new System.Drawing.Point(757, 12);
+            this.CambiarDeEmpresa1.Location = new System.Drawing.Point(726, 12);
             this.CambiarDeEmpresa1.Name = "CambiarDeEmpresa1";
-            this.CambiarDeEmpresa1.Size = new System.Drawing.Size(233, 21);
+            this.CambiarDeEmpresa1.Size = new System.Drawing.Size(278, 21);
             this.CambiarDeEmpresa1.TabIndex = 42;
             // 
             // tabMENU

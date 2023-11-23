@@ -20,9 +20,9 @@ namespace PELOSCALVO
         }
         private void FormBienvenida_Load(object sender, EventArgs e)
         {
-           // this.TransparencyKey = this.BackColor;
+            this.TransparencyKey = this.BackColor;
             TimerStop.Start();
-
+            panel1.Parent = this;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

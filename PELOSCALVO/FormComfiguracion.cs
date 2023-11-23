@@ -265,37 +265,6 @@ namespace PELOSCALVO
                 // this.archivoArticulosComboBox.Items.Clear();
                 // this.archivoClientesComboBox.Items.Clear();
             }
-            try
-            {
-                if (FormMenuPrincipal.menu2principal.dsMultidatos.DtArchivoDatosMulti.Count <= 0)
-                {
-                    this.dtInicioMultiBindingSource.AddNew();
-                    this.dtInicioMultiBindingSource.EndEdit();
-                    this.dtInicioDataGridView.Rows[0].Cells[0].Value = Directory.GetCurrentDirectory();
-                    if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
-                    {
-                        if (File.Exists(ClasDatos.RutaMultidatos))
-                        {
-                            FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Falta Archivo", "FALTA ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                        }
-                    }
-
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-
 
         }
 
