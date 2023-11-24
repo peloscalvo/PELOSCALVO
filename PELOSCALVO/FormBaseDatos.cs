@@ -1462,7 +1462,7 @@ namespace PELOSCALVO
                     String ConsultaDetalles = "";
                     for (int i = 1; i < 7; i++)
                     {
-               
+
                         if (i == 2)
                         {
                             TipoNota = "DtNota2";
@@ -1511,7 +1511,7 @@ namespace PELOSCALVO
                                     NuevaConexion2.ComandoDb.ExecuteNonQuery();
                                     NuevaConexion2.ComandoDb.Parameters.Clear();
                                 }
-                              
+
                             }
                         }
                         catch (Exception ex)
@@ -1792,7 +1792,7 @@ namespace PELOSCALVO
                     {
                         if (!string.IsNullOrEmpty((reader[0]).ToString()))
                         {
-                           SerieClientesText2.Items.Add(reader[0]);
+                            SerieClientesText2.Items.Add(reader[0]);
                         }
                     }
                 }
@@ -1802,9 +1802,9 @@ namespace PELOSCALVO
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
-             consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
-                     " not like 'Dt%'and O.COLUMN_NAME= 'Referencia'  order by ORDINAL_POSITION";
-             NuevaConexion = new ClsConexionDb(consulta);
+            consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
+                    " not like 'Dt%'and O.COLUMN_NAME= 'Referencia'  order by ORDINAL_POSITION";
+            NuevaConexion = new ClsConexionDb(consulta);
 
             if (NuevaConexion.SiConexionDb)
             {
@@ -1830,6 +1830,67 @@ namespace PELOSCALVO
 
             }
             NuevaConexion.ComandoDb.Parameters.Clear();
+        }
+
+        private void BtnLeerSql_Click(object sender, EventArgs e)
+        {
+            if (ClsConexionSql.CadenaConexion != string.Empty)
+            {
+
+
+                string consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
+               " not like 'Dt%'and O.COLUMN_NAME= 'APODOCLIEN'  order by ORDINAL_POSITION";
+                //  ClsConexionSql.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
+                ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+
+                if (NuevaConexion.SiConexionSql)
+                {
+                    try
+                    {
+                        SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                            {
+                                SerieClientesText2.Items.Add(reader[0]);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
+                consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
+                        " not like 'Dt%'and O.COLUMN_NAME= 'Referencia'  order by ORDINAL_POSITION";
+                NuevaConexion = new ClsConexionSql(consulta);
+
+                if (NuevaConexion.SiConexionSql)
+                {
+                    try
+                    {
+                        SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                            {
+                                SerieArticulosText.Items.Add(reader[0]);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
+                if (NuevaConexion.CerrarConexionSql)
+                {
+
+                }
+                NuevaConexion.ComandoSql.Parameters.Clear();
+            }
         }
     }
 

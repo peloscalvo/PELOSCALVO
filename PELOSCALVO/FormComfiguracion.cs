@@ -1096,7 +1096,7 @@ namespace PELOSCALVO
 
                             if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarAlmacenesDb();
+                                GuardarEmpresasDb();
                             }
                             else
                             {

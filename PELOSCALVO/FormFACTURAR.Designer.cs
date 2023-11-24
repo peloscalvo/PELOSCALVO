@@ -447,9 +447,9 @@ namespace PELOSCALVO
             // 
             // tipoInpuestoIVALabel1
             // 
-            tipoInpuestoIVALabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            tipoInpuestoIVALabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             tipoInpuestoIVALabel1.AutoSize = true;
-            tipoInpuestoIVALabel1.Location = new System.Drawing.Point(864, 610);
+            tipoInpuestoIVALabel1.Location = new System.Drawing.Point(864, 548);
             tipoInpuestoIVALabel1.Name = "tipoInpuestoIVALabel1";
             tipoInpuestoIVALabel1.Size = new System.Drawing.Size(49, 13);
             tipoInpuestoIVALabel1.TabIndex = 44;
@@ -1922,7 +1922,7 @@ namespace PELOSCALVO
             // 
             this.tipoInpuestoIVANumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tipoInpuestoIVANumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtConfiguracionPrincipalDtConfiBindingSource, "TipoInpuestoIVA", true));
-            this.tipoInpuestoIVANumericUpDown.Location = new System.Drawing.Point(919, 609);
+            this.tipoInpuestoIVANumericUpDown.Location = new System.Drawing.Point(919, 547);
             this.tipoInpuestoIVANumericUpDown.Name = "tipoInpuestoIVANumericUpDown";
             this.tipoInpuestoIVANumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.tipoInpuestoIVANumericUpDown.TabIndex = 45;
