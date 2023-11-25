@@ -464,7 +464,7 @@ namespace PELOSCALVO
             e.Graphics.DrawRectangle(TñLinea, 22, 240, 795, 814);
             e.Graphics.DrawRectangle(TñLinea2, 655, 1080, 150, 70);
             e.Graphics.DrawString(nombreCliente + " -- " + ApodoImpr, BookAntiqua, Brushes.Black, margenIzqu - 70, 135);
-            e.Graphics.DrawString("Fecha:" + FormFacturar.menu2FACTURAR.FechaFacturaDate.Text, Arial10, Brushes.Black, 658, 135 + saltoAbajo1);
+            e.Graphics.DrawString("Fecha:" + FormFacturar.menu2FACTURAR.FechaFactura.Text, Arial10, Brushes.Black, 658, 135 + saltoAbajo1);
             // e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.fechaFacturaTextBox.Text, Arial10, Brushes.Black, 740, 90 + saltoAbajo1,formato);
             saltoAbajo1 = saltoAbajo1 + 13;
             e.Graphics.DrawString("Numero:" + FormFacturar.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
@@ -502,9 +502,9 @@ namespace PELOSCALVO
                 iab = iab + 1;
                 SaltoDetallesAbj = SaltoDetallesAbj + 18;
             }
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.subTotalLabel2.Text, ArialNegrita10, Brushes.Black, 795, 1090, formato);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.subTotal.Text, ArialNegrita10, Brushes.Black, 795, 1090, formato);
             //rect = new RectangleF(1, 1110, 795, 870);
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.baseIvaLabel2.Text, ArialNegrita10, Brushes.Black, 795, 1110, formato);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.baseIva.Text, ArialNegrita10, Brushes.Black, 795, 1110, formato);
             // rect = new RectangleF(1, 1130, 795, 870);
             e.Graphics.DrawString(FormFacturar.menu2FACTURAR.TotalFactura1.Text, ArialNegrita10, Brushes.Black, 795, 1130, formato);
             e.Graphics.DrawString("Sub Total", ArialNegrita10, Brushes.Black, 588, 1090);

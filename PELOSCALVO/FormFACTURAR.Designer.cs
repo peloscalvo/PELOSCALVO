@@ -104,12 +104,12 @@ namespace PELOSCALVO
             this.obrasComboBox = new System.Windows.Forms.ComboBox();
             this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
-            this.FechaFacturaDate = new System.Windows.Forms.DateTimePicker();
+            this.FechaFactura = new System.Windows.Forms.DateTimePicker();
             this.BtnBuscarClientesFact = new System.Windows.Forms.Button();
             this.pais_FactComboBox = new System.Windows.Forms.ComboBox();
             this.dtPaisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cobradaFacturaCheckBox = new System.Windows.Forms.CheckBox();
-            this.fechaCobroMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.fechaCobroText = new System.Windows.Forms.MaskedTextBox();
             this.numeroFacturaTextBox = new System.Windows.Forms.TextBox();
             this.apodoTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
@@ -189,8 +189,8 @@ namespace PELOSCALVO
             this.CobradaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dsCONFIGURACCIONBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipoInpuestoIVANumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.subTotalLabel2 = new System.Windows.Forms.Label();
-            this.baseIvaLabel2 = new System.Windows.Forms.Label();
+            this.subTotal = new System.Windows.Forms.Label();
+            this.baseIva = new System.Windows.Forms.Label();
             this.TotalFactura1 = new System.Windows.Forms.Label();
             this.labelTipoNota = new System.Windows.Forms.Label();
             this.panelTotales = new System.Windows.Forms.Panel();
@@ -700,13 +700,13 @@ namespace PELOSCALVO
             this.tabPage1Factura.Controls.Add(obrasLabel);
             this.tabPage1Factura.Controls.Add(this.obrasComboBox);
             this.tabPage1Factura.Controls.Add(fechaFacturaLabel);
-            this.tabPage1Factura.Controls.Add(this.FechaFacturaDate);
+            this.tabPage1Factura.Controls.Add(this.FechaFactura);
             this.tabPage1Factura.Controls.Add(this.BtnBuscarClientesFact);
             this.tabPage1Factura.Controls.Add(pais_FactLabel);
             this.tabPage1Factura.Controls.Add(this.pais_FactComboBox);
             this.tabPage1Factura.Controls.Add(this.cobradaFacturaCheckBox);
             this.tabPage1Factura.Controls.Add(fechaCobroLabel);
-            this.tabPage1Factura.Controls.Add(this.fechaCobroMaskedTextBox);
+            this.tabPage1Factura.Controls.Add(this.fechaCobroText);
             this.tabPage1Factura.Controls.Add(numeroFacturaLabel);
             this.tabPage1Factura.Controls.Add(this.numeroFacturaTextBox);
             this.tabPage1Factura.Controls.Add(apodoLabel);
@@ -753,6 +753,7 @@ namespace PELOSCALVO
             this.proveedoresComboBox.DisplayMember = "Proveedores";
             this.proveedoresComboBox.FormattingEnabled = true;
             this.proveedoresComboBox.Location = new System.Drawing.Point(514, 176);
+            this.proveedoresComboBox.MaxLength = 60;
             this.proveedoresComboBox.Name = "proveedoresComboBox";
             this.proveedoresComboBox.Size = new System.Drawing.Size(234, 21);
             this.proveedoresComboBox.TabIndex = 72;
@@ -774,8 +775,10 @@ namespace PELOSCALVO
             this.obrasComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Obra_factu", true));
             this.obrasComboBox.DataSource = this.dtObrasBindingSource;
             this.obrasComboBox.DisplayMember = "Obras";
+            this.obrasComboBox.Enabled = false;
             this.obrasComboBox.FormattingEnabled = true;
             this.obrasComboBox.Location = new System.Drawing.Point(1025, 34);
+            this.obrasComboBox.MaxLength = 60;
             this.obrasComboBox.Name = "obrasComboBox";
             this.obrasComboBox.Size = new System.Drawing.Size(236, 21);
             this.obrasComboBox.TabIndex = 71;
@@ -791,18 +794,18 @@ namespace PELOSCALVO
             this.dsMulti2.DataSetName = "DsMulti2";
             this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // FechaFacturaDate
+            // FechaFactura
             // 
-            this.FechaFacturaDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FechaFacturaDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtNuevaFacturaBindingSource, "FechaFactura", true));
-            this.FechaFacturaDate.Enabled = false;
-            this.FechaFacturaDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.errorProvider1.SetIconAlignment(this.FechaFacturaDate, System.Windows.Forms.ErrorIconAlignment.BottomRight);
-            this.FechaFacturaDate.Location = new System.Drawing.Point(891, 147);
-            this.FechaFacturaDate.Name = "FechaFacturaDate";
-            this.FechaFacturaDate.Size = new System.Drawing.Size(144, 20);
-            this.FechaFacturaDate.TabIndex = 70;
-            this.FechaFacturaDate.Value = new System.DateTime(2023, 5, 1, 0, 5, 18, 0);
+            this.FechaFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FechaFactura.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtNuevaFacturaBindingSource, "FechaFactura", true));
+            this.FechaFactura.Enabled = false;
+            this.FechaFactura.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.errorProvider1.SetIconAlignment(this.FechaFactura, System.Windows.Forms.ErrorIconAlignment.BottomRight);
+            this.FechaFactura.Location = new System.Drawing.Point(891, 147);
+            this.FechaFactura.Name = "FechaFactura";
+            this.FechaFactura.Size = new System.Drawing.Size(144, 20);
+            this.FechaFactura.TabIndex = 70;
+            this.FechaFactura.Value = new System.DateTime(2023, 5, 1, 0, 5, 18, 0);
             // 
             // BtnBuscarClientesFact
             // 
@@ -823,7 +826,7 @@ namespace PELOSCALVO
             this.pais_FactComboBox.Enabled = false;
             this.pais_FactComboBox.FormattingEnabled = true;
             this.pais_FactComboBox.Location = new System.Drawing.Point(514, 149);
-            this.pais_FactComboBox.MaxLength = 20;
+            this.pais_FactComboBox.MaxLength = 60;
             this.pais_FactComboBox.Name = "pais_FactComboBox";
             this.pais_FactComboBox.Size = new System.Drawing.Size(257, 21);
             this.pais_FactComboBox.TabIndex = 28;
@@ -847,20 +850,20 @@ namespace PELOSCALVO
             this.cobradaFacturaCheckBox.CheckedChanged += new System.EventHandler(this.CobradaFacturaCheckBox_CheckedChanged);
             this.cobradaFacturaCheckBox.CheckStateChanged += new System.EventHandler(this.CobradaFacturaCheckBox_CheckStateChanged);
             // 
-            // fechaCobroMaskedTextBox
+            // fechaCobroText
             // 
-            this.fechaCobroMaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.fechaCobroMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "FechaCobro", true));
-            this.fechaCobroMaskedTextBox.Location = new System.Drawing.Point(891, 177);
-            this.fechaCobroMaskedTextBox.Mask = "00/00/0000";
-            this.fechaCobroMaskedTextBox.Name = "fechaCobroMaskedTextBox";
-            this.fechaCobroMaskedTextBox.ReadOnly = true;
-            this.fechaCobroMaskedTextBox.Size = new System.Drawing.Size(109, 20);
-            this.fechaCobroMaskedTextBox.TabIndex = 27;
-            this.fechaCobroMaskedTextBox.TabStop = false;
-            this.fechaCobroMaskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.fechaCobroMaskedTextBox.UseWaitCursor = true;
-            this.fechaCobroMaskedTextBox.ValidatingType = typeof(System.DateTime);
+            this.fechaCobroText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.fechaCobroText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "FechaCobro", true));
+            this.fechaCobroText.Location = new System.Drawing.Point(891, 177);
+            this.fechaCobroText.Mask = "00/00/0000";
+            this.fechaCobroText.Name = "fechaCobroText";
+            this.fechaCobroText.ReadOnly = true;
+            this.fechaCobroText.Size = new System.Drawing.Size(109, 20);
+            this.fechaCobroText.TabIndex = 27;
+            this.fechaCobroText.TabStop = false;
+            this.fechaCobroText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.fechaCobroText.UseWaitCursor = true;
+            this.fechaCobroText.ValidatingType = typeof(System.DateTime);
             // 
             // numeroFacturaTextBox
             // 
@@ -951,7 +954,7 @@ namespace PELOSCALVO
             this.provinciaComboBox.Enabled = false;
             this.provinciaComboBox.FormattingEnabled = true;
             this.provinciaComboBox.Location = new System.Drawing.Point(514, 121);
-            this.provinciaComboBox.MaxLength = 20;
+            this.provinciaComboBox.MaxLength = 60;
             this.provinciaComboBox.Name = "provinciaComboBox";
             this.provinciaComboBox.Size = new System.Drawing.Size(257, 21);
             this.provinciaComboBox.TabIndex = 17;
@@ -967,6 +970,7 @@ namespace PELOSCALVO
             this.codigoPostalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "CodigoPostal", true));
             this.codigoPostalTextBox.Enabled = false;
             this.codigoPostalTextBox.Location = new System.Drawing.Point(763, 33);
+            this.codigoPostalTextBox.MaxLength = 30;
             this.codigoPostalTextBox.Name = "codigoPostalTextBox";
             this.codigoPostalTextBox.Size = new System.Drawing.Size(121, 20);
             this.codigoPostalTextBox.TabIndex = 19;
@@ -1928,33 +1932,33 @@ namespace PELOSCALVO
             this.tipoInpuestoIVANumericUpDown.TabIndex = 45;
             this.tipoInpuestoIVANumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // subTotalLabel2
+            // subTotal
             // 
-            this.subTotalLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.subTotalLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.subTotalLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "SubTotal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0 €", "C3"));
-            this.subTotalLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.subTotalLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subTotalLabel2.Location = new System.Drawing.Point(67, 0);
-            this.subTotalLabel2.Name = "subTotalLabel2";
-            this.subTotalLabel2.Size = new System.Drawing.Size(130, 23);
-            this.subTotalLabel2.TabIndex = 46;
-            this.subTotalLabel2.Text = "0 €";
-            this.subTotalLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.subTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.subTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.subTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "SubTotal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0 €", "C3"));
+            this.subTotal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.subTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subTotal.Location = new System.Drawing.Point(67, 0);
+            this.subTotal.Name = "subTotal";
+            this.subTotal.Size = new System.Drawing.Size(130, 23);
+            this.subTotal.TabIndex = 46;
+            this.subTotal.Text = "0 €";
+            this.subTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // baseIvaLabel2
+            // baseIva
             // 
-            this.baseIvaLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.baseIvaLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.baseIvaLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "BaseIva", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0 €", "C3"));
-            this.baseIvaLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.baseIvaLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.baseIvaLabel2.Location = new System.Drawing.Point(67, 32);
-            this.baseIvaLabel2.Name = "baseIvaLabel2";
-            this.baseIvaLabel2.Size = new System.Drawing.Size(130, 23);
-            this.baseIvaLabel2.TabIndex = 48;
-            this.baseIvaLabel2.Text = "0 €";
-            this.baseIvaLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.baseIva.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.baseIva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.baseIva.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "BaseIva", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0 €", "C3"));
+            this.baseIva.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.baseIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.baseIva.Location = new System.Drawing.Point(67, 32);
+            this.baseIva.Name = "baseIva";
+            this.baseIva.Size = new System.Drawing.Size(130, 23);
+            this.baseIva.TabIndex = 48;
+            this.baseIva.Text = "0 €";
+            this.baseIva.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TotalFactura1
             // 
@@ -1986,8 +1990,8 @@ namespace PELOSCALVO
             // 
             // panelTotales
             // 
-            this.panelTotales.Controls.Add(this.subTotalLabel2);
-            this.panelTotales.Controls.Add(this.baseIvaLabel2);
+            this.panelTotales.Controls.Add(this.subTotal);
+            this.panelTotales.Controls.Add(this.baseIva);
             this.panelTotales.Controls.Add(sub);
             this.panelTotales.Controls.Add(label55);
             this.panelTotales.Location = new System.Drawing.Point(1091, 529);
@@ -2122,7 +2126,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtConfiBindingSource;
         private System.Windows.Forms.ComboBox SerieText;
         private System.Windows.Forms.CheckBox cobradaFacturaCheckBox;
-        private System.Windows.Forms.MaskedTextBox fechaCobroMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox fechaCobroText;
         private System.Windows.Forms.NumericUpDown tipoInpuestoIVANumericUpDown;
         public System.Windows.Forms.DataGridView dtDetallesFacturaDataGridView;
         private System.Windows.Forms.TabControl tabControl1Factura;
@@ -2151,8 +2155,8 @@ namespace PELOSCALVO
         public System.Windows.Forms.TextBox numeroFacturaTextBox;
         public System.Windows.Forms.ComboBox pais_FactComboBox;
         public DsCONFIGURACCION dsCONFIGURACCION;
-        public System.Windows.Forms.Label subTotalLabel2;
-        public System.Windows.Forms.Label baseIvaLabel2;
+        public System.Windows.Forms.Label subTotal;
+        public System.Windows.Forms.Label baseIva;
         public System.Windows.Forms.Label TotalFactura1;
         public System.Windows.Forms.Label TotalFactura2;
         public System.Windows.Forms.TextBox dniTextBox;
@@ -2166,7 +2170,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtProvinciasBindingSource;
         public Articulos articulos;
         private System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.DateTimePicker FechaFacturaDate;
+        public System.Windows.Forms.DateTimePicker FechaFactura;
         private System.Windows.Forms.Label IdDescuento;
         private System.Windows.Forms.NumericUpDown NumTotales;
         private System.Windows.Forms.NumericUpDown Numimporte;

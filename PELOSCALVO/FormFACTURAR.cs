@@ -103,14 +103,14 @@ namespace PELOSCALVO
                 {
                     if (TTotalSuma == 0)
                     {
-                        this.subTotalLabel2.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
-                        this.baseIvaLabel2.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                        this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                        this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
                         this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
                     }
                     else
                     {
-                        this.subTotalLabel2.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma));
-                        this.baseIvaLabel2.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma - sumaIva));
+                        this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma));
+                        this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma - sumaIva));
                         this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma + (TTotalSuma - sumaIva)));
                     }
                 }
@@ -200,13 +200,13 @@ namespace PELOSCALVO
             }
             else
             {
-                Consulta = "UPDATE [Dt" + ClasDatos.NombreFactura + "] SET [EnlaceFactura]= @EnlaceFactura [NumeroFactura] = @NumeroFactura,[Apodo] = @Apodo,[Nombre] = @Nombre," +
+                Consulta = "UPDATE [Dt" + ClasDatos.NombreFactura + "] SET [EnlaceFactura]= @EnlaceFactura, [NumeroFactura] = @NumeroFactura,[Apodo] = @Apodo,[Nombre] = @Nombre," +
                " [Direccion] = @Direccion, [Calle] = @Calle, [NumeroCalle] = @NumeroCalle, [Dni] = @Dni," +
                " [Localidad] = @Localidad, [Provincia] = @Provincia,[CodigoPostal] = @CodigoPostal, " +
                " [NonbreAlmacen] = @NonbreAlmacen, [FechaFactura] = @FechaFactura, [IvaImpuesto] = @IvaImpuesto, " +
                " [SubTotal] = @SubTotal, [BaseIva] = @BaseIva, [TotalFactura] = @TotalFactura, [CobradaFactura] = @CobradaFactura, " +
                " [FechaCobro] = @FechaCobro,  [Pais_Fact] = @Pais_Fact, [TotalFactura2] = @TotalFactura2," +
-               " [TipoNOTA] = @TipoNOTA, [Obra_factu] = @Obra_factu, [EjercicioTipo] = @EjercicioTipo,[SerieTipo]= @SerieTipo,[SerieTipo]= @SerieTipo,[EmpresaEnlace]=@EmpresaEnlace WHERE[EnlaceFactura] = @EnlaceFactura";
+               " [TipoNOTA] = @TipoNOTA, [Obra_factu] = @Obra_factu, [EjercicioTipo] = @EjercicioTipo,[SerieTipo]= @SerieTipo,[EmpresaEnlace]=@EmpresaEnlace WHERE[EnlaceFactura] = @EnlaceFactura";
 
             }
 
@@ -219,36 +219,35 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : this.EnlaceFactu.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.numeroFacturaTextBox.Text) ? (object)DBNull.Value :Convert.ToInt32( this.numeroFacturaTextBox.Text));
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.apodoTextBox.Text) ? (object)DBNull.Value : this.apodoTextBox.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(this.direccionTextBox.Text) ? (object)DBNull.Value : this.direccionTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.nombreTextBox.Text) ? (object)DBNull.Value : this.nombreTextBox.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Dni", string.IsNullOrEmpty(this.dniTextBox.Text) ? (object)DBNull.Value : this.dniTextBox.Text);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(this.direccionTextBox.Text) ? (object)DBNull.Value : this.direccionTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Calle", string.IsNullOrEmpty(this.calleTextBox.Text) ? (object)DBNull.Value : this.calleTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@NumeroCalle", string.IsNullOrEmpty(this.numeroCalleTextBox.Text) ? (object)DBNull.Value : this.numeroCalleTextBox.Text);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Dni", string.IsNullOrEmpty(this.dniTextBox.Text) ? (object)DBNull.Value : this.dniTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Localidad", string.IsNullOrEmpty(this.localidadTextBox.Text) ? (object)DBNull.Value : this.localidadTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Provincia", string.IsNullOrEmpty(this.provinciaComboBox.Text) ? (object)DBNull.Value : this.provinciaComboBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@CodigoPostal", string.IsNullOrEmpty(this.codigoPostalTextBox.Text) ? (object)DBNull.Value : this.codigoPostalTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@NonbreAlmacen", string.IsNullOrEmpty(this.nonbreAlmacenComboBox.Text) ? (object)DBNull.Value : this.nonbreAlmacenComboBox.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@IvaImpuesto", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Value));
                 // this.subTotalLabel2.Text = this.subTotalLabel2.Text.Replace("€", "");
                 //this.baseIvaLabel2.Text = this.baseIvaLabel2.Text.Replace("€", "");
                 // this.TotalFactura1.Text = this.TotalFactura1.Text.Replace("€", "");
 
-                if (this.FechaFacturaDate.Text != string.Empty)
+                if (this.FechaFactura.Text != string.Empty)
                 {
 
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", this.FechaFacturaDate.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", this.FechaFactura.Text);
                 }
                 else
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", String.Format("{0:dd/MM/yyyy}", DateTime.Now));
                 }
-
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@IvaImpuesto", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Value.ToString()) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Value.ToString()));
                 if (this.cobradaFacturaCheckBox.Checked)
                 {
-                    if (this.fechaCobroMaskedTextBox.Text != string.Empty)
+                    if (this.fechaCobroText.Text != string.Empty)
                     {
 
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaCobro", this.fechaCobroMaskedTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaCobro", this.fechaCobroText.Text);
                     }
                     else
                     {
@@ -257,17 +256,21 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaCobro", "");
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaCobro", (object)DBNull.Value);
                 }
 
+                baseIva.Text = this.baseIva.Text.Replace("€","");
+                subTotal.Text = this.subTotal.Text.Replace("€","");
+                TotalFactura1.Text = this.TotalFactura1.Text.Replace("€","");
+                TotalFactura2.Text = this.TotalFactura2.Text.Replace("€","");
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@SubTotal", string.IsNullOrEmpty(this.subTotal.Text) ? (object)DBNull.Value : Convert.ToDouble(this.subTotal.Text.Replace("€", "")));
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@BaseIva", string.IsNullOrEmpty(this.baseIva.Text) ? (object)DBNull.Value : Convert.ToDouble(this.baseIva.Text.Replace("€", "")));
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@TotalFactura", string.IsNullOrEmpty(this.TotalFactura1.Text) ? (object)DBNull.Value : Convert.ToDouble(this.TotalFactura1.Text.Replace("€", "")));
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Pais_Fact", string.IsNullOrEmpty(this.pais_FactComboBox.Text) ? (object)DBNull.Value : this.pais_FactComboBox.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@BaseIva", string.IsNullOrEmpty(this.baseIvaLabel2.Text) ? 0 : Convert.ToDouble(this.baseIvaLabel2.Text.Replace("€", "")));
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@TotalFactura", string.IsNullOrEmpty(this.TotalFactura1.Text) ? 0 : Convert.ToDouble(this.TotalFactura1.Text.Replace("€", "")));
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@TotalFactura2", string.IsNullOrEmpty(this.TotalFactura2.Text) ? 0 : Convert.ToDouble(this.TotalFactura2.Text.Replace("€", "")));
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@SubTotal", string.IsNullOrEmpty(this.subTotalLabel2.Text) ? 0 : Convert.ToDouble(this.subTotalLabel2.Text.Replace("€", "")));
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? "A" : this.obrasComboBox.Text);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@TotalFactura2", string.IsNullOrEmpty(this.TotalFactura2.Text) ? (object)DBNull.Value : Convert.ToDouble(this.TotalFactura2.Text.Replace("€","")));
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoNOTA", string.IsNullOrEmpty(this.labelTipoNota.Text) ? (object)DBNull.Value : this.labelTipoNota.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? "A" : this.SerieText.Text);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.NombreEmpresaConfi.Text) ? (object)DBNull.Value : this.NombreEmpresaConfi.Text);
                 if (this.cobradaFacturaCheckBox.Checked == true)
@@ -276,7 +279,7 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@CobradaFactura", "");///canbiar valor a cobrada
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@CobradaFactura", (object)DBNull.Value);///canbiar valor a cobrada
                 }
                 try
                 {
@@ -494,13 +497,13 @@ namespace PELOSCALVO
             }
             else
             {
-                Consulta = "UPDATE [Dt" + ClasDatos.NombreFactura + "] SET [EnlaceFactura]= @EnlaceFactura [NumeroFactura] = @NumeroFactura,[Apodo] = @Apodo,[Nombre] = @Nombre," +
+                Consulta = "UPDATE [Dt" + ClasDatos.NombreFactura + "] SET [EnlaceFactura]= @EnlaceFactura, [NumeroFactura] = @NumeroFactura,[Apodo] = @Apodo,[Nombre] = @Nombre," +
                " [Direccion] = @Direccion, [Calle] = @Calle, [NumeroCalle] = @NumeroCalle, [Dni] = @Dni," +
                " [Localidad] = @Localidad, [Provincia] = @Provincia,[CodigoPostal] = @CodigoPostal, " +
                " [NonbreAlmacen] = @NonbreAlmacen, [FechaFactura] = @FechaFactura, [IvaImpuesto] = @IvaImpuesto, " +
                " [SubTotal] = @SubTotal, [BaseIva] = @BaseIva, [TotalFactura] = @TotalFactura, [CobradaFactura] = @CobradaFactura, " +
                " [FechaCobro] = @FechaCobro,  [Pais_Fact] = @Pais_Fact, [TotalFactura2] = @TotalFactura2," +
-               " [TipoNOTA] = @TipoNOTA, [Obra_factu] = @Obra_factu, [EjercicioTipo] = @EjercicioTipo,[SerieTipo]= @SerieTipo,[SerieTipo]= @SerieTipo,[EmpresaEnlace]=@EmpresaEnlace WHERE[EnlaceFactura] = @EnlaceFactura";
+               " [TipoNOTA] = @TipoNOTA, [Obra_factu] = @Obra_factu, [EjercicioTipo] = @EjercicioTipo,[SerieTipo]= @SerieTipo,[EmpresaEnlace]=@EmpresaEnlace WHERE[EnlaceFactura] = @EnlaceFactura";
 
             }
 
@@ -527,10 +530,10 @@ namespace PELOSCALVO
                 //this.baseIvaLabel2.Text = this.baseIvaLabel2.Text.Replace("€", "");
                 // this.TotalFactura1.Text = this.TotalFactura1.Text.Replace("€", "");
 
-                if (this.FechaFacturaDate.Text != string.Empty)
+                if (this.FechaFactura.Text != string.Empty)
                 {
 
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaFactura", this.FechaFacturaDate.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaFactura", this.FechaFactura.Text);
                 }
                 else
                 {
@@ -539,10 +542,10 @@ namespace PELOSCALVO
 
                 if (this.cobradaFacturaCheckBox.Checked)
                 {
-                    if (this.fechaCobroMaskedTextBox.Text != string.Empty)
+                    if (this.fechaCobroText.Text != string.Empty)
                     {
 
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaCobro", this.fechaCobroMaskedTextBox.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaCobro", this.fechaCobroText.Text);
                     }
                     else
                     {
@@ -551,17 +554,17 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaCobro", "");
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaCobro", (object)DBNull.Value);
                 }
 
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Pais_Fact", string.IsNullOrEmpty(this.pais_FactComboBox.Text) ? (object)DBNull.Value : this.pais_FactComboBox.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@BaseIva", string.IsNullOrEmpty(this.baseIvaLabel2.Text) ? 0 : Convert.ToDouble(this.baseIvaLabel2.Text.Replace("€", "")));
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@BaseIva", string.IsNullOrEmpty(this.baseIva.Text) ? 0 : Convert.ToDouble(this.baseIva.Text.Replace("€", "")));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TotalFactura", string.IsNullOrEmpty(this.TotalFactura1.Text) ? 0 : Convert.ToDouble(this.TotalFactura1.Text.Replace("€", "")));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TotalFactura2", string.IsNullOrEmpty(this.TotalFactura2.Text) ? 0 : Convert.ToDouble(this.TotalFactura2.Text.Replace("€", "")));
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@SubTotal", string.IsNullOrEmpty(this.subTotalLabel2.Text) ? 0 : Convert.ToDouble(this.subTotalLabel2.Text.Replace("€", "")));
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? "A" : this.obrasComboBox.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@SubTotal", string.IsNullOrEmpty(this.subTotal.Text) ? 0 : Convert.ToDouble(this.subTotal.Text.Replace("€", "")));
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoNOTA", string.IsNullOrEmpty(this.labelTipoNota.Text) ? (object)DBNull.Value : this.labelTipoNota.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? "A" : this.SerieText.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.NombreEmpresaConfi.Text) ? (object)DBNull.Value : this.NombreEmpresaConfi.Text);
                 if (this.cobradaFacturaCheckBox.Checked == true)
@@ -570,7 +573,7 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@CobradaFactura", "");///canbiar valor a cobrada
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@CobradaFactura", (object)DBNull.Value);///canbiar valor a cobrada
                 }
                 try
                 {
@@ -809,7 +812,7 @@ namespace PELOSCALVO
                     Random r = new Random();
                     int VALOR_MAS = r.Next(50000, 100000000);
                     this.EnlaceFactu.Text = this.NombreEmpresaConfi.Text + " " + this.ejerciciosDeAñoComboBox.Text + " / " + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
-                    this.FechaFacturaDate.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
+                    this.FechaFactura.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
                     this.dtNuevaFacturaDataGridView.Rows[this.dtNuevaFacturaDataGridView.Rows.Count - 1].Selected = true;
                     // this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
                     if (!ClasSi_Existe_Fatu.Buscar_Fatu_Sql(this.EnlaceFactu.Text, ClasDatos.NombreFactura))
@@ -935,7 +938,7 @@ namespace PELOSCALVO
             this.dtNuevaFacturaDataGridView.Enabled = true;
             this.dtNuevaFacturaDataGridView.UseWaitCursor = false;
             this.cobradaFacturaCheckBox.Enabled = false;
-            this.FechaFacturaDate.Enabled = false;
+            this.FechaFactura.Enabled = false;
             foreach (Control ctrl in this.tabPage1Factura.Controls)
             {
                 if (ctrl is TextBox)
@@ -973,7 +976,7 @@ namespace PELOSCALVO
             this.dtDetallesFacturaDataGridView2.ReadOnly = false;
             this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
             this.cobradaFacturaCheckBox.Enabled = true;
-            this.FechaFacturaDate.Enabled = true;
+            this.FechaFactura.Enabled = true;
             this.dtNuevaFacturaDataGridView.Focus();
             foreach (Control ctrl in this.tabPage1Factura.Controls)
             {
@@ -1240,11 +1243,11 @@ namespace PELOSCALVO
             if (this.dtNuevaFacturaBindingSource.Count > 0)
             {
 
-                if (this.subTotalLabel2.Text != string.Empty)
+                if (this.subTotal.Text != string.Empty)
                 {
-                    this.subTotalLabel2.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (this.subTotalLabel2.Text));
-                    this.subTotalLabel2.Text = this.subTotalLabel2.Text.ToString();
-                    this.baseIvaLabel2.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (this.baseIvaLabel2.Text));
+                    this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (this.subTotal.Text));
+                    this.subTotal.Text = this.subTotal.Text.ToString();
+                    this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (this.baseIva.Text));
                     this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (this.TotalFactura1.Text));
                 }
                 this.dtDetallesFacturaDataGridView.Columns["ImporteDetalle"].DefaultCellStyle.Format = "C" + this.NumPrecio.Value;
@@ -1669,13 +1672,13 @@ namespace PELOSCALVO
 
                 if (this.cobradaFacturaCheckBox.Checked == true)
                 {
-                    this.fechaCobroMaskedTextBox.Text = "";
-                    this.fechaCobroMaskedTextBox.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
+                    this.fechaCobroText.Text = "";
+                    this.fechaCobroText.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
                     // dtfacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
                 }
                 else
                 {
-                    this.fechaCobroMaskedTextBox.Text = "";
+                    this.fechaCobroText.Text = "";
                 }
             }
 
@@ -2057,9 +2060,9 @@ namespace PELOSCALVO
 
         private void NumTotales_ValueChanged(object sender, EventArgs e)
         {
-            this.baseIvaLabel2.Text = string.Format("{0:C" + this.NumTotales.Value + "}", this.baseIvaLabel2.Text);
+            this.baseIva.Text = string.Format("{0:C" + this.NumTotales.Value + "}", this.baseIva.Text);
             this.TotalFactura1.Text = string.Format("{0:C" + this.NumTotales.Value + "}", this.TotalFactura1.Text.ToString());
-            this.subTotalLabel2.Text = string.Format("{0:C" + this.NumTotales.Value + "}", this.subTotalLabel2.Text);
+            this.subTotal.Text = string.Format("{0:C" + this.NumTotales.Value + "}", this.subTotal.Text);
             CalcularImportes(this.dtDetallesFacturaDataGridView);
             if (ClasDatos.NombreFactura == "Nota 2")
             {
