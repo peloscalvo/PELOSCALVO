@@ -1930,7 +1930,7 @@ namespace PELOSCALVO
         private void crearEjercioNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.tabControlTodo.TabPages.Insert(1, this.tabCONFIGURACION);
-            this.tabMENU.Parent = null;
+           this.tabMENU.Parent = null;
         }
 
         private void familiasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2923,6 +2923,11 @@ namespace PELOSCALVO
         }
 
         private void tabCONFIGURACION_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolEmpresas_Click(object sender, EventArgs e)
         {
 
         }

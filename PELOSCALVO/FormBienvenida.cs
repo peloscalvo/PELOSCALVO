@@ -22,7 +22,7 @@ namespace PELOSCALVO
         {
             this.TransparencyKey = this.BackColor;
             TimerStop.Start();
-            LogoB.Parent = panel1;
+           // LogoB.Parent = panel1;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

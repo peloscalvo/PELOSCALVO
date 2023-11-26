@@ -256,10 +256,10 @@ namespace PELOSCALVO
             this.BtnBuscarEmpresa = new System.Windows.Forms.Button();
             this.BtnNuevaEmpresa = new System.Windows.Forms.Button();
             this.BtnModificarEmpresa = new System.Windows.Forms.Button();
-            this.empresaConfiComboBox = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empresaConfiComboBox = new System.Windows.Forms.ComboBox();
             this.tabFAMILIAproductos = new System.Windows.Forms.TabPage();
             this.BtnGuardarFamilias = new System.Windows.Forms.Button();
             this.DataGridFamilias = new System.Windows.Forms.DataGridView();
@@ -633,7 +633,7 @@ namespace PELOSCALVO
             // empresaConfiLabel
             // 
             empresaConfiLabel.AutoSize = true;
-            empresaConfiLabel.Location = new System.Drawing.Point(605, 14);
+            empresaConfiLabel.Location = new System.Drawing.Point(643, 531);
             empresaConfiLabel.Name = "empresaConfiLabel";
             empresaConfiLabel.Size = new System.Drawing.Size(43, 13);
             empresaConfiLabel.TabIndex = 9;
@@ -997,7 +997,7 @@ namespace PELOSCALVO
             this.TabTablas.Location = new System.Drawing.Point(4, 25);
             this.TabTablas.Name = "TabTablas";
             this.TabTablas.Padding = new System.Windows.Forms.Padding(3);
-            this.TabTablas.Size = new System.Drawing.Size(1012, 527);
+            this.TabTablas.Size = new System.Drawing.Size(1012, 485);
             this.TabTablas.TabIndex = 12;
             this.TabTablas.Text = "Tipos de Tablas ";
             this.TabTablas.UseVisualStyleBackColor = true;
@@ -1087,7 +1087,7 @@ namespace PELOSCALVO
             this.tabObras.Location = new System.Drawing.Point(4, 25);
             this.tabObras.Name = "tabObras";
             this.tabObras.Padding = new System.Windows.Forms.Padding(3);
-            this.tabObras.Size = new System.Drawing.Size(1012, 527);
+            this.tabObras.Size = new System.Drawing.Size(1012, 485);
             this.tabObras.TabIndex = 11;
             this.tabObras.Text = "Obras";
             this.tabObras.UseVisualStyleBackColor = true;
@@ -1224,7 +1224,7 @@ namespace PELOSCALVO
             this.tabProveedores.Location = new System.Drawing.Point(4, 25);
             this.tabProveedores.Name = "tabProveedores";
             this.tabProveedores.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProveedores.Size = new System.Drawing.Size(1012, 527);
+            this.tabProveedores.Size = new System.Drawing.Size(1012, 485);
             this.tabProveedores.TabIndex = 10;
             this.tabProveedores.Text = "Proveedores";
             this.tabProveedores.UseVisualStyleBackColor = true;
@@ -1242,7 +1242,7 @@ namespace PELOSCALVO
             this.BtnCancelarProveedores.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarProveedores.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarProveedores.Location = new System.Drawing.Point(747, 470);
+            this.BtnCancelarProveedores.Location = new System.Drawing.Point(730, 504);
             this.BtnCancelarProveedores.Name = "BtnCancelarProveedores";
             this.BtnCancelarProveedores.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarProveedores.TabIndex = 60;
@@ -1408,7 +1408,7 @@ namespace PELOSCALVO
             this.BtnGuardarProveedores.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarProveedores.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarProveedores.Location = new System.Drawing.Point(516, 470);
+            this.BtnGuardarProveedores.Location = new System.Drawing.Point(499, 504);
             this.BtnGuardarProveedores.Name = "BtnGuardarProveedores";
             this.BtnGuardarProveedores.Size = new System.Drawing.Size(107, 42);
             this.BtnGuardarProveedores.TabIndex = 51;
@@ -1428,7 +1428,7 @@ namespace PELOSCALVO
             this.BtnVolverProveedores.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverProveedores.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverProveedores.Location = new System.Drawing.Point(888, 470);
+            this.BtnVolverProveedores.Location = new System.Drawing.Point(871, 504);
             this.BtnVolverProveedores.Name = "BtnVolverProveedores";
             this.BtnVolverProveedores.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverProveedores.TabIndex = 50;
@@ -1518,7 +1518,7 @@ namespace PELOSCALVO
             this.Almacenes.Location = new System.Drawing.Point(4, 25);
             this.Almacenes.Name = "Almacenes";
             this.Almacenes.Padding = new System.Windows.Forms.Padding(3);
-            this.Almacenes.Size = new System.Drawing.Size(1012, 527);
+            this.Almacenes.Size = new System.Drawing.Size(1012, 485);
             this.Almacenes.TabIndex = 9;
             this.Almacenes.Text = "Almacenes";
             this.Almacenes.UseVisualStyleBackColor = true;
@@ -1536,7 +1536,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(364, 522);
+            this.BtnCancelarAlmacen.Location = new System.Drawing.Point(296, 530);
             this.BtnCancelarAlmacen.Name = "BtnCancelarAlmacen";
             this.BtnCancelarAlmacen.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarAlmacen.TabIndex = 59;
@@ -1702,7 +1702,7 @@ namespace PELOSCALVO
             this.BtnActualizarAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizarAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnActualizarAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(169, 522);
+            this.BtnActualizarAlmacenes.Location = new System.Drawing.Point(101, 530);
             this.BtnActualizarAlmacenes.Name = "BtnActualizarAlmacenes";
             this.BtnActualizarAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnActualizarAlmacenes.TabIndex = 49;
@@ -1722,7 +1722,7 @@ namespace PELOSCALVO
             this.BtnVolverAlmacenes.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverAlmacenes.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverAlmacenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(512, 522);
+            this.BtnVolverAlmacenes.Location = new System.Drawing.Point(444, 530);
             this.BtnVolverAlmacenes.Name = "BtnVolverAlmacenes";
             this.BtnVolverAlmacenes.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverAlmacenes.TabIndex = 48;
@@ -1811,7 +1811,7 @@ namespace PELOSCALVO
             this.TabPageProvincias.Location = new System.Drawing.Point(4, 25);
             this.TabPageProvincias.Name = "TabPageProvincias";
             this.TabPageProvincias.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageProvincias.Size = new System.Drawing.Size(1012, 527);
+            this.TabPageProvincias.Size = new System.Drawing.Size(1012, 485);
             this.TabPageProvincias.TabIndex = 8;
             this.TabPageProvincias.Text = "Provincias";
             this.TabPageProvincias.UseVisualStyleBackColor = true;
@@ -1932,7 +1932,7 @@ namespace PELOSCALVO
             this.tabPagePaises.Location = new System.Drawing.Point(4, 25);
             this.tabPagePaises.Name = "tabPagePaises";
             this.tabPagePaises.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePaises.Size = new System.Drawing.Size(1012, 527);
+            this.tabPagePaises.Size = new System.Drawing.Size(1012, 485);
             this.tabPagePaises.TabIndex = 7;
             this.tabPagePaises.Text = "Paises";
             this.tabPagePaises.UseVisualStyleBackColor = true;
@@ -2052,7 +2052,7 @@ namespace PELOSCALVO
             this.tabPageInicio.Location = new System.Drawing.Point(4, 25);
             this.tabPageInicio.Name = "tabPageInicio";
             this.tabPageInicio.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInicio.Size = new System.Drawing.Size(1012, 527);
+            this.tabPageInicio.Size = new System.Drawing.Size(1012, 485);
             this.tabPageInicio.TabIndex = 5;
             this.tabPageInicio.Text = "Configuracion Inicio";
             this.tabPageInicio.UseVisualStyleBackColor = true;
@@ -2329,7 +2329,7 @@ namespace PELOSCALVO
             this.tabPageTarifa.Location = new System.Drawing.Point(4, 25);
             this.tabPageTarifa.Name = "tabPageTarifa";
             this.tabPageTarifa.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTarifa.Size = new System.Drawing.Size(1012, 527);
+            this.tabPageTarifa.Size = new System.Drawing.Size(1012, 485);
             this.tabPageTarifa.TabIndex = 4;
             this.tabPageTarifa.Text = "Descuentos Clientes";
             this.tabPageTarifa.UseVisualStyleBackColor = true;
@@ -2627,14 +2627,12 @@ namespace PELOSCALVO
             this.tabPageEmpresas.Controls.Add(this.BtnCancelarEmpresas);
             this.tabPageEmpresas.Controls.Add(this.BtnGuardarEmpresas);
             this.tabPageEmpresas.Controls.Add(this.panelEmpresas);
-            this.tabPageEmpresas.Controls.Add(empresaConfiLabel);
-            this.tabPageEmpresas.Controls.Add(this.empresaConfiComboBox);
             this.tabPageEmpresas.Controls.Add(idEmpresaLabel);
             this.tabPageEmpresas.Controls.Add(this.dtConfiguracionPrincipalDataGridView);
             this.tabPageEmpresas.Location = new System.Drawing.Point(4, 25);
             this.tabPageEmpresas.Name = "tabPageEmpresas";
             this.tabPageEmpresas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEmpresas.Size = new System.Drawing.Size(1012, 527);
+            this.tabPageEmpresas.Size = new System.Drawing.Size(1012, 485);
             this.tabPageEmpresas.TabIndex = 3;
             this.tabPageEmpresas.Text = "Empresas";
             this.tabPageEmpresas.UseVisualStyleBackColor = true;
@@ -2824,7 +2822,7 @@ namespace PELOSCALVO
             this.BtnVolverEmpresas.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverEmpresas.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverEmpresas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverEmpresas.Location = new System.Drawing.Point(887, 479);
+            this.BtnVolverEmpresas.Location = new System.Drawing.Point(887, 437);
             this.BtnVolverEmpresas.Name = "BtnVolverEmpresas";
             this.BtnVolverEmpresas.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverEmpresas.TabIndex = 65;
@@ -2914,7 +2912,7 @@ namespace PELOSCALVO
             this.BtnCancelarEmpresas.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarEmpresas.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarEmpresas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarEmpresas.Location = new System.Drawing.Point(587, 479);
+            this.BtnCancelarEmpresas.Location = new System.Drawing.Point(587, 437);
             this.BtnCancelarEmpresas.Name = "BtnCancelarEmpresas";
             this.BtnCancelarEmpresas.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarEmpresas.TabIndex = 34;
@@ -2935,7 +2933,7 @@ namespace PELOSCALVO
             this.BtnGuardarEmpresas.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarEmpresas.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarEmpresas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarEmpresas.Location = new System.Drawing.Point(432, 479);
+            this.BtnGuardarEmpresas.Location = new System.Drawing.Point(432, 437);
             this.BtnGuardarEmpresas.Name = "BtnGuardarEmpresas";
             this.BtnGuardarEmpresas.Size = new System.Drawing.Size(89, 42);
             this.BtnGuardarEmpresas.TabIndex = 33;
@@ -2953,7 +2951,7 @@ namespace PELOSCALVO
             this.panelEmpresas.Controls.Add(this.BtnBuscarEmpresa);
             this.panelEmpresas.Controls.Add(this.BtnNuevaEmpresa);
             this.panelEmpresas.Controls.Add(this.BtnModificarEmpresa);
-            this.panelEmpresas.Location = new System.Drawing.Point(15, 458);
+            this.panelEmpresas.Location = new System.Drawing.Point(15, 416);
             this.panelEmpresas.Name = "panelEmpresas";
             this.panelEmpresas.Size = new System.Drawing.Size(373, 63);
             this.panelEmpresas.TabIndex = 31;
@@ -3058,18 +3056,6 @@ namespace PELOSCALVO
             this.BtnModificarEmpresa.UseVisualStyleBackColor = false;
             this.BtnModificarEmpresa.Click += new System.EventHandler(this.BtnModificarEmpresa_Click);
             // 
-            // empresaConfiComboBox
-            // 
-            this.empresaConfiComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.empresaConfiComboBox.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.empresaConfiComboBox.DisplayMember = "EmpresaConfi";
-            this.empresaConfiComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaConfiComboBox.FormattingEnabled = true;
-            this.empresaConfiComboBox.Location = new System.Drawing.Point(654, 6);
-            this.empresaConfiComboBox.Name = "empresaConfiComboBox";
-            this.empresaConfiComboBox.Size = new System.Drawing.Size(282, 21);
-            this.empresaConfiComboBox.TabIndex = 10;
-            // 
             // dtConfiguracionPrincipalDataGridView
             // 
             this.dtConfiguracionPrincipalDataGridView.AllowUserToAddRows = false;
@@ -3125,6 +3111,18 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
+            // empresaConfiComboBox
+            // 
+            this.empresaConfiComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.empresaConfiComboBox.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.empresaConfiComboBox.DisplayMember = "EmpresaConfi";
+            this.empresaConfiComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.empresaConfiComboBox.FormattingEnabled = true;
+            this.empresaConfiComboBox.Location = new System.Drawing.Point(692, 523);
+            this.empresaConfiComboBox.Name = "empresaConfiComboBox";
+            this.empresaConfiComboBox.Size = new System.Drawing.Size(282, 21);
+            this.empresaConfiComboBox.TabIndex = 10;
+            // 
             // tabFAMILIAproductos
             // 
             this.tabFAMILIAproductos.AutoScroll = true;
@@ -3134,7 +3132,7 @@ namespace PELOSCALVO
             this.tabFAMILIAproductos.Location = new System.Drawing.Point(4, 25);
             this.tabFAMILIAproductos.Name = "tabFAMILIAproductos";
             this.tabFAMILIAproductos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFAMILIAproductos.Size = new System.Drawing.Size(1012, 527);
+            this.tabFAMILIAproductos.Size = new System.Drawing.Size(1012, 485);
             this.tabFAMILIAproductos.TabIndex = 2;
             this.tabFAMILIAproductos.Text = "Familia de Productos";
             this.tabFAMILIAproductos.UseVisualStyleBackColor = true;
@@ -3266,7 +3264,7 @@ namespace PELOSCALVO
             this.tabCONFIGURACION.Location = new System.Drawing.Point(4, 25);
             this.tabCONFIGURACION.Name = "tabCONFIGURACION";
             this.tabCONFIGURACION.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCONFIGURACION.Size = new System.Drawing.Size(1012, 527);
+            this.tabCONFIGURACION.Size = new System.Drawing.Size(1012, 485);
             this.tabCONFIGURACION.TabIndex = 1;
             this.tabCONFIGURACION.Text = "Ejercicios";
             this.tabCONFIGURACION.UseVisualStyleBackColor = true;
@@ -3283,7 +3281,7 @@ namespace PELOSCALVO
             this.BtnVolverBasica.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverBasica.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverBasica.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverBasica.Location = new System.Drawing.Point(865, 454);
+            this.BtnVolverBasica.Location = new System.Drawing.Point(851, 424);
             this.BtnVolverBasica.Name = "BtnVolverBasica";
             this.BtnVolverBasica.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverBasica.TabIndex = 56;
@@ -3305,7 +3303,7 @@ namespace PELOSCALVO
             this.BtnCancelarEjercicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarEjercicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarEjercicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarEjercicio.Location = new System.Drawing.Point(668, 454);
+            this.BtnCancelarEjercicio.Location = new System.Drawing.Point(654, 424);
             this.BtnCancelarEjercicio.Name = "BtnCancelarEjercicio";
             this.BtnCancelarEjercicio.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarEjercicio.TabIndex = 55;
@@ -3326,7 +3324,7 @@ namespace PELOSCALVO
             this.BtnGuardarEjercicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarEjercicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarEjercicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarEjercicio.Location = new System.Drawing.Point(473, 454);
+            this.BtnGuardarEjercicio.Location = new System.Drawing.Point(459, 424);
             this.BtnGuardarEjercicio.Name = "BtnGuardarEjercicio";
             this.BtnGuardarEjercicio.Size = new System.Drawing.Size(89, 42);
             this.BtnGuardarEjercicio.TabIndex = 54;
@@ -3343,7 +3341,7 @@ namespace PELOSCALVO
             this.panel1Ejercicio.Controls.Add(this.BtnBuscarEjercicio);
             this.panel1Ejercicio.Controls.Add(this.BtnNuevoEjercicio);
             this.panel1Ejercicio.Controls.Add(this.BtnModificarEjercicio);
-            this.panel1Ejercicio.Location = new System.Drawing.Point(26, 433);
+            this.panel1Ejercicio.Location = new System.Drawing.Point(12, 403);
             this.panel1Ejercicio.Name = "panel1Ejercicio";
             this.panel1Ejercicio.Size = new System.Drawing.Size(396, 63);
             this.panel1Ejercicio.TabIndex = 53;
@@ -3580,7 +3578,7 @@ namespace PELOSCALVO
             this.tabMENU.Location = new System.Drawing.Point(4, 25);
             this.tabMENU.Name = "tabMENU";
             this.tabMENU.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMENU.Size = new System.Drawing.Size(1012, 527);
+            this.tabMENU.Size = new System.Drawing.Size(1012, 485);
             this.tabMENU.TabIndex = 0;
             this.tabMENU.Text = "Menu Principal";
             this.tabMENU.UseVisualStyleBackColor = true;
@@ -3820,18 +3818,19 @@ namespace PELOSCALVO
             this.toolEmpresas.Name = "toolEmpresas";
             this.toolEmpresas.Size = new System.Drawing.Size(69, 20);
             this.toolEmpresas.Text = "Empresas";
+            this.toolEmpresas.Click += new System.EventHandler(this.toolEmpresas_Click);
             // 
             // empresasToolStripMenuItem
             // 
             this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
-            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.empresasToolStripMenuItem.Text = "Empresas";
             this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
             // 
             // crearEjercioNuevoToolStripMenuItem
             // 
             this.crearEjercioNuevoToolStripMenuItem.Name = "crearEjercioNuevoToolStripMenuItem";
-            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.crearEjercioNuevoToolStripMenuItem.Text = "Crear Ejercio Nuevo";
             this.crearEjercioNuevoToolStripMenuItem.Click += new System.EventHandler(this.crearEjercioNuevoToolStripMenuItem_Click);
             // 
@@ -3906,7 +3905,7 @@ namespace PELOSCALVO
             this.BtnSalirTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalirTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalirTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirTipoTarifa.Location = new System.Drawing.Point(902, 434);
+            this.BtnSalirTipoTarifa.Location = new System.Drawing.Point(902, 392);
             this.BtnSalirTipoTarifa.Name = "BtnSalirTipoTarifa";
             this.BtnSalirTipoTarifa.Size = new System.Drawing.Size(77, 63);
             this.BtnSalirTipoTarifa.TabIndex = 13;
@@ -3930,13 +3929,13 @@ namespace PELOSCALVO
             this.tabControlTodo.Controls.Add(this.tabProveedores);
             this.tabControlTodo.Controls.Add(this.tabObras);
             this.tabControlTodo.Controls.Add(this.TabTablas);
-            this.tabControlTodo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlTodo.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControlTodo.HotTrack = true;
             this.tabControlTodo.Location = new System.Drawing.Point(0, 0);
             this.tabControlTodo.MinimumSize = new System.Drawing.Size(32, 32);
             this.tabControlTodo.Name = "tabControlTodo";
             this.tabControlTodo.SelectedIndex = 0;
-            this.tabControlTodo.Size = new System.Drawing.Size(1020, 556);
+            this.tabControlTodo.Size = new System.Drawing.Size(1020, 514);
             this.tabControlTodo.TabIndex = 0;
             this.tabControlTodo.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControlTodo.MouseEnter += new System.EventHandler(this.TabControl1_MouseEnter);
@@ -3947,6 +3946,8 @@ namespace PELOSCALVO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 556);
             this.Controls.Add(this.tabControlTodo);
+            this.Controls.Add(this.empresaConfiComboBox);
+            this.Controls.Add(empresaConfiLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(32, 39);
@@ -4023,6 +4024,7 @@ namespace PELOSCALVO
             this.menuStrip.PerformLayout();
             this.tabControlTodo.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

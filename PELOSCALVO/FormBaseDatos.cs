@@ -67,25 +67,26 @@ namespace PELOSCALVO
         }
         private void CanbiarOjetos()
         {
-            if (FormMenuPrincipal.menu2principal.InfoExtension.Text != string.Empty)
-            {
-                if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "SERVIDOR EN RED")
-                {
-                    this.TipoExtension_b.Text = string.Empty;
-                }
-                else
-                {
-                    this.TipoExtension_b.Text = FormMenuPrincipal.menu2principal.InfoExtension.Text;
-
-                }
-
-            }
+   
 
             if (ClsConexionSql.CadenaConexion != string.Empty & ClsConexionDb.CadenaConexion != string.Empty)
             {
 
                 if (ClsConexionSql.SibaseDatosSql)
                 {
+                    if (FormMenuPrincipal.menu2principal.InfoExtension.Text != string.Empty)
+                    {
+                        if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "SERVIDOR EN RED")
+                        {
+                            this.TipoExtension_b.Text = string.Empty;
+                        }
+                        else
+                        {
+                            this.TipoExtension_b.Text = FormMenuPrincipal.menu2principal.InfoExtension.Text;
+
+                        }
+
+                    }
                     this.CheckAtivarServidor.Checked = true;
                     this.CheckActivarDb.Checked = false;
                     this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
@@ -1385,24 +1386,24 @@ namespace PELOSCALVO
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                    string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal] ([IdEmpresa] INTEGER , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
+                    string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal] ([NombreEmpresaReguistro] varchar primary key ,[IdEmpresa] INTEGER , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
                     "[DireccionEmpresa] varchar  ,[LocalidadEmpresa] varchar  ,[CodigoPostalEmpresa] varchar  ,[ProvinciaEmpresa] varchar ," +
                   "[TelefonoEmpresa] varchar  ,[CorreoEmpresa] varchar  ,[WepEmpresa] varchar  ,[RegimenIvaEmpresa] varchar  ," +
                 " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
-                " [CifEmpresa] varchar  ,[NombreEmpresaReguistro] varchar primary key ,[ImagenEmpresa] IMAGE ) ";
+                " [CifEmpresa] varchar   ,[ImagenEmpresa] IMAGE ) ";
 
                     string TablaDtconfi = "CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                         "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar  ," +
                            " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([IdTarifa] INTEGER , [TarifaTipo] varchar, [EnlaceTarifa] varchar ," +
-                        "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+                        "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY (EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
 
                     string ConsultaAlmacen = "CREATE TABLE [DtAlmacenes]( [Id_almacenes] INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
-                       " CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+                       " CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY (Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                     string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER,[Proveedores] varchar ,[Enlace_Proveedores] varchar, " +
-                      " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+                      " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                     string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER, [FamiliaProductos] varchar)";
                     string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER,[PaisesPaises] varchar)";
@@ -1555,6 +1556,24 @@ namespace PELOSCALVO
                         MessageBox.Show(ex.Message, "ERROR" + "TABLAS EMPRESAS");
                     }
                     NuevaConexion2.ComandoDb.Parameters.Clear();
+                    NuevaConexion2.ComandoDb.Parameters.Clear();
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(TablaInicio);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA INICIO");
+                    }
+                    NuevaConexion2.ComandoDb.Parameters.Clear();
                     try
                     {
                         NuevaConexion2 = new ClsConexionDb(ConsultaAlmacen);
@@ -1690,24 +1709,7 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message, "ERROR TABLA PROVINCIAS");
                     }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaInicio);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA INICIO");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
+ 
                     try
                     {
                         NuevaConexion2 = new ClsConexionDb(TablaCorreo_E);
@@ -1722,7 +1724,7 @@ namespace PELOSCALVO
                     {
 
 
-                        MessageBox.Show(ex.Message, "ERROR TABLA CORREO EMPRESA");
+                        MessageBox.Show(ex.Message, "ERROR TABLA CORREO CORREO");
                     }
                     NuevaConexion2.ComandoDb.Parameters.Clear();
                     try
@@ -1840,6 +1842,7 @@ namespace PELOSCALVO
 
                 string consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
                " not like 'Dt%'and O.COLUMN_NAME= 'APODOCLIEN'  order by ORDINAL_POSITION";
+                consulta = "SELECT *FROM sys.Tables where sys.tables.name not like 'Dt%'";
                 //  ClsConexionSql.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                 ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
 
@@ -1850,10 +1853,14 @@ namespace PELOSCALVO
                         SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
                         if (reader.HasRows)
                         {
-                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                            {
-                                SerieClientesText2.Items.Add(reader[0]);
-                            }
+                            SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
+                            DataTable DT = new DataTable();
+                            AdactaPelos.Fill(DT);
+                            SerieClientesText2.DataSource = DT;
+                          ///  if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                          //  {
+                            //    SerieClientesText2.Items.Add(reader[0]);
+                          //  }
                         }
                     }
                     catch (Exception ex)
@@ -1873,9 +1880,9 @@ namespace PELOSCALVO
                         SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
                         if (reader.HasRows)
                         {
-                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["TABLE_NAME"]).ToString()))
                             {
-                                SerieArticulosText.Items.Add(reader[0]);
+                                SerieArticulosText.Items.Add(reader["TABLE_NAME"]);
                             }
                         }
                     }
