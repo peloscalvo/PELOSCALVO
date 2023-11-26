@@ -706,7 +706,7 @@ namespace PELOSCALVO
             {
                 if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
-                    if (this.PanelInfo_P.Width == 862)
+                    if (this.PanelInfo_P.Width >= 865)
                     {
                         this.TimerCerrarPanel.Stop();
                     }
@@ -718,7 +718,7 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    if (this.PanelInfo_P.Width == 0)
+                    if (this.PanelInfo_P.Width <= 0)
                     {
                         this.TimerCerrarPanel.Stop();
                         this.PanelInfo_P.Visible = false;

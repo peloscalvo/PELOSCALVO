@@ -67,40 +67,28 @@ namespace PELOSCALVO
         }
         private void CanbiarOjetos()
         {
-   
-
-            if (ClsConexionSql.CadenaConexion != string.Empty & ClsConexionDb.CadenaConexion != string.Empty)
-            {
-
                 if (ClsConexionSql.SibaseDatosSql)
                 {
-                    if (FormMenuPrincipal.menu2principal.InfoExtension.Text != string.Empty)
+                    if (ClsConexionSql.CadenaConexion != string.Empty)
                     {
-                        if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "SERVIDOR EN RED")
-                        {
-                            this.TipoExtension_b.Text = string.Empty;
-                        }
-                        else
-                        {
-                            this.TipoExtension_b.Text = FormMenuPrincipal.menu2principal.InfoExtension.Text;
 
-                        }
-
+                        this.CheckAtivarServidor.Checked = true;
+                        this.CheckActivarDb.Checked = false;
+                        this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
+                        this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
                     }
-                    this.CheckAtivarServidor.Checked = true;
-                    this.CheckActivarDb.Checked = false;
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
                 }
                 else
                 {
-                    this.CheckAtivarServidor.Checked = false;
-                    this.CheckActivarDb.Checked = true;
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                    if (ClsConexionDb.CadenaConexion != string.Empty)
+                    {
 
+                        this.CheckAtivarServidor.Checked = false;
+                        this.CheckActivarDb.Checked = true;
+                        this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
+                        this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                    }
                 }
-            }
         }
         private void Contador()
         {
@@ -480,7 +468,19 @@ namespace PELOSCALVO
             {
                 this.SerieClientesText2.Text = FormMenuPrincipal.menu2principal.InfoClientes.Text;
             }
+            if (FormMenuPrincipal.menu2principal.InfoExtension.Text != string.Empty)
+            {
+                if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "SERVIDOR EN RED")
+                {
+                    this.TipoExtension_b.Text = string.Empty;
+                }
+                else
+                {
+                    this.TipoExtension_b.Text = FormMenuPrincipal.menu2principal.InfoExtension.Text;
 
+                }
+
+            }
             try
             {
                 if (this.Servidor.Items.Count < 4)
