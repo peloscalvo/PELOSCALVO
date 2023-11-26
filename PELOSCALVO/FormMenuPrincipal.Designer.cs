@@ -36,6 +36,8 @@ namespace PELOSCALVO
             this.panelContenedorForm = new System.Windows.Forms.Panel();
             this.PanelInfo = new System.Windows.Forms.Panel();
             this.Panel_info2 = new System.Windows.Forms.Panel();
+            this.InfoCarpeta = new System.Windows.Forms.Label();
+            this.InfoBaseDatos = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -115,8 +117,6 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsServidor = new PELOSCALVO.DsServidor();
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
-            this.InfoBaseDatos = new System.Windows.Forms.Label();
-            this.InfoCarpeta = new System.Windows.Forms.Label();
             this.panelContenedorPrincipal.SuspendLayout();
             this.panelContenedorForm.SuspendLayout();
             this.PanelInfo.SuspendLayout();
@@ -204,6 +204,31 @@ namespace PELOSCALVO
             this.Panel_info2.Size = new System.Drawing.Size(841, 164);
             this.Panel_info2.TabIndex = 3;
             this.Panel_info2.Tag = "stop";
+            // 
+            // InfoCarpeta
+            // 
+            this.InfoCarpeta.AutoSize = true;
+            this.InfoCarpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoCarpeta.ForeColor = System.Drawing.Color.White;
+            this.InfoCarpeta.Location = new System.Drawing.Point(440, 46);
+            this.InfoCarpeta.Name = "InfoCarpeta";
+            this.InfoCarpeta.Size = new System.Drawing.Size(0, 20);
+            this.InfoCarpeta.TabIndex = 94;
+            this.InfoCarpeta.Tag = "";
+            // 
+            // InfoBaseDatos
+            // 
+            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoBaseDatos.Location = new System.Drawing.Point(458, 17);
+            this.InfoBaseDatos.Name = "InfoBaseDatos";
+            this.InfoBaseDatos.Size = new System.Drawing.Size(341, 23);
+            this.InfoBaseDatos.TabIndex = 93;
+            this.InfoBaseDatos.Tag = "stop";
             // 
             // panel6
             // 
@@ -983,7 +1008,7 @@ namespace PELOSCALVO
             this.panelAplicaciones.Location = new System.Drawing.Point(232, 5);
             this.panelAplicaciones.Margin = new System.Windows.Forms.Padding(1);
             this.panelAplicaciones.Name = "panelAplicaciones";
-            this.panelAplicaciones.Size = new System.Drawing.Size(655, 32);
+            this.panelAplicaciones.Size = new System.Drawing.Size(679, 32);
             this.panelAplicaciones.TabIndex = 6;
             this.panelAplicaciones.Tag = "stop";
             this.panelAplicaciones.Visible = false;
@@ -1031,7 +1056,7 @@ namespace PELOSCALVO
             this.lbFecha.AutoSize = true;
             this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFecha.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbFecha.Location = new System.Drawing.Point(453, 6);
+            this.lbFecha.Location = new System.Drawing.Point(455, 6);
             this.lbFecha.Name = "lbFecha";
             this.lbFecha.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.lbFecha.Size = new System.Drawing.Size(187, 16);
@@ -1044,7 +1069,7 @@ namespace PELOSCALVO
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblHora.Location = new System.Drawing.Point(349, 5);
+            this.lblHora.Location = new System.Drawing.Point(355, 5);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(71, 20);
             this.lblHora.TabIndex = 1;
@@ -1274,31 +1299,6 @@ namespace PELOSCALVO
             // 
             this.dsMulti2.DataSetName = "DsMulti2";
             this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // InfoBaseDatos
-            // 
-            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoBaseDatos.Location = new System.Drawing.Point(458, 17);
-            this.InfoBaseDatos.Name = "InfoBaseDatos";
-            this.InfoBaseDatos.Size = new System.Drawing.Size(341, 23);
-            this.InfoBaseDatos.TabIndex = 93;
-            this.InfoBaseDatos.Tag = "stop";
-            // 
-            // InfoCarpeta
-            // 
-            this.InfoCarpeta.AutoSize = true;
-            this.InfoCarpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoCarpeta.ForeColor = System.Drawing.Color.White;
-            this.InfoCarpeta.Location = new System.Drawing.Point(440, 46);
-            this.InfoCarpeta.Name = "InfoCarpeta";
-            this.InfoCarpeta.Size = new System.Drawing.Size(0, 20);
-            this.InfoCarpeta.TabIndex = 94;
-            this.InfoCarpeta.Tag = "";
             // 
             // FormMenuPrincipal
             // 

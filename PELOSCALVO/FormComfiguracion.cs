@@ -27,10 +27,10 @@ namespace PELOSCALVO
         private bool ValidarBasica()
         {
             bool ok = true;
-            if (this.idConexionConfiTextBox.Text.Length < 1)
+            if (this.IdConfi.Text.Length < 1)
             {
                 ok = false;
-                this.errorProvider1Confi.SetError(this.idConexionConfiTextBox, "_ingresar Id valido (( minimo 4 Caracteres))");
+                this.errorProvider1Confi.SetError(this.IdConfi, "_ingresar Id valido (( minimo 4 Caracteres))");
             }
             if (this.configuraccionBasicaTextBox.Text.Length < 4)
             {
@@ -56,7 +56,7 @@ namespace PELOSCALVO
         }
         private void BorrarErroresBasica()
         {
-            this.errorProvider1Confi.SetError(this.idConexionConfiTextBox, "");
+            this.errorProvider1Confi.SetError(this.IdConfi, "");
             this.errorProvider1Confi.SetError(this.configuraccionBasicaTextBox, "");
             this.errorProvider1Confi.SetError(this.ejerciciosDeAñoTextBox, "");
             this.errorProvider1Confi.SetError(this.empresaENLACETextBox, "");
@@ -500,11 +500,9 @@ namespace PELOSCALVO
 
             if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
             {
-                this.dtConfiDataGridView.EndEdit();
                 int i = 0;
                 foreach (DataGridViewRow fila in this.dtConfiDataGridView.Rows)
                 {
-
                     if (fila.Cells[2].Value != null)
                     {
                         if (fila.Cells[2].Value.ToString() == this.ejerciciosDeAñoTextBox.Text)
@@ -537,53 +535,9 @@ namespace PELOSCALVO
 
                         if (ClsConexionSql.SibaseDatosSql)
                         {
-                            string consulta = "";
-                            if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-                            {
-                                consulta = "INSERT INTO [DtConfi] ([ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[EmpresaENLACE],[IdConexionConfi]," +
-                                   "[AñoDeEjercicio]) VALUES( @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @EmpresaENLACE, @IdConexionConfi," +
-                                   "  @AñoDeEjercicio)";
-                            }
-                            else
-                            {
-                                consulta = "UPDATE [DtConfi] SET [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
-                                   " [EjerciciosDeAño] = @EjerciciosDeAño,  [EmpresaENLACE] = @EmpresaENLACE, [IdConexionConfi] = @IdConexionConfi, " +
-                                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EmpresaENLACE = @EmpresaENLACE";
-                            }
-
-                            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-                            try
-                            {
-                                if (NuevaConexion.SiConexionSql)
-                                {
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdConexionConfi", string.IsNullOrEmpty(this.idConexionConfiTextBox.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idConexionConfiTextBox.Text));
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
-                                    NuevaConexion.ComandoSql.ExecuteNonQuery();
-                                    NuevaConexion.ComandoSql.Parameters.Clear();
-                                    MessageBox.Show("Se Guardo Comfiguracion Correctamente", "GUARDAR CONFIGURACION", MessageBoxButtons.OK);
-                                    this.dtConfiBindingSource.EndEdit();
-                                    Validate();
-                                    RestaurarOjetosDtconfi();
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message);
-                            }
-                            finally
-                            {
-                                if (NuevaConexion.CerrarConexionSql)
-                                {
-
-                                }
-                            }
 
 
+                            GuardarEjercicioSql();
 
                         }
                         else
@@ -591,12 +545,7 @@ namespace PELOSCALVO
 
                             if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
-                                this.dtConfiDataGridView.EndEdit();
-                                Validate();
-                                // FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaBaseDatosDb);
-                                MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                RestaurarOjetosDtconfi();
+                                GuardarEmpresasDb();
                             }
                             else
                             {
@@ -644,7 +593,7 @@ namespace PELOSCALVO
                 this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
                 if (this.dtConfiDataGridView.CurrentCell.RowIndex == 0)
                 {
-                    this.idConexionConfiTextBox.Text = "1";
+                    this.IdConfi.Text = "1";
                     this.dtConfiDataGridView.Rows[0].Cells[0].Value = "1";
                 }
                 if (numeroFILA > 0)
@@ -654,13 +603,13 @@ namespace PELOSCALVO
                         Random r = new Random();
                         int VALORid = r.Next(50000, 100000000);
                         this.dtConfiDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                        this.idConexionConfiTextBox.Text = VALORid.ToString();
+                        this.IdConfi.Text = VALORid.ToString();
                     }
                     else
                     {
                         int VALORid = Convert.ToInt32(this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
                         this.dtConfiDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                        this.idConexionConfiTextBox.Text = VALORid.ToString();
+                        this.IdConfi.Text = VALORid.ToString();
                     }
 
                 }
@@ -1478,6 +1427,74 @@ namespace PELOSCALVO
 
             }
         }
+        private void EliminarEjercicioSql()
+        {
+
+
+            string consulta = "Delete from  [DtConfi]   WHERE Id= '@Id'";
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+            try
+            {
+                {
+                    if (NuevaConexion.SiConexionSql)
+                    {
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.IdConfi.Text);
+                        NuevaConexion.ComandoSql.ExecuteNonQuery();
+                        this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
+                        this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
+                        Validate();
+                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionSql)
+                {
+
+                }
+            }
+
+        }
+        private void EliminarEjercicioBb()
+        {
+
+    
+                string consulta = "Delete from  [DtConfi]   WHERE Id= '@Id'";
+                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                try
+                {
+                    {
+                        if (NuevaConexion.SiConexionDb)
+                        {
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.IdConfi.Text);
+                            NuevaConexion.ComandoDb.ExecuteNonQuery();
+                            this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
+                            this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
+                            Validate();
+                            MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                finally
+                {
+                    if (NuevaConexion.CerrarConexionDB)
+                    {
+
+                    }
+                }
+    
+        }
         private void EliminarEmpresaSql()
         {
             string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= '@NombreEmpresaReguistro'";
@@ -1516,14 +1533,14 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProveedores]   WHERE Enlace_Proveedores= '@Enlace_Proveedores'";
+                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores'";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", this.IdEmpresa.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", this.Id_proveedor.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                             this.dtProveedoresBindingSource.EndEdit();
@@ -1557,14 +1574,14 @@ namespace PELOSCALVO
         private void EliminarProveedorSql()
         {
 
-            string consulta = "Delete from  [DtProveedores]   WHERE Enlace_Proveedores= '@Enlace_Proveedores'";
+            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores'";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", this.IdEmpresa.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", this.Id_proveedor.Text);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         this.dtProveedoresBindingSource.EndEdit();
@@ -1595,13 +1612,13 @@ namespace PELOSCALVO
                 try
                 {
 
-                    string consulta = "Delete from  [DtAlmacenes]   WHERE Enlace_Almacenes= '@Enlace_Almacenes'";
+                    string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= '@Id_almacenes'";
                     //  ClsConexionDb.CadenaConexion = cadena;
                     ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", this.IdEmpresa.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", this.id_almacenes.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
                             this.dtProveedoresBindingSource.EndEdit();
@@ -1627,7 +1644,7 @@ namespace PELOSCALVO
         }
         private void EliminarAlmacenSQL()
         {
-            string consulta = "Delete from  [DtAlmacenes]   WHERE Enlace_Almacenes= '@Enlace_Almacenes'";
+            string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= '@Id_almacenes'";
             //  ClsConexionDb.CadenaConexion = cadena;
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
@@ -1635,7 +1652,7 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Almacenes", this.IdEmpresa.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", this.id_almacenes.Text);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
                         this.dtProveedoresBindingSource.EndEdit();
@@ -1704,16 +1721,11 @@ namespace PELOSCALVO
 
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-
+                        EliminarEjercicioSql();
                     }
                     else
                     {
-                        ///MODIFICAR
-                        this.dtConfiBindingSource.EndEdit();
-                        this.dtConfiDataGridView.EndEdit();
-                        this.dtConfiDataGridView.Rows.Remove(this.dtConfiDataGridView.CurrentRow);
-                        //  FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaEmpresas);
-                        MessageBox.Show("Se Elimino Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        EliminarEjercicioBb();
                     }
                 }
             }
@@ -2143,6 +2155,106 @@ namespace PELOSCALVO
             this.tabControlTodo.TabPages.Insert(1, this.tabPageTarifa);
             this.tabMENU.Parent = null;
         }
+        private void GuardarEjercicioBb()
+        {
+            string consulta = "";
+            if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
+            {
+                consulta = "INSERT INTO [DtConfi] ([ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[EmpresaENLACE],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES( @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @EmpresaENLACE, @IdConexionConfi," +
+                   "  @AñoDeEjercicio)";
+            }
+            else
+            {
+                consulta = "UPDATE [DtConfi] SET [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                   " [EjerciciosDeAño] = @EjerciciosDeAño,  [EmpresaENLACE] = @EmpresaENLACE, [IdConexionConfi] = @IdConexionConfi, " +
+                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EmpresaENLACE = @EmpresaENLACE";
+            }
+
+            ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+            try
+            {
+                if (NuevaConexion.SiConexionDb)
+                {
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdConexionConfi", string.IsNullOrEmpty(this.IdConfi.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdConfi.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                    NuevaConexion.ComandoDb.ExecuteNonQuery();
+                    NuevaConexion.ComandoDb.Parameters.Clear();
+                    this.dtConfiBindingSource.EndEdit();
+                    this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
+                    this.dtConfiDataGridView.EndEdit();
+                    Validate();
+                    MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetosDtconfi();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionDB)
+                {
+
+                }
+            }
+        }
+        private void GuardarEjercicioSql()
+        {
+            string consulta = "";
+            if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
+            {
+                consulta = "INSERT INTO [DtConfi] ([ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[EmpresaENLACE],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES( @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @EmpresaENLACE, @IdConexionConfi," +
+                   "  @AñoDeEjercicio)";
+            }
+            else
+            {
+                consulta = "UPDATE [DtConfi] SET [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                   " [EjerciciosDeAño] = @EjerciciosDeAño,  [EmpresaENLACE] = @EmpresaENLACE, [IdConexionConfi] = @IdConexionConfi, " +
+                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EmpresaENLACE = @EmpresaENLACE";
+            }
+
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+            try
+            {
+                if (NuevaConexion.SiConexionSql)
+                {
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdConexionConfi", string.IsNullOrEmpty(this.IdConfi.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdConfi.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                    NuevaConexion.ComandoSql.ExecuteNonQuery();
+                    NuevaConexion.ComandoSql.Parameters.Clear();
+                    this.dtConfiBindingSource.EndEdit();
+                    this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
+                    this.dtConfiDataGridView.EndEdit();
+                    Validate();
+                   MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetosDtconfi();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionSql)
+                {
+
+                }
+            }
+        }
         private void GuardarAlmacenesDb()
         {
             string consulta = "";
@@ -2238,7 +2350,7 @@ namespace PELOSCALVO
             else
             {
                 consulta = "UPDATE [DtProveedores] SET [Id_Proveedores] = @Id_Proveedores,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
-                " WHERE Enlace_Proveedores = @Enlace_Proveedores";
+                " WHERE Id_Proveedores = @Id_Proveedores";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
@@ -2250,11 +2362,11 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-                    RestaurarOjetosEmpresa();
-                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Validate();
                     this.dtAlmacenesBindingSource.EndEdit();
                     this.dataGridAlmacenes.EndEdit();
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetosEmpresa();
                 }
             }
             catch (Exception ex)
@@ -2281,7 +2393,7 @@ namespace PELOSCALVO
             else
             {
                 consulta = "UPDATE [DtProveedores] SET [Id_Proveedores] = @Id_Proveedores,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
-                " WHERE Enlace_Proveedores = @Enlace_Proveedores";
+                " WHERE Id_Proveedores = @Id_Proveedores";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
@@ -2293,11 +2405,11 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
-                    RestaurarOjetosEmpresa();
-                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Validate();
                     this.dtAlmacenesBindingSource.EndEdit();
                     this.dataGridAlmacenes.EndEdit();
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetosEmpresa();
                 }
             }
             catch (Exception ex)
@@ -2904,7 +3016,7 @@ namespace PELOSCALVO
 
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-                        // elinimarEmpsa();
+                        EliminarProveedorSql();
                     }
                     else
                     {

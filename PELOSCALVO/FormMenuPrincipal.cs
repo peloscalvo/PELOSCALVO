@@ -71,7 +71,7 @@ namespace PELOSCALVO
             XmlElement RAIZ = DOC.CreateElement("a");
             DOC.AppendChild(RAIZ);
             DOC.Save(ArchivoXml);
-            MessageBox.Show("Archivo Nuevo Creado", ArchivoXml.ToString());
+            MessageBox.Show("Archivo Nuevo Creado"+ "\n" + ArchivoXml.ToString(), "SISTEMA GENERAL");
         }
         private void CrearArchivos_Xml_Principal()
         {
