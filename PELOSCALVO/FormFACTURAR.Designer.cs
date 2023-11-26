@@ -598,7 +598,6 @@ namespace PELOSCALVO
             // EmpresaPrincipal
             // 
             this.EmpresaPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.EmpresaPrincipal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
             this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.EmpresaPrincipal.DisplayMember = "EmpresaConfi";
             this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;

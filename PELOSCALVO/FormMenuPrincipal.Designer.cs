@@ -34,7 +34,7 @@ namespace PELOSCALVO
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuPrincipal));
             this.panelContenedorPrincipal = new System.Windows.Forms.Panel();
             this.panelContenedorForm = new System.Windows.Forms.Panel();
-            this.PanelInfo = new System.Windows.Forms.Panel();
+            this.PanelInfo_P = new System.Windows.Forms.Panel();
             this.Panel_info2 = new System.Windows.Forms.Panel();
             this.InfoCarpeta = new System.Windows.Forms.Label();
             this.InfoBaseDatos = new System.Windows.Forms.Label();
@@ -117,9 +117,41 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsServidor = new PELOSCALVO.DsServidor();
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.toolArchivo = new System.Windows.Forms.ToolStripMenuItem();
+            this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirBaseDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.añadirBaseDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Abrir_Correos = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirReportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarModificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.obrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paisesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.provinciasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.otrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolEmpresas = new System.Windows.Forms.ToolStripMenuItem();
+            this.empresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearEjercioNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolDescuentos = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolFamilia = new System.Windows.Forms.ToolStripMenuItem();
+            this.familiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.provinciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.provinciasToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.obrasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.almacenesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.proveedoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedorPrincipal.SuspendLayout();
             this.panelContenedorForm.SuspendLayout();
-            this.PanelInfo.SuspendLayout();
+            this.PanelInfo_P.SuspendLayout();
             this.Panel_info2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -144,6 +176,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsServidor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelContenedorPrincipal
@@ -165,7 +198,7 @@ namespace PELOSCALVO
             this.panelContenedorForm.BackgroundImage = global::PELOSCALVO.Properties.Resources.LogoPeloscalvo;
             this.panelContenedorForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panelContenedorForm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelContenedorForm.Controls.Add(this.PanelInfo);
+            this.panelContenedorForm.Controls.Add(this.PanelInfo_P);
             this.panelContenedorForm.Controls.Add(this.panelSUBventas);
             this.panelContenedorForm.Controls.Add(this.panelventas);
             this.panelContenedorForm.Cursor = System.Windows.Forms.Cursors.Default;
@@ -179,18 +212,19 @@ namespace PELOSCALVO
             this.panelContenedorForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedorForm_Paint);
             this.panelContenedorForm.MouseEnter += new System.EventHandler(this.panelContenedorForm_MouseEnter);
             // 
-            // PanelInfo
+            // PanelInfo_P
             // 
-            this.PanelInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            this.PanelInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PanelInfo.Controls.Add(this.Panel_info2);
-            this.PanelInfo.Cursor = System.Windows.Forms.Cursors.No;
-            this.PanelInfo.Location = new System.Drawing.Point(3, 17);
-            this.PanelInfo.Name = "PanelInfo";
-            this.PanelInfo.Size = new System.Drawing.Size(862, 193);
-            this.PanelInfo.TabIndex = 2;
-            this.PanelInfo.Tag = "stop";
-            this.PanelInfo.Visible = false;
+            this.PanelInfo_P.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            this.PanelInfo_P.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PanelInfo_P.Controls.Add(this.menuStrip);
+            this.PanelInfo_P.Controls.Add(this.Panel_info2);
+            this.PanelInfo_P.Cursor = System.Windows.Forms.Cursors.No;
+            this.PanelInfo_P.Location = new System.Drawing.Point(3, 17);
+            this.PanelInfo_P.Name = "PanelInfo_P";
+            this.PanelInfo_P.Size = new System.Drawing.Size(865, 221);
+            this.PanelInfo_P.TabIndex = 2;
+            this.PanelInfo_P.Tag = "stop";
+            this.PanelInfo_P.Visible = false;
             // 
             // Panel_info2
             // 
@@ -199,7 +233,7 @@ namespace PELOSCALVO
             this.Panel_info2.Controls.Add(this.InfoBaseDatos);
             this.Panel_info2.Controls.Add(this.panel6);
             this.Panel_info2.Controls.Add(this.panel7);
-            this.Panel_info2.Location = new System.Drawing.Point(12, 13);
+            this.Panel_info2.Location = new System.Drawing.Point(10, 39);
             this.Panel_info2.Name = "Panel_info2";
             this.Panel_info2.Size = new System.Drawing.Size(841, 164);
             this.Panel_info2.TabIndex = 3;
@@ -723,7 +757,7 @@ namespace PELOSCALVO
             this.BtnInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BtnInfo.Size = new System.Drawing.Size(227, 40);
             this.BtnInfo.TabIndex = 16;
-            this.BtnInfo.Text = "Informacion";
+            this.BtnInfo.Text = "Archivo";
             this.BtnInfo.UseVisualStyleBackColor = true;
             this.BtnInfo.Click += new System.EventHandler(this.BtnInfo_Click);
             // 
@@ -1300,6 +1334,239 @@ namespace PELOSCALVO
             this.dsMulti2.DataSetName = "DsMulti2";
             this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolArchivo,
+            this.toolEmpresas,
+            this.toolDescuentos,
+            this.toolFamilia,
+            this.ayudaToolStripMenuItem,
+            this.proveedoresToolStripMenuItem1,
+            this.almacenesToolStripMenuItem1,
+            this.obrasToolStripMenuItem1,
+            this.provinciasToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(27, 3);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip.Size = new System.Drawing.Size(859, 24);
+            this.menuStrip.TabIndex = 46;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // toolArchivo
+            // 
+            this.toolArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verToolStripMenuItem,
+            this.abrirBaseDatosToolStripMenuItem,
+            this.abrirPdfToolStripMenuItem,
+            this.añadirBaseDatosToolStripMenuItem,
+            this.Abrir_Correos,
+            this.imprimirReportesToolStripMenuItem,
+            this.editarModificarToolStripMenuItem});
+            this.toolArchivo.Name = "toolArchivo";
+            this.toolArchivo.Size = new System.Drawing.Size(60, 20);
+            this.toolArchivo.Text = "Archivo";
+            // 
+            // verToolStripMenuItem
+            // 
+            this.verToolStripMenuItem.Name = "verToolStripMenuItem";
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.verToolStripMenuItem.Text = "&Ver";
+            // 
+            // abrirBaseDatosToolStripMenuItem
+            // 
+            this.abrirBaseDatosToolStripMenuItem.Name = "abrirBaseDatosToolStripMenuItem";
+            this.abrirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.abrirBaseDatosToolStripMenuItem.Text = "&Abrir Base Datos";
+            // 
+            // abrirPdfToolStripMenuItem
+            // 
+            this.abrirPdfToolStripMenuItem.Name = "abrirPdfToolStripMenuItem";
+            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.abrirPdfToolStripMenuItem.Text = "&Abrir P.d.f";
+            // 
+            // añadirBaseDatosToolStripMenuItem
+            // 
+            this.añadirBaseDatosToolStripMenuItem.Name = "añadirBaseDatosToolStripMenuItem";
+            this.añadirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.añadirBaseDatosToolStripMenuItem.Text = "&Añadir Archivos Datos";
+            // 
+            // Abrir_Correos
+            // 
+            this.Abrir_Correos.Name = "Abrir_Correos";
+            this.Abrir_Correos.Size = new System.Drawing.Size(205, 22);
+            this.Abrir_Correos.Text = "&Abrir Correos Eletronicos";
+            // 
+            // imprimirReportesToolStripMenuItem
+            // 
+            this.imprimirReportesToolStripMenuItem.Name = "imprimirReportesToolStripMenuItem";
+            this.imprimirReportesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.imprimirReportesToolStripMenuItem.Text = "&Imprimir Reportes";
+            // 
+            // editarModificarToolStripMenuItem
+            // 
+            this.editarModificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.almacenesToolStripMenuItem,
+            this.proveedoresToolStripMenuItem,
+            this.obrasToolStripMenuItem,
+            this.paisesToolStripMenuItem1,
+            this.provinciasToolStripMenuItem1,
+            this.otrosToolStripMenuItem});
+            this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
+            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
+            // 
+            // almacenesToolStripMenuItem
+            // 
+            this.almacenesToolStripMenuItem.Name = "almacenesToolStripMenuItem";
+            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.almacenesToolStripMenuItem.Text = "Almacenes";
+            // 
+            // proveedoresToolStripMenuItem
+            // 
+            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.proveedoresToolStripMenuItem.Text = "Proveedores";
+            // 
+            // obrasToolStripMenuItem
+            // 
+            this.obrasToolStripMenuItem.Name = "obrasToolStripMenuItem";
+            this.obrasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.obrasToolStripMenuItem.Text = "Obras";
+            // 
+            // paisesToolStripMenuItem1
+            // 
+            this.paisesToolStripMenuItem1.Name = "paisesToolStripMenuItem1";
+            this.paisesToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.paisesToolStripMenuItem1.Text = "Paises";
+            // 
+            // provinciasToolStripMenuItem1
+            // 
+            this.provinciasToolStripMenuItem1.Name = "provinciasToolStripMenuItem1";
+            this.provinciasToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.provinciasToolStripMenuItem1.Text = "Provincias";
+            // 
+            // otrosToolStripMenuItem
+            // 
+            this.otrosToolStripMenuItem.Name = "otrosToolStripMenuItem";
+            this.otrosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.otrosToolStripMenuItem.Text = "Otros";
+            // 
+            // toolEmpresas
+            // 
+            this.toolEmpresas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.empresasToolStripMenuItem,
+            this.crearEjercioNuevoToolStripMenuItem});
+            this.toolEmpresas.Name = "toolEmpresas";
+            this.toolEmpresas.Size = new System.Drawing.Size(69, 20);
+            this.toolEmpresas.Text = "Empresas";
+            // 
+            // empresasToolStripMenuItem
+            // 
+            this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.empresasToolStripMenuItem.Text = "Empresas";
+            this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
+            // 
+            // crearEjercioNuevoToolStripMenuItem
+            // 
+            this.crearEjercioNuevoToolStripMenuItem.Name = "crearEjercioNuevoToolStripMenuItem";
+            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.crearEjercioNuevoToolStripMenuItem.Text = "Crear Ejercio Nuevo";
+            // 
+            // toolDescuentos
+            // 
+            this.toolDescuentos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarDescuentosToolStripMenuItem,
+            this.verDescuentosToolStripMenuItem});
+            this.toolDescuentos.Name = "toolDescuentos";
+            this.toolDescuentos.Size = new System.Drawing.Size(125, 20);
+            this.toolDescuentos.Text = "Descuentos Clientes";
+            // 
+            // editarDescuentosToolStripMenuItem
+            // 
+            this.editarDescuentosToolStripMenuItem.Name = "editarDescuentosToolStripMenuItem";
+            this.editarDescuentosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarDescuentosToolStripMenuItem.Text = "Editar Descuentos";
+            // 
+            // verDescuentosToolStripMenuItem
+            // 
+            this.verDescuentosToolStripMenuItem.Name = "verDescuentosToolStripMenuItem";
+            this.verDescuentosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verDescuentosToolStripMenuItem.Text = "Ver Descuentos";
+            // 
+            // toolFamilia
+            // 
+            this.toolFamilia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.familiasToolStripMenuItem});
+            this.toolFamilia.Name = "toolFamilia";
+            this.toolFamilia.Size = new System.Drawing.Size(114, 20);
+            this.toolFamilia.Text = "Familia Productos";
+            // 
+            // familiasToolStripMenuItem
+            // 
+            this.familiasToolStripMenuItem.Name = "familiasToolStripMenuItem";
+            this.familiasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.familiasToolStripMenuItem.Text = "Familias";
+            // 
+            // provinciasToolStripMenuItem
+            // 
+            this.provinciasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.paisesToolStripMenuItem,
+            this.provinciasToolStripMenuItem2});
+            this.provinciasToolStripMenuItem.Name = "provinciasToolStripMenuItem";
+            this.provinciasToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.provinciasToolStripMenuItem.Text = "&Varios Archivos";
+            // 
+            // paisesToolStripMenuItem
+            // 
+            this.paisesToolStripMenuItem.Name = "paisesToolStripMenuItem";
+            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.paisesToolStripMenuItem.Text = "&Paises";
+            // 
+            // provinciasToolStripMenuItem2
+            // 
+            this.provinciasToolStripMenuItem2.Name = "provinciasToolStripMenuItem2";
+            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.provinciasToolStripMenuItem2.Text = "&Provincias";
+            // 
+            // obrasToolStripMenuItem1
+            // 
+            this.obrasToolStripMenuItem1.Name = "obrasToolStripMenuItem1";
+            this.obrasToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
+            this.obrasToolStripMenuItem1.Text = "&Obras";
+            // 
+            // almacenesToolStripMenuItem1
+            // 
+            this.almacenesToolStripMenuItem1.Name = "almacenesToolStripMenuItem1";
+            this.almacenesToolStripMenuItem1.Size = new System.Drawing.Size(77, 20);
+            this.almacenesToolStripMenuItem1.Text = "&Almacenes";
+            // 
+            // proveedoresToolStripMenuItem1
+            // 
+            this.proveedoresToolStripMenuItem1.Name = "proveedoresToolStripMenuItem1";
+            this.proveedoresToolStripMenuItem1.Size = new System.Drawing.Size(84, 20);
+            this.proveedoresToolStripMenuItem1.Text = "&Proveedores";
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ayudaToolStripMenuItem.Text = "Ay&uda";
+            // 
+            // índiceToolStripMenuItem
+            // 
+            this.índiceToolStripMenuItem.Name = "índiceToolStripMenuItem";
+            this.índiceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.índiceToolStripMenuItem.Text = "Índic&e";
+            // 
+            // buscarToolStripMenuItem
+            // 
+            this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
+            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buscarToolStripMenuItem.Text = "&Buscar";
+            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1318,7 +1585,8 @@ namespace PELOSCALVO
             this.MouseEnter += new System.EventHandler(this.FormMenuPrincipal_MouseEnter);
             this.panelContenedorPrincipal.ResumeLayout(false);
             this.panelContenedorForm.ResumeLayout(false);
-            this.PanelInfo.ResumeLayout(false);
+            this.PanelInfo_P.ResumeLayout(false);
+            this.PanelInfo_P.PerformLayout();
             this.Panel_info2.ResumeLayout(false);
             this.Panel_info2.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1347,6 +1615,8 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsServidor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1416,7 +1686,7 @@ namespace PELOSCALVO
         public DsClientes dsClientes;
         public Articulos articulos;
         public DsCONFIGURACCION dsCONFIGURACCION;
-        public System.Windows.Forms.Panel PanelInfo;
+        public System.Windows.Forms.Panel PanelInfo_P;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button BtnInfo;
         public System.Windows.Forms.Panel panel6;
@@ -1440,6 +1710,38 @@ namespace PELOSCALVO
         public System.Windows.Forms.Panel Panel_info2;
         public System.Windows.Forms.Label InfoCarpeta;
         public System.Windows.Forms.Label InfoBaseDatos;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolArchivo;
+        private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abrirBaseDatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abrirPdfToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem añadirBaseDatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Abrir_Correos;
+        private System.Windows.Forms.ToolStripMenuItem imprimirReportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarModificarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem almacenesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem obrasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem paisesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem otrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolEmpresas;
+        private System.Windows.Forms.ToolStripMenuItem empresasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearEjercioNuevoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolDescuentos;
+        private System.Windows.Forms.ToolStripMenuItem editarDescuentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verDescuentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolFamilia;
+        private System.Windows.Forms.ToolStripMenuItem familiasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem almacenesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem obrasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem paisesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem índiceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
     }
 }
 

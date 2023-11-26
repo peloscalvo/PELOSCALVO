@@ -718,7 +718,7 @@ namespace PELOSCALVO
 
                 }
 
-                this.dtConfiguracionPrincipalDataGridView.Refresh();
+             
                 this.panelEmpresas.Enabled = false;
                 this.BtnGuardarEmpresas.Enabled = true;
                 this.BtnCancelarEmpresas.Enabled = true;
@@ -743,6 +743,7 @@ namespace PELOSCALVO
                 this.BtnVolverEmpresas.Visible = false;
                 this.BtnImagenEmpresa.Enabled = true;
                 this.BtnImprimirEmpresa.Enabled = false;
+                this.dtConfiguracionPrincipalDataGridView.Refresh();
             }
             catch (Exception ex)
             {
@@ -818,8 +819,6 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
  
-                        RestaurarOjetosEmpresa();
-                        MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
@@ -845,11 +844,14 @@ namespace PELOSCALVO
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             NuevaConexion.ComandoDb.Parameters.Clear();
+                            dtConfiguracionPrincipalBindingSource.EndEdit();
+                            Validate();
+                            RestaurarOjetosEmpresa();
+                            MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
 
                     }
-                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR DESCUENTOS CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 catch (Exception ex)
@@ -1129,8 +1131,7 @@ namespace PELOSCALVO
         private void BtnModificarEmpresa_Click(object sender, EventArgs e)
         {
             this.BtnNuevaEmpresa.Tag = "Actualizar";
-            int numeroFILA = this.dtConfiguracionPrincipalDataGridView.Rows.Count;
-            if (numeroFILA > 0)
+            if (this.dtConfiguracionPrincipalDataGridView.Rows.Count >= 0)
             {
                 this.panelEmpresas.Enabled = false;
                 this.BtnGuardarEmpresas.Enabled = true;

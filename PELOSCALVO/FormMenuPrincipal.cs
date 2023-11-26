@@ -47,7 +47,7 @@ namespace PELOSCALVO
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
-            this.PanelInfo.Width = this.PanelInfo.Width = 0;
+            this.PanelInfo_P.Width = this.PanelInfo_P.Width = 0;
         }
         private int tolerance = 15;
         private const int WM_NCHITTEST = 132;
@@ -299,7 +299,7 @@ namespace PELOSCALVO
         {
             try
             {
-                this.PanelInfo.Width = this.PanelInfo.Width = 0;
+                this.PanelInfo_P.Width = this.PanelInfo_P.Width = 0;
                 CrearArchivos_Xml_Principal();
             }
             catch (Exception)
@@ -363,7 +363,8 @@ namespace PELOSCALVO
             {
                 FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
+                // frm.Dock = DockStyle.Fill;
+                frm.WindowState = FormWindowState.Maximized;
                 frm.Anchor = System.Windows.Forms.AnchorStyles.None;
                 this.panelContenedorForm.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenArti = 0;
@@ -681,14 +682,14 @@ namespace PELOSCALVO
                 this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
                 this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
                 this.TimerCerrarPanel.Start();
-                this.PanelInfo.Visible = true;
-                if (this.PanelInfo.Tag.ToString() == "ABRIR")
+                this.PanelInfo_P.Visible = true;
+                if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
-                    this.PanelInfo.Tag = "CERRAR";
+                    this.PanelInfo_P.Tag = "CERRAR";
                 }
                 else
                 {
-                    this.PanelInfo.Tag = "ABRIR";
+                    this.PanelInfo_P.Tag = "ABRIR";
                 }
             }
             catch (Exception)
@@ -703,28 +704,28 @@ namespace PELOSCALVO
         {
             try
             {
-                if (this.PanelInfo.Tag.ToString() == "ABRIR")
+                if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
-                    if (this.PanelInfo.Width == 862)
+                    if (this.PanelInfo_P.Width == 862)
                     {
                         this.TimerCerrarPanel.Stop();
                     }
                     else
                     {
-                        this.PanelInfo.Width = this.PanelInfo.Width + 5;
+                        this.PanelInfo_P.Width = this.PanelInfo_P.Width + 5;
                     }
 
                 }
                 else
                 {
-                    if (this.PanelInfo.Width == 0)
+                    if (this.PanelInfo_P.Width == 0)
                     {
                         this.TimerCerrarPanel.Stop();
-                        this.PanelInfo.Visible = false;
+                        this.PanelInfo_P.Visible = false;
                     }
                     else
                     {
-                        this.PanelInfo.Width = this.PanelInfo.Width - 5;
+                        this.PanelInfo_P.Width = this.PanelInfo_P.Width - 5;
                     }
                 }
             }
@@ -766,6 +767,19 @@ namespace PELOSCALVO
         private void FormMenuPrincipal_MouseEnter(object sender, EventArgs e)
         {
             FormBienvenida.menu2.Close();
+        }
+
+        private void empresasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEmpresas frm = new FormEmpresas();
+            frm.TopLevel = false;
+            // frm.Dock = DockStyle.Fill;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelContenedorForm.Controls.Add(frm);
+            frm.FormClosed += (o, args) => this.SiOpenArti = 0;
+            frm.Show();
+            frm.BringToFront();
         }
 
         private void BtnSql_Click(object sender, EventArgs e)
