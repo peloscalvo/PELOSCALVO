@@ -1301,7 +1301,7 @@ namespace PELOSCALVO
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", this.id_almacenes.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
-                            this.dtProveedoresBindingSource.EndEdit();
+                            this.dtAlmacenesBindingSource.EndEdit();
                             Validate();
                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -2388,7 +2388,7 @@ namespace PELOSCALVO
                 this.dtAlmacenesBindingSource.AddNew();
                 if (this.dataGridAlmacenes.CurrentCell.RowIndex == 0)
                 {
-                    this.idEmpresaTextBox.Text = "1";
+                    this.id_almacenes.Text = "1";
                     this.dataGridAlmacenes.Rows[0].Cells[0].Value = "1";
                 }
                 if (numeroFILA > 0)

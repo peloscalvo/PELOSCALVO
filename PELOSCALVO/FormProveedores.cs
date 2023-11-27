@@ -269,10 +269,10 @@ namespace PELOSCALVO
                         this.dataGridProveedores.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.Id_proveedor.Text = VALORid.ToString();
                     }
-                    ModificarOjetosProv();
+                    
                 }
 
-
+                ModificarOjetosProv();
 
             }
             catch (Exception ex)
@@ -349,8 +349,12 @@ namespace PELOSCALVO
 
         private void BtnModificarProveedor_Click(object sender, EventArgs e)
         {
-            this.PanelBotones_pro.Tag = "Modificar";
-            ModificarOjetosProv();
+            if(dtProveedoresBindingSource.Count > 0)
+            {
+                this.PanelBotones_pro.Tag = "Modificar";
+                ModificarOjetosProv();
+            }
+         
         }
 
         private void BtnEliminarProveedor_Click(object sender, EventArgs e)
