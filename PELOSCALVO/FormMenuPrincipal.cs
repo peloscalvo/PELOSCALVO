@@ -790,6 +790,13 @@ namespace PELOSCALVO
          
         }
 
+        private void crearEjercioNuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEjercicios frm = new FormEjercicios();
+            frm.Show();
+            frm.BringToFront();
+        }
+
         private void BtnSql_Click(object sender, EventArgs e)
         {
             if (this.SiOpenFatu == 0 & this.SiOpenArti == 0 & this.SiOpenClie == 0 & this.SiOpenConfi == 0)

@@ -24,44 +24,7 @@ namespace PELOSCALVO
             }
             return ok;
         }
-        private bool ValidarBasica()
-        {
-            bool ok = true;
-            if (this.IdConfi.Text.Length < 1)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.IdConfi, "_ingresar Id valido (( minimo 4 Caracteres))");
-            }
-            if (this.configuraccionBasicaTextBox.Text.Length < 4)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.configuraccionBasicaTextBox, "_ingresar Descripccion valido (( minimo 4 Caracteres))");
-            }
-            if (this.ejerciciosDeAñoTextBox.Text.Length < 4)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.ejerciciosDeAñoTextBox, "_ingresar Ejercicio valido (( minimo 4 Caracteres))");
-            }
-            if (this.empresaENLACETextBox.Text.Length < 4)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.empresaENLACETextBox, "_ingresar Enlace Empresa valido (( minimo 4 Caracteres))");
-                if (this.añoDeEjercicioTextBox.Text.Length < 4)
-                {
-                    ok = false;
-                    this.errorProvider1Confi.SetError(this.añoDeEjercicioTextBox, "_ingresar Año valido (( minimo 4 Caracteres))");
-                }
-            }
-            return ok;
-        }
-        private void BorrarErroresBasica()
-        {
-            this.errorProvider1Confi.SetError(this.IdConfi, "");
-            this.errorProvider1Confi.SetError(this.configuraccionBasicaTextBox, "");
-            this.errorProvider1Confi.SetError(this.ejerciciosDeAñoTextBox, "");
-            this.errorProvider1Confi.SetError(this.empresaENLACETextBox, "");
-            this.errorProvider1Confi.SetError(this.añoDeEjercicioTextBox, "");
-        }
+
         private bool ValidarEmpresa()
         {
             bool ok = true;
@@ -230,7 +193,6 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
-            this.tabCONFIGURACION.Parent = null;
             this.tabFAMILIAproductos.Parent = null;
             this.tabPageEmpresas.Parent = null;
             this.tabPageTarifa.Parent = null;
@@ -438,10 +400,6 @@ namespace PELOSCALVO
             {
                 e.Cancel = true;
             }
-            if (this.BtnGuardarEjercicio.Enabled == true)
-            {
-                e.Cancel = true;
-            }
             if (this.BtnGuardarEmpresas.Enabled == true)
             {
                 e.Cancel = true;
@@ -483,193 +441,6 @@ namespace PELOSCALVO
             this.empresaConfiComboBox1.Enabled = false;
             this.tarifaTipoTextBox.ReadOnly = false;
             this.BtnVolverDescuentos.Visible = false;
-        }
-
-        private void BtnGuardarEjercicio_Click(object sender, EventArgs e)
-        {
-
-            if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
-            {
-                MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
-                return;
-            }
-            if (string.IsNullOrEmpty(this.empresaENLACETextBox.Text))
-            {
-                MessageBox.Show("Eliga Empresa Valida", "EMPRESA");
-            }
-
-            if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
-            {
-                int i = 0;
-                foreach (DataGridViewRow fila in this.dtConfiDataGridView.Rows)
-                {
-                    if (fila.Cells[2].Value != null)
-                    {
-                        if (fila.Cells[2].Value.ToString() == this.ejerciciosDeAñoTextBox.Text)
-                        {
-                            if (i == this.dtConfiDataGridView.CurrentCell.RowIndex)
-                            {
-                                goto seguir2;
-                            }
-                            this.ejerciciosDeAñoTextBox.ReadOnly = false;
-                            this.ejerciciosDeAñoTextBox.SelectAll();
-                            this.ejerciciosDeAñoTextBox.Select(4, 4);
-                            MessageBox.Show(this.ejerciciosDeAñoTextBox.Text, "Este Ejercicio Ya Existe", MessageBoxButtons.OK);
-                            return;
-                        }
-                    }
-                seguir2:
-                    if (i == this.dtConfiDataGridView.Rows.Count)
-                    {
-                        break;
-                    }
-                    i++;
-                }
-                BorrarErroresBasica();
-                if (ValidarBasica())
-                {
-                    if (MessageBox.Show(" ¿Aceptar Guardar Configuracion ? ", " GUARDAR DATOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-
-           
-
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-
-
-                            GuardarEjercicioSql();
-
-                        }
-                        else
-                        {
-
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                            {
-                                GuardarEjercicioBb();
-                            }
-                            else
-                            {
-                                this.panel1Ejercicio.Enabled = false;
-                                MessageBox.Show("No Se Guardo Correctamente", "FALLO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            }
-                        }
-
-
-                    }
-                }
-            }
-
-
-        }
-        private void RestaurarOjetosDtconfi()
-        {
-
-            this.dtConfiDataGridView.Refresh();
-            this.dtConfiDataGridView.Enabled = true;
-            this.configuraccionBasicaTextBox.ReadOnly = true;
-            this.CambiarDeEmpresa1.Enabled = true;
-            this.tipoInpuestoIVANumericUpDown.Enabled = false;
-            this.BtnGuardarEjercicio.Enabled = false;
-            this.BtnCancelarEjercicio.Enabled = false;
-            this.panel1Ejercicio.Enabled = true;
-            this.BtnVolverBasica.Visible = true;
-            this.ejerciciosDeAñoTextBox.ReadOnly = true;
-        }
-        private void BtnNuevoEjercicio_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.BtnNuevoEjercicio.Tag = "Nuevo";
-                if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
-                {
-                    MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
-                    return;
-                }
-                int numeroFILA = this.dtConfiDataGridView.Rows.Count;
-                this.dtConfiDataGridView.Sort(this.dtConfiDataGridView.Columns[0], ListSortDirection.Ascending);
-                this.dtConfiguracionPrincipalDtConfiBindingSource.AddNew();
-                this.empresaENLACETextBox.Text = this.CambiarDeEmpresa1.Text;
-                this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
-                if (this.dtConfiDataGridView.CurrentCell.RowIndex == 0)
-                {
-                    this.IdConfi.Text = "1";
-                    this.dtConfiDataGridView.Rows[0].Cells[0].Value = "1";
-                }
-                if (numeroFILA > 0)
-                {
-                    if (this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value.ToString() == string.Empty)
-                    {
-                        Random r = new Random();
-                        int VALORid = r.Next(50000, 100000000);
-                        this.dtConfiDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                        this.IdConfi.Text = VALORid.ToString();
-                    }
-                    else
-                    {
-                        int VALORid = Convert.ToInt32(this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
-                        this.dtConfiDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                        this.IdConfi.Text = VALORid.ToString();
-                    }
-
-                }
-                string fecha = String.Format("{0:yyyy}", DateTime.Now);
-                if (fecha == this.dtConfiDataGridView.Rows[numeroFILA].Cells[3].Value.ToString())
-
-                {
-                    int sumarFecha1 = Convert.ToInt32(DateTime.Now.Year.ToString());
-                    fecha = Convert.ToString(sumarFecha1 + 1);
-                    this.añoDeEjercicioTextBox.Text = Convert.ToString(fecha);
-                    this.ejerciciosDeAñoTextBox.Text = " EJERCICIO " + fecha;
-                }
-                else
-                {
-                    this.ejerciciosDeAñoTextBox.Text = " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
-                    this.añoDeEjercicioTextBox.Text = String.Format("{0:yyyy}", DateTime.Now);
-                }
-                this.ejerciciosDeAñoTextBox.ReadOnly = false;
-                this.configuraccionBasicaTextBox.ReadOnly = false;
-                this.tipoInpuestoIVANumericUpDown.Enabled = true;
-                this.tipoInpuestoIVANumericUpDown.Value = 21;
-                this.dtConfiDataGridView.Enabled = false;
-                this.BtnGuardarEjercicio.Enabled = true;
-                this.BtnCancelarEjercicio.Enabled = true;
-                this.CambiarDeEmpresa1.Enabled = false;
-                this.panel1Ejercicio.Enabled = false;
-                this.BtnVolverBasica.Visible = false;
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-        }
-
-        private void BtnCancelarEjercicio_Click(object sender, EventArgs e)
-        {
-            BorrarErroresBasica();
-            if (this.dtConfiDataGridView.RowCount >= 0)
-            {
-                if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-                {
-                    if (this.dtConfiDataGridView.RowCount > 0)
-                    {
-                        this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
-                    }
-                }
-
-            }
-            this.dtConfiDataGridView.Refresh();
-            this.dtConfiDataGridView.Enabled = true;
-            this.BtnGuardarEjercicio.Enabled = false;
-            this.BtnCancelarEjercicio.Enabled = false;
-            this.CambiarDeEmpresa1.Enabled = true;
-            this.panel1Ejercicio.Enabled = true;
-            this.configuraccionBasicaTextBox.ReadOnly = true;
-            this.tipoInpuestoIVANumericUpDown.Enabled = false;
-            this.BtnVolverBasica.Visible = true;
-            this.ejerciciosDeAñoTextBox.ReadOnly = false;
         }
 
         private void BtnNuevaEmpresa_Click(object sender, EventArgs e)
@@ -1239,29 +1010,6 @@ namespace PELOSCALVO
 
         }
 
-        private void BtnModificarEjercicio_Click(object sender, EventArgs e)
-        {
-            this.BtnNuevoEjercicio.Tag = "Actualizar";
-            if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count >= 1)
-            {
-                this.configuraccionBasicaTextBox.ReadOnly = false;
-                this.tipoInpuestoIVANumericUpDown.Enabled = true;
-                this.dtConfiDataGridView.Enabled = false;
-                this.BtnGuardarEjercicio.Enabled = true;
-                this.BtnCancelarEjercicio.Enabled = true;
-                this.CambiarDeEmpresa1.Enabled = false;
-                this.panel1Ejercicio.Enabled = false;
-                this.BtnVolverBasica.Visible = false;
-            }
-            else
-            {
-                MessageBox.Show("No Hay Nada Que Mofificar", "MODIFICAR", MessageBoxButtons.OK);
-            }
-
-        }
-
-
-
         private void BtnVolverFamilia_Click(object sender, EventArgs e)
         {
             this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
@@ -1277,7 +1025,6 @@ namespace PELOSCALVO
         private void BtnVolverBasica_Click(object sender, EventArgs e)
         {
             this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-            this.tabCONFIGURACION.Parent = null;
         }
 
         private void BtnVolverDescuentos_Click(object sender, EventArgs e)
@@ -1427,74 +1174,6 @@ namespace PELOSCALVO
                 return;
 
             }
-        }
-        private void EliminarEjercicioSql()
-        {
-
-
-            string consulta = "Delete from  [DtConfi]   WHERE Id= '@Id'";
-            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-            try
-            {
-                {
-                    if (NuevaConexion.SiConexionSql)
-                    {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.IdConfi.Text);
-                        NuevaConexion.ComandoSql.ExecuteNonQuery();
-                        this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
-                        this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
-                        Validate();
-                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                if (NuevaConexion.CerrarConexionSql)
-                {
-
-                }
-            }
-
-        }
-        private void EliminarEjercicioBb()
-        {
-
-    
-                string consulta = "Delete from  [DtConfi]   WHERE Id= '@Id'";
-                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-                try
-                {
-                    {
-                        if (NuevaConexion.SiConexionDb)
-                        {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.IdConfi.Text);
-                            NuevaConexion.ComandoDb.ExecuteNonQuery();
-                            this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
-                            this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
-                            Validate();
-                            MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
-                finally
-                {
-                    if (NuevaConexion.CerrarConexionDB)
-                    {
-
-                    }
-                }
-    
         }
         private void EliminarEmpresaSql()
         {
@@ -1713,25 +1392,6 @@ namespace PELOSCALVO
             FormMenuPrincipal.menu2principal.panelSUBventas.Visible = false;
         }
 
-        private void BtnEliminarEjercicio_Click(object sender, EventArgs e)
-        {
-            if (this.dtConfiBindingSource.Count > 0)
-            {
-                if (MessageBox.Show("Desea Eliminar La Configuracion", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-
-                    if (ClsConexionSql.SibaseDatosSql)
-                    {
-                        EliminarEjercicioSql();
-                    }
-                    else
-                    {
-                        EliminarEjercicioBb();
-                    }
-                }
-            }
-        }
-
         private void empresaConfiTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -1942,7 +1602,6 @@ namespace PELOSCALVO
 
         private void crearEjercioNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.tabControlTodo.TabPages.Insert(1, this.tabCONFIGURACION);
            this.tabMENU.Parent = null;
         }
 
@@ -2155,106 +1814,6 @@ namespace PELOSCALVO
         {
             this.tabControlTodo.TabPages.Insert(1, this.tabPageTarifa);
             this.tabMENU.Parent = null;
-        }
-        private void GuardarEjercicioBb()
-        {
-            string consulta = "";
-            if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-            {
-                consulta = "INSERT INTO [DtConfi] ([ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[EmpresaENLACE],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES( @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @EmpresaENLACE, @IdConexionConfi," +
-                   "  @AñoDeEjercicio)";
-            }
-            else
-            {
-                consulta = "UPDATE [DtConfi] SET [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
-                   " [EjerciciosDeAño] = @EjerciciosDeAño,  [EmpresaENLACE] = @EmpresaENLACE, [IdConexionConfi] = @IdConexionConfi, " +
-                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EmpresaENLACE = @EmpresaENLACE";
-            }
-
-            ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-            try
-            {
-                if (NuevaConexion.SiConexionDb)
-                {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdConexionConfi", string.IsNullOrEmpty(this.IdConfi.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdConfi.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
-                    NuevaConexion.ComandoDb.ExecuteNonQuery();
-                    NuevaConexion.ComandoDb.Parameters.Clear();
-                    this.dtConfiBindingSource.EndEdit();
-                    this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
-                    this.dtConfiDataGridView.EndEdit();
-                    Validate();
-                    MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RestaurarOjetosDtconfi();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (NuevaConexion.CerrarConexionDB)
-                {
-
-                }
-            }
-        }
-        private void GuardarEjercicioSql()
-        {
-            string consulta = "";
-            if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-            {
-                consulta = "INSERT INTO [DtConfi] ([ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[EmpresaENLACE],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES( @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @EmpresaENLACE, @IdConexionConfi," +
-                   "  @AñoDeEjercicio)";
-            }
-            else
-            {
-                consulta = "UPDATE [DtConfi] SET [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
-                   " [EjerciciosDeAño] = @EjerciciosDeAño,  [EmpresaENLACE] = @EmpresaENLACE, [IdConexionConfi] = @IdConexionConfi, " +
-                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EmpresaENLACE = @EmpresaENLACE";
-            }
-
-            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-            try
-            {
-                if (NuevaConexion.SiConexionSql)
-                {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdConexionConfi", string.IsNullOrEmpty(this.IdConfi.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdConfi.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
-                    NuevaConexion.ComandoSql.ExecuteNonQuery();
-                    NuevaConexion.ComandoSql.Parameters.Clear();
-                    this.dtConfiBindingSource.EndEdit();
-                    this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
-                    this.dtConfiDataGridView.EndEdit();
-                    Validate();
-                   MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RestaurarOjetosDtconfi();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (NuevaConexion.CerrarConexionSql)
-                {
-
-                }
-            }
         }
         private void GuardarAlmacenesDb()
         {
@@ -3041,6 +2600,11 @@ namespace PELOSCALVO
         }
 
         private void toolEmpresas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabCONFIGURACION_Click_1(object sender, EventArgs e)
         {
 
         }

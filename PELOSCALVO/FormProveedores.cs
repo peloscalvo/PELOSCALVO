@@ -412,6 +412,13 @@ namespace PELOSCALVO
             }
         }
 
-
+        private void BtnSalir_pro_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
     }
+    
 }

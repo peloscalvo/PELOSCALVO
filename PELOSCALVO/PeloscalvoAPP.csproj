@@ -271,6 +271,12 @@
     <Compile Include="FormCrearTablasDb.Designer.cs">
       <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEjercicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEjercicios.Designer.cs">
+      <DependentUpon>FormEjercicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEmpresas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearTablasDb.resx">
       <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEjercicios.resx">
+      <DependentUpon>FormEjercicios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEmpresas.resx">
       <DependentUpon>FormEmpresas.cs</DependentUpon>
