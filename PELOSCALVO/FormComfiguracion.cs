@@ -2358,9 +2358,9 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.NombreProveedor.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -2401,16 +2401,16 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.NombreProveedor.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
                     this.dtAlmacenesBindingSource.EndEdit();
                     this.dataGridAlmacenes.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RestaurarOjetosEmpresa();
+                   // resta();
                 }
             }
             catch (Exception ex)

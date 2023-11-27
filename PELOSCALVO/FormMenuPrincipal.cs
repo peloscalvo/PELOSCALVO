@@ -782,6 +782,14 @@ namespace PELOSCALVO
             frm.BringToFront();
         }
 
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormProveedores frm = new FormProveedores();
+            frm.Show();
+            frm.BringToFront();
+         
+        }
+
         private void BtnSql_Click(object sender, EventArgs e)
         {
             if (this.SiOpenFatu == 0 & this.SiOpenArti == 0 & this.SiOpenClie == 0 & this.SiOpenConfi == 0)

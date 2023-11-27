@@ -645,5 +645,13 @@ namespace PELOSCALVO
                 this.EmpresaReguistro.Text = this.EmpresaRazonTxt.Text;
             }
         }
+
+        private void FormEmpresas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.BtnGuardarEmpresas.Enabled == true)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

@@ -313,6 +313,12 @@
     <Compile Include="FormMostrarReportes.Designer.cs">
       <DependentUpon>FormMostrarReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProveedores.Designer.cs">
+      <DependentUpon>FormProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVistaPreliminar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -378,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMostrarReportes.resx">
       <DependentUpon>FormMostrarReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProveedores.resx">
+      <DependentUpon>FormProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVistaPreliminar.resx">
       <DependentUpon>FormVistaPreliminar.cs</DependentUpon>

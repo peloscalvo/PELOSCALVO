@@ -149,6 +149,8 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedorPrincipal.SuspendLayout();
             this.panelContenedorForm.SuspendLayout();
             this.PanelInfo_P.SuspendLayout();
@@ -242,7 +244,7 @@ namespace PELOSCALVO
             this.menuStrip.Location = new System.Drawing.Point(27, 3);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip.Size = new System.Drawing.Size(739, 24);
+            this.menuStrip.Size = new System.Drawing.Size(859, 24);
             this.menuStrip.TabIndex = 46;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -410,6 +412,9 @@ namespace PELOSCALVO
             // 
             // proveedoresToolStripMenuItem1
             // 
+            this.proveedoresToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarToolStripMenuItem,
+            this.consultarToolStripMenuItem});
             this.proveedoresToolStripMenuItem1.Name = "proveedoresToolStripMenuItem1";
             this.proveedoresToolStripMenuItem1.Size = new System.Drawing.Size(84, 20);
             this.proveedoresToolStripMenuItem1.Text = "&Proveedores";
@@ -1568,6 +1573,19 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
+            // editarToolStripMenuItem
+            // 
+            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem.Text = "&Editar ";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
+            // 
+            // consultarToolStripMenuItem
+            // 
+            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem.Text = "&Consultar";
+            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1743,6 +1761,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem índiceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
     }
 }
 
