@@ -29,10 +29,20 @@ namespace PELOSCALVO
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFamiliaProductos));
+            this.SuspendLayout();
+            // 
+            // FormFamiliaProductos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormFamiliaProductos";
+            this.ClientSize = new System.Drawing.Size(910, 499);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormFamiliaProductos";
+            this.Text = "Familia De Productos";
+            this.Load += new System.EventHandler(this.FormFamiliaProductos_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

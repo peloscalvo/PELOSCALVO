@@ -198,7 +198,6 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtConfiguracionPrincipalDtConfiBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -272,7 +271,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).BeginInit();
             this.panelTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // empresaENLACELabel
@@ -2024,11 +2022,6 @@ namespace PELOSCALVO
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
             // 
-            // dtConfiguracionPrincipalDtConfiBindingSource1
-            // 
-            this.dtConfiguracionPrincipalDtConfiBindingSource1.DataMember = "DtConfiguracionPrincipal_DtConfi";
-            this.dtConfiguracionPrincipalDtConfiBindingSource1.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2102,7 +2095,6 @@ namespace PELOSCALVO
             this.panelTotales.ResumeLayout(false);
             this.panelTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2209,7 +2201,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnlaceDetalle;
         public System.Windows.Forms.ComboBox EmpresaPrincipal;
-        private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtConfiBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

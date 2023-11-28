@@ -472,5 +472,13 @@ namespace PELOSCALVO
                 e.Cancel = true;
             }
         }
+
+        private void BtnSalirEjerc_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(" ¿Salir Configuracion ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
     }
 }

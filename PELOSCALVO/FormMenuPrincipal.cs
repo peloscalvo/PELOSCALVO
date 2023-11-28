@@ -127,17 +127,7 @@ namespace PELOSCALVO
                         CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
 
                     }
-                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
-                    {
-                        this.dsServidor.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
 
-
-                    }
-                    else
-                    {
-                        CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
-
-                    }
                     if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml"))
                     {
                         this.dsCorreos.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
@@ -676,26 +666,15 @@ namespace PELOSCALVO
 
         private void BtnInfo_Click(object sender, EventArgs e)
         {
-            try
+            if (BtnInfo.Tag.ToString() == "NO")
             {
-                this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
-                this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
-                this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
-                this.TimerCerrarPanel.Start();
-                this.PanelInfo_P.Visible = true;
-                if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
-                {
-                    this.PanelInfo_P.Tag = "CERRAR";
-                }
-                else
-                {
-                    this.PanelInfo_P.Tag = "ABRIR";
-                }
+                BtnInfo.Tag = "SI";
+                PanelAcesosDire.Visible = true;
             }
-            catch (Exception)
+            else
             {
-
-                // throw;
+                BtnInfo.Tag = "NO";
+                PanelAcesosDire.Visible = false;
             }
 
         }
@@ -784,7 +763,9 @@ namespace PELOSCALVO
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            PanelAcesosDire.Visible = false;
             FormProveedores frm = new FormProveedores();
+            this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
          
@@ -792,7 +773,44 @@ namespace PELOSCALVO
 
         private void crearEjercioNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            PanelAcesosDire.Visible = false;
             FormEjercicios frm = new FormEjercicios();
+            this.panelContenedorForm.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void BtnArchivo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
+                this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
+                this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
+                this.TimerCerrarPanel.Start();
+                this.PanelInfo_P.Visible = true;
+                if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
+                {
+                    this.PanelInfo_P.Tag = "CERRAR";
+                }
+                else
+                {
+                    this.PanelInfo_P.Tag = "ABRIR";
+                }
+            }
+            catch (Exception)
+            {
+
+                // throw;
+            }
+     
+        }
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PanelAcesosDire.Visible = false;
+            FormAlmacenes frm = new FormAlmacenes();
+            this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }

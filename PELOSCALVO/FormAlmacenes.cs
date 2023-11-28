@@ -20,7 +20,23 @@ namespace PELOSCALVO
         }
         private void FormAlmacenes_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+                {
+                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
+                }
 
+                if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
+                {
+                    this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         private void ModificarOjetos_Alm()
         {
@@ -35,6 +51,36 @@ namespace PELOSCALVO
             this.BtnGuardarAlmacen.Enabled = false;
             this.BtnCancelarAlmacen.Enabled = false;
             this.dataGridAlmacenes.Enabled = true;
+        }
+        private bool EspacioDiscosAlmacen(string nombreDisco, int Espacio)
+        {
+
+            bool ok = true;
+            DriveInfo discoBuscar = new DriveInfo(nombreDisco);
+            if (discoBuscar.AvailableFreeSpace / 1024 / 1024 < Espacio)
+            {
+                MessageBox.Show("Libere Espacio en disco", "Espacio Insuficiente en :" + discoBuscar.Name, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ok = false;
+            }
+            return ok;
+        }
+        private bool ValidarAlmacen()
+        {
+            bool ok = true;
+
+            if (this.almacenesTextBox.Text.Length < 4)
+            {
+                ok = false;
+                this.errorProvider1Confi.SetError(this.almacenesTextBox, "_ingresar Nonbre Proveedor valido (( minimo 4 Caracteres))");
+            }
+
+
+            return ok;
+        }
+        private void BorrarErrorAlmacen()
+        {
+            this.errorProvider1Confi.SetError(this.almacenesTextBox, "");
+
         }
         private void EliminarAlmacenBb()
         {
@@ -71,6 +117,92 @@ namespace PELOSCALVO
                 MessageBox.Show("El Archivo No Se Encuentra", "ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
 
+            }
+        }
+        private void GuardarAlmacenesDb()
+        {
+            string consulta = "";
+            if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
+            {
+                consulta = "  INSERT INTO [DtAlmacenes]([Id_almacenes],[Almacenes],[Enlace_Almacenes]) VALUES( @Id_almacenes,@Almacenes,@Enlace_Almacenes)";
+
+            }
+            else
+            {
+                consulta = "UPDATE [DtAlmacenes] SET [Id_almacenes] = @Id_almacenes,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
+                " WHERE Id_almacenes = @Id_almacenes";
+            }
+            ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+            try
+            {
+                if (NuevaConexion.SiConexionDb)
+                {
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Almacenes", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
+                    NuevaConexion.ComandoDb.ExecuteNonQuery();
+                    NuevaConexion.ComandoDb.Parameters.Clear();
+                    Validate();
+                    this.dtAlmacenesBindingSource.EndEdit();
+                    this.dataGridAlmacenes.EndEdit();
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR ALMACEN ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetos_Alm();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ALMACNEN");
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionDB)
+                {
+
+                }
+            }
+        }
+        private void GuardarAlmacenesSql()
+        {
+            string consulta = "";
+            if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
+            {
+                consulta = "  INSERT INTO [DtAlmacenes]([@Id_almacenes],[@Almacenes],[@Enlace_Almacenes])";
+
+            }
+            else
+            {
+                consulta = "UPDATE [DtAlmacenes] SET [Id_almacenes] = @Id_almacenes,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
+                " WHERE Id_almacenes = @Id_almacenes";
+            }
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+            try
+            {
+                if (NuevaConexion.SiConexionSql)
+                {
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Almacenes", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
+                    NuevaConexion.ComandoSql.ExecuteNonQuery();
+                    NuevaConexion.ComandoSql.Parameters.Clear();
+                    Validate();
+                    this.dtAlmacenesBindingSource.EndEdit();
+                    this.dataGridAlmacenes.EndEdit();
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetos_Alm();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ALMACNEN");
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionSql)
+                {
+
+                }
             }
         }
         private void EliminarAlmacenSQL()
@@ -110,7 +242,7 @@ namespace PELOSCALVO
         }
         private void BtnNuevoAlmacen_Click(object sender, EventArgs e)
         {
-            this.BtnNuevoAlmacen.Tag = "Nuevo";
+            this.panelAlmacenes.Tag = "Nuevo";
             try
             {
                 int numeroFILA = this.dataGridAlmacenes.Rows.Count;
@@ -175,6 +307,118 @@ namespace PELOSCALVO
         }
 
         private void BtnGuardarAlmacen_Click(object sender, EventArgs e)
+        {
+            if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
+            {
+                MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
+                return;
+            }
+            if (id_almacenes.Text == string.Empty & Enlace_almacen.Text == string.Empty)
+            {
+                MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (EspacioDiscosAlmacen(ClasDatos.RutaMultidatos, 25))
+
+                BorrarErrorAlmacen();
+            if (ValidarAlmacen())
+            {
+                {
+                    try
+                    {
+                        foreach (DataGridViewRow fila in this.dataGridAlmacenes.Rows)
+                        {
+                            if (fila.Cells[1].ToString() == this.almacenesTextBox.Text)
+                            {
+                                if (this.dataGridAlmacenes.CurrentCell.RowIndex == fila.Index)
+                                {
+                                    break;
+                                }
+                                MessageBox.Show(this.almacenesTextBox.Text.ToString(), "YA EXISTE ESTA ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.almacenesTextBox.Focus();
+                                this.almacenesTextBox.SelectAll();
+                                return;
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            GuardarAlmacenesDb();
+                        }
+                        else
+                        {
+
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            {
+                                GuardarAlmacenesSql();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.panelAlmacenes.Enabled = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnCancelarAlmacen_Click(object sender, EventArgs e)
+        {
+            BorrarErrorAlmacen();
+            if (this.dataGridAlmacenes.RowCount >= 0)
+            {
+                try
+                {
+                    if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
+                    {
+                        if (this.dataGridAlmacenes.RowCount > 0)
+                        {
+                            this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+                    //  throw;
+                }
+             
+            }
+            RestaurarOjetos_Alm();
+        }
+
+        private void BtnModificarAlmacen_Click(object sender, EventArgs e)
+        {
+            this.panelAlmacenes.Tag = "Nuevo";
+            ModificarOjetos_Alm();
+        }
+
+        private void BtnSalirAlmacen_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        private void FormAlmacenes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.BtnGuardarAlmacen.Enabled == true)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void BtnBuscarAlmacen_Click(object sender, EventArgs e)
         {
 
         }

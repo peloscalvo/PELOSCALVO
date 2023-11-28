@@ -394,6 +394,9 @@
     <EmbeddedResource Include="FormFacturar.resx">
       <DependentUpon>FormFacturar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFamiliaProductos.resx">
+      <DependentUpon>FormFamiliaProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormImprimirTodo.resx">
       <DependentUpon>FormImprimirTodo.cs</DependentUpon>
     </EmbeddedResource>

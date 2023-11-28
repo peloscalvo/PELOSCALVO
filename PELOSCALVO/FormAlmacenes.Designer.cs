@@ -34,8 +34,9 @@ namespace PELOSCALVO
             System.Windows.Forms.Label id_almacenesLabel;
             System.Windows.Forms.Label almacenesLabel;
             System.Windows.Forms.Label enlace_AlmacenesLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlmacenes));
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
@@ -73,6 +74,42 @@ namespace PELOSCALVO
             this.BotonesAlmacenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlmacenes)).BeginInit();
             this.SuspendLayout();
+            // 
+            // enlace_AlmacenesLabel1
+            // 
+            enlace_AlmacenesLabel1.AutoSize = true;
+            enlace_AlmacenesLabel1.Location = new System.Drawing.Point(7, 72);
+            enlace_AlmacenesLabel1.Name = "enlace_AlmacenesLabel1";
+            enlace_AlmacenesLabel1.Size = new System.Drawing.Size(43, 13);
+            enlace_AlmacenesLabel1.TabIndex = 56;
+            enlace_AlmacenesLabel1.Text = "Enlace:";
+            // 
+            // id_almacenesLabel
+            // 
+            id_almacenesLabel.AutoSize = true;
+            id_almacenesLabel.Location = new System.Drawing.Point(31, 20);
+            id_almacenesLabel.Name = "id_almacenesLabel";
+            id_almacenesLabel.Size = new System.Drawing.Size(19, 13);
+            id_almacenesLabel.TabIndex = 54;
+            id_almacenesLabel.Text = "Id:";
+            // 
+            // almacenesLabel
+            // 
+            almacenesLabel.AutoSize = true;
+            almacenesLabel.Location = new System.Drawing.Point(6, 46);
+            almacenesLabel.Name = "almacenesLabel";
+            almacenesLabel.Size = new System.Drawing.Size(51, 13);
+            almacenesLabel.TabIndex = 55;
+            almacenesLabel.Text = "Almacen:";
+            // 
+            // enlace_AlmacenesLabel
+            // 
+            enlace_AlmacenesLabel.AutoSize = true;
+            enlace_AlmacenesLabel.Location = new System.Drawing.Point(513, 321);
+            enlace_AlmacenesLabel.Name = "enlace_AlmacenesLabel";
+            enlace_AlmacenesLabel.Size = new System.Drawing.Size(51, 13);
+            enlace_AlmacenesLabel.TabIndex = 60;
+            enlace_AlmacenesLabel.Text = "Empresa:";
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -137,15 +174,6 @@ namespace PELOSCALVO
             this.id_almacenes.Text = "0";
             this.id_almacenes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // enlace_AlmacenesLabel1
-            // 
-            enlace_AlmacenesLabel1.AutoSize = true;
-            enlace_AlmacenesLabel1.Location = new System.Drawing.Point(7, 72);
-            enlace_AlmacenesLabel1.Name = "enlace_AlmacenesLabel1";
-            enlace_AlmacenesLabel1.Size = new System.Drawing.Size(43, 13);
-            enlace_AlmacenesLabel1.TabIndex = 56;
-            enlace_AlmacenesLabel1.Text = "Enlace:";
-            // 
             // BotonesAlmacenes
             // 
             this.BotonesAlmacenes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -197,6 +225,7 @@ namespace PELOSCALVO
             this.BtnBuscarAlmacen.Text = "Buscar";
             this.BtnBuscarAlmacen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnBuscarAlmacen.UseVisualStyleBackColor = false;
+            this.BtnBuscarAlmacen.Click += new System.EventHandler(this.BtnBuscarAlmacen_Click);
             // 
             // BtnNuevoAlmacen
             // 
@@ -237,24 +266,7 @@ namespace PELOSCALVO
             this.BtnModificarAlmacen.Text = "Modificar";
             this.BtnModificarAlmacen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnModificarAlmacen.UseVisualStyleBackColor = false;
-            // 
-            // id_almacenesLabel
-            // 
-            id_almacenesLabel.AutoSize = true;
-            id_almacenesLabel.Location = new System.Drawing.Point(31, 20);
-            id_almacenesLabel.Name = "id_almacenesLabel";
-            id_almacenesLabel.Size = new System.Drawing.Size(19, 13);
-            id_almacenesLabel.TabIndex = 54;
-            id_almacenesLabel.Text = "Id:";
-            // 
-            // almacenesLabel
-            // 
-            almacenesLabel.AutoSize = true;
-            almacenesLabel.Location = new System.Drawing.Point(6, 46);
-            almacenesLabel.Name = "almacenesLabel";
-            almacenesLabel.Size = new System.Drawing.Size(51, 13);
-            almacenesLabel.TabIndex = 55;
-            almacenesLabel.Text = "Almacen:";
+            this.BtnModificarAlmacen.Click += new System.EventHandler(this.BtnModificarAlmacen_Click);
             // 
             // almacenesTextBox
             // 
@@ -264,15 +276,6 @@ namespace PELOSCALVO
             this.almacenesTextBox.ReadOnly = true;
             this.almacenesTextBox.Size = new System.Drawing.Size(374, 20);
             this.almacenesTextBox.TabIndex = 56;
-            // 
-            // enlace_AlmacenesLabel
-            // 
-            enlace_AlmacenesLabel.AutoSize = true;
-            enlace_AlmacenesLabel.Location = new System.Drawing.Point(513, 321);
-            enlace_AlmacenesLabel.Name = "enlace_AlmacenesLabel";
-            enlace_AlmacenesLabel.Size = new System.Drawing.Size(51, 13);
-            enlace_AlmacenesLabel.TabIndex = 60;
-            enlace_AlmacenesLabel.Text = "Empresa:";
             // 
             // SelecionarEmpresa2
             // 
@@ -296,28 +299,28 @@ namespace PELOSCALVO
             this.dataGridAlmacenes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(102)))));
             this.dataGridAlmacenes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridAlmacenes.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridAlmacenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridAlmacenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridAlmacenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridAlmacenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idalmacenesDataGridViewTextBoxColumn,
             this.almacenesDataGridViewTextBoxColumn,
             this.Enlace_Almacenes});
             this.dataGridAlmacenes.DataSource = this.dtAlmacenesBindingSource;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridAlmacenes.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridAlmacenes.Enabled = false;
             this.dataGridAlmacenes.Location = new System.Drawing.Point(0, 0);
@@ -376,6 +379,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.Text = "Cancelar";
             this.BtnCancelarAlmacen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelarAlmacen.UseVisualStyleBackColor = false;
+            this.BtnCancelarAlmacen.Click += new System.EventHandler(this.BtnCancelarAlmacen_Click);
             // 
             // BtnGuardarAlmacen
             // 
@@ -417,6 +421,7 @@ namespace PELOSCALVO
             this.BtnSalirAlmacen.Text = "Salir";
             this.BtnSalirAlmacen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnSalirAlmacen.UseVisualStyleBackColor = false;
+            this.BtnSalirAlmacen.Click += new System.EventHandler(this.BtnSalirAlmacen_Click);
             // 
             // FormAlmacenes
             // 
@@ -430,8 +435,10 @@ namespace PELOSCALVO
             this.Controls.Add(enlace_AlmacenesLabel);
             this.Controls.Add(this.SelecionarEmpresa2);
             this.Controls.Add(this.dataGridAlmacenes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAlmacenes";
-            this.Text = "FormAlmacenes";
+            this.Text = "Almacenes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAlmacenes_FormClosing);
             this.Load += new System.EventHandler(this.FormAlmacenes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();

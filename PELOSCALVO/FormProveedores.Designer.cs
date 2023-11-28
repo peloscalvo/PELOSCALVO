@@ -36,6 +36,7 @@ namespace PELOSCALVO
             System.Windows.Forms.Label label6;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProveedores));
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
@@ -438,6 +439,7 @@ namespace PELOSCALVO
             this.Controls.Add(label6);
             this.Controls.Add(this.EmpresaSelect);
             this.Controls.Add(this.dataGridProveedores);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormProveedores";
             this.Text = "Proveedores";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormProveedores_FormClosing);

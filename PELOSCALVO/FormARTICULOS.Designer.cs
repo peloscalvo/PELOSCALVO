@@ -1089,7 +1089,7 @@ namespace PELOSCALVO
             this.familiaComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.familiaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Familia", true));
             this.familiaComboBox.DataSource = this.dtFamiliaProductosBindingSource;
-            this.familiaComboBox.DisplayMember = "FamiliaProductos";
+            this.familiaComboBox.DisplayMember = "Familia";
             this.familiaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.familiaComboBox.Enabled = false;
             this.familiaComboBox.FormattingEnabled = true;

@@ -16,5 +16,10 @@ namespace PELOSCALVO
         {
             InitializeComponent();
         }
+
+        private void FormFamiliaProductos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
