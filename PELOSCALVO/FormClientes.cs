@@ -405,15 +405,11 @@ namespace PELOSCALVO
             }
             if (Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal))
             {
-                if (File.Exists(ClasDatos.RutaMulti2))
+                if (!File.Exists(ClasDatos.RutaMulti2))
                 {
-                    this.dsMulti2.ReadXml(ClasDatos.RutaMulti2);
 
-                }
-                else
-                {
                     this.panelBotonesClientes.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaConfiguracionXml, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 if (!File.Exists(ClasDatos.RutaMultidatos))
@@ -446,7 +442,7 @@ namespace PELOSCALVO
             BORRARerrores();
             //email_bien_escrito();
 
-            if (EspacioDiscosCli(ClasDatos.Clientes, 10))
+            if (EspacioDiscosCli(ClasDatos.RutaMultidatos, 10))
             {
                 if (VALIDARcampos())
                 {
@@ -527,17 +523,17 @@ namespace PELOSCALVO
                 this.dtClientesDataGridView.Rows[numeroFILA].Selected = true;
                 if (this.dtInicioMultiBindingSource.Count > 0)
                 {
-                    if (this.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"].ToString() != string.Empty)
                     {
-                        this.provinciaClienteComboBox1.Text = this.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"].ToString();
+                        this.provinciaClienteComboBox1.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"].ToString();
                     }
                     else
                     {
                         this.provinciaClienteComboBox1.Text = "La Coruña";
                     }
-                    if (this.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString() != string.Empty)
                     {
-                        this.paisClienteComboBox1.Text = this.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString();
+                        this.paisClienteComboBox1.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString();
                     }
                     else
                     {
@@ -571,13 +567,14 @@ namespace PELOSCALVO
 
         private void BtnBuscarCliente_Click(object sender, EventArgs e)
         {
-            ClasDatos.OkFacturar = false;
-            ClasDatos.QUEform = "Clientes";
-            if (!File.Exists(ClasDatos.Clientes))
+      
+            if (!File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                MessageBox.Show(ClasDatos.Clientes, "NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ClasDatos.RutaBaseDatosDb, "NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            ClasDatos.OkFacturar = false;
+            ClasDatos.QUEform = "Clientes";
             FormBuscarClientes form = new FormBuscarClientes();
             form.ShowDialog();
         }
@@ -718,10 +715,7 @@ namespace PELOSCALVO
             if (this.panelBotonesClientes.Enabled == false)
             {
 
-                this.dtClientesDataGridView.Cursor = Cursors.AppStarting;
-                Thread.Sleep(2000);
-                this.dtClientesDataGridView.Enabled = false;
-                this.dtClientesDataGridView.Cursor = Cursors.Default;
+      
 
             }
         }

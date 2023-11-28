@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="TimerStop.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="LogoB.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA3gAAAE1CAYAAAC1N0LVAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s
         /Qd8FOX6xo2f933P8eixV6oidlFRQUAUFVEpKghCRCnSQXrvxZWSAIEEQgohISE9LCSQhPSypG+Znbqz
@@ -6098,9 +6101,6 @@
         7zPo5/8Hxy9+8f8B02hdFPn2k10AAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="TimerStop.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAFkAAAEAIABIbwEAFgAAACgAAAAAAQAAsgAAAAEAIAAAAAAAAGQBAMMOAADDDgAAAAAAAAAA

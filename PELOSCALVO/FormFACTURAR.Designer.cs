@@ -1,7 +1,7 @@
 ﻿
 namespace PELOSCALVO
 {
-    partial class FormFACTURAR
+    partial class FormFacturar
     {
         /// <summary>
         /// Required designer variable.
@@ -61,38 +61,41 @@ namespace PELOSCALVO
             System.Windows.Forms.Label proveedoresLabel;
             System.Windows.Forms.Label nombreEmpresaReguistroLabel;
             System.Windows.Forms.Label Label11;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFACTURAR));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFacturar));
             this.dtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsfacturas = new PELOSCALVO.Dtfacturas();
             this.PanelArriba = new System.Windows.Forms.Panel();
-            this.NombreEmpresaReguistro = new System.Windows.Forms.Label();
+            this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
+            this.NombreEmpresaConfi = new System.Windows.Forms.Label();
             this.SerieText = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.ejerciciosDeAñoComboBox = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalDtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.empresaENLACEComboBox = new System.Windows.Forms.ComboBox();
             this.dtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage1Factura = new System.Windows.Forms.TabPage();
             this.EnlaceFactu = new System.Windows.Forms.Label();
@@ -102,12 +105,12 @@ namespace PELOSCALVO
             this.obrasComboBox = new System.Windows.Forms.ComboBox();
             this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
-            this.FechaFacturaDate = new System.Windows.Forms.DateTimePicker();
+            this.FechaFactura = new System.Windows.Forms.DateTimePicker();
             this.BtnBuscarClientesFact = new System.Windows.Forms.Button();
             this.pais_FactComboBox = new System.Windows.Forms.ComboBox();
             this.dtPaisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cobradaFacturaCheckBox = new System.Windows.Forms.CheckBox();
-            this.fechaCobroMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.fechaCobroText = new System.Windows.Forms.MaskedTextBox();
             this.numeroFacturaTextBox = new System.Windows.Forms.TextBox();
             this.apodoTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
@@ -132,7 +135,6 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImporteDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vacio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtDetallesFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4Factura = new System.Windows.Forms.TabPage();
@@ -144,7 +146,6 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vacia2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnlaceDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtDetallesFactura2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3Factura = new System.Windows.Forms.TabPage();
@@ -189,10 +190,10 @@ namespace PELOSCALVO
             this.CobradaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dsCONFIGURACCIONBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipoInpuestoIVANumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.subTotalLabel2 = new System.Windows.Forms.Label();
-            this.baseIvaLabel2 = new System.Windows.Forms.Label();
+            this.subTotal = new System.Windows.Forms.Label();
+            this.baseIva = new System.Windows.Forms.Label();
             this.TotalFactura1 = new System.Windows.Forms.Label();
-            this.labelTipoNota = new System.Windows.Forms.Label();
+            this.TipoNota = new System.Windows.Forms.Label();
             this.panelTotales = new System.Windows.Forms.Panel();
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
@@ -275,7 +276,7 @@ namespace PELOSCALVO
             // empresaENLACELabel
             // 
             empresaENLACELabel.AutoSize = true;
-            empresaENLACELabel.Location = new System.Drawing.Point(12, 12);
+            empresaENLACELabel.Location = new System.Drawing.Point(5, 10);
             empresaENLACELabel.Name = "empresaENLACELabel";
             empresaENLACELabel.Size = new System.Drawing.Size(51, 13);
             empresaENLACELabel.TabIndex = 4;
@@ -384,7 +385,7 @@ namespace PELOSCALVO
             // 
             ejerciciosDeAñoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             ejerciciosDeAñoLabel.AutoSize = true;
-            ejerciciosDeAñoLabel.Location = new System.Drawing.Point(810, 6);
+            ejerciciosDeAñoLabel.Location = new System.Drawing.Point(823, 10);
             ejerciciosDeAñoLabel.Name = "ejerciciosDeAñoLabel";
             ejerciciosDeAñoLabel.Size = new System.Drawing.Size(55, 13);
             ejerciciosDeAñoLabel.TabIndex = 7;
@@ -394,7 +395,7 @@ namespace PELOSCALVO
             // 
             label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(1116, 7);
+            label1.Location = new System.Drawing.Point(1118, 10);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(34, 13);
             label1.TabIndex = 23;
@@ -445,9 +446,9 @@ namespace PELOSCALVO
             // 
             // tipoInpuestoIVALabel1
             // 
-            tipoInpuestoIVALabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            tipoInpuestoIVALabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             tipoInpuestoIVALabel1.AutoSize = true;
-            tipoInpuestoIVALabel1.Location = new System.Drawing.Point(898, 534);
+            tipoInpuestoIVALabel1.Location = new System.Drawing.Point(864, 548);
             tipoInpuestoIVALabel1.Name = "tipoInpuestoIVALabel1";
             tipoInpuestoIVALabel1.Size = new System.Drawing.Size(49, 13);
             tipoInpuestoIVALabel1.TabIndex = 44;
@@ -579,27 +580,37 @@ namespace PELOSCALVO
             // 
             this.PanelArriba.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelArriba.Controls.Add(this.EmpresaPrincipal);
             this.PanelArriba.Controls.Add(label1);
-            this.PanelArriba.Controls.Add(this.NombreEmpresaReguistro);
+            this.PanelArriba.Controls.Add(this.NombreEmpresaConfi);
             this.PanelArriba.Controls.Add(this.SerieText);
             this.PanelArriba.Controls.Add(ejerciciosDeAñoLabel);
             this.PanelArriba.Controls.Add(this.ejerciciosDeAñoComboBox);
             this.PanelArriba.Controls.Add(empresaENLACELabel);
-            this.PanelArriba.Controls.Add(this.empresaENLACEComboBox);
             this.PanelArriba.Location = new System.Drawing.Point(0, 0);
             this.PanelArriba.Name = "PanelArriba";
             this.PanelArriba.Size = new System.Drawing.Size(1287, 35);
             this.PanelArriba.TabIndex = 2;
             this.PanelArriba.Tag = "NO";
             // 
-            // NombreEmpresaReguistro
+            // EmpresaPrincipal
             // 
-            this.NombreEmpresaReguistro.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
-            this.NombreEmpresaReguistro.Location = new System.Drawing.Point(483, 9);
-            this.NombreEmpresaReguistro.Name = "NombreEmpresaReguistro";
-            this.NombreEmpresaReguistro.Size = new System.Drawing.Size(272, 23);
-            this.NombreEmpresaReguistro.TabIndex = 72;
-            this.NombreEmpresaReguistro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EmpresaPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.EmpresaPrincipal.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.EmpresaPrincipal.DisplayMember = "EmpresaConfi";
+            this.EmpresaPrincipal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EmpresaPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmpresaPrincipal.FormattingEnabled = true;
+            this.EmpresaPrincipal.Location = new System.Drawing.Point(62, 7);
+            this.EmpresaPrincipal.Name = "EmpresaPrincipal";
+            this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 24);
+            this.EmpresaPrincipal.TabIndex = 73;
+            this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
+            this.EmpresaPrincipal.SelectedValueChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedValueChanged);
+            this.EmpresaPrincipal.Click += new System.EventHandler(this.EmpresaPrincipal_Click);
+            this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);
+            this.EmpresaPrincipal.MouseEnter += new System.EventHandler(this.EmpresaPrincipal_MouseEnter);
+            this.EmpresaPrincipal.MouseLeave += new System.EventHandler(this.EmpresaPrincipal_MouseLeave);
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -610,6 +621,16 @@ namespace PELOSCALVO
             // 
             this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
             this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // NombreEmpresaConfi
+            // 
+            this.NombreEmpresaConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
+            this.NombreEmpresaConfi.Location = new System.Drawing.Point(445, 9);
+            this.NombreEmpresaConfi.Name = "NombreEmpresaConfi";
+            this.NombreEmpresaConfi.Size = new System.Drawing.Size(356, 23);
+            this.NombreEmpresaConfi.TabIndex = 72;
+            this.NombreEmpresaConfi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NombreEmpresaConfi.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
             // 
             // SerieText
             // 
@@ -626,7 +647,7 @@ namespace PELOSCALVO
             "E",
             "F",
             "G"});
-            this.SerieText.Location = new System.Drawing.Point(1158, 3);
+            this.SerieText.Location = new System.Drawing.Point(1163, 7);
             this.SerieText.Name = "SerieText";
             this.SerieText.Size = new System.Drawing.Size(121, 21);
             this.SerieText.TabIndex = 9;
@@ -646,41 +667,22 @@ namespace PELOSCALVO
             // ejerciciosDeAñoComboBox
             // 
             this.ejerciciosDeAñoComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ejerciciosDeAñoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
+            this.ejerciciosDeAñoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EjerciciosDeAño", true));
             this.ejerciciosDeAñoComboBox.DataSource = this.dtConfiguracionPrincipalDtConfiBindingSource;
             this.ejerciciosDeAñoComboBox.DisplayMember = "EjerciciosDeAño";
             this.ejerciciosDeAñoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ejerciciosDeAñoComboBox.FormattingEnabled = true;
-            this.ejerciciosDeAñoComboBox.Location = new System.Drawing.Point(878, 4);
+            this.ejerciciosDeAñoComboBox.Location = new System.Drawing.Point(884, 7);
             this.ejerciciosDeAñoComboBox.Name = "ejerciciosDeAñoComboBox";
             this.ejerciciosDeAñoComboBox.Size = new System.Drawing.Size(195, 21);
             this.ejerciciosDeAñoComboBox.TabIndex = 8;
             this.ejerciciosDeAñoComboBox.SelectedIndexChanged += new System.EventHandler(this.EjerciciosDeAñoComboBox_SelectedIndexChanged_1);
-            this.ejerciciosDeAñoComboBox.Click += new System.EventHandler(this.ejerciciosDeAñoComboBox_Click);
+            this.ejerciciosDeAñoComboBox.Click += new System.EventHandler(this.ejerciciosDeAñoComboBox_Click_1);
             // 
             // dtConfiguracionPrincipalDtConfiBindingSource
             // 
             this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "DtConfiguracionPrincipal_DtConfi";
             this.dtConfiguracionPrincipalDtConfiBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            // 
-            // empresaENLACEComboBox
-            // 
-            this.empresaENLACEComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
-            this.empresaENLACEComboBox.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.empresaENLACEComboBox.DisplayMember = "EmpresaConfi";
-            this.empresaENLACEComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaENLACEComboBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.empresaENLACEComboBox.FormattingEnabled = true;
-            this.empresaENLACEComboBox.Location = new System.Drawing.Point(69, 7);
-            this.empresaENLACEComboBox.Name = "empresaENLACEComboBox";
-            this.empresaENLACEComboBox.Size = new System.Drawing.Size(408, 21);
-            this.empresaENLACEComboBox.TabIndex = 5;
-            this.empresaENLACEComboBox.Tag = "";
-            this.empresaENLACEComboBox.SelectedIndexChanged += new System.EventHandler(this.EmpresaENLACEComboBox_SelectedIndexChanged);
-            this.empresaENLACEComboBox.Click += new System.EventHandler(this.empresaENLACEComboBox_Click);
-            this.empresaENLACEComboBox.Leave += new System.EventHandler(this.empresaENLACEComboBox_Leave);
-            this.empresaENLACEComboBox.MouseEnter += new System.EventHandler(this.empresaENLACEComboBox_MouseEnter);
-            this.empresaENLACEComboBox.MouseLeave += new System.EventHandler(this.empresaENLACEComboBox_MouseLeave);
             // 
             // dtConfiBindingSource
             // 
@@ -697,13 +699,13 @@ namespace PELOSCALVO
             this.tabPage1Factura.Controls.Add(obrasLabel);
             this.tabPage1Factura.Controls.Add(this.obrasComboBox);
             this.tabPage1Factura.Controls.Add(fechaFacturaLabel);
-            this.tabPage1Factura.Controls.Add(this.FechaFacturaDate);
+            this.tabPage1Factura.Controls.Add(this.FechaFactura);
             this.tabPage1Factura.Controls.Add(this.BtnBuscarClientesFact);
             this.tabPage1Factura.Controls.Add(pais_FactLabel);
             this.tabPage1Factura.Controls.Add(this.pais_FactComboBox);
             this.tabPage1Factura.Controls.Add(this.cobradaFacturaCheckBox);
             this.tabPage1Factura.Controls.Add(fechaCobroLabel);
-            this.tabPage1Factura.Controls.Add(this.fechaCobroMaskedTextBox);
+            this.tabPage1Factura.Controls.Add(this.fechaCobroText);
             this.tabPage1Factura.Controls.Add(numeroFacturaLabel);
             this.tabPage1Factura.Controls.Add(this.numeroFacturaTextBox);
             this.tabPage1Factura.Controls.Add(apodoLabel);
@@ -750,6 +752,7 @@ namespace PELOSCALVO
             this.proveedoresComboBox.DisplayMember = "Proveedores";
             this.proveedoresComboBox.FormattingEnabled = true;
             this.proveedoresComboBox.Location = new System.Drawing.Point(514, 176);
+            this.proveedoresComboBox.MaxLength = 60;
             this.proveedoresComboBox.Name = "proveedoresComboBox";
             this.proveedoresComboBox.Size = new System.Drawing.Size(234, 21);
             this.proveedoresComboBox.TabIndex = 72;
@@ -771,8 +774,10 @@ namespace PELOSCALVO
             this.obrasComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Obra_factu", true));
             this.obrasComboBox.DataSource = this.dtObrasBindingSource;
             this.obrasComboBox.DisplayMember = "Obras";
+            this.obrasComboBox.Enabled = false;
             this.obrasComboBox.FormattingEnabled = true;
             this.obrasComboBox.Location = new System.Drawing.Point(1025, 34);
+            this.obrasComboBox.MaxLength = 60;
             this.obrasComboBox.Name = "obrasComboBox";
             this.obrasComboBox.Size = new System.Drawing.Size(236, 21);
             this.obrasComboBox.TabIndex = 71;
@@ -788,18 +793,18 @@ namespace PELOSCALVO
             this.dsMulti2.DataSetName = "DsMulti2";
             this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // FechaFacturaDate
+            // FechaFactura
             // 
-            this.FechaFacturaDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FechaFacturaDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtNuevaFacturaBindingSource, "FechaFactura", true));
-            this.FechaFacturaDate.Enabled = false;
-            this.FechaFacturaDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.errorProvider1.SetIconAlignment(this.FechaFacturaDate, System.Windows.Forms.ErrorIconAlignment.BottomRight);
-            this.FechaFacturaDate.Location = new System.Drawing.Point(891, 147);
-            this.FechaFacturaDate.Name = "FechaFacturaDate";
-            this.FechaFacturaDate.Size = new System.Drawing.Size(144, 20);
-            this.FechaFacturaDate.TabIndex = 70;
-            this.FechaFacturaDate.Value = new System.DateTime(2023, 5, 1, 0, 5, 18, 0);
+            this.FechaFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FechaFactura.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtNuevaFacturaBindingSource, "FechaFactura", true));
+            this.FechaFactura.Enabled = false;
+            this.FechaFactura.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.errorProvider1.SetIconAlignment(this.FechaFactura, System.Windows.Forms.ErrorIconAlignment.BottomRight);
+            this.FechaFactura.Location = new System.Drawing.Point(891, 147);
+            this.FechaFactura.Name = "FechaFactura";
+            this.FechaFactura.Size = new System.Drawing.Size(144, 20);
+            this.FechaFactura.TabIndex = 70;
+            this.FechaFactura.Value = new System.DateTime(2023, 5, 1, 0, 5, 18, 0);
             // 
             // BtnBuscarClientesFact
             // 
@@ -820,7 +825,7 @@ namespace PELOSCALVO
             this.pais_FactComboBox.Enabled = false;
             this.pais_FactComboBox.FormattingEnabled = true;
             this.pais_FactComboBox.Location = new System.Drawing.Point(514, 149);
-            this.pais_FactComboBox.MaxLength = 20;
+            this.pais_FactComboBox.MaxLength = 60;
             this.pais_FactComboBox.Name = "pais_FactComboBox";
             this.pais_FactComboBox.Size = new System.Drawing.Size(257, 21);
             this.pais_FactComboBox.TabIndex = 28;
@@ -844,20 +849,20 @@ namespace PELOSCALVO
             this.cobradaFacturaCheckBox.CheckedChanged += new System.EventHandler(this.CobradaFacturaCheckBox_CheckedChanged);
             this.cobradaFacturaCheckBox.CheckStateChanged += new System.EventHandler(this.CobradaFacturaCheckBox_CheckStateChanged);
             // 
-            // fechaCobroMaskedTextBox
+            // fechaCobroText
             // 
-            this.fechaCobroMaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.fechaCobroMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "FechaCobro", true));
-            this.fechaCobroMaskedTextBox.Location = new System.Drawing.Point(891, 177);
-            this.fechaCobroMaskedTextBox.Mask = "00/00/0000";
-            this.fechaCobroMaskedTextBox.Name = "fechaCobroMaskedTextBox";
-            this.fechaCobroMaskedTextBox.ReadOnly = true;
-            this.fechaCobroMaskedTextBox.Size = new System.Drawing.Size(109, 20);
-            this.fechaCobroMaskedTextBox.TabIndex = 27;
-            this.fechaCobroMaskedTextBox.TabStop = false;
-            this.fechaCobroMaskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.fechaCobroMaskedTextBox.UseWaitCursor = true;
-            this.fechaCobroMaskedTextBox.ValidatingType = typeof(System.DateTime);
+            this.fechaCobroText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.fechaCobroText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "FechaCobro", true));
+            this.fechaCobroText.Location = new System.Drawing.Point(891, 177);
+            this.fechaCobroText.Mask = "00/00/0000";
+            this.fechaCobroText.Name = "fechaCobroText";
+            this.fechaCobroText.ReadOnly = true;
+            this.fechaCobroText.Size = new System.Drawing.Size(109, 20);
+            this.fechaCobroText.TabIndex = 27;
+            this.fechaCobroText.TabStop = false;
+            this.fechaCobroText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.fechaCobroText.UseWaitCursor = true;
+            this.fechaCobroText.ValidatingType = typeof(System.DateTime);
             // 
             // numeroFacturaTextBox
             // 
@@ -948,7 +953,7 @@ namespace PELOSCALVO
             this.provinciaComboBox.Enabled = false;
             this.provinciaComboBox.FormattingEnabled = true;
             this.provinciaComboBox.Location = new System.Drawing.Point(514, 121);
-            this.provinciaComboBox.MaxLength = 20;
+            this.provinciaComboBox.MaxLength = 60;
             this.provinciaComboBox.Name = "provinciaComboBox";
             this.provinciaComboBox.Size = new System.Drawing.Size(257, 21);
             this.provinciaComboBox.TabIndex = 17;
@@ -964,6 +969,7 @@ namespace PELOSCALVO
             this.codigoPostalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "CodigoPostal", true));
             this.codigoPostalTextBox.Enabled = false;
             this.codigoPostalTextBox.Location = new System.Drawing.Point(763, 33);
+            this.codigoPostalTextBox.MaxLength = 30;
             this.codigoPostalTextBox.Name = "codigoPostalTextBox";
             this.codigoPostalTextBox.Size = new System.Drawing.Size(121, 20);
             this.codigoPostalTextBox.TabIndex = 19;
@@ -1018,14 +1024,14 @@ namespace PELOSCALVO
             this.dtDetallesFacturaDataGridView.AllowUserToResizeRows = false;
             this.dtDetallesFacturaDataGridView.AutoGenerateColumns = false;
             this.dtDetallesFacturaDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtDetallesFacturaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtDetallesFacturaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtDetallesFacturaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtDetallesFacturaDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn14,
@@ -1036,18 +1042,17 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn19,
             this.ImporteDetalle,
-            this.Vacio,
             this.dataGridViewTextBoxColumn13});
             this.dtDetallesFacturaDataGridView.DataSource = this.dtDetallesFacturaBindingSource;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.NullValue = null;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtDetallesFacturaDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.NullValue = null;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtDetallesFacturaDataGridView.DefaultCellStyle = dataGridViewCellStyle14;
             this.dtDetallesFacturaDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtDetallesFacturaDataGridView.Location = new System.Drawing.Point(3, 3);
             this.dtDetallesFacturaDataGridView.Name = "dtDetallesFacturaDataGridView";
@@ -1071,7 +1076,7 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.DataPropertyName = "ReferenciaDetalle";
-            this.dataGridViewTextBoxColumn14.FillWeight = 126.392F;
+            this.dataGridViewTextBoxColumn14.FillWeight = 122.7725F;
             this.dataGridViewTextBoxColumn14.HeaderText = "Referencia";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
@@ -1080,11 +1085,11 @@ namespace PELOSCALVO
             // 
             // BusquedaArticulo
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.BusquedaArticulo.DefaultCellStyle = dataGridViewCellStyle6;
-            this.BusquedaArticulo.FillWeight = 35.10891F;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.BusquedaArticulo.DefaultCellStyle = dataGridViewCellStyle7;
+            this.BusquedaArticulo.FillWeight = 34.1035F;
             this.BusquedaArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BusquedaArticulo.HeaderText = "";
             this.BusquedaArticulo.Name = "BusquedaArticulo";
@@ -1094,11 +1099,11 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn15
             // 
             this.dataGridViewTextBoxColumn15.DataPropertyName = "CantidadDetalle";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn15.FillWeight = 84.26134F;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewTextBoxColumn15.FillWeight = 81.84836F;
             this.dataGridViewTextBoxColumn15.HeaderText = "Cantidad";
             this.dataGridViewTextBoxColumn15.MaxInputLength = 12;
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
@@ -1108,7 +1113,7 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "DescripccionDetalle";
-            this.dataGridViewTextBoxColumn16.FillWeight = 210.6535F;
+            this.dataGridViewTextBoxColumn16.FillWeight = 204.6211F;
             this.dataGridViewTextBoxColumn16.HeaderText = "Descripccion";
             this.dataGridViewTextBoxColumn16.MaxInputLength = 70;
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
@@ -1118,11 +1123,11 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn18
             // 
             this.dataGridViewTextBoxColumn18.DataPropertyName = "PrecioDetalle";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "C2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn18.FillWeight = 84.26134F;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "C2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridViewTextBoxColumn18.FillWeight = 81.84836F;
             this.dataGridViewTextBoxColumn18.HeaderText = "Precio";
             this.dataGridViewTextBoxColumn18.MaxInputLength = 12;
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
@@ -1132,11 +1137,11 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.DataPropertyName = "DescuentoDetalle";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "P0";
-            dataGridViewCellStyle9.NullValue = null;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewTextBoxColumn17.FillWeight = 49.15247F;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "P0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewTextBoxColumn17.FillWeight = 47.7449F;
             this.dataGridViewTextBoxColumn17.HeaderText = "Descuento";
             this.dataGridViewTextBoxColumn17.MaxInputLength = 4;
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
@@ -1146,11 +1151,11 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn19
             // 
             this.dataGridViewTextBoxColumn19.DataPropertyName = "IvaDetalle";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewTextBoxColumn19.FillWeight = 49.15247F;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = null;
+            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn19.FillWeight = 47.7449F;
             this.dataGridViewTextBoxColumn19.HeaderText = "Iva";
             this.dataGridViewTextBoxColumn19.MaxInputLength = 4;
             this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
@@ -1160,30 +1165,25 @@ namespace PELOSCALVO
             // ImporteDetalle
             // 
             this.ImporteDetalle.DataPropertyName = "ImporteDetalle";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "C2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.ImporteDetalle.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ImporteDetalle.FillWeight = 105.3267F;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "C2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.ImporteDetalle.DefaultCellStyle = dataGridViewCellStyle12;
+            this.ImporteDetalle.FillWeight = 102.3105F;
             this.ImporteDetalle.HeaderText = "Importe";
             this.ImporteDetalle.Name = "ImporteDetalle";
             this.ImporteDetalle.ReadOnly = true;
             this.ImporteDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Vacio
-            // 
-            this.Vacio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Vacio.FillWeight = 30F;
-            this.Vacio.HeaderText = "";
-            this.Vacio.Name = "Vacio";
-            this.Vacio.ReadOnly = true;
-            this.Vacio.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Vacio.Width = 30;
-            // 
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.DataPropertyName = "EnlaceDetalle";
-            this.dataGridViewTextBoxColumn13.HeaderText = "EnlaceDetalle";
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewTextBoxColumn13.FillWeight = 22.31463F;
+            this.dataGridViewTextBoxColumn13.HeaderText = "";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
             // 
@@ -1208,14 +1208,14 @@ namespace PELOSCALVO
             this.dtDetallesFacturaDataGridView2.AllowUserToResizeRows = false;
             this.dtDetallesFacturaDataGridView2.AutoGenerateColumns = false;
             this.dtDetallesFacturaDataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtDetallesFacturaDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtDetallesFacturaDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dtDetallesFacturaDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtDetallesFacturaDataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn20,
@@ -1225,17 +1225,16 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn24,
             this.dataGridViewTextBoxColumn25,
             this.dataGridViewTextBoxColumn27,
-            this.Vacia2,
             this.EnlaceDetalle});
             this.dtDetallesFacturaDataGridView2.DataSource = this.dtDetallesFactura2BindingSource;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtDetallesFacturaDataGridView2.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtDetallesFacturaDataGridView2.DefaultCellStyle = dataGridViewCellStyle22;
             this.dtDetallesFacturaDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtDetallesFacturaDataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dtDetallesFacturaDataGridView2.Name = "dtDetallesFacturaDataGridView2";
@@ -1254,7 +1253,7 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn20
             // 
             this.dataGridViewTextBoxColumn20.DataPropertyName = "ReferenciaDetalle";
-            this.dataGridViewTextBoxColumn20.FillWeight = 74.66071F;
+            this.dataGridViewTextBoxColumn20.FillWeight = 69.34689F;
             this.dataGridViewTextBoxColumn20.HeaderText = "Referencia";
             this.dataGridViewTextBoxColumn20.MaxInputLength = 40;
             this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
@@ -1264,11 +1263,11 @@ namespace PELOSCALVO
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dataGridViewButtonColumn1.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewButtonColumn1.FillWeight = 30F;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.dataGridViewButtonColumn1.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewButtonColumn1.FillWeight = 27.86481F;
             this.dataGridViewButtonColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.dataGridViewButtonColumn1.HeaderText = "";
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
@@ -1278,11 +1277,11 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn22
             // 
             this.dataGridViewTextBoxColumn22.DataPropertyName = "CantidadDetalle";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.dataGridViewTextBoxColumn22.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dataGridViewTextBoxColumn22.FillWeight = 77.3593F;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N2";
+            dataGridViewCellStyle17.NullValue = null;
+            this.dataGridViewTextBoxColumn22.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewTextBoxColumn22.FillWeight = 71.8534F;
             this.dataGridViewTextBoxColumn22.HeaderText = "Cantidad";
             this.dataGridViewTextBoxColumn22.MaxInputLength = 12;
             this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
@@ -1292,7 +1291,7 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn23
             // 
             this.dataGridViewTextBoxColumn23.DataPropertyName = "DescripccionDetalle";
-            this.dataGridViewTextBoxColumn23.FillWeight = 224.8817F;
+            this.dataGridViewTextBoxColumn23.FillWeight = 208.8762F;
             this.dataGridViewTextBoxColumn23.HeaderText = "Descripccion";
             this.dataGridViewTextBoxColumn23.MaxInputLength = 80;
             this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
@@ -1302,11 +1301,11 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn24
             // 
             this.dataGridViewTextBoxColumn24.DataPropertyName = "PrecioDetalle";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "C2";
-            dataGridViewCellStyle16.NullValue = null;
-            this.dataGridViewTextBoxColumn24.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridViewTextBoxColumn24.FillWeight = 77.3593F;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "C2";
+            dataGridViewCellStyle18.NullValue = null;
+            this.dataGridViewTextBoxColumn24.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridViewTextBoxColumn24.FillWeight = 71.8534F;
             this.dataGridViewTextBoxColumn24.HeaderText = "Precio";
             this.dataGridViewTextBoxColumn24.MaxInputLength = 12;
             this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
@@ -1316,11 +1315,11 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn25
             // 
             this.dataGridViewTextBoxColumn25.DataPropertyName = "DescuentoDetalle";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "N2";
-            dataGridViewCellStyle17.NullValue = null;
-            this.dataGridViewTextBoxColumn25.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dataGridViewTextBoxColumn25.FillWeight = 77.3593F;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N2";
+            dataGridViewCellStyle19.NullValue = null;
+            this.dataGridViewTextBoxColumn25.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dataGridViewTextBoxColumn25.FillWeight = 71.8534F;
             this.dataGridViewTextBoxColumn25.HeaderText = "Descuento";
             this.dataGridViewTextBoxColumn25.MaxInputLength = 4;
             this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
@@ -1330,30 +1329,28 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn27
             // 
             this.dataGridViewTextBoxColumn27.DataPropertyName = "ImporteDetalle";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "C2";
-            dataGridViewCellStyle18.NullValue = null;
-            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dataGridViewTextBoxColumn27.FillWeight = 77.3593F;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "C2";
+            dataGridViewCellStyle20.NullValue = null;
+            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridViewTextBoxColumn27.FillWeight = 71.8534F;
             this.dataGridViewTextBoxColumn27.HeaderText = "Importe";
             this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
             this.dataGridViewTextBoxColumn27.ReadOnly = true;
             this.dataGridViewTextBoxColumn27.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Vacia2
-            // 
-            this.Vacia2.FillWeight = 30F;
-            this.Vacia2.HeaderText = "";
-            this.Vacia2.Name = "Vacia2";
-            this.Vacia2.ReadOnly = true;
-            // 
             // EnlaceDetalle
             // 
             this.EnlaceDetalle.DataPropertyName = "EnlaceDetalle";
-            this.EnlaceDetalle.HeaderText = "EnlaceDetalle";
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
+            this.EnlaceDetalle.DefaultCellStyle = dataGridViewCellStyle21;
+            this.EnlaceDetalle.FillWeight = 15F;
+            this.EnlaceDetalle.HeaderText = "";
             this.EnlaceDetalle.Name = "EnlaceDetalle";
             this.EnlaceDetalle.ReadOnly = true;
-            this.EnlaceDetalle.Visible = false;
             // 
             // dtDetallesFactura2BindingSource
             // 
@@ -1780,16 +1777,16 @@ namespace PELOSCALVO
             this.FechaCobro,
             this.CobradaFactura});
             this.dtNuevaFacturaDataGridView.DataSource = this.dtNuevaFacturaBindingSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtNuevaFacturaDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtNuevaFacturaDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtNuevaFacturaDataGridView.EnableHeadersVisualStyles = false;
-            this.dtNuevaFacturaDataGridView.Location = new System.Drawing.Point(0, 34);
+            this.dtNuevaFacturaDataGridView.Location = new System.Drawing.Point(4, 37);
             this.dtNuevaFacturaDataGridView.Name = "dtNuevaFacturaDataGridView";
             this.dtNuevaFacturaDataGridView.ReadOnly = true;
             this.dtNuevaFacturaDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
@@ -1805,6 +1802,8 @@ namespace PELOSCALVO
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "NumeroFactura";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn1.FillWeight = 63.46391F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Numero";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -1901,8 +1900,8 @@ namespace PELOSCALVO
             // FechaCobro
             // 
             this.FechaCobro.DataPropertyName = "FechaCobro";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.FechaCobro.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.FechaCobro.DefaultCellStyle = dataGridViewCellStyle3;
             this.FechaCobro.FillWeight = 68.00511F;
             this.FechaCobro.HeaderText = "FechaCobro";
             this.FechaCobro.Name = "FechaCobro";
@@ -1912,8 +1911,8 @@ namespace PELOSCALVO
             // CobradaFactura
             // 
             this.CobradaFactura.DataPropertyName = "CobradaFactura";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CobradaFactura.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CobradaFactura.DefaultCellStyle = dataGridViewCellStyle4;
             this.CobradaFactura.FillWeight = 56.23944F;
             this.CobradaFactura.HeaderText = "Cobrado";
             this.CobradaFactura.Name = "CobradaFactura";
@@ -1928,39 +1927,39 @@ namespace PELOSCALVO
             // 
             this.tipoInpuestoIVANumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tipoInpuestoIVANumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtConfiguracionPrincipalDtConfiBindingSource, "TipoInpuestoIVA", true));
-            this.tipoInpuestoIVANumericUpDown.Location = new System.Drawing.Point(953, 533);
+            this.tipoInpuestoIVANumericUpDown.Location = new System.Drawing.Point(919, 547);
             this.tipoInpuestoIVANumericUpDown.Name = "tipoInpuestoIVANumericUpDown";
             this.tipoInpuestoIVANumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.tipoInpuestoIVANumericUpDown.TabIndex = 45;
             this.tipoInpuestoIVANumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // subTotalLabel2
+            // subTotal
             // 
-            this.subTotalLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.subTotalLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.subTotalLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "SubTotal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0 €", "C3"));
-            this.subTotalLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.subTotalLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subTotalLabel2.Location = new System.Drawing.Point(67, 0);
-            this.subTotalLabel2.Name = "subTotalLabel2";
-            this.subTotalLabel2.Size = new System.Drawing.Size(130, 23);
-            this.subTotalLabel2.TabIndex = 46;
-            this.subTotalLabel2.Text = "0 €";
-            this.subTotalLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.subTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.subTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.subTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "SubTotal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0 €", "C3"));
+            this.subTotal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.subTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subTotal.Location = new System.Drawing.Point(67, 0);
+            this.subTotal.Name = "subTotal";
+            this.subTotal.Size = new System.Drawing.Size(130, 23);
+            this.subTotal.TabIndex = 46;
+            this.subTotal.Text = "0 €";
+            this.subTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // baseIvaLabel2
+            // baseIva
             // 
-            this.baseIvaLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.baseIvaLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.baseIvaLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "BaseIva", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0 €", "C3"));
-            this.baseIvaLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.baseIvaLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.baseIvaLabel2.Location = new System.Drawing.Point(67, 32);
-            this.baseIvaLabel2.Name = "baseIvaLabel2";
-            this.baseIvaLabel2.Size = new System.Drawing.Size(130, 23);
-            this.baseIvaLabel2.TabIndex = 48;
-            this.baseIvaLabel2.Text = "0 €";
-            this.baseIvaLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.baseIva.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.baseIva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.baseIva.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "BaseIva", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0 €", "C3"));
+            this.baseIva.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.baseIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.baseIva.Location = new System.Drawing.Point(67, 32);
+            this.baseIva.Name = "baseIva";
+            this.baseIva.Size = new System.Drawing.Size(130, 23);
+            this.baseIva.TabIndex = 48;
+            this.baseIva.Text = "0 €";
+            this.baseIva.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TotalFactura1
             // 
@@ -1976,24 +1975,24 @@ namespace PELOSCALVO
             this.TotalFactura1.Text = "0 €";
             this.TotalFactura1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelTipoNota
+            // TipoNota
             // 
-            this.labelTipoNota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TipoNota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelTipoNota.AutoSize = true;
-            this.labelTipoNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTipoNota.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelTipoNota.Location = new System.Drawing.Point(1201, 637);
-            this.labelTipoNota.Name = "labelTipoNota";
-            this.labelTipoNota.Size = new System.Drawing.Size(87, 15);
-            this.labelTipoNota.TabIndex = 51;
-            this.labelTipoNota.Text = "Presupuesto";
-            this.labelTipoNota.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TipoNota.AutoSize = true;
+            this.TipoNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TipoNota.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.TipoNota.Location = new System.Drawing.Point(1201, 637);
+            this.TipoNota.Name = "TipoNota";
+            this.TipoNota.Size = new System.Drawing.Size(87, 15);
+            this.TipoNota.TabIndex = 51;
+            this.TipoNota.Text = "Presupuesto";
+            this.TipoNota.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelTotales
             // 
-            this.panelTotales.Controls.Add(this.subTotalLabel2);
-            this.panelTotales.Controls.Add(this.baseIvaLabel2);
+            this.panelTotales.Controls.Add(this.subTotal);
+            this.panelTotales.Controls.Add(this.baseIva);
             this.panelTotales.Controls.Add(sub);
             this.panelTotales.Controls.Add(label55);
             this.panelTotales.Location = new System.Drawing.Point(1091, 529);
@@ -2023,7 +2022,7 @@ namespace PELOSCALVO
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
             // 
-            // FormFACTURAR
+            // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2032,7 +2031,7 @@ namespace PELOSCALVO
             this.ClientSize = new System.Drawing.Size(1319, 712);
             this.Controls.Add(this.TotalFactura2);
             this.Controls.Add(this.panelTotales);
-            this.Controls.Add(this.labelTipoNota);
+            this.Controls.Add(this.TipoNota);
             this.Controls.Add(this.TotalFactura1);
             this.Controls.Add(tipoInpuestoIVALabel1);
             this.Controls.Add(this.tipoInpuestoIVANumericUpDown);
@@ -2044,7 +2043,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.tabControl1Factura);
             this.Controls.Add(this.PanelArriba);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormFACTURAR";
+            this.Name = "FormFacturar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormFACTURAR_FormClosing);
@@ -2122,7 +2121,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtConfiBindingSource;
         private System.Windows.Forms.ComboBox SerieText;
         private System.Windows.Forms.CheckBox cobradaFacturaCheckBox;
-        private System.Windows.Forms.MaskedTextBox fechaCobroMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox fechaCobroText;
         private System.Windows.Forms.NumericUpDown tipoInpuestoIVANumericUpDown;
         public System.Windows.Forms.DataGridView dtDetallesFacturaDataGridView;
         private System.Windows.Forms.TabControl tabControl1Factura;
@@ -2137,7 +2136,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.TabPage tabPage4Factura;
         public System.Windows.Forms.DataGridView dtDetallesFacturaDataGridView2;
         private System.Windows.Forms.Panel panelTotales;
-        private System.Windows.Forms.Label labelTipoNota;
+        private System.Windows.Forms.Label TipoNota;
         private System.Windows.Forms.Button BtnBuscarClientesFact;
         public System.Windows.Forms.TabPage tabPage1Factura;
         public System.Windows.Forms.TextBox nombreTextBox;
@@ -2148,12 +2147,11 @@ namespace PELOSCALVO
         public System.Windows.Forms.TextBox localidadTextBox;
         public System.Windows.Forms.ComboBox provinciaComboBox;
         public System.Windows.Forms.BindingSource dtDetallesFactura2BindingSource;
-        public System.Windows.Forms.ComboBox empresaENLACEComboBox;
         public System.Windows.Forms.TextBox numeroFacturaTextBox;
         public System.Windows.Forms.ComboBox pais_FactComboBox;
         public DsCONFIGURACCION dsCONFIGURACCION;
-        public System.Windows.Forms.Label subTotalLabel2;
-        public System.Windows.Forms.Label baseIvaLabel2;
+        public System.Windows.Forms.Label subTotal;
+        public System.Windows.Forms.Label baseIva;
         public System.Windows.Forms.Label TotalFactura1;
         public System.Windows.Forms.Label TotalFactura2;
         public System.Windows.Forms.TextBox dniTextBox;
@@ -2167,7 +2165,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtProvinciasBindingSource;
         public Articulos articulos;
         private System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.DateTimePicker FechaFacturaDate;
+        public System.Windows.Forms.DateTimePicker FechaFactura;
         private System.Windows.Forms.Label IdDescuento;
         private System.Windows.Forms.NumericUpDown NumTotales;
         private System.Windows.Forms.NumericUpDown Numimporte;
@@ -2182,7 +2180,27 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtAlmacenesBindingSource;
-        private System.Windows.Forms.Label NombreEmpresaReguistro;
+        private System.Windows.Forms.Label NombreEmpresaConfi;
+        private System.Windows.Forms.BindingSource dtClientesBindingSource;
+        private System.Windows.Forms.Label EnlaceFactu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewButtonColumn BusquedaArticulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImporteDetalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EnlaceDetalle;
+        public System.Windows.Forms.ComboBox EmpresaPrincipal;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -2197,26 +2215,5 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCobro;
         private System.Windows.Forms.DataGridViewTextBoxColumn CobradaFactura;
-        private System.Windows.Forms.BindingSource dtClientesBindingSource;
-        private System.Windows.Forms.Label EnlaceFactu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vacia2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EnlaceDetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewButtonColumn BusquedaArticulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ImporteDetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vacio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
     }
 }

@@ -16,9 +16,9 @@ namespace PELOSCALVO
         private void FormReporteFactura_Load(object sender, EventArgs e)
         {
               this.reportViewer1.RefreshReport();      
-            DtDetallesFacturaBindingSource.DataSource = FormFACTURAR.menu2FACTURAR.dtDetallesFacturaBindingSource;
-            DtNuevaFacturaBindingSource.DataSource = FormFACTURAR.menu2FACTURAR.dtNuevaFacturaBindingSource.Current;
-            dtConfiguracionPrincipalBindingSource.DataSource = FormFACTURAR.menu2FACTURAR.dtConfiguracionPrincipalBindingSource.Current;
+            DtDetallesFacturaBindingSource.DataSource = FormFacturar.menu2FACTURAR.dtDetallesFacturaBindingSource;
+            DtNuevaFacturaBindingSource.DataSource = FormFacturar.menu2FACTURAR.dtNuevaFacturaBindingSource.Current;
+            dtConfiguracionPrincipalBindingSource.DataSource = FormFacturar.menu2FACTURAR.dtConfiguracionPrincipalBindingSource.Current;
             //DtNuevaFacturaBindingSource.DataSource = (FormFACTURAR.menu2FACTURAR.dtNuevaFacturaDataGridView);
         
         }

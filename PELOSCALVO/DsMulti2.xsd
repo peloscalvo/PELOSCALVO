@@ -17,6 +17,7 @@
             <xs:sequence>
               <xs:element name="Id_Obras" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msdata:Caption="Id_almacenes" msprop:Generator_ColumnVarNameInTable="columnId_Obras" msprop:Generator_ColumnPropNameInRow="Id_Obras" msprop:Generator_ColumnPropNameInTable="Id_ObrasColumn" msprop:Generator_UserColumnName="Id_Obras" type="xs:int" minOccurs="0" />
               <xs:element name="Obras" msdata:Caption="Almacenes" msprop:Generator_ColumnVarNameInTable="columnObras" msprop:Generator_ColumnPropNameInRow="Obras" msprop:Generator_ColumnPropNameInTable="ObrasColumn" msprop:Generator_UserColumnName="Obras" type="xs:string" minOccurs="0" />
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -24,6 +25,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PaisesPaises" msprop:Generator_ColumnVarNameInTable="columnPaisesPaises" msprop:Generator_ColumnPropNameInRow="PaisesPaises" msprop:Generator_ColumnPropNameInTable="PaisesPaisesColumn" msprop:Generator_UserColumnName="PaisesPaises" type="xs:string" minOccurs="0" />
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -31,16 +33,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProvinciasProvincias" msprop:Generator_ColumnVarNameInTable="columnProvinciasProvincias" msprop:Generator_ColumnPropNameInRow="ProvinciasProvincias" msprop:Generator_ColumnPropNameInTable="ProvinciasProvinciasColumn" msprop:Generator_UserColumnName="ProvinciasProvincias" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="dtCorreo" msprop:Generator_TableClassName="dtCorreoDataTable" msprop:Generator_TableVarName="tabledtCorreo" msprop:Generator_TablePropName="dtCorreo" msprop:Generator_RowDeletingName="dtCorreoRowDeleting" msprop:Generator_RowChangingName="dtCorreoRowChanging" msprop:Generator_RowEvHandlerName="dtCorreoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtCorreoRowDeleted" msprop:Generator_UserTableName="dtCorreo" msprop:Generator_RowChangedName="dtCorreoRowChanged" msprop:Generator_RowEvArgName="dtCorreoRowChangeEvent" msprop:Generator_RowClassName="dtCorreoRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="CorreoNombreServidor" msprop:Generator_ColumnVarNameInTable="columnCorreoNombreServidor" msprop:Generator_ColumnPropNameInRow="CorreoNombreServidor" msprop:Generator_ColumnPropNameInTable="CorreoNombreServidorColumn" msprop:Generator_UserColumnName="CorreoNombreServidor" type="xs:string" minOccurs="0" />
-              <xs:element name="CorreoPuerto" msprop:Generator_ColumnVarNameInTable="columnCorreoPuerto" msprop:Generator_ColumnPropNameInRow="CorreoPuerto" msprop:Generator_ColumnPropNameInTable="CorreoPuertoColumn" msprop:Generator_UserColumnName="CorreoPuerto" type="xs:string" minOccurs="0" />
-              <xs:element name="CorreoTiempoLimite" msprop:Generator_ColumnVarNameInTable="columnCorreoTiempoLimite" msprop:Generator_ColumnPropNameInRow="CorreoTiempoLimite" msprop:Generator_ColumnPropNameInTable="CorreoTiempoLimiteColumn" msprop:Generator_UserColumnName="CorreoTiempoLimite" type="xs:string" minOccurs="0" />
-              <xs:element name="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDataColumn1" msprop:Generator_ColumnPropNameInRow="DataColumn1" msprop:Generator_ColumnPropNameInTable="DataColumn1Column" msprop:Generator_UserColumnName="DataColumn1" type="xs:string" minOccurs="0" />
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -171,13 +171,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsClientes.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DsCONFIGURACCION.cs">
-      <DependentUpon>DsCONFIGURACCION.xsd</DependentUpon>
+    <Compile Include="DsConfiguracion.cs">
+      <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DsCONFIGURACCION.Designer.cs">
+    <Compile Include="DsConfiguracion.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DsCONFIGURACCION.xsd</DependentUpon>
+      <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </Compile>
     <Compile Include="DsMulti2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -205,11 +205,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Dsfacturas.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FormARTICULOS.cs">
+    <Compile Include="FormAlmacenes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormARTICULOS.Designer.cs">
-      <DependentUpon>FormARTICULOS.cs</DependentUpon>
+    <Compile Include="FormAlmacenes.Designer.cs">
+      <DependentUpon>FormAlmacenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArticulos.Designer.cs">
+      <DependentUpon>FormArticulos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormBaseDatos.cs">
       <SubType>Form</SubType>
@@ -247,6 +253,12 @@
     <Compile Include="FormComfiguracion.Designer.cs">
       <DependentUpon>FormComfiguracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCrearCorreos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearCorreos.Designer.cs">
+      <DependentUpon>FormCrearCorreos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrearArchivos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,11 +271,41 @@
     <Compile Include="FormCrearBaseDatos.Designer.cs">
       <DependentUpon>FormCrearBaseDatos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFACTURAR.cs">
+    <Compile Include="FormCrearTablasDb.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFACTURAR.Designer.cs">
-      <DependentUpon>FormFACTURAR.cs</DependentUpon>
+    <Compile Include="FormCrearTablasDb.Designer.cs">
+      <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEjercicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEjercicios.Designer.cs">
+      <DependentUpon>FormEjercicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmpresas.Designer.cs">
+      <DependentUpon>FormEmpresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEnviarCorreos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEnviarCorreos.designer.cs">
+      <DependentUpon>FormEnviarCorreos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFacturar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFacturar.Designer.cs">
+      <DependentUpon>FormFacturar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFamiliaProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFamiliaProductos.Designer.cs">
+      <DependentUpon>FormFamiliaProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormImprimirTodo.cs">
       <SubType>Form</SubType>
@@ -283,6 +325,12 @@
     <Compile Include="FormMostrarReportes.Designer.cs">
       <DependentUpon>FormMostrarReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProveedores.Designer.cs">
+      <DependentUpon>FormProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVistaPreliminar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,8 +346,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CalculosDNICIF.cs" />
-    <EmbeddedResource Include="FormARTICULOS.resx">
-      <DependentUpon>FormARTICULOS.cs</DependentUpon>
+    <EmbeddedResource Include="FormAlmacenes.resx">
+      <DependentUpon>FormAlmacenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArticulos.resx">
+      <DependentUpon>FormArticulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBaseDatos.resx">
       <DependentUpon>FormBaseDatos.cs</DependentUpon>
@@ -319,14 +370,32 @@
     <EmbeddedResource Include="FormComfiguracion.resx">
       <DependentUpon>FormComfiguracion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearCorreos.resx">
+      <DependentUpon>FormCrearCorreos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCrearArchivos.resx">
       <DependentUpon>FormCrearArchivos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearBaseDatos.resx">
       <DependentUpon>FormCrearBaseDatos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormFACTURAR.resx">
-      <DependentUpon>FormFACTURAR.cs</DependentUpon>
+    <EmbeddedResource Include="FormCrearTablasDb.resx">
+      <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEjercicios.resx">
+      <DependentUpon>FormEjercicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmpresas.resx">
+      <DependentUpon>FormEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEnviarCorreos.resx">
+      <DependentUpon>FormEnviarCorreos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFacturar.resx">
+      <DependentUpon>FormFacturar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFamiliaProductos.resx">
+      <DependentUpon>FormFamiliaProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormImprimirTodo.resx">
       <DependentUpon>FormImprimirTodo.cs</DependentUpon>
@@ -336,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMostrarReportes.resx">
       <DependentUpon>FormMostrarReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProveedores.resx">
+      <DependentUpon>FormProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVistaPreliminar.resx">
       <DependentUpon>FormVistaPreliminar.cs</DependentUpon>
@@ -374,16 +446,16 @@
     <None Include="DsClientes.xss">
       <DependentUpon>DsClientes.xsd</DependentUpon>
     </None>
-    <None Include="DsCONFIGURACCION.xsc">
-      <DependentUpon>DsCONFIGURACCION.xsd</DependentUpon>
+    <None Include="DsConfiguracion.xsc">
+      <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </None>
-    <None Include="DsCONFIGURACCION.xsd">
+    <None Include="DsConfiguracion.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsCONFIGURACCION.Designer.cs</LastGenOutput>
+      <LastGenOutput>DsConfiguracion.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DsCONFIGURACCION.xss">
-      <DependentUpon>DsCONFIGURACCION.xsd</DependentUpon>
+    <None Include="DsConfiguracion.xss">
+      <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </None>
     <None Include="DsMulti2.xsc">
       <DependentUpon>DsMulti2.xsd</DependentUpon>
@@ -483,9 +555,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Articulos.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Datos\Configuracion.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -543,16 +612,12 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaCorreo\CapaCorreo.csproj">
-      <Project>{be410152-25ae-4d05-83e8-4b4a4d32b39c}</Project>
-      <Name>CapaCorreo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Comun\Comun.csproj">
-      <Project>{d12f74c5-178e-4355-998b-e62579194fc8}</Project>
+      <Project>{d3cb2ceb-1162-4e51-bcca-a7a6bdb43768}</Project>
       <Name>Comun</Name>
     </ProjectReference>
     <ProjectReference Include="..\Conexiones\Conexiones.csproj">
-      <Project>{e974efc7-93e1-4e55-baad-f70e29573433}</Project>
+      <Project>{40c5fcf0-eefc-4bca-9717-343e991f6005}</Project>
       <Name>Conexiones</Name>
     </ProjectReference>
   </ItemGroup>

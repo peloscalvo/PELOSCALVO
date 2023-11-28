@@ -42,7 +42,7 @@ namespace CapaCorreo
                     ClienteCorreo.Port = Convert.ToInt32(PuertoCorreo.Text);
                     ClienteCorreo.EnableSsl = ChekSSL.Checked;
                     ClienteCorreo.Credentials = login;
-                    MensageCorreo = new MailMessage { From = new MailAddress(UsuarioCorreo.Text + StmpCorreo.Text.Replace("smptp.", "@"), "lucy", Encoding.UTF8) };
+                    MensageCorreo = new MailMessage { From = new MailAddress(UsuarioCorreo.Text + StmpCorreo.Text.Replace("smptp.", "@"), UsuarioCorreo.Text, Encoding.UTF8) };
                     MensageCorreo.To.Add(new MailAddress(TxtNombreCliente.Text));
                     if (!string.IsNullOrEmpty(TxtCC.Text))
                     {

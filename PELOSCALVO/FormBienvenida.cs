@@ -12,6 +12,7 @@ namespace PELOSCALVO
         {
             InitializeComponent();
             FormBienvenida.menu2 = this;
+            this.TransparencyKey = this.BackColor;
         }
         private void login(object sender, FormClosedEventArgs e)
         {
@@ -21,7 +22,7 @@ namespace PELOSCALVO
         {
             this.TransparencyKey = this.BackColor;
             TimerStop.Start();
-
+           // LogoB.Parent = panel1;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -55,7 +56,7 @@ namespace PELOSCALVO
             try
             {
 
-                if (I >= 200)
+                if (I >= 50)
                 {
                     this.TimerStop.Stop();
                     //Hide();

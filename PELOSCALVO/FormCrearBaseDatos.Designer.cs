@@ -384,12 +384,11 @@ namespace PELOSCALVO
             this.SerieClientesTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieClientesTabla.FormattingEnabled = true;
             this.SerieClientesTabla.Items.AddRange(new object[] {
-            "Listado1",
-            "Listado2",
-            "Listado3",
-            "Listado4",
-            "Listado5",
-            "Listado6"});
+            "Listado De Clientes 1",
+            "Listado De Clientes 1",
+            "Listado De Clientes 1",
+            "Listado De Clientes 1",
+            "Listado De Clientes 1"});
             this.SerieClientesTabla.Location = new System.Drawing.Point(400, 157);
             this.SerieClientesTabla.Name = "SerieClientesTabla";
             this.SerieClientesTabla.Size = new System.Drawing.Size(230, 21);
@@ -419,12 +418,11 @@ namespace PELOSCALVO
             this.SerieArticulosTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieArticulosTabla.FormattingEnabled = true;
             this.SerieArticulosTabla.Items.AddRange(new object[] {
-            "Tarifa1",
-            "Tarifa2",
-            "Tarifa3",
-            "Tarifa4",
-            "Tarifa5",
-            "Tarifa6"});
+            "Tarifa De Articulos 1",
+            "Tarifa De Articulos 2",
+            "Tarifa De Articulos 3",
+            "Tarifa De Articulos 4",
+            "Tarifa De Articulos 5"});
             this.SerieArticulosTabla.Location = new System.Drawing.Point(400, 125);
             this.SerieArticulosTabla.Name = "SerieArticulosTabla";
             this.SerieArticulosTabla.Size = new System.Drawing.Size(230, 21);

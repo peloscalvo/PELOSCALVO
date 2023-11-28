@@ -1,7 +1,7 @@
 ﻿
 namespace PELOSCALVO
 {
-    partial class FormARTICULOS
+    partial class FormArticulos
     {
         /// <summary>
         /// Required designer variable.
@@ -63,7 +63,7 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormARTICULOS));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArticulos));
             this.dtPreciosDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -834,7 +834,6 @@ namespace PELOSCALVO
             this.tabPage2Articulo.TabIndex = 1;
             this.tabPage2Articulo.Text = "Datos";
             this.tabPage2Articulo.UseVisualStyleBackColor = true;
-            this.tabPage2Articulo.Click += new System.EventHandler(this.TabPage2_Click);
             // 
             // panelDesc1
             // 
@@ -1090,7 +1089,7 @@ namespace PELOSCALVO
             this.familiaComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.familiaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Familia", true));
             this.familiaComboBox.DataSource = this.dtFamiliaProductosBindingSource;
-            this.familiaComboBox.DisplayMember = "FamiliaProductos";
+            this.familiaComboBox.DisplayMember = "Familia";
             this.familiaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.familiaComboBox.Enabled = false;
             this.familiaComboBox.FormattingEnabled = true;
@@ -1491,7 +1490,7 @@ namespace PELOSCALVO
             this.CheckFamiliaArt.UseVisualStyleBackColor = true;
             this.CheckFamiliaArt.Click += new System.EventHandler(this.CheckFamiliaArt_Click);
             // 
-            // FormARTICULOS
+            // FormArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1509,7 +1508,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.dtPreciosDataGridView);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormARTICULOS";
+            this.Name = "FormArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ARTICULOS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
