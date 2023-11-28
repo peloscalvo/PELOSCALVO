@@ -38,6 +38,7 @@ namespace PELOSCALVO
             System.Windows.Forms.Label añoDeEjercicioLabel;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEjercicios));
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
@@ -363,7 +364,7 @@ namespace PELOSCALVO
             // 
             // IdConfi
             // 
-            this.IdConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "Id", true));
+            this.IdConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.IdConfi.Enabled = false;
             this.IdConfi.Location = new System.Drawing.Point(93, 308);
             this.IdConfi.MaxLength = 300;
@@ -404,14 +405,14 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn6,
             this.AñoDeEjercicio});
             this.dtConfiDataGridView.DataSource = this.dtConfiguracionPrincipalDtConfiBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtConfiDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtConfiDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtConfiDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtConfiDataGridView.Location = new System.Drawing.Point(0, 0);
             this.dtConfiDataGridView.Name = "dtConfiDataGridView";
@@ -424,6 +425,9 @@ namespace PELOSCALVO
             // Id
             // 
             this.Id.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle2;
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
@@ -552,11 +556,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox IdConfi;
         private System.Windows.Forms.TextBox añoDeEjercicioTextBox;
         private System.Windows.Forms.DataGridView dtConfiDataGridView;
+        private System.Windows.Forms.ComboBox CambiarDeEmpresa1;
+        private System.Windows.Forms.Button BtnSalirEjerc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn AñoDeEjercicio;
-        private System.Windows.Forms.ComboBox CambiarDeEmpresa1;
-        private System.Windows.Forms.Button BtnSalirEjerc;
     }
 }

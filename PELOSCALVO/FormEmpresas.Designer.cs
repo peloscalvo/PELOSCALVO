@@ -460,7 +460,7 @@ namespace PELOSCALVO
             // 
             // idEmpresa
             // 
-            this.idEmpresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true));
+            this.idEmpresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.idEmpresa.Enabled = false;
             this.idEmpresa.Location = new System.Drawing.Point(92, 251);
             this.idEmpresa.MaxLength = 300;

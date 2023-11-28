@@ -35,6 +35,7 @@ namespace PELOSCALVO
             System.Windows.Forms.Label almacenesLabel;
             System.Windows.Forms.Label enlace_AlmacenesLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlmacenes));
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -154,6 +155,7 @@ namespace PELOSCALVO
             this.panelAlmacenes.Name = "panelAlmacenes";
             this.panelAlmacenes.Size = new System.Drawing.Size(478, 178);
             this.panelAlmacenes.TabIndex = 62;
+            this.panelAlmacenes.Tag = "NO";
             // 
             // Enlace_almacen
             // 
@@ -166,10 +168,11 @@ namespace PELOSCALVO
             // 
             // id_almacenes
             // 
+            this.id_almacenes.AutoSize = true;
             this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id_almacenes", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "N0"));
             this.id_almacenes.Location = new System.Drawing.Point(74, 14);
             this.id_almacenes.Name = "id_almacenes";
-            this.id_almacenes.Size = new System.Drawing.Size(100, 23);
+            this.id_almacenes.Size = new System.Drawing.Size(13, 13);
             this.id_almacenes.TabIndex = 58;
             this.id_almacenes.Text = "0";
             this.id_almacenes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -313,14 +316,14 @@ namespace PELOSCALVO
             this.almacenesDataGridViewTextBoxColumn,
             this.Enlace_Almacenes});
             this.dataGridAlmacenes.DataSource = this.dtAlmacenesBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridAlmacenes.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridAlmacenes.Enabled = false;
             this.dataGridAlmacenes.Location = new System.Drawing.Point(0, 0);
@@ -337,13 +340,16 @@ namespace PELOSCALVO
             this.idalmacenesDataGridViewTextBoxColumn.DataPropertyName = "Id_almacenes";
             this.idalmacenesDataGridViewTextBoxColumn.FillWeight = 90.06917F;
             this.idalmacenesDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idalmacenesDataGridViewTextBoxColumn.MaxInputLength = 3000;
+            this.idalmacenesDataGridViewTextBoxColumn.MaxInputLength = 0;
             this.idalmacenesDataGridViewTextBoxColumn.Name = "idalmacenesDataGridViewTextBoxColumn";
             this.idalmacenesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // almacenesDataGridViewTextBoxColumn
             // 
             this.almacenesDataGridViewTextBoxColumn.DataPropertyName = "Almacenes";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.almacenesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.almacenesDataGridViewTextBoxColumn.FillWeight = 306.934F;
             this.almacenesDataGridViewTextBoxColumn.HeaderText = "Almacenes";
             this.almacenesDataGridViewTextBoxColumn.MaxInputLength = 80;
@@ -474,11 +480,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox almacenesTextBox;
         private System.Windows.Forms.ComboBox SelecionarEmpresa2;
         private System.Windows.Forms.DataGridView dataGridAlmacenes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idalmacenesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn almacenesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Enlace_Almacenes;
         private System.Windows.Forms.Button BtnCancelarAlmacen;
         public System.Windows.Forms.Button BtnGuardarAlmacen;
         private System.Windows.Forms.Button BtnSalirAlmacen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idalmacenesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn almacenesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Enlace_Almacenes;
     }
 }

@@ -152,7 +152,6 @@ namespace PELOSCALVO
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
                     this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
-                    this.dtFamiliaProductosBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
                 }
             }
             catch (Exception ex)
@@ -160,7 +159,6 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
-            this.tabFAMILIAproductos.Parent = null;
             this.tabPageTarifa.Parent = null;
             this.tabPageInicio.Parent = null;
             this.tabPagePaises.Parent = null;
@@ -213,21 +211,7 @@ namespace PELOSCALVO
             FormMenuPrincipal.menu2principal.panelSUBventas.Visible = false;
         }
 
-        private void btnGuardarFAMILIA_Click(object sender, EventArgs e)
-        {
-            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
-            {
 
-                if (File.Exists(ClasDatos.RutaMultidatos))
-                {
-                    this.dtFamiliaProductosBindingSource.EndEdit();
-                    Validate();
-                    FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
-
-                }
-                this.DataGridFamilias.Refresh();
-            }
-        }
 
         private void BtnNuevoTipoTarifa_Click(object sender, EventArgs e)
         {
@@ -493,16 +477,7 @@ namespace PELOSCALVO
 
         }
 
-        private void BtnVolverFamilia_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-            this.tabFAMILIAproductos.Parent = null;
-        }
 
-        private void BtnVolverEmpresas_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-        }
 
         private void BtnVolverBasica_Click(object sender, EventArgs e)
         {
@@ -541,59 +516,8 @@ namespace PELOSCALVO
 
         }
 
-        private void BtnGuardarFamilias_Click(object sender, EventArgs e)
-        {
 
-            if (File.Exists(ClasDatos.RutaMultidatos))
-            {
-                Validate();
-                this.dtFamiliaProductosBindingSource.EndEdit();
-                this.DataGridFamilias.EndEdit();
-                FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
-                MessageBox.Show("Se Actualizo Con Exito", "FAMILIAS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("No Se Guardo", "FALTAN ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void DataGridFamilias_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            int II = 0;
-            int FILAbusc = this.DataGridFamilias.CurrentCell.RowIndex;
-            foreach (DataGridViewRow CeldaF in this.DataGridFamilias.Rows)
-            {
-                if (CeldaF.Cells[0].Value != null)
-                {
-                    if (FILAbusc != II)
-                    {
-                        if (CeldaF.Cells[0].Value.ToString() == this.DataGridFamilias.Rows[FILAbusc].Cells[0].Value.ToString())
-
-                        {
-                            // DataGridFamilias.CurrentCell.Selected = true;
-                            this.DataGridFamilias.BeginEdit(true);
-                            MessageBox.Show("Articulo Repetido", "EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                            break;
-                        }
-                        else
-                        {
-
-                            this.DataGridFamilias.Refresh();
-                        }
-
-                        II++;
-                    }
-
-
-                }
-
-            }
-            //DataGridFamilias.BeginEdit(false);
-        } 
-  
-
+ 
 
         private void tabMENU_Click(object sender, EventArgs e)
         {
@@ -818,7 +742,6 @@ namespace PELOSCALVO
 
         private void familiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.tabControlTodo.TabPages.Insert(1, this.tabFAMILIAproductos);
             this.tabMENU.Parent = null;
         }
 
@@ -1194,45 +1117,6 @@ namespace PELOSCALVO
             }
         }
 
-        private void DataGridFamilias_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-
-                string provi = "Familia";
-                if (this.DataGridFamilias.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
-                {
-                    provi = this.DataGridFamilias.Rows[e.RowIndex].Cells[0].Value.ToString();
-                }
-                if (e.ColumnIndex == 1)
-                {
-
-                    this.DataGridFamilias.CurrentCell = this.DataGridFamilias.Rows[e.RowIndex].Cells[0];
-                    this.DataGridFamilias.BeginEdit(true);
-                }
-                if (e.ColumnIndex == 2)
-                {
-                    if (e.RowIndex < this.DataGridFamilias.RowCount - 1)
-                    {
-
-
-                        if (MessageBox.Show("Desea Eliminar Familia Producto ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        {
-
-                            if (File.Exists(ClasDatos.RutaMultidatos))
-                            {
-                                this.dtFamiliaProductosBindingSource.EndEdit();
-                                this.DataGridFamilias.Rows.Remove(this.DataGridFamilias.CurrentRow);
-                                FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
-                            }
-                            MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
-                            this.DataGridFamilias.Refresh();
-                        }
-                    }
-                }
-            }
-        }
-
         private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -1256,11 +1140,6 @@ namespace PELOSCALVO
             this.tabControlTodo.TabPages.Insert(1, this.tabPageTarifa);
             this.tabMENU.Parent = null;
 
-        }
-
-        private void DataGridFamilias_Validated(object sender, EventArgs e)
-        {
-            this.DataGridFamilias.Sort(this.DataGridFamilias.Columns[0], ListSortDirection.Ascending);
         }
 
         private void dataGridProvincias_Validated(object sender, EventArgs e)

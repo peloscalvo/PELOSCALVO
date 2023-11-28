@@ -188,7 +188,7 @@ namespace PELOSCALVO
                     Validate();
                     this.dtAlmacenesBindingSource.EndEdit();
                     this.dataGridAlmacenes.EndEdit();
-                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR ALMACEN ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetos_Alm();
                 }
             }
