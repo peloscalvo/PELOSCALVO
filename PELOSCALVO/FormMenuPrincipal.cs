@@ -785,13 +785,14 @@ namespace PELOSCALVO
         {
             try
             {
-                this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
-                this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
-                this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
-                this.TimerCerrarPanel.Start();
-                this.PanelInfo_P.Visible = true;
+         
                 if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
+                    this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
+                    this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
+                    this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
+                    this.TimerCerrarPanel.Start();
+                    this.PanelInfo_P.Visible = true;
                     this.PanelInfo_P.Tag = "CERRAR";
                 }
                 else
@@ -822,6 +823,42 @@ namespace PELOSCALVO
             FormFamiliaProductos frm = new FormFamiliaProductos();
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
+            frm.BringToFront();
+        }
+
+        private void PanelInfo_P_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
+                {
+                    this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
+                    this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
+                    this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
+                    this.TimerCerrarPanel.Start();
+                    this.PanelInfo_P.Visible = true;
+                    this.PanelInfo_P.Tag = "CERRAR";
+                }
+                else
+                {
+                    this.PanelInfo_P.Tag = "ABRIR";
+                }
+            }
+            catch (Exception)
+            {
+
+                // throw;
+            }
+
+
+        }
+
+        private void paisesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.panelAplicaciones.Visible = false;
+            FormPaises frm = new FormPaises();
+            frm.ShowDialog();
             frm.BringToFront();
         }
 

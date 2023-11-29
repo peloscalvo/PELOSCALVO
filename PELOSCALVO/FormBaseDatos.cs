@@ -128,6 +128,7 @@ namespace PELOSCALVO
             string ConsultaOBRA = "SELECT * from [DtObras]";
             string ConsultaProvincia = "SELECT * from [DtProvincias]";
             string ConsultaPais = "SELECT * from [DtPaises]";
+            string ConsultaFamilia = "SELECT * from [DtFamiliaProductos]";
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             NuevaConexion = new ClsConexionDb(consulta);
 
@@ -152,6 +153,8 @@ namespace PELOSCALVO
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias);
                     AdactaPelos = new OleDbDataAdapter(ConsultaPais, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtPaises);
+                    AdactaPelos = new OleDbDataAdapter(ConsultaFamilia, ClsConexionDb.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMultidatos.DtFamiliaProductos);
                     AdactaPelos.Dispose();
 
                     this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
@@ -175,10 +178,14 @@ namespace PELOSCALVO
         {
 
             string consulta = "SELECT * from [DtConfiguracionPrincipal]  ";
-            string consulta2 = "SELECT * from [DtConfi]";
-            string consulta3 = "SELECT * from[DtTarifaTipo]";
             string ConsultaAlmacenes = "SELECT * from [DtAlmacenes]";
             string ConsultaProveedores = "SELECT * from [DtProveedores]";
+            string consultaConfi = "SELECT * from [DtConfi]";
+            string consultaTarifa = "SELECT * from[DtTarifaTipo]";
+            string ConsultaOBRA = "SELECT * from [DtObras]";
+            string ConsultaProvincia = "SELECT * from [DtProvincias]";
+            string ConsultaPais = "SELECT * from [DtPaises]";
+            string ConsultaFamilia = "SELECT * from [DtFamiliaProductos]";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             NuevaConexion = new ClsConexionSql(consulta);
 
@@ -189,14 +196,22 @@ namespace PELOSCALVO
 
                     SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal);
-                    AdactaPelos = new SqlDataAdapter(consulta2, ClsConexionSql.CadenaConexion);
+                    AdactaPelos = new SqlDataAdapter(consultaConfi, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi);
-                    AdactaPelos = new SqlDataAdapter(consulta3, ClsConexionSql.CadenaConexion);
+                    AdactaPelos = new SqlDataAdapter(consultaTarifa, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo);
                     AdactaPelos = new SqlDataAdapter(ConsultaAlmacenes, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes);
                     AdactaPelos = new SqlDataAdapter(ConsultaProveedores, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores);
+                    AdactaPelos = new SqlDataAdapter(ConsultaProvincia, ClsConexionSql.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias);
+                    AdactaPelos = new SqlDataAdapter(ConsultaPais, ClsConexionSql.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtPaises);
+                    AdactaPelos = new SqlDataAdapter(ConsultaFamilia, ClsConexionSql.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMultidatos.DtFamiliaProductos);
+                    AdactaPelos = new SqlDataAdapter(ConsultaOBRA, ClsConexionSql.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtObras);
                     AdactaPelos.Dispose();
 
                     this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();

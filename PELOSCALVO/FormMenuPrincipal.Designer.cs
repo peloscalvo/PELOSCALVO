@@ -52,15 +52,15 @@ namespace PELOSCALVO
             this.PanelAcesosDire = new System.Windows.Forms.Panel();
             this.PanelInfo_P = new System.Windows.Forms.Panel();
             this.Panel_info2 = new System.Windows.Forms.Panel();
-            this.InfoCarpeta = new System.Windows.Forms.Label();
-            this.InfoBaseDatos = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.InfoExtension = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.InfoCarpeta = new System.Windows.Forms.Label();
+            this.InfoClientes = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.InfoBaseDatos = new System.Windows.Forms.Label();
             this.InfoArticulo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.InfoClientes = new System.Windows.Forms.Label();
-            this.InfoExtension = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.ContadorFactu = new System.Windows.Forms.Label();
@@ -93,6 +93,7 @@ namespace PELOSCALVO
             this.verDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolFamilia = new System.Windows.Forms.ToolStripMenuItem();
             this.familiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -158,7 +159,6 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedorPrincipal.SuspendLayout();
             this.panelContenedorForm.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
@@ -166,7 +166,6 @@ namespace PELOSCALVO
             this.PanelAcesosDire.SuspendLayout();
             this.PanelInfo_P.SuspendLayout();
             this.Panel_info2.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -473,7 +472,6 @@ namespace PELOSCALVO
             this.PanelAcesosDire.BackColor = System.Drawing.SystemColors.MenuBar;
             this.PanelAcesosDire.Controls.Add(this.PanelInfo_P);
             this.PanelAcesosDire.Controls.Add(this.menuStrip);
-            this.PanelAcesosDire.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelAcesosDire.Location = new System.Drawing.Point(0, 0);
             this.PanelAcesosDire.Name = "PanelAcesosDire";
             this.PanelAcesosDire.Size = new System.Drawing.Size(866, 528);
@@ -486,26 +484,72 @@ namespace PELOSCALVO
             this.PanelInfo_P.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PanelInfo_P.Controls.Add(this.Panel_info2);
             this.PanelInfo_P.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PanelInfo_P.Location = new System.Drawing.Point(1, 60);
+            this.PanelInfo_P.Location = new System.Drawing.Point(0, 51);
             this.PanelInfo_P.Name = "PanelInfo_P";
-            this.PanelInfo_P.Size = new System.Drawing.Size(865, 181);
+            this.PanelInfo_P.Size = new System.Drawing.Size(865, 279);
             this.PanelInfo_P.TabIndex = 2;
-            this.PanelInfo_P.Tag = "stop";
+            this.PanelInfo_P.Tag = "ABRIR";
             this.PanelInfo_P.Visible = false;
+            this.PanelInfo_P.MouseLeave += new System.EventHandler(this.PanelInfo_P_MouseLeave);
             // 
             // Panel_info2
             // 
             this.Panel_info2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.Panel_info2.Controls.Add(this.label4);
+            this.Panel_info2.Controls.Add(this.InfoExtension);
+            this.Panel_info2.Controls.Add(this.label3);
             this.Panel_info2.Controls.Add(this.InfoCarpeta);
+            this.Panel_info2.Controls.Add(this.InfoClientes);
+            this.Panel_info2.Controls.Add(this.label2);
             this.Panel_info2.Controls.Add(this.InfoBaseDatos);
-            this.Panel_info2.Controls.Add(this.panel6);
+            this.Panel_info2.Controls.Add(this.InfoArticulo);
+            this.Panel_info2.Controls.Add(this.label1);
             this.Panel_info2.Controls.Add(this.panel7);
             this.Panel_info2.Cursor = System.Windows.Forms.Cursors.No;
-            this.Panel_info2.Location = new System.Drawing.Point(10, 3);
+            this.Panel_info2.Location = new System.Drawing.Point(8, 8);
             this.Panel_info2.Name = "Panel_info2";
-            this.Panel_info2.Size = new System.Drawing.Size(841, 164);
+            this.Panel_info2.Size = new System.Drawing.Size(845, 256);
             this.Panel_info2.TabIndex = 3;
             this.Panel_info2.Tag = "stop";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(110, 213);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 23);
+            this.label4.TabIndex = 95;
+            this.label4.Text = "Archivo:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // InfoExtension
+            // 
+            this.InfoExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoExtension.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoExtension.Location = new System.Drawing.Point(668, 140);
+            this.InfoExtension.Name = "InfoExtension";
+            this.InfoExtension.Size = new System.Drawing.Size(110, 23);
+            this.InfoExtension.TabIndex = 2;
+            this.InfoExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(564, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 23);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Extension:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // InfoCarpeta
             // 
@@ -518,48 +562,15 @@ namespace PELOSCALVO
             this.InfoCarpeta.TabIndex = 94;
             this.InfoCarpeta.Tag = "";
             // 
-            // InfoBaseDatos
+            // InfoClientes
             // 
-            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoBaseDatos.Location = new System.Drawing.Point(458, 17);
-            this.InfoBaseDatos.Name = "InfoBaseDatos";
-            this.InfoBaseDatos.Size = new System.Drawing.Size(341, 23);
-            this.InfoBaseDatos.TabIndex = 93;
-            this.InfoBaseDatos.Tag = "stop";
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.label2);
-            this.panel6.Controls.Add(this.InfoArticulo);
-            this.panel6.Controls.Add(this.label1);
-            this.panel6.Controls.Add(this.InfoClientes);
-            this.panel6.Controls.Add(this.InfoExtension);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 92);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(841, 72);
-            this.panel6.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(743, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 23);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Extension";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.InfoClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoClientes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoClientes.Location = new System.Drawing.Point(206, 184);
+            this.InfoClientes.Name = "InfoClientes";
+            this.InfoClientes.Size = new System.Drawing.Size(316, 23);
+            this.InfoClientes.TabIndex = 1;
             // 
             // label2
             // 
@@ -568,22 +579,33 @@ namespace PELOSCALVO
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(441, 17);
+            this.label2.Location = new System.Drawing.Point(35, 181);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(174, 23);
+            this.label2.Size = new System.Drawing.Size(161, 23);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Nombre Tarifa Clientes";
+            this.label2.Text = "Nombre Tarifa Clientes:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // InfoBaseDatos
+            // 
+            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoBaseDatos.Location = new System.Drawing.Point(189, 215);
+            this.InfoBaseDatos.Name = "InfoBaseDatos";
+            this.InfoBaseDatos.Size = new System.Drawing.Size(632, 23);
+            this.InfoBaseDatos.TabIndex = 93;
+            this.InfoBaseDatos.Tag = "stop";
             // 
             // InfoArticulo
             // 
             this.InfoArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoArticulo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoArticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InfoArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InfoArticulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoArticulo.Location = new System.Drawing.Point(7, 43);
+            this.InfoArticulo.Location = new System.Drawing.Point(206, 138);
             this.InfoArticulo.Name = "InfoArticulo";
             this.InfoArticulo.Size = new System.Drawing.Size(341, 23);
             this.InfoArticulo.TabIndex = 0;
@@ -596,39 +618,12 @@ namespace PELOSCALVO
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(76, 17);
+            this.label1.Location = new System.Drawing.Point(24, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 23);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Nombre Tarifa de Articulos";
+            this.label1.Text = "Nombre Tarifa de Articulos:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // InfoClientes
-            // 
-            this.InfoClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoClientes.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoClientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoClientes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoClientes.Location = new System.Drawing.Point(384, 43);
-            this.InfoClientes.Name = "InfoClientes";
-            this.InfoClientes.Size = new System.Drawing.Size(316, 23);
-            this.InfoClientes.TabIndex = 1;
-            // 
-            // InfoExtension
-            // 
-            this.InfoExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoExtension.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoExtension.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoExtension.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoExtension.Location = new System.Drawing.Point(724, 43);
-            this.InfoExtension.Name = "InfoExtension";
-            this.InfoExtension.Size = new System.Drawing.Size(110, 23);
-            this.InfoExtension.TabIndex = 2;
-            this.InfoExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel7
             // 
@@ -639,7 +634,7 @@ namespace PELOSCALVO
             this.panel7.Controls.Add(this.label7);
             this.panel7.Controls.Add(this.RegistLbel);
             this.panel7.Controls.Add(this.ContadorClientes);
-            this.panel7.Location = new System.Drawing.Point(1, 1);
+            this.panel7.Location = new System.Drawing.Point(27, 20);
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(396, 85);
@@ -650,7 +645,7 @@ namespace PELOSCALVO
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(4, 4);
+            this.label8.Location = new System.Drawing.Point(7, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(187, 20);
             this.label8.TabIndex = 87;
@@ -906,9 +901,15 @@ namespace PELOSCALVO
             // familiasToolStripMenuItem
             // 
             this.familiasToolStripMenuItem.Name = "familiasToolStripMenuItem";
-            this.familiasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.familiasToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.familiasToolStripMenuItem.Text = "&Abrir";
             this.familiasToolStripMenuItem.Click += new System.EventHandler(this.familiasToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(121, 22);
+            this.toolStripMenuItem2.Text = "&Consulta";
             // 
             // ayudaToolStripMenuItem
             // 
@@ -993,13 +994,14 @@ namespace PELOSCALVO
             // paisesToolStripMenuItem
             // 
             this.paisesToolStripMenuItem.Name = "paisesToolStripMenuItem";
-            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.paisesToolStripMenuItem.Text = "&Paises";
+            this.paisesToolStripMenuItem.Click += new System.EventHandler(this.paisesToolStripMenuItem_Click);
             // 
             // provinciasToolStripMenuItem2
             // 
             this.provinciasToolStripMenuItem2.Name = "provinciasToolStripMenuItem2";
-            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(128, 22);
+            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.provinciasToolStripMenuItem2.Text = "&Provincias";
             // 
             // panel1
@@ -1657,12 +1659,6 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem2.Text = "&Consulta";
-            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1688,7 +1684,6 @@ namespace PELOSCALVO
             this.PanelInfo_P.ResumeLayout(false);
             this.Panel_info2.ResumeLayout(false);
             this.Panel_info2.PerformLayout();
-            this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.menuStrip.ResumeLayout(false);
@@ -1786,7 +1781,6 @@ namespace PELOSCALVO
         public System.Windows.Forms.Panel PanelInfo_P;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button BtnInfo;
-        public System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -1849,6 +1843,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.Label label4;
     }
 }
 
