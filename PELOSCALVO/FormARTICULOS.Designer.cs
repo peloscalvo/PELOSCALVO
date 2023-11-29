@@ -1466,12 +1466,12 @@ namespace PELOSCALVO
             this.FiltrarFamiliaArt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.FiltrarFamiliaArt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Familia", true));
             this.FiltrarFamiliaArt.DataSource = this.dtFamiliaProductosBindingSource;
-            this.FiltrarFamiliaArt.DisplayMember = "FamiliaProductos";
+            this.FiltrarFamiliaArt.DisplayMember = "Familia";
             this.FiltrarFamiliaArt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FiltrarFamiliaArt.FormattingEnabled = true;
             this.FiltrarFamiliaArt.Location = new System.Drawing.Point(130, 4);
             this.FiltrarFamiliaArt.Name = "FiltrarFamiliaArt";
-            this.FiltrarFamiliaArt.Size = new System.Drawing.Size(264, 21);
+            this.FiltrarFamiliaArt.Size = new System.Drawing.Size(395, 21);
             this.FiltrarFamiliaArt.TabIndex = 47;
             this.FiltrarFamiliaArt.Visible = false;
             this.FiltrarFamiliaArt.SelectedIndexChanged += new System.EventHandler(this.FiltrarFamiliaArt_SelectedIndexChanged);

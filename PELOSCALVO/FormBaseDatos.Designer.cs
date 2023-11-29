@@ -55,9 +55,6 @@ namespace PELOSCALVO
             this.TabArchivos = new System.Windows.Forms.TabPage();
             this.BtnLeerSql = new System.Windows.Forms.Button();
             this.BtnLeer = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.BtnTablas = new System.Windows.Forms.Button();
             this.Info_Res = new System.Windows.Forms.Label();
             this.BtnRestablecer = new System.Windows.Forms.Button();
             this.BtnCrearTbCliente = new System.Windows.Forms.Button();
@@ -112,7 +109,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             this.TabArchivos.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.TabServidor.SuspendLayout();
             this.panelSql1.SuspendLayout();
@@ -312,7 +308,6 @@ namespace PELOSCALVO
             this.TabArchivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.TabArchivos.Controls.Add(this.BtnLeerSql);
             this.TabArchivos.Controls.Add(this.BtnLeer);
-            this.TabArchivos.Controls.Add(this.panel3);
             this.TabArchivos.Controls.Add(this.Info_Res);
             this.TabArchivos.Controls.Add(this.BtnRestablecer);
             this.TabArchivos.Controls.Add(this.BtnCrearTbCliente);
@@ -358,35 +353,6 @@ namespace PELOSCALVO
             this.BtnLeer.Text = "&Leer";
             this.BtnLeer.UseVisualStyleBackColor = true;
             this.BtnLeer.Click += new System.EventHandler(this.BtnLeer_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.BtnTablas);
-            this.panel3.Location = new System.Drawing.Point(626, 19);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(172, 90);
-            this.panel3.TabIndex = 99;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 13);
-            this.label9.TabIndex = 94;
-            this.label9.Text = "Crear Todas Las Tablas";
-            // 
-            // BtnTablas
-            // 
-            this.BtnTablas.Location = new System.Drawing.Point(41, 49);
-            this.BtnTablas.Name = "BtnTablas";
-            this.BtnTablas.Size = new System.Drawing.Size(75, 23);
-            this.BtnTablas.TabIndex = 87;
-            this.BtnTablas.Text = "Tablas";
-            this.BtnTablas.UseVisualStyleBackColor = true;
-            this.BtnTablas.Click += new System.EventHandler(this.BtnTablas_Click);
             // 
             // Info_Res
             // 
@@ -851,8 +817,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             this.TabArchivos.ResumeLayout(false);
             this.TabArchivos.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.TabServidor.ResumeLayout(false);
@@ -912,9 +876,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCrearTbCliente;
         private System.Windows.Forms.Button BtnRestablecer;
         private System.Windows.Forms.Label Info_Res;
-        private System.Windows.Forms.Button BtnTablas;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button BtnLeer;
         private System.Windows.Forms.Button BtnLeerSql;
     }

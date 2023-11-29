@@ -85,11 +85,10 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFacturar));
             this.dtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsfacturas = new PELOSCALVO.Dtfacturas();
+            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.NombreEmpresaConfi = new System.Windows.Forms.Label();
             this.SerieText = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -230,10 +229,9 @@ namespace PELOSCALVO
             nombreEmpresaReguistroLabel = new System.Windows.Forms.Label();
             Label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtNuevaFacturaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsfacturas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             this.PanelArriba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).BeginInit();
@@ -569,12 +567,12 @@ namespace PELOSCALVO
             // dtNuevaFacturaBindingSource
             // 
             this.dtNuevaFacturaBindingSource.DataMember = "DtNuevaFactura";
-            this.dtNuevaFacturaBindingSource.DataSource = this.dsfacturas;
+            this.dtNuevaFacturaBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
-            // dsfacturas
+            // dsCONFIGURACCION
             // 
-            this.dsfacturas.DataSetName = "Dtfacturas";
-            this.dsfacturas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
+            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // PanelArriba
             // 
@@ -616,11 +614,6 @@ namespace PELOSCALVO
             // 
             this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
             this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
-            // 
-            // dsCONFIGURACCION
-            // 
-            this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
-            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // NombreEmpresaConfi
             // 
@@ -2049,11 +2042,10 @@ namespace PELOSCALVO
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormFACTURAR_FormClosing);
             this.Load += new System.EventHandler(this.FormFACTURAR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtNuevaFacturaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsfacturas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             this.PanelArriba.ResumeLayout(false);
             this.PanelArriba.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).EndInit();
@@ -2132,7 +2124,6 @@ namespace PELOSCALVO
         public System.Windows.Forms.BindingSource dtNuevaFacturaBindingSource;
         public System.Windows.Forms.DataGridView dtNuevaFacturaDataGridView;
         public System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
-        public Dtfacturas dsfacturas;
         private System.Windows.Forms.TabPage tabPage4Factura;
         public System.Windows.Forms.DataGridView dtDetallesFacturaDataGridView2;
         private System.Windows.Forms.Panel panelTotales;

@@ -832,12 +832,12 @@ namespace PELOSCALVO
                     int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
                     if (this.cobradaFacturaCheckBox.Checked == true)
                     {
-                        this.dsfacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                        this.dsCONFIGURACCION.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
                     }
                     else
                     {
                         this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                        this.dsfacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+                        this.dsCONFIGURACCION.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
                     }
 
                     if (ClsConexionSql.SibaseDatosSql)
@@ -1031,16 +1031,16 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        this.dsfacturas.Clear();
+                        this.dsCONFIGURACCION.DtNuevaFactura.Clear();
                         SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
-                        AdactaPelos.Fill(this.dsfacturas.DtNuevaFactura);
+                        AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
                         AdactaPelos = new SqlDataAdapter(consultaDetalle, ClsConexionSql.CadenaConexion);
-                        AdactaPelos.Fill(this.dsfacturas.DtDetallesFactura);
+                        AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
                     
                         if (ClasDatos.NombreFactura == "Nota2")
                         {
                             AdactaPelos = new SqlDataAdapter(consultaDetalle2, ClsConexionSql.CadenaConexion);
-                            AdactaPelos.Fill(this.dsfacturas.DtDetallesFactura2);
+                            AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura2);
                         }
                         AdactaPelos.Dispose();
                     }
@@ -1243,15 +1243,15 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            this.dsfacturas.Clear();
+                            this.dsCONFIGURACCION.DtNuevaFactura.Clear();
                             OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
-                            AdactaPelos.Fill(this.dsfacturas.DtNuevaFactura);
+                            AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
                             AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
-                            AdactaPelos.Fill(this.dsfacturas.DtDetallesFactura);
+                            AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
                             if (ClasDatos.NombreFactura == "Nota2")
                             {
                                 AdactaPelos = new OleDbDataAdapter(consultaDetalle2, ClsConexionDb.CadenaConexion);
-                                AdactaPelos.Fill(this.dsfacturas.DtDetallesFactura2);
+                                AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura2);
                             }
                        
                             AdactaPelos.Dispose();
@@ -1297,7 +1297,7 @@ namespace PELOSCALVO
         {
             if (this.PanelArriba.Tag.ToString() == "SI")
             {
-                this.dsfacturas.Clear();
+                this.dsCONFIGURACCION.DtNuevaFactura.Clear();
                 if (this.NombreEmpresaConfi.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
                 {
                     try
@@ -1938,11 +1938,7 @@ namespace PELOSCALVO
 
         private void BtnEnviarMailFactura_Click(object sender, EventArgs e)
         {
-            // int I = 5;
-            // MessageBox.Show(dtDetallesFacturaDataGridView.Rows[I].Cells[7].FormattedValue.ToString());
-            MessageBox.Show(this.dtDetallesFacturaBindingSource.ToString());
-            MessageBox.Show(this.dsfacturas.DtDetallesFactura.Rows[4][0].ToString());
-            MessageBox.Show(this.dtDetallesFacturaBindingSource.DataMember.ToString());
+       
         }
 
 

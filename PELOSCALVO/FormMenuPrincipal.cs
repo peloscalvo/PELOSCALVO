@@ -729,6 +729,7 @@ namespace PELOSCALVO
         {
             try
             {
+                PanelAcesosDire.Visible = false;
                 Process.Start("https://www.google.es/");
             }
             catch (Exception)
@@ -815,8 +816,18 @@ namespace PELOSCALVO
             frm.BringToFront();
         }
 
+        private void familiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PanelAcesosDire.Visible = false;
+            FormFamiliaProductos frm = new FormFamiliaProductos();
+            this.panelContenedorForm.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
         private void BtnSql_Click(object sender, EventArgs e)
         {
+            PanelAcesosDire.Visible = false;
             if (this.SiOpenFatu == 0 & this.SiOpenArti == 0 & this.SiOpenClie == 0 & this.SiOpenConfi == 0)
             {
                 this.panelAplicaciones.Visible = false;

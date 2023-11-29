@@ -77,31 +77,31 @@ namespace PELOSCALVO
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                    string TablaCliente = this.ClientesTxt.Text;
+                    string TablaCliente = this.ArticulosTxt.Text;
                     string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                    string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal] ([IdEmpresa] INTEGER , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
+                    string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal] ([NombreEmpresaReguistro] varchar primary key ,[IdEmpresa] INTEGER , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
                     "[DireccionEmpresa] varchar  ,[LocalidadEmpresa] varchar  ,[CodigoPostalEmpresa] varchar  ,[ProvinciaEmpresa] varchar ," +
                   "[TelefonoEmpresa] varchar  ,[CorreoEmpresa] varchar  ,[WepEmpresa] varchar  ,[RegimenIvaEmpresa] varchar  ," +
                 " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
-                " [CifEmpresa] varchar  ,[NombreEmpresaReguistro] varchar primary key ,[ImagenEmpresa] IMAGE ) ";
+                " [CifEmpresa] varchar   ,[ImagenEmpresa] IMAGE ) ";
 
                     string TablaDtconfi = "CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                         "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar  ," +
                            " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([IdTarifa] INTEGER , [TarifaTipo] varchar, [EnlaceTarifa] varchar ," +
-                        "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+                        "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY (EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
 
                     string ConsultaAlmacen = "CREATE TABLE [DtAlmacenes]( [Id_almacenes] INTEGER ,[Almacenes] varchar,[Enlace_Almacenes] varchar , " +
-                       " CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+                       " CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY (Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                     string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER,[Proveedores] varchar ,[Enlace_Proveedores] varchar, " +
-                      " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+                      " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                     string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER, [FamiliaProductos] varchar)";
                     string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER,[PaisesPaises] varchar)";
@@ -169,7 +169,7 @@ namespace PELOSCALVO
                         }
                         if (i == 3)
                         {
-                            TipoNota = "DtNota2";
+                            //TipoNota = "DtNota2";
                             Tabladetalle = "DtDetalles2_Nota2";
                         }
                         if (i == 4)
@@ -188,16 +188,21 @@ namespace PELOSCALVO
                             Tabladetalle = "DtDetalles_Fatura";
                         }
                         valor = r.Next(10, 900000);
-                        ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
-                       "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
-                          "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
-                        "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
-                      "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-                        "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar)";
+                        if (i != 3)
+                        {
+                            ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+                         "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
+                          "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] DATETIME," +
+                         "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
+                         "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
+                        "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar," +
+                        "CONSTRAINT F_Dt" + TipoNota + valor.ToString() + " FOREIGN KEY (EmpresaEnlace)REFERENCES DtConfi(EmpresaENLACE) ON UPDATE CASCADE ON DELETE CASCADE )";
+                        }
+
 
                         ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
                                ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
-                               ",[PrecioDetalle] DECIMAL,[IvaDetalle] DECIMAL,[ImporteDetalle] DECIMAL,[EnlaceDetalle] varchar" +
+                               ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar" +
                                ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                         try
@@ -252,6 +257,24 @@ namespace PELOSCALVO
 
 
                         MessageBox.Show(ex.Message, "ERROR" + "TABLAS EMPRESAS");
+                    }
+                    NuevaConexion2.ComandoDb.Parameters.Clear();
+                    NuevaConexion2.ComandoDb.Parameters.Clear();
+                    try
+                    {
+                        NuevaConexion2 = new ClsConexionDb(TablaInicio);
+                        if (NuevaConexion2.SiConexionDb)
+                        {
+
+                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR TABLA INICIO");
                     }
                     NuevaConexion2.ComandoDb.Parameters.Clear();
                     try
@@ -389,24 +412,7 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message, "ERROR TABLA PROVINCIAS");
                     }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaInicio);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
 
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA INICIO");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
                     try
                     {
                         NuevaConexion2 = new ClsConexionDb(TablaCorreo_E);
@@ -421,7 +427,7 @@ namespace PELOSCALVO
                     {
 
 
-                        MessageBox.Show(ex.Message, "ERROR TABLA CORREO EMPRESA");
+                        MessageBox.Show(ex.Message, "ERROR TABLA CORREO CORREO");
                     }
                     NuevaConexion2.ComandoDb.Parameters.Clear();
                     try
