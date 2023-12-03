@@ -320,6 +320,12 @@
     <Compile Include="FormMostrarReportes.Designer.cs">
       <DependentUpon>FormMostrarReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormObras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormObras.Designer.cs">
+      <DependentUpon>FormObras.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPaises.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -331,6 +337,12 @@
     </Compile>
     <Compile Include="FormProveedores.Designer.cs">
       <DependentUpon>FormProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProvincias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProvincias.Designer.cs">
+      <DependentUpon>FormProvincias.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVistaPreliminar.cs">
       <SubType>Form</SubType>
@@ -407,11 +419,17 @@
     <EmbeddedResource Include="FormMostrarReportes.resx">
       <DependentUpon>FormMostrarReportes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormObras.resx">
+      <DependentUpon>FormObras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPaises.resx">
       <DependentUpon>FormPaises.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProveedores.resx">
       <DependentUpon>FormProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProvincias.resx">
+      <DependentUpon>FormProvincias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVistaPreliminar.resx">
       <DependentUpon>FormVistaPreliminar.cs</DependentUpon>

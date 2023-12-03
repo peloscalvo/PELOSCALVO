@@ -1,7 +1,9 @@
 ﻿using Comun;
 using Conexiones;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.OleDb;
 using System.Data.Sql;
 using System.Data.SqlClient;
@@ -16,6 +18,34 @@ namespace PELOSCALVO
         public FormBaseDatos()
         {
             InitializeComponent();
+        }
+        public List<string> ObtenerTablas()
+        {
+
+            // Microsoft Access provider factory
+            DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.OleDb");
+
+            DataTable userTables = null;
+            using (DbConnection connection = factory.CreateConnection())
+            {
+
+               // connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + NombreFichero;
+                connection.ConnectionString = ClsConexionDb.CadenaConexion;
+                // We only want user tables, not system tables
+                string[] restrictions = new string[4];
+                restrictions[3] = "Table";
+
+                connection.Open();
+
+                // Get list of user tables
+                userTables = connection.GetSchema("Tables", restrictions);
+            }
+
+            List<string> tableNames = new List<string>();
+            for (int i = 0; i < userTables.Rows.Count; i++)
+                tableNames.Add(userTables.Rows[i][2].ToString());
+
+            return tableNames;
         }
         private bool VALIDARcampos_Archivos()
         {
@@ -1391,12 +1421,13 @@ namespace PELOSCALVO
             {
                 try
                 {
+                    SerieArticulosText.DataSource = ObtenerTablas();
                     OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
                     if (reader.HasRows)
                     {
                         if (!string.IsNullOrEmpty((reader[0]).ToString()))
                         {
-                            SerieClientesText2.Items.Add(reader[0]);
+                          //  SerieClientesText2.Items.Add(reader[0]);
                         }
                     }
                 }
@@ -1406,6 +1437,7 @@ namespace PELOSCALVO
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+             SerieArticulosText.DataSource=  ObtenerTablas();
             consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
                     " not like 'Dt%'and O.COLUMN_NAME= 'Referencia'  order by ORDINAL_POSITION";
             NuevaConexion = new ClsConexionDb(consulta);

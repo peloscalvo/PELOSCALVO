@@ -1003,6 +1003,7 @@ namespace PELOSCALVO
             this.provinciasToolStripMenuItem2.Name = "provinciasToolStripMenuItem2";
             this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.provinciasToolStripMenuItem2.Text = "&Provincias";
+            this.provinciasToolStripMenuItem2.Click += new System.EventHandler(this.provinciasToolStripMenuItem2_Click);
             // 
             // panel1
             // 

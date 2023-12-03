@@ -32,7 +32,6 @@ namespace PELOSCALVO
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label10;
             System.Windows.Forms.Label label11;
-            System.Windows.Forms.Label label6;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,36 +39,34 @@ namespace PELOSCALVO
             this.ErrorProve = new System.Windows.Forms.ErrorProvider(this.components);
             this.BtnCancelarPais = new System.Windows.Forms.Button();
             this.BtnSalir_Pais = new System.Windows.Forms.Button();
-            this.Empresa_Select_Pais = new System.Windows.Forms.ComboBox();
             this.DtPaisBindinsource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.BtnEliminarPais = new System.Windows.Forms.Button();
             this.BtnBuscarPais = new System.Windows.Forms.Button();
             this.BtnNuevoPais = new System.Windows.Forms.Button();
             this.BtnModificarPais = new System.Windows.Forms.Button();
             this.Id_Pais = new System.Windows.Forms.Label();
-            this.PanelBotones_pro = new System.Windows.Forms.Panel();
-            this.PanelProveedores = new System.Windows.Forms.Panel();
+            this.PanelBotones_Pais = new System.Windows.Forms.Panel();
+            this.PanelPais = new System.Windows.Forms.Panel();
             this.NombrePais = new System.Windows.Forms.TextBox();
             this.BtnGuardarPais = new System.Windows.Forms.Button();
             this.dataGridPais = new System.Windows.Forms.DataGridView();
-            this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paisesPaisesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtPaisBindinsource)).BeginInit();
-            this.PanelBotones_pro.SuspendLayout();
-            this.PanelProveedores.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPais)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
+            this.PanelBotones_Pais.SuspendLayout();
+            this.PanelPais.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPais)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(31, 20);
+            label10.Location = new System.Drawing.Point(20, 14);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(19, 13);
             label10.TabIndex = 54;
@@ -78,20 +75,11 @@ namespace PELOSCALVO
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(6, 46);
+            label11.Location = new System.Drawing.Point(9, 46);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(59, 13);
+            label11.Size = new System.Drawing.Size(30, 13);
             label11.TabIndex = 55;
-            label11.Text = "Proveedor:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(535, 364);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(51, 13);
-            label6.TabIndex = 68;
-            label6.Text = "Empresa:";
+            label11.Text = "Pais:";
             // 
             // ErrorProve
             // 
@@ -141,21 +129,15 @@ namespace PELOSCALVO
             this.BtnSalir_Pais.UseVisualStyleBackColor = false;
             this.BtnSalir_Pais.Click += new System.EventHandler(this.BtnSalir_Pais_Click);
             // 
-            // Empresa_Select_Pais
-            // 
-            this.Empresa_Select_Pais.DataSource = this.DtPaisBindinsource;
-            this.Empresa_Select_Pais.DisplayMember = "EmpresaConfi";
-            this.Empresa_Select_Pais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Empresa_Select_Pais.FormattingEnabled = true;
-            this.Empresa_Select_Pais.Location = new System.Drawing.Point(602, 361);
-            this.Empresa_Select_Pais.Name = "Empresa_Select_Pais";
-            this.Empresa_Select_Pais.Size = new System.Drawing.Size(294, 21);
-            this.Empresa_Select_Pais.TabIndex = 69;
-            // 
             // DtPaisBindinsource
             // 
             this.DtPaisBindinsource.DataMember = "DtPaises";
             this.DtPaisBindinsource.DataSource = this.dsMulti2;
+            // 
+            // dsMulti2
+            // 
+            this.dsMulti2.DataSetName = "DsMulti2";
+            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // BtnEliminarPais
             // 
@@ -240,42 +222,42 @@ namespace PELOSCALVO
             // Id_Pais
             // 
             this.Id_Pais.AutoSize = true;
-            this.Id_Pais.Location = new System.Drawing.Point(74, 14);
+            this.Id_Pais.Location = new System.Drawing.Point(52, 14);
             this.Id_Pais.Name = "Id_Pais";
             this.Id_Pais.Size = new System.Drawing.Size(13, 13);
             this.Id_Pais.TabIndex = 58;
             this.Id_Pais.Text = "0";
             this.Id_Pais.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // PanelBotones_pro
+            // PanelBotones_Pais
             // 
-            this.PanelBotones_pro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PanelBotones_pro.BackColor = System.Drawing.Color.Transparent;
-            this.PanelBotones_pro.Controls.Add(this.BtnEliminarPais);
-            this.PanelBotones_pro.Controls.Add(this.BtnBuscarPais);
-            this.PanelBotones_pro.Controls.Add(this.BtnNuevoPais);
-            this.PanelBotones_pro.Controls.Add(this.BtnModificarPais);
-            this.PanelBotones_pro.Location = new System.Drawing.Point(9, 99);
-            this.PanelBotones_pro.Name = "PanelBotones_pro";
-            this.PanelBotones_pro.Size = new System.Drawing.Size(396, 63);
-            this.PanelBotones_pro.TabIndex = 54;
-            this.PanelBotones_pro.Tag = "NO";
+            this.PanelBotones_Pais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PanelBotones_Pais.BackColor = System.Drawing.Color.Transparent;
+            this.PanelBotones_Pais.Controls.Add(this.BtnEliminarPais);
+            this.PanelBotones_Pais.Controls.Add(this.BtnBuscarPais);
+            this.PanelBotones_Pais.Controls.Add(this.BtnNuevoPais);
+            this.PanelBotones_Pais.Controls.Add(this.BtnModificarPais);
+            this.PanelBotones_Pais.Location = new System.Drawing.Point(9, 99);
+            this.PanelBotones_Pais.Name = "PanelBotones_Pais";
+            this.PanelBotones_Pais.Size = new System.Drawing.Size(396, 63);
+            this.PanelBotones_Pais.TabIndex = 54;
+            this.PanelBotones_Pais.Tag = "NO";
             // 
-            // PanelProveedores
+            // PanelPais
             // 
-            this.PanelProveedores.Controls.Add(this.Id_Pais);
-            this.PanelProveedores.Controls.Add(this.PanelBotones_pro);
-            this.PanelProveedores.Controls.Add(label10);
-            this.PanelProveedores.Controls.Add(label11);
-            this.PanelProveedores.Controls.Add(this.NombrePais);
-            this.PanelProveedores.Location = new System.Drawing.Point(20, 323);
-            this.PanelProveedores.Name = "PanelProveedores";
-            this.PanelProveedores.Size = new System.Drawing.Size(478, 172);
-            this.PanelProveedores.TabIndex = 70;
+            this.PanelPais.Controls.Add(this.Id_Pais);
+            this.PanelPais.Controls.Add(this.PanelBotones_Pais);
+            this.PanelPais.Controls.Add(label10);
+            this.PanelPais.Controls.Add(label11);
+            this.PanelPais.Controls.Add(this.NombrePais);
+            this.PanelPais.Location = new System.Drawing.Point(12, 318);
+            this.PanelPais.Name = "PanelPais";
+            this.PanelPais.Size = new System.Drawing.Size(478, 172);
+            this.PanelPais.TabIndex = 70;
             // 
             // NombrePais
             // 
-            this.NombrePais.Location = new System.Drawing.Point(74, 43);
+            this.NombrePais.Location = new System.Drawing.Point(52, 43);
             this.NombrePais.MaxLength = 40;
             this.NombrePais.Name = "NombrePais";
             this.NombrePais.ReadOnly = true;
@@ -344,11 +326,6 @@ namespace PELOSCALVO
             this.dataGridPais.Size = new System.Drawing.Size(936, 257);
             this.dataGridPais.TabIndex = 67;
             // 
-            // dsMulti2
-            // 
-            this.dsMulti2.DataSetName = "DsMulti2";
-            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -375,24 +352,22 @@ namespace PELOSCALVO
             this.ClientSize = new System.Drawing.Size(936, 519);
             this.Controls.Add(this.BtnCancelarPais);
             this.Controls.Add(this.BtnSalir_Pais);
-            this.Controls.Add(this.Empresa_Select_Pais);
-            this.Controls.Add(this.PanelProveedores);
-            this.Controls.Add(label6);
+            this.Controls.Add(this.PanelPais);
             this.Controls.Add(this.BtnGuardarPais);
             this.Controls.Add(this.dataGridPais);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPaises";
             this.Text = "Paises";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPaises_FormClosing);
+            this.Load += new System.EventHandler(this.FormPaises_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtPaisBindinsource)).EndInit();
-            this.PanelBotones_pro.ResumeLayout(false);
-            this.PanelProveedores.ResumeLayout(false);
-            this.PanelProveedores.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPais)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
+            this.PanelBotones_Pais.ResumeLayout(false);
+            this.PanelPais.ResumeLayout(false);
+            this.PanelPais.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPais)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -401,11 +376,10 @@ namespace PELOSCALVO
         private System.Windows.Forms.ErrorProvider ErrorProve;
         private System.Windows.Forms.Button BtnCancelarPais;
         private System.Windows.Forms.Button BtnSalir_Pais;
-        private System.Windows.Forms.ComboBox Empresa_Select_Pais;
         private System.Windows.Forms.BindingSource DtPaisBindinsource;
-        private System.Windows.Forms.Panel PanelProveedores;
+        private System.Windows.Forms.Panel PanelPais;
         private System.Windows.Forms.Label Id_Pais;
-        private System.Windows.Forms.Panel PanelBotones_pro;
+        private System.Windows.Forms.Panel PanelBotones_Pais;
         private System.Windows.Forms.Button BtnEliminarPais;
         private System.Windows.Forms.Button BtnBuscarPais;
         private System.Windows.Forms.Button BtnNuevoPais;

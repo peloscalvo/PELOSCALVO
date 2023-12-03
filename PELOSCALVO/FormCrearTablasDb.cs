@@ -90,7 +90,7 @@ namespace PELOSCALVO
                 " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
                 " [CifEmpresa] varchar   ,[ImagenEmpresa] IMAGE ) ";
 
-                    string TablaDtconfi = "CREATE TABLE[DtConfi] ([ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
+                    string TablaDtconfi = "CREATE TABLE[DtConfi] ([EnlaceDtconfi] varchar primary key ,[ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                         "[EmpresaENLACE] varchar ,[IdConexionConfi] INTEGER , [AñoDeEjercicio] varchar  ," +
                            " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([IdTarifa] INTEGER , [TarifaTipo] varchar, [EnlaceTarifa] varchar ," +
@@ -196,7 +196,7 @@ namespace PELOSCALVO
                          "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
                          "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
                         "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar," +
-                        "CONSTRAINT F_Dt" + TipoNota + valor.ToString() + " FOREIGN KEY (EmpresaEnlace)REFERENCES DtConfi(EmpresaENLACE) ON UPDATE CASCADE ON DELETE CASCADE )";
+                        "CONSTRAINT F_Dt" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )";
                         }
 
 

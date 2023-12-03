@@ -23,7 +23,7 @@
               <xs:element name="AñoDeEjercicio" msprop:Generator_ColumnVarNameInTable="columnAñoDeEjercicio" msprop:Generator_ColumnPropNameInRow="AñoDeEjercicio" msprop:Generator_ColumnPropNameInTable="AñoDeEjercicioColumn" msprop:Generator_UserColumnName="AñoDeEjercicio" type="xs:string" minOccurs="0" />
               <xs:element name="SerieArticulos" msprop:Generator_ColumnVarNameInTable="columnSerieArticulos" msprop:Generator_ColumnPropNameInRow="SerieArticulos" msprop:Generator_ColumnPropNameInTable="SerieArticulosColumn" msprop:Generator_UserColumnName="SerieArticulos" type="xs:string" minOccurs="0" />
               <xs:element name="SerieClientes" msprop:Generator_ColumnVarNameInTable="columnSerieClientes" msprop:Generator_ColumnPropNameInRow="SerieClientes" msprop:Generator_ColumnPropNameInTable="SerieClientesColumn" msprop:Generator_UserColumnName="SerieClientes" type="xs:string" minOccurs="0" />
-              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+              <xs:element name="EnlaceDtconfi" msprop:Generator_ColumnVarNameInTable="columnEnlaceDtconfi" msprop:Generator_ColumnPropNameInRow="EnlaceDtconfi" msprop:Generator_ColumnPropNameInTable="EnlaceDtconfiColumn" msprop:Generator_UserColumnName="EnlaceDtconfi" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -49,11 +49,6 @@
               <xs:element name="CifEmpresa" msprop:Generator_ColumnVarNameInTable="columnCifEmpresa" msprop:Generator_ColumnPropNameInRow="CifEmpresa" msprop:Generator_ColumnPropNameInTable="CifEmpresaColumn" msprop:Generator_UserColumnName="CifEmpresa" type="xs:string" minOccurs="0" />
               <xs:element name="ImagenEmpresa" msprop:Generator_ColumnVarNameInTable="columnImagenEmpresa" msprop:Generator_ColumnPropNameInRow="ImagenEmpresa" msprop:Generator_ColumnPropNameInTable="ImagenEmpresaColumn" msprop:Generator_UserColumnName="ImagenEmpresa" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="DtAlmacenes" msprop:Generator_TableClassName="DtAlmacenesDataTable" msprop:Generator_TableVarName="tableDtAlmacenes" msprop:Generator_TablePropName="DtAlmacenes" msprop:Generator_RowDeletingName="DtAlmacenesRowDeleting" msprop:Generator_RowChangingName="DtAlmacenesRowChanging" msprop:Generator_RowEvHandlerName="DtAlmacenesRowChangeEventHandler" msprop:Generator_RowDeletedName="DtAlmacenesRowDeleted" msprop:Generator_UserTableName="DtAlmacenes" msprop:Generator_RowChangedName="DtAlmacenesRowChanged" msprop:Generator_RowEvArgName="DtAlmacenesRowChangeEvent" msprop:Generator_RowClassName="DtAlmacenesRow" minOccurs="0" maxOccurs="unbounded">
-                <xs:annotation>
-                  <xs:appinfo>
-                    <msdata:Relationship name="DtConfiguracionPrincipal_DtAlmacenes" msdata:parent="DtConfiguracionPrincipal" msdata:child="DtAlmacenes" msdata:parentkey="NombreEmpresaReguistro" msdata:childkey="Enlace_Almacenes" msprop:Generator_UserChildTable="DtAlmacenes" msprop:Generator_ChildPropName="GetDtAlmacenesRows" msprop:Generator_UserRelationName="DtConfiguracionPrincipal_DtAlmacenes" msprop:Generator_RelationVarName="relationDtConfiguracionPrincipal_DtAlmacenes" msprop:Generator_UserParentTable="DtConfiguracionPrincipal" msprop:Generator_ParentPropName="DtConfiguracionPrincipalRow" />
-                  </xs:appinfo>
-                </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="Id_almacenes" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnId_almacenes" msprop:Generator_ColumnPropNameInRow="Id_almacenes" msprop:Generator_ColumnPropNameInTable="Id_almacenesColumn" msprop:Generator_UserColumnName="Id_almacenes" type="xs:int" minOccurs="0" />
@@ -113,6 +108,7 @@
               <xs:element name="SerieTipo" msprop:Generator_ColumnVarNameInTable="columnSerieTipo" msprop:Generator_ColumnPropNameInRow="SerieTipo" msprop:Generator_ColumnPropNameInTable="SerieTipoColumn" msprop:Generator_UserColumnName="SerieTipo" type="xs:string" minOccurs="0" />
               <xs:element name="EnlaceFactura" msprop:Generator_ColumnVarNameInTable="columnEnlaceFactura" msprop:Generator_ColumnPropNameInRow="EnlaceFactura" msprop:Generator_ColumnPropNameInTable="EnlaceFacturaColumn" msprop:Generator_UserColumnName="EnlaceFactura" type="xs:string" minOccurs="0" />
               <xs:element name="EmpresaEnlace" msprop:Generator_ColumnVarNameInTable="columnEmpresaEnlace" msprop:Generator_ColumnPropNameInRow="EmpresaEnlace" msprop:Generator_ColumnPropNameInTable="EmpresaEnlaceColumn" msprop:Generator_UserColumnName="EmpresaEnlace" type="xs:string" minOccurs="0" />
+              <xs:element name="EnlaceDtconfi" msprop:Generator_ColumnVarNameInTable="columnEnlaceDtconfi" msprop:Generator_ColumnPropNameInRow="EnlaceDtconfi" msprop:Generator_ColumnPropNameInTable="EnlaceDtconfiColumn" msprop:Generator_UserColumnName="EnlaceDtconfi" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -145,19 +141,45 @@
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:DtConfi" />
+      <xs:field xpath="mstns:EnlaceDtconfi" />
+    </xs:unique>
     <xs:unique name="DtConfiguracionPrincipalKey1">
       <xs:selector xpath=".//mstns:DtConfiguracionPrincipal" />
       <xs:field xpath="mstns:NombreEmpresaReguistro" />
     </xs:unique>
+    <xs:unique name="DtNuevaFactura_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:DtNuevaFactura" />
+      <xs:field xpath="mstns:EnlaceFactura" />
+    </xs:unique>
+    <xs:keyref name="DtNuevaFactura_DtDetallesFactura2" refer="DtNuevaFactura_Constraint1" msprop:rel_Generator_UserChildTable="DtDetallesFactura2" msprop:rel_Generator_ChildPropName="GetDtDetallesFactura2Rows" msprop:rel_Generator_UserRelationName="DtNuevaFactura_DtDetallesFactura2" msprop:rel_Generator_ParentPropName="DtNuevaFacturaRow" msprop:rel_Generator_RelationVarName="relationDtNuevaFactura_DtDetallesFactura2" msprop:rel_Generator_UserParentTable="DtNuevaFactura">
+      <xs:selector xpath=".//mstns:DtDetallesFactura2" />
+      <xs:field xpath="mstns:EnlaceDetalle" />
+    </xs:keyref>
+    <xs:keyref name="DtNuevaFactura_DtDetallesFactura" refer="DtNuevaFactura_Constraint1" msprop:rel_Generator_UserChildTable="DtDetallesFactura" msprop:rel_Generator_ChildPropName="GetDtDetallesFacturaRows" msprop:rel_Generator_UserRelationName="DtNuevaFactura_DtDetallesFactura" msprop:rel_Generator_ParentPropName="DtNuevaFacturaRow" msprop:rel_Generator_RelationVarName="relationDtNuevaFactura_DtDetallesFactura" msprop:rel_Generator_UserParentTable="DtNuevaFactura">
+      <xs:selector xpath=".//mstns:DtDetallesFactura" />
+      <xs:field xpath="mstns:EnlaceDetalle" />
+    </xs:keyref>
+    <xs:keyref name="DtConfiguracionPrincipal_DtNuevaFactura" refer="Constraint1" msprop:rel_Generator_UserChildTable="DtNuevaFactura" msprop:rel_Generator_ChildPropName="GetDtNuevaFacturaRows" msprop:rel_Generator_UserRelationName="DtConfiguracionPrincipal_DtNuevaFactura" msprop:rel_Generator_ParentPropName="DtConfiRow" msprop:rel_Generator_RelationVarName="relationDtConfiguracionPrincipal_DtNuevaFactura" msprop:rel_Generator_UserParentTable="DtConfi">
+      <xs:selector xpath=".//mstns:DtNuevaFactura" />
+      <xs:field xpath="mstns:EnlaceDtconfi" />
+    </xs:keyref>
+    <xs:keyref name="DtConfiguracionPrincipal_DtProveedores" refer="DtConfiguracionPrincipalKey1" msprop:rel_Generator_UserChildTable="DtProveedores" msprop:rel_Generator_ChildPropName="GetDtProveedoresRows" msprop:rel_Generator_UserRelationName="DtConfiguracionPrincipal_DtProveedores" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:rel_Generator_RelationVarName="relationDtConfiguracionPrincipal_DtProveedores" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal">
+      <xs:selector xpath=".//mstns:DtProveedores" />
+      <xs:field xpath="mstns:Enlace_Proveedores" />
+    </xs:keyref>
+    <xs:keyref name="DtConfi_DtTarifaTipo" refer="DtConfiguracionPrincipalKey1" msprop:rel_Generator_UserChildTable="DtTarifaTipo" msprop:rel_Generator_ChildPropName="GetDtTarifaTipoRows" msprop:rel_Generator_UserRelationName="DtConfi_DtTarifaTipo" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:rel_Generator_RelationVarName="relationDtConfi_DtTarifaTipo" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal">
+      <xs:selector xpath=".//mstns:DtTarifaTipo" />
+      <xs:field xpath="mstns:EnlaceTarifa" />
+    </xs:keyref>
+    <xs:keyref name="DtConfiguracionPrincipal_DtAlmacenes" refer="DtConfiguracionPrincipalKey1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="DtAlmacenes" msprop:rel_Generator_ChildPropName="GetDtAlmacenesRows" msprop:rel_Generator_UserRelationName="DtConfiguracionPrincipal_DtAlmacenes" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:rel_Generator_RelationVarName="relationDtConfiguracionPrincipal_DtAlmacenes" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal">
+      <xs:selector xpath=".//mstns:DtAlmacenes" />
+      <xs:field xpath="mstns:Enlace_Almacenes" />
+    </xs:keyref>
+    <xs:keyref name="DtConfiguracionPrincipal_DtConfi" refer="DtConfiguracionPrincipalKey1" msprop:rel_Generator_UserChildTable="DtConfi" msprop:rel_Generator_ChildPropName="GetDtConfiRows" msprop:rel_Generator_UserRelationName="DtConfiguracionPrincipal_DtConfi" msprop:rel_Generator_RelationVarName="relationDtConfiguracionPrincipal_DtConfi" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow">
+      <xs:selector xpath=".//mstns:DtConfi" />
+      <xs:field xpath="mstns:EmpresaENLACE" />
+    </xs:keyref>
   </xs:element>
-  <xs:annotation>
-    <xs:appinfo>
-      <msdata:Relationship name="DtConfiguracionPrincipal_DtConfi" msdata:parent="DtConfiguracionPrincipal" msdata:child="DtConfi" msdata:parentkey="NombreEmpresaReguistro" msdata:childkey="EmpresaENLACE" msprop:Generator_UserChildTable="DtConfi" msprop:Generator_ChildPropName="GetDtConfiRows" msprop:Generator_UserRelationName="DtConfiguracionPrincipal_DtConfi" msprop:Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:Generator_RelationVarName="relationDtConfiguracionPrincipal_DtConfi" msprop:Generator_UserParentTable="DtConfiguracionPrincipal" />
-      <msdata:Relationship name="DtConfiguracionPrincipal_DtProveedores" msdata:parent="DtConfiguracionPrincipal" msdata:child="DtProveedores" msdata:parentkey="NombreEmpresaReguistro" msdata:childkey="Enlace_Proveedores" msprop:Generator_UserChildTable="DtProveedores" msprop:Generator_ChildPropName="GetDtProveedoresRows" msprop:Generator_UserRelationName="DtConfiguracionPrincipal_DtProveedores" msprop:Generator_RelationVarName="relationDtConfiguracionPrincipal_DtProveedores" msprop:Generator_UserParentTable="DtConfiguracionPrincipal" msprop:Generator_ParentPropName="DtConfiguracionPrincipalRow" />
-      <msdata:Relationship name="DtConfi_DtTarifaTipo" msdata:parent="DtConfiguracionPrincipal" msdata:child="DtTarifaTipo" msdata:parentkey="NombreEmpresaReguistro" msdata:childkey="EnlaceTarifa" msprop:Generator_UserChildTable="DtTarifaTipo" msprop:Generator_ChildPropName="GetDtTarifaTipoRows" msprop:Generator_UserRelationName="DtConfi_DtTarifaTipo" msprop:Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:Generator_RelationVarName="relationDtConfi_DtTarifaTipo" msprop:Generator_UserParentTable="DtConfiguracionPrincipal" />
-      <msdata:Relationship name="DtNuevaFactura_DtDetallesFactura2" msdata:parent="DtNuevaFactura" msdata:child="DtDetallesFactura2" msdata:parentkey="EnlaceFactura" msdata:childkey="EnlaceDetalle" msprop:Generator_UserChildTable="DtDetallesFactura2" msprop:Generator_ChildPropName="GetDtDetallesFactura2Rows" msprop:Generator_UserRelationName="DtNuevaFactura_DtDetallesFactura2" msprop:Generator_RelationVarName="relationDtNuevaFactura_DtDetallesFactura2" msprop:Generator_UserParentTable="DtNuevaFactura" msprop:Generator_ParentPropName="DtNuevaFacturaRow" />
-      <msdata:Relationship name="DtNuevaFactura_DtDetallesFactura" msdata:parent="DtNuevaFactura" msdata:child="DtDetallesFactura" msdata:parentkey="EnlaceFactura" msdata:childkey="EnlaceDetalle" msprop:Generator_UserChildTable="DtDetallesFactura" msprop:Generator_ChildPropName="GetDtDetallesFacturaRows" msprop:Generator_UserRelationName="DtNuevaFactura_DtDetallesFactura" msprop:Generator_RelationVarName="relationDtNuevaFactura_DtDetallesFactura" msprop:Generator_UserParentTable="DtNuevaFactura" msprop:Generator_ParentPropName="DtNuevaFacturaRow" />
-      <msdata:Relationship name="DtConfiguracionPrincipal_DtNuevaFactura" msdata:parent="DtConfi" msdata:child="DtNuevaFactura" msdata:parentkey="EmpresaENLACE" msdata:childkey="EmpresaEnlace" msprop:Generator_UserChildTable="DtNuevaFactura" msprop:Generator_ChildPropName="GetDtNuevaFacturaRows" msprop:Generator_UserRelationName="DtConfiguracionPrincipal_DtNuevaFactura" msprop:Generator_ParentPropName="DtConfiRow" msprop:Generator_RelationVarName="relationDtConfiguracionPrincipal_DtNuevaFactura" msprop:Generator_UserParentTable="DtConfi" />
-    </xs:appinfo>
-  </xs:annotation>
 </xs:schema>

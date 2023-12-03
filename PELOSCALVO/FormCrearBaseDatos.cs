@@ -432,8 +432,9 @@ namespace PELOSCALVO
                "[TelefonoEmpresa] [varchar](20) NULL,[CorreoEmpresa] [varchar](30) NULL,[WepEmpresa] [varchar](40) NULL,[RegimenIvaEmpresa] [varchar](30) NULL," +
                " [PaisEmpresa] [varchar](40) NULL,[SerieDeFacturacionEmpresa] [varchar](10) NULL,[Telefono2Empresa] [varchar](25) NULL,[MovilEmpresa] [varchar](25) NULL," +
                 " [CifEmpresa] [varchar](20) NULL,[NombreEmpresaReguistro] [varchar](250) primary key Not NULL,[ImagenEmpresa] [image] NULL) " +
+               
                 "IF NOT  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfi]') AND type in (N'U')) " +
-                "CREATE TABLE[DtConfi]( [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
+                "CREATE TABLE[DtConfi]([EnlaceDtconfi][varchar](250) primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
                "[EmpresaENLACE] [varchar](250) NULL,[IdConexionConfi] INT NULL, [AñoDeEjercicio] [varchar](60) NULL," +
                 " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
@@ -448,12 +449,6 @@ namespace PELOSCALVO
                       "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +
                       "   CREATE TABLE [DtTarifaTipo]( [IdTarifa]int null,[TarifaTipo][varchar](60) NULL ,[EnlaceTarifa] [varchar](250) Not NULL, " +
                       " CONSTRAINT F_DtTarifaTipo FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
-
-                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfi]') AND type in (N'U'))" +
-                   "   CREATE TABLE [DtConfi]( [ConfiguraccionBasica][varchar](60),[TipoInpuestoIVA] int NULL ,[EjerciciosDeAño] [varchar](60)  NULL, " +
-                   "[EmpresaENLACE][varchar](250)  NULL,[IdConexionConfi] int  NULL, [AñoDeEjercicio][nvarchar](60)  NULL, " +
-                   " [SerieArticulos][varchar](60)  NULL,  [SerieClientes][varchar](60)  NULL, " +
-                  " CONSTRAINT F_DtConfi FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
                " CREATE TABLE [DtAlmacenes]( [Id_almacenes][int] NOT NULL,[Almacenes] varchar(80) NULL ,[EmpresaENLACE] [varchar](250)  NULL, " +
@@ -528,8 +523,8 @@ namespace PELOSCALVO
                                 "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[FechaFactura] [date] NULL," +
                                 "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
                                 "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
-                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace](250) NULL," + "CONSTRAINT F_Dt" + TablaFactu + VALORid.ToString() +
-                               "FOREIGN KEY (EmpresaEnlace)REFERENCES DtConfi(EmpresaENLACE) ON UPDATE CASCADE ON DELETE CASCADE )"+
+                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace](250) NULL," + "CONSTRAINT F_DtConfi" + TablaFactu + VALORid.ToString() +
+                               "FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                                 "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +
                                "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle][varchar](50) NULL,[CantidadDetalle] [numeric](13, 3) NULL,[DescripccionDetalle] [varchar](60) NULL," +

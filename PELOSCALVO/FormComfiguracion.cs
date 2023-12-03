@@ -161,8 +161,6 @@ namespace PELOSCALVO
             }
             this.tabPageTarifa.Parent = null;
             this.tabPageInicio.Parent = null;
-            this.tabPagePaises.Parent = null;
-            this.TabPageProvincias.Parent = null;
             this.tabObras.Parent = null;
 
             //dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
@@ -570,41 +568,6 @@ namespace PELOSCALVO
 
         }
 
-        private void btnVolverPaises_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-            this.tabPagePaises.Parent = null;
-        }
-
-        private void BtnActualizarPaises_Click(object sender, EventArgs e)
-        {
-            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 10))
-            {
-                if (ClsConexionSql.SibaseDatosSql)
-                {
-
-                }
-                else
-                {
-                    Validate();
-                    this.dataGridPaises.EndEdit();
-                    this.dtPaisesBindingSource.EndEdit();
-                    if (File.Exists(ClasDatos.RutaMulti2))
-                    {
-                        FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
-                        MessageBox.Show("Se Actualizo Con Exito", "PAISES", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No Se Guardo", "FALTAN ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-
-            }
-        }
-
-
-
         private void ejerciciosDeAñoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -647,55 +610,6 @@ namespace PELOSCALVO
                 e.Handled = true;
             }
         }
-
-
-        private void dataGridPaises_Validated(object sender, EventArgs e)
-        {
-            this.dataGridPaises.Sort(this.dataGridPaises.Columns[0], ListSortDirection.Ascending);
-        }
-
-
-        private void dataGridPaises_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                if (this.dataGridPaises.RowCount >= 0)
-                {
-                    string paisPais = "Pais";
-                    if (this.dataGridPaises.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
-                    {
-                        paisPais = this.dataGridPaises.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    }
-
-                    if (e.ColumnIndex == 1)
-                    {
-
-                        this.dataGridPaises.CurrentCell = this.dataGridPaises.Rows[e.RowIndex].Cells[0];
-                        this.dataGridPaises.BeginEdit(true);
-                    }
-                    if (e.ColumnIndex == 2)
-                    {
-                        if (e.RowIndex < this.dataGridPaises.RowCount - 1)
-                        {
-                            if (MessageBox.Show("Desea Eliminar Este Pais ?? " + "\n" + "\n" + paisPais, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
-
-                                if (File.Exists(ClasDatos.RutaMulti2))
-                                {
-                                    this.dtPaisesBindingSource.EndEdit();
-                                    this.dataGridPaises.Rows.Remove(this.dataGridPaises.CurrentRow);
-                                    FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
-                                }
-                                MessageBox.Show(paisPais + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
-                                this.dataGridPaises.Refresh();
-                            }
-
-                        }
-                    }
-                }
-            }
-        }
-
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -705,32 +619,7 @@ namespace PELOSCALVO
         {
 
         }
-
-        private void BtnVolverProvincias_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-            this.TabPageProvincias.Parent = null;
-        }
-
-        private void BtnActualizarProvincias_Click(object sender, EventArgs e)
-        {
-            Validate();
-            this.dtProvinciasBindingSource.EndEdit();
-            this.dataGridProvincias.EndEdit();
-            if (File.Exists(ClasDatos.RutaMulti2))
-            {
-                this.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
-                MessageBox.Show("Se Actualizo Con Exito", "PROVINCIAS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("No Se Guardo", "FALTAN ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-
-
-        private void crearCopiaSimpleToolStripMenuItem_Click(object sender, EventArgs e)
+       private void crearCopiaSimpleToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -972,42 +861,6 @@ namespace PELOSCALVO
                 }
             }
         }
-
-        private void dataGridProvincias_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                if (this.dataGridProvincias.RowCount >= 0)
-                {
-
-                    string provi = this.dataGridProvincias.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    if (e.ColumnIndex == 1)
-                    {
-
-                        this.dataGridProvincias.CurrentCell = this.dataGridProvincias.Rows[e.RowIndex].Cells[0];
-                        this.dataGridProvincias.BeginEdit(true);
-                    }
-                    if (e.ColumnIndex == 2)
-                    {
-                        if (e.RowIndex < this.dataGridProvincias.RowCount - 1)
-                        {
-                            if (MessageBox.Show("Desea Eliminar Este Provincia ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
-                                if (File.Exists(ClasDatos.RutaMulti2))
-                                {
-                                    this.dtProvinciasBindingSource.EndEdit();
-                                    this.dataGridProvincias.Rows.Remove(this.dataGridProvincias.CurrentRow);
-                                    FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
-                                }
-                                MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
-                                this.dataGridProvincias.Refresh();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         private void dataGridProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -1067,34 +920,6 @@ namespace PELOSCALVO
             this.tabObras.Parent = null;
         }
 
-        private void provinciasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.tabControlTodo.TabPages.Insert(1, this.TabPageProvincias);
-                this.tabMENU.Parent = null;
-            }
-            catch (Exception)
-            {
-
-                // throw;
-            }
-        }
-
-        private void paisesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.tabControlTodo.TabPages.Insert(1, this.tabPagePaises);
-                this.tabMENU.Parent = null;
-            }
-            catch (Exception)
-            {
-
-                // throw;
-            }
-        }
-
         private void obrasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -1141,12 +966,6 @@ namespace PELOSCALVO
             this.tabMENU.Parent = null;
 
         }
-
-        private void dataGridProvincias_Validated(object sender, EventArgs e)
-        {
-            this.dataGridProvincias.Sort(this.dataGridProvincias.Columns[0], ListSortDirection.Ascending);
-        }
-
 
         private void dataGridObras_Validated(object sender, EventArgs e)
         {

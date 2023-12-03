@@ -44,10 +44,6 @@ namespace PELOSCALVO
             System.Windows.Forms.Label tarifaTipoLabel;
             System.Windows.Forms.Label idTarifaLabel;
             System.Windows.Forms.Label empresaConfiLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -92,19 +88,6 @@ namespace PELOSCALVO
             this.obrasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.TabPageProvincias = new System.Windows.Forms.TabPage();
-            this.BtnActualizarProvincias = new System.Windows.Forms.Button();
-            this.BtnVolverProvincias = new System.Windows.Forms.Button();
-            this.dataGridProvincias = new System.Windows.Forms.DataGridView();
-            this.provinciasProvinciasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditarProvincia = new System.Windows.Forms.DataGridViewImageColumn();
-            this.EliminarProvincia = new System.Windows.Forms.DataGridViewImageColumn();
-            this.tabPagePaises = new System.Windows.Forms.TabPage();
-            this.dataGridPaises = new System.Windows.Forms.DataGridView();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BtnActualizarPaises = new System.Windows.Forms.Button();
-            this.btnVolverPaises = new System.Windows.Forms.Button();
             this.tabPageInicio = new System.Windows.Forms.TabPage();
             this.panelDatosInicio = new System.Windows.Forms.Panel();
             this.empresaInicio = new System.Windows.Forms.ComboBox();
@@ -203,10 +186,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTablas)).BeginInit();
             this.tabObras.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridObras)).BeginInit();
-            this.TabPageProvincias.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridProvincias)).BeginInit();
-            this.tabPagePaises.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPaises)).BeginInit();
             this.tabPageInicio.SuspendLayout();
             this.panelDatosInicio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioDataGridView)).BeginInit();
@@ -339,7 +318,7 @@ namespace PELOSCALVO
             // empresaConfiLabel
             // 
             empresaConfiLabel.AutoSize = true;
-            empresaConfiLabel.Location = new System.Drawing.Point(643, 531);
+            empresaConfiLabel.Location = new System.Drawing.Point(451, 354);
             empresaConfiLabel.Name = "empresaConfiLabel";
             empresaConfiLabel.Size = new System.Drawing.Size(43, 13);
             empresaConfiLabel.TabIndex = 9;
@@ -477,14 +456,14 @@ namespace PELOSCALVO
             this.DataGridTablas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(200)))));
             this.DataGridTablas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DataGridTablas.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridTablas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridTablas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DataGridTablas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridTablas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn1,
@@ -492,14 +471,14 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn1,
             this.dataGridViewImageColumn2});
             this.DataGridTablas.DataSource = this.dtNombresTablasBindingSource;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridTablas.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridTablas.DefaultCellStyle = dataGridViewCellStyle8;
             this.DataGridTablas.Dock = System.Windows.Forms.DockStyle.Top;
             this.DataGridTablas.EnableHeadersVisualStyles = false;
             this.DataGridTablas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -553,7 +532,7 @@ namespace PELOSCALVO
             this.tabObras.Location = new System.Drawing.Point(4, 25);
             this.tabObras.Name = "tabObras";
             this.tabObras.Padding = new System.Windows.Forms.Padding(3);
-            this.tabObras.Size = new System.Drawing.Size(1012, 463);
+            this.tabObras.Size = new System.Drawing.Size(1012, 531);
             this.tabObras.TabIndex = 11;
             this.tabObras.Text = "Obras";
             this.tabObras.UseVisualStyleBackColor = true;
@@ -569,7 +548,7 @@ namespace PELOSCALVO
             this.BtnGuardarObras.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarObras.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarObras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarObras.Location = new System.Drawing.Point(676, 429);
+            this.BtnGuardarObras.Location = new System.Drawing.Point(676, 497);
             this.BtnGuardarObras.Name = "BtnGuardarObras";
             this.BtnGuardarObras.Size = new System.Drawing.Size(107, 42);
             this.BtnGuardarObras.TabIndex = 51;
@@ -589,7 +568,7 @@ namespace PELOSCALVO
             this.BtnVolverObras.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverObras.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
             this.BtnVolverObras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverObras.Location = new System.Drawing.Point(828, 429);
+            this.BtnVolverObras.Location = new System.Drawing.Point(828, 497);
             this.BtnVolverObras.Name = "BtnVolverObras";
             this.BtnVolverObras.Size = new System.Drawing.Size(107, 42);
             this.BtnVolverObras.TabIndex = 50;
@@ -607,14 +586,14 @@ namespace PELOSCALVO
             this.dataGridObras.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(70)))));
             this.dataGridObras.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridObras.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridObras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridObras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridObras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridObras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idObrasDataGridViewTextBoxColumn,
@@ -622,14 +601,14 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn5,
             this.dataGridViewImageColumn6});
             this.dataGridObras.DataSource = this.dtObrasBindingSource;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridObras.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridObras.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridObras.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridObras.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.dataGridObras.Location = new System.Drawing.Point(3, 3);
@@ -676,234 +655,6 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn6.ReadOnly = true;
             this.dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // TabPageProvincias
-            // 
-            this.TabPageProvincias.Controls.Add(this.BtnActualizarProvincias);
-            this.TabPageProvincias.Controls.Add(this.BtnVolverProvincias);
-            this.TabPageProvincias.Controls.Add(this.dataGridProvincias);
-            this.TabPageProvincias.Location = new System.Drawing.Point(4, 25);
-            this.TabPageProvincias.Name = "TabPageProvincias";
-            this.TabPageProvincias.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageProvincias.Size = new System.Drawing.Size(1012, 463);
-            this.TabPageProvincias.TabIndex = 8;
-            this.TabPageProvincias.Text = "Provincias";
-            this.TabPageProvincias.UseVisualStyleBackColor = true;
-            // 
-            // BtnActualizarProvincias
-            // 
-            this.BtnActualizarProvincias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnActualizarProvincias.BackColor = System.Drawing.Color.Transparent;
-            this.BtnActualizarProvincias.FlatAppearance.BorderSize = 0;
-            this.BtnActualizarProvincias.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnActualizarProvincias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnActualizarProvincias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnActualizarProvincias.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizarProvincias.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
-            this.BtnActualizarProvincias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarProvincias.Location = new System.Drawing.Point(669, 445);
-            this.BtnActualizarProvincias.Name = "BtnActualizarProvincias";
-            this.BtnActualizarProvincias.Size = new System.Drawing.Size(107, 42);
-            this.BtnActualizarProvincias.TabIndex = 47;
-            this.BtnActualizarProvincias.Text = "Actualizar";
-            this.BtnActualizarProvincias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnActualizarProvincias.UseVisualStyleBackColor = false;
-            this.BtnActualizarProvincias.Click += new System.EventHandler(this.BtnActualizarProvincias_Click);
-            // 
-            // BtnVolverProvincias
-            // 
-            this.BtnVolverProvincias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnVolverProvincias.BackColor = System.Drawing.Color.Transparent;
-            this.BtnVolverProvincias.FlatAppearance.BorderSize = 0;
-            this.BtnVolverProvincias.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnVolverProvincias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnVolverProvincias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVolverProvincias.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnVolverProvincias.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
-            this.BtnVolverProvincias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverProvincias.Location = new System.Drawing.Point(821, 445);
-            this.BtnVolverProvincias.Name = "BtnVolverProvincias";
-            this.BtnVolverProvincias.Size = new System.Drawing.Size(107, 42);
-            this.BtnVolverProvincias.TabIndex = 46;
-            this.BtnVolverProvincias.Text = "Volver";
-            this.BtnVolverProvincias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnVolverProvincias.UseVisualStyleBackColor = false;
-            this.BtnVolverProvincias.Click += new System.EventHandler(this.BtnVolverProvincias_Click);
-            // 
-            // dataGridProvincias
-            // 
-            this.dataGridProvincias.AllowDrop = true;
-            this.dataGridProvincias.AllowUserToResizeRows = false;
-            this.dataGridProvincias.AutoGenerateColumns = false;
-            this.dataGridProvincias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridProvincias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridProvincias.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridProvincias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridProvincias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridProvincias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.provinciasProvinciasDataGridViewTextBoxColumn,
-            this.EditarProvincia,
-            this.EliminarProvincia});
-            this.dataGridProvincias.DataSource = this.dtProvinciasBindingSource;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridProvincias.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridProvincias.Location = new System.Drawing.Point(61, 6);
-            this.dataGridProvincias.MultiSelect = false;
-            this.dataGridProvincias.Name = "dataGridProvincias";
-            this.dataGridProvincias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridProvincias.Size = new System.Drawing.Size(886, 374);
-            this.dataGridProvincias.TabIndex = 45;
-            this.dataGridProvincias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProvincias_CellClick);
-            this.dataGridProvincias.Validated += new System.EventHandler(this.dataGridProvincias_Validated);
-            // 
-            // provinciasProvinciasDataGridViewTextBoxColumn
-            // 
-            this.provinciasProvinciasDataGridViewTextBoxColumn.DataPropertyName = "ProvinciasProvincias";
-            this.provinciasProvinciasDataGridViewTextBoxColumn.FillWeight = 300F;
-            this.provinciasProvinciasDataGridViewTextBoxColumn.HeaderText = "Provincias";
-            this.provinciasProvinciasDataGridViewTextBoxColumn.MaxInputLength = 100;
-            this.provinciasProvinciasDataGridViewTextBoxColumn.Name = "provinciasProvinciasDataGridViewTextBoxColumn";
-            // 
-            // EditarProvincia
-            // 
-            this.EditarProvincia.FillWeight = 55F;
-            this.EditarProvincia.HeaderText = "Editar";
-            this.EditarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
-            this.EditarProvincia.Name = "EditarProvincia";
-            this.EditarProvincia.ReadOnly = true;
-            this.EditarProvincia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EditarProvincia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // EliminarProvincia
-            // 
-            this.EliminarProvincia.FillWeight = 55F;
-            this.EliminarProvincia.HeaderText = "Eliminar";
-            this.EliminarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.EliminarProvincia.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.EliminarProvincia.Name = "EliminarProvincia";
-            this.EliminarProvincia.ReadOnly = true;
-            this.EliminarProvincia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EliminarProvincia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // tabPagePaises
-            // 
-            this.tabPagePaises.Controls.Add(this.dataGridPaises);
-            this.tabPagePaises.Controls.Add(this.BtnActualizarPaises);
-            this.tabPagePaises.Controls.Add(this.btnVolverPaises);
-            this.tabPagePaises.Location = new System.Drawing.Point(4, 25);
-            this.tabPagePaises.Name = "tabPagePaises";
-            this.tabPagePaises.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePaises.Size = new System.Drawing.Size(1012, 463);
-            this.tabPagePaises.TabIndex = 7;
-            this.tabPagePaises.Text = "Paises";
-            this.tabPagePaises.UseVisualStyleBackColor = true;
-            // 
-            // dataGridPaises
-            // 
-            this.dataGridPaises.AllowDrop = true;
-            this.dataGridPaises.AllowUserToOrderColumns = true;
-            this.dataGridPaises.AllowUserToResizeRows = false;
-            this.dataGridPaises.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridPaises.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridPaises.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPaises.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridPaises.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPaises.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Editar,
-            this.Eliminar});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridPaises.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridPaises.Location = new System.Drawing.Point(19, 16);
-            this.dataGridPaises.MultiSelect = false;
-            this.dataGridPaises.Name = "dataGridPaises";
-            this.dataGridPaises.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridPaises.Size = new System.Drawing.Size(919, 375);
-            this.dataGridPaises.TabIndex = 43;
-            this.dataGridPaises.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPaises_CellClick);
-            this.dataGridPaises.Validated += new System.EventHandler(this.dataGridPaises_Validated);
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
-            this.Editar.Name = "Editar";
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // BtnActualizarPaises
-            // 
-            this.BtnActualizarPaises.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnActualizarPaises.BackColor = System.Drawing.Color.Transparent;
-            this.BtnActualizarPaises.FlatAppearance.BorderSize = 0;
-            this.BtnActualizarPaises.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnActualizarPaises.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnActualizarPaises.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnActualizarPaises.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizarPaises.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
-            this.BtnActualizarPaises.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnActualizarPaises.Location = new System.Drawing.Point(698, 457);
-            this.BtnActualizarPaises.Name = "BtnActualizarPaises";
-            this.BtnActualizarPaises.Size = new System.Drawing.Size(107, 42);
-            this.BtnActualizarPaises.TabIndex = 42;
-            this.BtnActualizarPaises.Text = "Actualizar";
-            this.BtnActualizarPaises.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnActualizarPaises.UseVisualStyleBackColor = false;
-            this.BtnActualizarPaises.Click += new System.EventHandler(this.BtnActualizarPaises_Click);
-            // 
-            // btnVolverPaises
-            // 
-            this.btnVolverPaises.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVolverPaises.BackColor = System.Drawing.Color.Transparent;
-            this.btnVolverPaises.FlatAppearance.BorderSize = 0;
-            this.btnVolverPaises.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.btnVolverPaises.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.btnVolverPaises.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverPaises.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolverPaises.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
-            this.btnVolverPaises.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVolverPaises.Location = new System.Drawing.Point(849, 425);
-            this.btnVolverPaises.Name = "btnVolverPaises";
-            this.btnVolverPaises.Size = new System.Drawing.Size(107, 42);
-            this.btnVolverPaises.TabIndex = 41;
-            this.btnVolverPaises.Text = "Volver";
-            this.btnVolverPaises.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVolverPaises.UseVisualStyleBackColor = false;
-            this.btnVolverPaises.Click += new System.EventHandler(this.btnVolverPaises_Click);
             // 
             // tabPageInicio
             // 
@@ -1454,7 +1205,7 @@ namespace PELOSCALVO
             this.empresaConfiComboBox.DisplayMember = "EmpresaConfi";
             this.empresaConfiComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.empresaConfiComboBox.FormattingEnabled = true;
-            this.empresaConfiComboBox.Location = new System.Drawing.Point(692, 523);
+            this.empresaConfiComboBox.Location = new System.Drawing.Point(500, 346);
             this.empresaConfiComboBox.Name = "empresaConfiComboBox";
             this.empresaConfiComboBox.Size = new System.Drawing.Size(282, 21);
             this.empresaConfiComboBox.TabIndex = 10;
@@ -1462,13 +1213,15 @@ namespace PELOSCALVO
             // tabMENU
             // 
             this.tabMENU.Controls.Add(this.BtnRestructurar);
+            this.tabMENU.Controls.Add(this.empresaConfiComboBox);
+            this.tabMENU.Controls.Add(empresaConfiLabel);
             this.tabMENU.Controls.Add(this.label5);
             this.tabMENU.Controls.Add(this.menuStrip);
             this.tabMENU.Controls.Add(this.BtnSalirTipoTarifa);
             this.tabMENU.Location = new System.Drawing.Point(4, 25);
             this.tabMENU.Name = "tabMENU";
             this.tabMENU.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMENU.Size = new System.Drawing.Size(1012, 463);
+            this.tabMENU.Size = new System.Drawing.Size(1012, 531);
             this.tabMENU.TabIndex = 0;
             this.tabMENU.Text = "Menu Principal";
             this.tabMENU.UseVisualStyleBackColor = true;
@@ -1715,7 +1468,7 @@ namespace PELOSCALVO
             this.BtnSalirTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalirTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalirTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirTipoTarifa.Location = new System.Drawing.Point(902, 392);
+            this.BtnSalirTipoTarifa.Location = new System.Drawing.Point(902, 460);
             this.BtnSalirTipoTarifa.Name = "BtnSalirTipoTarifa";
             this.BtnSalirTipoTarifa.Size = new System.Drawing.Size(77, 63);
             this.BtnSalirTipoTarifa.TabIndex = 13;
@@ -1730,8 +1483,6 @@ namespace PELOSCALVO
             this.tabControlTodo.Controls.Add(this.tabMENU);
             this.tabControlTodo.Controls.Add(this.tabPageTarifa);
             this.tabControlTodo.Controls.Add(this.tabPageInicio);
-            this.tabControlTodo.Controls.Add(this.tabPagePaises);
-            this.tabControlTodo.Controls.Add(this.TabPageProvincias);
             this.tabControlTodo.Controls.Add(this.tabObras);
             this.tabControlTodo.Controls.Add(this.TabTablas);
             this.tabControlTodo.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1740,7 +1491,7 @@ namespace PELOSCALVO
             this.tabControlTodo.MinimumSize = new System.Drawing.Size(32, 32);
             this.tabControlTodo.Name = "tabControlTodo";
             this.tabControlTodo.SelectedIndex = 0;
-            this.tabControlTodo.Size = new System.Drawing.Size(1020, 492);
+            this.tabControlTodo.Size = new System.Drawing.Size(1020, 560);
             this.tabControlTodo.TabIndex = 0;
             this.tabControlTodo.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControlTodo.MouseEnter += new System.EventHandler(this.TabControl1_MouseEnter);
@@ -1756,8 +1507,6 @@ namespace PELOSCALVO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 556);
             this.Controls.Add(this.tabControlTodo);
-            this.Controls.Add(this.empresaConfiComboBox);
-            this.Controls.Add(empresaConfiLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(32, 39);
@@ -1785,10 +1534,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTablas)).EndInit();
             this.tabObras.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridObras)).EndInit();
-            this.TabPageProvincias.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridProvincias)).EndInit();
-            this.tabPagePaises.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPaises)).EndInit();
             this.tabPageInicio.ResumeLayout(false);
             this.panelDatosInicio.ResumeLayout(false);
             this.panelDatosInicio.PerformLayout();
@@ -1804,7 +1549,6 @@ namespace PELOSCALVO
             this.tabControlTodo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1896,19 +1640,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         public System.Windows.Forms.Button BtnGuardarInicio;
-        private System.Windows.Forms.TabPage tabPagePaises;
-        private System.Windows.Forms.DataGridView dataGridPaises;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        public System.Windows.Forms.Button BtnActualizarPaises;
-        public System.Windows.Forms.Button btnVolverPaises;
-        private System.Windows.Forms.TabPage TabPageProvincias;
-        public System.Windows.Forms.Button BtnActualizarProvincias;
-        public System.Windows.Forms.Button BtnVolverProvincias;
-        private System.Windows.Forms.DataGridView dataGridProvincias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn provinciasProvinciasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn EditarProvincia;
-        private System.Windows.Forms.DataGridViewImageColumn EliminarProvincia;
         private System.Windows.Forms.TabPage tabObras;
         public System.Windows.Forms.Button BtnGuardarObras;
         public System.Windows.Forms.Button BtnVolverObras;

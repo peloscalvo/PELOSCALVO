@@ -40,19 +40,19 @@ namespace PELOSCALVO {
         
         private DtDetallesFactura2DataTable tableDtDetallesFactura2;
         
-        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtAlmacenes;
-        
         private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtConfi;
         
-        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtProveedores;
+        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtAlmacenes;
         
         private global::System.Data.DataRelation relationDtConfi_DtTarifaTipo;
         
-        private global::System.Data.DataRelation relationDtNuevaFactura_DtDetallesFactura2;
+        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtProveedores;
+        
+        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtNuevaFactura;
         
         private global::System.Data.DataRelation relationDtNuevaFactura_DtDetallesFactura;
         
-        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtNuevaFactura;
+        private global::System.Data.DataRelation relationDtNuevaFactura_DtDetallesFactura2;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -376,13 +376,13 @@ namespace PELOSCALVO {
                     this.tableDtDetallesFactura2.InitVars();
                 }
             }
-            this.relationDtConfiguracionPrincipal_DtAlmacenes = this.Relations["DtConfiguracionPrincipal_DtAlmacenes"];
             this.relationDtConfiguracionPrincipal_DtConfi = this.Relations["DtConfiguracionPrincipal_DtConfi"];
-            this.relationDtConfiguracionPrincipal_DtProveedores = this.Relations["DtConfiguracionPrincipal_DtProveedores"];
+            this.relationDtConfiguracionPrincipal_DtAlmacenes = this.Relations["DtConfiguracionPrincipal_DtAlmacenes"];
             this.relationDtConfi_DtTarifaTipo = this.Relations["DtConfi_DtTarifaTipo"];
-            this.relationDtNuevaFactura_DtDetallesFactura2 = this.Relations["DtNuevaFactura_DtDetallesFactura2"];
-            this.relationDtNuevaFactura_DtDetallesFactura = this.Relations["DtNuevaFactura_DtDetallesFactura"];
+            this.relationDtConfiguracionPrincipal_DtProveedores = this.Relations["DtConfiguracionPrincipal_DtProveedores"];
             this.relationDtConfiguracionPrincipal_DtNuevaFactura = this.Relations["DtConfiguracionPrincipal_DtNuevaFactura"];
+            this.relationDtNuevaFactura_DtDetallesFactura = this.Relations["DtNuevaFactura_DtDetallesFactura"];
+            this.relationDtNuevaFactura_DtDetallesFactura2 = this.Relations["DtNuevaFactura_DtDetallesFactura2"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -409,35 +409,85 @@ namespace PELOSCALVO {
             base.Tables.Add(this.tableDtDetallesFactura);
             this.tableDtDetallesFactura2 = new DtDetallesFactura2DataTable();
             base.Tables.Add(this.tableDtDetallesFactura2);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtConfiguracionPrincipal_DtConfi", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtConfi.EmpresaENLACEColumn});
+            this.tableDtConfi.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtConfiguracionPrincipal_DtAlmacenes", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtAlmacenes.Enlace_AlmacenesColumn});
+            this.tableDtAlmacenes.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtConfi_DtTarifaTipo", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtTarifaTipo.EnlaceTarifaColumn});
+            this.tableDtTarifaTipo.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtConfiguracionPrincipal_DtProveedores", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtProveedores.Enlace_ProveedoresColumn});
+            this.tableDtProveedores.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtConfiguracionPrincipal_DtNuevaFactura", new global::System.Data.DataColumn[] {
+                        this.tableDtConfi.EnlaceDtconfiColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtNuevaFactura.EnlaceDtconfiColumn});
+            this.tableDtNuevaFactura.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtNuevaFactura_DtDetallesFactura", new global::System.Data.DataColumn[] {
+                        this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtDetallesFactura.EnlaceDetalleColumn});
+            this.tableDtDetallesFactura.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtNuevaFactura_DtDetallesFactura2", new global::System.Data.DataColumn[] {
+                        this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtDetallesFactura2.EnlaceDetalleColumn});
+            this.tableDtDetallesFactura2.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationDtConfiguracionPrincipal_DtConfi = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtConfi", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtConfi.EmpresaENLACEColumn}, false);
+            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtConfi);
             this.relationDtConfiguracionPrincipal_DtAlmacenes = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtAlmacenes", new global::System.Data.DataColumn[] {
                         this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
                         this.tableDtAlmacenes.Enlace_AlmacenesColumn}, false);
             this.relationDtConfiguracionPrincipal_DtAlmacenes.Nested = true;
             this.Relations.Add(this.relationDtConfiguracionPrincipal_DtAlmacenes);
-            this.relationDtConfiguracionPrincipal_DtConfi = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtConfi", new global::System.Data.DataColumn[] {
-                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtConfi.EmpresaENLACEColumn}, false);
-            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtConfi);
-            this.relationDtConfiguracionPrincipal_DtProveedores = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtProveedores", new global::System.Data.DataColumn[] {
-                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtProveedores.Enlace_ProveedoresColumn}, false);
-            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtProveedores);
             this.relationDtConfi_DtTarifaTipo = new global::System.Data.DataRelation("DtConfi_DtTarifaTipo", new global::System.Data.DataColumn[] {
                         this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
                         this.tableDtTarifaTipo.EnlaceTarifaColumn}, false);
             this.Relations.Add(this.relationDtConfi_DtTarifaTipo);
-            this.relationDtNuevaFactura_DtDetallesFactura2 = new global::System.Data.DataRelation("DtNuevaFactura_DtDetallesFactura2", new global::System.Data.DataColumn[] {
-                        this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtDetallesFactura2.EnlaceDetalleColumn}, false);
-            this.Relations.Add(this.relationDtNuevaFactura_DtDetallesFactura2);
+            this.relationDtConfiguracionPrincipal_DtProveedores = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtProveedores", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtProveedores.Enlace_ProveedoresColumn}, false);
+            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtProveedores);
+            this.relationDtConfiguracionPrincipal_DtNuevaFactura = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtNuevaFactura", new global::System.Data.DataColumn[] {
+                        this.tableDtConfi.EnlaceDtconfiColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtNuevaFactura.EnlaceDtconfiColumn}, false);
+            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtNuevaFactura);
             this.relationDtNuevaFactura_DtDetallesFactura = new global::System.Data.DataRelation("DtNuevaFactura_DtDetallesFactura", new global::System.Data.DataColumn[] {
                         this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
                         this.tableDtDetallesFactura.EnlaceDetalleColumn}, false);
             this.Relations.Add(this.relationDtNuevaFactura_DtDetallesFactura);
-            this.relationDtConfiguracionPrincipal_DtNuevaFactura = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtNuevaFactura", new global::System.Data.DataColumn[] {
-                        this.tableDtConfi.EmpresaENLACEColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtNuevaFactura.EmpresaEnlaceColumn}, false);
-            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtNuevaFactura);
+            this.relationDtNuevaFactura_DtDetallesFactura2 = new global::System.Data.DataRelation("DtNuevaFactura_DtDetallesFactura2", new global::System.Data.DataColumn[] {
+                        this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtDetallesFactura2.EnlaceDetalleColumn}, false);
+            this.Relations.Add(this.relationDtNuevaFactura_DtDetallesFactura2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -590,7 +640,7 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnSerieClientes;
             
-            private global::System.Data.DataColumn columnId;
+            private global::System.Data.DataColumn columnEnlaceDtconfi;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -691,9 +741,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
+            public global::System.Data.DataColumn EnlaceDtconfiColumn {
                 get {
-                    return this.columnId;
+                    return this.columnEnlaceDtconfi;
                 }
             }
             
@@ -734,7 +784,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, string SerieArticulos, string SerieClientes, string Id) {
+            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, string SerieArticulos, string SerieClientes, string EnlaceDtconfi) {
                 DtConfiRow rowDtConfiRow = ((DtConfiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfiguraccionBasica,
@@ -745,7 +795,7 @@ namespace PELOSCALVO {
                         AñoDeEjercicio,
                         SerieArticulos,
                         SerieClientes,
-                        Id};
+                        EnlaceDtconfi};
                 if ((parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi != null)) {
                     columnValuesArray[3] = parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi[2];
                 }
@@ -779,7 +829,7 @@ namespace PELOSCALVO {
                 this.columnAñoDeEjercicio = base.Columns["AñoDeEjercicio"];
                 this.columnSerieArticulos = base.Columns["SerieArticulos"];
                 this.columnSerieClientes = base.Columns["SerieClientes"];
-                this.columnId = base.Columns["Id"];
+                this.columnEnlaceDtconfi = base.Columns["EnlaceDtconfi"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -801,8 +851,11 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnSerieArticulos);
                 this.columnSerieClientes = new global::System.Data.DataColumn("SerieClientes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSerieClientes);
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
+                this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnlaceDtconfi);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnEnlaceDtconfi}, false));
+                this.columnEnlaceDtconfi.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2337,6 +2390,8 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnEmpresaEnlace;
             
+            private global::System.Data.DataColumn columnEnlaceDtconfi;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtNuevaFacturaDataTable() {
@@ -2588,6 +2643,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EnlaceDtconfiColumn {
+                get {
+                    return this.columnEnlaceDtconfi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2650,6 +2713,7 @@ namespace PELOSCALVO {
                         string EjercicioTipo, 
                         string SerieTipo, 
                         string EnlaceFactura, 
+                        string EmpresaEnlace, 
                         DtConfiRow parentDtConfiRowByDtConfiguracionPrincipal_DtNuevaFactura) {
                 DtNuevaFacturaRow rowDtNuevaFacturaRow = ((DtNuevaFacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -2679,9 +2743,10 @@ namespace PELOSCALVO {
                         EjercicioTipo,
                         SerieTipo,
                         EnlaceFactura,
+                        EmpresaEnlace,
                         null};
                 if ((parentDtConfiRowByDtConfiguracionPrincipal_DtNuevaFactura != null)) {
-                    columnValuesArray[26] = parentDtConfiRowByDtConfiguracionPrincipal_DtNuevaFactura[3];
+                    columnValuesArray[27] = parentDtConfiRowByDtConfiguracionPrincipal_DtNuevaFactura[8];
                 }
                 rowDtNuevaFacturaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtNuevaFacturaRow);
@@ -2732,6 +2797,7 @@ namespace PELOSCALVO {
                 this.columnSerieTipo = base.Columns["SerieTipo"];
                 this.columnEnlaceFactura = base.Columns["EnlaceFactura"];
                 this.columnEmpresaEnlace = base.Columns["EmpresaEnlace"];
+                this.columnEnlaceDtconfi = base.Columns["EnlaceDtconfi"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2791,6 +2857,11 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnEnlaceFactura);
                 this.columnEmpresaEnlace = new global::System.Data.DataColumn("EmpresaEnlace", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaEnlace);
+                this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnlaceDtconfi);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnEnlaceFactura}, false));
+                this.columnEnlaceFactura.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3743,17 +3814,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Id {
+            public string EnlaceDtconfi {
                 get {
                     try {
-                        return ((string)(this[this.tableDtConfi.IdColumn]));
+                        return ((string)(this[this.tableDtConfi.EnlaceDtconfiColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtConfi\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceDtconfi\' de la tabla \'DtConfi\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtConfi.IdColumn] = value;
+                    this[this.tableDtConfi.EnlaceDtconfiColumn] = value;
                 }
             }
             
@@ -3866,14 +3937,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIdNull() {
-                return this.IsNull(this.tableDtConfi.IdColumn);
+            public bool IsEnlaceDtconfiNull() {
+                return this.IsNull(this.tableDtConfi.EnlaceDtconfiColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIdNull() {
-                this[this.tableDtConfi.IdColumn] = global::System.Convert.DBNull;
+            public void SetEnlaceDtconfiNull() {
+                this[this.tableDtConfi.EnlaceDtconfiColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4437,17 +4508,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiRow[] GetDtConfiRows() {
-                if ((this.Table.ChildRelations["DtConfiguracionPrincipal_DtConfi"] == null)) {
-                    return new DtConfiRow[0];
-                }
-                else {
-                    return ((DtConfiRow[])(base.GetChildRows(this.Table.ChildRelations["DtConfiguracionPrincipal_DtConfi"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtProveedoresRow[] GetDtProveedoresRows() {
                 if ((this.Table.ChildRelations["DtConfiguracionPrincipal_DtProveedores"] == null)) {
                     return new DtProveedoresRow[0];
@@ -4465,6 +4525,17 @@ namespace PELOSCALVO {
                 }
                 else {
                     return ((DtTarifaTipoRow[])(base.GetChildRows(this.Table.ChildRelations["DtConfi_DtTarifaTipo"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtConfiRow[] GetDtConfiRows() {
+                if ((this.Table.ChildRelations["DtConfiguracionPrincipal_DtConfi"] == null)) {
+                    return new DtConfiRow[0];
+                }
+                else {
+                    return ((DtConfiRow[])(base.GetChildRows(this.Table.ChildRelations["DtConfiguracionPrincipal_DtConfi"])));
                 }
             }
         }
@@ -5248,6 +5319,22 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string EnlaceDtconfi {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtNuevaFactura.EnlaceDtconfiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceDtconfi\' de la tabla \'DtNuevaFactura\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtNuevaFactura.EnlaceDtconfiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiRow DtConfiRow {
                 get {
                     return ((DtConfiRow)(this.GetParentRow(this.Table.ParentRelations["DtConfiguracionPrincipal_DtNuevaFactura"])));
@@ -5579,6 +5666,18 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEmpresaEnlaceNull() {
                 this[this.tableDtNuevaFactura.EmpresaEnlaceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEnlaceDtconfiNull() {
+                return this.IsNull(this.tableDtNuevaFactura.EnlaceDtconfiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEnlaceDtconfiNull() {
+                this[this.tableDtNuevaFactura.EnlaceDtconfiColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

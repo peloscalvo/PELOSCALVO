@@ -30,6 +30,8 @@ namespace PELOSCALVO {
         
         private DtProvinciasDataTable tableDtProvincias;
         
+        private global::System.Data.DataRelation relationFK_DtPaises_DtProvincias;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,6 +244,7 @@ namespace PELOSCALVO {
                     this.tableDtProvincias.InitVars();
                 }
             }
+            this.relationFK_DtPaises_DtProvincias = this.Relations["FK_DtPaises_DtProvincias"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +261,18 @@ namespace PELOSCALVO {
             base.Tables.Add(this.tableDtPaises);
             this.tableDtProvincias = new DtProvinciasDataTable();
             base.Tables.Add(this.tableDtProvincias);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DtPaises_DtProvincias", new global::System.Data.DataColumn[] {
+                        this.tableDtPaises.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtProvincias.IdColumn});
+            this.tableDtProvincias.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationFK_DtPaises_DtProvincias = new global::System.Data.DataRelation("FK_DtPaises_DtProvincias", new global::System.Data.DataColumn[] {
+                        this.tableDtPaises.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtProvincias.IdColumn}, false);
+            this.Relations.Add(this.relationFK_DtPaises_DtProvincias);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -756,6 +771,9 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnPaisesPaises);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, false));
+                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -979,11 +997,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtProvinciasRow AddDtProvinciasRow(string ProvinciasProvincias, string Id) {
+            public DtProvinciasRow AddDtProvinciasRow(string ProvinciasProvincias, DtPaisesRow parentDtPaisesRowByFK_DtPaises_DtProvincias) {
                 DtProvinciasRow rowDtProvinciasRow = ((DtProvinciasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProvinciasProvincias,
-                        Id};
+                        null};
+                if ((parentDtPaisesRowByFK_DtPaises_DtProvincias != null)) {
+                    columnValuesArray[1] = parentDtPaisesRowByFK_DtPaises_DtProvincias[1];
+                }
                 rowDtProvinciasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtProvinciasRow);
                 return rowDtProvinciasRow;
@@ -1311,6 +1332,17 @@ namespace PELOSCALVO {
             public void SetIdNull() {
                 this[this.tableDtPaises.IdColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtProvinciasRow[] GetDtProvinciasRows() {
+                if ((this.Table.ChildRelations["FK_DtPaises_DtProvincias"] == null)) {
+                    return new DtProvinciasRow[0];
+                }
+                else {
+                    return ((DtProvinciasRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DtPaises_DtProvincias"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1357,6 +1389,17 @@ namespace PELOSCALVO {
                 }
                 set {
                     this[this.tableDtProvincias.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtPaisesRow DtPaisesRow {
+                get {
+                    return ((DtPaisesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DtPaises_DtProvincias"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DtPaises_DtProvincias"]);
                 }
             }
             

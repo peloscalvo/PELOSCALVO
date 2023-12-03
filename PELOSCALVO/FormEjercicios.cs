@@ -69,10 +69,10 @@ namespace PELOSCALVO
                 ok = false;
                 this.ErrorEjercicios.SetError(this.ejerciciosDeAñoTextBox, "_ingresar Ejercicio valido (( minimo 4 Caracteres))");
             }
-            if (this.empresaENLACETextBox.Text.Length < 4)
+            if (this.EmpresaEnlace.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorEjercicios.SetError(this.empresaENLACETextBox, "_ingresar Enlace Empresa valido (( minimo 4 Caracteres))");
+                this.ErrorEjercicios.SetError(this.EmpresaEnlace, "_ingresar Enlace Empresa valido (( minimo 4 Caracteres))");
                 if (this.añoDeEjercicioTextBox.Text.Length < 4)
                 {
                     ok = false;
@@ -86,7 +86,7 @@ namespace PELOSCALVO
             this.ErrorEjercicios.SetError(this.IdConfi, "");
             this.ErrorEjercicios.SetError(this.configuraccionBasicaTextBox, "");
             this.ErrorEjercicios.SetError(this.ejerciciosDeAñoTextBox, "");
-            this.ErrorEjercicios.SetError(this.empresaENLACETextBox, "");
+            this.ErrorEjercicios.SetError(this.EmpresaEnlace, "");
             this.ErrorEjercicios.SetError(this.añoDeEjercicioTextBox, "");
         }
         private void RestaurarOjetos_Ej()
@@ -118,15 +118,15 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
-                consulta = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES( @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                consulta = "INSERT INTO [DtConfi] ([EnlaceDtconfi],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES(@EnlaceDtconfi, @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [EnlaceDtconfi] = @EnlaceDtconfi,[EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
-                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EmpresaENLACE = @EmpresaENLACE";
+                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EnlaceDtconfi = @EnlaceDtconfi";
             }
 
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -134,7 +134,8 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.empresaENLACETextBox.Text) ? (object)DBNull.Value : this.empresaENLACETextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value : this.EnlaceDtconfi.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
@@ -168,15 +169,15 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
-                consulta = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES( @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                consulta = "INSERT INTO [DtConfi] ([EnlaceDtconfi],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES(@EnlaceDtconfi, @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [EnlaceDtconfi] = @EnlaceDtconfi,[EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
-                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EmpresaENLACE = @EmpresaENLACE";
+                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EnlaceDtconfi = @EnlaceDtconfi";
             }
 
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -184,7 +185,8 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.empresaENLACETextBox.Text) ? (object)DBNull.Value : this.empresaENLACETextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value : this.EnlaceDtconfi.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
@@ -287,10 +289,12 @@ namespace PELOSCALVO
                     MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                     return;
                 }
+                Random r = new Random();
+                int VALORid = r.Next(500, 1000000);
                 int numeroFILA = this.dtConfiDataGridView.Rows.Count;
                 this.dtConfiDataGridView.Sort(this.dtConfiDataGridView.Columns[0], ListSortDirection.Ascending);
                 this.dtConfiguracionPrincipalDtConfiBindingSource.AddNew();
-                this.empresaENLACETextBox.Text = this.CambiarDeEmpresa1.Text;
+                this.EmpresaEnlace.Text = this.CambiarDeEmpresa1.Text;
                 this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
                 if (this.dtConfiDataGridView.CurrentCell.RowIndex == 0)
                 {
@@ -301,14 +305,13 @@ namespace PELOSCALVO
                 {
                     if (this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value.ToString() == string.Empty)
                     {
-                        Random r = new Random();
-                        int VALORid = r.Next(50000, 100000000);
+                       
                         this.dtConfiDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.IdConfi.Text = VALORid.ToString();
                     }
                     else
                     {
-                        int VALORid = Convert.ToInt32(this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
+                         VALORid = Convert.ToInt32(this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
                         this.dtConfiDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.IdConfi.Text = VALORid.ToString();
                     }
@@ -328,6 +331,7 @@ namespace PELOSCALVO
                     this.ejerciciosDeAñoTextBox.Text = " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
                     this.añoDeEjercicioTextBox.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
+               
                 ModificarOjetos_Ej();
             }
             catch (Exception ex)
@@ -376,7 +380,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (string.IsNullOrEmpty(this.empresaENLACETextBox.Text))
+            if (string.IsNullOrEmpty(this.EmpresaEnlace.Text))
             {
                 MessageBox.Show("Eliga Empresa Valida", "EMPRESA");
             }
@@ -413,8 +417,9 @@ namespace PELOSCALVO
                 {
                     if (MessageBox.Show(" ¿Aceptar Guardar Configuracion ? ", " GUARDAR DATOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-
-
+                        Random r = new Random();
+                        int VALORid = r.Next(500, 1000000);
+                        EnlaceDtconfi.Text = ejerciciosDeAñoTextBox.Text + "/" + EmpresaEnlace.Text + "/" + IdConfi.Text + "/" + VALORid;
 
                         if (ClsConexionSql.SibaseDatosSql)
                         {

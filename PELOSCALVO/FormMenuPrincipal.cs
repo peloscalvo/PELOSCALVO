@@ -862,6 +862,14 @@ namespace PELOSCALVO
             frm.BringToFront();
         }
 
+        private void provinciasToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.panelAplicaciones.Visible = false;
+            FormProvincias frm = new FormProvincias();
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
         private void BtnSql_Click(object sender, EventArgs e)
         {
             PanelAcesosDire.Visible = false;
