@@ -144,6 +144,7 @@ namespace PELOSCALVO
             this.FiltrarBajas = new System.Windows.Forms.ComboBox();
             this.FiltrarFamiliaArt = new System.Windows.Forms.ComboBox();
             this.CheckFamiliaArt = new System.Windows.Forms.RadioButton();
+            this.dsMulti2 = new PELOSCALVO.DsMulti2();
             Pvp2Label = new System.Windows.Forms.Label();
             PlusLabel = new System.Windows.Forms.Label();
             familiaLabel = new System.Windows.Forms.Label();
@@ -183,6 +184,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioBindingSource)).BeginInit();
             this.panelBotonesArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             this.SuspendLayout();
             // 
             // Pvp2Label
@@ -1104,7 +1106,7 @@ namespace PELOSCALVO
             // dtFamiliaProductosBindingSource
             // 
             this.dtFamiliaProductosBindingSource.DataMember = "DtFamiliaProductos";
-            this.dtFamiliaProductosBindingSource.DataSource = this.dsMultidatos;
+            this.dtFamiliaProductosBindingSource.DataSource = this.dsMulti2;
             // 
             // dsMultidatos
             // 
@@ -1490,6 +1492,11 @@ namespace PELOSCALVO
             this.CheckFamiliaArt.UseVisualStyleBackColor = true;
             this.CheckFamiliaArt.Click += new System.EventHandler(this.CheckFamiliaArt_Click);
             // 
+            // dsMulti2
+            // 
+            this.dsMulti2.DataSetName = "DsMulti2";
+            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FormArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1537,6 +1544,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioBindingSource)).EndInit();
             this.panelBotonesArticulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1623,5 +1631,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Familia;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFILA;
+        private DsMulti2 dsMulti2;
     }
 }

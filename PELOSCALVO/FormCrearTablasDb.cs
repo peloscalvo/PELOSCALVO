@@ -121,21 +121,30 @@ namespace PELOSCALVO
                     string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER, [Usuario] varchar, [Nombre] varchar," +
                           "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
 
-
-                    string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
+                    string Ruta2 = "";
+                    if (this.NombreArchivo_T.Tag.ToString() == "SI")
+                    {
+                        Ruta2 = this.NombreArchivo_T.Text;
+                    }
+                    else
+                    {
+                        Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivo_T.Text + "." + this.ExtensionTxt.Text;
+                    }
+                    string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
                     string TipoNota = "DtNota";
                     string Tabladetalle = "DtDetalles_Nota";
                     string ConsultaFacturacion = "";
                     String ConsultaDetalles = "";
+
+
                     using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
                     {
-                   
+                     
 
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -146,11 +155,10 @@ namespace PELOSCALVO
                             }
                         }
 
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -163,11 +171,10 @@ namespace PELOSCALVO
 
 
 
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaEmpresas))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaEmpresas, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -178,11 +185,10 @@ namespace PELOSCALVO
                             }
                         }
 
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaInicio))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaInicio, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -192,11 +198,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + TablaInicio, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaAlmacen))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaAlmacen, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -206,11 +211,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + ConsultaAlmacen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaProvedores))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaProvedores, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -220,11 +224,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + ConsultaProvedores, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaDtconfi))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaDtconfi, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -234,11 +237,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + TablaDtconfi, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaTarifa))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaTarifa, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -248,11 +250,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + TablaTarifa, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFamilia))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFamilia, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -262,11 +263,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + ConsultaFamilia, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaPais))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaPais, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -277,11 +277,10 @@ namespace PELOSCALVO
                             }
                         }
 
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaObra))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaObra, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -291,11 +290,10 @@ namespace PELOSCALVO
                             }
                         }
 
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaProvincia))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaProvincia, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -305,11 +303,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + TablaProvincia, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -319,11 +316,10 @@ namespace PELOSCALVO
                             }
                         }
 
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_Cli))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_Cli, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -332,11 +328,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_Cli, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaUser))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaUser, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -345,11 +340,10 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + TablaUser, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -358,9 +352,8 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_E, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
                         {
-                            ComandoDb.Connection.ConnectionString = CadenaConexion;
                             for (int i = 1; i < 7; i++)
                             {
 
@@ -420,12 +413,11 @@ namespace PELOSCALVO
                                     }
                                  
                                 }
-                                using (OleDbCommand ComandoDbDetalle = new OleDbCommand(ConsultaDetalles))
+                                using (OleDbCommand ComandoDbDetalle = new OleDbCommand(ConsultaDetalles, NuevaConexion))
                                 {
                                 
                                     try
                                     {
-                                        ComandoDbDetalle.Connection.ConnectionString = CadenaConexion;
                                         ComandoDbDetalle.ExecuteNonQuery();
                                         ComandoDbDetalle.Parameters.Clear();
                                     }
@@ -550,11 +542,10 @@ namespace PELOSCALVO
   
                     using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
                     {
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                                 MessageBox.Show("Creada Con exito" + "\n" + this.ArticulosTxt.Text, "CREAR TABLA", MessageBoxButtons.OK);
                             }
@@ -607,11 +598,10 @@ namespace PELOSCALVO
                     string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
                     using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
                     {
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente))
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente, NuevaConexion))
                         {
                             try
                             {
-                                ComandoDb.Connection.ConnectionString = CadenaConexion;
                                 ComandoDb.ExecuteNonQuery();
                                 MessageBox.Show("Creada Con exito" + "\n" + this.ClientesTxt.Text, "CREAR TABLA", MessageBoxButtons.OK);
                             }

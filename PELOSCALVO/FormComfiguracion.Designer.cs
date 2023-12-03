@@ -43,9 +43,6 @@ namespace PELOSCALVO
             System.Windows.Forms.Label enlaceTarifaLabel;
             System.Windows.Forms.Label tarifaTipoLabel;
             System.Windows.Forms.Label idTarifaLabel;
-            System.Windows.Forms.Label empresaConfiLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -80,14 +77,6 @@ namespace PELOSCALVO
             this.nombreTablaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.tabObras = new System.Windows.Forms.TabPage();
-            this.BtnGuardarObras = new System.Windows.Forms.Button();
-            this.BtnVolverObras = new System.Windows.Forms.Button();
-            this.dataGridObras = new System.Windows.Forms.DataGridView();
-            this.idObrasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.obrasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabPageInicio = new System.Windows.Forms.TabPage();
             this.panelDatosInicio = new System.Windows.Forms.Panel();
             this.empresaInicio = new System.Windows.Forms.ComboBox();
@@ -122,7 +111,6 @@ namespace PELOSCALVO
             this.BtnBuscarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnNuevoTipoTarifa = new System.Windows.Forms.Button();
             this.BtnModificarTipoTarifa = new System.Windows.Forms.Button();
-            this.empresaConfiComboBox = new System.Windows.Forms.ComboBox();
             this.tabMENU = new System.Windows.Forms.TabPage();
             this.BtnRestructurar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -140,14 +128,6 @@ namespace PELOSCALVO
             this.crearCopiaSimpleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearCopiaCompletaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarCopiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tooInicio = new System.Windows.Forms.ToolStripMenuItem();
-            this.datosDeInicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configurarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolDescuentos = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolFamilia = new System.Windows.Forms.ToolStripMenuItem();
-            this.familiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,7 +147,6 @@ namespace PELOSCALVO
             enlaceTarifaLabel = new System.Windows.Forms.Label();
             tarifaTipoLabel = new System.Windows.Forms.Label();
             idTarifaLabel = new System.Windows.Forms.Label();
-            empresaConfiLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).BeginInit();
@@ -184,8 +163,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).BeginInit();
             this.TabTablas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTablas)).BeginInit();
-            this.tabObras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridObras)).BeginInit();
             this.tabPageInicio.SuspendLayout();
             this.panelDatosInicio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioDataGridView)).BeginInit();
@@ -315,15 +292,6 @@ namespace PELOSCALVO
             idTarifaLabel.TabIndex = 42;
             idTarifaLabel.Text = "Id:";
             // 
-            // empresaConfiLabel
-            // 
-            empresaConfiLabel.AutoSize = true;
-            empresaConfiLabel.Location = new System.Drawing.Point(451, 354);
-            empresaConfiLabel.Name = "empresaConfiLabel";
-            empresaConfiLabel.Size = new System.Drawing.Size(43, 13);
-            empresaConfiLabel.TabIndex = 9;
-            empresaConfiLabel.Text = "Buscar:";
-            // 
             // dtConfiguracionPrincipalBindingSource
             // 
             this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
@@ -442,7 +410,7 @@ namespace PELOSCALVO
             this.TabTablas.Location = new System.Drawing.Point(4, 25);
             this.TabTablas.Name = "TabTablas";
             this.TabTablas.Padding = new System.Windows.Forms.Padding(3);
-            this.TabTablas.Size = new System.Drawing.Size(1012, 463);
+            this.TabTablas.Size = new System.Drawing.Size(1012, 531);
             this.TabTablas.TabIndex = 12;
             this.TabTablas.Text = "Tipos de Tablas ";
             this.TabTablas.UseVisualStyleBackColor = true;
@@ -456,14 +424,14 @@ namespace PELOSCALVO
             this.DataGridTablas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(200)))));
             this.DataGridTablas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DataGridTablas.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridTablas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridTablas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DataGridTablas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridTablas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn1,
@@ -471,14 +439,14 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn1,
             this.dataGridViewImageColumn2});
             this.DataGridTablas.DataSource = this.dtNombresTablasBindingSource;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridTablas.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridTablas.DefaultCellStyle = dataGridViewCellStyle6;
             this.DataGridTablas.Dock = System.Windows.Forms.DockStyle.Top;
             this.DataGridTablas.EnableHeadersVisualStyles = false;
             this.DataGridTablas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -524,138 +492,6 @@ namespace PELOSCALVO
             this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // tabObras
-            // 
-            this.tabObras.Controls.Add(this.BtnGuardarObras);
-            this.tabObras.Controls.Add(this.BtnVolverObras);
-            this.tabObras.Controls.Add(this.dataGridObras);
-            this.tabObras.Location = new System.Drawing.Point(4, 25);
-            this.tabObras.Name = "tabObras";
-            this.tabObras.Padding = new System.Windows.Forms.Padding(3);
-            this.tabObras.Size = new System.Drawing.Size(1012, 531);
-            this.tabObras.TabIndex = 11;
-            this.tabObras.Text = "Obras";
-            this.tabObras.UseVisualStyleBackColor = true;
-            // 
-            // BtnGuardarObras
-            // 
-            this.BtnGuardarObras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnGuardarObras.BackColor = System.Drawing.Color.Transparent;
-            this.BtnGuardarObras.FlatAppearance.BorderSize = 0;
-            this.BtnGuardarObras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnGuardarObras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnGuardarObras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGuardarObras.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarObras.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
-            this.BtnGuardarObras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarObras.Location = new System.Drawing.Point(676, 497);
-            this.BtnGuardarObras.Name = "BtnGuardarObras";
-            this.BtnGuardarObras.Size = new System.Drawing.Size(107, 42);
-            this.BtnGuardarObras.TabIndex = 51;
-            this.BtnGuardarObras.Text = "Actualizar";
-            this.BtnGuardarObras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnGuardarObras.UseVisualStyleBackColor = false;
-            this.BtnGuardarObras.Click += new System.EventHandler(this.BtnGuardarObras_Click);
-            // 
-            // BtnVolverObras
-            // 
-            this.BtnVolverObras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnVolverObras.BackColor = System.Drawing.Color.Transparent;
-            this.BtnVolverObras.FlatAppearance.BorderSize = 0;
-            this.BtnVolverObras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnVolverObras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnVolverObras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVolverObras.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnVolverObras.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
-            this.BtnVolverObras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverObras.Location = new System.Drawing.Point(828, 497);
-            this.BtnVolverObras.Name = "BtnVolverObras";
-            this.BtnVolverObras.Size = new System.Drawing.Size(107, 42);
-            this.BtnVolverObras.TabIndex = 50;
-            this.BtnVolverObras.Text = "Volver";
-            this.BtnVolverObras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnVolverObras.UseVisualStyleBackColor = false;
-            this.BtnVolverObras.Click += new System.EventHandler(this.BtnVolverObras_Click);
-            // 
-            // dataGridObras
-            // 
-            this.dataGridObras.AllowDrop = true;
-            this.dataGridObras.AllowUserToResizeRows = false;
-            this.dataGridObras.AutoGenerateColumns = false;
-            this.dataGridObras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridObras.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(70)))));
-            this.dataGridObras.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridObras.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridObras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridObras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridObras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idObrasDataGridViewTextBoxColumn,
-            this.obrasDataGridViewTextBoxColumn,
-            this.dataGridViewImageColumn5,
-            this.dataGridViewImageColumn6});
-            this.dataGridObras.DataSource = this.dtObrasBindingSource;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridObras.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridObras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridObras.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dataGridObras.Location = new System.Drawing.Point(3, 3);
-            this.dataGridObras.MultiSelect = false;
-            this.dataGridObras.Name = "dataGridObras";
-            this.dataGridObras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridObras.Size = new System.Drawing.Size(1006, 374);
-            this.dataGridObras.TabIndex = 49;
-            this.dataGridObras.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridObras_CellClick);
-            this.dataGridObras.Validated += new System.EventHandler(this.dataGridObras_Validated);
-            // 
-            // idObrasDataGridViewTextBoxColumn
-            // 
-            this.idObrasDataGridViewTextBoxColumn.DataPropertyName = "Id_Obras";
-            this.idObrasDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idObrasDataGridViewTextBoxColumn.Name = "idObrasDataGridViewTextBoxColumn";
-            this.idObrasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // obrasDataGridViewTextBoxColumn
-            // 
-            this.obrasDataGridViewTextBoxColumn.DataPropertyName = "Obras";
-            this.obrasDataGridViewTextBoxColumn.FillWeight = 300F;
-            this.obrasDataGridViewTextBoxColumn.HeaderText = "Obras";
-            this.obrasDataGridViewTextBoxColumn.MaxInputLength = 100;
-            this.obrasDataGridViewTextBoxColumn.Name = "obrasDataGridViewTextBoxColumn";
-            // 
-            // dataGridViewImageColumn5
-            // 
-            this.dataGridViewImageColumn5.FillWeight = 90F;
-            this.dataGridViewImageColumn5.HeaderText = "Editar";
-            this.dataGridViewImageColumn5.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
-            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
-            this.dataGridViewImageColumn5.ReadOnly = true;
-            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewImageColumn6
-            // 
-            this.dataGridViewImageColumn6.FillWeight = 98F;
-            this.dataGridViewImageColumn6.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn6.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.dataGridViewImageColumn6.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
-            this.dataGridViewImageColumn6.ReadOnly = true;
-            this.dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // tabPageInicio
             // 
             this.tabPageInicio.AutoScroll = true;
@@ -666,7 +502,7 @@ namespace PELOSCALVO
             this.tabPageInicio.Location = new System.Drawing.Point(4, 25);
             this.tabPageInicio.Name = "tabPageInicio";
             this.tabPageInicio.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInicio.Size = new System.Drawing.Size(1012, 463);
+            this.tabPageInicio.Size = new System.Drawing.Size(1012, 531);
             this.tabPageInicio.TabIndex = 5;
             this.tabPageInicio.Text = "Configuracion Inicio";
             this.tabPageInicio.UseVisualStyleBackColor = true;
@@ -943,7 +779,7 @@ namespace PELOSCALVO
             this.tabPageTarifa.Location = new System.Drawing.Point(4, 25);
             this.tabPageTarifa.Name = "tabPageTarifa";
             this.tabPageTarifa.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTarifa.Size = new System.Drawing.Size(1012, 463);
+            this.tabPageTarifa.Size = new System.Drawing.Size(1012, 531);
             this.tabPageTarifa.TabIndex = 4;
             this.tabPageTarifa.Text = "Descuentos Clientes";
             this.tabPageTarifa.UseVisualStyleBackColor = true;
@@ -1198,23 +1034,9 @@ namespace PELOSCALVO
             this.BtnModificarTipoTarifa.UseVisualStyleBackColor = false;
             this.BtnModificarTipoTarifa.Click += new System.EventHandler(this.BtnModificarTipoTarifa_Click);
             // 
-            // empresaConfiComboBox
-            // 
-            this.empresaConfiComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.empresaConfiComboBox.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.empresaConfiComboBox.DisplayMember = "EmpresaConfi";
-            this.empresaConfiComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaConfiComboBox.FormattingEnabled = true;
-            this.empresaConfiComboBox.Location = new System.Drawing.Point(500, 346);
-            this.empresaConfiComboBox.Name = "empresaConfiComboBox";
-            this.empresaConfiComboBox.Size = new System.Drawing.Size(282, 21);
-            this.empresaConfiComboBox.TabIndex = 10;
-            // 
             // tabMENU
             // 
             this.tabMENU.Controls.Add(this.BtnRestructurar);
-            this.tabMENU.Controls.Add(this.empresaConfiComboBox);
-            this.tabMENU.Controls.Add(empresaConfiLabel);
             this.tabMENU.Controls.Add(this.label5);
             this.tabMENU.Controls.Add(this.menuStrip);
             this.tabMENU.Controls.Add(this.BtnSalirTipoTarifa);
@@ -1239,7 +1061,7 @@ namespace PELOSCALVO
             this.BtnRestructurar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRestructurar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_arrow_35_24;
             this.BtnRestructurar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnRestructurar.Location = new System.Drawing.Point(680, 227);
+            this.BtnRestructurar.Location = new System.Drawing.Point(665, 315);
             this.BtnRestructurar.Name = "BtnRestructurar";
             this.BtnRestructurar.Padding = new System.Windows.Forms.Padding(0, 0, 12, 0);
             this.BtnRestructurar.Size = new System.Drawing.Size(277, 42);
@@ -1263,9 +1085,6 @@ namespace PELOSCALVO
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolArchivo,
             this.toolCopiaSeguridad,
-            this.tooInicio,
-            this.toolDescuentos,
-            this.toolFamilia,
             this.ayudaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(3, 3);
             this.menuStrip.Name = "menuStrip";
@@ -1312,14 +1131,14 @@ namespace PELOSCALVO
             // 
             this.añadirBaseDatosToolStripMenuItem.Name = "añadirBaseDatosToolStripMenuItem";
             this.añadirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.añadirBaseDatosToolStripMenuItem.Text = "&Añadir Archivos Datos";
+            this.añadirBaseDatosToolStripMenuItem.Text = "&Base Datos Db Local";
             this.añadirBaseDatosToolStripMenuItem.Click += new System.EventHandler(this.añadirBaseDatosToolStripMenuItem_Click);
             // 
             // crearBaseDatosSqlLocalToolStripMenuItem
             // 
             this.crearBaseDatosSqlLocalToolStripMenuItem.Name = "crearBaseDatosSqlLocalToolStripMenuItem";
             this.crearBaseDatosSqlLocalToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.crearBaseDatosSqlLocalToolStripMenuItem.Text = "&Base Datos Sql local";
+            this.crearBaseDatosSqlLocalToolStripMenuItem.Text = "&Base Datos Sql ";
             this.crearBaseDatosSqlLocalToolStripMenuItem.Click += new System.EventHandler(this.crearBaseDatosSqlLocalToolStripMenuItem_Click);
             // 
             // Abrir_Correos
@@ -1374,67 +1193,6 @@ namespace PELOSCALVO
             this.restaurarCopiaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.restaurarCopiaToolStripMenuItem.Text = "Restaurar Copia";
             // 
-            // tooInicio
-            // 
-            this.tooInicio.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.datosDeInicioToolStripMenuItem,
-            this.configurarDatosToolStripMenuItem});
-            this.tooInicio.Name = "tooInicio";
-            this.tooInicio.Size = new System.Drawing.Size(127, 20);
-            this.tooInicio.Text = "Configuracion Inicio";
-            // 
-            // datosDeInicioToolStripMenuItem
-            // 
-            this.datosDeInicioToolStripMenuItem.Name = "datosDeInicioToolStripMenuItem";
-            this.datosDeInicioToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.datosDeInicioToolStripMenuItem.Text = "Consultar Datos";
-            this.datosDeInicioToolStripMenuItem.Click += new System.EventHandler(this.datosDeInicioToolStripMenuItem_Click);
-            // 
-            // configurarDatosToolStripMenuItem
-            // 
-            this.configurarDatosToolStripMenuItem.Name = "configurarDatosToolStripMenuItem";
-            this.configurarDatosToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.configurarDatosToolStripMenuItem.Text = "Configurar Datos";
-            this.configurarDatosToolStripMenuItem.Click += new System.EventHandler(this.configurarDatosToolStripMenuItem_Click);
-            // 
-            // toolDescuentos
-            // 
-            this.toolDescuentos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editarDescuentosToolStripMenuItem,
-            this.verDescuentosToolStripMenuItem});
-            this.toolDescuentos.Name = "toolDescuentos";
-            this.toolDescuentos.Size = new System.Drawing.Size(125, 20);
-            this.toolDescuentos.Text = "Descuentos Clientes";
-            // 
-            // editarDescuentosToolStripMenuItem
-            // 
-            this.editarDescuentosToolStripMenuItem.Name = "editarDescuentosToolStripMenuItem";
-            this.editarDescuentosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.editarDescuentosToolStripMenuItem.Text = "Editar Descuentos";
-            this.editarDescuentosToolStripMenuItem.Click += new System.EventHandler(this.editarDescuentosToolStripMenuItem_Click);
-            // 
-            // verDescuentosToolStripMenuItem
-            // 
-            this.verDescuentosToolStripMenuItem.Name = "verDescuentosToolStripMenuItem";
-            this.verDescuentosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.verDescuentosToolStripMenuItem.Text = "Ver Descuentos";
-            this.verDescuentosToolStripMenuItem.Click += new System.EventHandler(this.verDescuentosToolStripMenuItem_Click);
-            // 
-            // toolFamilia
-            // 
-            this.toolFamilia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.familiasToolStripMenuItem});
-            this.toolFamilia.Name = "toolFamilia";
-            this.toolFamilia.Size = new System.Drawing.Size(114, 20);
-            this.toolFamilia.Text = "Familia Productos";
-            // 
-            // familiasToolStripMenuItem
-            // 
-            this.familiasToolStripMenuItem.Name = "familiasToolStripMenuItem";
-            this.familiasToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.familiasToolStripMenuItem.Text = "Familias";
-            this.familiasToolStripMenuItem.Click += new System.EventHandler(this.familiasToolStripMenuItem_Click);
-            // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1447,13 +1205,13 @@ namespace PELOSCALVO
             // índiceToolStripMenuItem
             // 
             this.índiceToolStripMenuItem.Name = "índiceToolStripMenuItem";
-            this.índiceToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.índiceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.índiceToolStripMenuItem.Text = "Índic&e";
             // 
             // buscarToolStripMenuItem
             // 
             this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
             // BtnSalirTipoTarifa
@@ -1483,7 +1241,6 @@ namespace PELOSCALVO
             this.tabControlTodo.Controls.Add(this.tabMENU);
             this.tabControlTodo.Controls.Add(this.tabPageTarifa);
             this.tabControlTodo.Controls.Add(this.tabPageInicio);
-            this.tabControlTodo.Controls.Add(this.tabObras);
             this.tabControlTodo.Controls.Add(this.TabTablas);
             this.tabControlTodo.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControlTodo.HotTrack = true;
@@ -1532,8 +1289,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).EndInit();
             this.TabTablas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTablas)).EndInit();
-            this.tabObras.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridObras)).EndInit();
             this.tabPageInicio.ResumeLayout(false);
             this.panelDatosInicio.ResumeLayout(false);
             this.panelDatosInicio.PerformLayout();
@@ -1592,20 +1347,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.ToolStripMenuItem crearCopiaSimpleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearCopiaCompletaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem restaurarCopiaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tooInicio;
-        private System.Windows.Forms.ToolStripMenuItem datosDeInicioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configurarDatosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolDescuentos;
-        private System.Windows.Forms.ToolStripMenuItem editarDescuentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verDescuentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolFamilia;
-        private System.Windows.Forms.ToolStripMenuItem familiasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem índiceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
         private System.Windows.Forms.Button BtnSalirTipoTarifa;
         private System.Windows.Forms.DataGridViewTextBoxColumn familiaProductosDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ComboBox empresaConfiComboBox;
         private System.Windows.Forms.TabPage tabPageTarifa;
         private System.Windows.Forms.Label EnlaceTarifa;
         private System.Windows.Forms.Label IdEmpresa;
@@ -1640,14 +1386,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         public System.Windows.Forms.Button BtnGuardarInicio;
-        private System.Windows.Forms.TabPage tabObras;
-        public System.Windows.Forms.Button BtnGuardarObras;
-        public System.Windows.Forms.Button BtnVolverObras;
-        private System.Windows.Forms.DataGridView dataGridObras;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idObrasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn obrasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
         private System.Windows.Forms.TabPage TabTablas;
         private System.Windows.Forms.DataGridView DataGridTablas;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;

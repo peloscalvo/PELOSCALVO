@@ -37,7 +37,6 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFamiliaProductos));
             this.errorProvider1Confi = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.dtFamiliaProductosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BtnSalirFamilia = new System.Windows.Forms.Button();
             this.BtnCancelarFamilia = new System.Windows.Forms.Button();
@@ -54,15 +53,16 @@ namespace PELOSCALVO
             this.DtGridFamilia = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.familiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dsMulti2 = new PELOSCALVO.DsMulti2();
             id_almacenesLabel = new System.Windows.Forms.Label();
             almacenesLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1Confi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFamiliaProductosBindingSource)).BeginInit();
             this.BotonesFamilia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelFamilia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtGridFamilia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             this.SuspendLayout();
             // 
             // id_almacenesLabel
@@ -88,15 +88,10 @@ namespace PELOSCALVO
             this.errorProvider1Confi.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.errorProvider1Confi.ContainerControl = this;
             // 
-            // dsMultidatos
-            // 
-            this.dsMultidatos.DataSetName = "DsMultidatos";
-            this.dsMultidatos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dtFamiliaProductosBindingSource
             // 
             this.dtFamiliaProductosBindingSource.DataMember = "DtFamiliaProductos";
-            this.dtFamiliaProductosBindingSource.DataSource = this.dsMultidatos;
+            this.dtFamiliaProductosBindingSource.DataSource = this.dsMulti2;
             // 
             // BtnSalirFamilia
             // 
@@ -354,6 +349,11 @@ namespace PELOSCALVO
             this.familiaDataGridViewTextBoxColumn.Name = "familiaDataGridViewTextBoxColumn";
             this.familiaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // dsMulti2
+            // 
+            this.dsMulti2.DataSetName = "DsMulti2";
+            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FormFamiliaProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,13 +370,13 @@ namespace PELOSCALVO
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormFamiliaProductos_FormClosing);
             this.Load += new System.EventHandler(this.FormFamiliaProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1Confi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFamiliaProductosBindingSource)).EndInit();
             this.BotonesFamilia.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panelFamilia.ResumeLayout(false);
             this.panelFamilia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtGridFamilia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -384,7 +384,6 @@ namespace PELOSCALVO
         #endregion
 
         private System.Windows.Forms.ErrorProvider errorProvider1Confi;
-        private DsMultidatos dsMultidatos;
         private System.Windows.Forms.BindingSource dtFamiliaProductosBindingSource;
         private System.Windows.Forms.Button BtnSalirFamilia;
         private System.Windows.Forms.Button BtnCancelarFamilia;
@@ -401,5 +400,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn familiaDataGridViewTextBoxColumn;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DsMulti2 dsMulti2;
     }
 }

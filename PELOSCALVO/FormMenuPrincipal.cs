@@ -106,16 +106,7 @@ namespace PELOSCALVO
                     {
                         CrearArchivosXml(ClasDatos.RutaMultidatos);
                     }
-                    if (File.Exists(ClasDatos.RutaMulti2))
-                    {
-                        this.dsMulti2.ReadXml(ClasDatos.RutaMulti2);
-
-
-                    }
-                    else
-                    {
-                        CrearArchivosXml(ClasDatos.RutaMulti2);
-                    }
+     
                     if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                     {
                         this.dsServidor.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
@@ -128,17 +119,7 @@ namespace PELOSCALVO
 
                     }
 
-                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml"))
-                    {
-                        this.dsCorreos.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
 
-
-                    }
-                    else
-                    {
-                        CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
-
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -670,6 +651,7 @@ namespace PELOSCALVO
             {
                 BtnInfo.Tag = "SI";
                 PanelAcesosDire.Visible = true;
+                PanelAcesosDire.Width = panelContenedorForm.Width;
             }
             else
             {
@@ -685,8 +667,10 @@ namespace PELOSCALVO
             {
                 if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
-                    if (this.PanelInfo_P.Width >= 865)
+                    this.PanelInfo_P.Visible = true;
+                    if (this.PanelInfo_P.Width >= 864)
                     {
+                        this.PanelInfo_P.Tag = "CERRAR";
                         this.TimerCerrarPanel.Stop();
                     }
                     else
@@ -701,6 +685,7 @@ namespace PELOSCALVO
                     {
                         this.TimerCerrarPanel.Stop();
                         this.PanelInfo_P.Visible = false;
+                        this.PanelInfo_P.Tag = "ABRIR";
                     }
                     else
                     {
@@ -793,11 +778,11 @@ namespace PELOSCALVO
                     this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
                     this.TimerCerrarPanel.Start();
                     this.PanelInfo_P.Visible = true;
-                    this.PanelInfo_P.Tag = "CERRAR";
+                  
                 }
                 else
                 {
-                    this.PanelInfo_P.Tag = "ABRIR";
+                  //  this.PanelInfo_P.Tag = "ABRIR";
                 }
             }
             catch (Exception)

@@ -106,14 +106,6 @@ namespace PELOSCALVO
                         }
                     }
 
-                    if (!File.Exists(ClasDatos.RutaMultidatos))
-                    {
-                        FormMenuPrincipal.menu2principal.CrearArchivosXml(ClasDatos.RutaMultidatos);
-                    }
-                    if (!File.Exists(ClasDatos.RutaMulti2))
-                    {
-                        FormMenuPrincipal.menu2principal.CrearArchivosXml(ClasDatos.RutaMulti2);
-                    }
                     if (!File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                     {
                         FormMenuPrincipal.menu2principal.CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
@@ -158,10 +150,7 @@ namespace PELOSCALVO
             {
 
                 MessageBox.Show(ex.Message.ToString());
-            }
-            this.tabPageTarifa.Parent = null;
-            this.tabPageInicio.Parent = null;
-            this.tabObras.Parent = null;
+            };
 
             //dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
             //dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
@@ -650,7 +639,9 @@ namespace PELOSCALVO
 
         private void añadirBaseDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormCrearTablasDb frm = new FormCrearTablasDb();
+            frm.BringToFront();
+            frm.ShowDialog();
         }
 
         private void crearCopiaCompletaToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -817,13 +808,7 @@ namespace PELOSCALVO
         {
             if (Cursor.Position.Y > 800)
             {
-                //return;
-                this.toolArchivo.DropDown.Visible = false;
-                this.toolDescuentos.DropDown.Visible = false;
-                this.toolFamilia.DropDown.Visible = false;
-                this.toolCopiaSeguridad.DropDown.Visible = false;
-                this.tooInicio.DropDown.Visible = false;
-                this.ayudaToolStripMenuItem.DropDown.Visible = false;
+
             }
         }
 
@@ -837,110 +822,7 @@ namespace PELOSCALVO
             this.tabControlTodo.TabPages.Insert(1, this.tabPageTarifa);
             this.tabMENU.Parent = null;
         }
- 
-        private void BtnVolverAlmacenes_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-        }
 
-        private void BtnGuardarObras_Click(object sender, EventArgs e)
-        {
-            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 30))
-            {
-                if (File.Exists(ClasDatos.RutaMulti2))
-                {
-                    this.dtObrasBindingSource.EndEdit();
-                    this.dataGridObras.EndEdit();
-                    Validate();
-                    FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
-                    MessageBox.Show("Se Actualizo Con Exito", "OBRA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("No Se Guardo", "FALTAN ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-        private void dataGridProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-
-            }
-        }
-
-        private void dataGridObras_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-
-                string provi = " Obra";
-                if (this.dataGridObras.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
-                {
-                    provi = this.dataGridObras.Rows[e.RowIndex].Cells[1].Value.ToString();
-                }
-
-                if (e.ColumnIndex == 2)
-                {
-
-                    this.dataGridObras.CurrentCell = this.dataGridObras.Rows[e.RowIndex].Cells[1];
-                    this.dataGridObras.BeginEdit(true);
-                }
-                if (e.ColumnIndex == 3)
-                {
-                    if (e.RowIndex < this.dataGridObras.RowCount - 1)
-                    {
-                        if (MessageBox.Show("Desea Eliminar Este Obra ?? " + "\n" + "\n" + provi, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        {
-                            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
-                            {
-                                if (File.Exists(ClasDatos.RutaMulti2))
-                                {
-                                    this.dtObrasBindingSource.EndEdit();
-                                    this.dataGridObras.Rows.Remove(this.dataGridObras.CurrentRow);
-                                    FormMenuPrincipal.menu2principal.dsMulti2.WriteXml(ClasDatos.RutaMulti2);
-                                }
-                                MessageBox.Show(provi + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
-                                this.dataGridObras.Refresh();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private void BtnVolverProveedores_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-        }
-
-        private void BtnVolverObras_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-            this.tabObras.Parent = null;
-        }
-
-        private void obrasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.tabControlTodo.TabPages.Insert(1, this.tabObras);
-                this.tabMENU.Parent = null;
-            }
-            catch (Exception)
-            {
-
-                // throw;
-            }
-        }
-
-        private void dataGridAlmacenes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-
-            }
-        }
 
         private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -965,13 +847,6 @@ namespace PELOSCALVO
             this.tabControlTodo.TabPages.Insert(1, this.tabPageTarifa);
             this.tabMENU.Parent = null;
 
-        }
-
-        private void dataGridObras_Validated(object sender, EventArgs e)
-        {
-            {
-                this.dataGridObras.Sort(this.dataGridObras.Columns[1], ListSortDirection.Ascending);
-            }
         }
 
         private void crearBaseDatosSqlLocalToolStripMenuItem_Click(object sender, EventArgs e)

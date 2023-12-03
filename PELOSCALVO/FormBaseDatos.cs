@@ -184,7 +184,7 @@ namespace PELOSCALVO
                     AdactaPelos = new OleDbDataAdapter(ConsultaPais, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtPaises);
                     AdactaPelos = new OleDbDataAdapter(ConsultaFamilia, ClsConexionDb.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMultidatos.DtFamiliaProductos);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos);
                     AdactaPelos.Dispose();
 
                     this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
@@ -239,7 +239,7 @@ namespace PELOSCALVO
                     AdactaPelos = new SqlDataAdapter(ConsultaPais, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtPaises);
                     AdactaPelos = new SqlDataAdapter(ConsultaFamilia, ClsConexionSql.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMultidatos.DtFamiliaProductos);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos);
                     AdactaPelos = new SqlDataAdapter(ConsultaOBRA, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtObras);
                     AdactaPelos.Dispose();
