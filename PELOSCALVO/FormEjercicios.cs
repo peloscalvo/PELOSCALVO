@@ -357,7 +357,7 @@ namespace PELOSCALVO
         private void BtnCancelarEjercicio_Click(object sender, EventArgs e)
         {
             BorrarErroresBasica();
-            if (this.dtConfiDataGridView.RowCount >= 0)
+            if (this.dtConfiBindingSource.Count > 0)
             {
                 if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
                 {

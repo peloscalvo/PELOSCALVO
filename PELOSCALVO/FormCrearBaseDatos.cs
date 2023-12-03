@@ -402,8 +402,8 @@ namespace PELOSCALVO
                 string Resultado = "Se Crearon Nuevas Tablas" + "\n" + "\n";
                 string NombreBaseDatos = this.NombreBaseTablas.Text;
                 /// ARTICULOS ARTICULOS
-                string TablaArticulos = this.SerieArticulosTabla.Text + " De articulos";
-                string TablaClientes = this.SerieClientesTabla.Text + " De Clientes";
+                string TablaArticulos = this.SerieArticulosTabla.Text;
+                string TablaClientes = this.SerieClientesTabla.Text;
                 string ConsutaArticulos = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'" + TablaArticulos + "') AND type in (N'U'))" +
                 "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] NOT NULL, [Referencia] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
                 "[Ganancia] [numeric](19, 3) NULL,[Pvp1] [numeric](19, 3) NULL,[PvpIva] [numeric](19, 3) NULL,[Pvp2Desc] [numeric](19, 3) NULL,[Pvp2] [numeric](19, 3) NULL," +
@@ -524,7 +524,7 @@ namespace PELOSCALVO
                                 "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[FechaFactura] [date] NULL," +
                                 "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
                                 "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
-                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace](250) NULL," + "CONSTRAINT F_DtConfi" + TablaFactu + VALORid.ToString() +
+                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace](250) NULL,[EnlaceDtconfi](250) NULL," + "CONSTRAINT F_DtConfi" + TablaFactu + VALORid.ToString() +
                                "FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                                 "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +

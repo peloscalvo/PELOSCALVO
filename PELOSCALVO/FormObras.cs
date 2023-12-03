@@ -245,7 +245,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarObra_Click(object sender, EventArgs e)
         {
-            if (this.dataGridObras.RowCount >= 0)
+            if (this.dtObrasBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -333,7 +333,7 @@ namespace PELOSCALVO
         private void BtnCancelarObra_Click(object sender, EventArgs e)
         {
             BorrarErrorObra();
-            if (this.dataGridObras.RowCount >= 0)
+            if (this.dtObrasBindingSource.Count > 0)
             {
                 try
                 {
@@ -357,7 +357,7 @@ namespace PELOSCALVO
 
         private void BtnSalir_Obra_Click(object sender, EventArgs e)
         {
-            if (this.BtnGuardarObra.Enabled == true)
+            if (this.BtnGuardarObra.Enabled == false)
             {
                 if (MessageBox.Show(" Salir Obras  ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {

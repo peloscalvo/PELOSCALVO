@@ -270,6 +270,7 @@ namespace PELOSCALVO
         {
             try
             {
+                this.PanelInfo_P.Visible = true;
                 this.PanelInfo_P.Width = this.PanelInfo_P.Width = 0;
                 CrearArchivos_Xml_Principal();
             }
@@ -652,6 +653,8 @@ namespace PELOSCALVO
                 BtnInfo.Tag = "SI";
                 PanelAcesosDire.Visible = true;
                 PanelAcesosDire.Width = panelContenedorForm.Width;
+                PanelAcesosDire.Height = panelContenedorForm.Height;
+                PanelAcesosDire.BringToFront();
             }
             else
             {
@@ -665,9 +668,10 @@ namespace PELOSCALVO
         {
             try
             {
+                
                 if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
-                    this.PanelInfo_P.Visible = true;
+             
                     if (this.PanelInfo_P.Width >= 864)
                     {
                         this.PanelInfo_P.Tag = "CERRAR";
@@ -684,7 +688,6 @@ namespace PELOSCALVO
                     if (this.PanelInfo_P.Width <= 0)
                     {
                         this.TimerCerrarPanel.Stop();
-                        this.PanelInfo_P.Visible = false;
                         this.PanelInfo_P.Tag = "ABRIR";
                     }
                     else
@@ -751,6 +754,7 @@ namespace PELOSCALVO
         {
             PanelAcesosDire.Visible = false;
             FormProveedores frm = new FormProveedores();
+            frm.TopLevel = false;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
@@ -761,6 +765,7 @@ namespace PELOSCALVO
         {
             PanelAcesosDire.Visible = false;
             FormEjercicios frm = new FormEjercicios();
+            frm.TopLevel = false;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
@@ -770,20 +775,15 @@ namespace PELOSCALVO
         {
             try
             {
-         
+                this.PanelInfo_P.BringToFront();
                 if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
                     this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
                     this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
-                    this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
-                    this.TimerCerrarPanel.Start();
-                    this.PanelInfo_P.Visible = true;
-                  
+                    this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();                
+                                   
                 }
-                else
-                {
-                  //  this.PanelInfo_P.Tag = "ABRIR";
-                }
+                this.TimerCerrarPanel.Start();
             }
             catch (Exception)
             {
@@ -797,6 +797,7 @@ namespace PELOSCALVO
         {
             PanelAcesosDire.Visible = false;
             FormAlmacenes frm = new FormAlmacenes();
+            frm.TopLevel = false;
             frm.WindowState = FormWindowState.Maximized;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
@@ -807,6 +808,7 @@ namespace PELOSCALVO
         {
             PanelAcesosDire.Visible = false;
             FormFamiliaProductos frm = new FormFamiliaProductos();
+            frm.TopLevel = false;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
@@ -844,6 +846,7 @@ namespace PELOSCALVO
         {
             this.panelAplicaciones.Visible = false;
             FormPaises frm = new FormPaises();
+            frm.TopLevel = false;
             frm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
@@ -854,6 +857,7 @@ namespace PELOSCALVO
         {
             this.panelAplicaciones.Visible = false;
             FormProvincias frm = new FormProvincias();
+            frm.TopLevel = false;
             frm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
@@ -865,6 +869,7 @@ namespace PELOSCALVO
         {
             this.panelAplicaciones.Visible = false;
             FormObras frm = new FormObras();
+            frm.TopLevel = false;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();

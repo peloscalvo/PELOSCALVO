@@ -250,8 +250,12 @@ namespace PELOSCALVO
             {
                 MessageBox.Show("Debe al Menos Crear Un Pais", "Pais");
                 if (MessageBox.Show(" Desea Abrir Para Crear Pais Nuevo ", " NUEVO PAIS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                { 
-
+                {
+                    FormPaises frm = new FormPaises();
+                    frm.TopLevel = false;
+                    frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+                    frm.ShowDialog();
+                    frm.BringToFront();
 
                 }
                     return;

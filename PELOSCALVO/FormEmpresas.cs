@@ -1,5 +1,4 @@
-﻿using Comun;
-using Conexiones;
+﻿using Conexiones;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -268,19 +267,26 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         NuevaConexion = new ClsConexionSql(ConsultaDescuetos);////Guarda Descuentos Clientes
-                        foreach (var row in ClasTarifa.ListaTarifa.lista)
+                        string Tarifa = "Pvp";
+                        for (int Fila = 1; Fila < 6; Fila++)
                         {
+                            if (Fila == 6)
+                            {
 
-                            NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdTarifa", string.IsNullOrEmpty(row.IdTarifa.ToString()) ? (object)DBNull.Value : Convert.ToInt32(row.IdTarifa.ToString()));
-                            NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(row.TarifaTipo.ToString()) ? (object)DBNull.Value : row.TarifaTipo.ToString());
+                                Tarifa = "Iva";
+
+                            }
+                            NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdTarifa", Fila);
+                            NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
                             NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
                             NuevaConexion.ComandoSql.ExecuteNonQuery();
                             NuevaConexion.ComandoSql.Parameters.Clear();
-                            this.dtConfiguracionPrincipalBindingSource.EndEdit();
-                            Validate();
-                            MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            RestaurarOjetosEmpresa();
+
                         }
+                        this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                        Validate();
+                        MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RestaurarOjetosEmpresa();
                     }
                 }
                 catch (Exception ex)
@@ -340,25 +346,7 @@ namespace PELOSCALVO
         {
 
         }
-        private void LlenarTarifa()
-        {
 
-
-            for (int i = 1; i < 6; i++)
-            {
-                ClasTarifa.Tarifa item = new ClasTarifa.Tarifa();
-                item.IdTarifa = i;
-                item.TarifaTipo = "Pvp" + i;
-                item.EnlaceTarifa = this.nombreEmpresaTextBox.Text;
-                if (i == 6)
-                {
-                    item.IdTarifa = i;
-                    item.TarifaTipo = "Iva";
-                    item.EnlaceTarifa = this.nombreEmpresaTextBox.Text;
-                }
-            }
-
-        }
         private void GuardarEmpresasDb()
         {
             if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
@@ -417,19 +405,28 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
                         NuevaConexion = new ClsConexionDb(ConsultaDescuetos);////Guarda Descuentos Clientes
-                        foreach (var row in ClasTarifa.ListaTarifa.lista)
-                        {
+                        string Tarifa = "Pvp";
 
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdTarifa", string.IsNullOrEmpty(row.IdTarifa.ToString()) ? (object)DBNull.Value : Convert.ToInt32(row.IdTarifa.ToString()));
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(row.TarifaTipo.ToString()) ? (object)DBNull.Value : row.TarifaTipo.ToString());
+                        for (int Fila = 1; Fila < 6; Fila++)
+                        {
+                            if (Fila == 6)
+                            {
+
+                                Tarifa = "Iva";
+
+                            }
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdTarifa", Fila);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             NuevaConexion.ComandoDb.Parameters.Clear();
-                            this.dtConfiguracionPrincipalBindingSource.EndEdit();
-                            Validate();
-                            MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            RestaurarOjetosEmpresa();
+
                         }
+                        this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                        Validate();
+                        MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RestaurarOjetosEmpresa();
+
                     }
                 }
                 catch (Exception ex)
@@ -487,7 +484,6 @@ namespace PELOSCALVO
                 {
                     if (MessageBox.Show(" ¿Aceptar Guardar Empresa ? ", " GUARDAR EMPRESA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        LlenarTarifa();
                         if (ClsConexionSql.SibaseDatosSql)
                         {
                             GuardarEmpresasSql();
@@ -626,7 +622,7 @@ namespace PELOSCALVO
 
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-                         EliminarEmpresaBb();
+                        EliminarEmpresaBb();
                     }
                     else
                     {

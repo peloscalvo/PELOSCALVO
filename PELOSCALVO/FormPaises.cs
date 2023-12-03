@@ -382,7 +382,7 @@ namespace PELOSCALVO
         private void BtnCancelarPais_Click(object sender, EventArgs e)
         {
             BorrarErrorPais();
-            if (this.dataGridPais.RowCount >= 0)
+            if (this.DtPaisBindinsource.Count > 0)
             {
                 try
                 {

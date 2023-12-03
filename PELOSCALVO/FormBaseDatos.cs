@@ -43,8 +43,16 @@ namespace PELOSCALVO
 
             List<string> tableNames = new List<string>();
             for (int i = 0; i < userTables.Rows.Count; i++)
-                tableNames.Add(userTables.Rows[i][2].ToString());
+            {
+                SerieClientesText2.Items.Add(userTables.Rows[i][1].ToString());
+                if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                {
+                    tableNames.Add(userTables.Rows[i][2].ToString());
+                }
 
+
+             
+            }
             return tableNames;
         }
         private bool VALIDARcampos_Archivos()

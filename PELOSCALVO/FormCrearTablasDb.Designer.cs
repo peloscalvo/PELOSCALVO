@@ -309,6 +309,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.ExtensionTxt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCrearTablasDb";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Tablas Db";
             this.Load += new System.EventHandler(this.FormCrearTablasDb_Load);
             this.MouseEnter += new System.EventHandler(this.FormCrearTablasDb_MouseEnter);

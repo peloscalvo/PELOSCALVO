@@ -244,6 +244,16 @@ namespace PELOSCALVO
 
         private void BtnNuevoProveedor_Click(object sender, EventArgs e)
         {
+            if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
+            {
+                MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
+                return;
+            }
+            if (Id_proveedor.Text == string.Empty & Enlace_Proveedor.Text == string.Empty)
+            {
+                MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             this.PanelBotones_pro.Tag = "Nuevo";
             try
             {
@@ -395,7 +405,7 @@ namespace PELOSCALVO
         private void BtnCancelarProve_Click(object sender, EventArgs e)
         {
             BorrarErrorProveedor();
-            if (this.dataGridProveedores.RowCount >= 0)
+            if (this.dtProveedoresBindingSource.Count > 0)
             {
                 try
                 {
