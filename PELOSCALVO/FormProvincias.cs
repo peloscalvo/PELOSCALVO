@@ -87,12 +87,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias]([@Id],[@ProvinciasProvincias])";
+                consulta = "  INSERT INTO [DtProvincias]([@Id],[@ProvinciasProvincias],[@Id_paises])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias, " +
+                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias,[Id_paises] = @Id_paises " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -102,6 +102,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ProvinciasProvincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_paises", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : this.Id_Provincias.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -129,12 +130,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias]([@Id],[@ProvinciasProvincias])";
+                consulta = "  INSERT INTO [DtProvincias]([@Id],[@ProvinciasProvincias],[@Id_paises])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias, " +
+                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias,[Id_paises] = @Id_paises " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -144,6 +145,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ProvinciasProvincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_paises", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
@@ -244,6 +246,23 @@ namespace PELOSCALVO
         }
         private void BtnNuevoProvincia_Click(object sender, EventArgs e)
         {
+            if (this.dtPaisesBindingSource.Count <= 0)
+            {
+                MessageBox.Show("Debe al Menos Crear Un Pais", "Pais");
+                if (MessageBox.Show(" Desea Abrir Para Crear Pais Nuevo ", " NUEVO PAIS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                { 
+
+
+                }
+                    return;
+            }
+            if (PaisTxt.Text ==string.Empty)
+            {
+                MessageBox.Show("Elija un Pais", "Pais");
+                PaisTxt.Focus();
+                PaisTxt.SelectAll();
+                return;
+            }
             this.PanelBotones_Provincia.Tag = "Nuevo";
             try
             {
@@ -271,7 +290,9 @@ namespace PELOSCALVO
                     }
 
                 }
-
+                ProvinciaText.Text = "La Coruña";
+                ProvinciaText.Focus();
+                ProvinciaText.SelectAll();
                 ModificarOjetosProvi();
 
             }

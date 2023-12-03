@@ -270,7 +270,9 @@ namespace PELOSCALVO
                     }
 
                 }
-
+                NombrePais.Text = "España";
+                NombrePais.Focus();
+                NombrePais.SelectAll();
                 ModificarOjetosPais();
 
             }

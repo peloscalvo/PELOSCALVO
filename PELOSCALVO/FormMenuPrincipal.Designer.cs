@@ -99,10 +99,10 @@ namespace PELOSCALVO
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AbrirAlmacenes = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.obrasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.AbrirObras = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.provinciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -472,7 +472,7 @@ namespace PELOSCALVO
             this.PanelAcesosDire.BackColor = System.Drawing.SystemColors.MenuBar;
             this.PanelAcesosDire.Controls.Add(this.PanelInfo_P);
             this.PanelAcesosDire.Controls.Add(this.menuStrip);
-            this.PanelAcesosDire.Location = new System.Drawing.Point(0, 0);
+            this.PanelAcesosDire.Location = new System.Drawing.Point(0, -2);
             this.PanelAcesosDire.Name = "PanelAcesosDire";
             this.PanelAcesosDire.Size = new System.Drawing.Size(866, 528);
             this.PanelAcesosDire.TabIndex = 3;
@@ -720,15 +720,15 @@ namespace PELOSCALVO
             this.toolEmpresas,
             this.toolDescuentos,
             this.toolFamilia,
-            this.ayudaToolStripMenuItem,
             this.proveedoresToolStripMenuItem1,
             this.almacenesToolStripMenuItem1,
             this.obrasToolStripMenuItem1,
-            this.provinciasToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(27, 2);
+            this.provinciasToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(25, 2);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip.Size = new System.Drawing.Size(859, 24);
+            this.menuStrip.Size = new System.Drawing.Size(739, 24);
             this.menuStrip.TabIndex = 46;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -897,6 +897,7 @@ namespace PELOSCALVO
             this.toolFamilia.Name = "toolFamilia";
             this.toolFamilia.Size = new System.Drawing.Size(114, 20);
             this.toolFamilia.Text = "Familia Productos";
+            this.toolFamilia.Click += new System.EventHandler(this.toolFamilia_Click);
             // 
             // familiasToolStripMenuItem
             // 
@@ -925,6 +926,7 @@ namespace PELOSCALVO
             this.proveedoresToolStripMenuItem1.Name = "proveedoresToolStripMenuItem1";
             this.proveedoresToolStripMenuItem1.Size = new System.Drawing.Size(84, 20);
             this.proveedoresToolStripMenuItem1.Text = "&Proveedores";
+            this.proveedoresToolStripMenuItem1.Click += new System.EventHandler(this.proveedoresToolStripMenuItem1_Click);
             // 
             // editarToolStripMenuItem
             // 
@@ -942,44 +944,45 @@ namespace PELOSCALVO
             // almacenesToolStripMenuItem1
             // 
             this.almacenesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirToolStripMenuItem,
+            this.AbrirAlmacenes,
             this.consultarToolStripMenuItem1});
             this.almacenesToolStripMenuItem1.Name = "almacenesToolStripMenuItem1";
             this.almacenesToolStripMenuItem1.Size = new System.Drawing.Size(77, 20);
             this.almacenesToolStripMenuItem1.Text = "&Almacenes";
             // 
-            // abrirToolStripMenuItem
+            // AbrirAlmacenes
             // 
-            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.abrirToolStripMenuItem.Text = "&Abrir";
-            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
+            this.AbrirAlmacenes.Name = "AbrirAlmacenes";
+            this.AbrirAlmacenes.Size = new System.Drawing.Size(180, 22);
+            this.AbrirAlmacenes.Text = "&Abrir";
+            this.AbrirAlmacenes.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // consultarToolStripMenuItem1
             // 
             this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.consultarToolStripMenuItem1.Text = "&Consultar";
             // 
             // obrasToolStripMenuItem1
             // 
             this.obrasToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirToolStripMenuItem1,
+            this.AbrirObras,
             this.consultarToolStripMenuItem2});
             this.obrasToolStripMenuItem1.Name = "obrasToolStripMenuItem1";
             this.obrasToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
             this.obrasToolStripMenuItem1.Text = "&Obras";
             // 
-            // abrirToolStripMenuItem1
+            // AbrirObras
             // 
-            this.abrirToolStripMenuItem1.Name = "abrirToolStripMenuItem1";
-            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
-            this.abrirToolStripMenuItem1.Text = "&Abrir";
+            this.AbrirObras.Name = "AbrirObras";
+            this.AbrirObras.Size = new System.Drawing.Size(180, 22);
+            this.AbrirObras.Text = "&Abrir";
+            this.AbrirObras.Click += new System.EventHandler(this.AbrirObras_Click);
             // 
             // consultarToolStripMenuItem2
             // 
             this.consultarToolStripMenuItem2.Name = "consultarToolStripMenuItem2";
-            this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.consultarToolStripMenuItem2.Text = "&Consultar";
             // 
             // provinciasToolStripMenuItem
@@ -994,14 +997,14 @@ namespace PELOSCALVO
             // paisesToolStripMenuItem
             // 
             this.paisesToolStripMenuItem.Name = "paisesToolStripMenuItem";
-            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.paisesToolStripMenuItem.Text = "&Paises";
             this.paisesToolStripMenuItem.Click += new System.EventHandler(this.paisesToolStripMenuItem_Click);
             // 
             // provinciasToolStripMenuItem2
             // 
             this.provinciasToolStripMenuItem2.Name = "provinciasToolStripMenuItem2";
-            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(128, 22);
             this.provinciasToolStripMenuItem2.Text = "&Provincias";
             this.provinciasToolStripMenuItem2.Click += new System.EventHandler(this.provinciasToolStripMenuItem2_Click);
             // 
@@ -1839,9 +1842,9 @@ namespace PELOSCALVO
         private System.Windows.Forms.Panel PanelAcesosDire;
         private System.Windows.Forms.ToolStripMenuItem consultaEmpresasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultaEjerciciosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AbrirAlmacenes;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem AbrirObras;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.Label label4;

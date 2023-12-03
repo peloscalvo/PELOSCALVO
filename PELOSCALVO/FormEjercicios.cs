@@ -419,7 +419,7 @@ namespace PELOSCALVO
                     {
                         Random r = new Random();
                         int VALORid = r.Next(500, 1000000);
-                        EnlaceDtconfi.Text = ejerciciosDeAñoTextBox.Text + "/" + EmpresaEnlace.Text + "/" + IdConfi.Text + "/" + VALORid;
+                        EnlaceDtconfi.Text = ejerciciosDeAñoTextBox.Text + "/" + EmpresaEnlace.Text + "/" + IdConfi.Text;
 
                         if (ClsConexionSql.SibaseDatosSql)
                         {

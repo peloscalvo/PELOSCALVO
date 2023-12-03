@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -105,7 +106,8 @@ namespace PELOSCALVO
 
                     string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER, [FamiliaProductos] varchar)";
                     string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER,[PaisesPaises] varchar)";
-                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER, [ProvinciasProvincias] varchar)";
+                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER primary key, [ProvinciasProvincias] varchar,[Id_paises] INTEGER,"+
+                   " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (Id_paises)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaObra = "CREATE TABLE[DtObras] ([Id_Obras] INTEGER ,[Obras] varchar)";
                     string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER ,[ArchivoInicioFacturas] varchar," +
                         "[EmpresaInicio] varchar,[EjercicioInicio] varchar,[SerieInicio] varchar,[NombreArchivoDatos] varchar," +
@@ -119,359 +121,328 @@ namespace PELOSCALVO
                     string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER, [Usuario] varchar, [Nombre] varchar," +
                           "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
 
-                    ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
-                    ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
-                    try
-                    {
-                        if (NuevaConexion2.SiConexionDb)
-                        {
 
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA ARTICULOS");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    NuevaConexion2 = new ClsConexionDb(ConsultaCliente);
-
-                    try
-                    {
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA CLIENTES");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
+                    string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     string TipoNota = "DtNota";
                     string Tabladetalle = "DtDetalles_Nota";
                     string ConsultaFacturacion = "";
                     String ConsultaDetalles = "";
-                    for (int i = 1; i < 7; i++)
+                    using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
                     {
+                   
 
-                        if (i == 2)
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos))
                         {
-                            TipoNota = "DtNota2";
-                            Tabladetalle = "DtDetalles_Nota2";
-                        }
-                        if (i == 3)
-                        {
-                            //TipoNota = "DtNota2";
-                            Tabladetalle = "DtDetalles2_Nota2";
-                        }
-                        if (i == 4)
-                        {
-                            TipoNota = "DtAlbaran";
-                            Tabladetalle = "DtDetalles_Albaran";
-                        }
-                        if (i == 5)
-                        {
-                            TipoNota = "DtPresupuesto";
-                            Tabladetalle = "DtDetalles_Presupuesto";
-                        }
-                        if (i == 6)
-                        {
-                            TipoNota = "DtFactura";
-                            Tabladetalle = "DtDetalles_Fatura";
-                        }
-                        valor = r.Next(10, 900000);
-                        if (i != 3)
-                        {
-                            ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
-                         "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
-                          "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] DATETIME," +
-                         "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
-                         "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-                        "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar," +
-                        "CONSTRAINT F_Dt" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )";
-                        }
-
-
-                        ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
-                               ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
-                               ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar" +
-                               ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
-
-                        try
-                        {
-                            NuevaConexion2 = new ClsConexionDb(ConsultaFacturacion);
-                            if (NuevaConexion2.SiConexionDb)
+                            try
                             {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + ConsultaArticulos, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + ConsultaCliente, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+
+
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaEmpresas))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + ConsultaEmpresas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaInicio))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaInicio, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaAlmacen))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + ConsultaAlmacen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaProvedores))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + ConsultaProvedores, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaDtconfi))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaDtconfi, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaTarifa))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaTarifa, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFamilia))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + ConsultaFamilia, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaPais))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaPais, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaObra))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaObra, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaProvincia))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaProvincia, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_E, MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            }
+                        }
+
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_Cli))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_Cli, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaUser))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaUser, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E))
+                        {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_E, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion))
+                        {
+                            ComandoDb.Connection.ConnectionString = CadenaConexion;
+                            for (int i = 1; i < 7; i++)
+                            {
+
+                                if (i == 2)
+                                {
+                                    TipoNota = "DtNota2";
+                                    Tabladetalle = "DtDetalles_Nota2";
+                                }
+                                if (i == 3)
+                                {
+                                    //TipoNota = "DtNota2";
+                                    Tabladetalle = "DtDetalles2_Nota2";
+                                }
+                                if (i == 4)
+                                {
+                                    TipoNota = "DtAlbaran";
+                                    Tabladetalle = "DtDetalles_Albaran";
+                                }
+                                if (i == 5)
+                                {
+                                    TipoNota = "DtPresupuesto";
+                                    Tabladetalle = "DtDetalles_Presupuesto";
+                                }
+                                if (i == 6)
+                                {
+                                    TipoNota = "DtFactura";
+                                    Tabladetalle = "DtDetalles_Fatura";
+                                }
+                                valor = r.Next(10, 900000);
                                 if (i != 3)
                                 {
-                                    NuevaConexion2.ComandoDb.ExecuteNonQuery();
-                                    NuevaConexion2.ComandoDb.Parameters.Clear();
+                                    ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+                                 "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
+                                  "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] DATETIME," +
+                                 "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
+                                 "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
+                                "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar," +
+                                "CONSTRAINT F_Dt" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )";
                                 }
 
+
+                                ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
+                                       ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
+                                       ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar" +
+                                       ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
+                                if (i != 3)
+                                {
+                                    try
+                                    {
+                                        ComandoDb.ExecuteNonQuery();
+                                        ComandoDb.Parameters.Clear();
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                        MessageBox.Show(ex.Message, "ERROR " + ConsultaFacturacion, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                 
+                                }
+                                using (OleDbCommand ComandoDbDetalle = new OleDbCommand(ConsultaDetalles))
+                                {
+                                
+                                    try
+                                    {
+                                        ComandoDbDetalle.Connection.ConnectionString = CadenaConexion;
+                                        ComandoDbDetalle.ExecuteNonQuery();
+                                        ComandoDbDetalle.Parameters.Clear();
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                        MessageBox.Show(ex.Message, "ERROR " + ConsultaDetalles, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+
+
                             }
-                        }
-                        catch (Exception ex)
-                        {
-
-                            MessageBox.Show(ex.Message, "ERROR" + "facturacion");
-                        }
-                        NuevaConexion2.ComandoDb.Parameters.Clear();
-                        try
-                        {
-                            NuevaConexion2 = new ClsConexionDb(ConsultaDetalles);
-                            if (NuevaConexion2.SiConexionDb)
-                            {
-
-                                NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-
-                            MessageBox.Show(ex.Message, "ERROR" + Tabladetalle);
-                        }
-                        NuevaConexion2.ComandoDb.Parameters.Clear();
-                    }
-
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(ConsultaEmpresas);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
 
                         }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR" + "TABLAS EMPRESAS");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaInicio);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA INICIO");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(ConsultaAlmacen);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR" + "ALMACENES");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(ConsultaProvedores);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR" + "PROVEEDORES");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaDtconfi);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR" + "DtConfi");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaTarifa);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA TIPO TARIFA");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(ConsultaFamilia);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA FAMILIAS");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaPais);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA PAISES");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaObra);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA OBRAS");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaProvincia);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA PROVINCIAS");
+                        MessageBox.Show("Se Termino De crar Tablas");
                     }
 
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaCorreo_E);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA CORREO CORREO");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaCorreo_Cli);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA CORREO CLIENTES");
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    try
-                    {
-                        NuevaConexion2 = new ClsConexionDb(TablaUser);
-                        if (NuevaConexion2.SiConexionDb)
-                        {
-
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR TABLA USUARIOS");
-                    }
-
-                    if (NuevaConexion2.CerrarConexionDB)
-                    {
-
-                        NuevaConexion2.ComandoDb.Parameters.Clear();
-
-                    }
-                    NuevaConexion2.ComandoDb.Parameters.Clear();
-                    MessageBox.Show("Se Termino De crar Tablas");
                 }
             }
         }
@@ -521,17 +492,7 @@ namespace PELOSCALVO
 
         private void BtnConectar_Click(object sender, EventArgs e)
         {
-            string RutaBase = "";
-            if (this.NombreArchivo_T.Tag.ToString() == "SI")
-            {
-                RutaBase = this.NombreArchivo_T.Text;
-            }
-            else
-            {
-                RutaBase = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivo_T.Text + "." + this.ExtensionTxt.Text;
-            }
-
-            ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + RutaBase;
+  
         }
 
         private void BtnRestablecer_t_Click(object sender, EventArgs e)
@@ -583,30 +544,30 @@ namespace PELOSCALVO
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                    ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
-                    ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
-                    try
+
+
+                    string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
+  
+                    using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
                     {
-                        if (NuevaConexion2.SiConexionDb)
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos))
                         {
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-                            MessageBox.Show("Creada Con exito" + "\n" + this.ArticulosTxt.Text, "CREAR TABLA", MessageBoxButtons.OK);
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                                MessageBox.Show("Creada Con exito" + "\n" + this.ArticulosTxt.Text, "CREAR TABLA", MessageBoxButtons.OK);
+                            }
+                            catch (Exception ex)
+                            {
+
+
+                                MessageBox.Show(ex.Message, "ERROR " + ConsultaArticulos, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
 
                     }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR");
-                    }
-                    finally
-                    {
-                        if (NuevaConexion2.CerrarConexionDB)
-                        {
-                            NuevaConexion2.ComandoDb.Parameters.Clear();
-                        }
-                    }
+    
                 }
             }
         }
@@ -635,41 +596,34 @@ namespace PELOSCALVO
       
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
-                    string TablaCliente = "Cliente+" + valor.ToString();
+                    string TablaCliente = ClientesTxt.Text;
                     string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-                    ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
-                    ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaCliente);
-                    try
+
+                    string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
+                    using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
                     {
-
-
-                        if (NuevaConexion2.SiConexionDb)
+                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente))
                         {
+                            try
+                            {
+                                ComandoDb.Connection.ConnectionString = CadenaConexion;
+                                ComandoDb.ExecuteNonQuery();
+                                MessageBox.Show("Creada Con exito" + "\n" + this.ClientesTxt.Text, "CREAR TABLA", MessageBoxButtons.OK);
+                            }
+                            catch (Exception ex)
+                            {
 
-                            NuevaConexion2.ComandoDb.ExecuteNonQuery();
-                            MessageBox.Show("Creada Con exito" + "\n" + this.ClientesTxt.Text, "CREAR TABLA", MessageBoxButtons.OK);
+
+                                MessageBox.Show(ex.Message, "ERROR " + ConsultaCliente, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
 
                     }
-                    catch (Exception ex)
-                    {
-
-
-                        MessageBox.Show(ex.Message, "ERROR");
-                    }
-                    finally
-                    {
-                        if (NuevaConexion2.CerrarConexionDB)
-                        {
-                            NuevaConexion2.ComandoDb.Parameters.Clear();
-                        }
-                    }
-
 
                 }
             }

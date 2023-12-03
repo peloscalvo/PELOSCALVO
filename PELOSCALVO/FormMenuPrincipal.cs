@@ -812,6 +812,7 @@ namespace PELOSCALVO
         {
             PanelAcesosDire.Visible = false;
             FormAlmacenes frm = new FormAlmacenes();
+            frm.WindowState = FormWindowState.Maximized;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
@@ -858,7 +859,9 @@ namespace PELOSCALVO
         {
             this.panelAplicaciones.Visible = false;
             FormPaises frm = new FormPaises();
-            frm.ShowDialog();
+            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelContenedorForm.Controls.Add(frm);
+            frm.Show();
             frm.BringToFront();
         }
 
@@ -866,8 +869,30 @@ namespace PELOSCALVO
         {
             this.panelAplicaciones.Visible = false;
             FormProvincias frm = new FormProvincias();
-            frm.ShowDialog();
+            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelContenedorForm.Controls.Add(frm);
+            frm.Show();
+            // frm.WindowState = FormWindowState.Maximized;
             frm.BringToFront();
+        }
+
+        private void AbrirObras_Click(object sender, EventArgs e)
+        {
+            this.panelAplicaciones.Visible = false;
+            FormObras frm = new FormObras();
+            this.panelContenedorForm.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void toolFamilia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void BtnSql_Click(object sender, EventArgs e)

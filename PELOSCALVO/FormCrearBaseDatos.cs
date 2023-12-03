@@ -458,13 +458,14 @@ namespace PELOSCALVO
               " CREATE TABLE [DtFamiliaProductos]( [Id][int] NOT NULL,[Familia] varchar(80) NULL)" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtPaises]') AND type in (N'U'))" +
-            " CREATE TABLE [DtPaises]( [Id][int] NOT NULL,[PaisesPaises] varchar(80) NULL)" +
-
+            " CREATE TABLE [DtPaises]( [Id][int] primary key NOT NULL,[PaisesPaises] varchar(80) NULL)" +
+              
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProvincias]') AND type in (N'U'))" +
-                 " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[ProvinciasProvincias] varchar(80) NULL)" +
-
-                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
-                   " CREATE TABLE [DtObras]( [Id_Obras][int] NOT NULL,[Obras] varchar(80) NULL)" +
+                 " CREATE TABLE [DtProvincias]( [Id][int] primary key NOT NULL,[ProvinciasProvincias] varchar(80) NULL,[Id_paises][int] NOT NULL ," +
+              " CONSTRAINT F_DtProvincias FOREIGN KEY (Id_paises)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )" +
+               
+              "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
+                   " CREATE TABLE [DtObras]( [Id_Obras][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
 
                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtInicioMulti]') AND type in (N'U'))" +
                    " CREATE TABLE [DtInicioMulti]( [Id][int] NOT NULL,[ArchivoInicioFacturas] varchar(80) NULL,[EmpresaInicio] varchar(200) NULL" +

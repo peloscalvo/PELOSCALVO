@@ -535,10 +535,10 @@ namespace PELOSCALVO
             this.SerieClientesText2.FormattingEnabled = true;
             this.SerieClientesText2.Items.AddRange(new object[] {
             "Listado De Clientes 1",
-            "Listado De Clientes 1",
-            "Listado De Clientes 1",
-            "Listado De Clientes 1",
-            "Listado De Clientes 1"});
+            "Listado De Clientes 2",
+            "Listado De Clientes 3",
+            "Listado De Clientes 4",
+            "Listado De Clientes 5"});
             this.SerieClientesText2.Location = new System.Drawing.Point(150, 96);
             this.SerieClientesText2.Name = "SerieClientesText2";
             this.SerieClientesText2.Size = new System.Drawing.Size(300, 21);
