@@ -93,7 +93,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
                     this.dataGridObras.EndEdit();
-                    this.DtPaisBindinsource.EndEdit();
+                    this.dtObrasBindingSource.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR OBRAS ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosPais();
                 }
@@ -134,7 +134,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
-                    this.DtPaisBindinsource.EndEdit();
+                    this.dtObrasBindingSource.EndEdit();
                     this.dataGridObras.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR OBRA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosPais();
@@ -167,7 +167,7 @@ namespace PELOSCALVO
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Obras", this.Id_obra.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridObras.Rows.RemoveAt(this.dataGridObras.CurrentCell.RowIndex);
-                            this.DtPaisBindinsource.EndEdit();
+                            this.dtObrasBindingSource.EndEdit();
                             Validate();
                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -208,7 +208,7 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Obras", this.Id_obra.Text);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridObras.Rows.RemoveAt(this.dataGridObras.CurrentCell.RowIndex);
-                        this.DtPaisBindinsource.EndEdit();
+                        this.dtObrasBindingSource.EndEdit();
                         Validate();
                         MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
