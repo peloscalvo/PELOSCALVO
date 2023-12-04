@@ -335,7 +335,7 @@ namespace PELOSCALVO
             this.dataGridProveedores.ReadOnly = true;
             this.dataGridProveedores.RowHeadersVisible = false;
             this.dataGridProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridProveedores.Size = new System.Drawing.Size(952, 257);
+            this.dataGridProveedores.Size = new System.Drawing.Size(952, 282);
             this.dataGridProveedores.TabIndex = 60;
             // 
             // idProveedoresDataGridViewTextBoxColumn1
@@ -448,6 +448,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.EmpresaSelect);
             this.Controls.Add(this.dataGridProveedores);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(968, 536);
             this.Name = "FormProveedores";
             this.Text = "Proveedores";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormProveedores_FormClosing);

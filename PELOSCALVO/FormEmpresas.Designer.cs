@@ -52,6 +52,7 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmpresas));
             this.EmpresaReguistro = new System.Windows.Forms.Label();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
@@ -61,7 +62,7 @@ namespace PELOSCALVO
             this.cifEmpresaTextBox = new System.Windows.Forms.TextBox();
             this.telefono2EmpresaTextBox = new System.Windows.Forms.TextBox();
             this.movilEmpresaTextBox = new System.Windows.Forms.TextBox();
-            this.nombreEmpresaTextBox = new System.Windows.Forms.TextBox();
+            this.nombreEmpresaText = new System.Windows.Forms.TextBox();
             this.direccionEmpresaTextBox = new System.Windows.Forms.TextBox();
             this.localidadEmpresaTextBox = new System.Windows.Forms.TextBox();
             this.codigoPostalEmpresaTextBox = new System.Windows.Forms.TextBox();
@@ -377,15 +378,15 @@ namespace PELOSCALVO
             this.movilEmpresaTextBox.Size = new System.Drawing.Size(136, 20);
             this.movilEmpresaTextBox.TabIndex = 110;
             // 
-            // nombreEmpresaTextBox
+            // nombreEmpresaText
             // 
-            this.nombreEmpresaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresa", true));
-            this.nombreEmpresaTextBox.Location = new System.Drawing.Point(92, 309);
-            this.nombreEmpresaTextBox.MaxLength = 50;
-            this.nombreEmpresaTextBox.Name = "nombreEmpresaTextBox";
-            this.nombreEmpresaTextBox.ReadOnly = true;
-            this.nombreEmpresaTextBox.Size = new System.Drawing.Size(290, 20);
-            this.nombreEmpresaTextBox.TabIndex = 86;
+            this.nombreEmpresaText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresa", true));
+            this.nombreEmpresaText.Location = new System.Drawing.Point(92, 309);
+            this.nombreEmpresaText.MaxLength = 50;
+            this.nombreEmpresaText.Name = "nombreEmpresaText";
+            this.nombreEmpresaText.ReadOnly = true;
+            this.nombreEmpresaText.Size = new System.Drawing.Size(290, 20);
+            this.nombreEmpresaText.TabIndex = 86;
             // 
             // direccionEmpresaTextBox
             // 
@@ -724,6 +725,7 @@ namespace PELOSCALVO
             this.BtnGuardarEmpresas.Name = "BtnGuardarEmpresas";
             this.BtnGuardarEmpresas.Size = new System.Drawing.Size(89, 42);
             this.BtnGuardarEmpresas.TabIndex = 81;
+            this.BtnGuardarEmpresas.Tag = "SI";
             this.BtnGuardarEmpresas.Text = "Aceptar";
             this.BtnGuardarEmpresas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnGuardarEmpresas.UseVisualStyleBackColor = false;
@@ -836,7 +838,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.cifEmpresaTextBox);
             this.Controls.Add(this.telefono2EmpresaTextBox);
             this.Controls.Add(this.movilEmpresaTextBox);
-            this.Controls.Add(this.nombreEmpresaTextBox);
+            this.Controls.Add(this.nombreEmpresaText);
             this.Controls.Add(this.direccionEmpresaTextBox);
             this.Controls.Add(this.localidadEmpresaTextBox);
             this.Controls.Add(this.codigoPostalEmpresaTextBox);
@@ -869,8 +871,10 @@ namespace PELOSCALVO
             this.Controls.Add(empresaConfiLabel);
             this.Controls.Add(this.empresaConfiComboBox);
             this.Controls.Add(idEmpresaLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1042, 583);
             this.Name = "FormEmpresas";
-            this.Text = "FormEmpresas";
+            this.Text = "Empresas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEmpresas_FormClosing);
             this.Load += new System.EventHandler(this.FormEmpresas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
@@ -901,7 +905,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox cifEmpresaTextBox;
         private System.Windows.Forms.TextBox telefono2EmpresaTextBox;
         private System.Windows.Forms.TextBox movilEmpresaTextBox;
-        private System.Windows.Forms.TextBox nombreEmpresaTextBox;
+        private System.Windows.Forms.TextBox nombreEmpresaText;
         private System.Windows.Forms.TextBox direccionEmpresaTextBox;
         private System.Windows.Forms.TextBox localidadEmpresaTextBox;
         private System.Windows.Forms.TextBox codigoPostalEmpresaTextBox;

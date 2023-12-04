@@ -369,7 +369,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarProveedor_Click(object sender, EventArgs e)
         {
-            if (this.dataGridProveedores.RowCount >= 0)
+            if (this.dtProveedoresBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -411,7 +411,7 @@ namespace PELOSCALVO
                 {
                     if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
                     {
-                        if (this.dataGridProveedores.RowCount > 0)
+                        if (this.dataGridProveedores.RowCount >= 0)
                         {
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         }
@@ -429,9 +429,14 @@ namespace PELOSCALVO
 
         private void BtnSalir_pro_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (BtnGuardarProve.Enabled == false)
             {
-                Close();
+
+
+                if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Close();
+                }
             }
         }
     }

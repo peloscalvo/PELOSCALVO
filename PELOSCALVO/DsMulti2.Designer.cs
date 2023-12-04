@@ -403,8 +403,6 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnObras;
             
-            private global::System.Data.DataColumn columnId;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtObrasDataTable() {
@@ -456,14 +454,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -499,12 +489,11 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtObrasRow AddDtObrasRow(string Obras, int Id) {
+            public DtObrasRow AddDtObrasRow(string Obras) {
                 DtObrasRow rowDtObrasRow = ((DtObrasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Obras,
-                        Id};
+                        Obras};
                 rowDtObrasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtObrasRow);
                 return rowDtObrasRow;
@@ -512,9 +501,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtObrasRow FindById(int Id) {
+            public DtObrasRow FindById_Obras(int Id_Obras) {
                 return ((DtObrasRow)(this.Rows.Find(new object[] {
-                            Id})));
+                            Id_Obras})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -536,7 +525,6 @@ namespace PELOSCALVO {
             internal void InitVars() {
                 this.columnId_Obras = base.Columns["Id_Obras"];
                 this.columnObras = base.Columns["Obras"];
-                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -546,16 +534,14 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnId_Obras);
                 this.columnObras = new global::System.Data.DataColumn("Obras", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObras);
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
+                                this.columnId_Obras}, true));
                 this.columnId_Obras.AutoIncrement = true;
                 this.columnId_Obras.AutoIncrementSeed = 1;
+                this.columnId_Obras.AllowDBNull = false;
+                this.columnId_Obras.Unique = true;
                 this.columnId_Obras.Caption = "Id_almacenes";
                 this.columnObras.Caption = "Almacenes";
-                this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1525,12 +1511,7 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Id_Obras {
                 get {
-                    try {
-                        return ((int)(this[this.tableDtObras.Id_ObrasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id_Obras\' de la tabla \'DtObras\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableDtObras.Id_ObrasColumn]));
                 }
                 set {
                     this[this.tableDtObras.Id_ObrasColumn] = value;
@@ -1551,29 +1532,6 @@ namespace PELOSCALVO {
                 set {
                     this[this.tableDtObras.ObrasColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tableDtObras.IdColumn]));
-                }
-                set {
-                    this[this.tableDtObras.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsId_ObrasNull() {
-                return this.IsNull(this.tableDtObras.Id_ObrasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetId_ObrasNull() {
-                this[this.tableDtObras.Id_ObrasColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

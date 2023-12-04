@@ -23,17 +23,17 @@ namespace PELOSCALVO
         {
 
         }
-        private void ModificarOjetosPais()
+        private void ModificarOjetosObra()
         {
-            this.PaisTxt.ReadOnly = false;
+            this.ObraTxt.ReadOnly = false;
             this.PanelBotones_Obra.Enabled = false;
             this.BtnCancelarObra.Enabled = true;
             this.BtnGuardarObra.Enabled = true;
             this.dataGridObras.Enabled = false;
         }
-        private void RestaurarOjetosPais()
+        private void RestaurarOjetosObra()
         {
-            this.PaisTxt.ReadOnly = true;
+            this.ObraTxt.ReadOnly = true;
             this.PanelBotones_Obra.Enabled = true;
             this.BtnCancelarObra.Enabled = false;
             this.BtnGuardarObra.Enabled = false;
@@ -55,10 +55,10 @@ namespace PELOSCALVO
         {
             bool ok = true;
 
-            if (this.PaisTxt.Text.Length < 4)
+            if (this.ObraTxt.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorProve.SetError(this.PaisTxt, "_ingresar Nonbre Proveedor valido (( minimo 4 Caracteres))");
+                this.ErrorProve.SetError(this.ObraTxt, "_ingresar Nonbre Proveedor valido (( minimo 4 Caracteres))");
             }
 
 
@@ -66,7 +66,7 @@ namespace PELOSCALVO
         }
         private void BorrarErrorObra()
         {
-            this.ErrorProve.SetError(this.PaisTxt, "");
+            this.ErrorProve.SetError(this.ObraTxt, "");
 
         }
         private void GuardarObrasDb()
@@ -88,14 +88,14 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionDb)
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Obras", string.IsNullOrEmpty(this.Id_obra.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_obra.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obras", string.IsNullOrEmpty(this.PaisTxt.Text) ? (object)DBNull.Value : this.PaisTxt.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obras", string.IsNullOrEmpty(this.ObraTxt.Text) ? (object)DBNull.Value : this.ObraTxt.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
                     this.dataGridObras.EndEdit();
                     this.dtObrasBindingSource.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR OBRAS ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RestaurarOjetosPais();
+                    RestaurarOjetosObra();
                 }
             }
             catch (Exception ex)
@@ -130,14 +130,14 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionSql)
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Obras", string.IsNullOrEmpty(this.Id_obra.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_obra.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obras", string.IsNullOrEmpty(this.PaisTxt.Text) ? (object)DBNull.Value : this.PaisTxt.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obras", string.IsNullOrEmpty(this.ObraTxt.Text) ? (object)DBNull.Value : this.ObraTxt.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
                     this.dtObrasBindingSource.EndEdit();
                     this.dataGridObras.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR OBRA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RestaurarOjetosPais();
+                    ModificarOjetosObra();
                 }
             }
             catch (Exception ex)
@@ -231,7 +231,44 @@ namespace PELOSCALVO
         }
         private void BtnNuevoObra_Click(object sender, EventArgs e)
         {
+            this.PanelBotones_Obra.Tag = "Nuevo";
+            try
+            {
+                int numeroFILA = this.dataGridObras.Rows.Count;
+                this.dtObrasBindingSource.AddNew();
+                if (this.dataGridObras.CurrentCell.RowIndex == 0)
+                {
+                    this.Id_obra.Text = "1";
+                    this.dataGridObras.Rows[0].Cells[0].Value = "1";
+                }
+                if (numeroFILA > 0)
+                {
+                    if (this.dataGridObras.Rows[numeroFILA - 1].Cells[0].Value.ToString() == string.Empty)
+                    {
+                        Random r = new Random();
+                        int VALORid = r.Next(5000, 100000000);
+                        this.dataGridObras.Rows[numeroFILA].Cells[0].Value = (VALORid);
+                        this.Id_obra.Text = VALORid.ToString();
+                    }
+                    else
+                    {
+                        int VALORid = Convert.ToInt32(this.dataGridObras.Rows[numeroFILA - 1].Cells[0].Value) + 1;
+                        this.dataGridObras.Rows[numeroFILA].Cells[0].Value = (VALORid);
+                        this.Id_obra.Text = VALORid.ToString();
+                    }
 
+                }
+                ObraTxt.Text = "Casa";
+                ObraTxt.Focus();
+                ObraTxt.SelectAll();
+                ModificarOjetosObra();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnModificarObra_Click(object sender, EventArgs e)
@@ -239,7 +276,7 @@ namespace PELOSCALVO
             if (dtObrasBindingSource.Count > 0)
             {
                 this.PanelBotones_Obra.Tag = "Modificar";
-                ModificarOjetosPais();
+                ModificarOjetosObra();
             }
         }
 
@@ -287,15 +324,15 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.dataGridObras.Rows)
                         {
-                            if (fila.Cells[1].ToString() == this.PaisTxt.Text)
+                            if (fila.Cells[1].ToString() == this.ObraTxt.Text)
                             {
                                 if (this.dataGridObras.CurrentCell.RowIndex == fila.Index)
                                 {
                                     break;
                                 }
-                                MessageBox.Show(this.PaisTxt.Text.ToString(), "YA EXISTE ESTA PAIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.PaisTxt.Focus();
-                                this.PaisTxt.SelectAll();
+                                MessageBox.Show(this.ObraTxt.Text.ToString(), "YA EXISTE ESTE OBRA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.ObraTxt.Focus();
+                                this.ObraTxt.SelectAll();
                                 return;
                             }
 
@@ -344,6 +381,10 @@ namespace PELOSCALVO
                             this.dataGridObras.Rows.RemoveAt(this.dataGridObras.CurrentCell.RowIndex);
                         }
                     }
+                    else
+                    {
+                       // ObraTxt.Text = string.Empty;
+                    }
                 }
                 catch (Exception)
                 {
@@ -352,7 +393,7 @@ namespace PELOSCALVO
                 }
 
             }
-            RestaurarOjetosPais();
+            RestaurarOjetosObra();
         }
 
         private void BtnSalir_Obra_Click(object sender, EventArgs e)

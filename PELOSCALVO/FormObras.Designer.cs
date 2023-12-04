@@ -37,7 +37,9 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormObras));
             this.BtnGuardarObra = new System.Windows.Forms.Button();
-            this.PaisTxt = new System.Windows.Forms.TextBox();
+            this.ObraTxt = new System.Windows.Forms.TextBox();
+            this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.PanelPais = new System.Windows.Forms.Panel();
             this.Id_obra = new System.Windows.Forms.Label();
             this.PanelBotones_Obra = new System.Windows.Forms.Panel();
@@ -45,28 +47,26 @@ namespace PELOSCALVO
             this.BtnBuscarObra = new System.Windows.Forms.Button();
             this.BtnNuevoObra = new System.Windows.Forms.Button();
             this.BtnModificarObra = new System.Windows.Forms.Button();
-            this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.BtnCancelarObra = new System.Windows.Forms.Button();
             this.BtnSalir_Obra = new System.Windows.Forms.Button();
             this.ErrorProve = new System.Windows.Forms.ErrorProvider(this.components);
             this.dataGridObras = new System.Windows.Forms.DataGridView();
-            this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Id_Obras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Obras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idObrasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.obrasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             this.PanelPais.SuspendLayout();
             this.PanelBotones_Obra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridObras)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(20, 14);
+            label10.Location = new System.Drawing.Point(20, 23);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(19, 13);
             label10.TabIndex = 54;
@@ -75,11 +75,11 @@ namespace PELOSCALVO
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(9, 46);
+            label11.Location = new System.Drawing.Point(9, 55);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(30, 13);
+            label11.Size = new System.Drawing.Size(33, 13);
             label11.TabIndex = 55;
-            label11.Text = "Pais:";
+            label11.Text = "Obra:";
             // 
             // BtnGuardarObra
             // 
@@ -93,7 +93,7 @@ namespace PELOSCALVO
             this.BtnGuardarObra.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarObra.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarObra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarObra.Location = new System.Drawing.Point(528, 405);
+            this.BtnGuardarObra.Location = new System.Drawing.Point(528, 383);
             this.BtnGuardarObra.Name = "BtnGuardarObra";
             this.BtnGuardarObra.Size = new System.Drawing.Size(89, 42);
             this.BtnGuardarObra.TabIndex = 77;
@@ -102,14 +102,25 @@ namespace PELOSCALVO
             this.BtnGuardarObra.UseVisualStyleBackColor = false;
             this.BtnGuardarObra.Click += new System.EventHandler(this.BtnGuardarObra_Click);
             // 
-            // PaisTxt
+            // ObraTxt
             // 
-            this.PaisTxt.Location = new System.Drawing.Point(52, 43);
-            this.PaisTxt.MaxLength = 40;
-            this.PaisTxt.Name = "PaisTxt";
-            this.PaisTxt.ReadOnly = true;
-            this.PaisTxt.Size = new System.Drawing.Size(385, 20);
-            this.PaisTxt.TabIndex = 56;
+            this.ObraTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtObrasBindingSource, "Obras", true));
+            this.ObraTxt.Location = new System.Drawing.Point(52, 52);
+            this.ObraTxt.MaxLength = 40;
+            this.ObraTxt.Name = "ObraTxt";
+            this.ObraTxt.ReadOnly = true;
+            this.ObraTxt.Size = new System.Drawing.Size(385, 20);
+            this.ObraTxt.TabIndex = 56;
+            // 
+            // dtObrasBindingSource
+            // 
+            this.dtObrasBindingSource.DataMember = "DtObras";
+            this.dtObrasBindingSource.DataSource = this.dsMulti2;
+            // 
+            // dsMulti2
+            // 
+            this.dsMulti2.DataSetName = "DsMulti2";
+            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // PanelPais
             // 
@@ -117,16 +128,17 @@ namespace PELOSCALVO
             this.PanelPais.Controls.Add(this.PanelBotones_Obra);
             this.PanelPais.Controls.Add(label10);
             this.PanelPais.Controls.Add(label11);
-            this.PanelPais.Controls.Add(this.PaisTxt);
-            this.PanelPais.Location = new System.Drawing.Point(0, 285);
+            this.PanelPais.Controls.Add(this.ObraTxt);
+            this.PanelPais.Location = new System.Drawing.Point(12, 275);
             this.PanelPais.Name = "PanelPais";
-            this.PanelPais.Size = new System.Drawing.Size(478, 172);
+            this.PanelPais.Size = new System.Drawing.Size(478, 151);
             this.PanelPais.TabIndex = 75;
             // 
             // Id_obra
             // 
             this.Id_obra.AutoSize = true;
-            this.Id_obra.Location = new System.Drawing.Point(52, 14);
+            this.Id_obra.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtObrasBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.Id_obra.Location = new System.Drawing.Point(52, 23);
             this.Id_obra.Name = "Id_obra";
             this.Id_obra.Size = new System.Drawing.Size(13, 13);
             this.Id_obra.TabIndex = 58;
@@ -141,7 +153,7 @@ namespace PELOSCALVO
             this.PanelBotones_Obra.Controls.Add(this.BtnBuscarObra);
             this.PanelBotones_Obra.Controls.Add(this.BtnNuevoObra);
             this.PanelBotones_Obra.Controls.Add(this.BtnModificarObra);
-            this.PanelBotones_Obra.Location = new System.Drawing.Point(9, 99);
+            this.PanelBotones_Obra.Location = new System.Drawing.Point(9, 78);
             this.PanelBotones_Obra.Name = "PanelBotones_Obra";
             this.PanelBotones_Obra.Size = new System.Drawing.Size(396, 63);
             this.PanelBotones_Obra.TabIndex = 54;
@@ -227,11 +239,6 @@ namespace PELOSCALVO
             this.BtnModificarObra.UseVisualStyleBackColor = false;
             this.BtnModificarObra.Click += new System.EventHandler(this.BtnModificarObra_Click);
             // 
-            // dsMulti2
-            // 
-            this.dsMulti2.DataSetName = "DsMulti2";
-            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // BtnCancelarObra
             // 
             this.BtnCancelarObra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -245,7 +252,7 @@ namespace PELOSCALVO
             this.BtnCancelarObra.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarObra.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarObra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarObra.Location = new System.Drawing.Point(674, 405);
+            this.BtnCancelarObra.Location = new System.Drawing.Point(674, 383);
             this.BtnCancelarObra.Name = "BtnCancelarObra";
             this.BtnCancelarObra.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarObra.TabIndex = 78;
@@ -266,7 +273,7 @@ namespace PELOSCALVO
             this.BtnSalir_Obra.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalir_Obra.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalir_Obra.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalir_Obra.Location = new System.Drawing.Point(838, 384);
+            this.BtnSalir_Obra.Location = new System.Drawing.Point(838, 362);
             this.BtnSalir_Obra.Name = "BtnSalir_Obra";
             this.BtnSalir_Obra.Size = new System.Drawing.Size(77, 63);
             this.BtnSalir_Obra.TabIndex = 76;
@@ -299,8 +306,8 @@ namespace PELOSCALVO
             this.dataGridObras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridObras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridObras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id_Obras,
-            this.Obras});
+            this.idObrasDataGridViewTextBoxColumn,
+            this.obrasDataGridViewTextBoxColumn});
             this.dataGridObras.DataSource = this.dtObrasBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -321,52 +328,49 @@ namespace PELOSCALVO
             this.dataGridObras.Size = new System.Drawing.Size(927, 257);
             this.dataGridObras.TabIndex = 74;
             // 
-            // dtObrasBindingSource
+            // idObrasDataGridViewTextBoxColumn
             // 
-            this.dtObrasBindingSource.DataMember = "DtObras";
-            this.dtObrasBindingSource.DataSource = this.dsMulti2;
-            // 
-            // Id_Obras
-            // 
-            this.Id_Obras.DataPropertyName = "Id_Obras";
+            this.idObrasDataGridViewTextBoxColumn.DataPropertyName = "Id_Obras";
             dataGridViewCellStyle2.Format = "N0";
             dataGridViewCellStyle2.NullValue = null;
-            this.Id_Obras.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Id_Obras.FillWeight = 85F;
-            this.Id_Obras.HeaderText = "Id";
-            this.Id_Obras.Name = "Id_Obras";
-            this.Id_Obras.ReadOnly = true;
+            this.idObrasDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.idObrasDataGridViewTextBoxColumn.FillWeight = 160F;
+            this.idObrasDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idObrasDataGridViewTextBoxColumn.Name = "idObrasDataGridViewTextBoxColumn";
+            this.idObrasDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Obras
+            // obrasDataGridViewTextBoxColumn
             // 
-            this.Obras.DataPropertyName = "Obras";
-            this.Obras.FillWeight = 300F;
-            this.Obras.HeaderText = "Obras";
-            this.Obras.Name = "Obras";
-            this.Obras.ReadOnly = true;
+            this.obrasDataGridViewTextBoxColumn.DataPropertyName = "Obras";
+            this.obrasDataGridViewTextBoxColumn.FillWeight = 700F;
+            this.obrasDataGridViewTextBoxColumn.HeaderText = "Obras";
+            this.obrasDataGridViewTextBoxColumn.Name = "obrasDataGridViewTextBoxColumn";
+            this.obrasDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FormObras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 469);
+            this.ClientSize = new System.Drawing.Size(927, 447);
             this.Controls.Add(this.BtnGuardarObra);
             this.Controls.Add(this.PanelPais);
             this.Controls.Add(this.BtnCancelarObra);
             this.Controls.Add(this.BtnSalir_Obra);
             this.Controls.Add(this.dataGridObras);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(943, 486);
             this.Name = "FormObras";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Obras";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormObras_FormClosing);
             this.Load += new System.EventHandler(this.FormObras_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             this.PanelPais.ResumeLayout(false);
             this.PanelPais.PerformLayout();
             this.PanelBotones_Obra.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridObras)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -374,7 +378,7 @@ namespace PELOSCALVO
         #endregion
 
         public System.Windows.Forms.Button BtnGuardarObra;
-        private System.Windows.Forms.TextBox PaisTxt;
+        private System.Windows.Forms.TextBox ObraTxt;
         private System.Windows.Forms.Panel PanelPais;
         private System.Windows.Forms.Label Id_obra;
         private System.Windows.Forms.Panel PanelBotones_Obra;
@@ -388,7 +392,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.ErrorProvider ErrorProve;
         private System.Windows.Forms.DataGridView dataGridObras;
         private System.Windows.Forms.BindingSource dtObrasBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Obras;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Obras;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idObrasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn obrasDataGridViewTextBoxColumn;
     }
 }

@@ -42,7 +42,7 @@ namespace PELOSCALVO
             this.BtnCrearTablaArti = new System.Windows.Forms.Button();
             this.BtnExaminarT = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.NombreArchivo_T = new System.Windows.Forms.TextBox();
+            this.BaseDatosTxt1 = new System.Windows.Forms.TextBox();
             this.ArticulosTxt = new System.Windows.Forms.ComboBox();
             this.ClientesTxt = new System.Windows.Forms.ComboBox();
             this.ExtensionTxt = new System.Windows.Forms.ComboBox();
@@ -50,11 +50,21 @@ namespace PELOSCALVO
             this.BtnSalirT = new System.Windows.Forms.Button();
             this.ErrorVer = new System.Windows.Forms.ErrorProvider(this.components);
             this.BtnConectar = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TabInicio = new System.Windows.Forms.TabPage();
+            this.TabCopia = new System.Windows.Forms.TabPage();
+            this.BtnCrearBackupDb = new System.Windows.Forms.Button();
+            this.BaseDatos2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.InfoProcesoText = new System.Windows.Forms.Label();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.TabInicio.SuspendLayout();
+            this.TabCopia.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelARTICULOS
@@ -62,7 +72,7 @@ namespace PELOSCALVO
             labelARTICULOS.AutoSize = true;
             labelARTICULOS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             labelARTICULOS.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            labelARTICULOS.Location = new System.Drawing.Point(13, 72);
+            labelARTICULOS.Location = new System.Drawing.Point(16, 76);
             labelARTICULOS.Name = "labelARTICULOS";
             labelARTICULOS.Size = new System.Drawing.Size(133, 26);
             labelARTICULOS.TabIndex = 102;
@@ -75,7 +85,7 @@ namespace PELOSCALVO
             labelCLIENTES.AutoSize = true;
             labelCLIENTES.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             labelCLIENTES.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            labelCLIENTES.Location = new System.Drawing.Point(31, 112);
+            labelCLIENTES.Location = new System.Drawing.Point(34, 116);
             labelCLIENTES.Name = "labelCLIENTES";
             labelCLIENTES.Size = new System.Drawing.Size(115, 26);
             labelCLIENTES.TabIndex = 103;
@@ -85,7 +95,7 @@ namespace PELOSCALVO
             // tipoExtensionArticulosLabel
             // 
             tipoExtensionArticulosLabel.AutoSize = true;
-            tipoExtensionArticulosLabel.Location = new System.Drawing.Point(295, 142);
+            tipoExtensionArticulosLabel.Location = new System.Drawing.Point(298, 146);
             tipoExtensionArticulosLabel.Name = "tipoExtensionArticulosLabel";
             tipoExtensionArticulosLabel.Size = new System.Drawing.Size(56, 13);
             tipoExtensionArticulosLabel.TabIndex = 105;
@@ -96,9 +106,9 @@ namespace PELOSCALVO
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.BtnTablasCrear);
-            this.panel3.Location = new System.Drawing.Point(661, 38);
+            this.panel3.Location = new System.Drawing.Point(69, 309);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(172, 90);
+            this.panel3.Size = new System.Drawing.Size(250, 110);
             this.panel3.TabIndex = 115;
             // 
             // label9
@@ -126,7 +136,7 @@ namespace PELOSCALVO
             this.Info_Res.BackColor = System.Drawing.Color.Gold;
             this.Info_Res.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Info_Res.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Info_Res.Location = new System.Drawing.Point(551, 157);
+            this.Info_Res.Location = new System.Drawing.Point(554, 151);
             this.Info_Res.Name = "Info_Res";
             this.Info_Res.Size = new System.Drawing.Size(201, 15);
             this.Info_Res.TabIndex = 114;
@@ -135,7 +145,7 @@ namespace PELOSCALVO
             // 
             // BtnCrearTablaCli
             // 
-            this.BtnCrearTablaCli.Location = new System.Drawing.Point(458, 112);
+            this.BtnCrearTablaCli.Location = new System.Drawing.Point(519, 120);
             this.BtnCrearTablaCli.Name = "BtnCrearTablaCli";
             this.BtnCrearTablaCli.Size = new System.Drawing.Size(75, 23);
             this.BtnCrearTablaCli.TabIndex = 113;
@@ -145,7 +155,7 @@ namespace PELOSCALVO
             // 
             // BtnCrearTablaArti
             // 
-            this.BtnCrearTablaArti.Location = new System.Drawing.Point(458, 72);
+            this.BtnCrearTablaArti.Location = new System.Drawing.Point(519, 80);
             this.BtnCrearTablaArti.Name = "BtnCrearTablaArti";
             this.BtnCrearTablaArti.Size = new System.Drawing.Size(75, 23);
             this.BtnCrearTablaArti.TabIndex = 112;
@@ -155,7 +165,7 @@ namespace PELOSCALVO
             // 
             // BtnExaminarT
             // 
-            this.BtnExaminarT.Location = new System.Drawing.Point(440, 33);
+            this.BtnExaminarT.Location = new System.Drawing.Point(638, 37);
             this.BtnExaminarT.Name = "BtnExaminarT";
             this.BtnExaminarT.Size = new System.Drawing.Size(75, 23);
             this.BtnExaminarT.TabIndex = 111;
@@ -166,26 +176,26 @@ namespace PELOSCALVO
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 38);
+            this.label6.Location = new System.Drawing.Point(56, 42);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 13);
+            this.label6.Size = new System.Drawing.Size(82, 13);
             this.label6.TabIndex = 110;
-            this.label6.Text = "Nombre Archivo principal:";
+            this.label6.Text = "Base De Datos:";
             // 
-            // NombreArchivo_T
+            // BaseDatosTxt1
             // 
-            this.NombreArchivo_T.Location = new System.Drawing.Point(152, 35);
-            this.NombreArchivo_T.Name = "NombreArchivo_T";
-            this.NombreArchivo_T.ReadOnly = true;
-            this.NombreArchivo_T.Size = new System.Drawing.Size(271, 20);
-            this.NombreArchivo_T.TabIndex = 109;
-            this.NombreArchivo_T.Tag = "NO";
-            this.NombreArchivo_T.Text = "Datos App Peloscalvo";
+            this.BaseDatosTxt1.Location = new System.Drawing.Point(155, 39);
+            this.BaseDatosTxt1.Name = "BaseDatosTxt1";
+            this.BaseDatosTxt1.ReadOnly = true;
+            this.BaseDatosTxt1.Size = new System.Drawing.Size(477, 20);
+            this.BaseDatosTxt1.TabIndex = 109;
+            this.BaseDatosTxt1.Tag = "NO";
+            this.BaseDatosTxt1.Text = "Datos App Peloscalvo";
+            this.BaseDatosTxt1.TextChanged += new System.EventHandler(this.BaseDatosTxt1_TextChanged);
             // 
             // ArticulosTxt
             // 
             this.ArticulosTxt.DisplayMember = "A";
-            this.ArticulosTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ArticulosTxt.FormattingEnabled = true;
             this.ArticulosTxt.Items.AddRange(new object[] {
             "Tarifa De Articulos 1",
@@ -193,15 +203,15 @@ namespace PELOSCALVO
             "Tarifa De Articulos 3",
             "Tarifa De Articulos 4",
             "Tarifa De Articulos 5"});
-            this.ArticulosTxt.Location = new System.Drawing.Point(152, 72);
+            this.ArticulosTxt.Location = new System.Drawing.Point(155, 76);
+            this.ArticulosTxt.MaxLength = 50;
             this.ArticulosTxt.Name = "ArticulosTxt";
-            this.ArticulosTxt.Size = new System.Drawing.Size(300, 21);
+            this.ArticulosTxt.Size = new System.Drawing.Size(348, 21);
             this.ArticulosTxt.TabIndex = 100;
             // 
             // ClientesTxt
             // 
             this.ClientesTxt.DisplayMember = "A";
-            this.ClientesTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ClientesTxt.FormattingEnabled = true;
             this.ClientesTxt.Items.AddRange(new object[] {
             "Listado De Clientes 1",
@@ -209,9 +219,10 @@ namespace PELOSCALVO
             "Listado De Clientes 3",
             "Listado De Clientes 4",
             "Listado De Clientes 5"});
-            this.ClientesTxt.Location = new System.Drawing.Point(152, 112);
+            this.ClientesTxt.Location = new System.Drawing.Point(155, 116);
+            this.ClientesTxt.MaxLength = 50;
             this.ClientesTxt.Name = "ClientesTxt";
-            this.ClientesTxt.Size = new System.Drawing.Size(300, 21);
+            this.ClientesTxt.Size = new System.Drawing.Size(348, 21);
             this.ClientesTxt.TabIndex = 101;
             // 
             // ExtensionTxt
@@ -221,7 +232,7 @@ namespace PELOSCALVO
             this.ExtensionTxt.Items.AddRange(new object[] {
             "accdb",
             "mdb"});
-            this.ExtensionTxt.Location = new System.Drawing.Point(357, 139);
+            this.ExtensionTxt.Location = new System.Drawing.Point(360, 143);
             this.ExtensionTxt.Name = "ExtensionTxt";
             this.ExtensionTxt.Size = new System.Drawing.Size(95, 21);
             this.ExtensionTxt.TabIndex = 106;
@@ -230,7 +241,7 @@ namespace PELOSCALVO
             // 
             this.BtnRestablecer_t.BackColor = System.Drawing.Color.DarkKhaki;
             this.BtnRestablecer_t.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BtnRestablecer_t.Location = new System.Drawing.Point(758, 152);
+            this.BtnRestablecer_t.Location = new System.Drawing.Point(761, 146);
             this.BtnRestablecer_t.Name = "BtnRestablecer_t";
             this.BtnRestablecer_t.Size = new System.Drawing.Size(75, 23);
             this.BtnRestablecer_t.TabIndex = 116;
@@ -251,7 +262,7 @@ namespace PELOSCALVO
             this.BtnSalirT.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalirT.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalirT.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirT.Location = new System.Drawing.Point(786, 377);
+            this.BtnSalirT.Location = new System.Drawing.Point(783, 356);
             this.BtnSalirT.Name = "BtnSalirT";
             this.BtnSalirT.Size = new System.Drawing.Size(77, 63);
             this.BtnSalirT.TabIndex = 117;
@@ -277,7 +288,7 @@ namespace PELOSCALVO
             this.BtnConectar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConectar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnConectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnConectar.Location = new System.Drawing.Point(738, 279);
+            this.BtnConectar.Location = new System.Drawing.Point(728, 186);
             this.BtnConectar.Name = "BtnConectar";
             this.BtnConectar.Size = new System.Drawing.Size(108, 42);
             this.BtnConectar.TabIndex = 118;
@@ -286,27 +297,115 @@ namespace PELOSCALVO
             this.BtnConectar.UseVisualStyleBackColor = false;
             this.BtnConectar.Click += new System.EventHandler(this.BtnConectar_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.TabInicio);
+            this.tabControl1.Controls.Add(this.TabCopia);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(902, 469);
+            this.tabControl1.TabIndex = 119;
+            // 
+            // TabInicio
+            // 
+            this.TabInicio.BackColor = System.Drawing.SystemColors.Control;
+            this.TabInicio.Controls.Add(this.BaseDatosTxt1);
+            this.TabInicio.Controls.Add(this.BtnSalirT);
+            this.TabInicio.Controls.Add(this.BtnConectar);
+            this.TabInicio.Controls.Add(this.ExtensionTxt);
+            this.TabInicio.Controls.Add(tipoExtensionArticulosLabel);
+            this.TabInicio.Controls.Add(this.BtnRestablecer_t);
+            this.TabInicio.Controls.Add(this.ClientesTxt);
+            this.TabInicio.Controls.Add(this.panel3);
+            this.TabInicio.Controls.Add(this.ArticulosTxt);
+            this.TabInicio.Controls.Add(this.Info_Res);
+            this.TabInicio.Controls.Add(labelCLIENTES);
+            this.TabInicio.Controls.Add(this.BtnCrearTablaCli);
+            this.TabInicio.Controls.Add(labelARTICULOS);
+            this.TabInicio.Controls.Add(this.BtnCrearTablaArti);
+            this.TabInicio.Controls.Add(this.label6);
+            this.TabInicio.Controls.Add(this.BtnExaminarT);
+            this.TabInicio.Location = new System.Drawing.Point(4, 22);
+            this.TabInicio.Name = "TabInicio";
+            this.TabInicio.Padding = new System.Windows.Forms.Padding(3);
+            this.TabInicio.Size = new System.Drawing.Size(894, 443);
+            this.TabInicio.TabIndex = 0;
+            this.TabInicio.Text = "&Principal";
+            // 
+            // TabCopia
+            // 
+            this.TabCopia.BackColor = System.Drawing.SystemColors.Control;
+            this.TabCopia.Controls.Add(this.InfoProcesoText);
+            this.TabCopia.Controls.Add(this.label1);
+            this.TabCopia.Controls.Add(this.BaseDatos2);
+            this.TabCopia.Controls.Add(this.BtnCrearBackupDb);
+            this.TabCopia.Location = new System.Drawing.Point(4, 22);
+            this.TabCopia.Name = "TabCopia";
+            this.TabCopia.Padding = new System.Windows.Forms.Padding(3);
+            this.TabCopia.Size = new System.Drawing.Size(894, 443);
+            this.TabCopia.TabIndex = 1;
+            this.TabCopia.Text = "&Copia Seguridad";
+            // 
+            // BtnCrearBackupDb
+            // 
+            this.BtnCrearBackupDb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCrearBackupDb.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCrearBackupDb.FlatAppearance.BorderSize = 0;
+            this.BtnCrearBackupDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnCrearBackupDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnCrearBackupDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCrearBackupDb.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCrearBackupDb.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCrearBackupDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCrearBackupDb.Location = new System.Drawing.Point(667, 276);
+            this.BtnCrearBackupDb.Name = "BtnCrearBackupDb";
+            this.BtnCrearBackupDb.Size = new System.Drawing.Size(187, 42);
+            this.BtnCrearBackupDb.TabIndex = 77;
+            this.BtnCrearBackupDb.Text = "&Crear Copia seguridad";
+            this.BtnCrearBackupDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCrearBackupDb.UseVisualStyleBackColor = false;
+            this.BtnCrearBackupDb.Click += new System.EventHandler(this.BtnCrearBackupDb_Click);
+            // 
+            // BaseDatos2
+            // 
+            this.BaseDatos2.Location = new System.Drawing.Point(145, 288);
+            this.BaseDatos2.Name = "BaseDatos2";
+            this.BaseDatos2.ReadOnly = true;
+            this.BaseDatos2.Size = new System.Drawing.Size(490, 20);
+            this.BaseDatos2.TabIndex = 110;
+            this.BaseDatos2.Tag = "NO";
+            this.BaseDatos2.Text = "Datos App Peloscalvo";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(74, 291);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 111;
+            this.label1.Text = "Base Datos:";
+            // 
+            // InfoProcesoText
+            // 
+            this.InfoProcesoText.AutoSize = true;
+            this.InfoProcesoText.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.InfoProcesoText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoProcesoText.Location = new System.Drawing.Point(3, 415);
+            this.InfoProcesoText.Margin = new System.Windows.Forms.Padding(3);
+            this.InfoProcesoText.Name = "InfoProcesoText";
+            this.InfoProcesoText.Padding = new System.Windows.Forms.Padding(2, 4, 2, 5);
+            this.InfoProcesoText.Size = new System.Drawing.Size(202, 25);
+            this.InfoProcesoText.TabIndex = 112;
+            this.InfoProcesoText.Text = "Indica La Base De Datos a Crear";
+            // 
             // FormCrearTablasDb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 469);
-            this.Controls.Add(this.BtnConectar);
-            this.Controls.Add(this.BtnSalirT);
-            this.Controls.Add(this.BtnRestablecer_t);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.Info_Res);
-            this.Controls.Add(this.BtnCrearTablaCli);
-            this.Controls.Add(this.BtnCrearTablaArti);
-            this.Controls.Add(this.BtnExaminarT);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.NombreArchivo_T);
-            this.Controls.Add(labelARTICULOS);
-            this.Controls.Add(labelCLIENTES);
-            this.Controls.Add(this.ArticulosTxt);
-            this.Controls.Add(this.ClientesTxt);
-            this.Controls.Add(tipoExtensionArticulosLabel);
-            this.Controls.Add(this.ExtensionTxt);
+            this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCrearTablasDb";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -316,8 +415,12 @@ namespace PELOSCALVO
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.TabInicio.ResumeLayout(false);
+            this.TabInicio.PerformLayout();
+            this.TabCopia.ResumeLayout(false);
+            this.TabCopia.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -331,7 +434,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCrearTablaArti;
         private System.Windows.Forms.Button BtnExaminarT;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox NombreArchivo_T;
+        private System.Windows.Forms.TextBox BaseDatosTxt1;
         public System.Windows.Forms.ComboBox ArticulosTxt;
         public System.Windows.Forms.ComboBox ClientesTxt;
         public System.Windows.Forms.ComboBox ExtensionTxt;
@@ -339,5 +442,12 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnSalirT;
         private System.Windows.Forms.ErrorProvider ErrorVer;
         public System.Windows.Forms.Button BtnConectar;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage TabInicio;
+        private System.Windows.Forms.TabPage TabCopia;
+        public System.Windows.Forms.Button BtnCrearBackupDb;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox BaseDatos2;
+        private System.Windows.Forms.Label InfoProcesoText;
     }
 }

@@ -66,7 +66,7 @@ namespace PELOSCALVO
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(20, 14);
+            label10.Location = new System.Drawing.Point(18, 11);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(19, 13);
             label10.TabIndex = 54;
@@ -75,7 +75,7 @@ namespace PELOSCALVO
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(9, 46);
+            label11.Location = new System.Drawing.Point(7, 43);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(30, 13);
             label11.TabIndex = 55;
@@ -99,7 +99,7 @@ namespace PELOSCALVO
             this.BtnCancelarPais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarPais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarPais.Location = new System.Drawing.Point(736, 448);
+            this.BtnCancelarPais.Location = new System.Drawing.Point(697, 393);
             this.BtnCancelarPais.Name = "BtnCancelarPais";
             this.BtnCancelarPais.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarPais.TabIndex = 73;
@@ -120,7 +120,7 @@ namespace PELOSCALVO
             this.BtnSalir_Pais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalir_Pais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalir_Pais.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalir_Pais.Location = new System.Drawing.Point(847, 432);
+            this.BtnSalir_Pais.Location = new System.Drawing.Point(836, 372);
             this.BtnSalir_Pais.Name = "BtnSalir_Pais";
             this.BtnSalir_Pais.Size = new System.Drawing.Size(77, 63);
             this.BtnSalir_Pais.TabIndex = 71;
@@ -222,7 +222,7 @@ namespace PELOSCALVO
             // Id_Pais
             // 
             this.Id_Pais.AutoSize = true;
-            this.Id_Pais.Location = new System.Drawing.Point(52, 14);
+            this.Id_Pais.Location = new System.Drawing.Point(50, 11);
             this.Id_Pais.Name = "Id_Pais";
             this.Id_Pais.Size = new System.Drawing.Size(13, 13);
             this.Id_Pais.TabIndex = 58;
@@ -237,7 +237,7 @@ namespace PELOSCALVO
             this.PanelBotones_Pais.Controls.Add(this.BtnBuscarPais);
             this.PanelBotones_Pais.Controls.Add(this.BtnNuevoPais);
             this.PanelBotones_Pais.Controls.Add(this.BtnModificarPais);
-            this.PanelBotones_Pais.Location = new System.Drawing.Point(9, 99);
+            this.PanelBotones_Pais.Location = new System.Drawing.Point(9, 85);
             this.PanelBotones_Pais.Name = "PanelBotones_Pais";
             this.PanelBotones_Pais.Size = new System.Drawing.Size(396, 63);
             this.PanelBotones_Pais.TabIndex = 54;
@@ -250,14 +250,14 @@ namespace PELOSCALVO
             this.PanelPais.Controls.Add(label10);
             this.PanelPais.Controls.Add(label11);
             this.PanelPais.Controls.Add(this.NombrePais);
-            this.PanelPais.Location = new System.Drawing.Point(12, 318);
+            this.PanelPais.Location = new System.Drawing.Point(12, 277);
             this.PanelPais.Name = "PanelPais";
-            this.PanelPais.Size = new System.Drawing.Size(478, 172);
+            this.PanelPais.Size = new System.Drawing.Size(478, 158);
             this.PanelPais.TabIndex = 70;
             // 
             // NombrePais
             // 
-            this.NombrePais.Location = new System.Drawing.Point(52, 43);
+            this.NombrePais.Location = new System.Drawing.Point(50, 40);
             this.NombrePais.MaxLength = 40;
             this.NombrePais.Name = "NombrePais";
             this.NombrePais.ReadOnly = true;
@@ -276,7 +276,7 @@ namespace PELOSCALVO
             this.BtnGuardarPais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarPais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarPais.Location = new System.Drawing.Point(581, 448);
+            this.BtnGuardarPais.Location = new System.Drawing.Point(542, 393);
             this.BtnGuardarPais.Name = "BtnGuardarPais";
             this.BtnGuardarPais.Size = new System.Drawing.Size(89, 42);
             this.BtnGuardarPais.TabIndex = 72;
@@ -349,7 +349,7 @@ namespace PELOSCALVO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 519);
+            this.ClientSize = new System.Drawing.Size(936, 450);
             this.Controls.Add(this.BtnCancelarPais);
             this.Controls.Add(this.BtnSalir_Pais);
             this.Controls.Add(this.PanelPais);

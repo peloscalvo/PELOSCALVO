@@ -957,6 +957,15 @@ namespace PELOSCALVO
         {
             this.ServidorCrear.Tag = "SEGUIR";
         }
+
+        private void ListaNueva_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(ListaNueva.SelectedItem.ToString()))
+            {
+                ServidorCrear.Text = ListaNueva.SelectedItem.ToString();
+            }
+           
+        }
     }
 }
 

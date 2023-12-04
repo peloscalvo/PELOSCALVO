@@ -1,14 +1,7 @@
-﻿using Conexiones;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -106,7 +99,7 @@ namespace PELOSCALVO
 
                     string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER, [FamiliaProductos] varchar)";
                     string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER primary key,[PaisesPaises] varchar)";
-                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER primary key, [ProvinciasProvincias] varchar,[Id_paises] INTEGER,"+
+                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER primary key, [ProvinciasProvincias] varchar,[Id_paises] INTEGER," +
                    " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (Id_paises)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaObra = "CREATE TABLE[DtObras] ([Id_Obras] INTEGER ,[Obras] varchar)";
                     string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER ,[ArchivoInicioFacturas] varchar," +
@@ -122,13 +115,13 @@ namespace PELOSCALVO
                           "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
 
                     string Ruta2 = "";
-                    if (this.NombreArchivo_T.Tag.ToString() == "SI")
+                    if (this.BaseDatosTxt1.Tag.ToString() == "SI")
                     {
-                        Ruta2 = this.NombreArchivo_T.Text;
+                        Ruta2 = this.BaseDatosTxt1.Text;
                     }
                     else
                     {
-                        Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivo_T.Text + "." + this.ExtensionTxt.Text;
+                        Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
                     }
                     string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
                     string TipoNota = "DtNota";
@@ -312,7 +305,7 @@ namespace PELOSCALVO
                             catch (Exception ex)
                             {
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_E, MessageBoxButtons.OK,MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_E, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
@@ -352,53 +345,54 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_E, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
+                        for (int i = 1; i < 7; i++)
                         {
-                            for (int i = 1; i < 7; i++)
+                            if (i == 2)
+                            {
+                                TipoNota = "DtNota2";
+                                Tabladetalle = "DtDetalles_Nota2";
+                            }
+                            if (i == 3)
+                            {
+                                //TipoNota = "DtNota2";
+                                Tabladetalle = "DtDetalles2_Nota2";
+                            }
+                            if (i == 4)
+                            {
+                                TipoNota = "DtAlbaran";
+                                Tabladetalle = "DtDetalles_Albaran";
+                            }
+                            if (i == 5)
+                            {
+                                TipoNota = "DtPresupuesto";
+                                Tabladetalle = "DtDetalles_Presupuesto";
+                            }
+                            if (i == 6)
+                            {
+                                TipoNota = "DtFactura";
+                                Tabladetalle = "DtDetalles_Fatura";
+                            }
+                            valor = r.Next(10, 10000);
+                            if (i != 3)
+                            {
+                                ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+                             "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
+                              "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
+                             "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
+                             "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
+                            "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar,[EnlaceDtconfi] varchar ," +
+                            "CONSTRAINT F_DtConfi" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )";
+                            }
+
+
+                            ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
+                                   ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
+                                   ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar" +
+                                   ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
+                            using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
                             {
 
-                                if (i == 2)
-                                {
-                                    TipoNota = "DtNota2";
-                                    Tabladetalle = "DtDetalles_Nota2";
-                                }
-                                if (i == 3)
-                                {
-                                    //TipoNota = "DtNota2";
-                                    Tabladetalle = "DtDetalles2_Nota2";
-                                }
-                                if (i == 4)
-                                {
-                                    TipoNota = "DtAlbaran";
-                                    Tabladetalle = "DtDetalles_Albaran";
-                                }
-                                if (i == 5)
-                                {
-                                    TipoNota = "DtPresupuesto";
-                                    Tabladetalle = "DtDetalles_Presupuesto";
-                                }
-                                if (i == 6)
-                                {
-                                    TipoNota = "DtFactura";
-                                    Tabladetalle = "DtDetalles_Fatura";
-                                }
-                                valor = r.Next(10, 900000);
-                                if (i != 3)
-                                {
-                                    ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
-                                 "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
-                                  "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
-                                 "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
-                                 "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-                                "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar,[EnlaceDtconfi] varchar ," +
-                                "CONSTRAINT F_DtConfi" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )";
-                                }
-
-
-                                ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
-                                       ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
-                                       ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar" +
-                                       ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
+         
                                 if (i != 3)
                                 {
                                     try
@@ -411,11 +405,11 @@ namespace PELOSCALVO
 
                                         MessageBox.Show(ex.Message, "ERROR " + ConsultaFacturacion, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                 
+
                                 }
                                 using (OleDbCommand ComandoDbDetalle = new OleDbCommand(ConsultaDetalles, NuevaConexion))
                                 {
-                                
+
                                     try
                                     {
                                         ComandoDbDetalle.ExecuteNonQuery();
@@ -458,9 +452,9 @@ namespace PELOSCALVO
                     if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
-                        this.NombreArchivo_T.Text = fi.Name;
-                        this.NombreArchivo_T.Tag = "SI";
-                        this.NombreArchivo_T.BackColor = Color.Bisque;
+                        this.BaseDatosTxt1.Text = fi.Name;
+                        this.BaseDatosTxt1.Tag = "SI";
+                        this.BaseDatosTxt1.BackColor = Color.Bisque;
                     }
                     else
                     {
@@ -470,7 +464,7 @@ namespace PELOSCALVO
             }
             catch (Exception ex)
             {
-                if (this.NombreArchivo_T.Text == "Datos App Peloscalvo")
+                if (this.BaseDatosTxt1.Text == "Datos App Peloscalvo")
                 {
                     MessageBox.Show(ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -484,14 +478,14 @@ namespace PELOSCALVO
 
         private void BtnConectar_Click(object sender, EventArgs e)
         {
-  
+
         }
 
         private void BtnRestablecer_t_Click(object sender, EventArgs e)
         {
-            this.NombreArchivo_T.Text = "Datos App Peloscalvo";
-            this.NombreArchivo_T.Tag = "NO";
-            this.NombreArchivo_T.BackColor = SystemColors.Control;
+            this.BaseDatosTxt1.Text = "Datos App Peloscalvo";
+            this.BaseDatosTxt1.Tag = "NO";
+            this.BaseDatosTxt1.BackColor = SystemColors.Control;
         }
 
         private void BtnRestablecer_t_MouseEnter(object sender, EventArgs e)
@@ -506,7 +500,7 @@ namespace PELOSCALVO
 
         private void BtnCrearTablaArti_Click(object sender, EventArgs e)
         {
-            if (this.NombreArchivo_T.Text != "Datos App Peloscalvo")
+            if (this.BaseDatosTxt1.Text != "Datos App Peloscalvo")
             {
                 MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
                 return;
@@ -516,17 +510,17 @@ namespace PELOSCALVO
             if (VALIDARcampos_ArchivosTablas())
             {
                 string Ruta2 = "";
-                if (this.NombreArchivo_T.Tag.ToString() == "SI")
+                if (this.BaseDatosTxt1.Tag.ToString() == "SI")
                 {
-                    Ruta2 = this.NombreArchivo_T.Text;
+                    Ruta2 = this.BaseDatosTxt1.Text;
                 }
                 else
                 {
-                    Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivo_T.Text + "." + this.ExtensionTxt.Text;
+                    Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
                 }
                 if (MessageBox.Show("\n" + " Crear Tabla  " + this.ArticulosTxt.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                   
+
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
                     string TablaArticulos = this.ArticulosTxt.Text;
@@ -539,7 +533,7 @@ namespace PELOSCALVO
 
 
                     string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
-  
+
                     using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
                     {
                         using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos, NuevaConexion))
@@ -558,7 +552,7 @@ namespace PELOSCALVO
                         }
 
                     }
-    
+
                 }
             }
         }
@@ -576,18 +570,18 @@ namespace PELOSCALVO
                 if (MessageBox.Show("\n" + " Crear Tabla  " + this.ClientesTxt.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     string Ruta2 = "";
-                    if (this.NombreArchivo_T.Tag.ToString() == "SI")
+                    if (this.BaseDatosTxt1.Tag.ToString() == "SI")
                     {
                         Ruta2 = this.ClientesTxt.Text;
                     }
                     else
                     {
-                        Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivo_T.Text + "." + this.ExtensionTxt.Text;
+                        Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
                     }
-      
+
                     Random r = new Random();
                     int valor = r.Next(10, 90000000);
-                    string TablaCliente = ClientesTxt.Text;
+                    string TablaCliente = this.ClientesTxt.Text;
                     string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
@@ -616,6 +610,75 @@ namespace PELOSCALVO
                     }
 
                 }
+            }
+        }
+
+        private void BaseDatosTxt1_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.BaseDatosTxt1.Text))
+            {
+                this.BaseDatos2.Text = string.Empty;
+            }
+            else
+            {
+                this.BaseDatos2.Text = this.BaseDatosTxt1.Text;
+            }
+
+        }
+
+        private void BtnCrearBackupDb_Click(object sender, EventArgs e)
+        {
+            if (this.BaseDatos2.Text != string.Empty || this.BaseDatos2.Text != string.Empty)
+            {
+
+                FolderBrowserDialog CarpetaElegir = new FolderBrowserDialog();
+                if (CarpetaElegir.ShowDialog() == DialogResult.OK)
+                {
+                    this.InfoProcesoText.BackColor = Color.FromArgb(234, 210, 8);
+                    this.InfoProcesoText.Text = " Creando Copia De Seguridad de Base Datos: " + this.BaseDatos2.Text + " .............. .......Espere Un Momento !!!!!!!";
+                    this.InfoProcesoText.Refresh();
+                    Application.DoEvents();
+                    // string RutaOrigen = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal;
+                    string RutaDestino = CarpetaElegir.SelectedPath;
+                    string CarpetaCopia = "Copia Seguridad De PeloscalvoApp";
+                    string NonbreBackup = "Backup De" + this.BaseDatos2.Text + String.Format("{0:dd-MM-yyyy hh:mm:ss}", DateTime.Now);
+                    //string BACKUP = RutaDestino + "\\" + CarpetaCopia;
+
+
+                    if (!Directory.Exists(RutaDestino + "\\" + CarpetaCopia))
+                    {
+                        DirectoryInfo DirectiorioCopia = new DirectoryInfo(RutaDestino);
+                        DirectiorioCopia.CreateSubdirectory(CarpetaCopia);
+
+                    }
+
+
+                    string Cadena2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
+                    string consulta = "BACKUP DATABASE [" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + "] TO  DISK = N'" + RutaDestino + "\\" + CarpetaCopia + "\\" + "\\" + NonbreBackup + ".bak' WITH NOFORMAT, NOINIT,  NAME = N'" + this.BaseDatos2.Text + " Copia de seguridad', SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
+                    string cadenaConexion = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + ";Initial Catalog=" + Cadena2 + ";Integrated Security=True";
+                    try
+                    {
+                        using (OleDbConnection NuevaConexion = new OleDbConnection(cadenaConexion))
+                        {
+                            using (OleDbCommand comando = new OleDbCommand(consulta, NuevaConexion))
+                            {
+                                NuevaConexion.Open();
+                                comando.ExecuteNonQuery();
+                                MessageBox.Show("Se Creo Base Datos Correctamente" + "\n" + this.BaseDatos2.Text, "CREAR BASE DATOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
+
+                this.InfoProcesoText.Text = "Indica La Base Datos a Crear Copia De Seguridad";
+                this.InfoProcesoText.BackColor = this.BackColor;
+                this.InfoProcesoText.Refresh();
             }
         }
     }

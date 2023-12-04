@@ -403,13 +403,13 @@ namespace PELOSCALVO
         private void BtnCancelarProvincia_Click(object sender, EventArgs e)
         {
             BorrarErrorProvi();
-            if (this.dataGridProvincias.RowCount >= 0)
+            if (this.DtProvinciasBindinsource.Count > 0)
             {
                 try
                 {
                     if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
                     {
-                        if (this.dataGridProvincias.RowCount > 0)
+                        if (this.DtProvinciasBindinsource.Count > 0)
                         {
                             this.dataGridProvincias.Rows.RemoveAt(this.dataGridProvincias.CurrentCell.RowIndex);
                         }

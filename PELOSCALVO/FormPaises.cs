@@ -388,7 +388,7 @@ namespace PELOSCALVO
                 {
                     if (this.PanelBotones_Pais.Tag.ToString() == "Nuevo")
                     {
-                        if (this.dataGridPais.RowCount > 0)
+                        if (this.dataGridPais.RowCount >= 0)
                         {
                             this.dataGridPais.Rows.RemoveAt(this.dataGridPais.CurrentCell.RowIndex);
                         }
@@ -406,7 +406,7 @@ namespace PELOSCALVO
 
         private void BtnSalir_Pais_Click(object sender, EventArgs e)
         {
-            if (this.BtnGuardarPais.Enabled == true)
+            if (this.BtnGuardarPais.Enabled == false)
             {
                 if (MessageBox.Show(" Salir Paises  ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {

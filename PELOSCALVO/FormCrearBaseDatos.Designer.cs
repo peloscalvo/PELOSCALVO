@@ -229,7 +229,7 @@ namespace PELOSCALVO
             this.TabCrear.Controls.Add(this.TabInstacias);
             this.TabCrear.Controls.Add(this.TabRestaurar);
             this.TabCrear.Controls.Add(this.tabPage1);
-            this.TabCrear.Location = new System.Drawing.Point(0, 0);
+            this.TabCrear.Location = new System.Drawing.Point(3, 0);
             this.TabCrear.Name = "TabCrear";
             this.TabCrear.SelectedIndex = 0;
             this.TabCrear.Size = new System.Drawing.Size(681, 317);
@@ -381,7 +381,6 @@ namespace PELOSCALVO
             // 
             // SerieClientesTabla
             // 
-            this.SerieClientesTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieClientesTabla.FormattingEnabled = true;
             this.SerieClientesTabla.Items.AddRange(new object[] {
             "Listado De Clientes 1",
@@ -389,15 +388,16 @@ namespace PELOSCALVO
             "Listado De Clientes 1",
             "Listado De Clientes 1",
             "Listado De Clientes 1"});
-            this.SerieClientesTabla.Location = new System.Drawing.Point(400, 157);
+            this.SerieClientesTabla.Location = new System.Drawing.Point(308, 192);
+            this.SerieClientesTabla.MaxLength = 50;
             this.SerieClientesTabla.Name = "SerieClientesTabla";
-            this.SerieClientesTabla.Size = new System.Drawing.Size(230, 21);
+            this.SerieClientesTabla.Size = new System.Drawing.Size(344, 21);
             this.SerieClientesTabla.TabIndex = 88;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(297, 161);
+            this.label10.Location = new System.Drawing.Point(205, 196);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(94, 13);
             this.label10.TabIndex = 87;
@@ -406,7 +406,7 @@ namespace PELOSCALVO
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(297, 130);
+            this.label9.Location = new System.Drawing.Point(205, 165);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 13);
             this.label9.TabIndex = 86;
@@ -415,7 +415,6 @@ namespace PELOSCALVO
             // SerieArticulosTabla
             // 
             this.SerieArticulosTabla.DisplayMember = "A";
-            this.SerieArticulosTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieArticulosTabla.FormattingEnabled = true;
             this.SerieArticulosTabla.Items.AddRange(new object[] {
             "Tarifa De Articulos 1",
@@ -423,9 +422,10 @@ namespace PELOSCALVO
             "Tarifa De Articulos 3",
             "Tarifa De Articulos 4",
             "Tarifa De Articulos 5"});
-            this.SerieArticulosTabla.Location = new System.Drawing.Point(400, 125);
+            this.SerieArticulosTabla.Location = new System.Drawing.Point(308, 160);
+            this.SerieArticulosTabla.MaxLength = 50;
             this.SerieArticulosTabla.Name = "SerieArticulosTabla";
-            this.SerieArticulosTabla.Size = new System.Drawing.Size(230, 21);
+            this.SerieArticulosTabla.Size = new System.Drawing.Size(344, 21);
             this.SerieArticulosTabla.TabIndex = 85;
             this.SerieArticulosTabla.Tag = "stop";
             // 
@@ -434,7 +434,7 @@ namespace PELOSCALVO
             this.checkTablas.AutoSize = true;
             this.checkTablas.Checked = true;
             this.checkTablas.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkTablas.Location = new System.Drawing.Point(121, 195);
+            this.checkTablas.Location = new System.Drawing.Point(53, 198);
             this.checkTablas.Name = "checkTablas";
             this.checkTablas.Size = new System.Drawing.Size(104, 17);
             this.checkTablas.TabIndex = 84;
@@ -446,7 +446,7 @@ namespace PELOSCALVO
             this.checkEmpresas.AutoSize = true;
             this.checkEmpresas.Checked = true;
             this.checkEmpresas.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkEmpresas.Location = new System.Drawing.Point(121, 161);
+            this.checkEmpresas.Location = new System.Drawing.Point(53, 164);
             this.checkEmpresas.Name = "checkEmpresas";
             this.checkEmpresas.Size = new System.Drawing.Size(72, 17);
             this.checkEmpresas.TabIndex = 83;
@@ -481,7 +481,7 @@ namespace PELOSCALVO
             this.BtnCrearTablas.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCrearTablas.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnCrearTablas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrearTablas.Location = new System.Drawing.Point(400, 208);
+            this.BtnCrearTablas.Location = new System.Drawing.Point(474, 230);
             this.BtnCrearTablas.Name = "BtnCrearTablas";
             this.BtnCrearTablas.Size = new System.Drawing.Size(159, 42);
             this.BtnCrearTablas.TabIndex = 75;
@@ -495,7 +495,7 @@ namespace PELOSCALVO
             this.CheckFacturacion.AutoSize = true;
             this.CheckFacturacion.Checked = true;
             this.CheckFacturacion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckFacturacion.Location = new System.Drawing.Point(121, 129);
+            this.CheckFacturacion.Location = new System.Drawing.Point(53, 132);
             this.CheckFacturacion.Name = "CheckFacturacion";
             this.CheckFacturacion.Size = new System.Drawing.Size(82, 17);
             this.CheckFacturacion.TabIndex = 2;
@@ -507,7 +507,7 @@ namespace PELOSCALVO
             this.CheckClientes.AutoSize = true;
             this.CheckClientes.Checked = true;
             this.CheckClientes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckClientes.Location = new System.Drawing.Point(121, 95);
+            this.CheckClientes.Location = new System.Drawing.Point(53, 98);
             this.CheckClientes.Name = "CheckClientes";
             this.CheckClientes.Size = new System.Drawing.Size(63, 17);
             this.CheckClientes.TabIndex = 1;
@@ -519,7 +519,7 @@ namespace PELOSCALVO
             this.CheckTablaArticulos.AutoSize = true;
             this.CheckTablaArticulos.Checked = true;
             this.CheckTablaArticulos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckTablaArticulos.Location = new System.Drawing.Point(121, 62);
+            this.CheckTablaArticulos.Location = new System.Drawing.Point(53, 65);
             this.CheckTablaArticulos.Name = "CheckTablaArticulos";
             this.CheckTablaArticulos.Size = new System.Drawing.Size(66, 17);
             this.CheckTablaArticulos.TabIndex = 0;
@@ -569,7 +569,7 @@ namespace PELOSCALVO
             this.BtnCrearBackup.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCrearBackup.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnCrearBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrearBackup.Location = new System.Drawing.Point(278, 162);
+            this.BtnCrearBackup.Location = new System.Drawing.Point(437, 217);
             this.BtnCrearBackup.Name = "BtnCrearBackup";
             this.BtnCrearBackup.Size = new System.Drawing.Size(187, 42);
             this.BtnCrearBackup.TabIndex = 76;
@@ -752,17 +752,22 @@ namespace PELOSCALVO
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(673, 288);
             this.tabPage1.TabIndex = 5;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "&Lista De Instancias";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // ListaNueva
             // 
             this.ListaNueva.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListaNueva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ListaNueva.Font = new System.Drawing.Font("Liberation Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListaNueva.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.ListaNueva.FormattingEnabled = true;
-            this.ListaNueva.Location = new System.Drawing.Point(171, 0);
+            this.ListaNueva.ItemHeight = 15;
+            this.ListaNueva.Location = new System.Drawing.Point(20, 42);
             this.ListaNueva.Name = "ListaNueva";
-            this.ListaNueva.Size = new System.Drawing.Size(155, 225);
+            this.ListaNueva.Size = new System.Drawing.Size(550, 214);
             this.ListaNueva.TabIndex = 79;
+            this.ListaNueva.Click += new System.EventHandler(this.ListaNueva_Click);
             // 
             // ListaBaseDatos
             // 
