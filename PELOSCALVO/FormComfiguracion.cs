@@ -26,21 +26,6 @@ namespace PELOSCALVO
         }
 
 
-        private bool ValidarTipoTarifa()
-        {
-            bool ok = true;
-            if (this.tarifaTipoTextBox.Text.Length < 3)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.tarifaTipoTextBox, "_ingresar Descuento valido (( minimo 3 Caracteres))");
-            }
-            return ok;
-        }
-        private void BorrarErroresTipoTarifa()
-        {
-            this.errorProvider1Confi.SetError(this.tarifaTipoTextBox, "");
-        }
-
 
         private bool ValidarInicio()
         {
@@ -75,7 +60,6 @@ namespace PELOSCALVO
         private void BorrarErroresInicio()
         {
             this.errorProvider1Confi.SetError(this.empresaInicio, "");
-            this.errorProvider1Confi.SetError(this.tarifaTipoTextBox, "");
             this.errorProvider1Confi.SetError(this.PaisInicio, "");
             this.errorProvider1Confi.SetError(this.provinciaInicio, "");
             this.errorProvider1Confi.SetError(this.SerieInicio, "");
@@ -198,143 +182,12 @@ namespace PELOSCALVO
             FormMenuPrincipal.menu2principal.panelSUBventas.Visible = false;
         }
 
+ 
 
-
-        private void BtnNuevoTipoTarifa_Click(object sender, EventArgs e)
-        {
-            this.BtnNuevoTipoTarifa.Tag = "Nuevo";
-            if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
-            {
-                MessageBox.Show("Debe Crear Ejercicio De esta Empresa", "FALTA EMPRESA");
-                return;
-            }
-
-            if (this.dtTarifaTipoDataGridView.RowCount > 7)
-            {
-                MessageBox.Show("Maximo Permitido", "LIMITE");
-                return;
-            }
-            try
-            {
-                this.dtTarifaTipoDataGridView.Sort(this.dtTarifaTipoDataGridView.Columns[0], ListSortDirection.Ascending);
-                int numeroFILA = this.dtTarifaTipoDataGridView.Rows.Count;
-                this.dtConfiDtTarifaTipoBindingSource.AddNew();
-                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 0)
-                {
-                    this.IdTarifa.Text = "1";
-                    this.dtTarifaTipoDataGridView.Rows[0].Cells[0].Value = "1";
-                }
-                if (numeroFILA > 0)
-                {
-                    if (this.dtTarifaTipoDataGridView.Rows[numeroFILA - 1].Cells[0].Value.ToString() == string.Empty)
-                    {
-                        Random r = new Random();
-                        int VALORid = r.Next(50000, 100000000);
-                        this.dtTarifaTipoDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                        this.IdTarifa.Text = VALORid.ToString();
-                    }
-                    else
-                    {
-                        int VALORid = Convert.ToInt32(this.dtTarifaTipoDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
-                        this.dtTarifaTipoDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                        this.IdTarifa.Text = VALORid.ToString();
-                    }
-
-                }
-
-                this.dtTarifaTipoDataGridView.Refresh();
-                this.BtnVolverDescuentos.Visible = false;
-                this.panelBotonesTipoTarifa.Enabled = false;
-                this.BtnGuardarDescuentos.Enabled = true;
-                this.BtnCancelarTipoTarifa.Enabled = true;
-                this.dtTarifaTipoDataGridView.Enabled = false;
-                this.empresaConfiComboBox1.Enabled = false;
-                this.tarifaTipoTextBox.ReadOnly = false;
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
-
-        private void BtnCancelarTipoTarifa_Click(object sender, EventArgs e)
-        {
-            BorrarErroresTipoTarifa();
-            if (this.dtTarifaTipoDataGridView.RowCount >= 0)
-            {
-                if (this.BtnNuevoTipoTarifa.Tag.ToString() == "Nuevo")
-                {
-                    this.dtTarifaTipoDataGridView.Rows.RemoveAt(this.dtTarifaTipoDataGridView.CurrentCell.RowIndex);
-                }
-
-            }
-            this.dtTarifaTipoDataGridView.Refresh();
-            this.panelBotonesTipoTarifa.Enabled = true;
-            this.BtnGuardarDescuentos.Enabled = false;
-            this.BtnCancelarTipoTarifa.Enabled = false;
-            this.dtTarifaTipoDataGridView.Enabled = true;
-            this.empresaConfiComboBox1.Enabled = true;
-            this.tarifaTipoTextBox.ReadOnly = true;
-            this.BtnVolverDescuentos.Visible = true;
-        }
-
-        private void BtnGuardarDescuentos_Click(object sender, EventArgs e)
-        {
-
-            BorrarErroresTipoTarifa();
-            //email_bien_escrito();
-            if (ValidarTipoTarifa())
-            {
-                if (this.dtTarifaTipoBindingSource.Count < 0)
-                {
-                    //this.tabControl1Factura.SelectedIndex = 1;
-                    return;
-                }
-                if (MessageBox.Show(" ¿Aceptar Guardar Descuentos ? ", " GUARDAR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    if (ClsConexionSql.SibaseDatosSql)
-                    {
-                        //GuardarTarifas_Cli_Sql();
-                    }
-                    else
-                    {
-
-                        if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 20))
-                        {
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                            {
-                                Validate();
-                                this.dtConfiDtTarifaTipoBindingSource.EndEdit();
-                                this.dtTarifaTipoDataGridView.EndEdit();
-                                // FormMenuPrincipal.menu2principal.dsCONFIGURACCION.WriteXml(ClasDatos.RutaBaseDatosDb);
-                                MessageBox.Show("Guardado Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Falta Archivo ", "NO GUARDO DATOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            }
-                        }
-                    }
-                    this.panelBotonesTipoTarifa.Enabled = true;
-                    this.BtnGuardarDescuentos.Enabled = false;
-                    this.BtnCancelarTipoTarifa.Enabled = false;
-                    this.dtTarifaTipoDataGridView.Enabled = true;
-                    this.empresaConfiComboBox1.Enabled = true;
-                    this.tarifaTipoTextBox.ReadOnly = true;
-                    this.BtnVolverDescuentos.Visible = true;
-                    this.dtTarifaTipoDataGridView.Refresh();
-                }
-            }
-
-        }
 
         private void FormComfiguracion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.BtnGuardarDescuentos.Enabled == true)
-            {
-                e.Cancel = true;
-            }
+   
         }
 
         private void BtnSalirTipoTarifa_Click(object sender, EventArgs e)
@@ -344,47 +197,6 @@ namespace PELOSCALVO
                 Close();
             }
         }
-
-        private void BtnModificarTipoTarifa_Click(object sender, EventArgs e)
-        {
-            this.BtnNuevoTipoTarifa.Tag = "Actualizar";
-            if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 0)
-            {
-                MessageBox.Show("Este Descuento No Se Puede Modificar", "Descuento");
-                return;
-            }
-            if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 1)
-            {
-                MessageBox.Show("Este Descuento No Se Puede Modificar", "Descuento");
-                return;
-            }
-            if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 8)
-            {
-                MessageBox.Show("Este Descuento No Se Puede Modificar", "Descuento");
-                return;
-            }
-            this.panelBotonesTipoTarifa.Enabled = false;
-            this.BtnGuardarDescuentos.Enabled = true;
-            this.BtnCancelarTipoTarifa.Enabled = true;
-            this.dtTarifaTipoDataGridView.Enabled = false;
-            this.BtnGuardarDescuentos.Enabled = true;
-            this.BtnCancelarTipoTarifa.Enabled = true;
-            this.empresaConfiComboBox1.Enabled = false;
-            this.tarifaTipoTextBox.ReadOnly = false;
-            this.BtnVolverDescuentos.Visible = false;
-        }
-
-        private byte[] ConvertirImagen(PictureBox pitureImagen)
-        {
-            MemoryStream memo2 = new MemoryStream();
-            if (pitureImagen.Image != null)
-            {
-                pitureImagen.Image.Save(memo2, System.Drawing.Imaging.ImageFormat.Jpeg);
-            }
-
-            return memo2.GetBuffer();
-        }
-
 
 
         private void BtnGuardarInicio_Click(object sender, EventArgs e)
@@ -466,36 +278,13 @@ namespace PELOSCALVO
 
 
 
-        private void BtnVolverBasica_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-        }
 
-        private void BtnVolverDescuentos_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-            this.tabPageTarifa.Parent = null;
-            this.panelBotonesTipoTarifa.Visible = true;
-            this.BtnGuardarDescuentos.Visible = true;
-        }
 
         private void BtnVolverConfi_Inicio_Click(object sender, EventArgs e)
         {
             BorrarErroresInicio();
-            this.tabControlTodo.TabPages.Insert(0, this.tabMENU);
-            this.tabPageInicio.Parent = null;
-            this.BtnGuardarInicio.Visible = true;
-            this.panelDatosInicio.Enabled = true;
+
         }
-
-
-        private void BtnDescuentos_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(1, this.tabPageTarifa);
-            this.tabMENU.Parent = null;
-        }
-
-
 
         private void BtnConfiReportes_Click(object sender, EventArgs e)
         {
@@ -513,11 +302,6 @@ namespace PELOSCALVO
 
         private void tabMENU_Enter(object sender, EventArgs e)
         {
-
-
-            this.label5.Text = Cursor.Position.Y.ToString();
-            FormMenuPrincipal.menu2principal.panelventas.Visible = false;
-            FormMenuPrincipal.menu2principal.panelSUBventas.Visible = false;
         }
 
         private void empresaConfiTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -812,16 +596,6 @@ namespace PELOSCALVO
             }
         }
 
-        private void toolArchivo_MouseEnter(object sender, EventArgs e)
-        {
-            this.toolArchivo.Visible = true;
-        }
-
-        private void verDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.tabControlTodo.TabPages.Insert(1, this.tabPageTarifa);
-            this.tabMENU.Parent = null;
-        }
 
 
         private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -839,16 +613,6 @@ namespace PELOSCALVO
                 // throw;
             }
         }
-
-        private void editarDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.panelBotonesTipoTarifa.Visible = false;
-            this.BtnGuardarDescuentos.Visible = false;
-            this.tabControlTodo.TabPages.Insert(1, this.tabPageTarifa);
-            this.tabMENU.Parent = null;
-
-        }
-
         private void crearBaseDatosSqlLocalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCrearBaseDatos frm = new FormCrearBaseDatos();

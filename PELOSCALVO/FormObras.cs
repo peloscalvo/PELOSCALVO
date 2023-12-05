@@ -88,7 +88,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Obra.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtObras]([@Id_Obras],[@Obras])";
+                consulta = "  INSERT INTO [DtObras] VALUES([@Id_Obras],[@Obras])";
 
             }
             else
@@ -130,7 +130,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Obra.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtObras]([@Id_Obras],[@Obras])";
+                consulta = "  INSERT INTO [DtObras] VALUES([@Id_Obras],[@Obras])";
 
             }
             else

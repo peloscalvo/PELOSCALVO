@@ -86,7 +86,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Pais.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtPaises]([@Id],[@PaisesPaises])";
+                consulta = "  INSERT INTO [DtPaises] VALUES([@Id],[@PaisesPaises])";
 
             }
             else
@@ -128,7 +128,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Pais.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtPaises]([@Id],[@PaisesPaises])";
+                consulta = "  INSERT INTO [DtPaises] VALUES([@Id],[@PaisesPaises])";
 
             }
             else

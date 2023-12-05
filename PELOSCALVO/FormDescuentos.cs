@@ -83,7 +83,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelBotonesTipoTarifa.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtTarifaTipo]([@Id],[@TarifaTipo],[@EnlaceTarifa])";
+                consulta = "  INSERT INTO [DtTarifaTipo] VALUES([@Id],[@TarifaTipo],[@EnlaceTarifa])";
 
             }
             else
@@ -126,7 +126,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelBotonesTipoTarifa.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtTarifaTipo]([@Id],[@TarifaTipo],[@EnlaceTarifa])";
+                consulta = "  INSERT INTO [DtTarifaTipo] VALUES([@Id],[@TarifaTipo],[@EnlaceTarifa])";
 
             }
             else

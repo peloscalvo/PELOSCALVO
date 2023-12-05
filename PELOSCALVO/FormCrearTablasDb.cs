@@ -452,7 +452,7 @@ namespace PELOSCALVO
                     if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
-                        this.BaseDatosTxt1.Text = fi.Name;
+                        this.BaseDatosTxt1.Text = BuscarArchivo.FileName.ToString();
                         this.BaseDatosTxt1.Tag = "SI";
                         this.BaseDatosTxt1.BackColor = Color.Bisque;
                     }
@@ -651,11 +651,19 @@ namespace PELOSCALVO
                         DirectiorioCopia.CreateSubdirectory(CarpetaCopia);
 
                     }
-
-
-                    string Cadena2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
-                    string consulta = "BACKUP DATABASE [" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + "] TO  DISK = N'" + RutaDestino + "\\" + CarpetaCopia + "\\" + "\\" + NonbreBackup + ".bak' WITH NOFORMAT, NOINIT,  NAME = N'" + this.BaseDatos2.Text + " Copia de seguridad', SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
-                    string cadenaConexion = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + ";Initial Catalog=" + Cadena2 + ";Integrated Security=True";
+                    string Ruta = "";
+                    if (this.BaseDatosTxt1.Tag.ToString() == "SI")
+                    {
+                        Ruta = this.BaseDatosTxt1.Text;
+                    }
+                    else
+                    {
+                       Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
+                    }
+                 
+                    string consulta = "BACKUP DATABASE [" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + "] TO  DISK = N'" + RutaDestino + "\\" + CarpetaCopia + "\\" + "\\" + NonbreBackup + ".bak' WITH NOFORMAT, NOINIT,  NAME = N'" + this.BaseDatos2.Text + " Copia de seguridad', SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
+                   // string cadenaConexion = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + ";Initial Catalog=" + Cadena2 + ";Integrated Security=True";
+                    string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
                     try
                     {
                         using (OleDbConnection NuevaConexion = new OleDbConnection(cadenaConexion))

@@ -473,6 +473,7 @@ namespace PELOSCALVO
             this.PanelAcesosDire.Size = new System.Drawing.Size(865, 526);
             this.PanelAcesosDire.TabIndex = 3;
             this.PanelAcesosDire.Visible = false;
+            this.PanelAcesosDire.MouseEnter += new System.EventHandler(this.PanelAcesosDire_MouseEnter);
             // 
             // PanelInfo_P
             // 
@@ -741,13 +742,13 @@ namespace PELOSCALVO
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.verToolStripMenuItem.Text = "&Ver";
             // 
             // abrirPdfToolStripMenuItem
             // 
             this.abrirPdfToolStripMenuItem.Name = "abrirPdfToolStripMenuItem";
-            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.abrirPdfToolStripMenuItem.Text = "&Abrir P.d.f";
             // 
             // editarModificarToolStripMenuItem
@@ -760,43 +761,43 @@ namespace PELOSCALVO
             this.provinciasToolStripMenuItem1,
             this.otrosToolStripMenuItem});
             this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
-            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
             // 
             // almacenesToolStripMenuItem
             // 
             this.almacenesToolStripMenuItem.Name = "almacenesToolStripMenuItem";
-            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.almacenesToolStripMenuItem.Text = "Almacenes";
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             // 
             // obrasToolStripMenuItem
             // 
             this.obrasToolStripMenuItem.Name = "obrasToolStripMenuItem";
-            this.obrasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.obrasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.obrasToolStripMenuItem.Text = "Obras";
             // 
             // paisesToolStripMenuItem1
             // 
             this.paisesToolStripMenuItem1.Name = "paisesToolStripMenuItem1";
-            this.paisesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.paisesToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.paisesToolStripMenuItem1.Text = "Paises";
             // 
             // provinciasToolStripMenuItem1
             // 
             this.provinciasToolStripMenuItem1.Name = "provinciasToolStripMenuItem1";
-            this.provinciasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.provinciasToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.provinciasToolStripMenuItem1.Text = "Provincias";
             // 
             // otrosToolStripMenuItem
             // 
             this.otrosToolStripMenuItem.Name = "otrosToolStripMenuItem";
-            this.otrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.otrosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.otrosToolStripMenuItem.Text = "Otros";
             // 
             // toolEmpresas
@@ -813,27 +814,27 @@ namespace PELOSCALVO
             // empresasToolStripMenuItem
             // 
             this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
-            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.empresasToolStripMenuItem.Text = "Empresas";
             this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
             // 
             // crearEjercioNuevoToolStripMenuItem
             // 
             this.crearEjercioNuevoToolStripMenuItem.Name = "crearEjercioNuevoToolStripMenuItem";
-            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.crearEjercioNuevoToolStripMenuItem.Text = "Crear Ejercio Nuevo";
             this.crearEjercioNuevoToolStripMenuItem.Click += new System.EventHandler(this.crearEjercioNuevoToolStripMenuItem_Click);
             // 
             // consultaEmpresasToolStripMenuItem
             // 
             this.consultaEmpresasToolStripMenuItem.Name = "consultaEmpresasToolStripMenuItem";
-            this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.consultaEmpresasToolStripMenuItem.Text = "&Consulta Empresas";
             // 
             // consultaEjerciciosToolStripMenuItem
             // 
             this.consultaEjerciciosToolStripMenuItem.Name = "consultaEjerciciosToolStripMenuItem";
-            this.consultaEjerciciosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultaEjerciciosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.consultaEjerciciosToolStripMenuItem.Text = "&Consulta Ejercicios";
             // 
             // toolDescuentos
@@ -848,13 +849,14 @@ namespace PELOSCALVO
             // editarDescuentosToolStripMenuItem
             // 
             this.editarDescuentosToolStripMenuItem.Name = "editarDescuentosToolStripMenuItem";
-            this.editarDescuentosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.editarDescuentosToolStripMenuItem.Text = "Editar Descuentos";
+            this.editarDescuentosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.editarDescuentosToolStripMenuItem.Text = "&Abrir  Descuentos";
+            this.editarDescuentosToolStripMenuItem.Click += new System.EventHandler(this.editarDescuentosToolStripMenuItem_Click);
             // 
             // verDescuentosToolStripMenuItem
             // 
             this.verDescuentosToolStripMenuItem.Name = "verDescuentosToolStripMenuItem";
-            this.verDescuentosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.verDescuentosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.verDescuentosToolStripMenuItem.Text = "Ver Descuentos";
             // 
             // toolFamilia
@@ -870,14 +872,14 @@ namespace PELOSCALVO
             // familiasToolStripMenuItem
             // 
             this.familiasToolStripMenuItem.Name = "familiasToolStripMenuItem";
-            this.familiasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.familiasToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.familiasToolStripMenuItem.Text = "&Abrir";
             this.familiasToolStripMenuItem.Click += new System.EventHandler(this.familiasToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(121, 22);
             this.toolStripMenuItem2.Text = "&Consulta";
             // 
             // proveedoresToolStripMenuItem1
@@ -911,6 +913,7 @@ namespace PELOSCALVO
             this.almacenesToolStripMenuItem1.Name = "almacenesToolStripMenuItem1";
             this.almacenesToolStripMenuItem1.Size = new System.Drawing.Size(77, 20);
             this.almacenesToolStripMenuItem1.Text = "&Almacenes";
+            this.almacenesToolStripMenuItem1.Click += new System.EventHandler(this.almacenesToolStripMenuItem1_Click);
             // 
             // AbrirAlmacenes
             // 

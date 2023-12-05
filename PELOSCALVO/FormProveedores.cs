@@ -84,7 +84,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProveedores]([Id_Proveedores],[Proveedores],[Enlace_Proveedores]) VALUES( @Id_Proveedores,@Proveedores,@Enlace_Proveedores)";
+                consulta = "  INSERT INTO [DtProveedores]  VALUES([Id_Proveedores],[Proveedores],[Enlace_Proveedores]) VALUES( @Id_Proveedores,@Proveedores,@Enlace_Proveedores)";
 
             }
             else
@@ -127,7 +127,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProveedores]([@Id_Proveedores],[@Proveedores],[@Enlace_Proveedores])";
+                consulta = "  INSERT INTO [DtProveedores] VALUES([@Id_Proveedores],[@Proveedores],[@Enlace_Proveedores])";
 
             }
             else

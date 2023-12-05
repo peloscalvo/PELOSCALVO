@@ -87,7 +87,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias]([@Id],[@ProvinciasProvincias],[@Id_paises])";
+                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@ProvinciasProvincias],[@Id_paises])";
 
             }
             else
@@ -130,7 +130,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias]([@Id],[@ProvinciasProvincias],[@Id_paises])";
+                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@ProvinciasProvincias],[@Id_paises])";
 
             }
             else

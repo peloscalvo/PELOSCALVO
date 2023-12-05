@@ -377,6 +377,7 @@ namespace PELOSCALVO
         private void btnConfiguracion_MouseEnter(object sender, EventArgs e)
         {
             this.panelventas.Visible = false;
+            this.panelSUBventas.Visible = false;
 
         }
 
@@ -648,6 +649,14 @@ namespace PELOSCALVO
 
         private void BtnInfo_Click(object sender, EventArgs e)
         {
+            if (ClsConexionSql.SibaseDatosSql == false)
+            {
+                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
             if (BtnInfo.Tag.ToString() == "NO")
             {
                 BtnInfo.Tag = "SI";
@@ -739,11 +748,12 @@ namespace PELOSCALVO
 
         private void empresasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            PanelAcesosDire.Visible = false;
             FormEmpresas frm = new FormEmpresas();
             frm.TopLevel = false;
             // frm.Dock = DockStyle.Fill;
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+           // frm.WindowState = FormWindowState.Maximized;
+            //frm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelContenedorForm.Controls.Add(frm);
             frm.FormClosed += (o, args) => this.SiOpenArti = 0;
             frm.Show();
@@ -798,7 +808,7 @@ namespace PELOSCALVO
             PanelAcesosDire.Visible = false;
             FormAlmacenes frm = new FormAlmacenes();
             frm.TopLevel = false;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
@@ -883,6 +893,27 @@ namespace PELOSCALVO
         private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void editarDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PanelAcesosDire.Visible = false;
+            FormDescuentos frm = new FormDescuentos();
+            frm.TopLevel = false;
+            this.panelContenedorForm.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void almacenesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PanelAcesosDire_MouseEnter(object sender, EventArgs e)
+        {
+            this.panelventas.Visible = false;
+            this.panelSUBventas.Visible = false;
         }
 
         private void BtnSql_Click(object sender, EventArgs e)

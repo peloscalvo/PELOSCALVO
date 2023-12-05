@@ -1231,7 +1231,7 @@ namespace PELOSCALVO
                     if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
-                        this.NombreArchivoDatos.Text = fi.Name;
+                        this.NombreArchivoDatos.Text = BuscarArchivo.FileName.ToString();
                         ClasDatos.RutaBaseDatosDb = Path.GetFullPath(BuscarArchivo.FileName.ToString());
                         FormMenuPrincipal.menu2principal.InfoCarpeta.Text = Path.GetDirectoryName(BuscarArchivo.FileName.ToString());
                         FormMenuPrincipal.menu2principal.InfoBaseDatos.Text = Path.GetFileName(BuscarArchivo.FileName.ToString());

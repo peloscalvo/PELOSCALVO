@@ -269,7 +269,9 @@ namespace PELOSCALVO
                     }
                   
                 }
-
+                almacenesTextBox.Text = "Almacen Central";
+                almacenesTextBox.Focus();
+                almacenesTextBox.SelectAll();
                 ModificarOjetos_Alm();
 
             }
