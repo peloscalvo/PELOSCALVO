@@ -443,6 +443,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.dataGridAlmacenes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAlmacenes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Almacenes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAlmacenes_FormClosing);
             this.Load += new System.EventHandler(this.FormAlmacenes_Load);

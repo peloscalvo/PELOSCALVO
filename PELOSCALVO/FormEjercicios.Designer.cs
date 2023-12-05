@@ -358,7 +358,7 @@ namespace PELOSCALVO
             // 
             // IdConfi
             // 
-            this.IdConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.IdConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "IdConexionConfi", true));
             this.IdConfi.Enabled = false;
             this.IdConfi.Location = new System.Drawing.Point(93, 281);
             this.IdConfi.MaxLength = 300;
@@ -418,7 +418,7 @@ namespace PELOSCALVO
             // 
             // Id
             // 
-            this.Id.DataPropertyName = "Id";
+            this.Id.DataPropertyName = "IdConexionConfi";
             dataGridViewCellStyle2.Format = "N0";
             dataGridViewCellStyle2.NullValue = null;
             this.Id.DefaultCellStyle = dataGridViewCellStyle2;
@@ -570,11 +570,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridView dtConfiDataGridView;
         private System.Windows.Forms.ComboBox CambiarDeEmpresa1;
         private System.Windows.Forms.Button BtnSalirEjerc;
+        private System.Windows.Forms.Label EnlaceDtconfi;
+        private System.Windows.Forms.Label EmpresaEnlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn AñoDeEjercicio;
-        private System.Windows.Forms.Label EnlaceDtconfi;
-        private System.Windows.Forms.Label EmpresaEnlace;
     }
 }

@@ -596,7 +596,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarCliente_Click(object sender, EventArgs e)
         {
-            if (this.dtClientesDataGridView.Rows.Count > 0)
+            if (this.dtClientesBindingSource.Count > 0)
             {
                 if (MessageBox.Show(" ¿Eliminar Clientes ? ", " ELIMINAR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -604,9 +604,9 @@ namespace PELOSCALVO
                     {
                         try
                         {
-                            if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
+                            if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
                             {
-                                String TipoTabla ="["+ FormMenuPrincipal.menu2principal.InfoClientes.Text + " De Clientes"+"]";
+                                String TipoTabla ="["+ FormMenuPrincipal.menu2principal.InfoClientes.Text+"]" ;
                                 string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @ID";
                                 ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
                                 {
@@ -632,13 +632,9 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                        if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
+                        if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
                         {
-                            String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + " De Clientes" + "]";
-                            if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
-                            {
-                                TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
-                            }
+                            String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";      
                             string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @ID";
                             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                             {

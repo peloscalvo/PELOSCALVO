@@ -25,7 +25,7 @@ namespace PELOSCALVO
 
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
-                    this.DtPaisBindinsource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
+                    this.DtPaisBindinsource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
                 }
   
             }
@@ -169,14 +169,14 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtPaises]   WHERE Id= '@Id'";
+                string consulta = "Delete from  [DtPaises]   WHERE Id= @Id";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.Id_Pais.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Pais.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridPais.Rows.RemoveAt(this.dataGridPais.CurrentCell.RowIndex);
                             this.DtPaisBindinsource.EndEdit();
@@ -210,14 +210,14 @@ namespace PELOSCALVO
         private void EliminarPaisSql()
         {
 
-            string consulta = "Delete from  [DtPaises]   WHERE Id= '@Id'";
+            string consulta = "Delete from  [DtPaises]   WHERE Id= @Id";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.Id_Pais.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Pais.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridPais.Rows.RemoveAt(this.dataGridPais.CurrentCell.RowIndex);
                         this.DtPaisBindinsource.EndEdit();

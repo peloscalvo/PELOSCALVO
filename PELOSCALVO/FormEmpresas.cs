@@ -565,7 +565,7 @@ namespace PELOSCALVO
 
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= '@NombreEmpresaReguistro'";
+                string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= @NombreEmpresaReguistro";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
@@ -605,7 +605,7 @@ namespace PELOSCALVO
         }
         private void EliminarEmpresaSql()
         {
-            string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= '@NombreEmpresaReguistro'";
+            string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= @NombreEmpresaReguistro";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {

@@ -895,7 +895,6 @@ namespace PELOSCALVO
             this.Name = "FormComfiguracion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Comfiguracion";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormComfiguracion_FormClosing);
             this.Load += new System.EventHandler(this.FormComfiguracion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();

@@ -26,7 +26,7 @@ namespace PELOSCALVO
   
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
-                    this.dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
+                    this.dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtObras;
                 }
     
             }
@@ -88,12 +88,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Obra.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtObras] VALUES([@Id_Obras],[@Obras])";
+                consulta = "  INSERT INTO [DtObras] VALUES([@Id],[@Obras])";
 
             }
             else
             {
-                consulta = "UPDATE [DtObras] SET [Id_Obras] = @Id_Obras,[Obras] = @Obras " +
+                consulta = "UPDATE [DtObras] SET [Id] = @Id,[Obras] = @Obras " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -101,7 +101,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Obras", string.IsNullOrEmpty(this.Id_obra.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_obra.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_obra.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_obra.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obras", string.IsNullOrEmpty(this.ObraTxt.Text) ? (object)DBNull.Value : this.ObraTxt.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
@@ -130,12 +130,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Obra.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtObras] VALUES([@Id_Obras],[@Obras])";
+                consulta = "  INSERT INTO [DtObras] VALUES([@Id],[@Obras])";
 
             }
             else
             {
-                consulta = "UPDATE [DtObras] SET [Id_Obras] = @Id_Obras,[Obras] = @Obras  " +
+                consulta = "UPDATE [DtObras] SET [Id] = @Id,[Obras] = @Obras  " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -143,7 +143,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Obras", string.IsNullOrEmpty(this.Id_obra.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_obra.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_obra.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_obra.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obras", string.IsNullOrEmpty(this.ObraTxt.Text) ? (object)DBNull.Value : this.ObraTxt.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
@@ -171,14 +171,14 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtObras]   WHERE Id_Obras= '@Id_Obras'";
+                string consulta = "Delete from  [DtObras]   WHERE Id= @Id";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Obras", this.Id_obra.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_obra.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridObras.Rows.RemoveAt(this.dataGridObras.CurrentCell.RowIndex);
                             this.dtObrasBindingSource.EndEdit();
@@ -212,14 +212,14 @@ namespace PELOSCALVO
         private void EliminarObraSql()
         {
 
-            string consulta = "Delete from  [DtObras]   WHERE Id_Obras= '@Id_Obras'";
+            string consulta = "Delete from  [DtObras]   WHERE Id= @Id";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Obras", this.Id_obra.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_obra.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridObras.Rows.RemoveAt(this.dataGridObras.CurrentCell.RowIndex);
                         this.dtObrasBindingSource.EndEdit();

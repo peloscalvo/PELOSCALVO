@@ -657,17 +657,18 @@ namespace PELOSCALVO
                     return;
                 }
             }
-            if (BtnInfo.Tag.ToString() == "NO")
+            PanelAcesosDire.Width = panelContenedorForm.Width;
+            PanelAcesosDire.Height = panelContenedorForm.Height;
+            if (BtnInfo.Tag.ToString() == "SI")
             {
-                BtnInfo.Tag = "SI";
+                BtnInfo.Tag = "NO";
                 PanelAcesosDire.Visible = true;
-                PanelAcesosDire.Width = panelContenedorForm.Width;
-                PanelAcesosDire.Height = panelContenedorForm.Height;
+      
                 PanelAcesosDire.BringToFront();
             }
             else
             {
-                BtnInfo.Tag = "NO";
+                BtnInfo.Tag = "SI";
                 PanelAcesosDire.Visible = false;
             }
 

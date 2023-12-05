@@ -704,7 +704,7 @@ namespace PELOSCALVO
             this.BtnBuscarClientes2.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscarClientes2.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_24;
             this.BtnBuscarClientes2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnBuscarClientes2.Location = new System.Drawing.Point(562, 17);
+            this.BtnBuscarClientes2.Location = new System.Drawing.Point(460, 21);
             this.BtnBuscarClientes2.Name = "BtnBuscarClientes2";
             this.BtnBuscarClientes2.Size = new System.Drawing.Size(41, 28);
             this.BtnBuscarClientes2.TabIndex = 13;
@@ -1232,7 +1232,7 @@ namespace PELOSCALVO
             this.BtnGuardarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarCliente.Location = new System.Drawing.Point(853, 588);
+            this.BtnGuardarCliente.Location = new System.Drawing.Point(570, 599);
             this.BtnGuardarCliente.Name = "BtnGuardarCliente";
             this.BtnGuardarCliente.Size = new System.Drawing.Size(89, 42);
             this.BtnGuardarCliente.TabIndex = 4;
@@ -1254,7 +1254,7 @@ namespace PELOSCALVO
             this.BtnCancelarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarCliente.Location = new System.Drawing.Point(1013, 588);
+            this.BtnCancelarCliente.Location = new System.Drawing.Point(730, 599);
             this.BtnCancelarCliente.Name = "BtnCancelarCliente";
             this.BtnCancelarCliente.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarCliente.TabIndex = 5;
@@ -1274,7 +1274,7 @@ namespace PELOSCALVO
             this.BtnNuevoCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnNuevoCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
             this.BtnNuevoCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnNuevoCliente.Location = new System.Drawing.Point(0, 0);
+            this.BtnNuevoCliente.Location = new System.Drawing.Point(-8, 0);
             this.BtnNuevoCliente.Name = "BtnNuevoCliente";
             this.BtnNuevoCliente.Size = new System.Drawing.Size(77, 63);
             this.BtnNuevoCliente.TabIndex = 6;
@@ -1294,7 +1294,7 @@ namespace PELOSCALVO
             this.BtnModificarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnModificarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
             this.BtnModificarCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnModificarCliente.Location = new System.Drawing.Point(77, 0);
+            this.BtnModificarCliente.Location = new System.Drawing.Point(69, 0);
             this.BtnModificarCliente.Name = "BtnModificarCliente";
             this.BtnModificarCliente.Size = new System.Drawing.Size(77, 63);
             this.BtnModificarCliente.TabIndex = 7;
@@ -1307,7 +1307,6 @@ namespace PELOSCALVO
             // 
             this.panelBotonesClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelBotonesClientes.BackColor = System.Drawing.Color.Transparent;
-            this.panelBotonesClientes.Controls.Add(this.BtnSalirCliente);
             this.panelBotonesClientes.Controls.Add(this.BtnImprimirCliente);
             this.panelBotonesClientes.Controls.Add(this.BtnBuscarClientes2);
             this.panelBotonesClientes.Controls.Add(this.BtnEnviarMailCliente);
@@ -1315,9 +1314,9 @@ namespace PELOSCALVO
             this.panelBotonesClientes.Controls.Add(this.BtnBuscarCliente);
             this.panelBotonesClientes.Controls.Add(this.BtnNuevoCliente);
             this.panelBotonesClientes.Controls.Add(this.BtnModificarCliente);
-            this.panelBotonesClientes.Location = new System.Drawing.Point(28, 567);
+            this.panelBotonesClientes.Location = new System.Drawing.Point(16, 578);
             this.panelBotonesClientes.Name = "panelBotonesClientes";
-            this.panelBotonesClientes.Size = new System.Drawing.Size(643, 63);
+            this.panelBotonesClientes.Size = new System.Drawing.Size(515, 63);
             this.panelBotonesClientes.TabIndex = 8;
             this.panelBotonesClientes.Tag = "STOP";
             // 
@@ -1333,7 +1332,7 @@ namespace PELOSCALVO
             this.BtnSalirCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalirCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalirCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirCliente.Location = new System.Drawing.Point(462, 0);
+            this.BtnSalirCliente.Location = new System.Drawing.Point(1025, 578);
             this.BtnSalirCliente.Name = "BtnSalirCliente";
             this.BtnSalirCliente.Size = new System.Drawing.Size(77, 63);
             this.BtnSalirCliente.TabIndex = 12;
@@ -1353,7 +1352,7 @@ namespace PELOSCALVO
             this.BtnImprimirCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnImprimirCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_printer_5_32;
             this.BtnImprimirCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnImprimirCliente.Location = new System.Drawing.Point(308, 0);
+            this.BtnImprimirCliente.Location = new System.Drawing.Point(300, 0);
             this.BtnImprimirCliente.Name = "BtnImprimirCliente";
             this.BtnImprimirCliente.Size = new System.Drawing.Size(77, 63);
             this.BtnImprimirCliente.TabIndex = 11;
@@ -1373,7 +1372,7 @@ namespace PELOSCALVO
             this.BtnEnviarMailCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEnviarMailCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_email_9_32;
             this.BtnEnviarMailCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnEnviarMailCliente.Location = new System.Drawing.Point(385, 0);
+            this.BtnEnviarMailCliente.Location = new System.Drawing.Point(377, 0);
             this.BtnEnviarMailCliente.Name = "BtnEnviarMailCliente";
             this.BtnEnviarMailCliente.Size = new System.Drawing.Size(77, 63);
             this.BtnEnviarMailCliente.TabIndex = 10;
@@ -1392,7 +1391,7 @@ namespace PELOSCALVO
             this.BtnEliminarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
             this.BtnEliminarCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnEliminarCliente.Location = new System.Drawing.Point(231, 0);
+            this.BtnEliminarCliente.Location = new System.Drawing.Point(223, 0);
             this.BtnEliminarCliente.Name = "BtnEliminarCliente";
             this.BtnEliminarCliente.Size = new System.Drawing.Size(77, 63);
             this.BtnEliminarCliente.TabIndex = 9;
@@ -1412,7 +1411,7 @@ namespace PELOSCALVO
             this.BtnBuscarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
             this.BtnBuscarCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnBuscarCliente.Location = new System.Drawing.Point(154, 0);
+            this.BtnBuscarCliente.Location = new System.Drawing.Point(146, 0);
             this.BtnBuscarCliente.Name = "BtnBuscarCliente";
             this.BtnBuscarCliente.Size = new System.Drawing.Size(77, 63);
             this.BtnBuscarCliente.TabIndex = 8;
@@ -1460,6 +1459,7 @@ namespace PELOSCALVO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnSalirCliente;
             this.ClientSize = new System.Drawing.Size(1118, 653);
+            this.Controls.Add(this.BtnSalirCliente);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.ContadorDatosClientes);
             this.Controls.Add(this.panelBotonesClientes);
@@ -1469,9 +1469,8 @@ namespace PELOSCALVO
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormClientes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Clientes";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClientes_FormClosing);
             this.Load += new System.EventHandler(this.FormClientes_Load);
             this.MouseEnter += new System.EventHandler(this.FormClientes_MouseEnter);

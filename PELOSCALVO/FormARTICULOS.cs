@@ -473,10 +473,15 @@ namespace PELOSCALVO
         }
         private void BtnSalirArticulo_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" ¿Salir Articulos ? ", " ARTICULOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (this.BtnGuardarArticulo.Enabled == false)
             {
-                Close();
+                if (MessageBox.Show(" ¿Salir Articulos ? ", " ARTICULOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Close();
+                }
             }
+
+         
         }
 
         private void FormARTICULOS_FormClosing(object sender, FormClosingEventArgs e)
@@ -547,10 +552,7 @@ namespace PELOSCALVO
                         {
                             EliminarArticuloSql();
                         }
-                        if (this.dtArticulosBindingSource.Count > 0)
-                        {
-                            this.dtPreciosDataGridView.CurrentCell = this.dtPreciosDataGridView.Rows[0].Cells[0];
-                        }
+               
                     }
                     catch (Exception)
                     {

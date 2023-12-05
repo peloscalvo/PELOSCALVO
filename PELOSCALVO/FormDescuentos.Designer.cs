@@ -435,7 +435,9 @@ namespace PELOSCALVO
             this.Controls.Add(this.BtnGuardarDescuentos);
             this.Controls.Add(this.panelBotonesTipoTarifa);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(898, 504);
             this.Name = "FormDescuentos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Descuentos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDescuentos_FormClosing);
             this.Load += new System.EventHandler(this.FormDescuentos_Load);

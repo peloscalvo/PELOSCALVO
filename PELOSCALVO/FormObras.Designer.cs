@@ -361,6 +361,7 @@ namespace PELOSCALVO
             this.MinimumSize = new System.Drawing.Size(943, 486);
             this.Name = "FormObras";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Obras";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormObras_FormClosing);
             this.Load += new System.EventHandler(this.FormObras_Load);

@@ -84,6 +84,7 @@ namespace PELOSCALVO
             // ErrorProve
             // 
             this.ErrorProve.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.ErrorProve.ContainerControl = this;
             // 
             // BtnCancelarPais
             // 
@@ -358,6 +359,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.dataGridPais);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPaises";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Paises";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPaises_FormClosing);
             this.Load += new System.EventHandler(this.FormPaises_Load);

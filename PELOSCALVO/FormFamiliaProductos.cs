@@ -27,7 +27,7 @@ namespace PELOSCALVO
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
                    // this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
-                    this.dtFamiliaProductosBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
+                    this.dtFamiliaProductosBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos;
                 }
             }
             catch (Exception ex)
@@ -303,7 +303,7 @@ namespace PELOSCALVO
 
         private void BtnSalirFamilia_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(" ¿Salir Familia Productos ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Close();
             }
@@ -410,6 +410,11 @@ namespace PELOSCALVO
                     }
                 }
             }
+        }
+
+        private void dtFamiliaProductosBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

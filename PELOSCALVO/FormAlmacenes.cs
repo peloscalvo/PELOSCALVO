@@ -89,7 +89,7 @@ namespace PELOSCALVO
                 try
                 {
 
-                    string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= '@Id_almacenes'";
+                    string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= @Id_almacenes";
                     //  ClsConexionDb.CadenaConexion = cadena;
                     ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                     {
@@ -207,7 +207,7 @@ namespace PELOSCALVO
         }
         private void EliminarAlmacenSQL()
         {
-            string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= '@Id_almacenes'";
+            string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= @Id_almacenes";
             //  ClsConexionDb.CadenaConexion = cadena;
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
@@ -406,9 +406,12 @@ namespace PELOSCALVO
 
         private void BtnSalirAlmacen_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (BtnGuardarAlmacen.Enabled == false)
             {
-                Close();
+                if (MessageBox.Show(" ¿Salir Almacenes ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Close();
+                }
             }
         }
 

@@ -169,14 +169,14 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores'";
+                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", this.Id_proveedor.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                             this.dtProveedoresBindingSource.EndEdit();
@@ -210,14 +210,14 @@ namespace PELOSCALVO
         private void EliminarProveedorSql()
         {
 
-            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores'";
+            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", this.Id_proveedor.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores",Convert.ToInt32(this.Id_proveedor.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         this.dtProveedoresBindingSource.EndEdit();

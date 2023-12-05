@@ -215,14 +215,14 @@ namespace PELOSCALVO
         }
         private void EliminarEjercicioSql()
         {
-            string consulta = "Delete from  [DtConfi]   WHERE Id= '@Id'";
+            string consulta = "Delete from  [DtConfi]   WHERE Id= @Id";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.IdConfi.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.IdConfi.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
                         this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
@@ -247,14 +247,14 @@ namespace PELOSCALVO
         }
         private void EliminarEjercicioBb()
         {
-            string consulta = "Delete from  [DtConfi]   WHERE Id= '@Id'";
+            string consulta = "Delete from  [DtConfi]   WHERE Id= @Id";
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionDb)
                     {
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.IdConfi.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.IdConfi.Text));
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
                         this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
                         this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();

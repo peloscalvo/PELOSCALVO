@@ -39,11 +39,19 @@ namespace PELOSCALVO
             using (DbConnection connection = factory.CreateConnection())
             {
 
-                connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Ruta;
-                string[] restrictions = new string[4];
-                restrictions[3] = "Table";
-                connection.Open();
-                userTables = connection.GetSchema("Tables", restrictions);
+                try
+                {
+                    connection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
+                    string[] restrictions = new string[4];
+                    restrictions[3] = "Table";
+                    connection.Open();
+                    userTables = connection.GetSchema("Tables", restrictions);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
 
             List<string> tableNames = new List<string>();

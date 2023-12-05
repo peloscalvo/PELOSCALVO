@@ -448,6 +448,7 @@ namespace PELOSCALVO
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(968, 536);
             this.Name = "FormProveedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Proveedores";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormProveedores_FormClosing);
             this.Load += new System.EventHandler(this.FormProveedores_Load);

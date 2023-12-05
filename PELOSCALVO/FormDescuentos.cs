@@ -20,7 +20,21 @@ namespace PELOSCALVO
         }
         private void FormDescuentos_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+                {
+                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
 
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         private void BtnSalirTipoTarifa_Click(object sender, EventArgs e)
         {

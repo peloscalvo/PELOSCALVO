@@ -116,7 +116,7 @@ namespace PELOSCALVO
             this.StockTextBox = new System.Windows.Forms.TextBox();
             this.familiaComboBox = new System.Windows.Forms.ComboBox();
             this.dtFamiliaProductosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsMultidatos = new PELOSCALVO.DsMultidatos();
+            this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TipoIVA_Up_Articulos = new System.Windows.Forms.NumericUpDown();
             this.tarifaTipoArticulos = new System.Windows.Forms.ComboBox();
@@ -125,6 +125,7 @@ namespace PELOSCALVO
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.EmpresaArticulos = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.dtInicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelBotonesArticulo = new System.Windows.Forms.Panel();
             this.BtnSalirArticulo = new System.Windows.Forms.Button();
@@ -144,7 +145,6 @@ namespace PELOSCALVO
             this.FiltrarBajas = new System.Windows.Forms.ComboBox();
             this.FiltrarFamiliaArt = new System.Windows.Forms.ComboBox();
             this.CheckFamiliaArt = new System.Windows.Forms.RadioButton();
-            this.dsMulti2 = new PELOSCALVO.DsMulti2();
             Pvp2Label = new System.Windows.Forms.Label();
             PlusLabel = new System.Windows.Forms.Label();
             familiaLabel = new System.Windows.Forms.Label();
@@ -174,17 +174,17 @@ namespace PELOSCALVO
             this.tabPage2Articulo.SuspendLayout();
             this.panelDesc1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtFamiliaProductosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TipoIVA_Up_Articulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiDtTarifaTipoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioBindingSource)).BeginInit();
             this.panelBotonesArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             this.SuspendLayout();
             // 
             // Pvp2Label
@@ -1108,10 +1108,10 @@ namespace PELOSCALVO
             this.dtFamiliaProductosBindingSource.DataMember = "DtFamiliaProductos";
             this.dtFamiliaProductosBindingSource.DataSource = this.dsMulti2;
             // 
-            // dsMultidatos
+            // dsMulti2
             // 
-            this.dsMultidatos.DataSetName = "DsMultidatos";
-            this.dsMultidatos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dsMulti2.DataSetName = "DsMulti2";
+            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tabPage1
             // 
@@ -1190,6 +1190,11 @@ namespace PELOSCALVO
             this.dtInicioMultiBindingSource.DataMember = "DtInicioMulti";
             this.dtInicioMultiBindingSource.DataSource = this.dsMultidatos;
             // 
+            // dsMultidatos
+            // 
+            this.dsMultidatos.DataSetName = "DsMultidatos";
+            this.dsMultidatos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dtInicioBindingSource
             // 
             this.dtInicioBindingSource.DataSource = this.dsMultidatos;
@@ -1199,16 +1204,15 @@ namespace PELOSCALVO
             // 
             this.panelBotonesArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelBotonesArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.panelBotonesArticulo.Controls.Add(this.BtnSalirArticulo);
             this.panelBotonesArticulo.Controls.Add(this.BtnImprimirArticulo);
             this.panelBotonesArticulo.Controls.Add(this.BtnEnviarMailArticulo);
             this.panelBotonesArticulo.Controls.Add(this.BtnEliminarArticulo);
             this.panelBotonesArticulo.Controls.Add(this.BtnBuscarArticulo);
             this.panelBotonesArticulo.Controls.Add(this.BtnNuevoArticulo);
             this.panelBotonesArticulo.Controls.Add(this.BtnModificarArticulo);
-            this.panelBotonesArticulo.Location = new System.Drawing.Point(9, 579);
+            this.panelBotonesArticulo.Location = new System.Drawing.Point(17, 579);
             this.panelBotonesArticulo.Name = "panelBotonesArticulo";
-            this.panelBotonesArticulo.Size = new System.Drawing.Size(643, 63);
+            this.panelBotonesArticulo.Size = new System.Drawing.Size(459, 63);
             this.panelBotonesArticulo.TabIndex = 31;
             this.panelBotonesArticulo.Tag = "stop";
             // 
@@ -1225,7 +1229,7 @@ namespace PELOSCALVO
             this.BtnSalirArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnSalirArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalirArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirArticulo.Location = new System.Drawing.Point(462, 0);
+            this.BtnSalirArticulo.Location = new System.Drawing.Point(931, 579);
             this.BtnSalirArticulo.Name = "BtnSalirArticulo";
             this.BtnSalirArticulo.Size = new System.Drawing.Size(77, 63);
             this.BtnSalirArticulo.TabIndex = 12;
@@ -1246,7 +1250,7 @@ namespace PELOSCALVO
             this.BtnImprimirArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnImprimirArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_printer_5_32;
             this.BtnImprimirArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnImprimirArticulo.Location = new System.Drawing.Point(308, 0);
+            this.BtnImprimirArticulo.Location = new System.Drawing.Point(304, -3);
             this.BtnImprimirArticulo.Name = "BtnImprimirArticulo";
             this.BtnImprimirArticulo.Size = new System.Drawing.Size(77, 63);
             this.BtnImprimirArticulo.TabIndex = 11;
@@ -1267,7 +1271,7 @@ namespace PELOSCALVO
             this.BtnEnviarMailArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnEnviarMailArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_email_9_32;
             this.BtnEnviarMailArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnEnviarMailArticulo.Location = new System.Drawing.Point(385, 0);
+            this.BtnEnviarMailArticulo.Location = new System.Drawing.Point(381, -3);
             this.BtnEnviarMailArticulo.Name = "BtnEnviarMailArticulo";
             this.BtnEnviarMailArticulo.Size = new System.Drawing.Size(77, 63);
             this.BtnEnviarMailArticulo.TabIndex = 10;
@@ -1287,7 +1291,7 @@ namespace PELOSCALVO
             this.BtnEliminarArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnEliminarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
             this.BtnEliminarArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnEliminarArticulo.Location = new System.Drawing.Point(231, 0);
+            this.BtnEliminarArticulo.Location = new System.Drawing.Point(227, -3);
             this.BtnEliminarArticulo.Name = "BtnEliminarArticulo";
             this.BtnEliminarArticulo.Size = new System.Drawing.Size(77, 63);
             this.BtnEliminarArticulo.TabIndex = 9;
@@ -1308,7 +1312,7 @@ namespace PELOSCALVO
             this.BtnBuscarArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnBuscarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
             this.BtnBuscarArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnBuscarArticulo.Location = new System.Drawing.Point(154, 0);
+            this.BtnBuscarArticulo.Location = new System.Drawing.Point(150, -3);
             this.BtnBuscarArticulo.Name = "BtnBuscarArticulo";
             this.BtnBuscarArticulo.Size = new System.Drawing.Size(77, 63);
             this.BtnBuscarArticulo.TabIndex = 8;
@@ -1329,7 +1333,7 @@ namespace PELOSCALVO
             this.BtnNuevoArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnNuevoArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
             this.BtnNuevoArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnNuevoArticulo.Location = new System.Drawing.Point(0, 0);
+            this.BtnNuevoArticulo.Location = new System.Drawing.Point(-4, -3);
             this.BtnNuevoArticulo.Name = "BtnNuevoArticulo";
             this.BtnNuevoArticulo.Size = new System.Drawing.Size(77, 63);
             this.BtnNuevoArticulo.TabIndex = 6;
@@ -1350,7 +1354,7 @@ namespace PELOSCALVO
             this.BtnModificarArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnModificarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
             this.BtnModificarArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnModificarArticulo.Location = new System.Drawing.Point(77, 0);
+            this.BtnModificarArticulo.Location = new System.Drawing.Point(73, -3);
             this.BtnModificarArticulo.Name = "BtnModificarArticulo";
             this.BtnModificarArticulo.Size = new System.Drawing.Size(77, 63);
             this.BtnModificarArticulo.TabIndex = 7;
@@ -1373,7 +1377,7 @@ namespace PELOSCALVO
             this.BtnCancelarArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnCancelarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarArticulo.Location = new System.Drawing.Point(920, 600);
+            this.BtnCancelarArticulo.Location = new System.Drawing.Point(673, 597);
             this.BtnCancelarArticulo.Name = "BtnCancelarArticulo";
             this.BtnCancelarArticulo.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarArticulo.TabIndex = 34;
@@ -1395,7 +1399,7 @@ namespace PELOSCALVO
             this.BtnGuardarArticulo.ForeColor = System.Drawing.Color.Black;
             this.BtnGuardarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarArticulo.Location = new System.Drawing.Point(750, 600);
+            this.BtnGuardarArticulo.Location = new System.Drawing.Point(503, 597);
             this.BtnGuardarArticulo.Name = "BtnGuardarArticulo";
             this.BtnGuardarArticulo.Size = new System.Drawing.Size(89, 42);
             this.BtnGuardarArticulo.TabIndex = 33;
@@ -1492,16 +1496,12 @@ namespace PELOSCALVO
             this.CheckFamiliaArt.UseVisualStyleBackColor = true;
             this.CheckFamiliaArt.Click += new System.EventHandler(this.CheckFamiliaArt_Click);
             // 
-            // dsMulti2
-            // 
-            this.dsMulti2.DataSetName = "DsMulti2";
-            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // FormArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 654);
+            this.Controls.Add(this.BtnSalirArticulo);
             this.Controls.Add(this.CheckFamiliaArt);
             this.Controls.Add(this.FiltrarFamiliaArt);
             this.Controls.Add(label2);
@@ -1518,7 +1518,6 @@ namespace PELOSCALVO
             this.Name = "FormArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ARTICULOS";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormARTICULOS_FormClosing);
             this.Load += new System.EventHandler(this.FormARTICULOS_Load);
             this.MouseEnter += new System.EventHandler(this.FormARTICULOS_MouseEnter);
@@ -1533,7 +1532,7 @@ namespace PELOSCALVO
             this.panelDesc1.ResumeLayout(false);
             this.panelDesc1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtFamiliaProductosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TipoIVA_Up_Articulos)).EndInit();
@@ -1541,10 +1540,10 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioBindingSource)).EndInit();
             this.panelBotonesArticulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

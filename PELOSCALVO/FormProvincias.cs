@@ -179,7 +179,7 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.Id_Provincias.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Provincias.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProvincias.Rows.RemoveAt(this.dataGridProvincias.CurrentCell.RowIndex);
                             this.DtProvinciasBindinsource.EndEdit();
@@ -213,14 +213,14 @@ namespace PELOSCALVO
         private void EliminarProvinciaSql()
         {
 
-            string consulta = "Delete from  [DtProvincias]   WHERE Id= '@Id'";
+            string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.Id_Provincias.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Provincias.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProvincias.Rows.RemoveAt(this.dataGridProvincias.CurrentCell.RowIndex);
                         this.dtPaisesBindingSource.EndEdit();
@@ -383,7 +383,7 @@ namespace PELOSCALVO
 
         private void BtnSalir_Provincias_Click(object sender, EventArgs e)
         {
-            if (this.BtnGuardarProvincia.Enabled == true)
+            if (this.BtnGuardarProvincia.Enabled == false)
             {
                 if (MessageBox.Show(" Salir Provincias  ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
