@@ -26,18 +26,23 @@ namespace PELOSCALVO
             DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.OleDb");
 
             DataTable userTables = null;
+            string Ruta = "";
+            if (this.TabArchivos.Tag.ToString() == "SI")
+            {
+                Ruta = this.TabArchivos.Text;
+            }
+            else
+            {
+                Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
+            }
+
             using (DbConnection connection = factory.CreateConnection())
             {
 
-               // connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + NombreFichero;
-                connection.ConnectionString = ClsConexionDb.CadenaConexion;
-                // We only want user tables, not system tables
+                connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Ruta;
                 string[] restrictions = new string[4];
                 restrictions[3] = "Table";
-
                 connection.Open();
-
-                // Get list of user tables
                 userTables = connection.GetSchema("Tables", restrictions);
             }
 
