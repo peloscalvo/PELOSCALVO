@@ -137,7 +137,7 @@ namespace PELOSCALVO
             // Id_obra
             // 
             this.Id_obra.AutoSize = true;
-            this.Id_obra.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtObrasBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.Id_obra.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtObrasBindingSource, "Id", true));
             this.Id_obra.Location = new System.Drawing.Point(52, 23);
             this.Id_obra.Name = "Id_obra";
             this.Id_obra.Size = new System.Drawing.Size(13, 13);
@@ -330,7 +330,7 @@ namespace PELOSCALVO
             // 
             // idObrasDataGridViewTextBoxColumn
             // 
-            this.idObrasDataGridViewTextBoxColumn.DataPropertyName = "Id_Obras";
+            this.idObrasDataGridViewTextBoxColumn.DataPropertyName = "Id";
             dataGridViewCellStyle2.Format = "N0";
             dataGridViewCellStyle2.NullValue = null;
             this.idObrasDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;

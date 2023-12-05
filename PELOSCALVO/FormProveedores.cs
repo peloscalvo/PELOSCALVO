@@ -19,7 +19,7 @@ namespace PELOSCALVO
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
 
-
+                    this.dtProveedoresBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
                 }
 
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)

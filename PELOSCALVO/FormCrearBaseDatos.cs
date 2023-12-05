@@ -447,7 +447,7 @@ namespace PELOSCALVO
                       " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                       "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +
-                      "   CREATE TABLE [DtTarifaTipo]( [IdTarifa]int null,[TarifaTipo][varchar](60) NULL ,[EnlaceTarifa] [varchar](250) Not NULL, " +
+                      "   CREATE TABLE [DtTarifaTipo]( [Id]int null,[TarifaTipo][varchar](60) NULL ,[EnlaceTarifa] [varchar](250) Not NULL, " +
                       " CONSTRAINT F_DtTarifaTipo FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
@@ -465,7 +465,7 @@ namespace PELOSCALVO
               " CONSTRAINT F_DtProvincias FOREIGN KEY (Id_paises)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )" +
                
               "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
-                   " CREATE TABLE [DtObras]( [Id_Obras][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
+                   " CREATE TABLE [DtObras]( [Id][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
 
                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtInicioMulti]') AND type in (N'U'))" +
                    " CREATE TABLE [DtInicioMulti]( [Id][int] NOT NULL,[ArchivoInicioFacturas] varchar(80) NULL,[EmpresaInicio] varchar(200) NULL" +

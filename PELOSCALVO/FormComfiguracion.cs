@@ -150,7 +150,7 @@ namespace PELOSCALVO
             {
 
                 MessageBox.Show(ex.Message.ToString());
-            };
+            }
 
             //dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
             //dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;

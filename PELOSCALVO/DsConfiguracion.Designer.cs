@@ -1775,7 +1775,7 @@ namespace PELOSCALVO {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DtTarifaTipoDataTable : global::System.Data.TypedTableBase<DtTarifaTipoRow> {
             
-            private global::System.Data.DataColumn columnIdTarifa;
+            private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnTarifaTipo;
             
@@ -1816,9 +1816,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdTarifaColumn {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnIdTarifa;
+                    return this.columnId;
                 }
             }
             
@@ -1875,10 +1875,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtTarifaTipoRow AddDtTarifaTipoRow(int IdTarifa, string TarifaTipo, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfi_DtTarifaTipo) {
+            public DtTarifaTipoRow AddDtTarifaTipoRow(int Id, string TarifaTipo, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfi_DtTarifaTipo) {
                 DtTarifaTipoRow rowDtTarifaTipoRow = ((DtTarifaTipoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        IdTarifa,
+                        Id,
                         TarifaTipo,
                         null};
                 if ((parentDtConfiguracionPrincipalRowByDtConfi_DtTarifaTipo != null)) {
@@ -1906,7 +1906,7 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnIdTarifa = base.Columns["IdTarifa"];
+                this.columnId = base.Columns["Id"];
                 this.columnTarifaTipo = base.Columns["TarifaTipo"];
                 this.columnEnlaceTarifa = base.Columns["EnlaceTarifa"];
             }
@@ -1914,8 +1914,8 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnIdTarifa = new global::System.Data.DataColumn("IdTarifa", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdTarifa);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columnTarifaTipo = new global::System.Data.DataColumn("TarifaTipo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTarifaTipo);
                 this.columnEnlaceTarifa = new global::System.Data.DataColumn("EnlaceTarifa", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4666,17 +4666,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int IdTarifa {
+            public int Id {
                 get {
                     try {
-                        return ((int)(this[this.tableDtTarifaTipo.IdTarifaColumn]));
+                        return ((int)(this[this.tableDtTarifaTipo.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdTarifa\' de la tabla \'DtTarifaTipo\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtTarifaTipo\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtTarifaTipo.IdTarifaColumn] = value;
+                    this[this.tableDtTarifaTipo.IdColumn] = value;
                 }
             }
             
@@ -4725,14 +4725,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIdTarifaNull() {
-                return this.IsNull(this.tableDtTarifaTipo.IdTarifaColumn);
+            public bool IsIdNull() {
+                return this.IsNull(this.tableDtTarifaTipo.IdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIdTarifaNull() {
-                this[this.tableDtTarifaTipo.IdTarifaColumn] = global::System.Convert.DBNull;
+            public void SetIdNull() {
+                this[this.tableDtTarifaTipo.IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -21,6 +21,20 @@ namespace PELOSCALVO
 
         private void FormObras_Load(object sender, EventArgs e)
         {
+            try
+            {
+  
+                if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
+                {
+                    this.dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
+                }
+    
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
 
         }
         private void ModificarOjetosObra()
@@ -79,7 +93,7 @@ namespace PELOSCALVO
             }
             else
             {
-                consulta = "UPDATE [DtObras] SET [Id_Obras] = @Id_Obras,[Obras] = @Obras, " +
+                consulta = "UPDATE [DtObras] SET [Id_Obras] = @Id_Obras,[Obras] = @Obras " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -121,7 +135,7 @@ namespace PELOSCALVO
             }
             else
             {
-                consulta = "UPDATE [DtObras] SET [Id_Obras] = @Id_Obras,[Obras] = @Obras, " +
+                consulta = "UPDATE [DtObras] SET [Id_Obras] = @Id_Obras,[Obras] = @Obras  " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -137,7 +151,7 @@ namespace PELOSCALVO
                     this.dtObrasBindingSource.EndEdit();
                     this.dataGridObras.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR OBRA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ModificarOjetosObra();
+                    RestaurarOjetosObra();
                 }
             }
             catch (Exception ex)

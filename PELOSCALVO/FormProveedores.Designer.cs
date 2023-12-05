@@ -43,7 +43,6 @@ namespace PELOSCALVO
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtConfiguracionPrincipalDtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PanelProveedores = new System.Windows.Forms.Panel();
             this.Enlace_Proveedor = new System.Windows.Forms.Label();
@@ -72,7 +71,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).BeginInit();
             this.PanelProveedores.SuspendLayout();
             this.PanelBotones_pro.SuspendLayout();
@@ -110,7 +108,7 @@ namespace PELOSCALVO
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(560, 347);
+            label6.Location = new System.Drawing.Point(537, 347);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(51, 13);
             label6.TabIndex = 61;
@@ -136,10 +134,10 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
             this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
-            // dtConfiguracionPrincipalDtConfiBindingSource
+            // dtProveedoresBindingSource
             // 
-            this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "DtConfiguracionPrincipal_DtConfi";
-            this.dtConfiguracionPrincipalDtConfiBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.dtProveedoresBindingSource.DataMember = "DtProveedores";
+            this.dtProveedoresBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // dtConfiguracionPrincipalDtProveedoresBindingSource
             // 
@@ -290,9 +288,9 @@ namespace PELOSCALVO
             this.EmpresaSelect.DisplayMember = "EmpresaConfi";
             this.EmpresaSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EmpresaSelect.FormattingEnabled = true;
-            this.EmpresaSelect.Location = new System.Drawing.Point(627, 344);
+            this.EmpresaSelect.Location = new System.Drawing.Point(594, 344);
             this.EmpresaSelect.Name = "EmpresaSelect";
-            this.EmpresaSelect.Size = new System.Drawing.Size(294, 21);
+            this.EmpresaSelect.Size = new System.Drawing.Size(346, 21);
             this.EmpresaSelect.TabIndex = 62;
             // 
             // dataGridProveedores
@@ -458,7 +456,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).EndInit();
             this.PanelProveedores.ResumeLayout(false);
             this.PanelProveedores.PerformLayout();
@@ -477,7 +474,6 @@ namespace PELOSCALVO
         private DsCONFIGURACCION dsCONFIGURACCION;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
         private System.Windows.Forms.BindingSource dtProveedoresBindingSource;
-        private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtConfiBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtProveedoresBindingSource;
         private System.Windows.Forms.Panel PanelProveedores;
         private System.Windows.Forms.Label Enlace_Proveedor;

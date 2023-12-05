@@ -131,7 +131,7 @@ namespace PELOSCALVO
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BtnSalirTipoTarifa = new System.Windows.Forms.Button();
+            this.BtnSalirConfi = new System.Windows.Forms.Button();
             this.tabControlTodo = new System.Windows.Forms.TabControl();
             this.dtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             provinciaLabel = new System.Windows.Forms.Label();
@@ -791,9 +791,8 @@ namespace PELOSCALVO
             this.EnlaceTarifa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.EnlaceTarifa.Location = new System.Drawing.Point(76, 339);
             this.EnlaceTarifa.Name = "EnlaceTarifa";
-            this.EnlaceTarifa.Size = new System.Drawing.Size(40, 13);
+            this.EnlaceTarifa.Size = new System.Drawing.Size(0, 13);
             this.EnlaceTarifa.TabIndex = 51;
-            this.EnlaceTarifa.Text = "Enlace";
             this.EnlaceTarifa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // IdEmpresa
@@ -1039,7 +1038,7 @@ namespace PELOSCALVO
             this.tabMENU.Controls.Add(this.BtnRestructurar);
             this.tabMENU.Controls.Add(this.label5);
             this.tabMENU.Controls.Add(this.menuStrip);
-            this.tabMENU.Controls.Add(this.BtnSalirTipoTarifa);
+            this.tabMENU.Controls.Add(this.BtnSalirConfi);
             this.tabMENU.Location = new System.Drawing.Point(4, 25);
             this.tabMENU.Name = "tabMENU";
             this.tabMENU.Padding = new System.Windows.Forms.Padding(3);
@@ -1205,35 +1204,35 @@ namespace PELOSCALVO
             // índiceToolStripMenuItem
             // 
             this.índiceToolStripMenuItem.Name = "índiceToolStripMenuItem";
-            this.índiceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.índiceToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.índiceToolStripMenuItem.Text = "Índic&e";
             // 
             // buscarToolStripMenuItem
             // 
             this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
-            // BtnSalirTipoTarifa
+            // BtnSalirConfi
             // 
-            this.BtnSalirTipoTarifa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSalirTipoTarifa.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSalirTipoTarifa.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnSalirTipoTarifa.FlatAppearance.BorderSize = 0;
-            this.BtnSalirTipoTarifa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnSalirTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnSalirTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSalirTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
-            this.BtnSalirTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirTipoTarifa.Location = new System.Drawing.Point(902, 460);
-            this.BtnSalirTipoTarifa.Name = "BtnSalirTipoTarifa";
-            this.BtnSalirTipoTarifa.Size = new System.Drawing.Size(77, 63);
-            this.BtnSalirTipoTarifa.TabIndex = 13;
-            this.BtnSalirTipoTarifa.Text = "Salir";
-            this.BtnSalirTipoTarifa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnSalirTipoTarifa.UseVisualStyleBackColor = false;
-            this.BtnSalirTipoTarifa.Click += new System.EventHandler(this.BtnSalirTipoTarifa_Click);
+            this.BtnSalirConfi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSalirConfi.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSalirConfi.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnSalirConfi.FlatAppearance.BorderSize = 0;
+            this.BtnSalirConfi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnSalirConfi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnSalirConfi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSalirConfi.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalirConfi.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirConfi.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnSalirConfi.Location = new System.Drawing.Point(902, 460);
+            this.BtnSalirConfi.Name = "BtnSalirConfi";
+            this.BtnSalirConfi.Size = new System.Drawing.Size(77, 63);
+            this.BtnSalirConfi.TabIndex = 13;
+            this.BtnSalirConfi.Text = "Salir";
+            this.BtnSalirConfi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnSalirConfi.UseVisualStyleBackColor = false;
+            this.BtnSalirConfi.Click += new System.EventHandler(this.BtnSalirTipoTarifa_Click);
             // 
             // tabControlTodo
             // 
@@ -1350,7 +1349,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem índiceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
-        private System.Windows.Forms.Button BtnSalirTipoTarifa;
+        private System.Windows.Forms.Button BtnSalirConfi;
         private System.Windows.Forms.DataGridViewTextBoxColumn familiaProductosDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabPage tabPageTarifa;
         private System.Windows.Forms.Label EnlaceTarifa;

@@ -268,26 +268,28 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         NuevaConexion = new ClsConexionSql(ConsultaDescuetos);////Guarda Descuentos Clientes
                         string Tarifa = "Pvp";
-                        for (int Fila = 1; Fila < 6; Fila++)
+                        if (NuevaConexion.SiConexionSql)
                         {
-                            if (Fila == 6)
+                            for (int Fila = 1; Fila < 6; Fila++)
                             {
+                                if (Fila == 6)
+                                {
 
-                                Tarifa = "Iva";
+                                    Tarifa = "Iva";
+
+                                }
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdTarifa", Fila);
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                                NuevaConexion.ComandoSql.ExecuteNonQuery();
+                                NuevaConexion.ComandoSql.Parameters.Clear();
 
                             }
-                            NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdTarifa", Fila);
-                            NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
-                            NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
-                            NuevaConexion.ComandoSql.ExecuteNonQuery();
-                            NuevaConexion.ComandoSql.Parameters.Clear();
-
+                            this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                            Validate();
+                            MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            RestaurarOjetosEmpresa();
                         }
-                        this.dtConfiguracionPrincipalBindingSource.EndEdit();
-                        Validate();
-                        MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        RestaurarOjetosEmpresa();
-                        this.BtnGuardarEmpresas.Tag = "SI";
                     }
                 }
                 catch (Exception ex)
@@ -298,6 +300,12 @@ namespace PELOSCALVO
                 finally
                 {
                     NuevaConexion.ComandoSql.Parameters.Clear();
+
+                    if (NuevaConexion.CerrarConexionSql)
+                    {
+
+                    }
+
                 }
 
             }
@@ -406,28 +414,30 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
                         NuevaConexion = new ClsConexionDb(ConsultaDescuetos);////Guarda Descuentos Clientes
-                        string Tarifa = "Pvp";
-
-                        for (int Fila = 1; Fila < 6; Fila++)
+                        if (NuevaConexion.SiConexionDb)
                         {
-                            if (Fila == 6)
+
+                            string Tarifa = "Pvp";
+
+                            for (int Fila = 1; Fila < 6; Fila++)
                             {
+                                if (Fila == 6)
+                                {
 
-                                Tarifa = "Iva";
+                                    Tarifa = "Iva";
 
+                                }
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdTarifa", Fila);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                                NuevaConexion.ComandoDb.ExecuteNonQuery();
+                                NuevaConexion.ComandoDb.Parameters.Clear();
                             }
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdTarifa", Fila);
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
-                            NuevaConexion.ComandoDb.ExecuteNonQuery();
-                            NuevaConexion.ComandoDb.Parameters.Clear();
-
                         }
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
                         Validate();
                         MessageBox.Show("Se Guardo Correctamente", "GUARDAR EMPRESA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         RestaurarOjetosEmpresa();
-                        this.BtnGuardarEmpresas.Tag = "SI";
                     }
                 }
                 catch (Exception ex)
@@ -439,6 +449,10 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.Clear();
 
+                    if (NuevaConexion.CerrarConexionDB)
+                    {
+
+                    }
                 }
 
             }
@@ -447,75 +461,66 @@ namespace PELOSCALVO
         }
         private void BtnGuardarEmpresas_Click(object sender, EventArgs e)
         {
-            if (this.BtnGuardarEmpresas.Tag.ToString() == "SI")
+
+            if (this.dtConfiguracionPrincipalBindingSource.Count <= 0 && string.IsNullOrEmpty(this.empresaConfiComboBox.Text))
             {
-                this.BtnGuardarEmpresas.Tag = "NO";
-                if (this.dtConfiguracionPrincipalBindingSource.Count <= 0 && string.IsNullOrEmpty(this.empresaConfiComboBox.Text))
-                {
-                    MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
-                    this.BtnGuardarEmpresas.Tag = "SI";
-                    return;
-                }
+                MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
+                return;
+            }
 
-                if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 25))
+            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 25))
+            {
+                try
                 {
-                    try
+                    foreach (DataGridViewRow fila in this.dtConfiguracionPrincipalDataGridView.Rows)
                     {
-                        foreach (DataGridViewRow fila in this.dtConfiguracionPrincipalDataGridView.Rows)
+                        if (fila.Cells[1].ToString() == this.empresaConfiComboBox.Text)
                         {
-                            if (fila.Cells[1].ToString() == this.empresaConfiComboBox.Text)
+                            if (this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex == fila.Index)
                             {
-                                if (this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex == fila.Index)
-                                {
-                                    break;
-                                }
-                                MessageBox.Show(this.EmpresaRazonTxt.Text.ToString(), "YA EXISTE ESTA EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.EmpresaRazonTxt.Focus();
-                                this.EmpresaRazonTxt.SelectAll();
-                                this.BtnGuardarEmpresas.Tag = "SI";
-                                return;
+                                break;
                             }
-
+                            MessageBox.Show(this.EmpresaRazonTxt.Text.ToString(), "YA EXISTE ESTA EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.EmpresaRazonTxt.Focus();
+                            this.EmpresaRazonTxt.SelectAll();
+                            return;
                         }
+
                     }
-                    catch (Exception ex)
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                BorrarErroresEmpresa();
+
+
+                if (ValidarEmpresa())
+                {
+                    if (MessageBox.Show(" ¿Aceptar Guardar Empresa ? ", " GUARDAR EMPRESA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    BorrarErroresEmpresa();
-
-
-                    if (ValidarEmpresa())
-                    {
-                        if (MessageBox.Show(" ¿Aceptar Guardar Empresa ? ", " GUARDAR EMPRESA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (ClsConexionSql.SibaseDatosSql)
                         {
-                            if (ClsConexionSql.SibaseDatosSql)
-                            {
-                                GuardarEmpresasSql();
-                            }
-                            else
-                            {
-
-                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                                {
-                                    GuardarEmpresasDb();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    this.panelEmpresas.Enabled = false;
-                                }
-                            }
+                            GuardarEmpresasSql();
                         }
                         else
                         {
-                            this.BtnGuardarEmpresas.Tag = "SI";
+
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            {
+                                GuardarEmpresasDb();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.panelEmpresas.Enabled = false;
+                            }
                         }
-                       
                     }
                 }
             }
+
         }
 
         private void BtnCancelarEmpresas_Click(object sender, EventArgs e)
@@ -567,7 +572,7 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresaReguistro", this.idEmpresa.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresaReguistro", this.EmpresaReguistro.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dtConfiguracionPrincipalDataGridView.Rows.RemoveAt(this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex);
                             this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -598,7 +603,7 @@ namespace PELOSCALVO
 
             }
         }
-        private void EliminarEmpresa()
+        private void EliminarEmpresaSql()
         {
             string consulta = "Delete from  [DtConfiguracionPrincipal]   WHERE NombreEmpresaReguistro= '@NombreEmpresaReguistro'";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -607,7 +612,7 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreEmpresaReguistro", this.idEmpresa.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreEmpresaReguistro", this.EmpresaReguistro.Text);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dtConfiguracionPrincipalDataGridView.Rows.RemoveAt(this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex);
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -641,7 +646,7 @@ namespace PELOSCALVO
 
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-                        EliminarEmpresaBb();
+                        EliminarEmpresaSql();
                     }
                     else
                     {

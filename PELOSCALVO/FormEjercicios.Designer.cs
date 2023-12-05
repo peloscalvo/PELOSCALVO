@@ -43,7 +43,6 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEjercicios));
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
-            this.dtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
@@ -79,7 +78,6 @@ namespace PELOSCALVO
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
@@ -147,7 +145,7 @@ namespace PELOSCALVO
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(518, 399);
+            label1.Location = new System.Drawing.Point(457, 396);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(51, 13);
             label1.TabIndex = 56;
@@ -166,11 +164,6 @@ namespace PELOSCALVO
             // 
             this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
             this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dtConfiBindingSource
-            // 
-            this.dtConfiBindingSource.DataMember = "DtConfi";
-            this.dtConfiBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -459,13 +452,14 @@ namespace PELOSCALVO
             // 
             // CambiarDeEmpresa1
             // 
+            this.CambiarDeEmpresa1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
             this.CambiarDeEmpresa1.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.CambiarDeEmpresa1.DisplayMember = "EmpresaConfi";
             this.CambiarDeEmpresa1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CambiarDeEmpresa1.FormattingEnabled = true;
-            this.CambiarDeEmpresa1.Location = new System.Drawing.Point(575, 396);
+            this.CambiarDeEmpresa1.Location = new System.Drawing.Point(514, 393);
             this.CambiarDeEmpresa1.Name = "CambiarDeEmpresa1";
-            this.CambiarDeEmpresa1.Size = new System.Drawing.Size(278, 21);
+            this.CambiarDeEmpresa1.Size = new System.Drawing.Size(388, 21);
             this.CambiarDeEmpresa1.TabIndex = 57;
             // 
             // BtnSalirEjerc
@@ -540,7 +534,6 @@ namespace PELOSCALVO
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEjercicios_FormClosing);
             this.Load += new System.EventHandler(this.FormEjercicios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
@@ -557,7 +550,6 @@ namespace PELOSCALVO
         #endregion
 
         private DsCONFIGURACCION dsCONFIGURACCION;
-        private System.Windows.Forms.BindingSource dtConfiBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private DsMultidatos dsMultidatos;

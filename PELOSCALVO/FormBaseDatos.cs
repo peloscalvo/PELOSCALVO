@@ -44,9 +44,11 @@ namespace PELOSCALVO
             List<string> tableNames = new List<string>();
             for (int i = 0; i < userTables.Rows.Count; i++)
             {
-                SerieClientesText2.Items.Add(userTables.Rows[i][1].ToString());
+                ListaTablas.Items.Add(userTables.Rows[i][2].ToString());
                 if (!userTables.Rows[i][2].ToString().Contains("Dt"))
                 {
+                    SerieArticulosText.Items.Add(userTables.Rows[i][2].ToString());
+                    SerieClientesText2.Items.Add(userTables.Rows[i][2].ToString());
                     tableNames.Add(userTables.Rows[i][2].ToString());
                 }
 
@@ -492,8 +494,8 @@ namespace PELOSCALVO
             if (!File.Exists(ClasDatos.RutaMultidatos))
             {
                 MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaMultidatos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.BtnBuscarServidor.Enabled = false;
-                this.BtnGuardarDatosArchivos.Enabled = false;
+               // this.BtnBuscarServidor.Enabled = false;
+              //  this.BtnGuardarDatosArchivos.Enabled = false;
 
             }
             if (FormMenuPrincipal.menu2principal.dsServidor != null)
@@ -1420,60 +1422,10 @@ namespace PELOSCALVO
 
         private void BtnLeer_Click(object sender, EventArgs e)
         {
-            string consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
-                " not like 'Dt%'and O.COLUMN_NAME= 'APODOCLIEN'  order by ORDINAL_POSITION";
-            ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
-            ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-
-            if (NuevaConexion.SiConexionDb)
+            if (VALIDARcampos_Archivos())
             {
-                try
-                {
-                    SerieArticulosText.DataSource = ObtenerTablas();
-                    OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                        {
-                          //  SerieClientesText2.Items.Add(reader[0]);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message.ToString());
-                }
+                ObtenerTablas();
             }
-             SerieArticulosText.DataSource=  ObtenerTablas();
-            consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
-                    " not like 'Dt%'and O.COLUMN_NAME= 'Referencia'  order by ORDINAL_POSITION";
-            NuevaConexion = new ClsConexionDb(consulta);
-
-            if (NuevaConexion.SiConexionDb)
-            {
-                try
-                {
-                    OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                        {
-                            SerieArticulosText.Items.Add(reader[0]);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message.ToString());
-                }
-            }
-            if (NuevaConexion.CerrarConexionDB)
-            {
-
-            }
-            NuevaConexion.ComandoDb.Parameters.Clear();
         }
 
         private void BtnLeerSql_Click(object sender, EventArgs e)

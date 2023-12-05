@@ -89,6 +89,8 @@ namespace PELOSCALVO
             this.ActualizarServidores = new System.Windows.Forms.Button();
             this.Autenticacion = new System.Windows.Forms.ComboBox();
             this.TabArchivoSql = new System.Windows.Forms.TabControl();
+            this.TabLista = new System.Windows.Forms.TabPage();
+            this.ListaTablas = new System.Windows.Forms.ListBox();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
@@ -113,6 +115,7 @@ namespace PELOSCALVO
             this.TabServidor.SuspendLayout();
             this.panelSql1.SuspendLayout();
             this.TabArchivoSql.SuspendLayout();
+            this.TabLista.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelARTICULOS
@@ -433,7 +436,6 @@ namespace PELOSCALVO
             // 
             this.SerieArticulosText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "ArchivoArticulos", true));
             this.SerieArticulosText.DisplayMember = "A";
-            this.SerieArticulosText.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieArticulosText.FormattingEnabled = true;
             this.SerieArticulosText.Items.AddRange(new object[] {
             "Tarifa De Articulos 1",
@@ -531,7 +533,6 @@ namespace PELOSCALVO
             // 
             this.SerieClientesText2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "ArchivoClientes", true));
             this.SerieClientesText2.DisplayMember = "A";
-            this.SerieClientesText2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieClientesText2.FormattingEnabled = true;
             this.SerieClientesText2.Items.AddRange(new object[] {
             "Listado De Clientes 1",
@@ -692,7 +693,7 @@ namespace PELOSCALVO
             this.ListaBaseDatos2.FormattingEnabled = true;
             this.ListaBaseDatos2.Location = new System.Drawing.Point(570, 28);
             this.ListaBaseDatos2.Name = "ListaBaseDatos2";
-            this.ListaBaseDatos2.Size = new System.Drawing.Size(155, 225);
+            this.ListaBaseDatos2.Size = new System.Drawing.Size(208, 225);
             this.ListaBaseDatos2.TabIndex = 80;
             this.ListaBaseDatos2.Click += new System.EventHandler(this.ListaBaseDatos2_Click);
             this.ListaBaseDatos2.SelectedIndexChanged += new System.EventHandler(this.ListaBaseDatos2_SelectedIndexChanged);
@@ -785,12 +786,35 @@ namespace PELOSCALVO
             // 
             this.TabArchivoSql.Controls.Add(this.TabServidor);
             this.TabArchivoSql.Controls.Add(this.TabArchivos);
+            this.TabArchivoSql.Controls.Add(this.TabLista);
             this.TabArchivoSql.Dock = System.Windows.Forms.DockStyle.Top;
             this.TabArchivoSql.Location = new System.Drawing.Point(0, 0);
             this.TabArchivoSql.Name = "TabArchivoSql";
             this.TabArchivoSql.SelectedIndex = 0;
+            this.TabArchivoSql.ShowToolTips = true;
             this.TabArchivoSql.Size = new System.Drawing.Size(849, 341);
             this.TabArchivoSql.TabIndex = 83;
+            // 
+            // TabLista
+            // 
+            this.TabLista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TabLista.Controls.Add(this.ListaTablas);
+            this.TabLista.Location = new System.Drawing.Point(4, 22);
+            this.TabLista.Name = "TabLista";
+            this.TabLista.Padding = new System.Windows.Forms.Padding(3);
+            this.TabLista.Size = new System.Drawing.Size(841, 315);
+            this.TabLista.TabIndex = 3;
+            this.TabLista.Text = "LISTADO DE TABLAS";
+            // 
+            // ListaTablas
+            // 
+            this.ListaTablas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListaTablas.FormattingEnabled = true;
+            this.ListaTablas.HorizontalScrollbar = true;
+            this.ListaTablas.Location = new System.Drawing.Point(103, 16);
+            this.ListaTablas.Name = "ListaTablas";
+            this.ListaTablas.Size = new System.Drawing.Size(421, 277);
+            this.ListaTablas.TabIndex = 81;
             // 
             // FormBaseDatos
             // 
@@ -824,6 +848,7 @@ namespace PELOSCALVO
             this.panelSql1.ResumeLayout(false);
             this.panelSql1.PerformLayout();
             this.TabArchivoSql.ResumeLayout(false);
+            this.TabLista.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -878,5 +903,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label Info_Res;
         private System.Windows.Forms.Button BtnLeer;
         private System.Windows.Forms.Button BtnLeerSql;
+        private System.Windows.Forms.TabPage TabLista;
+        private System.Windows.Forms.ListBox ListaTablas;
     }
 }

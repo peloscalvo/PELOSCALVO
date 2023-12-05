@@ -53,10 +53,10 @@ namespace PELOSCALVO
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TabInicio = new System.Windows.Forms.TabPage();
             this.TabCopia = new System.Windows.Forms.TabPage();
-            this.BtnCrearBackupDb = new System.Windows.Forms.Button();
-            this.BaseDatos2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.InfoProcesoText = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BaseDatos2 = new System.Windows.Forms.TextBox();
+            this.BtnCrearBackupDb = new System.Windows.Forms.Button();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
@@ -332,7 +332,7 @@ namespace PELOSCALVO
             this.TabInicio.Padding = new System.Windows.Forms.Padding(3);
             this.TabInicio.Size = new System.Drawing.Size(894, 443);
             this.TabInicio.TabIndex = 0;
-            this.TabInicio.Text = "&Principal";
+            this.TabInicio.Text = "Principal";
             // 
             // TabCopia
             // 
@@ -346,7 +346,39 @@ namespace PELOSCALVO
             this.TabCopia.Padding = new System.Windows.Forms.Padding(3);
             this.TabCopia.Size = new System.Drawing.Size(894, 443);
             this.TabCopia.TabIndex = 1;
-            this.TabCopia.Text = "&Copia Seguridad";
+            this.TabCopia.Text = "Copia Seguridad";
+            // 
+            // InfoProcesoText
+            // 
+            this.InfoProcesoText.AutoSize = true;
+            this.InfoProcesoText.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.InfoProcesoText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoProcesoText.Location = new System.Drawing.Point(3, 415);
+            this.InfoProcesoText.Margin = new System.Windows.Forms.Padding(3);
+            this.InfoProcesoText.Name = "InfoProcesoText";
+            this.InfoProcesoText.Padding = new System.Windows.Forms.Padding(2, 4, 2, 5);
+            this.InfoProcesoText.Size = new System.Drawing.Size(202, 25);
+            this.InfoProcesoText.TabIndex = 112;
+            this.InfoProcesoText.Text = "Indica La Base De Datos a Crear";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(74, 291);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 111;
+            this.label1.Text = "Base Datos:";
+            // 
+            // BaseDatos2
+            // 
+            this.BaseDatos2.Location = new System.Drawing.Point(145, 288);
+            this.BaseDatos2.Name = "BaseDatos2";
+            this.BaseDatos2.ReadOnly = true;
+            this.BaseDatos2.Size = new System.Drawing.Size(490, 20);
+            this.BaseDatos2.TabIndex = 110;
+            this.BaseDatos2.Tag = "NO";
+            this.BaseDatos2.Text = "Datos App Peloscalvo";
             // 
             // BtnCrearBackupDb
             // 
@@ -367,38 +399,6 @@ namespace PELOSCALVO
             this.BtnCrearBackupDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCrearBackupDb.UseVisualStyleBackColor = false;
             this.BtnCrearBackupDb.Click += new System.EventHandler(this.BtnCrearBackupDb_Click);
-            // 
-            // BaseDatos2
-            // 
-            this.BaseDatos2.Location = new System.Drawing.Point(145, 288);
-            this.BaseDatos2.Name = "BaseDatos2";
-            this.BaseDatos2.ReadOnly = true;
-            this.BaseDatos2.Size = new System.Drawing.Size(490, 20);
-            this.BaseDatos2.TabIndex = 110;
-            this.BaseDatos2.Tag = "NO";
-            this.BaseDatos2.Text = "Datos App Peloscalvo";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 291);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 111;
-            this.label1.Text = "Base Datos:";
-            // 
-            // InfoProcesoText
-            // 
-            this.InfoProcesoText.AutoSize = true;
-            this.InfoProcesoText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.InfoProcesoText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoProcesoText.Location = new System.Drawing.Point(3, 415);
-            this.InfoProcesoText.Margin = new System.Windows.Forms.Padding(3);
-            this.InfoProcesoText.Name = "InfoProcesoText";
-            this.InfoProcesoText.Padding = new System.Windows.Forms.Padding(2, 4, 2, 5);
-            this.InfoProcesoText.Size = new System.Drawing.Size(202, 25);
-            this.InfoProcesoText.TabIndex = 112;
-            this.InfoProcesoText.Text = "Indica La Base De Datos a Crear";
             // 
             // FormCrearTablasDb
             // 

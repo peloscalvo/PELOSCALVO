@@ -19,8 +19,6 @@ namespace PELOSCALVO
                 if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-                    this.dtConfiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
 
                 }
 
@@ -143,7 +141,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-                    this.dtConfiBindingSource.EndEdit();
+                    this.dtConfiguracionPrincipalBindingSource.EndEdit();
                     this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
                     this.dtConfiDataGridView.EndEdit();
                     Validate();
@@ -194,7 +192,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
-                    this.dtConfiBindingSource.EndEdit();
+                    this.dtConfiguracionPrincipalBindingSource.EndEdit();
                     this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
                     this.dtConfiDataGridView.EndEdit();
                     Validate();
@@ -357,7 +355,7 @@ namespace PELOSCALVO
         private void BtnCancelarEjercicio_Click(object sender, EventArgs e)
         {
             BorrarErroresBasica();
-            if (this.dtConfiBindingSource.Count > 0)
+            if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 0)
             {
                 if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
                 {
@@ -452,7 +450,7 @@ namespace PELOSCALVO
         private void BtnEliminarEjercicio_Click(object sender, EventArgs e)
         {
             {
-                if (this.dtConfiBindingSource.Count > 0)
+                if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 0)
                 {
                     if (MessageBox.Show("Desea Eliminar La Configuracion", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {

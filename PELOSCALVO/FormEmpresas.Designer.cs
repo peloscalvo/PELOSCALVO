@@ -95,6 +95,7 @@ namespace PELOSCALVO
             this.errorProvider1Confi = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BtnSalirEmpresa = new System.Windows.Forms.Button();
+            this.fKDtPaisesDtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             label8 = new System.Windows.Forms.Label();
             imagenEmpresaLabel = new System.Windows.Forms.Label();
             cifEmpresaLabel = new System.Windows.Forms.Label();
@@ -126,6 +127,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1Confi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -475,7 +477,8 @@ namespace PELOSCALVO
             // 
             this.provinciaEmpresaComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.provinciaEmpresaComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.provinciaEmpresaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtProvinciasBindingSource, "ProvinciasProvincias", true));
+            this.provinciaEmpresaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKDtPaisesDtProvinciasBindingSource, "ProvinciasProvincias", true));
+            this.provinciaEmpresaComboBox.DataSource = this.fKDtPaisesDtProvinciasBindingSource;
             this.provinciaEmpresaComboBox.DisplayMember = "ProvinciasProvincias";
             this.provinciaEmpresaComboBox.Enabled = false;
             this.provinciaEmpresaComboBox.FormattingEnabled = true;
@@ -486,8 +489,7 @@ namespace PELOSCALVO
             // 
             // dtProvinciasBindingSource
             // 
-            this.dtProvinciasBindingSource.DataMember = "DtProvincias";
-            this.dtProvinciasBindingSource.DataSource = this.dsMulti2;
+            this.dtProvinciasBindingSource.DataSource = this.fKDtPaisesDtProvinciasBindingSource;
             // 
             // dsMulti2
             // 
@@ -515,6 +517,7 @@ namespace PELOSCALVO
             this.paisEmpresaComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.paisEmpresaComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.paisEmpresaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "PaisesPaises", true));
+            this.paisEmpresaComboBox.DataSource = this.dtPaisesBindingSource;
             this.paisEmpresaComboBox.DisplayMember = "PaisesPaises";
             this.paisEmpresaComboBox.Enabled = false;
             this.paisEmpresaComboBox.FormattingEnabled = true;
@@ -822,6 +825,11 @@ namespace PELOSCALVO
             this.BtnSalirEmpresa.UseVisualStyleBackColor = false;
             this.BtnSalirEmpresa.Click += new System.EventHandler(this.BtnSalirEmpresa_Click);
             // 
+            // fKDtPaisesDtProvinciasBindingSource
+            // 
+            this.fKDtPaisesDtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
+            this.fKDtPaisesDtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
+            // 
             // FormEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -890,6 +898,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1Confi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -939,5 +948,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.ErrorProvider errorProvider1Confi;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private System.Windows.Forms.Button BtnSalirEmpresa;
+        private System.Windows.Forms.BindingSource fKDtPaisesDtProvinciasBindingSource;
     }
 }

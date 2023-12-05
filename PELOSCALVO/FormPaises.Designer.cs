@@ -84,7 +84,6 @@ namespace PELOSCALVO
             // ErrorProve
             // 
             this.ErrorProve.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            this.ErrorProve.ContainerControl = this;
             // 
             // BtnCancelarPais
             // 
@@ -222,6 +221,7 @@ namespace PELOSCALVO
             // Id_Pais
             // 
             this.Id_Pais.AutoSize = true;
+            this.Id_Pais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.DtPaisBindinsource, "Id", true));
             this.Id_Pais.Location = new System.Drawing.Point(50, 11);
             this.Id_Pais.Name = "Id_Pais";
             this.Id_Pais.Size = new System.Drawing.Size(13, 13);
@@ -257,6 +257,7 @@ namespace PELOSCALVO
             // 
             // NombrePais
             // 
+            this.NombrePais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.DtPaisBindinsource, "PaisesPaises", true));
             this.NombrePais.Location = new System.Drawing.Point(50, 40);
             this.NombrePais.MaxLength = 40;
             this.NombrePais.Name = "NombrePais";

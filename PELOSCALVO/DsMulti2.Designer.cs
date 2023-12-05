@@ -399,7 +399,7 @@ namespace PELOSCALVO {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DtObrasDataTable : global::System.Data.TypedTableBase<DtObrasRow> {
             
-            private global::System.Data.DataColumn columnId_Obras;
+            private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnObras;
             
@@ -438,9 +438,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Id_ObrasColumn {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnId_Obras;
+                    return this.columnId;
                 }
             }
             
@@ -501,9 +501,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtObrasRow FindById_Obras(int Id_Obras) {
+            public DtObrasRow FindById(int Id) {
                 return ((DtObrasRow)(this.Rows.Find(new object[] {
-                            Id_Obras})));
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -523,24 +523,24 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnId_Obras = base.Columns["Id_Obras"];
+                this.columnId = base.Columns["Id"];
                 this.columnObras = base.Columns["Obras"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnId_Obras = new global::System.Data.DataColumn("Id_Obras", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_Obras);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columnObras = new global::System.Data.DataColumn("Obras", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObras);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId_Obras}, true));
-                this.columnId_Obras.AutoIncrement = true;
-                this.columnId_Obras.AutoIncrementSeed = 1;
-                this.columnId_Obras.AllowDBNull = false;
-                this.columnId_Obras.Unique = true;
-                this.columnId_Obras.Caption = "Id_almacenes";
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = 1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnId.Caption = "Id_almacenes";
                 this.columnObras.Caption = "Almacenes";
             }
             
@@ -1509,12 +1509,12 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id_Obras {
+            public int Id {
                 get {
-                    return ((int)(this[this.tableDtObras.Id_ObrasColumn]));
+                    return ((int)(this[this.tableDtObras.IdColumn]));
                 }
                 set {
-                    this[this.tableDtObras.Id_ObrasColumn] = value;
+                    this[this.tableDtObras.IdColumn] = value;
                 }
             }
             
