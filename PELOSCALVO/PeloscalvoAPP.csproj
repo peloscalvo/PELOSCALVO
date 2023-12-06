@@ -248,6 +248,12 @@
     <Compile Include="FormComfiguracion.Designer.cs">
       <DependentUpon>FormComfiguracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCorreosEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCorreosEmpresa.Designer.cs">
+      <DependentUpon>FormCorreosEmpresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrearCorreos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormComfiguracion.resx">
       <DependentUpon>FormComfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCorreosEmpresa.resx">
+      <DependentUpon>FormCorreosEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearCorreos.resx">
       <DependentUpon>FormCrearCorreos.cs</DependentUpon>

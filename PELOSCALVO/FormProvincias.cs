@@ -87,12 +87,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@ProvinciasProvincias],[@Id_paises])";
+                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@ProvinciasProvincias],[@Enlace])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias,[Id_paises] = @Id_paises " +
+                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias,[Enlace] = @Enlace " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -102,7 +102,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ProvinciasProvincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_paises", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : this.Id_Provincias.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(this.Enlace_Pais.Text) ? (object)DBNull.Value : this.Enlace_Pais.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -130,12 +130,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@ProvinciasProvincias],[@Id_paises])";
+                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@ProvinciasProvincias],[@Enlace])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias,[Id_paises] = @Id_paises " +
+                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias,[Enlace] = @Enlace " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -145,7 +145,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ProvinciasProvincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_paises", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(this.Enlace_Pais.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Enlace_Pais.Text));
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
@@ -323,7 +323,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Un Pais", "PAIS");
                 return;
             }
-            if (Id_Provincias.Text == string.Empty)
+            if (Id_Provincias.Text == string.Empty & Enlace_Pais.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -357,7 +357,7 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message);
                     }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(" ¿Aceptar Guardar Provincia ? ", " GUARDAR PROVINCIA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         if (ClsConexionSql.SibaseDatosSql)
                         {
@@ -427,7 +427,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarProvincia_Click(object sender, EventArgs e)
         {
-            if (this.dataGridProvincias.RowCount >= 0)
+            if (this.dtPaisesBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {

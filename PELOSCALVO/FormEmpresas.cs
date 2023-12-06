@@ -217,7 +217,7 @@ namespace PELOSCALVO
                 string consulta = "";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                 {
-                    ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([IdTarifa],[TarifaTipo],[EnlaceTarifa]) VALUES( @IdTarifa, @TarifaTipo, @EnlaceTarifa)";
+                    ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
                     consulta = "  INSERT INTO [DtConfiguracionPrincipal]([EmpresaConfi],[IdEmpresa],[NombreEmpresa],[DireccionEmpresa],[LocalidadEmpresa]" +
                  " ,[CodigoPostalEmpresa],[ProvinciaEmpresa],[TelefonoEmpresa],[CorreoEmpresa],[WepEmpresa] ,[RegimenIvaEmpresa]" +
                      " ,[PaisEmpresa],[SerieDeFacturacionEmpresa],[Telefono2Empresa],[MovilEmpresa],[CifEmpresa],[NombreEmpresaReguistro]" +
@@ -230,7 +230,7 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    ConsultaDescuetos = " UPDATE [DtTarifaTipo] SET [IdTarifa] = @IdTarifa,[TarifaTipo] =@TarifaTipo,[EnlaceTarifa]= @EnlaceTarifa";
+                    ConsultaDescuetos = " UPDATE [DtTarifaTipo] SET [Id] = @Id,[TarifaTipo] =@TarifaTipo,[EnlaceTarifa]= @EnlaceTarifa";
                     consulta = "UPDATE [DtConfiguracionPrincipal] SET [EmpresaConfi] = @EmpresaConfi,[IdEmpresa] = @IdEmpresa, [NombreEmpresa] = @NombreEmpresa, " +
                         "[DireccionEmpresa] = @DireccionEmpresa, [LocalidadEmpresa] = @LocalidadEmpresa,[CodigoPostalEmpresa] = @CodigoPostalEmpresa,  [ProvinciaEmpresa] = @ProvinciaEmpresa, " +
                         " [TelefonoEmpresa] = @TelefonoEmpresa, [CorreoEmpresa] = @CorreoEmpresa,  [WepEmpresa] = @WepEmpresa, [RegimenIvaEmpresa] = @RegimenIvaEmpresa, [PaisEmpresa] = @PaisEmpresa, " +
@@ -278,7 +278,7 @@ namespace PELOSCALVO
                                     Tarifa = "Iva";
 
                                 }
-                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdTarifa", Fila);
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Fila);
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
                                 NuevaConexion.ComandoSql.ExecuteNonQuery();
@@ -364,7 +364,7 @@ namespace PELOSCALVO
                 string consulta = "";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                 {
-                    ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([IdTarifa],[TarifaTipo],[EnlaceTarifa]) VALUES( @IdTarifa, @TarifaTipo, @EnlaceTarifa)";
+                    ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
                     consulta = "  INSERT INTO [DtConfiguracionPrincipal]([EmpresaConfi],[IdEmpresa],[NombreEmpresa],[DireccionEmpresa],[LocalidadEmpresa]" +
                  " ,[CodigoPostalEmpresa],[ProvinciaEmpresa],[TelefonoEmpresa],[CorreoEmpresa],[WepEmpresa] ,[RegimenIvaEmpresa]" +
                      " ,[PaisEmpresa],[SerieDeFacturacionEmpresa],[Telefono2Empresa],[MovilEmpresa],[CifEmpresa],[NombreEmpresaReguistro]" +
@@ -377,7 +377,7 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    ConsultaDescuetos = " UPDATE [DtTarifaTipo] SET [IdTarifa] = @IdTarifa,[TarifaTipo] =@TarifaTipo,[EnlaceTarifa]= @EnlaceTarifa";
+                    ConsultaDescuetos = " UPDATE [DtTarifaTipo] SET [Id] = @Id,[TarifaTipo] =@TarifaTipo,[EnlaceTarifa]= @EnlaceTarifa";
                     consulta = "UPDATE [DtConfiguracionPrincipal] SET [EmpresaConfi] = @EmpresaConfi,[IdEmpresa] = @IdEmpresa, [NombreEmpresa] = @NombreEmpresa, " +
                         "[DireccionEmpresa] = @DireccionEmpresa, [LocalidadEmpresa] = @LocalidadEmpresa,[CodigoPostalEmpresa] = @CodigoPostalEmpresa,  [ProvinciaEmpresa] = @ProvinciaEmpresa, " +
                         " [TelefonoEmpresa] = @TelefonoEmpresa, [CorreoEmpresa] = @CorreoEmpresa,  [WepEmpresa] = @WepEmpresa, [RegimenIvaEmpresa] = @RegimenIvaEmpresa, [PaisEmpresa] = @PaisEmpresa, " +
@@ -419,7 +419,7 @@ namespace PELOSCALVO
 
                             string Tarifa = "Pvp";
 
-                            for (int Fila = 1; Fila < 6; Fila++)
+                            for (int Fila = 1; Fila < 8; Fila++)
                             {
                                 if (Fila == 6)
                                 {
@@ -427,7 +427,7 @@ namespace PELOSCALVO
                                     Tarifa = "Iva";
 
                                 }
-                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdTarifa", Fila);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Fila);
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();

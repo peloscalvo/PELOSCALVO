@@ -413,7 +413,7 @@ namespace PELOSCALVO
                 BorrarErroresBasica();
                 if (ValidarBasica())
                 {
-                    if (MessageBox.Show(" ¿Aceptar Guardar Configuracion ? ", " GUARDAR DATOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(" ¿Aceptar Guardar Ejercicio ? ", " GUARDAR DATOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         Random r = new Random();
                         int VALORid = r.Next(500, 1000000);
@@ -452,7 +452,7 @@ namespace PELOSCALVO
             {
                 if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 0)
                 {
-                    if (MessageBox.Show("Desea Eliminar La Configuracion", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Desea Eliminar La Ejercicio", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
 
                         if (ClsConexionSql.SibaseDatosSql)
@@ -478,7 +478,7 @@ namespace PELOSCALVO
 
         private void BtnSalirEjerc_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" ¿Salir Configuracion ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(" ¿Salir Ejercicios ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Close();
             }

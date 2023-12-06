@@ -475,6 +475,7 @@ namespace PELOSCALVO
             // 
             this.provinciaEmpresaComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.provinciaEmpresaComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.provinciaEmpresaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtProvinciasBindingSource, "ProvinciasProvincias", true));
             this.provinciaEmpresaComboBox.DataSource = this.dtProvinciasBindingSource;
             this.provinciaEmpresaComboBox.DisplayMember = "ProvinciasProvincias";
             this.provinciaEmpresaComboBox.Enabled = false;

@@ -32,8 +32,8 @@ namespace PELOSCALVO
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label idTarifaLabel;
             System.Windows.Forms.Label tarifaTipoLabel;
-            System.Windows.Forms.Label enlaceTarifaLabel;
-            System.Windows.Forms.Label empresaConfiLabel1;
+            System.Windows.Forms.Label Label4;
+            System.Windows.Forms.Label ConfiLabel1;
             System.Windows.Forms.Label idEmpresaLabel1;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -54,7 +54,6 @@ namespace PELOSCALVO
             this.BtnCancelarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnGuardarDescuentos = new System.Windows.Forms.Button();
             this.panelBotonesTipoTarifa = new System.Windows.Forms.Panel();
-            this.BtnEliminarDesc = new System.Windows.Forms.Button();
             this.BtnBuscarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnNuevoTipoTarifa = new System.Windows.Forms.Button();
             this.BtnModificarTipoTarifa = new System.Windows.Forms.Button();
@@ -62,8 +61,8 @@ namespace PELOSCALVO
             this.ErrorDescuentos = new System.Windows.Forms.ErrorProvider(this.components);
             idTarifaLabel = new System.Windows.Forms.Label();
             tarifaTipoLabel = new System.Windows.Forms.Label();
-            enlaceTarifaLabel = new System.Windows.Forms.Label();
-            empresaConfiLabel1 = new System.Windows.Forms.Label();
+            Label4 = new System.Windows.Forms.Label();
+            ConfiLabel1 = new System.Windows.Forms.Label();
             idEmpresaLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
@@ -91,32 +90,32 @@ namespace PELOSCALVO
             tarifaTipoLabel.TabIndex = 59;
             tarifaTipoLabel.Text = "Tarifa Tipo:";
             // 
-            // enlaceTarifaLabel
+            // Label4
             // 
-            enlaceTarifaLabel.AutoSize = true;
-            enlaceTarifaLabel.Location = new System.Drawing.Point(21, 319);
-            enlaceTarifaLabel.Name = "enlaceTarifaLabel";
-            enlaceTarifaLabel.Size = new System.Drawing.Size(51, 13);
-            enlaceTarifaLabel.TabIndex = 61;
-            enlaceTarifaLabel.Text = "Empresa:";
+            Label4.AutoSize = true;
+            Label4.Location = new System.Drawing.Point(21, 319);
+            Label4.Name = "Label4";
+            Label4.Size = new System.Drawing.Size(43, 13);
+            Label4.TabIndex = 61;
+            Label4.Text = "Enlace:";
             // 
-            // empresaConfiLabel1
+            // ConfiLabel1
             // 
-            empresaConfiLabel1.AutoSize = true;
-            empresaConfiLabel1.Location = new System.Drawing.Point(432, 304);
-            empresaConfiLabel1.Name = "empresaConfiLabel1";
-            empresaConfiLabel1.Size = new System.Drawing.Size(78, 13);
-            empresaConfiLabel1.TabIndex = 55;
-            empresaConfiLabel1.Text = "Empresa Confi:";
+            ConfiLabel1.AutoSize = true;
+            ConfiLabel1.Location = new System.Drawing.Point(456, 304);
+            ConfiLabel1.Name = "ConfiLabel1";
+            ConfiLabel1.Size = new System.Drawing.Size(54, 13);
+            ConfiLabel1.TabIndex = 55;
+            ConfiLabel1.Text = "Empresa::";
             // 
             // idEmpresaLabel1
             // 
             idEmpresaLabel1.AutoSize = true;
-            idEmpresaLabel1.Location = new System.Drawing.Point(432, 331);
+            idEmpresaLabel1.Location = new System.Drawing.Point(491, 331);
             idEmpresaLabel1.Name = "idEmpresaLabel1";
-            idEmpresaLabel1.Size = new System.Drawing.Size(63, 13);
+            idEmpresaLabel1.Size = new System.Drawing.Size(19, 13);
             idEmpresaLabel1.TabIndex = 57;
-            idEmpresaLabel1.Text = "Id Empresa:";
+            idEmpresaLabel1.Text = "Id:";
             // 
             // dsCONFIGURACCION
             // 
@@ -131,7 +130,7 @@ namespace PELOSCALVO
             // EnlaceTarifa
             // 
             this.EnlaceTarifa.AutoSize = true;
-            this.EnlaceTarifa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "EnlaceTarifa", true));
+            this.EnlaceTarifa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
             this.EnlaceTarifa.Location = new System.Drawing.Point(78, 319);
             this.EnlaceTarifa.Name = "EnlaceTarifa";
             this.EnlaceTarifa.Size = new System.Drawing.Size(0, 13);
@@ -299,7 +298,6 @@ namespace PELOSCALVO
             // 
             this.panelBotonesTipoTarifa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelBotonesTipoTarifa.BackColor = System.Drawing.Color.Transparent;
-            this.panelBotonesTipoTarifa.Controls.Add(this.BtnEliminarDesc);
             this.panelBotonesTipoTarifa.Controls.Add(this.BtnBuscarTipoTarifa);
             this.panelBotonesTipoTarifa.Controls.Add(this.BtnNuevoTipoTarifa);
             this.panelBotonesTipoTarifa.Controls.Add(this.BtnModificarTipoTarifa);
@@ -307,26 +305,6 @@ namespace PELOSCALVO
             this.panelBotonesTipoTarifa.Name = "panelBotonesTipoTarifa";
             this.panelBotonesTipoTarifa.Size = new System.Drawing.Size(401, 63);
             this.panelBotonesTipoTarifa.TabIndex = 52;
-            // 
-            // BtnEliminarDesc
-            // 
-            this.BtnEliminarDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnEliminarDesc.BackColor = System.Drawing.Color.Transparent;
-            this.BtnEliminarDesc.FlatAppearance.BorderSize = 0;
-            this.BtnEliminarDesc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnEliminarDesc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnEliminarDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEliminarDesc.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarDesc.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.BtnEliminarDesc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnEliminarDesc.Location = new System.Drawing.Point(249, 3);
-            this.BtnEliminarDesc.Name = "BtnEliminarDesc";
-            this.BtnEliminarDesc.Size = new System.Drawing.Size(77, 63);
-            this.BtnEliminarDesc.TabIndex = 10;
-            this.BtnEliminarDesc.Text = "Eliminar";
-            this.BtnEliminarDesc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnEliminarDesc.UseVisualStyleBackColor = false;
-            this.BtnEliminarDesc.Click += new System.EventHandler(this.BtnEliminarDesc_Click);
             // 
             // BtnBuscarTipoTarifa
             // 
@@ -427,8 +405,8 @@ namespace PELOSCALVO
             this.Controls.Add(idTarifaLabel);
             this.Controls.Add(tarifaTipoLabel);
             this.Controls.Add(this.tarifaTipoTextBox);
-            this.Controls.Add(enlaceTarifaLabel);
-            this.Controls.Add(empresaConfiLabel1);
+            this.Controls.Add(Label4);
+            this.Controls.Add(ConfiLabel1);
             this.Controls.Add(this.empresaConfiComboBox1);
             this.Controls.Add(idEmpresaLabel1);
             this.Controls.Add(this.BtnCancelarTipoTarifa);
@@ -471,7 +449,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtConfiDtTarifaTipoBindingSource;
         private System.Windows.Forms.Button BtnSalirTipoTarifa;
         private System.Windows.Forms.ErrorProvider ErrorDescuentos;
-        private System.Windows.Forms.Button BtnEliminarDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTarifaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tarifaTipoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn enlaceTarifaDataGridViewTextBoxColumn;

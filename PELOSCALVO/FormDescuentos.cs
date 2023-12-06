@@ -297,7 +297,7 @@ namespace PELOSCALVO
                 }
                 if (this.dtTarifaTipoDataGridView.RowCount < 7)
                 {
-                    tarifaTipoTextBox.Text = "Pvp"+ VALORid.ToString();
+                    tarifaTipoTextBox.Text = "Pvp" + this.IdTarifa.Text.ToString();
                 }
                 if (this.dtTarifaTipoDataGridView.RowCount == 7)
                 {
@@ -404,7 +404,7 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message);
                     }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Obra ? ", " GUARDAR TARIFA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(" ¿Aceptar Guardar Tarifa ? ", " GUARDAR TARIFA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         if (ClsConexionSql.SibaseDatosSql)
                         {
@@ -436,31 +436,6 @@ namespace PELOSCALVO
             }
         }
 
-        private void BtnEliminarDesc_Click(object sender, EventArgs e)
-        {
-            if (this.dtConfiDtTarifaTipoBindingSource.Count > 0)
-            {
-                if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-
-                    if (ClsConexionSql.SibaseDatosSql)
-                    {
-                        EliminarTarifaSql();
-                    }
-                    else
-                    {
-                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                        {
-                            EliminarTarifaBb();
-
-                        }
-                        else
-                        {
-                            MessageBox.Show(" No Se Pudo Eliminar", "FALTA ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                }
-            }
-        }
+  
     }
 }
