@@ -162,6 +162,8 @@ namespace PELOSCALVO
             // DatagridCorreosEmpresa
             // 
             this.DatagridCorreosEmpresa.AllowDrop = true;
+            this.DatagridCorreosEmpresa.AllowUserToAddRows = false;
+            this.DatagridCorreosEmpresa.AllowUserToDeleteRows = false;
             this.DatagridCorreosEmpresa.AllowUserToOrderColumns = true;
             this.DatagridCorreosEmpresa.AllowUserToResizeRows = false;
             this.DatagridCorreosEmpresa.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(70)))));
@@ -188,7 +190,8 @@ namespace PELOSCALVO
             this.DatagridCorreosEmpresa.Location = new System.Drawing.Point(3, 3);
             this.DatagridCorreosEmpresa.MultiSelect = false;
             this.DatagridCorreosEmpresa.Name = "DatagridCorreosEmpresa";
-            this.DatagridCorreosEmpresa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.DatagridCorreosEmpresa.RowHeadersVisible = false;
+            this.DatagridCorreosEmpresa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DatagridCorreosEmpresa.Size = new System.Drawing.Size(958, 243);
             this.DatagridCorreosEmpresa.TabIndex = 52;
             this.DatagridCorreosEmpresa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagriCorreosEmpresa_CellClick);
@@ -508,7 +511,7 @@ namespace PELOSCALVO
             this.PageClientes.Location = new System.Drawing.Point(4, 22);
             this.PageClientes.Name = "PageClientes";
             this.PageClientes.Padding = new System.Windows.Forms.Padding(3);
-            this.PageClientes.Size = new System.Drawing.Size(964, 463);
+            this.PageClientes.Size = new System.Drawing.Size(964, 475);
             this.PageClientes.TabIndex = 2;
             this.PageClientes.Text = "Correos Clientes";
             this.PageClientes.UseVisualStyleBackColor = true;
