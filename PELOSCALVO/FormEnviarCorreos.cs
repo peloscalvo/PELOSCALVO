@@ -203,7 +203,11 @@ namespace PELOSCALVO
                 var fila = FormMenuPrincipal.menu2principal.dsCorreos;
                 if (fila.Tables["Dtcorreos"].Rows[II]["smtp"].ToString() != string.Empty)
                 {
-                    this.SmtpCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["smtp"].ToString();
+                    this.SmtpCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["CorreoEletronico"].ToString();
+                }
+                if (fila.Tables["Dtcorreos"].Rows[II]["smtp"].ToString() != string.Empty)
+                {
+                    this.CorreoEmpresa.Text = fila.Tables["DtCorreos"].Rows[II]["CorreoEletronico"].ToString();
                 }
                 if (fila.Tables["Dtcorreos"].Rows[II]["Usuario"].ToString() != string.Empty)
                 {
@@ -219,7 +223,7 @@ namespace PELOSCALVO
                 }
                 if (fila.Tables["Dtcorreos"].Rows[II]["Timeof"].ToString() != string.Empty)
                 {
-                    this.PuertoCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Timeof"].ToString();
+                    this.TiempoEspera.Text = fila.Tables["DtCorreos"].Rows[II]["Timeof"].ToString();
                 }
             }
         }

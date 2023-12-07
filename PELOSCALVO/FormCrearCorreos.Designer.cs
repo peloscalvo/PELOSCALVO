@@ -42,6 +42,11 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label label8;
+            System.Windows.Forms.Label label13;
+            System.Windows.Forms.Label label14;
+            System.Windows.Forms.Label label16;
+            System.Windows.Forms.Label label17;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCrearCorreos));
             this.DatagridCorreosEmpresa = new System.Windows.Forms.DataGridView();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -67,9 +72,20 @@ namespace PELOSCALVO
             this.BtnGuardarCorreo_E = new System.Windows.Forms.Button();
             this.NombreEmpresa = new System.Windows.Forms.TextBox();
             this.PageClientes = new System.Windows.Forms.TabPage();
-            this.BtnGuardarCorreoCli = new System.Windows.Forms.Button();
             this.DataGridCorreoCliente = new System.Windows.Forms.DataGridView();
             this.ErrorCorreosCrear = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Direcion = new System.Windows.Forms.TextBox();
+            this.RazonSocial = new System.Windows.Forms.TextBox();
+            this.CorreoEletronicoCli = new System.Windows.Forms.TextBox();
+            this.Id_CorreoCli = new System.Windows.Forms.Label();
+            this.BtnCancelarCli = new System.Windows.Forms.Button();
+            this.PanelBotonesCorreoCli = new System.Windows.Forms.Panel();
+            this.BtnEliminarCorreoCli = new System.Windows.Forms.Button();
+            this.BtnBuscarCorreoCli = new System.Windows.Forms.Button();
+            this.BtnNuevoCorreoCli = new System.Windows.Forms.Button();
+            this.BtnModificarCorreoCli = new System.Windows.Forms.Button();
+            this.BtnGuardarCorreoCli = new System.Windows.Forms.Button();
+            this.EmpresaCli = new System.Windows.Forms.TextBox();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -78,6 +94,11 @@ namespace PELOSCALVO
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DatagridCorreosEmpresa)).BeginInit();
             this.TabCorreos.SuspendLayout();
             this.PageInicio.SuspendLayout();
@@ -86,6 +107,7 @@ namespace PELOSCALVO
             this.PageClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCorreoCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreosCrear)).BeginInit();
+            this.PanelBotonesCorreoCli.SuspendLayout();
             this.SuspendLayout();
             // 
             // label10
@@ -198,6 +220,7 @@ namespace PELOSCALVO
             this.DatagridCorreosEmpresa.Size = new System.Drawing.Size(958, 243);
             this.DatagridCorreosEmpresa.TabIndex = 52;
             this.DatagridCorreosEmpresa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagriCorreosEmpresa_CellClick);
+            this.DatagridCorreosEmpresa.SelectionChanged += new System.EventHandler(this.DatagridCorreosEmpresa_SelectionChanged);
             // 
             // dataGridViewImageColumn1
             // 
@@ -525,7 +548,19 @@ namespace PELOSCALVO
             // 
             // PageClientes
             // 
+            this.PageClientes.Controls.Add(label8);
+            this.PageClientes.Controls.Add(this.Direcion);
+            this.PageClientes.Controls.Add(label13);
+            this.PageClientes.Controls.Add(this.RazonSocial);
+            this.PageClientes.Controls.Add(label14);
+            this.PageClientes.Controls.Add(this.CorreoEletronicoCli);
+            this.PageClientes.Controls.Add(this.Id_CorreoCli);
+            this.PageClientes.Controls.Add(this.BtnCancelarCli);
+            this.PageClientes.Controls.Add(this.PanelBotonesCorreoCli);
+            this.PageClientes.Controls.Add(label16);
             this.PageClientes.Controls.Add(this.BtnGuardarCorreoCli);
+            this.PageClientes.Controls.Add(label17);
+            this.PageClientes.Controls.Add(this.EmpresaCli);
             this.PageClientes.Controls.Add(this.DataGridCorreoCliente);
             this.PageClientes.Location = new System.Drawing.Point(4, 22);
             this.PageClientes.Name = "PageClientes";
@@ -534,26 +569,6 @@ namespace PELOSCALVO
             this.PageClientes.TabIndex = 2;
             this.PageClientes.Text = "Correos Clientes";
             this.PageClientes.UseVisualStyleBackColor = true;
-            // 
-            // BtnGuardarCorreoCli
-            // 
-            this.BtnGuardarCorreoCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnGuardarCorreoCli.BackColor = System.Drawing.Color.Transparent;
-            this.BtnGuardarCorreoCli.FlatAppearance.BorderSize = 0;
-            this.BtnGuardarCorreoCli.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnGuardarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnGuardarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGuardarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
-            this.BtnGuardarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarCorreoCli.Location = new System.Drawing.Point(669, 402);
-            this.BtnGuardarCorreoCli.Name = "BtnGuardarCorreoCli";
-            this.BtnGuardarCorreoCli.Size = new System.Drawing.Size(107, 42);
-            this.BtnGuardarCorreoCli.TabIndex = 56;
-            this.BtnGuardarCorreoCli.Text = "Actualizar";
-            this.BtnGuardarCorreoCli.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnGuardarCorreoCli.UseVisualStyleBackColor = false;
-            this.BtnGuardarCorreoCli.Click += new System.EventHandler(this.BtnGuardarCorreoCli_Click);
             // 
             // DataGridCorreoCliente
             // 
@@ -585,14 +600,243 @@ namespace PELOSCALVO
             this.DataGridCorreoCliente.MultiSelect = false;
             this.DataGridCorreoCliente.Name = "DataGridCorreoCliente";
             this.DataGridCorreoCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DataGridCorreoCliente.Size = new System.Drawing.Size(958, 266);
+            this.DataGridCorreoCliente.Size = new System.Drawing.Size(958, 249);
             this.DataGridCorreoCliente.TabIndex = 53;
             this.DataGridCorreoCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCorreoCliente_CellClick);
+            this.DataGridCorreoCliente.SelectionChanged += new System.EventHandler(this.DataGridCorreoCliente_SelectionChanged);
             // 
             // ErrorCorreosCrear
             // 
             this.ErrorCorreosCrear.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.ErrorCorreosCrear.ContainerControl = this;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(51, 367);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(49, 13);
+            label8.TabIndex = 106;
+            label8.Text = "Direcion:";
+            // 
+            // Direcion
+            // 
+            this.Direcion.Location = new System.Drawing.Point(109, 364);
+            this.Direcion.MaxLength = 40;
+            this.Direcion.Name = "Direcion";
+            this.Direcion.ReadOnly = true;
+            this.Direcion.Size = new System.Drawing.Size(314, 20);
+            this.Direcion.TabIndex = 107;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(538, 297);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(73, 13);
+            label13.TabIndex = 100;
+            label13.Text = "Razon Social:";
+            // 
+            // RazonSocial
+            // 
+            this.RazonSocial.Location = new System.Drawing.Point(617, 294);
+            this.RazonSocial.MaxLength = 40;
+            this.RazonSocial.Name = "RazonSocial";
+            this.RazonSocial.ReadOnly = true;
+            this.RazonSocial.Size = new System.Drawing.Size(249, 20);
+            this.RazonSocial.TabIndex = 101;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(12, 336);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(91, 13);
+            label14.TabIndex = 98;
+            label14.Text = "Correo Eletronico:";
+            // 
+            // CorreoEletronicoCli
+            // 
+            this.CorreoEletronicoCli.Location = new System.Drawing.Point(109, 333);
+            this.CorreoEletronicoCli.MaxLength = 40;
+            this.CorreoEletronicoCli.Name = "CorreoEletronicoCli";
+            this.CorreoEletronicoCli.ReadOnly = true;
+            this.CorreoEletronicoCli.Size = new System.Drawing.Size(314, 20);
+            this.CorreoEletronicoCli.TabIndex = 99;
+            // 
+            // Id_CorreoCli
+            // 
+            this.Id_CorreoCli.AutoSize = true;
+            this.Id_CorreoCli.Location = new System.Drawing.Point(115, 267);
+            this.Id_CorreoCli.Name = "Id_CorreoCli";
+            this.Id_CorreoCli.Size = new System.Drawing.Size(13, 13);
+            this.Id_CorreoCli.TabIndex = 95;
+            this.Id_CorreoCli.Text = "1";
+            this.Id_CorreoCli.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // BtnCancelarCli
+            // 
+            this.BtnCancelarCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelarCli.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCancelarCli.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCancelarCli.Enabled = false;
+            this.BtnCancelarCli.FlatAppearance.BorderSize = 0;
+            this.BtnCancelarCli.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnCancelarCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnCancelarCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelarCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelarCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarCli.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCancelarCli.Location = new System.Drawing.Point(721, 427);
+            this.BtnCancelarCli.Name = "BtnCancelarCli";
+            this.BtnCancelarCli.Size = new System.Drawing.Size(89, 42);
+            this.BtnCancelarCli.TabIndex = 97;
+            this.BtnCancelarCli.Text = "Cancelar";
+            this.BtnCancelarCli.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancelarCli.UseVisualStyleBackColor = false;
+            this.BtnCancelarCli.Click += new System.EventHandler(this.BtnCancelarCli_Click);
+            // 
+            // PanelBotonesCorreoCli
+            // 
+            this.PanelBotonesCorreoCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PanelBotonesCorreoCli.BackColor = System.Drawing.Color.Transparent;
+            this.PanelBotonesCorreoCli.Controls.Add(this.BtnEliminarCorreoCli);
+            this.PanelBotonesCorreoCli.Controls.Add(this.BtnBuscarCorreoCli);
+            this.PanelBotonesCorreoCli.Controls.Add(this.BtnNuevoCorreoCli);
+            this.PanelBotonesCorreoCli.Controls.Add(this.BtnModificarCorreoCli);
+            this.PanelBotonesCorreoCli.Location = new System.Drawing.Point(25, 402);
+            this.PanelBotonesCorreoCli.Name = "PanelBotonesCorreoCli";
+            this.PanelBotonesCorreoCli.Size = new System.Drawing.Size(396, 63);
+            this.PanelBotonesCorreoCli.TabIndex = 92;
+            this.PanelBotonesCorreoCli.Tag = "NO";
+            // 
+            // BtnEliminarCorreoCli
+            // 
+            this.BtnEliminarCorreoCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnEliminarCorreoCli.BackColor = System.Drawing.Color.Transparent;
+            this.BtnEliminarCorreoCli.FlatAppearance.BorderSize = 0;
+            this.BtnEliminarCorreoCli.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnEliminarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnEliminarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEliminarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEliminarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnEliminarCorreoCli.Location = new System.Drawing.Point(238, 3);
+            this.BtnEliminarCorreoCli.Name = "BtnEliminarCorreoCli";
+            this.BtnEliminarCorreoCli.Size = new System.Drawing.Size(77, 63);
+            this.BtnEliminarCorreoCli.TabIndex = 9;
+            this.BtnEliminarCorreoCli.Text = "Eliminar";
+            this.BtnEliminarCorreoCli.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnEliminarCorreoCli.UseVisualStyleBackColor = false;
+            this.BtnEliminarCorreoCli.Click += new System.EventHandler(this.BtnEliminarCorreoCli_Click);
+            // 
+            // BtnBuscarCorreoCli
+            // 
+            this.BtnBuscarCorreoCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnBuscarCorreoCli.BackColor = System.Drawing.Color.Transparent;
+            this.BtnBuscarCorreoCli.FlatAppearance.BorderSize = 0;
+            this.BtnBuscarCorreoCli.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnBuscarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnBuscarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBuscarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBuscarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnBuscarCorreoCli.Location = new System.Drawing.Point(161, 3);
+            this.BtnBuscarCorreoCli.Name = "BtnBuscarCorreoCli";
+            this.BtnBuscarCorreoCli.Size = new System.Drawing.Size(77, 63);
+            this.BtnBuscarCorreoCli.TabIndex = 8;
+            this.BtnBuscarCorreoCli.Text = "Buscar";
+            this.BtnBuscarCorreoCli.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnBuscarCorreoCli.UseVisualStyleBackColor = false;
+            // 
+            // BtnNuevoCorreoCli
+            // 
+            this.BtnNuevoCorreoCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnNuevoCorreoCli.BackColor = System.Drawing.Color.Transparent;
+            this.BtnNuevoCorreoCli.FlatAppearance.BorderSize = 0;
+            this.BtnNuevoCorreoCli.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnNuevoCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnNuevoCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnNuevoCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNuevoCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoCorreoCli.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnNuevoCorreoCli.Location = new System.Drawing.Point(7, 3);
+            this.BtnNuevoCorreoCli.Name = "BtnNuevoCorreoCli";
+            this.BtnNuevoCorreoCli.Size = new System.Drawing.Size(77, 63);
+            this.BtnNuevoCorreoCli.TabIndex = 6;
+            this.BtnNuevoCorreoCli.Tag = "stop";
+            this.BtnNuevoCorreoCli.Text = "Nuevo";
+            this.BtnNuevoCorreoCli.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnNuevoCorreoCli.UseVisualStyleBackColor = false;
+            this.BtnNuevoCorreoCli.Click += new System.EventHandler(this.BtnNuevoCorreoCli_Click);
+            // 
+            // BtnModificarCorreoCli
+            // 
+            this.BtnModificarCorreoCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnModificarCorreoCli.BackColor = System.Drawing.Color.Transparent;
+            this.BtnModificarCorreoCli.FlatAppearance.BorderSize = 0;
+            this.BtnModificarCorreoCli.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnModificarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnModificarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnModificarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnModificarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnModificarCorreoCli.Location = new System.Drawing.Point(84, 3);
+            this.BtnModificarCorreoCli.Name = "BtnModificarCorreoCli";
+            this.BtnModificarCorreoCli.Size = new System.Drawing.Size(77, 63);
+            this.BtnModificarCorreoCli.TabIndex = 7;
+            this.BtnModificarCorreoCli.Text = "Modificar";
+            this.BtnModificarCorreoCli.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnModificarCorreoCli.UseVisualStyleBackColor = false;
+            this.BtnModificarCorreoCli.Click += new System.EventHandler(this.BtnModificarCorreoCli_Click);
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(83, 267);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(19, 13);
+            label16.TabIndex = 91;
+            label16.Text = "Id:";
+            // 
+            // BtnGuardarCorreoCli
+            // 
+            this.BtnGuardarCorreoCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnGuardarCorreoCli.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGuardarCorreoCli.Enabled = false;
+            this.BtnGuardarCorreoCli.FlatAppearance.BorderSize = 0;
+            this.BtnGuardarCorreoCli.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnGuardarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnGuardarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGuardarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGuardarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGuardarCorreoCli.Location = new System.Drawing.Point(486, 423);
+            this.BtnGuardarCorreoCli.Name = "BtnGuardarCorreoCli";
+            this.BtnGuardarCorreoCli.Size = new System.Drawing.Size(89, 42);
+            this.BtnGuardarCorreoCli.TabIndex = 96;
+            this.BtnGuardarCorreoCli.Text = "Aceptar";
+            this.BtnGuardarCorreoCli.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnGuardarCorreoCli.UseVisualStyleBackColor = false;
+            this.BtnGuardarCorreoCli.Click += new System.EventHandler(this.BtnGuardarCorreoCli_Click_1);
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(51, 301);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(47, 13);
+            label17.TabIndex = 93;
+            label17.Text = "Nombre:";
+            // 
+            // EmpresaCli
+            // 
+            this.EmpresaCli.Location = new System.Drawing.Point(109, 294);
+            this.EmpresaCli.MaxLength = 40;
+            this.EmpresaCli.Name = "EmpresaCli";
+            this.EmpresaCli.ReadOnly = true;
+            this.EmpresaCli.Size = new System.Drawing.Size(385, 20);
+            this.EmpresaCli.TabIndex = 94;
             // 
             // FormCrearCorreos
             // 
@@ -615,8 +859,10 @@ namespace PELOSCALVO
             this.PageEmpresa.PerformLayout();
             this.PanelBotones_CorreoEmp.ResumeLayout(false);
             this.PageClientes.ResumeLayout(false);
+            this.PageClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCorreoCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreosCrear)).EndInit();
+            this.PanelBotonesCorreoCli.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -630,7 +876,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.TabPage PageEmpresa;
         private System.Windows.Forms.TabPage PageClientes;
         private System.Windows.Forms.DataGridView DataGridCorreoCliente;
-        public System.Windows.Forms.Button BtnGuardarCorreoCli;
         private System.Windows.Forms.Button BtnSalirCorreoEmpresa;
         private System.Windows.Forms.Label Id_Correo_E;
         private System.Windows.Forms.Button BtnCancelarCorreo_E;
@@ -649,5 +894,17 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox Timeof;
         private System.Windows.Forms.ErrorProvider ErrorCorreosCrear;
         private System.Windows.Forms.CheckBox checkPassCorreo;
+        private System.Windows.Forms.TextBox Direcion;
+        private System.Windows.Forms.TextBox RazonSocial;
+        private System.Windows.Forms.TextBox CorreoEletronicoCli;
+        private System.Windows.Forms.Label Id_CorreoCli;
+        private System.Windows.Forms.Button BtnCancelarCli;
+        private System.Windows.Forms.Panel PanelBotonesCorreoCli;
+        private System.Windows.Forms.Button BtnEliminarCorreoCli;
+        private System.Windows.Forms.Button BtnBuscarCorreoCli;
+        private System.Windows.Forms.Button BtnNuevoCorreoCli;
+        private System.Windows.Forms.Button BtnModificarCorreoCli;
+        public System.Windows.Forms.Button BtnGuardarCorreoCli;
+        private System.Windows.Forms.TextBox EmpresaCli;
     }
 }

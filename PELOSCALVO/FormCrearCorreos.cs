@@ -8,6 +8,7 @@ namespace PELOSCALVO
     public partial class FormCrearCorreos : Form
     {
         BindingSource CorreosbindingSource = new BindingSource();
+        BindingSource CorreosClientebindingSource = new BindingSource();
         string Rutacorreos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
         public FormCrearCorreos()
         {
@@ -25,7 +26,8 @@ namespace PELOSCALVO
                     this.CorreosbindingSource.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
                     this.DatagridCorreosEmpresa.DataSource = this.CorreosbindingSource.DataSource;
                     //this.DatagridCorreosEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
-                    this.DataGridCorreoCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
+                    this.CorreosClientebindingSource.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
+                    this.DataGridCorreoCliente.DataSource = this.CorreosClientebindingSource.DataSource;
                     //MessageBox.Show(FormMenuPrincipal.menu2principal.DtCorreos.Rows.Count.ToString());
                     //  if(DatagriCorreosEmpresa.RowCount<= 0)
                     //{
@@ -74,6 +76,28 @@ namespace PELOSCALVO
             }
             return ok;
         }
+        private void ModificarOjetosCorreo_Cli()
+        {
+            this.EmpresaCli.ReadOnly = false;
+            this.CorreoEletronicoCli.ReadOnly = false;
+            this.RazonSocial.ReadOnly = false;
+            this.Direcion.ReadOnly = false;
+            this.PanelBotonesCorreoCli.Enabled = false;
+            this.DataGridCorreoCliente.Enabled = false;
+            this.BtnCancelarCli.Enabled = true;
+            this.BtnGuardarCorreoCli.Enabled = true;
+        }
+        private void RestaurarOjetosCorreo_Cli()
+        {
+            this.EmpresaCli.ReadOnly = true;
+            this.CorreoEletronicoCli.ReadOnly = true;
+            this.RazonSocial.ReadOnly = true;
+            this.Direcion.ReadOnly = true;
+            this.PanelBotonesCorreoCli.Enabled = true;  
+            this.DataGridCorreoCliente.Enabled = true;
+            this.BtnCancelarCli.Enabled = false;
+            this.BtnGuardarCorreoCli.Enabled = false;
+        }
         private void ModificarOjetosCorreo_E()
         {
             this.NombreEmpresa.ReadOnly = false;
@@ -86,7 +110,7 @@ namespace PELOSCALVO
             this.PanelBotones_CorreoEmp.Enabled = false;
             this.BtnCancelarCorreo_E.Enabled = true;
             this.BtnGuardarCorreo_E.Enabled = true;
-            this.DataGridCorreoCliente.Enabled = false;
+            this.DatagridCorreosEmpresa.Enabled = false;
         }
         private void RestaurarOjetosCorreo_E()
         {
@@ -100,9 +124,43 @@ namespace PELOSCALVO
             this.PanelBotones_CorreoEmp.Enabled = true;
             this.BtnCancelarCorreo_E.Enabled = false;
             this.BtnGuardarCorreo_E.Enabled = false;
-            this.DataGridCorreoCliente.Enabled = true;
+            this.DatagridCorreosEmpresa.Enabled = true;
         }
 
+        private bool ValidarCorreoCli()
+        {
+            bool ok = true;
+
+            if (this.EmpresaCli.Text.Length < 4)
+            {
+                ok = false;
+                this.ErrorCorreosCrear.SetError(this.EmpresaCli, "_ingresar Nonbre Nombre Empreasa valido (( minimo 4 Caracteres))");
+            }
+            if (this.CorreoEletronicoCli.Text.Length < 4)
+            {
+                ok = false;
+                this.ErrorCorreosCrear.SetError(this.CorreoEletronicoCli, "_ingresar Nonbre Nombre Correeo Eletronico valido (( minimo 4 Caracteres))");
+            }
+            if (this.RazonSocial.Text.Length < 4)
+            {
+                ok = false;
+                this.ErrorCorreosCrear.SetError(this.RazonSocial, "_ingresar Nonbre Nombre Razon Social valido (( minimo 4 Caracteres))");
+            }
+            if (this.Direcion.Text.Length < 4)
+            {
+                ok = false;
+                this.ErrorCorreosCrear.SetError(this.Direcion, "_ingresar Nonbre Nombre Direccion valido (( minimo 4 Caracteres))");
+            }
+            return ok;
+        }
+        private void BorrarErrorCorreoCli()
+        {
+            this.ErrorCorreosCrear.SetError(this.EmpresaCli, "");
+            this.ErrorCorreosCrear.SetError(this.CorreoEletronicoCli, "");
+            this.ErrorCorreosCrear.SetError(this.RazonSocial, "");
+            this.ErrorCorreosCrear.SetError(this.Contraseña, "");
+            this.ErrorCorreosCrear.SetError(this.Direcion, "");
+        }
         private bool ValidarCorreoEmpresa()
         {
             bool ok = true;
@@ -166,6 +224,54 @@ namespace PELOSCALVO
             this.Puerto.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[6].FormattedValue.ToString();
             this.Timeof.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[7].FormattedValue.ToString();
         }
+        private void ExtraerDatagridCliente()
+        {
+            int II = this.DataGridCorreoCliente.CurrentCell.RowIndex;
+            this.Id_CorreoCli.Text = this.DataGridCorreoCliente.Rows[II].Cells[0].FormattedValue.ToString();
+            this.RazonSocial.Text = this.DataGridCorreoCliente.Rows[II].Cells[1].FormattedValue.ToString();
+            this.EmpresaCli.Text = this.DataGridCorreoCliente.Rows[II].Cells[2].FormattedValue.ToString();
+            this.Direcion.Text = this.DataGridCorreoCliente.Rows[II].Cells[4].FormattedValue.ToString();
+            this.CorreoEletronicoCli.Text = this.DataGridCorreoCliente.Rows[II].Cells[5].FormattedValue.ToString();
+        }
+        private void LlenarDatagridCliente()
+        {
+            try
+            {
+                this.CorreosClientebindingSource.AddNew();
+                int II = this.DataGridCorreoCliente.CurrentCell.RowIndex;
+                if (!string.IsNullOrEmpty(this.Id_CorreoCli.Text))
+                {
+                    this.DataGridCorreoCliente.Rows[II].Cells[0].Value = this.Id_CorreoCli.Text;
+                }
+                if (!string.IsNullOrEmpty(this.RazonSocial.Text))
+                {
+                    this.DataGridCorreoCliente.Rows[II].Cells[1].Value = this.RazonSocial.Text;
+                }
+                if (!string.IsNullOrEmpty(this.EmpresaCli.Text))
+                {
+                    this.DataGridCorreoCliente.Rows[II].Cells[2].Value = this.EmpresaCli.Text;
+                }
+                if (!string.IsNullOrEmpty(this.Direcion.Text))
+                {
+                    this.DataGridCorreoCliente.Rows[II].Cells[3].Value = this.Direcion.Text;
+                }
+                if (!string.IsNullOrEmpty(this.CorreoEletronicoCli.Text))
+                {
+                    this.DataGridCorreoCliente.Rows[II].Cells[4].Value = this.CorreoEletronicoCli.Text.ToString();
+                }
+    
+
+                FormMenuPrincipal.menu2principal.DtCorreosCliente.Rows.Add(Id_CorreoCli.Text, RazonSocial.Text, EmpresaCli.Text, Direcion.Text,
+                 CorreoEletronicoCli.Text);
+                // DatagridCorreosEmpresa.Rows.Add(Id_Correo_E.Text, NombreEmpresa.Text, CorreoEletronico.Text, Usuario.Text,
+                //  Contraseña.Text,smtp.Text,Puerto.Text,Timeof.Text);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
         private void LlenarDatagrid()
         {
             try
@@ -216,17 +322,17 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        private void GuardarCorreo_EmpresaDb()
+        private void GuardarCorreo_ClienteDb()
         {
             string consulta = "";
-            if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
+            if (this.PanelBotonesCorreoCli.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtCorreos] VALUES([@Id],[@NombreEmpresa],[@CorreoEletronico],[@Usuario],[@Contraseña],[@smtp],[@Puerto],[@Timeof])";
+                consulta = "  INSERT INTO [DtCorreosCliente] VALUES([@Id],[@NombreEmpresa],[@CorreoEletronico],[@Usuario],[@Contraseña],[@smtp],[@Puerto],[@Timeof])";
 
             }
             else
             {
-                consulta = "UPDATE [DtCorreos] SET [Id] = @Id,[NombreEmpresa] = @NombreEmpresa,[CorreoEletronico] = @CorreoEletronico ," +
+                consulta = "UPDATE [DtCorreosCliente] SET [Id] = @Id,[NombreEmpresa] = @NombreEmpresa,[CorreoEletronico] = @CorreoEletronico ," +
                     "[Usuario] = @Usuario,[Contraseña] = @Contraseña,[smtp] = @smtp,[Puerto] = @Puerto,[Timeof] = @Timeof  WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -239,13 +345,103 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CorreoEletronico", string.IsNullOrEmpty(this.CorreoEletronico.Text) ? (object)DBNull.Value : this.CorreoEletronico.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Usuario", string.IsNullOrEmpty(this.Usuario.Text) ? (object)DBNull.Value : this.Usuario.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Contraseña", string.IsNullOrEmpty(this.Contraseña.Text) ? (object)DBNull.Value : this.Contraseña.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@smtp", string.IsNullOrEmpty(this.smtp.Text) ? (object)DBNull.Value : this.smtp.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Puerto", string.IsNullOrEmpty(this.Puerto.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Puerto.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Timeof", string.IsNullOrEmpty(this.Timeof.Text) ? (object)DBNull.Value : this.Timeof.Text);
+                    NuevaConexion.ComandoDb.ExecuteNonQuery();
+                    NuevaConexion.ComandoDb.Parameters.Clear();
+                    LlenarDatagridCliente();
+                    this.DataGridCorreoCliente.EndEdit();
+                    this.CorreosClientebindingSource.EndEdit();
+                    Validate();
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetosCorreo_E();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "CORREOS");
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionDB)
+                {
+
+                }
+            }
+        }
+        private void GuardarCorreo_ClienteSql()
+        {
+            string consulta = "";
+            if (this.PanelBotonesCorreoCli.Tag.ToString() == "Nuevo")
+            {
+                consulta = "  INSERT INTO [DtCorreosCliente] VALUES([@Id],[@RazonSocial],[@EmpresaNombre],[@Direcion],[@CorreoEletronico_cli])";
+
+            }
+            else
+            {
+                consulta = "UPDATE [DtCorreosCliente] SET [Id] = @Id,[RazonSocial] = @RazonSocial,[EmpresaNombre] = @EmpresaNombre ," +
+                    "[Direcion] = @Direcion,[CorreoEletronico_cli] = @CorreoEletronico_cli  WHERE Id = @Id";
+            }
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+            try
+            {
+                if (NuevaConexion.SiConexionSql)
+                {
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_CorreoCli.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_CorreoCli.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@RazonSocial", string.IsNullOrEmpty(this.RazonSocial.Text) ? (object)DBNull.Value : this.RazonSocial.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaNombre", string.IsNullOrEmpty(this.EmpresaCli.Text) ? (object)DBNull.Value : this.EmpresaCli.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Direcion", string.IsNullOrEmpty(this.Direcion.Text) ? (object)DBNull.Value : this.Direcion.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@CorreoEletronico_cli", string.IsNullOrEmpty(this.CorreoEletronicoCli.Text) ? (object)DBNull.Value : this.CorreoEletronicoCli.Text);
+                    NuevaConexion.ComandoSql.ExecuteNonQuery();
+                    NuevaConexion.ComandoSql.Parameters.Clear();
+                    LlenarDatagridCliente();
+                    this.DataGridCorreoCliente.EndEdit();
+                    this.CorreosClientebindingSource.EndEdit();
+                    Validate();
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetosCorreo_E();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "CORREOS");
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionSql)
+                {
+
+                }
+            }
+        }
+        private void GuardarCorreo_EmpresaDb()
+        {
+            string consulta = "";
+            if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
+            {
+                consulta = "  INSERT INTO [DtCorreosCliente] VALUES([@Id],[@RazonSocial],[@EmpresaNombre],[@Direcion],[@CorreoEletronico_cli])";
+
+            }
+            else
+            {
+                consulta = "UPDATE [DtCorreosCliente] SET [Id] = @Id,[RazonSocial] = @RazonSocial,[EmpresaNombre] = @EmpresaNombre ," +
+                    "[Direcion] = @Direcion,[CorreoEletronico_cli] = @CorreoEletronico_cli  WHERE Id = @Id";
+            }
+            ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+            try
+            {
+                if (NuevaConexion.SiConexionDb)
+                {
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_CorreoCli.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_CorreoCli.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@RazonSocial", string.IsNullOrEmpty(this.RazonSocial.Text) ? (object)DBNull.Value : this.RazonSocial.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaNombre", string.IsNullOrEmpty(this.EmpresaCli.Text) ? (object)DBNull.Value : this.EmpresaCli.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Direcion", string.IsNullOrEmpty(this.Direcion.Text) ? (object)DBNull.Value : this.Direcion.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@CorreoEletronico_cli", string.IsNullOrEmpty(this.CorreoEletronicoCli.Text) ? (object)DBNull.Value : this.CorreoEletronicoCli.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     LlenarDatagrid();
-                    this.DataGridCorreoCliente.EndEdit();
+                    this.DatagridCorreosEmpresa.EndEdit();
+                    this.CorreosbindingSource.EndEdit();
                     Validate();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosCorreo_E();
@@ -292,7 +488,8 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     LlenarDatagrid();
-                    this.DataGridCorreoCliente.EndEdit();
+                    this.DatagridCorreosEmpresa.EndEdit();
+                    this.CorreosbindingSource.EndEdit();
                     Validate();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosCorreo_E();
@@ -315,7 +512,7 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtCorreos]   WHERE Id= '@Id'";
+                string consulta = "Delete from  [DtCorreosCliente]   WHERE Id= @Id";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
@@ -356,7 +553,83 @@ namespace PELOSCALVO
         private void EliminarCorreo_CliSql()
         {
 
-            string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id";
+            string consulta = "Delete from  [DtCorreosCliente]   WHERE Id= @Id";
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+            try
+            {
+                {
+                    if (NuevaConexion.SiConexionSql)
+                    {
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Correo_E.Text));
+                        NuevaConexion.ComandoSql.ExecuteNonQuery();
+                        this.DataGridCorreoCliente.Rows.RemoveAt(this.DataGridCorreoCliente.CurrentCell.RowIndex);
+                        this.DataGridCorreoCliente.EndEdit();
+                        Validate();
+                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                if (NuevaConexion.CerrarConexionSql)
+                {
+
+                }
+            }
+
+        }
+        private void EliminarCorreo_EmpresaBb()
+        {
+            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+            {
+                string consulta = "Delete from  [DtCorreos]   WHERE Id= @Id";
+                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                try
+                {
+                    {
+                        if (NuevaConexion.SiConexionDb)
+                        {
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Correo_E.Text));
+                            NuevaConexion.ComandoDb.ExecuteNonQuery();
+                            this.DatagridCorreosEmpresa.Rows.RemoveAt(this.DatagridCorreosEmpresa.CurrentCell.RowIndex);
+                            this.DatagridCorreosEmpresa.EndEdit();
+                            Validate();
+                            MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                finally
+                {
+                    if (NuevaConexion.CerrarConexionDB)
+                    {
+
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("El Archivo No Se Encuentra", "ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+
+            }
+        }
+        private void EliminarCorreo_EnpresaSql()
+        {
+
+            string consulta = "Delete from  [DtCorreos]   WHERE Id= @Id";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
@@ -418,7 +691,7 @@ namespace PELOSCALVO
 
         private void DatagriCorreosEmpresa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (this.CorreosbindingSource.Count > 0)
+            if (e.RowIndex >= 0)
             {
                 ExtraerDatagrid();
             }
@@ -430,28 +703,8 @@ namespace PELOSCALVO
             {
                 try
                 {
-                    string Correo = "";
-                    if (e.ColumnIndex == 0)
-                    {
-                        if (e.RowIndex < this.DataGridCorreoCliente.RowCount - 1)
-                        {
-                            if (this.DataGridCorreoCliente.Rows[e.RowIndex].Cells[1].Value.ToString() != string.Empty)
-                            {
-                                Correo = this.DataGridCorreoCliente.Rows[e.RowIndex].Cells[1].Value.ToString();
-                            }
-                        }
-                        if (MessageBox.Show("Desea Eliminar Este Correo ?? " + "\n" + "\n" + Correo, "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        {
-                            if (File.Exists(this.Rutacorreos))
-                            {
-                                this.DataGridCorreoCliente.Rows.Remove(this.DataGridCorreoCliente.CurrentRow);
-                                FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);
-                                this.DataGridCorreoCliente.Refresh();
-                            }
-                            MessageBox.Show(Correo + "\n" + "\n" + "Eliminado Con Exito ", "ELIMINAR ", MessageBoxButtons.OK);
-                        }
-                    }
 
+                    ExtraerDatagridCliente();
                 }
                 catch (Exception ex)
                 {
@@ -488,13 +741,13 @@ namespace PELOSCALVO
 
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-                        EliminarCorreo_CliSql();
+                        EliminarCorreo_EnpresaSql();
                     }
                     else
                     {
                         if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
-                            EliminarCorreo_CliBb();
+                            EliminarCorreo_EmpresaBb();
 
                         }
                         else
@@ -511,15 +764,11 @@ namespace PELOSCALVO
             this.PanelBotones_CorreoEmp.Tag = "Nuevo";
             try
             {
-                int numeroFILA = this.DatagridCorreosEmpresa.Rows.Count;
-                // this.DtProvinciasBindinsource.AddNew();
+                int numeroFILA = CorreosbindingSource.Count;
 
-                // CorreoBindinSource.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
-                // CorreoBindinSource.AddNew();
-                if (this.DatagridCorreosEmpresa.Rows.Count == 0)
+                if (CorreosbindingSource.Count >= 0)
                 {
                     this.Id_Correo_E.Text = "1";
-                    //  this.DataGridCorreoCliente.Rows[0].Cells[0].Value = "1";
                 }
                 if (numeroFILA > 0)
                 {
@@ -527,13 +776,11 @@ namespace PELOSCALVO
                     {
                         Random r = new Random();
                         int VALORid = r.Next(5000, 100000000);
-                        // this.DataGridCorreoCliente.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.Id_Correo_E.Text = VALORid.ToString();
                     }
                     else
                     {
                         int VALORid = Convert.ToInt32(this.DatagridCorreosEmpresa.Rows[numeroFILA].Cells[0].Value) + 1;
-                        // this.DataGridCorreoCliente.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.Id_Correo_E.Text = VALORid.ToString();
                     }
 
@@ -555,7 +802,7 @@ namespace PELOSCALVO
 
         private void BtnModificarCorreoEmpr_Click(object sender, EventArgs e)
         {
-            if (this.DatagridCorreosEmpresa.RowCount > 0)
+            if (CorreosbindingSource.Count > 0)
             {
                 this.PanelBotones_CorreoEmp.Tag = "Modificar";
                 ModificarOjetosCorreo_E();
@@ -582,11 +829,11 @@ namespace PELOSCALVO
                 {
                     try
                     {
-                        foreach (DataGridViewRow fila in this.DataGridCorreoCliente.Rows)
+                        foreach (DataGridViewRow fila in this.DatagridCorreosEmpresa.Rows)
                         {
                             if (fila.Cells[1].ToString() == this.CorreoEletronico.Text)
                             {
-                                if (this.DataGridCorreoCliente.CurrentCell.RowIndex == fila.Index)
+                                if (this.DatagridCorreosEmpresa.CurrentCell.RowIndex == fila.Index)
                                 {
                                     break;
                                 }
@@ -629,7 +876,7 @@ namespace PELOSCALVO
         private void BtnCancelarCorreo_E_Click(object sender, EventArgs e)
         {
             BorrarErrorCorreoEmpresa();
-            if (this.DatagridCorreosEmpresa.RowCount > 0)
+            if (CorreosbindingSource.Count > 0)
             {
                 try
                 {
@@ -715,6 +962,194 @@ namespace PELOSCALVO
             else
             {
                 e.Handled = true;
+            }
+        }
+
+        private void DatagridCorreosEmpresa_SelectionChanged(object sender, EventArgs e)
+        {
+            if (this.CorreosbindingSource.Count > 0)
+            {
+                ExtraerDatagrid();
+            }
+        }
+
+        private void BtnNuevoCorreoCli_Click(object sender, EventArgs e)
+        {
+            this.PanelBotones_CorreoEmp.Tag = "Nuevo";
+            try
+            {
+                int numeroFILA = CorreosClientebindingSource.Count;
+
+                if (CorreosClientebindingSource.Count >= 0)
+                {
+                    this.Id_CorreoCli.Text = "1";
+                }
+                if (numeroFILA > 0)
+                {
+                    if (this.DataGridCorreoCliente.Rows[numeroFILA].Cells[0].Value.ToString() == string.Empty)
+                    {
+                        Random r = new Random();
+                        int VALORid = r.Next(5000, 100000000);
+                        this.Id_CorreoCli.Text = VALORid.ToString();
+                    }
+                    else
+                    {
+                        int VALORid = Convert.ToInt32(this.DataGridCorreoCliente.Rows[numeroFILA].Cells[0].Value) + 1;
+                        this.Id_CorreoCli.Text = VALORid.ToString();
+                    }
+
+                }
+                this.CorreoEletronico.Text = "Ejemplo@Gmail.com";
+                this.CorreoEletronico.Focus();
+                this.CorreoEletronico.Select(1, 1);
+                ModificarOjetosCorreo_Cli();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnModificarCorreoCli_Click(object sender, EventArgs e)
+        {
+            if (CorreosbindingSource.Count > 0)
+            {
+                this.PanelBotonesCorreoCli.Tag = "Modificar";
+                ModificarOjetosCorreo_Cli();
+            }
+        }
+
+        private void BtnCancelarCli_Click(object sender, EventArgs e)
+        {
+            BorrarErrorCorreoEmpresa();
+            if (CorreosClientebindingSource.Count > 0)
+            {
+                try
+                {
+                    if (this.PanelBotonesCorreoCli.Tag.ToString() == "Nuevo")
+                    {
+
+                        this.DataGridCorreoCliente.Rows.RemoveAt(this.DataGridCorreoCliente.CurrentCell.RowIndex);
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    //  throw;
+                }
+
+            }
+            RestaurarOjetosCorreo_Cli();
+        }
+
+        private void BtnGuardarCorreoCli_Click_1(object sender, EventArgs e)
+        {
+            if (this.DataGridCorreoCliente.RowCount < 0)
+            {
+                MessageBox.Show("No Tiene Nada Que Guardar", "GUARDAR");
+                return;
+            }
+            if (this.Id_CorreoCli.Text == string.Empty)
+            {
+                MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaMultidatos, 25))
+
+                BorrarErrorCorreoEmpresa();
+            if (ValidarCorreoCli())
+            {
+                {
+                    try
+                    {
+                        foreach (DataGridViewRow fila in this.DataGridCorreoCliente.Rows)
+                        {
+                            if (fila.Cells[1].ToString() == this.CorreoEletronicoCli.Text)
+                            {
+                                if (this.DataGridCorreoCliente.CurrentCell.RowIndex == fila.Index)
+                                {
+                                    break;
+                                }
+                                MessageBox.Show(this.CorreoEletronicoCli.Text.ToString(), "YA EXISTE ESTA CORREO ELETRONICO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // this.CorreoEletronico.Focus();
+
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (MessageBox.Show(" ¿Aceptar Guardar Correo ? ", " GUARDAR CORREO ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            GuardarCorreo_ClienteSql();
+                        }
+                        else
+                        {
+
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            {
+                                GuardarCorreo_ClienteDb();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.PanelBotonesCorreoCli.Enabled = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnEliminarCorreoCli_Click(object sender, EventArgs e)
+        {
+            if (this.DatagridCorreosEmpresa.RowCount >= 0)
+            {
+                if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+
+                    if (ClsConexionSql.SibaseDatosSql)
+                    {
+                        EliminarCorreo_CliSql();
+                    }
+                    else
+                    {
+                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                        {
+                            EliminarCorreo_CliBb();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show(" No Se Pudo Eliminar", "FALTA ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void DataGridCorreoCliente_SelectionChanged(object sender, EventArgs e)
+        {
+            if (CorreosClientebindingSource.Count > 0)
+            {
+                try
+                {
+
+                    ExtraerDatagridCliente();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
         }
     }
