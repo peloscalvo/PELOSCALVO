@@ -320,17 +320,13 @@ namespace PELOSCALVO
             if (dtConfiDtTarifaTipoBindingSource.Count > 0)
             {
                 this.panelBotonesTipoTarifa.Tag = "Actualizar";
-                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 0)
+                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex <= 0)
                 {
                     MessageBox.Show("Este Descuento No Se Puede Modificar", "Descuento");
                     return;
                 }
-                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 1)
-                {
-                    MessageBox.Show("Este Descuento No Se Puede Modificar", "Descuento");
-                    return;
-                }
-                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 8)
+
+                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex >= 7)
                 {
                     MessageBox.Show("Este Descuento No Se Puede Modificar", "Descuento");
                     return;

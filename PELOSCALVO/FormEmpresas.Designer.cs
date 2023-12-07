@@ -47,11 +47,11 @@ namespace PELOSCALVO
             System.Windows.Forms.Label empresaConfiLabel2;
             System.Windows.Forms.Label empresaConfiLabel;
             System.Windows.Forms.Label idEmpresaLabel;
+            System.Windows.Forms.Label Label55;
+            System.Windows.Forms.Label Label44;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Label Label55;
-            System.Windows.Forms.Label Label44;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmpresas));
             this.EmpresaReguistro = new System.Windows.Forms.Label();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -280,6 +280,24 @@ namespace PELOSCALVO
             idEmpresaLabel.Size = new System.Drawing.Size(19, 13);
             idEmpresaLabel.TabIndex = 78;
             idEmpresaLabel.Text = "Id:";
+            // 
+            // Label55
+            // 
+            Label55.AutoSize = true;
+            Label55.Location = new System.Drawing.Point(653, 249);
+            Label55.Name = "Label55";
+            Label55.Size = new System.Drawing.Size(41, 13);
+            Label55.TabIndex = 120;
+            Label55.Text = "Paises:";
+            // 
+            // Label44
+            // 
+            Label44.AutoSize = true;
+            Label44.Location = new System.Drawing.Point(308, 246);
+            Label44.Name = "Label44";
+            Label44.Size = new System.Drawing.Size(59, 13);
+            Label44.TabIndex = 121;
+            Label44.Text = "Provincias:";
             // 
             // EmpresaReguistro
             // 
@@ -767,15 +785,6 @@ namespace PELOSCALVO
             this.BtnSalirEmpresa.UseVisualStyleBackColor = false;
             this.BtnSalirEmpresa.Click += new System.EventHandler(this.BtnSalirEmpresa_Click);
             // 
-            // Label55
-            // 
-            Label55.AutoSize = true;
-            Label55.Location = new System.Drawing.Point(653, 249);
-            Label55.Name = "Label55";
-            Label55.Size = new System.Drawing.Size(41, 13);
-            Label55.TabIndex = 120;
-            Label55.Text = "Paises:";
-            // 
             // Paistxt
             // 
             this.Paistxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "PaisesPaises", true));
@@ -797,15 +806,6 @@ namespace PELOSCALVO
             // 
             this.dtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
             this.dtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
-            // 
-            // Label44
-            // 
-            Label44.AutoSize = true;
-            Label44.Location = new System.Drawing.Point(308, 246);
-            Label44.Name = "Label44";
-            Label44.Size = new System.Drawing.Size(59, 13);
-            Label44.TabIndex = 121;
-            Label44.Text = "Provincias:";
             // 
             // ProvinciaTxt
             // 

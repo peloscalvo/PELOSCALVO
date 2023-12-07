@@ -1078,6 +1078,7 @@ namespace PELOSCALVO
                     ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     // FormMenuPrincipal.menu2principal.dsCorreos.Clear();
                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
+                    FormMenuPrincipal.menu2principal.dsMulti2.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                     FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
 
@@ -1203,6 +1204,7 @@ namespace PELOSCALVO
                         FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                         FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
+                        FormMenuPrincipal.menu2principal.dsMulti2.Clear();
                         ActualizarPrincipal_Sql();//EMPRESAS Y EJERCICIOS
                         ActualizarArticulosSql();
                         ActualizarClientes_Sql_B();

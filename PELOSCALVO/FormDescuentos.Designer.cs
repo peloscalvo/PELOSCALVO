@@ -241,7 +241,6 @@ namespace PELOSCALVO
             // 
             // empresaConfiComboBox1
             // 
-            this.empresaConfiComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
             this.empresaConfiComboBox1.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.empresaConfiComboBox1.DisplayMember = "EmpresaConfi";
             this.empresaConfiComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;

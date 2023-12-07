@@ -249,11 +249,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (Id_proveedor.Text == string.Empty & Enlace_Proveedor.Text == string.Empty)
-            {
-                MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+
             this.PanelBotones_pro.Tag = "Nuevo";
             try
             {
