@@ -1101,21 +1101,19 @@ namespace PELOSCALVO
                 if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-                    this.dtConfiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-                    this.dtTarifaTipoBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-
+                    this.dtConfiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi;
+                    this.dtTarifaTipoBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo;
+                    this.dtAlmacenesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes;
                 }
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
-                    this.dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
-                    this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
-                    this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
-                    this.dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
+                    this.dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtObras;
+                    this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
+                    this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
                 }
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
-                    this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
+                    this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti;
                 }
             }
             catch (Exception ex)
@@ -1266,9 +1264,12 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            this.dsCONFIGURACCION.DtDetallesFactura.Clear();
-                            this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
-                            this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+                            dtDetallesFacturaBindingSource.Clear();
+                            dtDetallesFactura2BindingSource.Clear();
+                            dtNuevaFacturaBindingSource.Clear();
+                            // this.dsCONFIGURACCION.DtDetallesFactura.Clear();
+                            // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
+                            // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
                             OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
                             AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);

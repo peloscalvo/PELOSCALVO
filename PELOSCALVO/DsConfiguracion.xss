@@ -40,6 +40,22 @@
         </Point>
       </RoutePoints>
     </Connector>
+    <Connector ID="DesignRelation:DtConfi_DtTarifaTipo" ZOrder="1" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>206</X>
+          <Y>264</Y>
+        </Point>
+        <Point>
+          <X>206</X>
+          <Y>476</Y>
+        </Point>
+        <Point>
+          <X>239</X>
+          <Y>476</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
     <Connector ID="DesignRelation:DtConfiguracionPrincipal_DtProveedores" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -93,22 +109,6 @@
         <Point>
           <X>645</X>
           <Y>232</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:DtConfi_DtTarifaTipo" ZOrder="1" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>206</X>
-          <Y>264</Y>
-        </Point>
-        <Point>
-          <X>206</X>
-          <Y>476</Y>
-        </Point>
-        <Point>
-          <X>239</X>
-          <Y>476</Y>
         </Point>
       </RoutePoints>
     </Connector>

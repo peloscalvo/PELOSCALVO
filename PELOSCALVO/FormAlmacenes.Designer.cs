@@ -35,8 +35,9 @@ namespace PELOSCALVO
             System.Windows.Forms.Label almacenesLabel;
             System.Windows.Forms.Label enlace_AlmacenesLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlmacenes));
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
@@ -88,7 +89,7 @@ namespace PELOSCALVO
             // id_almacenesLabel
             // 
             id_almacenesLabel.AutoSize = true;
-            id_almacenesLabel.Location = new System.Drawing.Point(31, 20);
+            id_almacenesLabel.Location = new System.Drawing.Point(31, 14);
             id_almacenesLabel.Name = "id_almacenesLabel";
             id_almacenesLabel.Size = new System.Drawing.Size(19, 13);
             id_almacenesLabel.TabIndex = 54;
@@ -160,7 +161,7 @@ namespace PELOSCALVO
             // Enlace_almacen
             // 
             this.Enlace_almacen.AutoSize = true;
-            this.Enlace_almacen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Enlace_Almacenes", true));
+            this.Enlace_almacen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
             this.Enlace_almacen.Location = new System.Drawing.Point(71, 72);
             this.Enlace_almacen.Name = "Enlace_almacen";
             this.Enlace_almacen.Size = new System.Drawing.Size(0, 13);
@@ -169,12 +170,12 @@ namespace PELOSCALVO
             // id_almacenes
             // 
             this.id_almacenes.AutoSize = true;
-            this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id_almacenes", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "N0"));
+            this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.id_almacenes.Location = new System.Drawing.Point(74, 14);
             this.id_almacenes.Name = "id_almacenes";
             this.id_almacenes.Size = new System.Drawing.Size(13, 13);
             this.id_almacenes.TabIndex = 58;
-            this.id_almacenes.Text = "0";
+            this.id_almacenes.Text = "1";
             this.id_almacenes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BotonesAlmacenes
@@ -316,14 +317,14 @@ namespace PELOSCALVO
             this.almacenesDataGridViewTextBoxColumn,
             this.Enlace_Almacenes});
             this.dataGridAlmacenes.DataSource = this.dtAlmacenesBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridAlmacenes.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridAlmacenes.Enabled = false;
             this.dataGridAlmacenes.Location = new System.Drawing.Point(0, 0);
@@ -337,7 +338,10 @@ namespace PELOSCALVO
             // 
             // idalmacenesDataGridViewTextBoxColumn
             // 
-            this.idalmacenesDataGridViewTextBoxColumn.DataPropertyName = "Id_almacenes";
+            this.idalmacenesDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.idalmacenesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.idalmacenesDataGridViewTextBoxColumn.FillWeight = 90.06917F;
             this.idalmacenesDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idalmacenesDataGridViewTextBoxColumn.MaxInputLength = 0;
@@ -347,9 +351,9 @@ namespace PELOSCALVO
             // almacenesDataGridViewTextBoxColumn
             // 
             this.almacenesDataGridViewTextBoxColumn.DataPropertyName = "Almacenes";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.almacenesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.almacenesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.almacenesDataGridViewTextBoxColumn.FillWeight = 306.934F;
             this.almacenesDataGridViewTextBoxColumn.HeaderText = "Almacenes";
             this.almacenesDataGridViewTextBoxColumn.MaxInputLength = 80;

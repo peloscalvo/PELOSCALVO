@@ -72,7 +72,7 @@ namespace PELOSCALVO
             if (this.ObraTxt.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorProve.SetError(this.ObraTxt, "_ingresar Nonbre Proveedor valido (( minimo 4 Caracteres))");
+                this.ErrorProve.SetError(this.ObraTxt, "_ingresar Nonbre Obra valido (( minimo 4 Caracteres))");
             }
 
 

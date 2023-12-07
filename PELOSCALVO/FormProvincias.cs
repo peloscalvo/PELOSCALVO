@@ -68,10 +68,10 @@ namespace PELOSCALVO
         {
             bool ok = true;
 
-            if (this.ProvinciaText.Text.Length < 4)
+            if (this.ProvinciaText.Text.Length < 5)
             {
                 ok = false;
-                this.ErrorProve.SetError(this.ProvinciaText, "_ingresar Nonbre Proveedor valido (( minimo 4 Caracteres))");
+                this.ErrorProve.SetError(this.ProvinciaText, "_ingresar Nonbre Provincia valido (( minimo 3 Caracteres))");
             }
 
 

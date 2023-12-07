@@ -69,6 +69,7 @@ namespace PELOSCALVO
             this.BtnGuardarCorreoCli = new System.Windows.Forms.Button();
             this.DataGridCorreoCliente = new System.Windows.Forms.DataGridView();
             this.ErrorCorreosCrear = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkPassCorreo = new System.Windows.Forms.CheckBox();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -166,6 +167,7 @@ namespace PELOSCALVO
             this.DatagridCorreosEmpresa.AllowUserToDeleteRows = false;
             this.DatagridCorreosEmpresa.AllowUserToOrderColumns = true;
             this.DatagridCorreosEmpresa.AllowUserToResizeRows = false;
+            this.DatagridCorreosEmpresa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DatagridCorreosEmpresa.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(70)))));
             this.DatagridCorreosEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -265,6 +267,7 @@ namespace PELOSCALVO
             // 
             // PageEmpresa
             // 
+            this.PageEmpresa.Controls.Add(this.checkPassCorreo);
             this.PageEmpresa.Controls.Add(label6);
             this.PageEmpresa.Controls.Add(this.Timeof);
             this.PageEmpresa.Controls.Add(label5);
@@ -301,6 +304,8 @@ namespace PELOSCALVO
             this.Timeof.ReadOnly = true;
             this.Timeof.Size = new System.Drawing.Size(102, 20);
             this.Timeof.TabIndex = 89;
+            this.Timeof.Text = "11";
+            this.Timeof.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Timeof_KeyPress);
             // 
             // smtp
             // 
@@ -319,6 +324,7 @@ namespace PELOSCALVO
             this.Puerto.ReadOnly = true;
             this.Puerto.Size = new System.Drawing.Size(102, 20);
             this.Puerto.TabIndex = 85;
+            this.Puerto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Puerto_KeyPress);
             // 
             // Contraseña
             // 
@@ -355,7 +361,7 @@ namespace PELOSCALVO
             this.Id_Correo_E.Name = "Id_Correo_E";
             this.Id_Correo_E.Size = new System.Drawing.Size(13, 13);
             this.Id_Correo_E.TabIndex = 58;
-            this.Id_Correo_E.Text = "0";
+            this.Id_Correo_E.Text = "1";
             this.Id_Correo_E.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BtnCancelarCorreo_E
@@ -575,6 +581,17 @@ namespace PELOSCALVO
             this.ErrorCorreosCrear.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.ErrorCorreosCrear.ContainerControl = this;
             // 
+            // checkPassCorreo
+            // 
+            this.checkPassCorreo.AutoSize = true;
+            this.checkPassCorreo.Location = new System.Drawing.Point(840, 333);
+            this.checkPassCorreo.Name = "checkPassCorreo";
+            this.checkPassCorreo.Size = new System.Drawing.Size(61, 17);
+            this.checkPassCorreo.TabIndex = 90;
+            this.checkPassCorreo.Text = "Mostrar";
+            this.checkPassCorreo.UseVisualStyleBackColor = true;
+            this.checkPassCorreo.CheckedChanged += new System.EventHandler(this.checkPassCorreo_CheckedChanged);
+            // 
             // FormCrearCorreos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -629,5 +646,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox Puerto;
         private System.Windows.Forms.TextBox Timeof;
         private System.Windows.Forms.ErrorProvider ErrorCorreosCrear;
+        private System.Windows.Forms.CheckBox checkPassCorreo;
     }
 }

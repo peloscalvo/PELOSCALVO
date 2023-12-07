@@ -197,6 +197,7 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -269,6 +270,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).BeginInit();
             this.panelTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // empresaENLACELabel
@@ -970,14 +972,14 @@ namespace PELOSCALVO
             // nonbreAlmacenComboBox
             // 
             this.nonbreAlmacenComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NonbreAlmacen", true));
-            this.nonbreAlmacenComboBox.DataSource = this.dtConfiguracionPrincipalDtAlmacenesBindingSource;
+            this.nonbreAlmacenComboBox.DataSource = this.dtAlmacenesBindingSource;
             this.nonbreAlmacenComboBox.DisplayMember = "Almacenes";
             this.nonbreAlmacenComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nonbreAlmacenComboBox.Enabled = false;
             this.nonbreAlmacenComboBox.FormattingEnabled = true;
             this.nonbreAlmacenComboBox.Location = new System.Drawing.Point(777, 63);
             this.nonbreAlmacenComboBox.Name = "nonbreAlmacenComboBox";
-            this.nonbreAlmacenComboBox.Size = new System.Drawing.Size(206, 21);
+            this.nonbreAlmacenComboBox.Size = new System.Drawing.Size(298, 21);
             this.nonbreAlmacenComboBox.TabIndex = 21;
             // 
             // dtConfiguracionPrincipalDtAlmacenesBindingSource
@@ -2015,6 +2017,11 @@ namespace PELOSCALVO
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
             // 
+            // dtAlmacenesBindingSource
+            // 
+            this.dtAlmacenesBindingSource.DataMember = "DtConfiguracionPrincipal_DtAlmacenes";
+            this.dtAlmacenesBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2087,6 +2094,7 @@ namespace PELOSCALVO
             this.panelTotales.ResumeLayout(false);
             this.panelTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2206,5 +2214,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCobro;
         private System.Windows.Forms.DataGridViewTextBoxColumn CobradaFactura;
+        private System.Windows.Forms.BindingSource dtAlmacenesBindingSource;
     }
 }

@@ -81,7 +81,7 @@ namespace PELOSCALVO
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(7, 72);
+            label9.Location = new System.Drawing.Point(22, 72);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(43, 13);
             label9.TabIndex = 56;
@@ -161,8 +161,8 @@ namespace PELOSCALVO
             // Enlace_Proveedor
             // 
             this.Enlace_Proveedor.AutoSize = true;
-            this.Enlace_Proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtProveedoresBindingSource, "Enlace_Proveedores", true));
-            this.Enlace_Proveedor.Location = new System.Drawing.Point(57, 72);
+            this.Enlace_Proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
+            this.Enlace_Proveedor.Location = new System.Drawing.Point(71, 72);
             this.Enlace_Proveedor.Name = "Enlace_Proveedor";
             this.Enlace_Proveedor.Size = new System.Drawing.Size(0, 13);
             this.Enlace_Proveedor.TabIndex = 59;

@@ -49,10 +49,10 @@ namespace PELOSCALVO
         {
             bool ok = true;
 
-            if (this.NombreProveedor.Text.Length < 4)
+            if (this.NombreProveedor.Text.Length < 2)
             {
                 ok = false;
-                this.ErrorProve.SetError(this.NombreProveedor, "_ingresar Nonbre Proveedor valido (( minimo 4 Caracteres))");
+                this.ErrorProve.SetError(this.NombreProveedor, "_ingresar Nonbre Proveedor valido (( minimo 2 Caracteres))");
             }
 
 

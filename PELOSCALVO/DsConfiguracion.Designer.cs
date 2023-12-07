@@ -1495,7 +1495,7 @@ namespace PELOSCALVO {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DtAlmacenesDataTable : global::System.Data.TypedTableBase<DtAlmacenesRow> {
             
-            private global::System.Data.DataColumn columnId_almacenes;
+            private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnAlmacenes;
             
@@ -1536,9 +1536,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Id_almacenesColumn {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnId_almacenes;
+                    return this.columnId;
                 }
             }
             
@@ -1611,6 +1611,13 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtAlmacenesRow FindById(int Id) {
+                return ((DtAlmacenesRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 DtAlmacenesDataTable cln = ((DtAlmacenesDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1626,7 +1633,7 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnId_almacenes = base.Columns["Id_almacenes"];
+                this.columnId = base.Columns["Id"];
                 this.columnAlmacenes = base.Columns["Almacenes"];
                 this.columnEnlace_Almacenes = base.Columns["Enlace_Almacenes"];
             }
@@ -1634,14 +1641,18 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnId_almacenes = new global::System.Data.DataColumn("Id_almacenes", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_almacenes);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columnAlmacenes = new global::System.Data.DataColumn("Almacenes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAlmacenes);
                 this.columnEnlace_Almacenes = new global::System.Data.DataColumn("Enlace_Almacenes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlace_Almacenes);
-                this.columnId_almacenes.AutoIncrement = true;
-                this.columnId_almacenes.AutoIncrementSeed = 1;
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = 1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1891,6 +1902,13 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtTarifaTipoRow FindById(int Id) {
+                return ((DtTarifaTipoRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 DtTarifaTipoDataTable cln = ((DtTarifaTipoDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1920,6 +1938,10 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnTarifaTipo);
                 this.columnEnlaceTarifa = new global::System.Data.DataColumn("EnlaceTarifa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceTarifa);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4556,17 +4578,12 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id_almacenes {
+            public int Id {
                 get {
-                    try {
-                        return ((int)(this[this.tableDtAlmacenes.Id_almacenesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id_almacenes\' de la tabla \'DtAlmacenes\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableDtAlmacenes.IdColumn]));
                 }
                 set {
-                    this[this.tableDtAlmacenes.Id_almacenesColumn] = value;
+                    this[this.tableDtAlmacenes.IdColumn] = value;
                 }
             }
             
@@ -4615,18 +4632,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsId_almacenesNull() {
-                return this.IsNull(this.tableDtAlmacenes.Id_almacenesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetId_almacenesNull() {
-                this[this.tableDtAlmacenes.Id_almacenesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsAlmacenesNull() {
                 return this.IsNull(this.tableDtAlmacenes.AlmacenesColumn);
             }
@@ -4668,12 +4673,7 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Id {
                 get {
-                    try {
-                        return ((int)(this[this.tableDtTarifaTipo.IdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtTarifaTipo\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableDtTarifaTipo.IdColumn]));
                 }
                 set {
                     this[this.tableDtTarifaTipo.IdColumn] = value;
@@ -4721,18 +4721,6 @@ namespace PELOSCALVO {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["DtConfi_DtTarifaTipo"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIdNull() {
-                return this.IsNull(this.tableDtTarifaTipo.IdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIdNull() {
-                this[this.tableDtTarifaTipo.IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

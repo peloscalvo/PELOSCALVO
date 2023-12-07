@@ -89,13 +89,13 @@ namespace PELOSCALVO
                 try
                 {
 
-                    string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= @Id_almacenes";
+                    string consulta = "Delete from  [DtAlmacenes]   WHERE Id= @Id";
                     //  ClsConexionDb.CadenaConexion = cadena;
                     ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", this.id_almacenes.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id",Convert.ToInt32( this.id_almacenes.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
                             this.dtAlmacenesBindingSource.EndEdit();
@@ -124,20 +124,20 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtAlmacenes]([Id_almacenes],[Almacenes],[Enlace_Almacenes]) VALUES( @Id_almacenes,@Almacenes,@Enlace_Almacenes)";
+                consulta = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
 
             }
             else
             {
-                consulta = "UPDATE [DtAlmacenes] SET [Id_almacenes] = @Id_almacenes,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
-                " WHERE Id_almacenes = @Id_almacenes";
+                consulta = "UPDATE [DtAlmacenes] SET [Id] = @Id,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
+                " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Almacenes", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
@@ -167,20 +167,20 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtAlmacenes] VALUES ([@Id_almacenes],[@Almacenes],[@Enlace_Almacenes])";
+                consulta = "  INSERT INTO [DtAlmacenes] VALUES ([@Id],[@Almacenes],[@Enlace_Almacenes])";
 
             }
             else
             {
-                consulta = "UPDATE [DtAlmacenes] SET [Id_almacenes] = @Id_almacenes,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
-                " WHERE Id_almacenes = @Id_almacenes";
+                consulta = "UPDATE [DtAlmacenes] SET [Id] = @Id,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
+                " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Almacenes", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
@@ -207,7 +207,7 @@ namespace PELOSCALVO
         }
         private void EliminarAlmacenSQL()
         {
-            string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= @Id_almacenes";
+            string consulta = "Delete from  [DtAlmacenes]   WHERE Id= @Id";
             //  ClsConexionDb.CadenaConexion = cadena;
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
@@ -215,7 +215,7 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", this.id_almacenes.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id",Convert.ToInt32( this.id_almacenes.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
                         this.dtAlmacenesBindingSource.EndEdit();

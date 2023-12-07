@@ -151,7 +151,7 @@ namespace PELOSCALVO
             this.IdEmpresa.Name = "IdEmpresa";
             this.IdEmpresa.Size = new System.Drawing.Size(15, 15);
             this.IdEmpresa.TabIndex = 64;
-            this.IdEmpresa.Text = "2";
+            this.IdEmpresa.Text = "1";
             this.IdEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // IdTarifa
