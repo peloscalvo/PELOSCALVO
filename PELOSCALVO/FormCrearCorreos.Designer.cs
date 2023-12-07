@@ -50,6 +50,7 @@ namespace PELOSCALVO
             this.PageInicio = new System.Windows.Forms.TabPage();
             this.BtnSalirCorreoEmpresa = new System.Windows.Forms.Button();
             this.PageEmpresa = new System.Windows.Forms.TabPage();
+            this.checkPassCorreo = new System.Windows.Forms.CheckBox();
             this.Timeof = new System.Windows.Forms.TextBox();
             this.smtp = new System.Windows.Forms.TextBox();
             this.Puerto = new System.Windows.Forms.TextBox();
@@ -69,7 +70,6 @@ namespace PELOSCALVO
             this.BtnGuardarCorreoCli = new System.Windows.Forms.Button();
             this.DataGridCorreoCliente = new System.Windows.Forms.DataGridView();
             this.ErrorCorreosCrear = new System.Windows.Forms.ErrorProvider(this.components);
-            this.checkPassCorreo = new System.Windows.Forms.CheckBox();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -192,6 +192,7 @@ namespace PELOSCALVO
             this.DatagridCorreosEmpresa.Location = new System.Drawing.Point(3, 3);
             this.DatagridCorreosEmpresa.MultiSelect = false;
             this.DatagridCorreosEmpresa.Name = "DatagridCorreosEmpresa";
+            this.DatagridCorreosEmpresa.ReadOnly = true;
             this.DatagridCorreosEmpresa.RowHeadersVisible = false;
             this.DatagridCorreosEmpresa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DatagridCorreosEmpresa.Size = new System.Drawing.Size(958, 243);
@@ -241,6 +242,7 @@ namespace PELOSCALVO
             this.PageInicio.Padding = new System.Windows.Forms.Padding(3);
             this.PageInicio.Size = new System.Drawing.Size(964, 475);
             this.PageInicio.TabIndex = 0;
+            this.PageInicio.Tag = "NO";
             this.PageInicio.Text = "INICIO";
             this.PageInicio.UseVisualStyleBackColor = true;
             // 
@@ -295,6 +297,17 @@ namespace PELOSCALVO
             this.PageEmpresa.TabIndex = 1;
             this.PageEmpresa.Text = "Correos Empresa";
             this.PageEmpresa.UseVisualStyleBackColor = true;
+            // 
+            // checkPassCorreo
+            // 
+            this.checkPassCorreo.AutoSize = true;
+            this.checkPassCorreo.Location = new System.Drawing.Point(840, 333);
+            this.checkPassCorreo.Name = "checkPassCorreo";
+            this.checkPassCorreo.Size = new System.Drawing.Size(61, 17);
+            this.checkPassCorreo.TabIndex = 90;
+            this.checkPassCorreo.Text = "Mostrar";
+            this.checkPassCorreo.UseVisualStyleBackColor = true;
+            this.checkPassCorreo.CheckedChanged += new System.EventHandler(this.checkPassCorreo_CheckedChanged);
             // 
             // Timeof
             // 
@@ -580,17 +593,6 @@ namespace PELOSCALVO
             // 
             this.ErrorCorreosCrear.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.ErrorCorreosCrear.ContainerControl = this;
-            // 
-            // checkPassCorreo
-            // 
-            this.checkPassCorreo.AutoSize = true;
-            this.checkPassCorreo.Location = new System.Drawing.Point(840, 333);
-            this.checkPassCorreo.Name = "checkPassCorreo";
-            this.checkPassCorreo.Size = new System.Drawing.Size(61, 17);
-            this.checkPassCorreo.TabIndex = 90;
-            this.checkPassCorreo.Text = "Mostrar";
-            this.checkPassCorreo.UseVisualStyleBackColor = true;
-            this.checkPassCorreo.CheckedChanged += new System.EventHandler(this.checkPassCorreo_CheckedChanged);
             // 
             // FormCrearCorreos
             // 

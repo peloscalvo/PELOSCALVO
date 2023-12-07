@@ -12,7 +12,7 @@
   <xs:element name="DsMulti2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsMulti2" msprop:Generator_UserDSName="DsMulti2">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DtObras" msprop:Generator_TableClassName="DtObrasDataTable" msprop:Generator_TableVarName="tableDtObras" msprop:Generator_TablePropName="DtObras" msprop:Generator_RowDeletingName="DtObrasRowDeleting" msprop:Generator_RowChangingName="DtObrasRowChanging" msprop:Generator_RowEvHandlerName="DtObrasRowChangeEventHandler" msprop:Generator_RowDeletedName="DtObrasRowDeleted" msprop:Generator_UserTableName="DtObras" msprop:Generator_RowChangedName="DtObrasRowChanged" msprop:Generator_RowEvArgName="DtObrasRowChangeEvent" msprop:Generator_RowClassName="DtObrasRow">
+        <xs:element name="DtObras" msprop:Generator_TableClassName="DtObrasDataTable" msprop:Generator_TableVarName="tableDtObras" msprop:Generator_RowChangedName="DtObrasRowChanged" msprop:Generator_TablePropName="DtObras" msprop:Generator_RowDeletingName="DtObrasRowDeleting" msprop:Generator_RowChangingName="DtObrasRowChanging" msprop:Generator_RowEvHandlerName="DtObrasRowChangeEventHandler" msprop:Generator_RowDeletedName="DtObrasRowDeleted" msprop:Generator_RowClassName="DtObrasRow" msprop:Generator_UserTableName="DtObras" msprop:Generator_RowEvArgName="DtObrasRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msdata:Caption="Id_almacenes" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -20,7 +20,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DtPaises" msprop:Generator_TableClassName="DtPaisesDataTable" msprop:Generator_TableVarName="tableDtPaises" msprop:Generator_RowChangedName="DtPaisesRowChanged" msprop:Generator_TablePropName="DtPaises" msprop:Generator_RowDeletingName="DtPaisesRowDeleting" msprop:Generator_RowChangingName="DtPaisesRowChanging" msprop:Generator_RowEvHandlerName="DtPaisesRowChangeEventHandler" msprop:Generator_RowDeletedName="DtPaisesRowDeleted" msprop:Generator_RowClassName="DtPaisesRow" msprop:Generator_UserTableName="DtPaises" msprop:Generator_RowEvArgName="DtPaisesRowChangeEvent">
+        <xs:element name="DtPaises" msprop:Generator_TableClassName="DtPaisesDataTable" msprop:Generator_TableVarName="tableDtPaises" msprop:Generator_TablePropName="DtPaises" msprop:Generator_RowDeletingName="DtPaisesRowDeleting" msprop:Generator_RowChangingName="DtPaisesRowChanging" msprop:Generator_RowEvHandlerName="DtPaisesRowChangeEventHandler" msprop:Generator_RowDeletedName="DtPaisesRowDeleted" msprop:Generator_UserTableName="DtPaises" msprop:Generator_RowChangedName="DtPaisesRowChanged" msprop:Generator_RowEvArgName="DtPaisesRowChangeEvent" msprop:Generator_RowClassName="DtPaisesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PaisesPaises" msprop:Generator_ColumnVarNameInTable="columnPaisesPaises" msprop:Generator_ColumnPropNameInRow="PaisesPaises" msprop:Generator_ColumnPropNameInTable="PaisesPaisesColumn" msprop:Generator_UserColumnName="PaisesPaises" type="xs:string" minOccurs="0" />
@@ -28,7 +28,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DtProvincias" msprop:Generator_TableClassName="DtProvinciasDataTable" msprop:Generator_TableVarName="tableDtProvincias" msprop:Generator_RowChangedName="DtProvinciasRowChanged" msprop:Generator_TablePropName="DtProvincias" msprop:Generator_RowDeletingName="DtProvinciasRowDeleting" msprop:Generator_RowChangingName="DtProvinciasRowChanging" msprop:Generator_RowEvHandlerName="DtProvinciasRowChangeEventHandler" msprop:Generator_RowDeletedName="DtProvinciasRowDeleted" msprop:Generator_RowClassName="DtProvinciasRow" msprop:Generator_UserTableName="DtProvincias" msprop:Generator_RowEvArgName="DtProvinciasRowChangeEvent">
+        <xs:element name="DtProvincias" msprop:Generator_TableClassName="DtProvinciasDataTable" msprop:Generator_TableVarName="tableDtProvincias" msprop:Generator_TablePropName="DtProvincias" msprop:Generator_RowDeletingName="DtProvinciasRowDeleting" msprop:Generator_RowChangingName="DtProvinciasRowChanging" msprop:Generator_RowEvHandlerName="DtProvinciasRowChangeEventHandler" msprop:Generator_RowDeletedName="DtProvinciasRowDeleted" msprop:Generator_UserTableName="DtProvincias" msprop:Generator_RowChangedName="DtProvinciasRowChanged" msprop:Generator_RowEvArgName="DtProvinciasRowChangeEvent" msprop:Generator_RowClassName="DtProvinciasRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProvinciasProvincias" msprop:Generator_ColumnVarNameInTable="columnProvinciasProvincias" msprop:Generator_ColumnPropNameInRow="ProvinciasProvincias" msprop:Generator_ColumnPropNameInTable="ProvinciasProvinciasColumn" msprop:Generator_UserColumnName="ProvinciasProvincias" type="xs:string" minOccurs="0" />
@@ -37,7 +37,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DtFamiliaProductos" msprop:Generator_TableClassName="DtFamiliaProductosDataTable" msprop:Generator_TableVarName="tableDtFamiliaProductos" msprop:Generator_TablePropName="DtFamiliaProductos" msprop:Generator_RowDeletingName="DtFamiliaProductosRowDeleting" msprop:Generator_RowChangingName="DtFamiliaProductosRowChanging" msprop:Generator_RowEvHandlerName="DtFamiliaProductosRowChangeEventHandler" msprop:Generator_RowDeletedName="DtFamiliaProductosRowDeleted" msprop:Generator_UserTableName="DtFamiliaProductos" msprop:Generator_RowChangedName="DtFamiliaProductosRowChanged" msprop:Generator_RowEvArgName="DtFamiliaProductosRowChangeEvent" msprop:Generator_RowClassName="DtFamiliaProductosRow">
+        <xs:element name="DtFamiliaProductos" msprop:Generator_TableClassName="DtFamiliaProductosDataTable" msprop:Generator_TableVarName="tableDtFamiliaProductos" msprop:Generator_RowChangedName="DtFamiliaProductosRowChanged" msprop:Generator_TablePropName="DtFamiliaProductos" msprop:Generator_RowDeletingName="DtFamiliaProductosRowDeleting" msprop:Generator_RowChangingName="DtFamiliaProductosRowChanging" msprop:Generator_RowEvHandlerName="DtFamiliaProductosRowChangeEventHandler" msprop:Generator_RowDeletedName="DtFamiliaProductosRowDeleted" msprop:Generator_RowClassName="DtFamiliaProductosRow" msprop:Generator_UserTableName="DtFamiliaProductos" msprop:Generator_RowEvArgName="DtFamiliaProductosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:short" />
@@ -49,10 +49,6 @@
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DtObras" />
-      <xs:field xpath="mstns:Id" />
-    </xs:unique>
-    <xs:unique name="DtPaises_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DtPaises" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
     <xs:unique name="Constraint3">
@@ -67,7 +63,7 @@
       <xs:selector xpath=".//mstns:DtFamiliaProductos" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
-    <xs:keyref name="FK_DtPaises_DtProvincias" refer="Constraint3" msprop:rel_Generator_UserChildTable="DtProvincias" msprop:rel_Generator_ChildPropName="GetDtProvinciasRows" msprop:rel_Generator_UserRelationName="FK_DtPaises_DtProvincias" msprop:rel_Generator_ParentPropName="DtPaisesRow" msprop:rel_Generator_RelationVarName="relationFK_DtPaises_DtProvincias" msprop:rel_Generator_UserParentTable="DtPaises">
+    <xs:keyref name="FK_DtPaises_DtProvincias" refer="Constraint3" msprop:rel_Generator_UserChildTable="DtProvincias" msprop:rel_Generator_ChildPropName="GetDtProvinciasRows" msprop:rel_Generator_UserRelationName="FK_DtPaises_DtProvincias" msprop:rel_Generator_RelationVarName="relationFK_DtPaises_DtProvincias" msprop:rel_Generator_UserParentTable="DtPaises" msprop:rel_Generator_ParentPropName="DtPaisesRow">
       <xs:selector xpath=".//mstns:DtProvincias" />
       <xs:field xpath="mstns:Enlace" />
     </xs:keyref>

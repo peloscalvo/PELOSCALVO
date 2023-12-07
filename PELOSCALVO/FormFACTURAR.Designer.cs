@@ -119,7 +119,6 @@ namespace PELOSCALVO
             this.dniTextBox = new System.Windows.Forms.TextBox();
             this.localidadTextBox = new System.Windows.Forms.TextBox();
             this.provinciaComboBox = new System.Windows.Forms.ComboBox();
-            this.dtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoPostalTextBox = new System.Windows.Forms.TextBox();
             this.nonbreAlmacenComboBox = new System.Windows.Forms.ComboBox();
             this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -198,6 +197,7 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fKDtPaisesDtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -243,7 +243,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProvinciasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).BeginInit();
             this.tabControl1Factura.SuspendLayout();
@@ -271,6 +270,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).BeginInit();
             this.panelTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // empresaENLACELabel
@@ -943,7 +943,7 @@ namespace PELOSCALVO
             // provinciaComboBox
             // 
             this.provinciaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Provincia", true));
-            this.provinciaComboBox.DataSource = this.dtProvinciasBindingSource;
+            this.provinciaComboBox.DataSource = this.fKDtPaisesDtProvinciasBindingSource;
             this.provinciaComboBox.DisplayMember = "ProvinciasProvincias";
             this.provinciaComboBox.Enabled = false;
             this.provinciaComboBox.FormattingEnabled = true;
@@ -953,11 +953,6 @@ namespace PELOSCALVO
             this.provinciaComboBox.Size = new System.Drawing.Size(257, 21);
             this.provinciaComboBox.TabIndex = 17;
             this.provinciaComboBox.Click += new System.EventHandler(this.ProvinciaComboBox_Click);
-            // 
-            // dtProvinciasBindingSource
-            // 
-            this.dtProvinciasBindingSource.DataMember = "DtProvincias";
-            this.dtProvinciasBindingSource.DataSource = this.dsMulti2;
             // 
             // codigoPostalTextBox
             // 
@@ -2022,6 +2017,11 @@ namespace PELOSCALVO
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
             // 
+            // fKDtPaisesDtProvinciasBindingSource
+            // 
+            this.fKDtPaisesDtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
+            this.fKDtPaisesDtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
+            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2064,7 +2064,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProvinciasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).EndInit();
             this.tabControl1Factura.ResumeLayout(false);
@@ -2095,6 +2094,7 @@ namespace PELOSCALVO
             this.panelTotales.ResumeLayout(false);
             this.panelTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2161,7 +2161,6 @@ namespace PELOSCALVO
         public System.Windows.Forms.BindingSource dtArticulosBindingSource;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private System.Windows.Forms.BindingSource dtPaisesBindingSource;
-        private System.Windows.Forms.BindingSource dtProvinciasBindingSource;
         public Articulos articulos;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.DateTimePicker FechaFactura;
@@ -2215,5 +2214,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCobro;
         private System.Windows.Forms.DataGridViewTextBoxColumn CobradaFactura;
         private System.Windows.Forms.BindingSource dtAlmacenesBindingSource;
+        private System.Windows.Forms.BindingSource fKDtPaisesDtProvinciasBindingSource;
     }
 }

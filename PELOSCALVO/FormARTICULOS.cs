@@ -621,6 +621,14 @@ namespace PELOSCALVO
 
         private void CosteTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 46)
+            {
+                e.KeyChar = ',';
+            }
+            if (e.KeyChar == (char)46)
+            {
+                e.KeyChar = ',';
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;

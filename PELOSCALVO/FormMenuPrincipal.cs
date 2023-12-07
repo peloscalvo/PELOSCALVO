@@ -728,7 +728,7 @@ namespace PELOSCALVO
         {
             try
             {
-                PanelAcesosDire.Visible = false;
+                panelAplicaciones.Visible = false;
                 Process.Start("https://www.google.es/");
             }
             catch (Exception)
@@ -929,7 +929,7 @@ namespace PELOSCALVO
  
             if (this.SiOpenFatu == 0 & this.SiOpenArti == 0 & this.SiOpenClie == 0 & this.SiOpenConfi == 0)
             {
-               // this.panelAplicaciones.Visible = false;
+                panelAplicaciones.Visible = false;
                 FormBaseDatos frm = new FormBaseDatos();
                 frm.ShowDialog();
                 frm.BringToFront();

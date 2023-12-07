@@ -133,11 +133,11 @@ namespace PELOSCALVO
             this.BtnNuevoCliente = new System.Windows.Forms.Button();
             this.BtnModificarCliente = new System.Windows.Forms.Button();
             this.panelBotonesClientes = new System.Windows.Forms.Panel();
-            this.BtnSalirCliente = new System.Windows.Forms.Button();
             this.BtnImprimirCliente = new System.Windows.Forms.Button();
             this.BtnEnviarMailCliente = new System.Windows.Forms.Button();
             this.BtnEliminarCliente = new System.Windows.Forms.Button();
             this.BtnBuscarCliente = new System.Windows.Forms.Button();
+            this.BtnSalirCliente = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.label4 = new System.Windows.Forms.Label();
@@ -851,6 +851,7 @@ namespace PELOSCALVO
             // 
             // dniClienteTextBox
             // 
+            this.dniClienteTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.dniClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "DNICLIENTE", true));
             this.dniClienteTextBox.Enabled = false;
             this.dniClienteTextBox.Location = new System.Drawing.Point(91, 98);
@@ -859,6 +860,7 @@ namespace PELOSCALVO
             this.dniClienteTextBox.Size = new System.Drawing.Size(163, 20);
             this.dniClienteTextBox.TabIndex = 6;
             this.dniClienteTextBox.Click += new System.EventHandler(this.dniClienteTextBox_Click);
+            this.dniClienteTextBox.TextChanged += new System.EventHandler(this.dniClienteTextBox_TextChanged);
             this.dniClienteTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dniClienteTextBox_KeyPress);
             this.dniClienteTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dniClienteTextBox_Validating);
             // 
@@ -1320,27 +1322,6 @@ namespace PELOSCALVO
             this.panelBotonesClientes.TabIndex = 8;
             this.panelBotonesClientes.Tag = "STOP";
             // 
-            // BtnSalirCliente
-            // 
-            this.BtnSalirCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSalirCliente.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSalirCliente.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnSalirCliente.FlatAppearance.BorderSize = 0;
-            this.BtnSalirCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnSalirCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnSalirCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSalirCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
-            this.BtnSalirCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirCliente.Location = new System.Drawing.Point(1025, 578);
-            this.BtnSalirCliente.Name = "BtnSalirCliente";
-            this.BtnSalirCliente.Size = new System.Drawing.Size(77, 63);
-            this.BtnSalirCliente.TabIndex = 12;
-            this.BtnSalirCliente.Text = "Salir";
-            this.BtnSalirCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnSalirCliente.UseVisualStyleBackColor = false;
-            this.BtnSalirCliente.Click += new System.EventHandler(this.BtnSalirCliente_Click);
-            // 
             // BtnImprimirCliente
             // 
             this.BtnImprimirCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1419,6 +1400,27 @@ namespace PELOSCALVO
             this.BtnBuscarCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnBuscarCliente.UseVisualStyleBackColor = false;
             this.BtnBuscarCliente.Click += new System.EventHandler(this.BtnBuscarCliente_Click);
+            // 
+            // BtnSalirCliente
+            // 
+            this.BtnSalirCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSalirCliente.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSalirCliente.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnSalirCliente.FlatAppearance.BorderSize = 0;
+            this.BtnSalirCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnSalirCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnSalirCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSalirCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalirCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnSalirCliente.Location = new System.Drawing.Point(1025, 578);
+            this.BtnSalirCliente.Name = "BtnSalirCliente";
+            this.BtnSalirCliente.Size = new System.Drawing.Size(77, 63);
+            this.BtnSalirCliente.TabIndex = 12;
+            this.BtnSalirCliente.Text = "Salir";
+            this.BtnSalirCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnSalirCliente.UseVisualStyleBackColor = false;
+            this.BtnSalirCliente.Click += new System.EventHandler(this.BtnSalirCliente_Click);
             // 
             // errorProvider1
             // 

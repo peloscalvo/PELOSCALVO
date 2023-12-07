@@ -5,6 +5,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using Comun;
 using Conexiones;
 namespace PELOSCALVO
 {
@@ -738,7 +739,7 @@ namespace PELOSCALVO
                 if (!email_bien_escrito())
                 {
                     MessageBox.Show("D.n.i No Valido", "INVALIDO");
-                    this.correoClienteTextBox.Focus();
+                    // this.correoClienteTextBox.Focus();
                 }
 
             }
@@ -813,7 +814,7 @@ namespace PELOSCALVO
 
         private void dniClienteTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (this.dniClienteTextBox.Text.Length < 4)
+            if (!ClasValidarDni.ValidarDni(dniClienteTextBox.Text))
             {
 
                 MessageBox.Show(this.dniClienteTextBox, "_ingresar Dni (( NO CORRECTO))");
@@ -935,6 +936,11 @@ namespace PELOSCALVO
             {
                 this.bANCOENTIDTextBox.Select(0, 0);
             }
+        }
+
+        private void dniClienteTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

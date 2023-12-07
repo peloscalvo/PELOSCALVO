@@ -1,4 +1,5 @@
-﻿using ComunApp;
+﻿using Comun;
+using ComunApp;
 using Conexiones;
 using System;
 using System.ComponentModel;
@@ -992,14 +993,14 @@ namespace PELOSCALVO
                     {
                         if (ClsConexionSql.SibaseDatosSql)
                         {
-                            ActualizarFacturaSql();
+                           // ActualizarFacturaSql();
                         }
                         else
                         {
-                            ActualizarFaturas_DB();
+                           // ActualizarFaturas_DB();
                         }
 
-
+                        dtDetallesFacturaBindingSource.ResetBindings(true);
                     }
                 }
                 this.dtDetallesFacturaDataGridView.Refresh();
@@ -1108,8 +1109,8 @@ namespace PELOSCALVO
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
                     this.dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtObras;
-                    this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
                     this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                   // this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
                 }
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
@@ -1259,18 +1260,20 @@ namespace PELOSCALVO
              
                     string consultaDetalle2 = "SELECT * from DtDetalles2_" + ClasDatos.NombreFactura;
                     ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-
+                    OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
                     try
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            dtDetallesFacturaBindingSource.Clear();
-                            dtDetallesFactura2BindingSource.Clear();
-                            dtNuevaFacturaBindingSource.Clear();
-                            // this.dsCONFIGURACCION.DtDetallesFactura.Clear();
-                            // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
-                            // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
-                            OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
+                          this.dsCONFIGURACCION.Clear();
+                          // dtNuevaFacturaBindingSource.Clear();
+                           dtDetallesFacturaBindingSource.Clear();
+                           dtDetallesFactura2BindingSource.Clear();
+                            //dtNuevaFacturaBindingSource.Clear();
+                           this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+                           this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
+                             this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+                       
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
                             AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
@@ -1292,7 +1295,7 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.CerrarConexionDB)
                         {
-
+                            AdactaPelos.Dispose();
                         }
                     }
 
@@ -1363,7 +1366,14 @@ namespace PELOSCALVO
             if (this.dtDetallesFacturaDataGridView.CurrentCell.ColumnIndex == 2 || this.dtDetallesFacturaDataGridView.CurrentCell.ColumnIndex == 4 || this.dtDetallesFacturaDataGridView.CurrentCell.ColumnIndex == 5)
             {
                 // dtDetallesFacturaDataGridView.CurrentCell.EditedFormattedValue.ToString();
-
+                if(e.KeyChar == 46)
+                {
+                    e.KeyChar = ',';
+                }
+                if (e.KeyChar ==(char)46)
+                {
+                    e.KeyChar = ',';
+                }
                 if (char.IsDigit(e.KeyChar))
                 {
                     e.Handled = false;
@@ -2332,15 +2342,7 @@ namespace PELOSCALVO
         }
         private void dniTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.dniTextBox.Text))
-            {
-                if (!email_bien_escritoFactu())
-                {
-                    MessageBox.Show("D.n.i No Valido", "INVALIDO");
-                    //this.dniTextBox.Focus();
-                }
-
-            }
+            ClasValidarDni.ValidarDni(dniTextBox.Text);
         }
 
         private void ejerciciosDeAñoComboBox_Click(object sender, EventArgs e)

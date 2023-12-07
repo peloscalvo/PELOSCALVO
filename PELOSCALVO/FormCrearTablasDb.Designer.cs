@@ -103,10 +103,10 @@ namespace PELOSCALVO
             // 
             // panel3
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.BtnTablasCrear);
-            this.panel3.Location = new System.Drawing.Point(69, 309);
+            this.panel3.Location = new System.Drawing.Point(79, 286);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(250, 110);
             this.panel3.TabIndex = 115;

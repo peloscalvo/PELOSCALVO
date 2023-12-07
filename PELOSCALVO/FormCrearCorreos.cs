@@ -26,6 +26,7 @@ namespace PELOSCALVO
                     this.DatagridCorreosEmpresa.DataSource = this.CorreosbindingSource.DataSource;
                     //this.DatagridCorreosEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
                     this.DataGridCorreoCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
+                    //MessageBox.Show(FormMenuPrincipal.menu2principal.DtCorreos.Rows.Count.ToString());
                     //  if(DatagriCorreosEmpresa.RowCount<= 0)
                     //{
                     //    DataGridCorreoCliente.Rows[0].Cells[0].Value=""
@@ -39,18 +40,18 @@ namespace PELOSCALVO
             }
             try
             {
-                this.DatagridCorreosEmpresa.Columns[1].Width = 190;//NombreEmpresa
-                this.DatagridCorreosEmpresa.Columns[2].Width = 140;//CorreoEletronico
-                this.DatagridCorreosEmpresa.Columns[3].Width = 120;//Usuario
-                this.DatagridCorreosEmpresa.Columns[4].Width = 120;//Contraseña
-                this.DatagridCorreosEmpresa.Columns[5].Width = 60;//smtp
-                this.DatagridCorreosEmpresa.Columns[6].Width = 60;//tiempoespera
+                //this.DatagridCorreosEmpresa.Columns[1].Width = 190;//NombreEmpresa
+              //  this.DatagridCorreosEmpresa.Columns[2].Width = 140;//CorreoEletronico
+               // this.DatagridCorreosEmpresa.Columns[3].Width = 120;//Usuario
+               // this.DatagridCorreosEmpresa.Columns[4].Width = 120;//Contraseña
+               // this.DatagridCorreosEmpresa.Columns[5].Width = 60;//smtp
+               // this.DatagridCorreosEmpresa.Columns[6].Width = 60;//tiempoespera
                 //DatagridCorreosEmpresa.Columns[6].Width = 60;//eliminar
 
-                this.DataGridCorreoCliente.Columns[1].Width = 190;//RazonSocial
-                this.DataGridCorreoCliente.Columns[1].Width = 140;//EmpresaNombre
-                this.DataGridCorreoCliente.Columns[2].Width = 140;//Direcion
-                this.DataGridCorreoCliente.Columns[3].Width = 120;//CorreoEletronico_cli
+               // this.DataGridCorreoCliente.Columns[1].Width = 190;//RazonSocial
+              //  this.DataGridCorreoCliente.Columns[1].Width = 140;//EmpresaNombre
+              //  this.DataGridCorreoCliente.Columns[2].Width = 140;//Direcion
+               // this.DataGridCorreoCliente.Columns[3].Width = 120;//CorreoEletronico_cli
                                                                   // DataGridCorreoCliente.Columns[4].Width = 140;//eliminar
                                                                   //DatagridCorreosEmpresa.Columns[0].Width = 60;//Puerto
             }
@@ -167,42 +168,53 @@ namespace PELOSCALVO
         }
         private void LlenarDatagrid()
         {
-            this.CorreosbindingSource.AddNew();
-            int II = this.DatagridCorreosEmpresa.CurrentCell.RowIndex;
-            if (!string.IsNullOrEmpty(this.Id_Correo_E.Text))
+            try
             {
-                this.DatagridCorreosEmpresa.Rows[II].Cells[0].Value = this.Id_Correo_E.Text;
+                this.CorreosbindingSource.AddNew();
+                int II = this.DatagridCorreosEmpresa.CurrentCell.RowIndex;
+                if (!string.IsNullOrEmpty(this.Id_Correo_E.Text))
+                {
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[0].Value = this.Id_Correo_E.Text;
+                }
+                if (!string.IsNullOrEmpty(this.NombreEmpresa.Text))
+                {
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[1].Value = this.NombreEmpresa.Text;
+                }
+                if (!string.IsNullOrEmpty(this.CorreoEletronico.Text))
+                {
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[2].Value = this.CorreoEletronico.Text;
+                }
+                if (!string.IsNullOrEmpty(this.Usuario.Text))
+                {
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[3].Value = this.Usuario.Text;
+                }
+                if (!string.IsNullOrEmpty(this.Contraseña.Text))
+                {
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[4].Value = this.Contraseña.Text.ToString();
+                }
+                if (!string.IsNullOrEmpty(this.smtp.Text))
+                {
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[5].Value = this.smtp.Text;
+                }
+                if (!string.IsNullOrEmpty(this.Puerto.Text))
+                {
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[6].Value = this.Puerto.Text;
+                }
+                if (!string.IsNullOrEmpty(this.Timeof.Text))
+                {
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[7].Value = this.Timeof.Text;
+                }
+
+                FormMenuPrincipal.menu2principal.DtCorreos.Rows.Add(Id_Correo_E.Text, NombreEmpresa.Text, CorreoEletronico.Text, Usuario.Text,
+                 Contraseña.Text, smtp.Text, Puerto.Text, Timeof.Text);
+                // DatagridCorreosEmpresa.Rows.Add(Id_Correo_E.Text, NombreEmpresa.Text, CorreoEletronico.Text, Usuario.Text,
+                //  Contraseña.Text,smtp.Text,Puerto.Text,Timeof.Text);
             }
-            if (!string.IsNullOrEmpty(this.NombreEmpresa.Text))
+            catch (Exception ex)
             {
-                this.DatagridCorreosEmpresa.Rows[II].Cells[1].Value = this.NombreEmpresa.Text;
+
+                MessageBox.Show(ex.Message.ToString());
             }
-            if (!string.IsNullOrEmpty(this.CorreoEletronico.Text))
-            {
-                this.DatagridCorreosEmpresa.Rows[II].Cells[2].Value = this.CorreoEletronico.Text;
-            }
-            if (!string.IsNullOrEmpty(this.Usuario.Text))
-            {
-                this.DatagridCorreosEmpresa.Rows[II].Cells[3].Value = this.Usuario.Text;
-            }
-            if (!string.IsNullOrEmpty(this.Contraseña.Text))
-            {
-                this.DatagridCorreosEmpresa.Rows[II].Cells[4].Value = this.Contraseña.Text.ToString();
-            }
-            if (!string.IsNullOrEmpty(this.smtp.Text))
-            {
-                this.DatagridCorreosEmpresa.Rows[II].Cells[5].Value = this.smtp.Text;
-            }
-            if (!string.IsNullOrEmpty(this.Puerto.Text))
-            {
-                this.DatagridCorreosEmpresa.Rows[II].Cells[6].Value = this.Puerto.Text;
-            }
-            if (!string.IsNullOrEmpty(this.Timeof.Text))
-            {
-                this.DatagridCorreosEmpresa.Rows[II].Cells[7].Value = this.Timeof.Text;
-            }
-            // DatagridCorreosEmpresa.Rows.Add(Id_Correo_E.Text, NombreEmpresa.Text, CorreoEletronico.Text, Usuario.Text,
-            //  Contraseña.Text,smtp.Text,Puerto.Text,Timeof.Text);
         }
         private void GuardarCorreo_EmpresaDb()
         {

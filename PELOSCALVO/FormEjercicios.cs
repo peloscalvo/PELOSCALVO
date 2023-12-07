@@ -395,6 +395,9 @@ namespace PELOSCALVO
                             {
                                 goto seguir2;
                             }
+                            Random r = new Random();
+                            int VALORid = r.Next(5, 100);
+                            ejerciciosDeAñoTextBox.Text = ejerciciosDeAñoTextBox.Text+"_" + VALORid.ToString();
                             this.ejerciciosDeAñoTextBox.ReadOnly = false;
                             this.ejerciciosDeAñoTextBox.SelectAll();
                             this.ejerciciosDeAñoTextBox.Select(4, 4);

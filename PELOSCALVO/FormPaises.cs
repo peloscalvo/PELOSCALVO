@@ -181,6 +181,8 @@ namespace PELOSCALVO
                             this.dataGridPais.Rows.RemoveAt(this.dataGridPais.CurrentCell.RowIndex);
                             this.DtPaisBindinsource.EndEdit();
                             Validate();
+                            dataGridPais.Refresh();
+                            dataGridPais.Focus();
                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }

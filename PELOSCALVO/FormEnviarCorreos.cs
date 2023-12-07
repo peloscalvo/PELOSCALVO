@@ -26,10 +26,13 @@ namespace PELOSCALVO
         {
             try
             {
-                if (FormMenuPrincipal.menu2principal.dsCorreos != null)
+                if (FormMenuPrincipal.menu2principal.DtCorreos != null)
                 {
                     this.CorreoEmpresa.DisplayMember = "CorreoEletronico";
                     this.CorreoEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
+                }
+                if (FormMenuPrincipal.menu2principal.DtCorreosCliente != null)
+                {
                     this.TxtNombreCliente.DisplayMember = "CorreoEletronico_cli";
                     this.TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
                 }

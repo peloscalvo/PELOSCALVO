@@ -26,8 +26,8 @@ namespace PELOSCALVO
                 }
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
-                    this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
                     this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
+                   // this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;        
                 }
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
@@ -270,7 +270,7 @@ namespace PELOSCALVO
                         string Tarifa = "Pvp";
                         if (NuevaConexion.SiConexionSql)
                         {
-                            for (int Fila = 1; Fila < 7; Fila++)
+                            for (int Fila = 1; Fila < 8; Fila++)
                             {
                         
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Fila);
@@ -424,7 +424,7 @@ namespace PELOSCALVO
 
                             string Tarifa = "Pvp";
 
-                            for (int Fila = 1; Fila < 7; Fila++)
+                            for (int Fila = 1; Fila < 8; Fila++)
                             {
 
                  
