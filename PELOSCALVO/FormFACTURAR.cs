@@ -177,7 +177,7 @@ namespace PELOSCALVO
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int Id = ejerciciosDeAñoComboBox.SelectedIndex + 1;
-            string EnlaceDtconfi = ejerciciosDeAñoComboBox.Text + "/" + NombreEmpresaConfi.Text + "/" + Id;
+            string EnlaceDtconfi = ejerciciosDeAñoComboBox.Text + "/" + EmpresaReguistro.Text + "/" + Id;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
             string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]" +
@@ -240,7 +240,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.NombreEmpresaConfi.Text) ? (object)DBNull.Value : this.NombreEmpresaConfi.Text);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
 
 
@@ -450,7 +450,7 @@ namespace PELOSCALVO
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int Id = ejerciciosDeAñoComboBox.SelectedIndex + 1;
-            string EnlaceDtconfi = ejerciciosDeAñoComboBox.Text + "/" + NombreEmpresaConfi.Text + "/" + Id;
+            string EnlaceDtconfi = ejerciciosDeAñoComboBox.Text + "/" + EmpresaReguistro.Text + "/" + Id;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
             string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]" +
@@ -513,7 +513,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.NombreEmpresaConfi.Text) ? (object)DBNull.Value : this.NombreEmpresaConfi.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
 
 
@@ -767,7 +767,7 @@ namespace PELOSCALVO
                 Salto_Atras:
                     Random r = new Random();
                      VALOR_MAS = r.Next(5, 10000);
-                    this.EnlaceFactu.Text = this.NombreEmpresaConfi.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
+                    this.EnlaceFactu.Text = this.EmpresaReguistro.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
                     this.FechaFactura.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
                     this.dtNuevaFacturaDataGridView.Rows[this.dtNuevaFacturaDataGridView.Rows.Count - 1].Selected = true;
                     // this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
@@ -810,7 +810,7 @@ namespace PELOSCALVO
 
         private void BtnGuardarFactura_Click(object sender, EventArgs e)
         {
-            if (NombreEmpresaConfi.Text ==string.Empty & EmpresaPrincipal.Text == string.Empty)
+            if (EmpresaReguistro.Text ==string.Empty & EmpresaPrincipal.Text == string.Empty)
             {
                 MessageBox.Show("Falta  Empresa", "EMPRESA");
                 return;
@@ -1039,11 +1039,11 @@ namespace PELOSCALVO
         private void ActualizarFacturaSql()
         {
             // string consulta = "SELECT * from DtNuevaFactura";
-            if (NombreEmpresaConfi.Text != string.Empty)
+            if (EmpresaReguistro.Text != string.Empty)
             {
 
 
-                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.NombreEmpresaConfi.Text + "'";
+                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.EmpresaReguistro.Text + "'";
                 string consultaDetalle = "SELECT * from [DtDetalles_" + ClasDatos.NombreFactura + "]";
                 string consultaDetalle2 = "SELECT * from [DtDetalles2_" + ClasDatos.NombreFactura + "]";
                 ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -1235,7 +1235,7 @@ namespace PELOSCALVO
             }
 
 
-            if (this.NombreEmpresaConfi.Text == string.Empty)
+            if (this.EmpresaReguistro.Text == string.Empty)
             {
                 MessageBox.Show("Faltan Datos o Datos Erradicos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.panelBotones.Enabled = false;
@@ -1251,10 +1251,10 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                if (NombreEmpresaConfi.Text != string.Empty)
+                if (EmpresaReguistro.Text != string.Empty)
                 {
                     // string consulta = "SELECT * from DtNuevaFactura";
-                    string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.NombreEmpresaConfi.Text + "'";
+                    string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.EmpresaReguistro.Text + "'";
                     string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
              
                     string consultaDetalle2 = "SELECT * from DtDetalles2_" + ClasDatos.NombreFactura;
@@ -1326,12 +1326,12 @@ namespace PELOSCALVO
                 //this.dsCONFIGURACCION.DtDetallesFactura.Clear();
                // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
                // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
-                if (this.NombreEmpresaConfi.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
+                if (this.EmpresaReguistro.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
                 {
                     try
                     {
 
-                        string Enlace = this.NombreEmpresaConfi.Text  +"/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text;
+                        string Enlace = this.EmpresaReguistro.Text  +"/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text;
                         this.dtNuevaFacturaBindingSource.Filter = "( [EnlaceFactura]   LIKE '" + Enlace + "%'" + ")";
                         this.dtNuevaFacturaDataGridView.Refresh();
                     }

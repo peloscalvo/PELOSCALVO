@@ -89,7 +89,7 @@ namespace PELOSCALVO
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.NombreEmpresaConfi = new System.Windows.Forms.Label();
+            this.EmpresaReguistro = new System.Windows.Forms.Label();
             this.SerieText = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
@@ -122,6 +122,7 @@ namespace PELOSCALVO
             this.dtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoPostalTextBox = new System.Windows.Forms.TextBox();
             this.nonbreAlmacenComboBox = new System.Windows.Forms.ComboBox();
+            this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1Factura = new System.Windows.Forms.TabControl();
             this.tabPage2Factura = new System.Windows.Forms.TabPage();
@@ -197,7 +198,6 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -244,6 +244,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProvinciasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).BeginInit();
             this.tabControl1Factura.SuspendLayout();
             this.tabPage2Factura.SuspendLayout();
@@ -270,7 +271,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).BeginInit();
             this.panelTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // empresaENLACELabel
@@ -582,7 +582,7 @@ namespace PELOSCALVO
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelArriba.Controls.Add(this.EmpresaPrincipal);
             this.PanelArriba.Controls.Add(label1);
-            this.PanelArriba.Controls.Add(this.NombreEmpresaConfi);
+            this.PanelArriba.Controls.Add(this.EmpresaReguistro);
             this.PanelArriba.Controls.Add(this.SerieText);
             this.PanelArriba.Controls.Add(ejerciciosDeAñoLabel);
             this.PanelArriba.Controls.Add(this.ejerciciosDeAñoComboBox);
@@ -617,15 +617,15 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
             this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
-            // NombreEmpresaConfi
+            // EmpresaReguistro
             // 
-            this.NombreEmpresaConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
-            this.NombreEmpresaConfi.Location = new System.Drawing.Point(445, 9);
-            this.NombreEmpresaConfi.Name = "NombreEmpresaConfi";
-            this.NombreEmpresaConfi.Size = new System.Drawing.Size(356, 23);
-            this.NombreEmpresaConfi.TabIndex = 72;
-            this.NombreEmpresaConfi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.NombreEmpresaConfi.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
+            this.EmpresaReguistro.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
+            this.EmpresaReguistro.Location = new System.Drawing.Point(445, 9);
+            this.EmpresaReguistro.Name = "EmpresaReguistro";
+            this.EmpresaReguistro.Size = new System.Drawing.Size(356, 23);
+            this.EmpresaReguistro.TabIndex = 72;
+            this.EmpresaReguistro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EmpresaReguistro.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
             // 
             // SerieText
             // 
@@ -981,6 +981,11 @@ namespace PELOSCALVO
             this.nonbreAlmacenComboBox.Name = "nonbreAlmacenComboBox";
             this.nonbreAlmacenComboBox.Size = new System.Drawing.Size(298, 21);
             this.nonbreAlmacenComboBox.TabIndex = 21;
+            // 
+            // dtAlmacenesBindingSource
+            // 
+            this.dtAlmacenesBindingSource.DataMember = "DtConfiguracionPrincipal_DtAlmacenes";
+            this.dtAlmacenesBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // dtConfiguracionPrincipalDtAlmacenesBindingSource
             // 
@@ -2017,11 +2022,6 @@ namespace PELOSCALVO
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
             // 
-            // dtAlmacenesBindingSource
-            // 
-            this.dtAlmacenesBindingSource.DataMember = "DtConfiguracionPrincipal_DtAlmacenes";
-            this.dtAlmacenesBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2065,6 +2065,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProvinciasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).EndInit();
             this.tabControl1Factura.ResumeLayout(false);
             this.tabPage2Factura.ResumeLayout(false);
@@ -2094,7 +2095,6 @@ namespace PELOSCALVO
             this.panelTotales.ResumeLayout(false);
             this.panelTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2179,7 +2179,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtAlmacenesBindingSource;
-        private System.Windows.Forms.Label NombreEmpresaConfi;
+        private System.Windows.Forms.Label EmpresaReguistro;
         private System.Windows.Forms.BindingSource dtClientesBindingSource;
         private System.Windows.Forms.Label EnlaceFactu;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;

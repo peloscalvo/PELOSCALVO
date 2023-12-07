@@ -87,7 +87,7 @@ namespace PELOSCALVO
                     string TablaDtconfi = "CREATE TABLE[DtConfi] ([EnlaceDtconfi] varchar primary key ,[ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                         "[EmpresaENLACE] varchar not null ,[IdConexionConfi] INTEGER not null, [AñoDeEjercicio] varchar  ," +
                            " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
-                    string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([Id] INTEGER not null, [TarifaTipo] varchar, [EnlaceTarifa] varchar not null," +
+                    string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([Id] INTEGER primary key, [TarifaTipo] varchar, [EnlaceTarifa] varchar not null," +
                         "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY (EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
 
@@ -97,21 +97,21 @@ namespace PELOSCALVO
                     string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER primary key,[Proveedores] varchar ,[Enlace_Proveedores] varchar not null, " +
                       " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
-                    string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER not null, [FamiliaProductos] varchar)";
+                    string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER primary key, [FamiliaProductos] varchar)";
                     string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER primary key,[PaisesPaises] varchar NOT NULL)";
                     string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER primary key, [ProvinciasProvincias] varchar,[Enlace] varchar NOT NULL," +
                    " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (Enlace)REFERENCES DtPaises(PaisesPaises) ON UPDATE CASCADE ON DELETE CASCADE )";
-                    string TablaObra = "CREATE TABLE[DtObras] ([Id] INTEGER ,[Obras] varchar)";
-                    string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER ,[ArchivoInicioFacturas] varchar," +
+                    string TablaObra = "CREATE TABLE[DtObras] ([Id] INTEGER primary key,[Obras] varchar)";
+                    string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER primary key,[ArchivoInicioFacturas] varchar," +
                         "[EmpresaInicio] varchar,[EjercicioInicio] varchar,[SerieInicio] varchar,[NombreArchivoDatos] varchar," +
                        "[RutaArchivoDatos] varchar,[SerieProvinciaInicio] varchar, [SeriePaisInicio] varchar,[ArchivoArticulos] varchar," +
                        "[TipoExtensionArticulos] varchar,[ArchivoClientes] varchar)";
 
-                    string TablaCorreo_E = "   CREATE TABLE [DtCorreos]([Id] INTEGER, [NombreEmpresa] varchar, [CorreoEletronico] varchar" +
+                    string TablaCorreo_E = "   CREATE TABLE [DtCorreos]([Id] INTEGER primary key, [NombreEmpresa] varchar, [CorreoEletronico] varchar" +
                         ", [Usuario] varchar, [Contraseña] varchar, [smtp] varchar, [Puerto] INTEGER, [Timeof] INTEGER)";
-                    string TablaCorreo_Cli = "   CREATE TABLE [DtCorreosCliente]([Id] INTEGER, [RazonSocial] varchar, [EmpresaNombre] varchar" +
+                    string TablaCorreo_Cli = "   CREATE TABLE [DtCorreosCliente]([Id] INTEGER primary key, [RazonSocial] varchar, [EmpresaNombre] varchar" +
                        ", [Direcion] varchar, [CorreoEletronico_cli] varchar)";
-                    string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER, [Usuario] varchar, [Nombre] varchar," +
+                    string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER primary key, [Usuario] varchar, [Nombre] varchar," +
                           "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
 
                     string Ruta2 = "";
@@ -375,19 +375,19 @@ namespace PELOSCALVO
                             valor = r.Next(10, 10000);
                             if (i != 3)
                             {
-                                ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER ,[Apodo] varchar ,[Nombre] varchar," +
+                                ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER not null,[Apodo] varchar ,[Nombre] varchar," +
                              "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
                               "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
                              "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
                              "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-                            "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar,[EnlaceDtconfi] varchar ," +
+                            "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar not null,[EnlaceDtconfi] varchar not null," +
                             "CONSTRAINT F_DtConfi" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )";
                             }
 
 
                             ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
                                    ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
-                                   ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar" +
+                                   ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar not null" +
                                    ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
                             using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
                             {

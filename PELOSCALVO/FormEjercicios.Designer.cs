@@ -37,6 +37,7 @@ namespace PELOSCALVO
             System.Windows.Forms.Label idConexionConfiLabel;
             System.Windows.Forms.Label añoDeEjercicioLabel;
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label enlaceDtconfiLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -67,6 +68,7 @@ namespace PELOSCALVO
             this.BtnSalirEjerc = new System.Windows.Forms.Button();
             this.EmpresaEnlace = new System.Windows.Forms.Label();
             this.IdConfi = new System.Windows.Forms.Label();
+            this.EnlaceDtconfi = new System.Windows.Forms.Label();
             tipoInpuestoIVALabel = new System.Windows.Forms.Label();
             configuraccionBasicaLabel = new System.Windows.Forms.Label();
             ejerciciosDeAñoLabel = new System.Windows.Forms.Label();
@@ -74,6 +76,7 @@ namespace PELOSCALVO
             idConexionConfiLabel = new System.Windows.Forms.Label();
             añoDeEjercicioLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            enlaceDtconfiLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
@@ -147,6 +150,15 @@ namespace PELOSCALVO
             label1.Size = new System.Drawing.Size(51, 13);
             label1.TabIndex = 56;
             label1.Text = "Empresa:";
+            // 
+            // enlaceDtconfiLabel
+            // 
+            enlaceDtconfiLabel.AutoSize = true;
+            enlaceDtconfiLabel.Location = new System.Drawing.Point(26, 381);
+            enlaceDtconfiLabel.Name = "enlaceDtconfiLabel";
+            enlaceDtconfiLabel.Size = new System.Drawing.Size(43, 13);
+            enlaceDtconfiLabel.TabIndex = 78;
+            enlaceDtconfiLabel.Text = "Enlace:";
             // 
             // dsCONFIGURACCION
             // 
@@ -478,11 +490,22 @@ namespace PELOSCALVO
             this.IdConfi.TabIndex = 78;
             this.IdConfi.Text = "1";
             // 
+            // EnlaceDtconfi
+            // 
+            this.EnlaceDtconfi.AutoSize = true;
+            this.EnlaceDtconfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EnlaceDtconfi", true));
+            this.EnlaceDtconfi.Location = new System.Drawing.Point(83, 381);
+            this.EnlaceDtconfi.Name = "EnlaceDtconfi";
+            this.EnlaceDtconfi.Size = new System.Drawing.Size(0, 13);
+            this.EnlaceDtconfi.TabIndex = 79;
+            // 
             // FormEjercicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 530);
+            this.Controls.Add(enlaceDtconfiLabel);
+            this.Controls.Add(this.EnlaceDtconfi);
             this.Controls.Add(this.IdConfi);
             this.Controls.Add(this.EmpresaEnlace);
             this.Controls.Add(this.BtnSalirEjerc);
@@ -550,5 +573,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn AñoDeEjercicio;
         private System.Windows.Forms.Label IdConfi;
+        private System.Windows.Forms.Label EnlaceDtconfi;
     }
 }

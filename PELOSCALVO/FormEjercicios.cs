@@ -132,7 +132,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value : this.EnlaceDtconfi.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
@@ -183,7 +183,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value : this.EnlaceDtconfi.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
@@ -292,7 +292,6 @@ namespace PELOSCALVO
                 int numeroFILA = this.dtConfiDataGridView.Rows.Count;
                 this.dtConfiDataGridView.Sort(this.dtConfiDataGridView.Columns[0], ListSortDirection.Ascending);
                 this.dtConfiguracionPrincipalDtConfiBindingSource.AddNew();
-                this.EmpresaEnlace.Text = this.CambiarDeEmpresa1.Text;
                 this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
                 if (this.dtConfiDataGridView.CurrentCell.RowIndex == 0)
                 {
