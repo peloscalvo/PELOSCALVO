@@ -318,7 +318,6 @@ namespace PELOSCALVO
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridObras.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridObras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridObras.Enabled = false;
             this.dataGridObras.Location = new System.Drawing.Point(0, 0);
             this.dataGridObras.MultiSelect = false;
             this.dataGridObras.Name = "dataGridObras";

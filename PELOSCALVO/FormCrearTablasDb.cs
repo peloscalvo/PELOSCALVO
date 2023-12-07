@@ -98,9 +98,9 @@ namespace PELOSCALVO
                       " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                     string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER, [FamiliaProductos] varchar)";
-                    string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER primary key,[PaisesPaises] varchar)";
-                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER primary key, [ProvinciasProvincias] varchar,[Enlace] varchar," +
-                   " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (Enlace)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )";
+                    string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER primary key,[PaisesPaises] varchar NOT NULL)";
+                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER primary key, [ProvinciasProvincias] varchar,[Enlace] varchar NOT NULL," +
+                   " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (Enlace)REFERENCES DtPaises(PaisesPaises) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaObra = "CREATE TABLE[DtObras] ([Id] INTEGER ,[Obras] varchar)";
                     string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER ,[ArchivoInicioFacturas] varchar," +
                         "[EmpresaInicio] varchar,[EjercicioInicio] varchar,[SerieInicio] varchar,[NombreArchivoDatos] varchar," +

@@ -102,6 +102,7 @@ namespace PELOSCALVO
             this.provinciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provinciasToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.correosEletronicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -155,7 +156,6 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.correosEletronicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedorPrincipal.SuspendLayout();
             this.panelContenedorForm.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
@@ -726,7 +726,7 @@ namespace PELOSCALVO
             this.menuStrip.Location = new System.Drawing.Point(25, 2);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip.Size = new System.Drawing.Size(859, 24);
+            this.menuStrip.Size = new System.Drawing.Size(739, 24);
             this.menuStrip.TabIndex = 46;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -965,16 +965,23 @@ namespace PELOSCALVO
             // paisesToolStripMenuItem
             // 
             this.paisesToolStripMenuItem.Name = "paisesToolStripMenuItem";
-            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.paisesToolStripMenuItem.Text = "&Paises";
             this.paisesToolStripMenuItem.Click += new System.EventHandler(this.paisesToolStripMenuItem_Click);
             // 
             // provinciasToolStripMenuItem2
             // 
             this.provinciasToolStripMenuItem2.Name = "provinciasToolStripMenuItem2";
-            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(176, 22);
             this.provinciasToolStripMenuItem2.Text = "&Provincias";
             this.provinciasToolStripMenuItem2.Click += new System.EventHandler(this.provinciasToolStripMenuItem2_Click);
+            // 
+            // correosEletronicosToolStripMenuItem
+            // 
+            this.correosEletronicosToolStripMenuItem.Name = "correosEletronicosToolStripMenuItem";
+            this.correosEletronicosToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.correosEletronicosToolStripMenuItem.Text = "&Correos Eletronicos";
+            this.correosEletronicosToolStripMenuItem.Click += new System.EventHandler(this.correosEletronicosToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -1045,7 +1052,7 @@ namespace PELOSCALVO
             this.BtnInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BtnInfo.Size = new System.Drawing.Size(227, 40);
             this.BtnInfo.TabIndex = 16;
-            this.BtnInfo.Tag = "NO";
+            this.BtnInfo.Tag = "SI";
             this.BtnInfo.Text = "Archivo";
             this.BtnInfo.UseVisualStyleBackColor = true;
             this.BtnInfo.Click += new System.EventHandler(this.BtnInfo_Click);
@@ -1636,13 +1643,6 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
-            // 
-            // correosEletronicosToolStripMenuItem
-            // 
-            this.correosEletronicosToolStripMenuItem.Name = "correosEletronicosToolStripMenuItem";
-            this.correosEletronicosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.correosEletronicosToolStripMenuItem.Text = "&Correos Eletronicos";
-            this.correosEletronicosToolStripMenuItem.Click += new System.EventHandler(this.correosEletronicosToolStripMenuItem_Click);
             // 
             // FormMenuPrincipal
             // 

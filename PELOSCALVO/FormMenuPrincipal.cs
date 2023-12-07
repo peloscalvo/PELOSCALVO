@@ -750,7 +750,7 @@ namespace PELOSCALVO
 
         private void empresasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PanelAcesosDire.Visible = false;
+            //PanelAcesosDire.Visible = false;
             FormEmpresas frm = new FormEmpresas();
             frm.TopLevel = false;
             // frm.Dock = DockStyle.Fill;

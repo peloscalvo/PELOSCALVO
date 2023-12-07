@@ -1052,6 +1052,8 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
+                        this.dsCONFIGURACCION.DtDetallesFactura.Clear();
+                        this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
                         this.dsCONFIGURACCION.DtNuevaFactura.Clear();
                         SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                         AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
@@ -1264,6 +1266,8 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
+                            this.dsCONFIGURACCION.DtDetallesFactura.Clear();
+                            this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
                             this.dsCONFIGURACCION.DtNuevaFactura.Clear();
                             OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
@@ -1311,14 +1315,16 @@ namespace PELOSCALVO
         {
             if (this.PanelArriba.Tag.ToString() == "SI")
             {
-                FiltrarFactura();
+              //  FiltrarFactura();
             }
         }
         private void FiltrarFactura()
         {
             if (this.PanelArriba.Tag.ToString() == "SI")
             {
-                this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+                //this.dsCONFIGURACCION.DtDetallesFactura.Clear();
+               // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
+               // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
                 if (this.NombreEmpresaConfi.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
                 {
                     try
@@ -2348,7 +2354,7 @@ namespace PELOSCALVO
 
         private void tipoInpuestoIVALabel1_MouseEnter(object sender, EventArgs e)
         {
-            MessageBox.Show(this.NombreEmpresaConfi.Text);
+           
         }
 
         private void EmpresaPrincipal_SelectedIndexChanged(object sender, EventArgs e)

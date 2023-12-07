@@ -265,7 +265,7 @@ namespace PELOSCALVO
                     }
 
                 }
-
+                FamiliaTex.Text = "GENERAL";
                 ModificarOjetos_Fami();
 
             }
@@ -319,8 +319,11 @@ namespace PELOSCALVO
 
         private void BtnModificarFAmilia_Click(object sender, EventArgs e)
         {
-            this.panelFamilia.Tag = "Nuevo";
-            ModificarOjetos_Fami();
+            if (dtFamiliaProductosBindingSource.Count > 0)
+            {
+                this.panelFamilia.Tag = "Nuevo";
+                ModificarOjetos_Fami();
+            }
         }
 
         private void BtnGuardarFamillia_Click(object sender, EventArgs e)
@@ -362,7 +365,7 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message);
                     }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(" ¿Aceptar Guardar Familia ? ", " GUARDAR FAMILIAS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         if (ClsConexionSql.SibaseDatosSql)
                         {

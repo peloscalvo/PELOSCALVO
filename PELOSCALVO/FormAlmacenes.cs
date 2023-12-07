@@ -167,7 +167,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtAlmacenes]([@Id_almacenes],[@Almacenes],[@Enlace_Almacenes])";
+                consulta = "  INSERT INTO [DtAlmacenes] VALUES ([@Id_almacenes],[@Almacenes],[@Enlace_Almacenes])";
 
             }
             else
@@ -349,18 +349,18 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message);
                     }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(" ¿Aceptar Guardar Almacen ? ", " GUARDAR ALMACENES ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         if (ClsConexionSql.SibaseDatosSql)
                         {
-                            GuardarAlmacenesDb();
+                            GuardarAlmacenesSql();
                         }
                         else
                         {
 
                             if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarAlmacenesSql();
+                                GuardarAlmacenesDb();
                             }
                             else
                             {
