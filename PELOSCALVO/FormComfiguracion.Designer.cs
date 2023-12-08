@@ -38,8 +38,6 @@ namespace PELOSCALVO
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label archivoClientesLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComfiguracion));
@@ -64,12 +62,6 @@ namespace PELOSCALVO
             this.dtNombresTablasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idProveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TabTablas = new System.Windows.Forms.TabPage();
-            this.DataGridTablas = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreTablaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabPageInicio = new System.Windows.Forms.TabPage();
             this.panelDatosInicio = new System.Windows.Forms.Panel();
             this.empresaInicio = new System.Windows.Forms.ComboBox();
@@ -130,8 +122,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNombresTablasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).BeginInit();
-            this.TabTablas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridTablas)).BeginInit();
             this.tabPageInicio.SuspendLayout();
             this.panelDatosInicio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioDataGridView)).BeginInit();
@@ -324,94 +314,6 @@ namespace PELOSCALVO
             this.idProveedoresDataGridViewTextBoxColumn.Name = "idProveedoresDataGridViewTextBoxColumn";
             this.idProveedoresDataGridViewTextBoxColumn.ReadOnly = true;
             this.idProveedoresDataGridViewTextBoxColumn.Width = 153;
-            // 
-            // TabTablas
-            // 
-            this.TabTablas.Controls.Add(this.DataGridTablas);
-            this.TabTablas.Location = new System.Drawing.Point(4, 25);
-            this.TabTablas.Name = "TabTablas";
-            this.TabTablas.Padding = new System.Windows.Forms.Padding(3);
-            this.TabTablas.Size = new System.Drawing.Size(1012, 531);
-            this.TabTablas.TabIndex = 12;
-            this.TabTablas.Text = "Tipos de Tablas ";
-            this.TabTablas.UseVisualStyleBackColor = true;
-            // 
-            // DataGridTablas
-            // 
-            this.DataGridTablas.AllowDrop = true;
-            this.DataGridTablas.AllowUserToResizeRows = false;
-            this.DataGridTablas.AutoGenerateColumns = false;
-            this.DataGridTablas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DataGridTablas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(200)))));
-            this.DataGridTablas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DataGridTablas.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridTablas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DataGridTablas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridTablas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
-            this.nombreTablaDataGridViewTextBoxColumn,
-            this.dataGridViewImageColumn1,
-            this.dataGridViewImageColumn2});
-            this.DataGridTablas.DataSource = this.dtNombresTablasBindingSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridTablas.DefaultCellStyle = dataGridViewCellStyle4;
-            this.DataGridTablas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DataGridTablas.EnableHeadersVisualStyles = false;
-            this.DataGridTablas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.DataGridTablas.Location = new System.Drawing.Point(3, 3);
-            this.DataGridTablas.MultiSelect = false;
-            this.DataGridTablas.Name = "DataGridTablas";
-            this.DataGridTablas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DataGridTablas.Size = new System.Drawing.Size(1006, 374);
-            this.DataGridTablas.TabIndex = 50;
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.FillWeight = 80F;
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            // 
-            // nombreTablaDataGridViewTextBoxColumn
-            // 
-            this.nombreTablaDataGridViewTextBoxColumn.DataPropertyName = "NombreTabla";
-            this.nombreTablaDataGridViewTextBoxColumn.FillWeight = 200F;
-            this.nombreTablaDataGridViewTextBoxColumn.HeaderText = "NombreTabla";
-            this.nombreTablaDataGridViewTextBoxColumn.Name = "nombreTablaDataGridViewTextBoxColumn";
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.FillWeight = 90F;
-            this.dataGridViewImageColumn1.HeaderText = "Editar";
-            this.dataGridViewImageColumn1.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.FillWeight = 90F;
-            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn2.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // tabPageInicio
             // 
@@ -866,7 +768,6 @@ namespace PELOSCALVO
             this.tabControlTodo.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControlTodo.Controls.Add(this.tabMENU);
             this.tabControlTodo.Controls.Add(this.tabPageInicio);
-            this.tabControlTodo.Controls.Add(this.TabTablas);
             this.tabControlTodo.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControlTodo.HotTrack = true;
             this.tabControlTodo.Location = new System.Drawing.Point(0, 0);
@@ -911,8 +812,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNombresTablasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).EndInit();
-            this.TabTablas.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridTablas)).EndInit();
             this.tabPageInicio.ResumeLayout(false);
             this.panelDatosInicio.ResumeLayout(false);
             this.panelDatosInicio.PerformLayout();
@@ -988,12 +887,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         public System.Windows.Forms.Button BtnGuardarInicio;
-        private System.Windows.Forms.TabPage TabTablas;
-        private System.Windows.Forms.DataGridView DataGridTablas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreTablaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.BindingSource dtTarifaTipoBindingSource;
     }
 }

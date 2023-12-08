@@ -899,7 +899,7 @@ namespace PELOSCALVO
 
         private void FormCrearCorreos_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.BtnGuardarCorreo_E.Enabled == true)
+            if (this.BtnGuardarCorreo_E.Enabled == true & this.BtnGuardarCorreoCli.Enabled == true)
             {
                 e.Cancel = true;
             }
@@ -999,9 +999,9 @@ namespace PELOSCALVO
                     }
 
                 }
-                this.CorreoEletronico.Text = "Ejemplo@Gmail.com";
-                this.CorreoEletronico.Focus();
-                this.CorreoEletronico.Select(1, 1);
+                this.CorreoEletronicoCli.Text = "Ejemplo@Gmail.com";
+                this.CorreoEletronicoCli.Focus();
+               // this.CorreoEletronicoCli.Select(1, 1);
                 ModificarOjetosCorreo_Cli();
 
             }

@@ -924,6 +924,15 @@ namespace PELOSCALVO
             frm.BringToFront();
         }
 
+        private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDatoInicio frm = new FormDatoInicio();
+            frm.TopLevel = false;
+            this.panelContenedorForm.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
         private void BtnSql_Click(object sender, EventArgs e)
         {
  

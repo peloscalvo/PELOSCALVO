@@ -33,6 +33,9 @@ namespace PELOSCALVO
             System.Windows.Forms.Label labelARTICULOS;
             System.Windows.Forms.Label labelCLIENTES;
             System.Windows.Forms.Label tipoExtensionArticulosLabel;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCrearTablasDb));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,21 +53,30 @@ namespace PELOSCALVO
             this.BtnSalirT = new System.Windows.Forms.Button();
             this.ErrorVer = new System.Windows.Forms.ErrorProvider(this.components);
             this.BtnConectar = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TabControlPrincipal = new System.Windows.Forms.TabControl();
             this.TabInicio = new System.Windows.Forms.TabPage();
             this.TabCopia = new System.Windows.Forms.TabPage();
             this.InfoProcesoText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BaseDatos2 = new System.Windows.Forms.TextBox();
             this.BtnCrearBackupDb = new System.Windows.Forms.Button();
+            this.TabCopiarTabla = new System.Windows.Forms.TabPage();
+            this.TablanuevaTxt = new System.Windows.Forms.ComboBox();
+            this.BtnCopiarTabla = new System.Windows.Forms.Button();
+            this.ListaTablasPrincipal = new System.Windows.Forms.ListBox();
+            this.TablaCopiarTxt = new System.Windows.Forms.TextBox();
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.TabControlPrincipal.SuspendLayout();
             this.TabInicio.SuspendLayout();
             this.TabCopia.SuspendLayout();
+            this.TabCopiarTabla.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelARTICULOS
@@ -236,6 +248,7 @@ namespace PELOSCALVO
             this.ExtensionTxt.Name = "ExtensionTxt";
             this.ExtensionTxt.Size = new System.Drawing.Size(95, 21);
             this.ExtensionTxt.TabIndex = 106;
+            this.ExtensionTxt.SelectedIndexChanged += new System.EventHandler(this.ExtensionTxt_SelectedIndexChanged);
             // 
             // BtnRestablecer_t
             // 
@@ -288,7 +301,7 @@ namespace PELOSCALVO
             this.BtnConectar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConectar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnConectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnConectar.Location = new System.Drawing.Point(728, 186);
+            this.BtnConectar.Location = new System.Drawing.Point(728, 215);
             this.BtnConectar.Name = "BtnConectar";
             this.BtnConectar.Size = new System.Drawing.Size(108, 42);
             this.BtnConectar.TabIndex = 118;
@@ -297,16 +310,17 @@ namespace PELOSCALVO
             this.BtnConectar.UseVisualStyleBackColor = false;
             this.BtnConectar.Click += new System.EventHandler(this.BtnConectar_Click);
             // 
-            // tabControl1
+            // TabControlPrincipal
             // 
-            this.tabControl1.Controls.Add(this.TabInicio);
-            this.tabControl1.Controls.Add(this.TabCopia);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(902, 469);
-            this.tabControl1.TabIndex = 119;
+            this.TabControlPrincipal.Controls.Add(this.TabInicio);
+            this.TabControlPrincipal.Controls.Add(this.TabCopia);
+            this.TabControlPrincipal.Controls.Add(this.TabCopiarTabla);
+            this.TabControlPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TabControlPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.TabControlPrincipal.Name = "TabControlPrincipal";
+            this.TabControlPrincipal.SelectedIndex = 0;
+            this.TabControlPrincipal.Size = new System.Drawing.Size(902, 442);
+            this.TabControlPrincipal.TabIndex = 119;
             // 
             // TabInicio
             // 
@@ -330,21 +344,21 @@ namespace PELOSCALVO
             this.TabInicio.Location = new System.Drawing.Point(4, 22);
             this.TabInicio.Name = "TabInicio";
             this.TabInicio.Padding = new System.Windows.Forms.Padding(3);
-            this.TabInicio.Size = new System.Drawing.Size(894, 443);
+            this.TabInicio.Size = new System.Drawing.Size(894, 416);
             this.TabInicio.TabIndex = 0;
+            this.TabInicio.Tag = "NO";
             this.TabInicio.Text = "Principal";
             // 
             // TabCopia
             // 
             this.TabCopia.BackColor = System.Drawing.SystemColors.Control;
-            this.TabCopia.Controls.Add(this.InfoProcesoText);
             this.TabCopia.Controls.Add(this.label1);
             this.TabCopia.Controls.Add(this.BaseDatos2);
             this.TabCopia.Controls.Add(this.BtnCrearBackupDb);
             this.TabCopia.Location = new System.Drawing.Point(4, 22);
             this.TabCopia.Name = "TabCopia";
             this.TabCopia.Padding = new System.Windows.Forms.Padding(3);
-            this.TabCopia.Size = new System.Drawing.Size(894, 443);
+            this.TabCopia.Size = new System.Drawing.Size(894, 416);
             this.TabCopia.TabIndex = 1;
             this.TabCopia.Text = "Copia Seguridad";
             // 
@@ -353,7 +367,7 @@ namespace PELOSCALVO
             this.InfoProcesoText.AutoSize = true;
             this.InfoProcesoText.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.InfoProcesoText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoProcesoText.Location = new System.Drawing.Point(3, 415);
+            this.InfoProcesoText.Location = new System.Drawing.Point(0, 444);
             this.InfoProcesoText.Margin = new System.Windows.Forms.Padding(3);
             this.InfoProcesoText.Name = "InfoProcesoText";
             this.InfoProcesoText.Padding = new System.Windows.Forms.Padding(2, 4, 2, 5);
@@ -391,7 +405,7 @@ namespace PELOSCALVO
             this.BtnCrearBackupDb.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCrearBackupDb.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnCrearBackupDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrearBackupDb.Location = new System.Drawing.Point(667, 276);
+            this.BtnCrearBackupDb.Location = new System.Drawing.Point(667, 249);
             this.BtnCrearBackupDb.Name = "BtnCrearBackupDb";
             this.BtnCrearBackupDb.Size = new System.Drawing.Size(187, 42);
             this.BtnCrearBackupDb.TabIndex = 77;
@@ -400,12 +414,104 @@ namespace PELOSCALVO
             this.BtnCrearBackupDb.UseVisualStyleBackColor = false;
             this.BtnCrearBackupDb.Click += new System.EventHandler(this.BtnCrearBackupDb_Click);
             // 
+            // TabCopiarTabla
+            // 
+            this.TabCopiarTabla.BackColor = System.Drawing.SystemColors.Control;
+            this.TabCopiarTabla.Controls.Add(label4);
+            this.TabCopiarTabla.Controls.Add(label3);
+            this.TabCopiarTabla.Controls.Add(this.TablaCopiarTxt);
+            this.TabCopiarTabla.Controls.Add(label2);
+            this.TabCopiarTabla.Controls.Add(this.ListaTablasPrincipal);
+            this.TabCopiarTabla.Controls.Add(this.TablanuevaTxt);
+            this.TabCopiarTabla.Controls.Add(this.BtnCopiarTabla);
+            this.TabCopiarTabla.Location = new System.Drawing.Point(4, 22);
+            this.TabCopiarTabla.Name = "TabCopiarTabla";
+            this.TabCopiarTabla.Padding = new System.Windows.Forms.Padding(3);
+            this.TabCopiarTabla.Size = new System.Drawing.Size(894, 416);
+            this.TabCopiarTabla.TabIndex = 2;
+            this.TabCopiarTabla.Text = "Trasnsferir Datos";
+            // 
+            // TablanuevaTxt
+            // 
+            this.TablanuevaTxt.DisplayMember = "A";
+            this.TablanuevaTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TablanuevaTxt.FormattingEnabled = true;
+            this.TablanuevaTxt.Location = new System.Drawing.Point(520, 305);
+            this.TablanuevaTxt.MaxLength = 50;
+            this.TablanuevaTxt.Name = "TablanuevaTxt";
+            this.TablanuevaTxt.Size = new System.Drawing.Size(348, 21);
+            this.TablanuevaTxt.TabIndex = 114;
+            // 
+            // BtnCopiarTabla
+            // 
+            this.BtnCopiarTabla.Location = new System.Drawing.Point(793, 366);
+            this.BtnCopiarTabla.Name = "BtnCopiarTabla";
+            this.BtnCopiarTabla.Size = new System.Drawing.Size(75, 23);
+            this.BtnCopiarTabla.TabIndex = 118;
+            this.BtnCopiarTabla.Text = "&Copiar";
+            this.BtnCopiarTabla.UseVisualStyleBackColor = true;
+            this.BtnCopiarTabla.Click += new System.EventHandler(this.BtnCopiarTabla_Click);
+            // 
+            // ListaTablasPrincipal
+            // 
+            this.ListaTablasPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListaTablasPrincipal.FormattingEnabled = true;
+            this.ListaTablasPrincipal.HorizontalScrollbar = true;
+            this.ListaTablasPrincipal.Location = new System.Drawing.Point(19, 49);
+            this.ListaTablasPrincipal.Name = "ListaTablasPrincipal";
+            this.ListaTablasPrincipal.Size = new System.Drawing.Size(363, 238);
+            this.ListaTablasPrincipal.TabIndex = 122;
+            this.ListaTablasPrincipal.Click += new System.EventHandler(this.ListaTablasPrincipal_Click);
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(89, 17);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(198, 26);
+            label2.TabIndex = 123;
+            label2.Tag = "";
+            label2.Text = "TABLA PRINCIPAL";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TablaCopiarTxt
+            // 
+            this.TablaCopiarTxt.Location = new System.Drawing.Point(89, 308);
+            this.TablaCopiarTxt.Name = "TablaCopiarTxt";
+            this.TablaCopiarTxt.ReadOnly = true;
+            this.TablaCopiarTxt.Size = new System.Drawing.Size(293, 20);
+            this.TablaCopiarTxt.TabIndex = 124;
+            this.TablaCopiarTxt.Tag = "NO";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.Location = new System.Drawing.Point(404, 307);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(99, 16);
+            label3.TabIndex = 125;
+            label3.Text = "Copiar a   .....";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.Location = new System.Drawing.Point(29, 310);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(40, 16);
+            label4.TabIndex = 126;
+            label4.Text = "De ..";
+            // 
             // FormCrearTablasDb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 469);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.InfoProcesoText);
+            this.Controls.Add(this.TabControlPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCrearTablasDb";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -415,12 +521,15 @@ namespace PELOSCALVO
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.TabControlPrincipal.ResumeLayout(false);
             this.TabInicio.ResumeLayout(false);
             this.TabInicio.PerformLayout();
             this.TabCopia.ResumeLayout(false);
             this.TabCopia.PerformLayout();
+            this.TabCopiarTabla.ResumeLayout(false);
+            this.TabCopiarTabla.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -442,12 +551,17 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnSalirT;
         private System.Windows.Forms.ErrorProvider ErrorVer;
         public System.Windows.Forms.Button BtnConectar;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl TabControlPrincipal;
         private System.Windows.Forms.TabPage TabInicio;
         private System.Windows.Forms.TabPage TabCopia;
         public System.Windows.Forms.Button BtnCrearBackupDb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox BaseDatos2;
         private System.Windows.Forms.Label InfoProcesoText;
+        private System.Windows.Forms.TabPage TabCopiarTabla;
+        public System.Windows.Forms.ComboBox TablanuevaTxt;
+        private System.Windows.Forms.Button BtnCopiarTabla;
+        private System.Windows.Forms.ListBox ListaTablasPrincipal;
+        private System.Windows.Forms.TextBox TablaCopiarTxt;
     }
 }

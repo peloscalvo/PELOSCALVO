@@ -119,8 +119,9 @@ namespace PELOSCALVO
             this.dniTextBox = new System.Windows.Forms.TextBox();
             this.localidadTextBox = new System.Windows.Forms.TextBox();
             this.provinciaComboBox = new System.Windows.Forms.ComboBox();
+            this.fKDtPaisesDtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoPostalTextBox = new System.Windows.Forms.TextBox();
-            this.nonbreAlmacenComboBox = new System.Windows.Forms.ComboBox();
+            this.AlmacenTxt = new System.Windows.Forms.ComboBox();
             this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1Factura = new System.Windows.Forms.TabControl();
@@ -197,7 +198,6 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fKDtPaisesDtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -243,6 +243,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).BeginInit();
             this.tabControl1Factura.SuspendLayout();
@@ -270,7 +271,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).BeginInit();
             this.panelTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // empresaENLACELabel
@@ -626,6 +626,7 @@ namespace PELOSCALVO
             this.EmpresaReguistro.TabIndex = 72;
             this.EmpresaReguistro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.EmpresaReguistro.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
+            this.EmpresaReguistro.Click += new System.EventHandler(this.EmpresaReguistro_Click);
             // 
             // SerieText
             // 
@@ -722,7 +723,7 @@ namespace PELOSCALVO
             this.tabPage1Factura.Controls.Add(codigoPostalLabel);
             this.tabPage1Factura.Controls.Add(this.codigoPostalTextBox);
             this.tabPage1Factura.Controls.Add(nonbreAlmacenLabel);
-            this.tabPage1Factura.Controls.Add(this.nonbreAlmacenComboBox);
+            this.tabPage1Factura.Controls.Add(this.AlmacenTxt);
             this.tabPage1Factura.Location = new System.Drawing.Point(4, 22);
             this.tabPage1Factura.Name = "tabPage1Factura";
             this.tabPage1Factura.Padding = new System.Windows.Forms.Padding(3);
@@ -954,6 +955,11 @@ namespace PELOSCALVO
             this.provinciaComboBox.TabIndex = 17;
             this.provinciaComboBox.Click += new System.EventHandler(this.ProvinciaComboBox_Click);
             // 
+            // fKDtPaisesDtProvinciasBindingSource
+            // 
+            this.fKDtPaisesDtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
+            this.fKDtPaisesDtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
+            // 
             // codigoPostalTextBox
             // 
             this.codigoPostalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "CodigoPostal", true));
@@ -964,18 +970,19 @@ namespace PELOSCALVO
             this.codigoPostalTextBox.Size = new System.Drawing.Size(121, 20);
             this.codigoPostalTextBox.TabIndex = 19;
             // 
-            // nonbreAlmacenComboBox
+            // AlmacenTxt
             // 
-            this.nonbreAlmacenComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NonbreAlmacen", true));
-            this.nonbreAlmacenComboBox.DataSource = this.dtAlmacenesBindingSource;
-            this.nonbreAlmacenComboBox.DisplayMember = "Almacenes";
-            this.nonbreAlmacenComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.nonbreAlmacenComboBox.Enabled = false;
-            this.nonbreAlmacenComboBox.FormattingEnabled = true;
-            this.nonbreAlmacenComboBox.Location = new System.Drawing.Point(777, 63);
-            this.nonbreAlmacenComboBox.Name = "nonbreAlmacenComboBox";
-            this.nonbreAlmacenComboBox.Size = new System.Drawing.Size(298, 21);
-            this.nonbreAlmacenComboBox.TabIndex = 21;
+            this.AlmacenTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NonbreAlmacen", true));
+            this.AlmacenTxt.DataSource = this.dtAlmacenesBindingSource;
+            this.AlmacenTxt.DisplayMember = "Almacenes";
+            this.AlmacenTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AlmacenTxt.Enabled = false;
+            this.AlmacenTxt.FormattingEnabled = true;
+            this.AlmacenTxt.Location = new System.Drawing.Point(777, 63);
+            this.AlmacenTxt.Name = "AlmacenTxt";
+            this.AlmacenTxt.Size = new System.Drawing.Size(298, 21);
+            this.AlmacenTxt.TabIndex = 21;
+            this.AlmacenTxt.Click += new System.EventHandler(this.AlmacenTxt_Click);
             // 
             // dtAlmacenesBindingSource
             // 
@@ -2017,11 +2024,6 @@ namespace PELOSCALVO
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
             // 
-            // fKDtPaisesDtProvinciasBindingSource
-            // 
-            this.fKDtPaisesDtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
-            this.fKDtPaisesDtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
-            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2064,6 +2066,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).EndInit();
             this.tabControl1Factura.ResumeLayout(false);
@@ -2094,7 +2097,6 @@ namespace PELOSCALVO
             this.panelTotales.ResumeLayout(false);
             this.panelTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2115,7 +2117,7 @@ namespace PELOSCALVO
         public System.Windows.Forms.Button BtnGuardarFactura;
         private System.Windows.Forms.TabPage tabPage3Factura;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ComboBox nonbreAlmacenComboBox;
+        private System.Windows.Forms.ComboBox AlmacenTxt;
         private System.Windows.Forms.BindingSource dsCONFIGURACCIONBindingSource;
         private System.Windows.Forms.ComboBox ejerciciosDeAñoComboBox;
         private System.Windows.Forms.BindingSource dtConfiBindingSource;

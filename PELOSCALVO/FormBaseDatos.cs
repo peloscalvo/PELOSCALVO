@@ -29,7 +29,7 @@ namespace PELOSCALVO
             string Ruta = "";
             if (this.TabArchivos.Tag.ToString() == "SI")
             {
-                Ruta = this.TabArchivos.Text;
+                Ruta = this.NombreArchivoDatos.Text;
             }
             else
             {

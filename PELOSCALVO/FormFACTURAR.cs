@@ -230,7 +230,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Localidad", string.IsNullOrEmpty(this.localidadTextBox.Text) ? (object)DBNull.Value : this.localidadTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Provincia", string.IsNullOrEmpty(this.provinciaComboBox.Text) ? (object)DBNull.Value : this.provinciaComboBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@CodigoPostal", string.IsNullOrEmpty(this.codigoPostalTextBox.Text) ? (object)DBNull.Value : this.codigoPostalTextBox.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@NonbreAlmacen", string.IsNullOrEmpty(this.nonbreAlmacenComboBox.Text) ? (object)DBNull.Value : this.nonbreAlmacenComboBox.Text);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@NonbreAlmacen", string.IsNullOrEmpty(this.AlmacenTxt.Text) ? (object)DBNull.Value : this.AlmacenTxt.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@IvaImpuesto", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Value.ToString()) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Value.ToString()));
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@SubTotal", string.IsNullOrEmpty(this.subTotal.Text) ? (object)DBNull.Value : Convert.ToDouble(this.subTotal.Text.Replace("€", "")));
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@BaseIva", string.IsNullOrEmpty(this.baseIva.Text) ? (object)DBNull.Value : Convert.ToDouble(this.baseIva.Text.Replace("€", "")));
@@ -503,7 +503,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Localidad", string.IsNullOrEmpty(this.localidadTextBox.Text) ? (object)DBNull.Value : this.localidadTextBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Provincia", string.IsNullOrEmpty(this.provinciaComboBox.Text) ? (object)DBNull.Value : this.provinciaComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@CodigoPostal", string.IsNullOrEmpty(this.codigoPostalTextBox.Text) ? (object)DBNull.Value : this.codigoPostalTextBox.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@NonbreAlmacen", string.IsNullOrEmpty(this.nonbreAlmacenComboBox.Text) ? (object)DBNull.Value : this.nonbreAlmacenComboBox.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@NonbreAlmacen", string.IsNullOrEmpty(this.AlmacenTxt.Text) ? (object)DBNull.Value : this.AlmacenTxt.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@IvaImpuesto", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Value.ToString()) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Value.ToString()));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@SubTotal", string.IsNullOrEmpty(this.subTotal.Text) ? (object)DBNull.Value : Convert.ToDouble(this.subTotal.Text.Replace("€", "")));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@BaseIva", string.IsNullOrEmpty(this.baseIva.Text) ? (object)DBNull.Value : Convert.ToDouble(this.baseIva.Text.Replace("€", "")));
@@ -911,6 +911,7 @@ namespace PELOSCALVO
             this.dtNuevaFacturaDataGridView.UseWaitCursor = false;
             this.cobradaFacturaCheckBox.Enabled = false;
             this.FechaFactura.Enabled = false;
+            AlmacenTxt.Enabled = false;
             foreach (Control ctrl in this.tabPage1Factura.Controls)
             {
                 if (ctrl is TextBox)
@@ -949,6 +950,7 @@ namespace PELOSCALVO
             this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
             this.cobradaFacturaCheckBox.Enabled = true;
             this.FechaFactura.Enabled = true;
+            AlmacenTxt.Enabled = true;
             this.dtNuevaFacturaDataGridView.Focus();
             foreach (Control ctrl in this.tabPage1Factura.Controls)
             {
@@ -1053,9 +1055,7 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        this.dsCONFIGURACCION.DtDetallesFactura.Clear();
-                        this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
-                        this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+   
                         SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                         AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
                         AdactaPelos = new SqlDataAdapter(consultaDetalle, ClsConexionSql.CadenaConexion);
@@ -1101,7 +1101,7 @@ namespace PELOSCALVO
                 }
                 if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
                 {
-                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
+                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
                     this.dtConfiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi;
                     this.dtTarifaTipoBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo;
                     this.dtAlmacenesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes;
@@ -1248,6 +1248,28 @@ namespace PELOSCALVO
             // this.NombreEmpresaReguistro.Visible = false;
             // this.PanelArriba.Tag = "SI";
         }
+        private void LimpiarDatos()
+        {
+            try
+            {
+                this.dsCONFIGURACCION.DtDetallesFactura.Clear();
+                this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
+                this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+                this.dsCONFIGURACCION.Clear();
+                // dtNuevaFacturaBindingSource.Clear();
+                dtDetallesFacturaBindingSource.Clear();
+                dtDetallesFactura2BindingSource.Clear();
+                //dtNuevaFacturaBindingSource.Clear();
+                this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+                this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
+                this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
         private void ActualizarFaturas_DB()
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
@@ -1264,16 +1286,7 @@ namespace PELOSCALVO
                     try
                     {
                         if (NuevaConexion.SiConexionDb)
-                        {
-                          this.dsCONFIGURACCION.Clear();
-                          // dtNuevaFacturaBindingSource.Clear();
-                           dtDetallesFacturaBindingSource.Clear();
-                           dtDetallesFactura2BindingSource.Clear();
-                            //dtNuevaFacturaBindingSource.Clear();
-                           this.dsCONFIGURACCION.DtNuevaFactura.Clear();
-                           this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
-                             this.dsCONFIGURACCION.DtNuevaFactura.Clear();
-                       
+                        {                       
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
                             AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
@@ -2375,6 +2388,7 @@ namespace PELOSCALVO
         {
             if (this.PanelArriba.Tag.ToString() == "SI")
             {
+                LimpiarDatos();
                 if (ClsConexionSql.SibaseDatosSql)
                 {
                     ActualizarFacturaSql();
@@ -2412,6 +2426,16 @@ namespace PELOSCALVO
         private void EmpresaPrincipal_Click(object sender, EventArgs e)
         {
             this.PanelArriba.Tag = "SI";
+        }
+
+        private void EmpresaReguistro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AlmacenTxt_Click(object sender, EventArgs e)
+        {
+            AlmacenTxt.DroppedDown = true;
         }
     }
 }
