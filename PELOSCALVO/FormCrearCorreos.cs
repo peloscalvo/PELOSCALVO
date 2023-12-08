@@ -86,6 +86,8 @@ namespace PELOSCALVO
             this.DataGridCorreoCliente.Enabled = false;
             this.BtnCancelarCli.Enabled = true;
             this.BtnGuardarCorreoCli.Enabled = true;
+            PanelBotonesCorreoCli.Enabled = false;//Para no Editar Otro 
+            DatagridCorreosEmpresa.Enabled = false;///tambien
         }
         private void RestaurarOjetosCorreo_Cli()
         {
@@ -97,6 +99,8 @@ namespace PELOSCALVO
             this.DataGridCorreoCliente.Enabled = true;
             this.BtnCancelarCli.Enabled = false;
             this.BtnGuardarCorreoCli.Enabled = false;
+            PanelBotonesCorreoCli.Enabled = true;//Para no Editar Otro 
+            DatagridCorreosEmpresa.Enabled = true;///tambien
         }
         private void ModificarOjetosCorreo_E()
         {

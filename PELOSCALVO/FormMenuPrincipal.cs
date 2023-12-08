@@ -26,8 +26,8 @@ namespace PELOSCALVO
         public FormMenuPrincipal()
         {
 
-            this.DtCorreos.Columns.Add("Id",typeof(int));
-            this.DtCorreos.Columns.Add("NombreEmpresa",typeof(string));
+            this.DtCorreos.Columns.Add("Id", typeof(int));
+            this.DtCorreos.Columns.Add("NombreEmpresa", typeof(string));
             this.DtCorreos.Columns.Add("CorreoEletronico", typeof(string));
             this.DtCorreos.Columns.Add("Usuario", typeof(string));
             this.DtCorreos.Columns.Add("Contraseña", typeof(string));
@@ -36,7 +36,7 @@ namespace PELOSCALVO
             this.DtCorreos.Columns.Add("Timeof", typeof(int));
             this.dsCorreos.Tables.Add(this.DtCorreos);
 
-            this.DtCorreosCliente.Columns.Add("Id",typeof(int));
+            this.DtCorreosCliente.Columns.Add("Id", typeof(int));
             this.DtCorreosCliente.Columns.Add("RazonSocial", typeof(string));
             this.DtCorreosCliente.Columns.Add("EmpresaNombre", typeof(string));
             this.DtCorreosCliente.Columns.Add("Direcion", typeof(string));
@@ -71,7 +71,7 @@ namespace PELOSCALVO
             XmlElement RAIZ = DOC.CreateElement("a");
             DOC.AppendChild(RAIZ);
             DOC.Save(ArchivoXml);
-            MessageBox.Show("Archivo Nuevo Creado"+ "\n" + ArchivoXml.ToString(), "SISTEMA GENERAL");
+            MessageBox.Show("Archivo Nuevo Creado" + "\n" + ArchivoXml.ToString(), "SISTEMA GENERAL");
         }
         private void CrearArchivos_Xml_Principal()
         {
@@ -95,7 +95,7 @@ namespace PELOSCALVO
                             MessageBox.Show("Sistema Restructurado Con Exito", "SISTEMA FACTURACION", MessageBoxButtons.OK);
                         }
                     }
- 
+
                     if (File.Exists(ClasDatos.RutaMultidatos))
                     {
                         this.dsMultidatos.ReadXml(ClasDatos.RutaMultidatos);
@@ -106,7 +106,7 @@ namespace PELOSCALVO
                     {
                         CrearArchivosXml(ClasDatos.RutaMultidatos);
                     }
-     
+
                     if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                     {
                         this.dsServidor.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
@@ -284,9 +284,17 @@ namespace PELOSCALVO
 
         private void btnListaClientes_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -297,7 +305,7 @@ namespace PELOSCALVO
             {
 
                 frm.TopLevel = false;
-              //  frm.Dock = DockStyle.Fill;
+                //  frm.Dock = DockStyle.Fill;
                 this.panelContenedorForm.Controls.Add(frm);
                 //frm.FormBorderStyle = FormBorderStyle.None;
                 frm.FormClosed += (o, args) => this.SiOpenClie = 0;
@@ -323,9 +331,17 @@ namespace PELOSCALVO
 
         private void btnARTICULOS_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -337,7 +353,7 @@ namespace PELOSCALVO
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;
                 frm.WindowState = FormWindowState.Maximized;
-              //  frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+                //  frm.Anchor = System.Windows.Forms.AnchorStyles.None;
                 this.panelContenedorForm.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenArti = 0;
                 frm.Show();
@@ -389,9 +405,17 @@ namespace PELOSCALVO
 
         private void btnCrearFactura_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -405,7 +429,7 @@ namespace PELOSCALVO
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
-              //  frm.Dock = DockStyle.Fill;
+                //  frm.Dock = DockStyle.Fill;
                 this.panelContenedorForm.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
@@ -441,7 +465,7 @@ namespace PELOSCALVO
             {
                 FormComfiguracion frm = new FormComfiguracion();
                 frm.TopLevel = false;
-               // frm.Dock = DockStyle.Fill;
+                // frm.Dock = DockStyle.Fill;
                 this.panelContenedorForm.Controls.Add(frm);
                 //frm.FormBorderStyle = FormBorderStyle.None;
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
@@ -458,7 +482,7 @@ namespace PELOSCALVO
             {
                 FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
-              //  frm.Dock = DockStyle.Fill;
+                //  frm.Dock = DockStyle.Fill;
                 this.panelContenedorForm.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenUser = 0;
                 frm.Show();
@@ -471,9 +495,17 @@ namespace PELOSCALVO
 
         private void BtnCrearNotas_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -487,7 +519,7 @@ namespace PELOSCALVO
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
-               // frm.Dock = DockStyle.Fill;
+                // frm.Dock = DockStyle.Fill;
                 this.panelContenedorForm.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
@@ -509,9 +541,17 @@ namespace PELOSCALVO
 
         private void BtnCrearPresupustos_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -525,7 +565,7 @@ namespace PELOSCALVO
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
-               // frm.Dock = DockStyle.Fill;
+                // frm.Dock = DockStyle.Fill;
                 this.panelContenedorForm.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
@@ -539,9 +579,17 @@ namespace PELOSCALVO
 
         private void BtnCrearNotas2_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -555,7 +603,7 @@ namespace PELOSCALVO
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
-               // frm.Dock = DockStyle.Fill;
+                // frm.Dock = DockStyle.Fill;
                 this.panelContenedorForm.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
@@ -569,9 +617,17 @@ namespace PELOSCALVO
 
         private void BtnCrearAlbaranes_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -649,28 +705,36 @@ namespace PELOSCALVO
 
         private void BtnInfo_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
                 }
             }
-            PanelAcesosDire.Width = panelContenedorForm.Width;
-            PanelAcesosDire.Height = panelContenedorForm.Height;
-            if (BtnInfo.Tag.ToString() == "SI")
+            else
             {
-                PanelAcesosDire.BringToFront();
-                BtnInfo.Tag = "NO";
-                PanelAcesosDire.Visible = true;
-      
-              
+                if (ClsConexionDb.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            this.PanelAcesosDire.Width = this.panelContenedorForm.Width;
+            this.PanelAcesosDire.Height = this.panelContenedorForm.Height;
+            if (this.BtnInfo.Tag.ToString() == "SI")
+            {
+                this.PanelAcesosDire.BringToFront();
+                this.BtnInfo.Tag = "NO";
+                this.PanelAcesosDire.Visible = true;
+
+
             }
             else
             {
-                BtnInfo.Tag = "SI";
-                PanelAcesosDire.Visible = false;
+                this.BtnInfo.Tag = "SI";
+                this.PanelAcesosDire.Visible = false;
             }
 
         }
@@ -679,10 +743,10 @@ namespace PELOSCALVO
         {
             try
             {
-                
+
                 if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
-             
+
                     if (this.PanelInfo_P.Width >= 864)
                     {
                         this.PanelInfo_P.Tag = "CERRAR";
@@ -728,7 +792,7 @@ namespace PELOSCALVO
         {
             try
             {
-                panelAplicaciones.Visible = false;
+                this.panelAplicaciones.Visible = false;
                 Process.Start("https://www.google.es/");
             }
             catch (Exception)
@@ -754,7 +818,7 @@ namespace PELOSCALVO
             FormEmpresas frm = new FormEmpresas();
             frm.TopLevel = false;
             // frm.Dock = DockStyle.Fill;
-           // frm.WindowState = FormWindowState.Maximized;
+            // frm.WindowState = FormWindowState.Maximized;
             //frm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelContenedorForm.Controls.Add(frm);
             frm.FormClosed += (o, args) => this.SiOpenArti = 0;
@@ -769,7 +833,7 @@ namespace PELOSCALVO
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
-         
+
         }
 
         private void crearEjercioNuevoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -790,8 +854,8 @@ namespace PELOSCALVO
                 {
                     this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
                     this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
-                    this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();                
-                                   
+                    this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
+
                 }
                 this.TimerCerrarPanel.Start();
             }
@@ -800,7 +864,7 @@ namespace PELOSCALVO
 
                 // throw;
             }
-     
+
         }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -926,7 +990,7 @@ namespace PELOSCALVO
 
         private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormDatoInicio frm = new FormDatoInicio();
+            FormDatosInicio frm = new FormDatosInicio();
             frm.TopLevel = false;
             this.panelContenedorForm.Controls.Add(frm);
             frm.Show();
@@ -935,10 +999,10 @@ namespace PELOSCALVO
 
         private void BtnSql_Click(object sender, EventArgs e)
         {
- 
+
             if (this.SiOpenFatu == 0 & this.SiOpenArti == 0 & this.SiOpenClie == 0 & this.SiOpenConfi == 0)
             {
-                panelAplicaciones.Visible = false;
+                this.panelAplicaciones.Visible = false;
                 FormBaseDatos frm = new FormBaseDatos();
                 frm.ShowDialog();
                 frm.BringToFront();

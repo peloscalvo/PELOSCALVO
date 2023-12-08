@@ -15,6 +15,27 @@ namespace PELOSCALVO
         {
             InitializeComponent();
         }
+        private void FormCrearTablasDb_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+                {
+                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
+
+                }
+
+                if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
+                {
+                    this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
         private bool VALIDARcampos_ArchivosTablas()
         {
             bool ok = true;
@@ -49,7 +70,7 @@ namespace PELOSCALVO
                 Close();
             }
         }
-        public List<string> ObtenerTablasDb()
+        private List<string> ObtenerTablasDb()
         {
 
             // Microsoft Access provider factory
@@ -75,6 +96,7 @@ namespace PELOSCALVO
                     string[] restrictions = new string[4];
                     restrictions[3] = "Table";
                     connection.Open();
+     
                     userTables = connection.GetSchema("Tables", restrictions);
                 }
                 catch (Exception ex)
@@ -87,15 +109,24 @@ namespace PELOSCALVO
             List<string> tableNames = new List<string>();
             for (int i = 0; i < userTables.Rows.Count; i++)
             {
-               // ListaTablasPrincipal.Items.Add(userTables.Rows[i][2].ToString());
-                tableNames.Add(userTables.Rows[i][2].ToString());
+                // ListaTablasPrincipal.Items.Add(userTables.Rows[i][2].ToString());
+                if (ChckListar.Checked)
+                {
+                    if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                    {
+                        tableNames.Add(userTables.Rows[i][2].ToString());
+                    }
+                    
+                }
+                else
+                {
+                    tableNames.Add(userTables.Rows[i][2].ToString());
+                }
+            
             }
             return tableNames;
         }
-        private void FormCrearTablasDb_Load(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void BtnTablasCrear_Click(object sender, EventArgs e)
         {
@@ -147,7 +178,7 @@ namespace PELOSCALVO
                     string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER primary key, [ProvinciasProvincias] varchar,[Enlace] varchar NOT NULL," +
                    " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (Enlace)REFERENCES DtPaises(PaisesPaises) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaObra = "CREATE TABLE[DtObras] ([Id] INTEGER primary key,[Obras] varchar)";
-                    string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER primary key,[ArchivoInicioFacturas] varchar," +
+                    string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER primary key," +
                         "[EmpresaInicio] varchar,[EjercicioInicio] varchar,[SerieInicio] varchar,[NombreArchivoDatos] varchar," +
                        "[RutaArchivoDatos] varchar,[SerieProvinciaInicio] varchar, [SeriePaisInicio] varchar,[ArchivoArticulos] varchar," +
                        "[TipoExtensionArticulos] varchar,[ArchivoClientes] varchar)";
@@ -759,6 +790,12 @@ namespace PELOSCALVO
                 // TablanuevaTxt.Focus();
                 return;
             }
+            if (this.TablanuevaTxt.Text == this.TablaCopiarTxt.Text)
+            {
+                MessageBox.Show("La Tabla No Puede Copiarse a Si Misma", "COPIAR", MessageBoxButtons.OK);
+                // TablanuevaTxt.Focus();
+                return;
+            }
             FolderBrowserDialog CarpetaElegir = new FolderBrowserDialog();
             if (CarpetaElegir.ShowDialog() == DialogResult.OK)
             {
@@ -809,6 +846,7 @@ namespace PELOSCALVO
             {
                 if(ListaTablasPrincipal.Items.Count <= 0)
                 {
+             
                     ListaTablasPrincipal.DataSource = ObtenerTablasDb();
                     TablanuevaTxt.DataSource = ObtenerTablasDb();
                 }
@@ -829,6 +867,24 @@ namespace PELOSCALVO
             if (this.ListaTablasPrincipal.SelectedIndex >= 0)
             {
                 this.TablaCopiarTxt.Text = this.ListaTablasPrincipal.SelectedItem.ToString();
+            }
+        }
+
+        private void ArticulosTxt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ExtensionTxt.Text != string.Empty & BaseDatosTxt1.Text != string.Empty)
+            {
+
+                ExtensionTxt.Enabled = true;
+            }
+        }
+
+        private void ClientesTxt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ExtensionTxt.Text != string.Empty & BaseDatosTxt1.Text != string.Empty)
+            {
+
+                ExtensionTxt.Enabled = true;
             }
         }
     }

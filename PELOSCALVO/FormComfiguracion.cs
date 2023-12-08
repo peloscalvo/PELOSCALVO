@@ -26,45 +26,6 @@ namespace PELOSCALVO
         }
 
 
-
-        private bool ValidarInicio()
-        {
-            bool ok = true;
-            if (this.empresaInicio.Text.Length < 3)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.empresaInicio, "_ingresar Empresa valido (( minimo 3 Caracteres))");
-            }
-            if (this.EjercicioInicio.Text.Length < 3)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.EjercicioInicio, "_ingresar Ejercicio valido (( minimo 3 Caracteres))");
-            }
-            if (this.SerieInicio.Text.Length < 1)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.SerieInicio, "_ingresar Serie valido (( minimo 1 Caracteres))");
-            }
-            if (this.PaisInicio.Text.Length < 3)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.PaisInicio, "_ingresar Pais valido (( minimo 3 Caracteres))");
-            }
-            if (this.provinciaInicio.Text.Length < 3)
-            {
-                ok = false;
-                this.errorProvider1Confi.SetError(this.provinciaInicio, "_ingresar Provincia valido (( minimo 3 Caracteres))");
-            }
-            return ok;
-        }
-        private void BorrarErroresInicio()
-        {
-            this.errorProvider1Confi.SetError(this.empresaInicio, "");
-            this.errorProvider1Confi.SetError(this.PaisInicio, "");
-            this.errorProvider1Confi.SetError(this.provinciaInicio, "");
-            this.errorProvider1Confi.SetError(this.SerieInicio, "");
-        }
-
         public FormComfiguracion()
         {
             InitializeComponent();
@@ -137,16 +98,7 @@ namespace PELOSCALVO
 
             //dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
             //dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
-            if (!File.Exists(ClasDatos.RutaMultidatos))
-            {
-                MessageBox.Show("Archivo : " + ClasDatos.RutaMultidatos, "DEBE RESTRUCTURAR ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-            }
-            if (!File.Exists(ClasDatos.RutaMulti2))
-            {
-                MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "DEBE RESTRUCTURAR ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            }
             if (!File.Exists(ClasDatos.RutaBaseDatosDb))
             {
                 MessageBox.Show("Archivo : " + ClasDatos.RutaBaseDatosDb, "FALTA ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -197,93 +149,6 @@ namespace PELOSCALVO
             }
         }
 
-
-        private void BtnGuardarInicio_Click(object sender, EventArgs e)
-        {
-            Validate();
-            BorrarErroresInicio();
-            if (ValidarInicio())
-            {
-                if (MessageBox.Show(" ¿Aceptar Actualicar ? ", " DATOS DE INICIO ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    if (this.empresaInicio.Text == String.Empty)
-                    {
-                        MessageBox.Show("Datos Empresa Vacios", "CAMPO VACIO");
-                        return;
-                    }
-                    if (this.EjercicioInicio.Text == String.Empty)
-                    {
-                        MessageBox.Show("Datos ejercicio Vacios", "CAMPO VACIO");
-                        return;
-                    }
-                    if (this.SerieInicio.Text == String.Empty)
-                    {
-                        MessageBox.Show("Datos Serie Vacia", "CAMPO VACIO");
-                        return;
-                    }
-                    if (this.provinciaInicio.SelectedIndex < 0)
-                    {
-                        MessageBox.Show("Falta Provincia", "CAMPO VACIO");
-                        return;
-                    }
-                    if (this.PaisInicio.SelectedIndex < 0)
-                    {
-                        MessageBox.Show("Falta Pais", "CAMPO VACIO");
-                        return;
-                    }
-                    if (this.dtInicioMultiBindingSource.Count < 1)
-                    {
-                        this.dtInicioMultiBindingSource.AddNew();
-                        //dtInicioMultiBindingSource.AddNew();
-                        Validate();
-                        this.dtInicioDataGridView.EndEdit();
-                        this.dtInicioMultiBindingSource.EndEdit();
-                    }
-                    if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
-                    {
-                        // MessageBox.Show(dtInicioMultiBindingSource.Current.ToString());
-                        // dsMultidatos.Tables["DtInicioMulti"].Rows[0]["EmpresaInicio"] = empresaInicio.Text;
-                        // return;
-                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["EjercicioInicio"] = this.EjercicioInicio.Text;
-                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"] = this.PaisInicio.Text;
-                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieInicio"] = this.SerieInicio.Text;
-                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"] = this.provinciaInicio.Text;
-                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"] = this.PaisInicio.Text;
-                        FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["ArchivoInicioFacturas"] = ClasDatos.RutaBaseDatosDb;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No Se Guardaron Todos Los Datos", "FALLO AL GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
-                    }
-
-                    Validate();
-                    this.dtInicioDataGridView.EndEdit();
-                    this.dtInicioMultiBindingSource.EndEdit();
-                    if (File.Exists(ClasDatos.RutaMultidatos))
-                    {
-                        FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
-                        this.dtInicioDataGridView.Refresh();
-                        MessageBox.Show("Se Actualizo Correctamente", "ACTUALIZAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Falta Archivo", "FALLO AL GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-            }
-
-        }
-
-
-
-
-
-        private void BtnVolverConfi_Inicio_Click(object sender, EventArgs e)
-        {
-            BorrarErroresInicio();
-
-        }
 
         private void BtnConfiReportes_Click(object sender, EventArgs e)
         {
@@ -404,20 +269,6 @@ namespace PELOSCALVO
         private void familiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.tabMENU.Parent = null;
-        }
-
-        private void configurarDatosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.tabControlTodo.TabPages.Insert(1, this.tabPageInicio);
-                this.tabMENU.Parent = null;
-            }
-            catch (Exception)
-            {
-
-                //throw;
-            }
         }
 
         private void añadirBaseDatosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -597,21 +448,6 @@ namespace PELOSCALVO
 
 
 
-        private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.tabControlTodo.TabPages.Insert(1, this.tabPageInicio);
-                this.tabMENU.Parent = null;
-                this.BtnGuardarInicio.Visible = false;
-                this.panelDatosInicio.Enabled = false;
-            }
-            catch (Exception)
-            {
-
-                // throw;
-            }
-        }
         private void crearBaseDatosSqlLocalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCrearBaseDatos frm = new FormCrearBaseDatos();

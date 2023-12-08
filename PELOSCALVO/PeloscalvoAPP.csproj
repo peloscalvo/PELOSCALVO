@@ -200,6 +200,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsServidor.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAlmacenes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,11 +278,11 @@
     <Compile Include="FormCrearTablasDb.Designer.cs">
       <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDatoInicio.cs">
+    <Compile Include="FormDatosInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDatoInicio.Designer.cs">
-      <DependentUpon>FormDatoInicio.cs</DependentUpon>
+    <Compile Include="FormDatosInicio.Designer.cs">
+      <DependentUpon>FormDatosInicio.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDescuentos.cs">
       <SubType>Form</SubType>
@@ -370,6 +376,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAlmacenes.resx">
       <DependentUpon>FormAlmacenes.cs</DependentUpon>
     </EmbeddedResource>
@@ -406,8 +415,8 @@
     <EmbeddedResource Include="FormCrearTablasDb.resx">
       <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDatoInicio.resx">
-      <DependentUpon>FormDatoInicio.cs</DependentUpon>
+    <EmbeddedResource Include="FormDatosInicio.resx">
+      <DependentUpon>FormDatosInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDescuentos.resx">
       <DependentUpon>FormDescuentos.cs</DependentUpon>

@@ -182,7 +182,10 @@ namespace PELOSCALVO
             string ConsultaProvincia = "SELECT * from [DtProvincias]";
             string ConsultaPais = "SELECT * from [DtPaises]";
             string ConsultaFamilia = "SELECT * from [DtFamiliaProductos]";
-            string ConsultaCorreoCli = "SELECT * from [DtCorreos]";
+            string ConsultaCorreoCli = "SELECT * from [DtCorreosCliente]";
+            string ConsultaCorreoEmpresa = "SELECT * from [DtCorreos]";
+            string ConsutaInicio = "SELECT * from [DtInicioMulti]";
+
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             NuevaConexion = new ClsConexionDb(consulta);
             OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
@@ -208,6 +211,10 @@ namespace PELOSCALVO
                     AdactaPelos = new OleDbDataAdapter(ConsultaFamilia, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos);
                     AdactaPelos = new OleDbDataAdapter(ConsultaCorreoCli, ClsConexionDb.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreosCliente);
+                    AdactaPelos = new OleDbDataAdapter(ConsutaInicio, ClsConexionDb.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti);
+                    AdactaPelos = new OleDbDataAdapter(ConsultaCorreoEmpresa, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreos);
                     AdactaPelos.Dispose();
 
@@ -240,7 +247,10 @@ namespace PELOSCALVO
             string ConsultaProvincia = "SELECT * from [DtProvincias]";
             string ConsultaPais = "SELECT * from [DtPaises]";
             string ConsultaFamilia = "SELECT * from [DtFamiliaProductos]";
-            string ConsultaCorreoCli = "SELECT * from [DtCorreos]";
+            string ConsultaCorreoCli = "SELECT * from [DtCorreosCliente]";
+            string ConsultaCorreoEmpresa = "SELECT * from [DtCorreos]";
+            string ConsutaInicio = "SELECT * from [DtInicioMulti]";
+
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             NuevaConexion = new ClsConexionSql(consulta);
             SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
@@ -266,6 +276,10 @@ namespace PELOSCALVO
                     AdactaPelos = new SqlDataAdapter(ConsultaOBRA, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtObras);
                     AdactaPelos = new SqlDataAdapter(ConsultaCorreoCli, ClsConexionDb.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreosCliente);
+                    AdactaPelos = new SqlDataAdapter(ConsutaInicio, ClsConexionDb.CadenaConexion);
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti);
+                    AdactaPelos = new SqlDataAdapter(ConsultaCorreoEmpresa, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreos);
                     AdactaPelos.Dispose();
 
@@ -1252,6 +1266,7 @@ namespace PELOSCALVO
                         ClasDatos.RutaBaseDatosDb = Path.GetFullPath(BuscarArchivo.FileName.ToString());
                         FormMenuPrincipal.menu2principal.InfoCarpeta.Text = Path.GetDirectoryName(BuscarArchivo.FileName.ToString());
                         FormMenuPrincipal.menu2principal.InfoBaseDatos.Text = Path.GetFileName(BuscarArchivo.FileName.ToString());
+                        FormMenuPrincipal.menu2principal.InfoCarpeta.Text = Path.GetDirectoryName(BuscarArchivo.FileName.ToString());
                         this.TabArchivos.Tag = "SI";
                         this.NombreArchivoDatos.BackColor = Color.Bisque;
                     }

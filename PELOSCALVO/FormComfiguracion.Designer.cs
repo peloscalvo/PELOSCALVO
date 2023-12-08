@@ -30,16 +30,6 @@ namespace PELOSCALVO
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label provinciaLabel;
-            System.Windows.Forms.Label pais_FactLabel;
-            System.Windows.Forms.Label archivoArticulosLabel;
-            System.Windows.Forms.Label label3;
-            System.Windows.Forms.Label tipoExtensionArticulosLabel;
-            System.Windows.Forms.Label label4;
-            System.Windows.Forms.Label label2;
-            System.Windows.Forms.Label archivoClientesLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComfiguracion));
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
@@ -62,23 +52,6 @@ namespace PELOSCALVO
             this.dtNombresTablasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idProveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageInicio = new System.Windows.Forms.TabPage();
-            this.panelDatosInicio = new System.Windows.Forms.Panel();
-            this.empresaInicio = new System.Windows.Forms.ComboBox();
-            this.archivoClientesComboBox = new System.Windows.Forms.ComboBox();
-            this.SerieInicio = new System.Windows.Forms.ComboBox();
-            this.tipoExtensionArticulosComboBox = new System.Windows.Forms.ComboBox();
-            this.EjercicioInicio = new System.Windows.Forms.ComboBox();
-            this.archivoArticulosComboBox = new System.Windows.Forms.ComboBox();
-            this.provinciaInicio = new System.Windows.Forms.ComboBox();
-            this.PaisInicio = new System.Windows.Forms.ComboBox();
-            this.BtnVolverConfi_Inicio = new System.Windows.Forms.Button();
-            this.dtInicioDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnGuardarInicio = new System.Windows.Forms.Button();
             this.tabMENU = new System.Windows.Forms.TabPage();
             this.BtnRestructurar = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -100,14 +73,6 @@ namespace PELOSCALVO
             this.BtnSalirConfi = new System.Windows.Forms.Button();
             this.tabControlTodo = new System.Windows.Forms.TabControl();
             this.dtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            provinciaLabel = new System.Windows.Forms.Label();
-            pais_FactLabel = new System.Windows.Forms.Label();
-            archivoArticulosLabel = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            archivoClientesLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).BeginInit();
@@ -122,86 +87,11 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNombresTablasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).BeginInit();
-            this.tabPageInicio.SuspendLayout();
-            this.panelDatosInicio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtInicioDataGridView)).BeginInit();
             this.tabMENU.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tabControlTodo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // provinciaLabel
-            // 
-            provinciaLabel.AutoSize = true;
-            provinciaLabel.Location = new System.Drawing.Point(40, 109);
-            provinciaLabel.Name = "provinciaLabel";
-            provinciaLabel.Size = new System.Drawing.Size(54, 13);
-            provinciaLabel.TabIndex = 36;
-            provinciaLabel.Text = "Provincia:";
-            // 
-            // pais_FactLabel
-            // 
-            pais_FactLabel.AutoSize = true;
-            pais_FactLabel.Location = new System.Drawing.Point(64, 137);
-            pais_FactLabel.Name = "pais_FactLabel";
-            pais_FactLabel.Size = new System.Drawing.Size(30, 13);
-            pais_FactLabel.TabIndex = 38;
-            pais_FactLabel.Text = "Pais:";
-            // 
-            // archivoArticulosLabel
-            // 
-            archivoArticulosLabel.AutoSize = true;
-            archivoArticulosLabel.Location = new System.Drawing.Point(9, 173);
-            archivoArticulosLabel.Name = "archivoArticulosLabel";
-            archivoArticulosLabel.Size = new System.Drawing.Size(89, 13);
-            archivoArticulosLabel.TabIndex = 39;
-            archivoArticulosLabel.Text = "Archivo Articulos:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(60, 82);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(34, 13);
-            label3.TabIndex = 27;
-            label3.Text = "Serie:";
-            // 
-            // tipoExtensionArticulosLabel
-            // 
-            tipoExtensionArticulosLabel.AutoSize = true;
-            tipoExtensionArticulosLabel.Location = new System.Drawing.Point(38, 243);
-            tipoExtensionArticulosLabel.Name = "tipoExtensionArticulosLabel";
-            tipoExtensionArticulosLabel.Size = new System.Drawing.Size(56, 13);
-            tipoExtensionArticulosLabel.TabIndex = 41;
-            tipoExtensionArticulosLabel.Text = "Extension:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(40, 55);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(55, 13);
-            label4.TabIndex = 24;
-            label4.Text = "Ejercicios:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(43, 22);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(51, 13);
-            label2.TabIndex = 6;
-            label2.Text = "Empresa:";
-            // 
-            // archivoClientesLabel
-            // 
-            archivoClientesLabel.AutoSize = true;
-            archivoClientesLabel.Location = new System.Drawing.Point(8, 204);
-            archivoClientesLabel.Name = "archivoClientesLabel";
-            archivoClientesLabel.Size = new System.Drawing.Size(86, 13);
-            archivoClientesLabel.TabIndex = 42;
-            archivoClientesLabel.Text = "Archivo Clientes:";
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -314,272 +204,6 @@ namespace PELOSCALVO
             this.idProveedoresDataGridViewTextBoxColumn.Name = "idProveedoresDataGridViewTextBoxColumn";
             this.idProveedoresDataGridViewTextBoxColumn.ReadOnly = true;
             this.idProveedoresDataGridViewTextBoxColumn.Width = 153;
-            // 
-            // tabPageInicio
-            // 
-            this.tabPageInicio.AutoScroll = true;
-            this.tabPageInicio.Controls.Add(this.panelDatosInicio);
-            this.tabPageInicio.Controls.Add(this.BtnVolverConfi_Inicio);
-            this.tabPageInicio.Controls.Add(this.dtInicioDataGridView);
-            this.tabPageInicio.Controls.Add(this.BtnGuardarInicio);
-            this.tabPageInicio.Location = new System.Drawing.Point(4, 25);
-            this.tabPageInicio.Name = "tabPageInicio";
-            this.tabPageInicio.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInicio.Size = new System.Drawing.Size(1012, 531);
-            this.tabPageInicio.TabIndex = 5;
-            this.tabPageInicio.Text = "Configuracion Inicio";
-            this.tabPageInicio.UseVisualStyleBackColor = true;
-            // 
-            // panelDatosInicio
-            // 
-            this.panelDatosInicio.Controls.Add(this.empresaInicio);
-            this.panelDatosInicio.Controls.Add(archivoClientesLabel);
-            this.panelDatosInicio.Controls.Add(label2);
-            this.panelDatosInicio.Controls.Add(this.archivoClientesComboBox);
-            this.panelDatosInicio.Controls.Add(label4);
-            this.panelDatosInicio.Controls.Add(tipoExtensionArticulosLabel);
-            this.panelDatosInicio.Controls.Add(this.SerieInicio);
-            this.panelDatosInicio.Controls.Add(this.tipoExtensionArticulosComboBox);
-            this.panelDatosInicio.Controls.Add(label3);
-            this.panelDatosInicio.Controls.Add(archivoArticulosLabel);
-            this.panelDatosInicio.Controls.Add(this.EjercicioInicio);
-            this.panelDatosInicio.Controls.Add(this.archivoArticulosComboBox);
-            this.panelDatosInicio.Controls.Add(this.provinciaInicio);
-            this.panelDatosInicio.Controls.Add(pais_FactLabel);
-            this.panelDatosInicio.Controls.Add(provinciaLabel);
-            this.panelDatosInicio.Controls.Add(this.PaisInicio);
-            this.panelDatosInicio.Location = new System.Drawing.Point(17, 75);
-            this.panelDatosInicio.Name = "panelDatosInicio";
-            this.panelDatosInicio.Size = new System.Drawing.Size(565, 316);
-            this.panelDatosInicio.TabIndex = 44;
-            // 
-            // empresaInicio
-            // 
-            this.empresaInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "EmpresaInicio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.empresaInicio.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.empresaInicio.DisplayMember = "EmpresaConfi";
-            this.empresaInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaInicio.FormattingEnabled = true;
-            this.empresaInicio.Location = new System.Drawing.Point(104, 19);
-            this.empresaInicio.Name = "empresaInicio";
-            this.empresaInicio.Size = new System.Drawing.Size(312, 21);
-            this.empresaInicio.TabIndex = 7;
-            // 
-            // archivoClientesComboBox
-            // 
-            this.archivoClientesComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "ArchivoClientes", true));
-            this.archivoClientesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.archivoClientesComboBox.FormattingEnabled = true;
-            this.archivoClientesComboBox.Items.AddRange(new object[] {
-            "Listado1",
-            "Listado2",
-            "Listado3",
-            "Listado4",
-            "Listado5",
-            "Listado6"});
-            this.archivoClientesComboBox.Location = new System.Drawing.Point(104, 201);
-            this.archivoClientesComboBox.Name = "archivoClientesComboBox";
-            this.archivoClientesComboBox.Size = new System.Drawing.Size(299, 21);
-            this.archivoClientesComboBox.TabIndex = 43;
-            // 
-            // SerieInicio
-            // 
-            this.SerieInicio.Cursor = System.Windows.Forms.Cursors.Default;
-            this.SerieInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "SerieInicio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SerieInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SerieInicio.FormattingEnabled = true;
-            this.SerieInicio.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G"});
-            this.SerieInicio.Location = new System.Drawing.Point(104, 79);
-            this.SerieInicio.Name = "SerieInicio";
-            this.SerieInicio.Size = new System.Drawing.Size(200, 21);
-            this.SerieInicio.TabIndex = 26;
-            // 
-            // tipoExtensionArticulosComboBox
-            // 
-            this.tipoExtensionArticulosComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "TipoExtensionArticulos", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tipoExtensionArticulosComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tipoExtensionArticulosComboBox.FormattingEnabled = true;
-            this.tipoExtensionArticulosComboBox.Items.AddRange(new object[] {
-            "DBF",
-            "mdb",
-            "accdb"});
-            this.tipoExtensionArticulosComboBox.Location = new System.Drawing.Point(104, 240);
-            this.tipoExtensionArticulosComboBox.Name = "tipoExtensionArticulosComboBox";
-            this.tipoExtensionArticulosComboBox.Size = new System.Drawing.Size(121, 21);
-            this.tipoExtensionArticulosComboBox.TabIndex = 42;
-            // 
-            // EjercicioInicio
-            // 
-            this.EjercicioInicio.Cursor = System.Windows.Forms.Cursors.Default;
-            this.EjercicioInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "EjercicioInicio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.EjercicioInicio.DataSource = this.dtConfiBindingSource;
-            this.EjercicioInicio.DisplayMember = "EjerciciosDeAño";
-            this.EjercicioInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.EjercicioInicio.FormattingEnabled = true;
-            this.EjercicioInicio.Location = new System.Drawing.Point(104, 52);
-            this.EjercicioInicio.Name = "EjercicioInicio";
-            this.EjercicioInicio.Size = new System.Drawing.Size(268, 21);
-            this.EjercicioInicio.TabIndex = 33;
-            // 
-            // archivoArticulosComboBox
-            // 
-            this.archivoArticulosComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "ArchivoArticulos", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.archivoArticulosComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.archivoArticulosComboBox.FormattingEnabled = true;
-            this.archivoArticulosComboBox.Items.AddRange(new object[] {
-            "Tarifa1",
-            "Tarifa2",
-            "Tarifa3",
-            "Tarifa4",
-            "Tarifa5",
-            "Tarifa6"});
-            this.archivoArticulosComboBox.Location = new System.Drawing.Point(104, 170);
-            this.archivoArticulosComboBox.Name = "archivoArticulosComboBox";
-            this.archivoArticulosComboBox.Size = new System.Drawing.Size(299, 21);
-            this.archivoArticulosComboBox.TabIndex = 40;
-            // 
-            // provinciaInicio
-            // 
-            this.provinciaInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "SerieProvinciaInicio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.provinciaInicio.DataSource = this.dtProvinciasBindingSource;
-            this.provinciaInicio.DisplayMember = "ProvinciasProvincias";
-            this.provinciaInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.provinciaInicio.FormattingEnabled = true;
-            this.provinciaInicio.Location = new System.Drawing.Point(104, 106);
-            this.provinciaInicio.Name = "provinciaInicio";
-            this.provinciaInicio.Size = new System.Drawing.Size(268, 21);
-            this.provinciaInicio.TabIndex = 37;
-            // 
-            // PaisInicio
-            // 
-            this.PaisInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "SeriePaisInicio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PaisInicio.DataSource = this.dtPaisesBindingSource;
-            this.PaisInicio.DisplayMember = "PaisesPaises";
-            this.PaisInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PaisInicio.FormattingEnabled = true;
-            this.PaisInicio.Location = new System.Drawing.Point(104, 134);
-            this.PaisInicio.Name = "PaisInicio";
-            this.PaisInicio.Size = new System.Drawing.Size(268, 21);
-            this.PaisInicio.TabIndex = 39;
-            // 
-            // BtnVolverConfi_Inicio
-            // 
-            this.BtnVolverConfi_Inicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnVolverConfi_Inicio.BackColor = System.Drawing.Color.Transparent;
-            this.BtnVolverConfi_Inicio.FlatAppearance.BorderSize = 0;
-            this.BtnVolverConfi_Inicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnVolverConfi_Inicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnVolverConfi_Inicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVolverConfi_Inicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnVolverConfi_Inicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_undo_4_24;
-            this.BtnVolverConfi_Inicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverConfi_Inicio.Location = new System.Drawing.Point(869, 462);
-            this.BtnVolverConfi_Inicio.Name = "BtnVolverConfi_Inicio";
-            this.BtnVolverConfi_Inicio.Size = new System.Drawing.Size(107, 42);
-            this.BtnVolverConfi_Inicio.TabIndex = 35;
-            this.BtnVolverConfi_Inicio.Text = "Volver";
-            this.BtnVolverConfi_Inicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnVolverConfi_Inicio.UseVisualStyleBackColor = false;
-            this.BtnVolverConfi_Inicio.Click += new System.EventHandler(this.BtnVolverConfi_Inicio_Click);
-            // 
-            // dtInicioDataGridView
-            // 
-            this.dtInicioDataGridView.AllowUserToAddRows = false;
-            this.dtInicioDataGridView.AllowUserToDeleteRows = false;
-            this.dtInicioDataGridView.AllowUserToResizeColumns = false;
-            this.dtInicioDataGridView.AllowUserToResizeRows = false;
-            this.dtInicioDataGridView.AutoGenerateColumns = false;
-            this.dtInicioDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtInicioDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtInicioDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtInicioDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn12});
-            this.dtInicioDataGridView.DataSource = this.dtInicioMultiBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtInicioDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dtInicioDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dtInicioDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.dtInicioDataGridView.Name = "dtInicioDataGridView";
-            this.dtInicioDataGridView.ReadOnly = true;
-            this.dtInicioDataGridView.RowHeadersVisible = false;
-            this.dtInicioDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtInicioDataGridView.Size = new System.Drawing.Size(1006, 51);
-            this.dtInicioDataGridView.TabIndex = 32;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ArchivoInicioFacturas";
-            this.dataGridViewTextBoxColumn1.FillWeight = 130F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Archivo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "EmpresaInicio";
-            this.dataGridViewTextBoxColumn2.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Empresa";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "EjercicioInicio";
-            this.dataGridViewTextBoxColumn3.FillWeight = 120F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Ejercicio";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "SerieInicio";
-            this.dataGridViewTextBoxColumn12.FillWeight = 53F;
-            this.dataGridViewTextBoxColumn12.HeaderText = "Serie";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // BtnGuardarInicio
-            // 
-            this.BtnGuardarInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnGuardarInicio.BackColor = System.Drawing.Color.Transparent;
-            this.BtnGuardarInicio.FlatAppearance.BorderSize = 0;
-            this.BtnGuardarInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnGuardarInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnGuardarInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGuardarInicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarInicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
-            this.BtnGuardarInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarInicio.Location = new System.Drawing.Point(459, 462);
-            this.BtnGuardarInicio.Name = "BtnGuardarInicio";
-            this.BtnGuardarInicio.Size = new System.Drawing.Size(107, 42);
-            this.BtnGuardarInicio.TabIndex = 32;
-            this.BtnGuardarInicio.Text = "Actualizar";
-            this.BtnGuardarInicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnGuardarInicio.UseVisualStyleBackColor = false;
-            this.BtnGuardarInicio.Click += new System.EventHandler(this.BtnGuardarInicio_Click);
             // 
             // tabMENU
             // 
@@ -767,7 +391,6 @@ namespace PELOSCALVO
             // 
             this.tabControlTodo.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControlTodo.Controls.Add(this.tabMENU);
-            this.tabControlTodo.Controls.Add(this.tabPageInicio);
             this.tabControlTodo.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControlTodo.HotTrack = true;
             this.tabControlTodo.Location = new System.Drawing.Point(0, 0);
@@ -812,10 +435,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNombresTablasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).EndInit();
-            this.tabPageInicio.ResumeLayout(false);
-            this.panelDatosInicio.ResumeLayout(false);
-            this.panelDatosInicio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtInicioDataGridView)).EndInit();
             this.tabMENU.ResumeLayout(false);
             this.tabMENU.PerformLayout();
             this.menuStrip.ResumeLayout(false);
@@ -870,23 +489,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnSalirConfi;
         private System.Windows.Forms.DataGridViewTextBoxColumn familiaProductosDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.TabPage tabPageInicio;
-        private System.Windows.Forms.Panel panelDatosInicio;
-        private System.Windows.Forms.ComboBox empresaInicio;
-        private System.Windows.Forms.ComboBox archivoClientesComboBox;
-        private System.Windows.Forms.ComboBox SerieInicio;
-        private System.Windows.Forms.ComboBox tipoExtensionArticulosComboBox;
-        private System.Windows.Forms.ComboBox EjercicioInicio;
-        private System.Windows.Forms.ComboBox archivoArticulosComboBox;
-        public System.Windows.Forms.ComboBox provinciaInicio;
-        public System.Windows.Forms.ComboBox PaisInicio;
-        public System.Windows.Forms.Button BtnVolverConfi_Inicio;
-        private System.Windows.Forms.DataGridView dtInicioDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        public System.Windows.Forms.Button BtnGuardarInicio;
         private System.Windows.Forms.BindingSource dtTarifaTipoBindingSource;
     }
 }

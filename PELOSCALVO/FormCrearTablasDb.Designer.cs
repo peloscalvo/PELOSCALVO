@@ -47,6 +47,8 @@ namespace PELOSCALVO
             this.label6 = new System.Windows.Forms.Label();
             this.BaseDatosTxt1 = new System.Windows.Forms.TextBox();
             this.ArticulosTxt = new System.Windows.Forms.ComboBox();
+            this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.ClientesTxt = new System.Windows.Forms.ComboBox();
             this.ExtensionTxt = new System.Windows.Forms.ComboBox();
             this.BtnRestablecer_t = new System.Windows.Forms.Button();
@@ -55,16 +57,19 @@ namespace PELOSCALVO
             this.BtnConectar = new System.Windows.Forms.Button();
             this.TabControlPrincipal = new System.Windows.Forms.TabControl();
             this.TabInicio = new System.Windows.Forms.TabPage();
+            this.ChckListar = new System.Windows.Forms.CheckBox();
             this.TabCopia = new System.Windows.Forms.TabPage();
-            this.InfoProcesoText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BaseDatos2 = new System.Windows.Forms.TextBox();
             this.BtnCrearBackupDb = new System.Windows.Forms.Button();
             this.TabCopiarTabla = new System.Windows.Forms.TabPage();
+            this.TablaCopiarTxt = new System.Windows.Forms.TextBox();
+            this.ListaTablasPrincipal = new System.Windows.Forms.ListBox();
             this.TablanuevaTxt = new System.Windows.Forms.ComboBox();
             this.BtnCopiarTabla = new System.Windows.Forms.Button();
-            this.ListaTablasPrincipal = new System.Windows.Forms.ListBox();
-            this.TablaCopiarTxt = new System.Windows.Forms.TextBox();
+            this.InfoProcesoText = new System.Windows.Forms.Label();
+            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
+            this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             labelARTICULOS = new System.Windows.Forms.Label();
             labelCLIENTES = new System.Windows.Forms.Label();
             tipoExtensionArticulosLabel = new System.Windows.Forms.Label();
@@ -72,11 +77,15 @@ namespace PELOSCALVO
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).BeginInit();
             this.TabControlPrincipal.SuspendLayout();
             this.TabInicio.SuspendLayout();
             this.TabCopia.SuspendLayout();
             this.TabCopiarTabla.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelARTICULOS
@@ -112,6 +121,39 @@ namespace PELOSCALVO
             tipoExtensionArticulosLabel.Size = new System.Drawing.Size(56, 13);
             tipoExtensionArticulosLabel.TabIndex = 105;
             tipoExtensionArticulosLabel.Text = "Extension:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(89, 17);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(198, 26);
+            label2.TabIndex = 123;
+            label2.Tag = "";
+            label2.Text = "TABLA PRINCIPAL";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.Location = new System.Drawing.Point(404, 307);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(99, 16);
+            label3.TabIndex = 125;
+            label3.Text = "Copiar a   .....";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.Location = new System.Drawing.Point(29, 310);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(40, 16);
+            label4.TabIndex = 126;
+            label4.Text = "De ..";
             // 
             // panel3
             // 
@@ -207,6 +249,7 @@ namespace PELOSCALVO
             // 
             // ArticulosTxt
             // 
+            this.ArticulosTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "ArchivoArticulos", true));
             this.ArticulosTxt.DisplayMember = "A";
             this.ArticulosTxt.FormattingEnabled = true;
             this.ArticulosTxt.Items.AddRange(new object[] {
@@ -220,9 +263,21 @@ namespace PELOSCALVO
             this.ArticulosTxt.Name = "ArticulosTxt";
             this.ArticulosTxt.Size = new System.Drawing.Size(348, 21);
             this.ArticulosTxt.TabIndex = 100;
+            this.ArticulosTxt.SelectedIndexChanged += new System.EventHandler(this.ArticulosTxt_SelectedIndexChanged);
+            // 
+            // dtInicioMultiBindingSource
+            // 
+            this.dtInicioMultiBindingSource.DataMember = "DtInicioMulti";
+            this.dtInicioMultiBindingSource.DataSource = this.dsMultidatos;
+            // 
+            // dsMultidatos
+            // 
+            this.dsMultidatos.DataSetName = "DsMultidatos";
+            this.dsMultidatos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ClientesTxt
             // 
+            this.ClientesTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "ArchivoClientes", true));
             this.ClientesTxt.DisplayMember = "A";
             this.ClientesTxt.FormattingEnabled = true;
             this.ClientesTxt.Items.AddRange(new object[] {
@@ -236,17 +291,20 @@ namespace PELOSCALVO
             this.ClientesTxt.Name = "ClientesTxt";
             this.ClientesTxt.Size = new System.Drawing.Size(348, 21);
             this.ClientesTxt.TabIndex = 101;
+            this.ClientesTxt.SelectedIndexChanged += new System.EventHandler(this.ClientesTxt_SelectedIndexChanged);
             // 
             // ExtensionTxt
             // 
+            this.ExtensionTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "TipoExtensionArticulos", true));
             this.ExtensionTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ExtensionTxt.Enabled = false;
             this.ExtensionTxt.FormattingEnabled = true;
             this.ExtensionTxt.Items.AddRange(new object[] {
             "accdb",
             "mdb"});
             this.ExtensionTxt.Location = new System.Drawing.Point(360, 143);
             this.ExtensionTxt.Name = "ExtensionTxt";
-            this.ExtensionTxt.Size = new System.Drawing.Size(95, 21);
+            this.ExtensionTxt.Size = new System.Drawing.Size(139, 21);
             this.ExtensionTxt.TabIndex = 106;
             this.ExtensionTxt.SelectedIndexChanged += new System.EventHandler(this.ExtensionTxt_SelectedIndexChanged);
             // 
@@ -275,7 +333,7 @@ namespace PELOSCALVO
             this.BtnSalirT.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalirT.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalirT.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirT.Location = new System.Drawing.Point(783, 356);
+            this.BtnSalirT.Location = new System.Drawing.Point(786, 336);
             this.BtnSalirT.Name = "BtnSalirT";
             this.BtnSalirT.Size = new System.Drawing.Size(77, 63);
             this.BtnSalirT.TabIndex = 117;
@@ -325,6 +383,7 @@ namespace PELOSCALVO
             // TabInicio
             // 
             this.TabInicio.BackColor = System.Drawing.SystemColors.Control;
+            this.TabInicio.Controls.Add(this.ChckListar);
             this.TabInicio.Controls.Add(this.BaseDatosTxt1);
             this.TabInicio.Controls.Add(this.BtnSalirT);
             this.TabInicio.Controls.Add(this.BtnConectar);
@@ -349,6 +408,16 @@ namespace PELOSCALVO
             this.TabInicio.Tag = "NO";
             this.TabInicio.Text = "Principal";
             // 
+            // ChckListar
+            // 
+            this.ChckListar.AutoSize = true;
+            this.ChckListar.Location = new System.Drawing.Point(360, 170);
+            this.ChckListar.Name = "ChckListar";
+            this.ChckListar.Size = new System.Drawing.Size(139, 17);
+            this.ChckListar.TabIndex = 119;
+            this.ChckListar.Text = "Listar Todas Las Tablas";
+            this.ChckListar.UseVisualStyleBackColor = true;
+            // 
             // TabCopia
             // 
             this.TabCopia.BackColor = System.Drawing.SystemColors.Control;
@@ -361,19 +430,6 @@ namespace PELOSCALVO
             this.TabCopia.Size = new System.Drawing.Size(894, 416);
             this.TabCopia.TabIndex = 1;
             this.TabCopia.Text = "Copia Seguridad";
-            // 
-            // InfoProcesoText
-            // 
-            this.InfoProcesoText.AutoSize = true;
-            this.InfoProcesoText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.InfoProcesoText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoProcesoText.Location = new System.Drawing.Point(0, 444);
-            this.InfoProcesoText.Margin = new System.Windows.Forms.Padding(3);
-            this.InfoProcesoText.Name = "InfoProcesoText";
-            this.InfoProcesoText.Padding = new System.Windows.Forms.Padding(2, 4, 2, 5);
-            this.InfoProcesoText.Size = new System.Drawing.Size(202, 25);
-            this.InfoProcesoText.TabIndex = 112;
-            this.InfoProcesoText.Text = "Indica La Base De Datos a Crear";
             // 
             // label1
             // 
@@ -431,6 +487,26 @@ namespace PELOSCALVO
             this.TabCopiarTabla.TabIndex = 2;
             this.TabCopiarTabla.Text = "Trasnsferir Datos";
             // 
+            // TablaCopiarTxt
+            // 
+            this.TablaCopiarTxt.Location = new System.Drawing.Point(89, 308);
+            this.TablaCopiarTxt.Name = "TablaCopiarTxt";
+            this.TablaCopiarTxt.ReadOnly = true;
+            this.TablaCopiarTxt.Size = new System.Drawing.Size(293, 20);
+            this.TablaCopiarTxt.TabIndex = 124;
+            this.TablaCopiarTxt.Tag = "NO";
+            // 
+            // ListaTablasPrincipal
+            // 
+            this.ListaTablasPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListaTablasPrincipal.FormattingEnabled = true;
+            this.ListaTablasPrincipal.HorizontalScrollbar = true;
+            this.ListaTablasPrincipal.Location = new System.Drawing.Point(19, 49);
+            this.ListaTablasPrincipal.Name = "ListaTablasPrincipal";
+            this.ListaTablasPrincipal.Size = new System.Drawing.Size(363, 238);
+            this.ListaTablasPrincipal.TabIndex = 122;
+            this.ListaTablasPrincipal.Click += new System.EventHandler(this.ListaTablasPrincipal_Click);
+            // 
             // TablanuevaTxt
             // 
             this.TablanuevaTxt.DisplayMember = "A";
@@ -452,58 +528,28 @@ namespace PELOSCALVO
             this.BtnCopiarTabla.UseVisualStyleBackColor = true;
             this.BtnCopiarTabla.Click += new System.EventHandler(this.BtnCopiarTabla_Click);
             // 
-            // ListaTablasPrincipal
+            // InfoProcesoText
             // 
-            this.ListaTablasPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListaTablasPrincipal.FormattingEnabled = true;
-            this.ListaTablasPrincipal.HorizontalScrollbar = true;
-            this.ListaTablasPrincipal.Location = new System.Drawing.Point(19, 49);
-            this.ListaTablasPrincipal.Name = "ListaTablasPrincipal";
-            this.ListaTablasPrincipal.Size = new System.Drawing.Size(363, 238);
-            this.ListaTablasPrincipal.TabIndex = 122;
-            this.ListaTablasPrincipal.Click += new System.EventHandler(this.ListaTablasPrincipal_Click);
+            this.InfoProcesoText.AutoSize = true;
+            this.InfoProcesoText.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.InfoProcesoText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoProcesoText.Location = new System.Drawing.Point(0, 444);
+            this.InfoProcesoText.Margin = new System.Windows.Forms.Padding(3);
+            this.InfoProcesoText.Name = "InfoProcesoText";
+            this.InfoProcesoText.Padding = new System.Windows.Forms.Padding(2, 4, 2, 5);
+            this.InfoProcesoText.Size = new System.Drawing.Size(202, 25);
+            this.InfoProcesoText.TabIndex = 112;
+            this.InfoProcesoText.Text = "Indica La Base De Datos a Crear";
             // 
-            // label2
+            // dsCONFIGURACCION
             // 
-            label2.AutoSize = true;
-            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.Location = new System.Drawing.Point(89, 17);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(198, 26);
-            label2.TabIndex = 123;
-            label2.Tag = "";
-            label2.Text = "TABLA PRINCIPAL";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
+            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // TablaCopiarTxt
+            // dtConfiguracionPrincipalBindingSource
             // 
-            this.TablaCopiarTxt.Location = new System.Drawing.Point(89, 308);
-            this.TablaCopiarTxt.Name = "TablaCopiarTxt";
-            this.TablaCopiarTxt.ReadOnly = true;
-            this.TablaCopiarTxt.Size = new System.Drawing.Size(293, 20);
-            this.TablaCopiarTxt.TabIndex = 124;
-            this.TablaCopiarTxt.Tag = "NO";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.Location = new System.Drawing.Point(404, 307);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(99, 16);
-            label3.TabIndex = 125;
-            label3.Text = "Copiar a   .....";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label4.Location = new System.Drawing.Point(29, 310);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(40, 16);
-            label4.TabIndex = 126;
-            label4.Text = "De ..";
+            this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
+            this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // FormCrearTablasDb
             // 
@@ -520,6 +566,8 @@ namespace PELOSCALVO
             this.MouseEnter += new System.EventHandler(this.FormCrearTablasDb_MouseEnter);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).EndInit();
             this.TabControlPrincipal.ResumeLayout(false);
             this.TabInicio.ResumeLayout(false);
@@ -528,6 +576,8 @@ namespace PELOSCALVO
             this.TabCopia.PerformLayout();
             this.TabCopiarTabla.ResumeLayout(false);
             this.TabCopiarTabla.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,5 +613,10 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCopiarTabla;
         private System.Windows.Forms.ListBox ListaTablasPrincipal;
         private System.Windows.Forms.TextBox TablaCopiarTxt;
+        private System.Windows.Forms.CheckBox ChckListar;
+        private DsCONFIGURACCION dsCONFIGURACCION;
+        private System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
+        private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
+        private DsMultidatos dsMultidatos;
     }
 }

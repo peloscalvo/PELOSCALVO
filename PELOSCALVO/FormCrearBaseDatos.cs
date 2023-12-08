@@ -468,7 +468,7 @@ namespace PELOSCALVO
                    " CREATE TABLE [DtObras]( [Id][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
 
                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtInicioMulti]') AND type in (N'U'))" +
-                   " CREATE TABLE [DtInicioMulti]( [Id][int] NOT NULL,[ArchivoInicioFacturas] varchar(80) NULL,[EmpresaInicio] varchar(200) NULL" +
+                   " CREATE TABLE [DtInicioMulti]( [Id][int] NOT NULL,[EmpresaInicio] varchar(200) NULL" +
                    ",[EjercicioInicio] varchar(80) NULL,[SerieInicio] varchar(5) NULL,[NombreArchivoDatos] varchar(80) NULL" +
                    ",[RutaArchivoDatos] varchar(200) NULL,[SerieProvinciaInicio] varchar(80) NULL,[SeriePaisInicio] varchar(80) NULL" +
                    "[ArchivoArticulos] varchar(80) NULL,[TipoExtensionArticulos] varchar(3) NULL,[ArchivoClientes] varchar(80) NULL)" +

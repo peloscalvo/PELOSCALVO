@@ -314,8 +314,6 @@ namespace PELOSCALVO {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DtInicioMultiDataTable : global::System.Data.TypedTableBase<DtInicioMultiRow> {
             
-            private global::System.Data.DataColumn columnArchivoInicioFacturas;
-            
             private global::System.Data.DataColumn columnEmpresaInicio;
             
             private global::System.Data.DataColumn columnEjercicioInicio;
@@ -369,14 +367,6 @@ namespace PELOSCALVO {
             protected DtInicioMultiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ArchivoInicioFacturasColumn {
-                get {
-                    return this.columnArchivoInicioFacturas;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -504,10 +494,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtInicioMultiRow AddDtInicioMultiRow(string ArchivoInicioFacturas, string EmpresaInicio, string EjercicioInicio, string SerieInicio, string NombreArchivoDatos, string RutaArchivoDatos, string SerieProvinciaInicio, string SeriePaisInicio, string ArchivoArticulos, string TipoExtensionArticulos, string ArchivoClientes, int Id) {
+            public DtInicioMultiRow AddDtInicioMultiRow(string EmpresaInicio, string EjercicioInicio, string SerieInicio, string NombreArchivoDatos, string RutaArchivoDatos, string SerieProvinciaInicio, string SeriePaisInicio, string ArchivoArticulos, string TipoExtensionArticulos, string ArchivoClientes, int Id) {
                 DtInicioMultiRow rowDtInicioMultiRow = ((DtInicioMultiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ArchivoInicioFacturas,
                         EmpresaInicio,
                         EjercicioInicio,
                         SerieInicio,
@@ -541,7 +530,6 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnArchivoInicioFacturas = base.Columns["ArchivoInicioFacturas"];
                 this.columnEmpresaInicio = base.Columns["EmpresaInicio"];
                 this.columnEjercicioInicio = base.Columns["EjercicioInicio"];
                 this.columnSerieInicio = base.Columns["SerieInicio"];
@@ -558,8 +546,6 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnArchivoInicioFacturas = new global::System.Data.DataColumn("ArchivoInicioFacturas", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnArchivoInicioFacturas);
                 this.columnEmpresaInicio = new global::System.Data.DataColumn("EmpresaInicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaInicio);
                 this.columnEjercicioInicio = new global::System.Data.DataColumn("EjercicioInicio", typeof(string), null, global::System.Data.MappingType.Element);
@@ -987,23 +973,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string ArchivoInicioFacturas {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtInicioMulti.ArchivoInicioFacturasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ArchivoInicioFacturas\' de la tabla \'DtInicioMulti\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtInicioMulti.ArchivoInicioFacturasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string EmpresaInicio {
                 get {
                     try {
@@ -1179,18 +1148,6 @@ namespace PELOSCALVO {
                 set {
                     this[this.tableDtInicioMulti.IdColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsArchivoInicioFacturasNull() {
-                return this.IsNull(this.tableDtInicioMulti.ArchivoInicioFacturasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetArchivoInicioFacturasNull() {
-                this[this.tableDtInicioMulti.ArchivoInicioFacturasColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
