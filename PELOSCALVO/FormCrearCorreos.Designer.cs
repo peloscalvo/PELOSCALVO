@@ -38,15 +38,15 @@ namespace PELOSCALVO
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label6;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label8;
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label14;
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label17;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCrearCorreos));
             this.DatagridCorreosEmpresa = new System.Windows.Forms.DataGridView();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -72,8 +72,6 @@ namespace PELOSCALVO
             this.BtnGuardarCorreo_E = new System.Windows.Forms.Button();
             this.NombreEmpresa = new System.Windows.Forms.TextBox();
             this.PageClientes = new System.Windows.Forms.TabPage();
-            this.DataGridCorreoCliente = new System.Windows.Forms.DataGridView();
-            this.ErrorCorreosCrear = new System.Windows.Forms.ErrorProvider(this.components);
             this.Direcion = new System.Windows.Forms.TextBox();
             this.RazonSocial = new System.Windows.Forms.TextBox();
             this.CorreoEletronicoCli = new System.Windows.Forms.TextBox();
@@ -86,6 +84,8 @@ namespace PELOSCALVO
             this.BtnModificarCorreoCli = new System.Windows.Forms.Button();
             this.BtnGuardarCorreoCli = new System.Windows.Forms.Button();
             this.EmpresaCli = new System.Windows.Forms.TextBox();
+            this.DataGridCorreoCliente = new System.Windows.Forms.DataGridView();
+            this.ErrorCorreosCrear = new System.Windows.Forms.ErrorProvider(this.components);
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -105,9 +105,9 @@ namespace PELOSCALVO
             this.PageEmpresa.SuspendLayout();
             this.PanelBotones_CorreoEmp.SuspendLayout();
             this.PageClientes.SuspendLayout();
+            this.PanelBotonesCorreoCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCorreoCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreosCrear)).BeginInit();
-            this.PanelBotonesCorreoCli.SuspendLayout();
             this.SuspendLayout();
             // 
             // label10
@@ -181,6 +181,51 @@ namespace PELOSCALVO
             label6.Size = new System.Drawing.Size(42, 13);
             label6.TabIndex = 88;
             label6.Text = "Timeof:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(51, 367);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(49, 13);
+            label8.TabIndex = 106;
+            label8.Text = "Direcion:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(538, 297);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(73, 13);
+            label13.TabIndex = 100;
+            label13.Text = "Razon Social:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(12, 336);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(91, 13);
+            label14.TabIndex = 98;
+            label14.Text = "Correo Eletronico:";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(83, 267);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(19, 13);
+            label16.TabIndex = 91;
+            label16.Text = "Id:";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(51, 301);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(47, 13);
+            label17.TabIndex = 93;
+            label17.Text = "Nombre:";
             // 
             // DatagridCorreosEmpresa
             // 
@@ -413,7 +458,7 @@ namespace PELOSCALVO
             this.BtnCancelarCorreo_E.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarCorreo_E.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarCorreo_E.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarCorreo_E.Location = new System.Drawing.Point(724, 425);
+            this.BtnCancelarCorreo_E.Location = new System.Drawing.Point(764, 421);
             this.BtnCancelarCorreo_E.Name = "BtnCancelarCorreo_E";
             this.BtnCancelarCorreo_E.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarCorreo_E.TabIndex = 77;
@@ -528,7 +573,7 @@ namespace PELOSCALVO
             this.BtnGuardarCorreo_E.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarCorreo_E.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnGuardarCorreo_E.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarCorreo_E.Location = new System.Drawing.Point(474, 425);
+            this.BtnGuardarCorreo_E.Location = new System.Drawing.Point(485, 421);
             this.BtnGuardarCorreo_E.Name = "BtnGuardarCorreo_E";
             this.BtnGuardarCorreo_E.Size = new System.Drawing.Size(89, 42);
             this.BtnGuardarCorreo_E.TabIndex = 76;
@@ -570,55 +615,6 @@ namespace PELOSCALVO
             this.PageClientes.Text = "Correos Clientes";
             this.PageClientes.UseVisualStyleBackColor = true;
             // 
-            // DataGridCorreoCliente
-            // 
-            this.DataGridCorreoCliente.AllowDrop = true;
-            this.DataGridCorreoCliente.AllowUserToResizeRows = false;
-            this.DataGridCorreoCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DataGridCorreoCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.DataGridCorreoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridCorreoCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DataGridCorreoCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridCorreoCliente.DefaultCellStyle = dataGridViewCellStyle4;
-            this.DataGridCorreoCliente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DataGridCorreoCliente.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.DataGridCorreoCliente.Location = new System.Drawing.Point(3, 3);
-            this.DataGridCorreoCliente.MultiSelect = false;
-            this.DataGridCorreoCliente.Name = "DataGridCorreoCliente";
-            this.DataGridCorreoCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DataGridCorreoCliente.Size = new System.Drawing.Size(958, 249);
-            this.DataGridCorreoCliente.TabIndex = 53;
-            this.DataGridCorreoCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCorreoCliente_CellClick);
-            this.DataGridCorreoCliente.SelectionChanged += new System.EventHandler(this.DataGridCorreoCliente_SelectionChanged);
-            // 
-            // ErrorCorreosCrear
-            // 
-            this.ErrorCorreosCrear.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            this.ErrorCorreosCrear.ContainerControl = this;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(51, 367);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(49, 13);
-            label8.TabIndex = 106;
-            label8.Text = "Direcion:";
-            // 
             // Direcion
             // 
             this.Direcion.Location = new System.Drawing.Point(109, 364);
@@ -628,15 +624,6 @@ namespace PELOSCALVO
             this.Direcion.Size = new System.Drawing.Size(314, 20);
             this.Direcion.TabIndex = 107;
             // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(538, 297);
-            label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(73, 13);
-            label13.TabIndex = 100;
-            label13.Text = "Razon Social:";
-            // 
             // RazonSocial
             // 
             this.RazonSocial.Location = new System.Drawing.Point(617, 294);
@@ -645,15 +632,6 @@ namespace PELOSCALVO
             this.RazonSocial.ReadOnly = true;
             this.RazonSocial.Size = new System.Drawing.Size(249, 20);
             this.RazonSocial.TabIndex = 101;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(12, 336);
-            label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(91, 13);
-            label14.TabIndex = 98;
-            label14.Text = "Correo Eletronico:";
             // 
             // CorreoEletronicoCli
             // 
@@ -790,15 +768,6 @@ namespace PELOSCALVO
             this.BtnModificarCorreoCli.UseVisualStyleBackColor = false;
             this.BtnModificarCorreoCli.Click += new System.EventHandler(this.BtnModificarCorreoCli_Click);
             // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new System.Drawing.Point(83, 267);
-            label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(19, 13);
-            label16.TabIndex = 91;
-            label16.Text = "Id:";
-            // 
             // BtnGuardarCorreoCli
             // 
             this.BtnGuardarCorreoCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -820,15 +789,6 @@ namespace PELOSCALVO
             this.BtnGuardarCorreoCli.UseVisualStyleBackColor = false;
             this.BtnGuardarCorreoCli.Click += new System.EventHandler(this.BtnGuardarCorreoCli_Click_1);
             // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new System.Drawing.Point(51, 301);
-            label17.Name = "label17";
-            label17.Size = new System.Drawing.Size(47, 13);
-            label17.TabIndex = 93;
-            label17.Text = "Nombre:";
-            // 
             // EmpresaCli
             // 
             this.EmpresaCli.Location = new System.Drawing.Point(109, 294);
@@ -837,6 +797,46 @@ namespace PELOSCALVO
             this.EmpresaCli.ReadOnly = true;
             this.EmpresaCli.Size = new System.Drawing.Size(385, 20);
             this.EmpresaCli.TabIndex = 94;
+            // 
+            // DataGridCorreoCliente
+            // 
+            this.DataGridCorreoCliente.AllowDrop = true;
+            this.DataGridCorreoCliente.AllowUserToResizeRows = false;
+            this.DataGridCorreoCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataGridCorreoCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DataGridCorreoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridCorreoCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DataGridCorreoCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridCorreoCliente.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DataGridCorreoCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DataGridCorreoCliente.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.DataGridCorreoCliente.Location = new System.Drawing.Point(3, 3);
+            this.DataGridCorreoCliente.MultiSelect = false;
+            this.DataGridCorreoCliente.Name = "DataGridCorreoCliente";
+            this.DataGridCorreoCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.DataGridCorreoCliente.Size = new System.Drawing.Size(958, 249);
+            this.DataGridCorreoCliente.TabIndex = 53;
+            this.DataGridCorreoCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCorreoCliente_CellClick);
+            this.DataGridCorreoCliente.SelectionChanged += new System.EventHandler(this.DataGridCorreoCliente_SelectionChanged);
+            // 
+            // ErrorCorreosCrear
+            // 
+            this.ErrorCorreosCrear.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.ErrorCorreosCrear.ContainerControl = this;
             // 
             // FormCrearCorreos
             // 
@@ -860,9 +860,9 @@ namespace PELOSCALVO
             this.PanelBotones_CorreoEmp.ResumeLayout(false);
             this.PageClientes.ResumeLayout(false);
             this.PageClientes.PerformLayout();
+            this.PanelBotonesCorreoCli.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCorreoCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreosCrear)).EndInit();
-            this.PanelBotonesCorreoCli.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

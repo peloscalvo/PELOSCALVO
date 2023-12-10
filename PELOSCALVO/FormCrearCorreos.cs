@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using Comun;
 
 namespace PELOSCALVO
 {
@@ -223,6 +224,7 @@ namespace PELOSCALVO
             this.Id_Correo_E.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[0].FormattedValue.ToString();
             this.NombreEmpresa.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[1].FormattedValue.ToString();
             this.CorreoEletronico.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[2].FormattedValue.ToString();
+            this.Usuario.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[3].FormattedValue.ToString();
             this.Contraseña.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[4].FormattedValue.ToString();
             this.smtp.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[5].FormattedValue.ToString();
             this.Puerto.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[6].FormattedValue.ToString();
@@ -326,29 +328,32 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        private void GuardarCorreo_ClienteDb()
+        private void GuardarCorreo_EmpresaDb()
         {
             string consulta = "";
+        
             if (this.PanelBotonesCorreoCli.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtCorreosCliente] VALUES([@Id],[@NombreEmpresa],[@CorreoEletronico],[@Usuario],[@Contraseña],[@smtp],[@Puerto],[@Timeof])";
+                consulta = "  INSERT INTO [DtCorreos] VALUES([@Id],[@NombreEmpresa],[@CorreoEletronico],[@Usuario],[@Contraseña],[@smtp],[@Puerto],[@Timeof])";
 
             }
             else
             {
-                consulta = "UPDATE [DtCorreosCliente] SET [Id] = @Id,[NombreEmpresa] = @NombreEmpresa,[CorreoEletronico] = @CorreoEletronico ," +
+                consulta = "UPDATE [DtCorreos] SET [Id] = @Id,[NombreEmpresa] = @NombreEmpresa,[CorreoEletronico] = @CorreoEletronico ," +
                     "[Usuario] = @Usuario,[Contraseña] = @Contraseña,[smtp] = @smtp,[Puerto] = @Puerto,[Timeof] = @Timeof  WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
+                ClasCodificarPass Codificar = new ClasCodificarPass();
+                string Pass = Codificar.Codificar(Contraseña.Text);
                 if (NuevaConexion.SiConexionDb)
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Correo_E.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Correo_E.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.NombreEmpresa.Text) ? (object)DBNull.Value : this.NombreEmpresa.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CorreoEletronico", string.IsNullOrEmpty(this.CorreoEletronico.Text) ? (object)DBNull.Value : this.CorreoEletronico.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Usuario", string.IsNullOrEmpty(this.Usuario.Text) ? (object)DBNull.Value : this.Usuario.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Contraseña", string.IsNullOrEmpty(this.Contraseña.Text) ? (object)DBNull.Value : this.Contraseña.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Contraseña", string.IsNullOrEmpty(Pass) ? (object)DBNull.Value : Pass);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     LlenarDatagridCliente();
@@ -418,7 +423,7 @@ namespace PELOSCALVO
                 }
             }
         }
-        private void GuardarCorreo_EmpresaDb()
+        private void GuardarCorreo_ClienteDb()
         {
             string consulta = "";
             if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
@@ -480,13 +485,15 @@ namespace PELOSCALVO
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
+                ClasCodificarPass Codificar = new ClasCodificarPass();
+                string Pass = Codificar.Codificar(Contraseña.Text);
                 if (NuevaConexion.SiConexionSql)
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Correo_E.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Correo_E.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.NombreEmpresa.Text) ? (object)DBNull.Value : this.NombreEmpresa.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CorreoEletronico", string.IsNullOrEmpty(this.CorreoEletronico.Text) ? (object)DBNull.Value : this.CorreoEletronico.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Usuario", string.IsNullOrEmpty(this.Usuario.Text) ? (object)DBNull.Value : this.Usuario.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Contraseña", string.IsNullOrEmpty(this.Contraseña.Text) ? (object)DBNull.Value : this.Contraseña.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Contraseña", string.IsNullOrEmpty(Pass) ? (object)DBNull.Value : Pass);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@smtp", string.IsNullOrEmpty(this.smtp.Text) ? (object)DBNull.Value : this.smtp.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Timeof", string.IsNullOrEmpty(this.Timeof.Text) ? (object)DBNull.Value : this.Timeof.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
@@ -697,8 +704,18 @@ namespace PELOSCALVO
         {
             if (e.RowIndex >= 0)
             {
-                ExtraerDatagrid();
+                try
+                {
+
+                    ExtraerDatagrid();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
+ 
         }
 
         private void DataGridCorreoCliente_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -738,7 +755,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarCorreoEmpresa_Click(object sender, EventArgs e)
         {
-            if (this.DatagridCorreosEmpresa.RowCount >= 0)
+            if (CorreosbindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -971,9 +988,18 @@ namespace PELOSCALVO
 
         private void DatagridCorreosEmpresa_SelectionChanged(object sender, EventArgs e)
         {
-            if (this.CorreosbindingSource.Count > 0)
+            if (CorreosbindingSource.Count > 0)
             {
-                ExtraerDatagrid();
+                try
+                {
+
+                    ExtraerDatagrid();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
         }
 
@@ -1063,7 +1089,7 @@ namespace PELOSCALVO
             }
             if (EspacioDiscosCorreo_EMP(ClasDatos.RutaMultidatos, 25))
 
-                BorrarErrorCorreoEmpresa();
+                BorrarErrorCorreoCli();
             if (ValidarCorreoCli())
             {
                 {

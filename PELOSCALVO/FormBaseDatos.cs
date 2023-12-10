@@ -19,14 +19,36 @@ namespace PELOSCALVO
         {
             InitializeComponent();
         }
-        public List<string> ObtenerTablas()
+        public void Listar_InstantciasSql()
+        {
+
+            string connectionString = ClsConexionSql.CadenaConexion;
+            SqlClientFactory Fatory = SqlClientFactory.Instance;
+            Fatory.CreateConnection();
+            using (DbConnection connection = Fatory.CreateConnection())
+            {
+                // System.Data.Common.DbProviderFactories
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                // Perform database operations here
+            }
+
+            DbCommand dbCommand = Fatory.CreateCommand();
+            //SqlDataReader rd = dbCommand.ExecuteReader();
+            dbCommand.ExecuteReader();
+            System.Data.Sql.SqlDataSourceEnumerator GG = System.Data.Sql.SqlDataSourceEnumerator.Instance;
+            GG.GetDataSources();
+            // SqlDataReader RD =  FGHFG.CreateCommand ;
+
+        }
+        public List<string> ObtenerTablasBb()
         {
 
             // Microsoft Access provider factory
             DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.OleDb");
 
             DataTable userTables = null;
-            string Ruta = "";
+            string Ruta;
             if (this.TabArchivos.Tag.ToString() == "SI")
             {
                 Ruta = this.NombreArchivoDatos.Text;
@@ -53,20 +75,59 @@ namespace PELOSCALVO
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
-
+            this.SerieArticulosText.Items.Clear();
+            this.SerieClientesText2.Items.Clear();
             List<string> tableNames = new List<string>();
             for (int i = 0; i < userTables.Rows.Count; i++)
             {
-                ListaTablas.Items.Add(userTables.Rows[i][2].ToString());
+                this.ListaTablas.Items.Add(userTables.Rows[i][2].ToString());
                 if (!userTables.Rows[i][2].ToString().Contains("Dt"))
                 {
-                    SerieArticulosText.Items.Add(userTables.Rows[i][2].ToString());
-                    SerieClientesText2.Items.Add(userTables.Rows[i][2].ToString());
+                    this.SerieArticulosText.Items.Add(userTables.Rows[i][2].ToString());
+                    this.SerieClientesText2.Items.Add(userTables.Rows[i][2].ToString());
                     tableNames.Add(userTables.Rows[i][2].ToString());
                 }
 
 
-             
+
+            }
+            return tableNames;
+        }
+        public List<string> ObtenerTablasSql()
+        {
+            DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            DataTable userTables = null;
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                try
+                {
+                    connection.ConnectionString = ClsConexionSql.CadenaConexion;
+                    string[] restrictions = new string[4];
+                    restrictions[3] = "Table";
+                    connection.Open();
+                    userTables = connection.GetSchema("Tables", restrictions);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+            this.SerieArticulosText.Items.Clear();
+            this.SerieClientesText2.Items.Clear();
+            List<string> tableNames = new List<string>();
+            for (int i = 0; i < userTables.Rows.Count; i++)
+            {
+                this.ListaTablas.Items.Add(userTables.Rows[i][2].ToString());
+                if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                {
+                    this.SerieArticulosText.Items.Add(userTables.Rows[i][2].ToString());
+                    this.SerieClientesText2.Items.Add(userTables.Rows[i][2].ToString());
+                    tableNames.Add(userTables.Rows[i][2].ToString());
+                }
+
+
+
             }
             return tableNames;
         }
@@ -120,28 +181,28 @@ namespace PELOSCALVO
         }
         private void CanbiarOjetos()
         {
-                if (ClsConexionSql.SibaseDatosSql)
+            if (ClsConexionSql.SibaseDatosSql)
+            {
+                if (ClsConexionSql.CadenaConexion != string.Empty)
                 {
-                    if (ClsConexionSql.CadenaConexion != string.Empty)
-                    {
 
-                        this.CheckAtivarServidor.Checked = true;
-                        this.CheckActivarDb.Checked = false;
-                        this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                        this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
-                    }
+                    this.CheckAtivarServidor.Checked = true;
+                    this.CheckActivarDb.Checked = false;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
                 }
-                else
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion != string.Empty)
                 {
-                    if (ClsConexionDb.CadenaConexion != string.Empty)
-                    {
 
-                        this.CheckAtivarServidor.Checked = false;
-                        this.CheckActivarDb.Checked = true;
-                        this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
-                        this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
-                    }
+                    this.CheckAtivarServidor.Checked = false;
+                    this.CheckActivarDb.Checked = true;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
                 }
+            }
         }
         private void Contador()
         {
@@ -187,12 +248,11 @@ namespace PELOSCALVO
             string ConsutaInicio = "SELECT * from [DtInicioMulti]";
 
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-            NuevaConexion = new ClsConexionDb(consulta);
             OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
             try
             {
                 if (NuevaConexion.SiConexionDb)
-                {  
+                {
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal);
                     AdactaPelos = new OleDbDataAdapter(consultaConfi, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi);
@@ -207,7 +267,7 @@ namespace PELOSCALVO
                     AdactaPelos = new OleDbDataAdapter(ConsultaPais, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtPaises);
                     AdactaPelos = new OleDbDataAdapter(ConsultaProvincia, ClsConexionDb.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias);         
+                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias);
                     AdactaPelos = new OleDbDataAdapter(ConsultaFamilia, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos);
                     AdactaPelos = new OleDbDataAdapter(ConsultaCorreoCli, ClsConexionDb.CadenaConexion);
@@ -252,12 +312,11 @@ namespace PELOSCALVO
             string ConsutaInicio = "SELECT * from [DtInicioMulti]";
 
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-            NuevaConexion = new ClsConexionSql(consulta);
             SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
             try
             {
                 if (NuevaConexion.SiConexionSql)
-                {           
+                {
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal);
                     AdactaPelos = new SqlDataAdapter(consultaConfi, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi);
@@ -523,8 +582,8 @@ namespace PELOSCALVO
             if (!File.Exists(ClasDatos.RutaMultidatos))
             {
                 MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaMultidatos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-               // this.BtnBuscarServidor.Enabled = false;
-              //  this.BtnGuardarDatosArchivos.Enabled = false;
+                // this.BtnBuscarServidor.Enabled = false;
+                //  this.BtnGuardarDatosArchivos.Enabled = false;
 
             }
             if (FormMenuPrincipal.menu2principal.dsServidor != null)
@@ -604,12 +663,6 @@ namespace PELOSCALVO
 
         private void ActualizarClientes_DB()
         {
-            String NombreBaseDatos = this.NombreArchivoDatos.Text;
-            if (this.TipoExtension_b.Text == "DBF")
-            {
-                NombreBaseDatos = "";
-            }
-
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
 
             {
@@ -890,6 +943,7 @@ namespace PELOSCALVO
             string Cadena2 = "master";
 
             string cadenaConexion = "Data Source=" + this.Servidor.Text + ";Initial Catalog=" + Cadena2 + ";Integrated Security=True";
+            // SqlClientFactory Fatory = SqlClientFactory.Instance;
 
             try
             {
@@ -917,8 +971,8 @@ namespace PELOSCALVO
                     DataTable tablaServidores = servidores.GetDataSources();
                     foreach (DataRow row in tablaServidores.Rows)
                     {
-                        instanceName = Convert.ToString(row["InstanceName"]);
-                        serverName = Convert.ToString(row["ServerName"]);
+                        instanceName = Convert.ToString(row[0]);
+                        serverName = Convert.ToString(row[1]);
 
                         if (instanceName.ToString() == string.Empty && instanceName.ToString() == null)
                         {
@@ -1095,6 +1149,7 @@ namespace PELOSCALVO
                     // FormMenuPrincipal.menu2principal.dsCorreos.Clear();
                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                     FormMenuPrincipal.menu2principal.dsMulti2.Clear();
+                    FormMenuPrincipal.menu2principal.dsMultidatos.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                     FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
 
@@ -1125,7 +1180,7 @@ namespace PELOSCALVO
 
         private void TipoExtension_b_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ObtenerTablasBb();
         }
 
         private void SerieClientesText2_SelectedIndexChanged(object sender, EventArgs e)
@@ -1183,6 +1238,7 @@ namespace PELOSCALVO
                         MessageBox.Show("Archivo No Existe" + "\n" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml", "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+                    ObtenerTablasSql();
                     MessageBox.Show("Configuracion Guardarda  ((( Debe Activar)))", "GUARDAR CONFIGURACION", MessageBoxButtons.OK);
                     this.TabArchivoSql.SelectedIndex = 1;
                 }
@@ -1312,8 +1368,6 @@ namespace PELOSCALVO
                 if (MessageBox.Show("\n" + " Crear Tabla  " + this.SerieArticulosText.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
 
-                    Random r = new Random();
-                    int valor = r.Next(10, 90000000);
                     string TablaArticulos = this.SerieArticulosText.Text;
                     string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
@@ -1456,7 +1510,7 @@ namespace PELOSCALVO
         {
             if (VALIDARcampos_Archivos())
             {
-                ObtenerTablas();
+                ObtenerTablasBb();
             }
         }
 
@@ -1464,8 +1518,8 @@ namespace PELOSCALVO
         {
             if (ClsConexionSql.CadenaConexion != string.Empty)
             {
-
-
+                ObtenerTablasSql();
+                return;
                 string consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
                " not like 'Dt%'and O.COLUMN_NAME= 'APODOCLIEN'  order by ORDINAL_POSITION";
                 consulta = "SELECT *FROM sys.Tables where sys.tables.name not like 'Dt%'";
@@ -1482,11 +1536,11 @@ namespace PELOSCALVO
                             SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                             DataTable DT = new DataTable();
                             AdactaPelos.Fill(DT);
-                            SerieClientesText2.DataSource = DT;
-                          ///  if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                          //  {
+                            this.SerieClientesText2.DataSource = DT;
+                            ///  if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                            //  {
                             //    SerieClientesText2.Items.Add(reader[0]);
-                          //  }
+                            //  }
                         }
                     }
                     catch (Exception ex)
@@ -1508,7 +1562,7 @@ namespace PELOSCALVO
                         {
                             if (!string.IsNullOrEmpty((reader["TABLE_NAME"]).ToString()))
                             {
-                                SerieArticulosText.Items.Add(reader["TABLE_NAME"]);
+                                this.SerieArticulosText.Items.Add(reader["TABLE_NAME"]);
                             }
                         }
                     }
@@ -1525,9 +1579,56 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.Clear();
             }
         }
+        public List<string> ObtenerInstanciasSql()
+        {
+            string Cadena2 = "master";
+
+            string cadenaConexion = "Data Source=" + this.Servidor.Text + ";Initial Catalog=" + Cadena2 + ";Integrated Security=True";
+            DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            DataTable userTables = null;
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                try
+                {
+                    connection.ConnectionString =cadenaConexion;
+                    string[] restrictions = new string[4];
+                    restrictions[3] = "Instance";
+                    connection.Open();
+                    userTables = connection.GetSchema("InstanceName", restrictions);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+            //this.Servidor.Items.Clear();
+            List<string> tableNames = new List<string>();
+            for (int i = 0; i < userTables.Rows.Count; i++)
+            {
+                this.Servidor.Items.Add(userTables.Rows[i][2].ToString());
+
+                    tableNames.Add(userTables.Rows[i][2].ToString());
+            }
+            return tableNames;
+        }
+        private void BtnActualizar_Servidor_Click(object sender, EventArgs e)
+        {
+            ObtenerInstanciasSql();
+
+
+        }
+
+
+
+
+
+
     }
 
-    
 }
+
+
+
 
 

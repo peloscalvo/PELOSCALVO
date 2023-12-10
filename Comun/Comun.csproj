@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClasArticulos.cs" />
+    <Compile Include="ClasCodificarPass.cs" />
     <Compile Include="ClasCorreos.cs" />
     <Compile Include="ClasTarifa.cs" />
     <Compile Include="ClasSi_Existe_Fatu.cs" />
