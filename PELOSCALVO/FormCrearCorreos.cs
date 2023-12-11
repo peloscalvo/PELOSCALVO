@@ -444,7 +444,7 @@ namespace PELOSCALVO
         private void GuardarCorreo_ClienteDb()
         {
             string consulta = "";
-            if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
+            if (this.PanelBotonesCorreoCli.Tag.ToString() == "Nuevo")
             {
                 consulta = "  INSERT INTO [DtCorreosCliente] VALUES([@Id],[@RazonSocial],[@EmpresaNombre],[@Direcion],[@CorreoEletronico_cli])";
 
@@ -1010,7 +1010,7 @@ namespace PELOSCALVO
 
         private void BtnNuevoCorreoCli_Click(object sender, EventArgs e)
         {
-            this.PanelBotones_CorreoEmp.Tag = "Nuevo";
+            this.PanelBotonesCorreoCli.Tag = "Nuevo";
             try
             {
                 int numeroFILA = this.CorreosClientebindingSource.Count;

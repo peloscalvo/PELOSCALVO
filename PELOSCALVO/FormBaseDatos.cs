@@ -1160,7 +1160,8 @@ namespace PELOSCALVO
                     FormMenuPrincipal.menu2principal.dsMultidatos.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                     FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
-
+                    FormMenuPrincipal.menu2principal.dsCorreos.Clear();
+                    FormMenuPrincipal.menu2principal.dsClientes.Clear();
                     if (File.Exists(ClasDatos.RutaBaseDatosDb))
                     {
                         ActualizarPrincipal_Db();
@@ -1285,6 +1286,8 @@ namespace PELOSCALVO
                         FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                         FormMenuPrincipal.menu2principal.dsMulti2.Clear();
+                        FormMenuPrincipal.menu2principal.dsCorreos.Clear();
+                        FormMenuPrincipal.menu2principal.dsClientes.Clear();
                         ActualizarPrincipal_Sql();//EMPRESAS Y EJERCICIOS
                         ActualizarArticulosSql();
                         ActualizarClientes_Sql_B();

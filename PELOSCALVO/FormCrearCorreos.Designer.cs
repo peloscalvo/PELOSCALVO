@@ -828,7 +828,7 @@ namespace PELOSCALVO
             this.DataGridCorreoCliente.Location = new System.Drawing.Point(3, 3);
             this.DataGridCorreoCliente.MultiSelect = false;
             this.DataGridCorreoCliente.Name = "DataGridCorreoCliente";
-            this.DataGridCorreoCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.DataGridCorreoCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridCorreoCliente.Size = new System.Drawing.Size(958, 249);
             this.DataGridCorreoCliente.TabIndex = 53;
             this.DataGridCorreoCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCorreoCliente_CellClick);

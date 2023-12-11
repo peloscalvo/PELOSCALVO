@@ -245,6 +245,7 @@ namespace PELOSCALVO
             this.PanelDatosInicio.Controls.Add(pais_FactLabel);
             this.PanelDatosInicio.Controls.Add(provinciaLabel);
             this.PanelDatosInicio.Controls.Add(this.PaisInicio);
+            this.PanelDatosInicio.Enabled = false;
             this.PanelDatosInicio.Location = new System.Drawing.Point(23, 70);
             this.PanelDatosInicio.Name = "PanelDatosInicio";
             this.PanelDatosInicio.Size = new System.Drawing.Size(565, 273);
@@ -253,6 +254,7 @@ namespace PELOSCALVO
             // Id_Inicio
             // 
             this.Id_Inicio.AutoSize = true;
+            this.Id_Inicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "Id", true));
             this.Id_Inicio.Location = new System.Drawing.Point(358, 242);
             this.Id_Inicio.Name = "Id_Inicio";
             this.Id_Inicio.Size = new System.Drawing.Size(13, 13);
@@ -262,6 +264,7 @@ namespace PELOSCALVO
             // 
             // EmpresaInicio
             // 
+            this.EmpresaInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "EmpresaInicio", true));
             this.EmpresaInicio.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.EmpresaInicio.DisplayMember = "EmpresaConfi";
             this.EmpresaInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -284,6 +287,7 @@ namespace PELOSCALVO
             // SerieInicio
             // 
             this.SerieInicio.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SerieInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "SerieInicio", true));
             this.SerieInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SerieInicio.FormattingEnabled = true;
             this.SerieInicio.Items.AddRange(new object[] {
@@ -315,6 +319,7 @@ namespace PELOSCALVO
             // EjercicioInicio
             // 
             this.EjercicioInicio.Cursor = System.Windows.Forms.Cursors.Default;
+            this.EjercicioInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "EjercicioInicio", true));
             this.EjercicioInicio.DataSource = this.dtConfiBindingSource;
             this.EjercicioInicio.DisplayMember = "EjerciciosDeAño";
             this.EjercicioInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -336,6 +341,7 @@ namespace PELOSCALVO
             // 
             // ProvinciaInicio
             // 
+            this.ProvinciaInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "SerieProvinciaInicio", true));
             this.ProvinciaInicio.DataSource = this.dtProvinciasBindingSource;
             this.ProvinciaInicio.DisplayMember = "ProvinciasProvincias";
             this.ProvinciaInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -347,6 +353,7 @@ namespace PELOSCALVO
             // 
             // PaisInicio
             // 
+            this.PaisInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "SeriePaisInicio", true));
             this.PaisInicio.DataSource = this.dtPaisesBindingSource;
             this.PaisInicio.DisplayMember = "PaisesPaises";
             this.PaisInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -555,7 +562,7 @@ namespace PELOSCALVO
             this.BtnGuardarInico.UseVisualStyleBackColor = false;
             this.BtnGuardarInico.Click += new System.EventHandler(this.BtnGuardarInico_Click);
             // 
-            // FormDatoInicio
+            // FormDatosInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -567,7 +574,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.dtInicioDataGridView);
             this.Controls.Add(this.PanelDatosInicio);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormDatoInicio";
+            this.Name = "FormDatosInicio";
             this.Text = "Datos De inicio";
             this.Load += new System.EventHandler(this.FormDatoInicio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorInico)).EndInit();

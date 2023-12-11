@@ -1,14 +1,9 @@
 ﻿using Conexiones;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -43,12 +38,21 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
-            if (dtInicioMultiBindingSource.Count > 0)
+            if (this.dtInicioMultiBindingSource.Count > 0)
             {
-                BtnGuardarInico.Enabled = false;
+                this.BtnGuardarInico.Enabled = false;
             }
-            ArchivoArticuloTxt.DataSource = ObtenerTablasDb();
-            ArchivoClienteTxt.DataSource = ObtenerTablasDb();
+            if (ClsConexionSql.SibaseDatosSql)
+            {
+                this.ArchivoArticuloTxt.DataSource = ObtenerTablasSql();
+                this.ArchivoClienteTxt.DataSource = ObtenerTablasSql();
+            }
+            else
+            {
+                ArchivoArticuloTxt.DataSource = ObtenerTablasDb();
+                ArchivoClienteTxt.DataSource = ObtenerTablasDb();
+            }
+
         }
         private bool EspacioDiscosInicio(string nombreDisco, int Espacio)
         {
@@ -63,77 +67,21 @@ namespace PELOSCALVO
             return ok;
         }
 
-        private bool ValidarInicio()
-        {
-            bool ok = true;
-            if (this.EmpresaInicio.Text.Length < 3)
-            {
-                ok = false;
-                this.ErrorInico.SetError(this.EmpresaInicio, "_ingresar Empresa valido (( minimo 3 Caracteres))");
-            }
-            if (this.EjercicioInicio.Text.Length < 3)
-            {
-                ok = false;
-                this.ErrorInico.SetError(this.EjercicioInicio, "_ingresar Ejercicio valido (( minimo 3 Caracteres))");
-            }
-            if (this.SerieInicio.Text.Length < 1)
-            {
-                ok = false;
-                this.ErrorInico.SetError(this.SerieInicio, "_ingresar Serie valido (( minimo 1 Caracteres))");
-            }
-            if (this.PaisInicio.Text.Length < 3)
-            {
-                ok = false;
-                this.ErrorInico.SetError(this.PaisInicio, "_ingresar Pais valido (( minimo 3 Caracteres))");
-            }
-            if (this.ProvinciaInicio.Text.Length < 3)
-            {
-                ok = false;
-                this.ErrorInico.SetError(this.ProvinciaInicio, "_ingresar Provincia valido (( minimo 3 Caracteres))");
-            }
-            if (this.ArchivoArticuloTxt.Text.Length < 3)
-            {
-                ok = false;
-                this.ErrorInico.SetError(this.ArchivoArticuloTxt, "_ingresar Articulo valido (( minimo 3 Caracteres))");
-            }
-            if (this.ArchivoClienteTxt.Text.Length < 3)
-            {
-                ok = false;
-                this.ErrorInico.SetError(this.ArchivoClienteTxt, "_ingresar Cliente valido (( minimo 3 Caracteres))");
-            }
-            if (this.ExtensionTipoInicio.Text.Length < 1)
-            {
-                ok = false;
-                this.ErrorInico.SetError(this.ExtensionTipoInicio, "_ingresar Extension valido (( minimo 3 Caracteres))");
-            }
-            return ok;
-        }
-        private void BorrarErroresInicio()
-        {
-            this.ErrorInico.SetError(this.EmpresaInicio, "");
-            this.ErrorInico.SetError(this.PaisInicio, "");
-            this.ErrorInico.SetError(this.ProvinciaInicio, "");
-            this.ErrorInico.SetError(this.PaisInicio, "");
-            this.ErrorInico.SetError(this.SerieInicio, "");
-            this.ErrorInico.SetError(this.ArchivoArticuloTxt, "");
-            this.ErrorInico.SetError(this.ArchivoClienteTxt, "");
-            this.ErrorInico.SetError(this.ExtensionTipoInicio, "");
-            this.ErrorInico.SetError(this.EjercicioInicio, "");
-        }
-        private List<string> ObtenerTablasDb()
+
+
+        private List<string> ObtenerTablasSql()
         {
 
             // Microsoft Access provider factory
-            DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.OleDb");
+            DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SqlClient");
 
             DataTable userTables = null;
-            string Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaBaseDatosDb;
             using (DbConnection connection = factory.CreateConnection())
             {
 
                 try
                 {
-                    connection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
+                    connection.ConnectionString = ClsConexionSql.CadenaConexion;
                     string[] restrictions = new string[4];
                     restrictions[3] = "Table";
                     connection.Open();
@@ -168,7 +116,59 @@ namespace PELOSCALVO
 
                     MessageBox.Show(ex.Message.ToString());
                 }
-              
+
+            }
+
+            return tableNames;
+        }
+        private List<string> ObtenerTablasDb()
+        {
+
+            // Microsoft Access provider factory
+            DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.OleDb");
+
+            DataTable userTables = null;
+            using (DbConnection connection = factory.CreateConnection())
+            {
+
+                try
+                {
+                    connection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
+                    string[] restrictions = new string[4];
+                    restrictions[3] = "Table";
+                    connection.Open();
+
+                    userTables = connection.GetSchema("Tables", restrictions);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+            List<string> tableNames = new List<string>();
+            if (userTables != null)
+            {
+                try
+                {
+                    for (int i = 0; i < userTables.Rows.Count; i++)
+                    {
+                        // ListaTablasPrincipal.Items.Add(userTables.Rows[i][2].ToString());
+
+                        if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                        {
+                            tableNames.Add(userTables.Rows[i][2].ToString());
+                        }
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
             }
 
             return tableNames;
@@ -223,7 +223,7 @@ namespace PELOSCALVO
                     this.dtInicioMultiBindingSource.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR DATOS INICIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosInico();
-                    BtnNuevoInicio.Enabled = false;
+                    this.BtnNuevoInicio.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -257,26 +257,26 @@ namespace PELOSCALVO
                     "[SeriePaisInicio] = @SeriePaisInicio, [ArchivoArticulos] = @ArchivoArticulos,[TipoExtensionArticulos] = @TipoExtensionArticulos," +
                     "[ArchivoClientes] = @ArchivoClientes  WHERE Id = @Id";
             }
-            if(FormMenuPrincipal.menu2principal.InfoCarpeta.Text != string.Empty)
+            if (FormMenuPrincipal.menu2principal.InfoCarpeta.Text != string.Empty)
             {
-                 Ruta = FormMenuPrincipal.menu2principal.InfoCarpeta.Text;
+                Ruta = FormMenuPrincipal.menu2principal.InfoCarpeta.Text;
             }
             else
             {
                 Ruta = Directory.GetCurrentDirectory();
             }
-  
+
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Inicio.Text) ? (object)DBNull.Value :Convert.ToInt32( this.Id_Inicio.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Inicio.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Inicio.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaInicio", string.IsNullOrEmpty(this.EmpresaInicio.Text) ? (object)DBNull.Value : this.EmpresaInicio.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioInicio", string.IsNullOrEmpty(this.EmpresaInicio.Text) ? (object)DBNull.Value : this.EmpresaInicio.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieInicio", string.IsNullOrEmpty(this.SerieInicio.Text) ? (object)DBNull.Value : this.SerieInicio.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreArchivoDatos", string.IsNullOrEmpty(ClasDatos.RutaBaseDatosDb) ? (object)DBNull.Value : ClasDatos.RutaBaseDatosDb);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@RutaArchivoDatos", string.IsNullOrEmpty( Ruta  ) ? (object)DBNull.Value : Ruta);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@RutaArchivoDatos", string.IsNullOrEmpty(Ruta) ? (object)DBNull.Value : Ruta);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieProvinciaInicio", string.IsNullOrEmpty(this.ProvinciaInicio.Text) ? (object)DBNull.Value : this.ProvinciaInicio.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@SeriePaisInicio", string.IsNullOrEmpty(this.PaisInicio.Text) ? (object)DBNull.Value : this.PaisInicio.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ArchivoArticulos", string.IsNullOrEmpty(this.ArchivoArticuloTxt.Text) ? (object)DBNull.Value : this.ArchivoArticuloTxt.Text);
@@ -289,7 +289,7 @@ namespace PELOSCALVO
                     this.dtInicioDataGridView.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR DATOS INICIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosInico();
-                    BtnNuevoInicio.Enabled = false;
+                    this.BtnNuevoInicio.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -307,15 +307,17 @@ namespace PELOSCALVO
         }
         private void ModificarOjetosInicio()
         {
-            this.PanelDatosInicio.Enabled = false;
-            BtnGuardarInico.Enabled = true;
-            BtnCancelarInicio.Enabled = true;
+            this.PanelDatosInicio.Enabled = true;
+            PanelBotones_Inicio.Enabled = false;
+            this.BtnGuardarInico.Enabled = true;
+            this.BtnCancelarInicio.Enabled = true;
         }
         private void RestaurarOjetosInico()
         {
+            PanelBotones_Inicio.Enabled = false;
             this.PanelDatosInicio.Enabled = true;
-            BtnGuardarInico.Enabled = false;
-            BtnCancelarInicio.Enabled = false;
+            this.BtnGuardarInico.Enabled = false;
+            this.BtnCancelarInicio.Enabled = false;
         }
         private void BtnSalir_Inico_Click(object sender, EventArgs e)
         {
@@ -350,9 +352,7 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosInicio(Directory.GetCurrentDirectory(), 25))
             {
-                BorrarErroresInicio();
-                if (ValidarInicio())
-                {
+
                     if (MessageBox.Show(" ¿Aceptar Guardar Datos De Inicio ? ", " GUARDAR DATOS INICIO ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         if (ClsConexionSql.SibaseDatosSql)
@@ -373,7 +373,6 @@ namespace PELOSCALVO
                         }
                     }
 
-                }
             }
         }
 
@@ -382,7 +381,7 @@ namespace PELOSCALVO
             this.PanelBotones_Inicio.Tag = "Nuevo";
             try
             {
-                Id_Inicio.Text = "1";
+                this.Id_Inicio.Text = "1";
 
                 ModificarOjetosInicio();
 
