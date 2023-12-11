@@ -1,13 +1,6 @@
 ﻿using Conexiones;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -27,7 +20,7 @@ namespace PELOSCALVO
                 {
                     this.DtPaisBindinsource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
                 }
-  
+
             }
             catch (Exception ex)
             {
@@ -181,8 +174,8 @@ namespace PELOSCALVO
                             this.dataGridPais.Rows.RemoveAt(this.dataGridPais.CurrentCell.RowIndex);
                             this.DtPaisBindinsource.EndEdit();
                             Validate();
-                            dataGridPais.Refresh();
-                            dataGridPais.Focus();
+                            this.dataGridPais.Refresh();
+                            this.dataGridPais.Focus();
                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -272,9 +265,9 @@ namespace PELOSCALVO
                     }
 
                 }
-                NombrePais.Text = "España";
-                NombrePais.Focus();
-                NombrePais.SelectAll();
+                this.NombrePais.Text = "España";
+                this.NombrePais.Focus();
+                this.NombrePais.SelectAll();
                 ModificarOjetosPais();
 
             }
@@ -287,7 +280,7 @@ namespace PELOSCALVO
 
         private void BtnModificarPais_Click(object sender, EventArgs e)
         {
-            if (DtPaisBindinsource.Count > 0)
+            if (this.DtPaisBindinsource.Count > 0)
             {
                 this.PanelBotones_Pais.Tag = "Modificar";
                 ModificarOjetosPais();
@@ -323,7 +316,7 @@ namespace PELOSCALVO
 
         private void BtnGuardarPais_Click(object sender, EventArgs e)
         {
-            if (Id_Pais.Text == string.Empty)
+            if (this.Id_Pais.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -334,51 +327,50 @@ namespace PELOSCALVO
                 BorrarErrorPais();
                 if (ValidarPais())
                 {
+                    try
                     {
-                        try
+                        foreach (DataGridViewRow fila in this.dataGridPais.Rows)
                         {
-                            foreach (DataGridViewRow fila in this.dataGridPais.Rows)
+                            if (fila.Cells["PaisesPaises"].ToString() == this.NombrePais.Text)
                             {
-                                if (fila.Cells[1].ToString() == this.NombrePais.Text)
+                                if (this.dataGridPais.CurrentCell.RowIndex == fila.Index)
                                 {
-                                    if (this.dataGridPais.CurrentCell.RowIndex == fila.Index)
-                                    {
-                                        break;
-                                    }
-                                    MessageBox.Show(this.NombrePais.Text.ToString(), "YA EXISTE ESTA PAIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    this.NombrePais.Focus();
-                                    this.NombrePais.SelectAll();
-                                    return;
+                                    break;
                                 }
-
+                                MessageBox.Show(this.NombrePais.Text.ToString(), "YA EXISTE ESTA PAIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.NombrePais.Focus();
+                                this.NombrePais.SelectAll();
+                                return;
                             }
+
                         }
-                        catch (Exception ex)
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (MessageBox.Show(" ¿Aceptar Guardar Pais ? ", " GUARDAR PAIS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            GuardarPaisSql();
+                        }
+                        else
                         {
 
-                            MessageBox.Show(ex.Message);
-                        }
-                        if (MessageBox.Show(" ¿Aceptar Guardar Pais ? ", " GUARDAR PAIS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            if (ClsConexionSql.SibaseDatosSql)
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarPaisSql();
+                                GuardarPaiesDb();
                             }
                             else
                             {
-
-                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                                {
-                                    GuardarPaiesDb();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    this.PanelBotones_Pais.Enabled = false;
-                                }
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.PanelBotones_Pais.Enabled = false;
                             }
                         }
                     }
+
                 }
             }
         }
@@ -427,6 +419,6 @@ namespace PELOSCALVO
             }
         }
 
-     
+
     }
 }

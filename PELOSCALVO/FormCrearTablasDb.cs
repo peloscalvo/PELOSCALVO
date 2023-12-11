@@ -234,7 +234,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + ConsultaCliente, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
@@ -250,7 +250,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + ConsultaEmpresas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  EMPRESAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
@@ -264,7 +264,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaInicio, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  INICIO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaAlmacen, NuevaConexion))
@@ -277,7 +277,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + ConsultaAlmacen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaProvedores, NuevaConexion))
@@ -290,7 +290,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + ConsultaProvedores, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         using (OleDbCommand ComandoDb = new OleDbCommand(TablaDtconfi, NuevaConexion))
@@ -303,7 +303,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaDtconfi, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  DTCONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         using (OleDbCommand ComandoDb = new OleDbCommand(TablaTarifa, NuevaConexion))
@@ -316,7 +316,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaTarifa, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFamilia, NuevaConexion))
@@ -329,7 +329,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + ConsultaFamilia, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  FAMILIA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         using (OleDbCommand ComandoDb = new OleDbCommand(TablaPais, NuevaConexion))
@@ -342,7 +342,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaPais, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  PAISES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
@@ -355,7 +355,7 @@ namespace PELOSCALVO
                             catch (Exception ex)
                             {
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaObra, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  OBRAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
@@ -369,7 +369,7 @@ namespace PELOSCALVO
                             {
 
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaProvincia, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  PROVINCIAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E, NuevaConexion))
@@ -381,7 +381,7 @@ namespace PELOSCALVO
                             catch (Exception ex)
                             {
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_E, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  CORREO DE EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
@@ -394,7 +394,7 @@ namespace PELOSCALVO
                             catch (Exception ex)
                             {
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_Cli, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  CORREO CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         using (OleDbCommand ComandoDb = new OleDbCommand(TablaUser, NuevaConexion))
@@ -406,21 +406,10 @@ namespace PELOSCALVO
                             catch (Exception ex)
                             {
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaUser, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "ERROR  USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
 
-                                MessageBox.Show(ex.Message, "ERROR " + TablaCorreo_E, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
                         for (int i = 1; i < 7; i++)
                         {
                             if (i == 2)

@@ -1,13 +1,6 @@
 ﻿using Conexiones;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -289,7 +282,7 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                         VALORid = Convert.ToInt32(this.dtTarifaTipoDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
+                        VALORid = Convert.ToInt32(this.dtTarifaTipoDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
                         this.dtTarifaTipoDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.IdTarifa.Text = VALORid.ToString();
                     }
@@ -297,14 +290,14 @@ namespace PELOSCALVO
                 }
                 if (this.dtTarifaTipoDataGridView.RowCount < 7)
                 {
-                    tarifaTipoTextBox.Text = "Pvp" + this.IdTarifa.Text.ToString();
+                    this.tarifaTipoTextBox.Text = "Pvp" + this.IdTarifa.Text.ToString();
                 }
                 if (this.dtTarifaTipoDataGridView.RowCount == 7)
                 {
-                    tarifaTipoTextBox.Text = "IVA";
+                    this.tarifaTipoTextBox.Text = "IVA";
                 }
-                tarifaTipoTextBox.Focus();
-                tarifaTipoTextBox.SelectAll();
+                this.tarifaTipoTextBox.Focus();
+                this.tarifaTipoTextBox.SelectAll();
                 ModificarOjetosTari();
 
             }
@@ -317,10 +310,10 @@ namespace PELOSCALVO
 
         private void BtnModificarTipoTarifa_Click(object sender, EventArgs e)
         {
-            if (dtConfiDtTarifaTipoBindingSource.Count > 0)
+            if (this.dtConfiDtTarifaTipoBindingSource.Count > 0)
             {
                 this.panelBotonesTipoTarifa.Tag = "Actualizar";
-                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex <= 0)
+                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex <= 1)
                 {
                     MessageBox.Show("Este Descuento No Se Puede Modificar", "Descuento");
                     return;
@@ -366,7 +359,7 @@ namespace PELOSCALVO
 
         private void BtnGuardarDescuentos_Click(object sender, EventArgs e)
         {
-            if (IdTarifa.Text == string.Empty)
+            if (this.IdTarifa.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -376,51 +369,50 @@ namespace PELOSCALVO
                 BorrarErrorTari();
                 if (ValidarTarifa())
                 {
+                    try
                     {
-                        try
+                        foreach (DataGridViewRow fila in this.dtTarifaTipoDataGridView.Rows)
                         {
-                            foreach (DataGridViewRow fila in this.dtTarifaTipoDataGridView.Rows)
+                            if (fila.Cells[1].ToString() == this.tarifaTipoTextBox.Text)
                             {
-                                if (fila.Cells[1].ToString() == this.tarifaTipoTextBox.Text)
+                                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == fila.Index)
                                 {
-                                    if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == fila.Index)
-                                    {
-                                        break;
-                                    }
-                                    MessageBox.Show(this.tarifaTipoTextBox.Text.ToString(), "YA EXISTE ESTE TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    this.tarifaTipoTextBox.Focus();
-                                    this.tarifaTipoTextBox.SelectAll();
-                                    return;
+                                    break;
                                 }
-
+                                MessageBox.Show(this.tarifaTipoTextBox.Text.ToString(), "YA EXISTE ESTE TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.tarifaTipoTextBox.Focus();
+                                this.tarifaTipoTextBox.SelectAll();
+                                return;
                             }
+
                         }
-                        catch (Exception ex)
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (MessageBox.Show(" ¿Aceptar Guardar Tarifa ? ", " GUARDAR TARIFA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            GuardarTarifaSql();
+                        }
+                        else
                         {
 
-                            MessageBox.Show(ex.Message);
-                        }
-                        if (MessageBox.Show(" ¿Aceptar Guardar Tarifa ? ", " GUARDAR TARIFA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            if (ClsConexionSql.SibaseDatosSql)
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarTarifaSql();
+                                GuardarTarifaDb();
                             }
                             else
                             {
-
-                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                                {
-                                    GuardarTarifaDb();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    this.panelBotonesTipoTarifa.Enabled = false;
-                                }
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.panelBotonesTipoTarifa.Enabled = false;
                             }
                         }
                     }
+
                 }
             }
         }
@@ -433,6 +425,6 @@ namespace PELOSCALVO
             }
         }
 
-  
+
     }
 }

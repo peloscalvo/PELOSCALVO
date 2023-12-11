@@ -1,13 +1,6 @@
 ﻿using Conexiones;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -23,12 +16,12 @@ namespace PELOSCALVO
         {
             try
             {
-  
+
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
                     this.dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtObras;
                 }
-    
+
             }
             catch (Exception ex)
             {
@@ -272,9 +265,9 @@ namespace PELOSCALVO
                     }
 
                 }
-                ObraTxt.Text = "Casa";
-                ObraTxt.Focus();
-                ObraTxt.SelectAll();
+                this.ObraTxt.Text = "Casa";
+                this.ObraTxt.Focus();
+                this.ObraTxt.SelectAll();
                 ModificarOjetosObra();
 
             }
@@ -287,7 +280,7 @@ namespace PELOSCALVO
 
         private void BtnModificarObra_Click(object sender, EventArgs e)
         {
-            if (dtObrasBindingSource.Count > 0)
+            if (this.dtObrasBindingSource.Count > 0)
             {
                 this.PanelBotones_Obra.Tag = "Modificar";
                 ModificarOjetosObra();
@@ -323,7 +316,7 @@ namespace PELOSCALVO
 
         private void BtnGuardarObra_Click(object sender, EventArgs e)
         {
-            if (Id_obra.Text == string.Empty)
+            if (this.Id_obra.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -333,52 +326,52 @@ namespace PELOSCALVO
                 BorrarErrorObra();
                 if (ValidarPais())
                 {
+
+                    try
                     {
-                        try
+                        foreach (DataGridViewRow fila in this.dataGridObras.Rows)
                         {
-                            foreach (DataGridViewRow fila in this.dataGridObras.Rows)
+                            if (fila.Cells[1].ToString() == this.ObraTxt.Text)
                             {
-                                if (fila.Cells[1].ToString() == this.ObraTxt.Text)
+                                if (this.dataGridObras.CurrentCell.RowIndex == fila.Index)
                                 {
-                                    if (this.dataGridObras.CurrentCell.RowIndex == fila.Index)
-                                    {
-                                        break;
-                                    }
-                                    MessageBox.Show(this.ObraTxt.Text.ToString(), "YA EXISTE ESTE OBRA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    this.ObraTxt.Focus();
-                                    this.ObraTxt.SelectAll();
-                                    return;
+                                    break;
                                 }
-
+                                MessageBox.Show(this.ObraTxt.Text.ToString(), "YA EXISTE ESTE OBRA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.ObraTxt.Focus();
+                                this.ObraTxt.SelectAll();
+                                return;
                             }
+
                         }
-                        catch (Exception ex)
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (MessageBox.Show(" ¿Aceptar Guardar Obra ? ", " GUARDAR OBRA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            GuardarObrasSql();
+                        }
+                        else
                         {
 
-                            MessageBox.Show(ex.Message);
-                        }
-                        if (MessageBox.Show(" ¿Aceptar Guardar Obra ? ", " GUARDAR OBRA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            if (ClsConexionSql.SibaseDatosSql)
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarObrasSql();
+                                GuardarObrasDb();
                             }
                             else
                             {
-
-                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                                {
-                                    GuardarObrasDb();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    this.PanelBotones_Obra.Enabled = false;
-                                }
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.PanelBotones_Obra.Enabled = false;
                             }
                         }
                     }
                 }
+
             }
         }
 
@@ -398,7 +391,7 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                       // ObraTxt.Text = string.Empty;
+                        // ObraTxt.Text = string.Empty;
                     }
                 }
                 catch (Exception)

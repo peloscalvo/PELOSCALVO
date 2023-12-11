@@ -801,6 +801,7 @@ namespace PELOSCALVO
             // DataGridCorreoCliente
             // 
             this.DataGridCorreoCliente.AllowDrop = true;
+            this.DataGridCorreoCliente.AllowUserToAddRows = false;
             this.DataGridCorreoCliente.AllowUserToResizeRows = false;
             this.DataGridCorreoCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridCorreoCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));

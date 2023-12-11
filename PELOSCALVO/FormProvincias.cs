@@ -253,8 +253,8 @@ namespace PELOSCALVO
                 {
                     FormPaises frm = new FormPaises();
                     frm.TopLevel = false;
-                    frm.Anchor = System.Windows.Forms.AnchorStyles.None;
-                    frm.ShowDialog();
+                   // frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+                    frm.Show();
                     frm.BringToFront();
 
                 }
@@ -333,8 +333,7 @@ namespace PELOSCALVO
                 BorrarErrorProvi();
                 if (ValidarProvi())
                 {
-                    {
-                        try
+          try
                         {
                             foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
                             {
@@ -377,7 +376,7 @@ namespace PELOSCALVO
                                 }
                             }
                         }
-                    }
+                    
                 }
             }
         }

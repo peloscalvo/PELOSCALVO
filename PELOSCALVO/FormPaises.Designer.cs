@@ -52,7 +52,7 @@ namespace PELOSCALVO
             this.BtnGuardarPais = new System.Windows.Forms.Button();
             this.dataGridPais = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paisesPaisesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaisesPaises = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).BeginInit();
@@ -307,7 +307,7 @@ namespace PELOSCALVO
             this.dataGridPais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPais.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.paisesPaisesDataGridViewTextBoxColumn});
+            this.PaisesPaises});
             this.dataGridPais.DataSource = this.DtPaisBindinsource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -318,7 +318,6 @@ namespace PELOSCALVO
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridPais.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridPais.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridPais.Enabled = false;
             this.dataGridPais.Location = new System.Drawing.Point(0, 0);
             this.dataGridPais.MultiSelect = false;
             this.dataGridPais.Name = "dataGridPais";
@@ -339,13 +338,13 @@ namespace PELOSCALVO
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // paisesPaisesDataGridViewTextBoxColumn
+            // PaisesPaises
             // 
-            this.paisesPaisesDataGridViewTextBoxColumn.DataPropertyName = "PaisesPaises";
-            this.paisesPaisesDataGridViewTextBoxColumn.FillWeight = 600F;
-            this.paisesPaisesDataGridViewTextBoxColumn.HeaderText = "Paises";
-            this.paisesPaisesDataGridViewTextBoxColumn.Name = "paisesPaisesDataGridViewTextBoxColumn";
-            this.paisesPaisesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.PaisesPaises.DataPropertyName = "PaisesPaises";
+            this.PaisesPaises.FillWeight = 600F;
+            this.PaisesPaises.HeaderText = "Paises";
+            this.PaisesPaises.Name = "PaisesPaises";
+            this.PaisesPaises.ReadOnly = true;
             // 
             // FormPaises
             // 
@@ -392,6 +391,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridView dataGridPais;
         private DsMulti2 dsMulti2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paisesPaisesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaisesPaises;
     }
 }

@@ -342,7 +342,7 @@ namespace PELOSCALVO
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(669, 96);
+            this.button1.Location = new System.Drawing.Point(670, 136);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 102;
@@ -352,7 +352,7 @@ namespace PELOSCALVO
             // 
             // BtnLeerSql
             // 
-            this.BtnLeerSql.Location = new System.Drawing.Point(669, 136);
+            this.BtnLeerSql.Location = new System.Drawing.Point(670, 107);
             this.BtnLeerSql.Name = "BtnLeerSql";
             this.BtnLeerSql.Size = new System.Drawing.Size(75, 23);
             this.BtnLeerSql.TabIndex = 101;

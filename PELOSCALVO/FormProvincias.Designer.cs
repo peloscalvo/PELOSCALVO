@@ -360,7 +360,6 @@ namespace PELOSCALVO
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridProvincias.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridProvincias.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridProvincias.Enabled = false;
             this.dataGridProvincias.Location = new System.Drawing.Point(0, 0);
             this.dataGridProvincias.MultiSelect = false;
             this.dataGridProvincias.Name = "dataGridProvincias";
@@ -391,7 +390,6 @@ namespace PELOSCALVO
             // 
             // PaisTxt
             // 
-            this.PaisTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "PaisesPaises", true));
             this.PaisTxt.DataSource = this.dtPaisesBindingSource;
             this.PaisTxt.DisplayMember = "PaisesPaises";
             this.PaisTxt.FormattingEnabled = true;

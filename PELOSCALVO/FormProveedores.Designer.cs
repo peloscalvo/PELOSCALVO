@@ -326,7 +326,6 @@ namespace PELOSCALVO
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridProveedores.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridProveedores.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridProveedores.Enabled = false;
             this.dataGridProveedores.Location = new System.Drawing.Point(0, 0);
             this.dataGridProveedores.MultiSelect = false;
             this.dataGridProveedores.Name = "dataGridProveedores";

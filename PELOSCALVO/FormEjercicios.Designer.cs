@@ -440,7 +440,6 @@ namespace PELOSCALVO
             // 
             // CambiarDeEmpresa1
             // 
-            this.CambiarDeEmpresa1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
             this.CambiarDeEmpresa1.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.CambiarDeEmpresa1.DisplayMember = "EmpresaConfi";
             this.CambiarDeEmpresa1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;

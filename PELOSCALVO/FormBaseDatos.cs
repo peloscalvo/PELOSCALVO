@@ -144,7 +144,7 @@ namespace PELOSCALVO
                     }
 
                 }
-               // return tableNames;
+                // return tableNames;
             }
             catch (Exception ex)
             {
@@ -1526,7 +1526,7 @@ namespace PELOSCALVO
         {
             if (ClsConexionSql.CadenaConexion != string.Empty)
             {
-               // ObtenerTablasSql();
+                // ObtenerTablasSql();
                 string consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
                " not like 'Dt%'and O.COLUMN_NAME= 'APODOCLIEN'  order by ORDINAL_POSITION";
                 consulta = "SELECT  [name] FROM [PAIS].[sys].[tables]";
@@ -1539,15 +1539,11 @@ namespace PELOSCALVO
                     {
                         SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
                         if (reader.HasRows)
-                        {
-                            SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
-                            DataTable DT = new DataTable();
-                            AdactaPelos.Fill(DT);
-                            this.SerieClientesText2.DataSource = DT;
-                            ///  if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                            //  {
-                            //    SerieClientesText2.Items.Add(reader[0]);
-                            //  }
+                        {            
+                            this.SerieArticulosText.Items.Add(reader[0]).ToString();
+                            this.SerieClientesText2.Items.Add(reader[0]).ToString();
+                            this.ListaTablas.Items.Add(reader[0]).ToString();
+
                         }
                     }
                     catch (Exception ex)
@@ -1556,29 +1552,7 @@ namespace PELOSCALVO
                         MessageBox.Show(ex.Message.ToString());
                     }
                 }
-                consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
-                        " not like 'Dt%'and O.COLUMN_NAME= 'Referencia'  order by ORDINAL_POSITION";
-                NuevaConexion = new ClsConexionSql(consulta);
 
-                if (NuevaConexion.SiConexionSql)
-                {
-                    try
-                    {
-                        SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            if (!string.IsNullOrEmpty((reader["TABLE_NAME"]).ToString()))
-                            {
-                                this.SerieArticulosText.Items.Add(reader["TABLE_NAME"]);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message.ToString());
-                    }
-                }
                 if (NuevaConexion.CerrarConexionSql)
                 {
 
@@ -1597,7 +1571,7 @@ namespace PELOSCALVO
             {
                 try
                 {
-                    connection.ConnectionString =cadenaConexion;
+                    connection.ConnectionString = cadenaConexion;
                     string[] restrictions = new string[4];
                     restrictions[3] = "Instance";
                     connection.Open();
@@ -1636,7 +1610,10 @@ namespace PELOSCALVO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ObtenerTablasSql();
+            if (ClsConexionSql.CadenaConexion != string.Empty)
+            {
+                ObtenerTablasSql();
+            }
         }
     }
 

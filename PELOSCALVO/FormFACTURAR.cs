@@ -1149,25 +1149,6 @@ namespace PELOSCALVO
 
                 }
 
-                LimpiarDatos();
-                if (ClsConexionSql.SibaseDatosSql)
-                {
-                    ActualizarFacturaSql();
-
-                }
-                else
-                {
-                    if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                    {
-                        ActualizarFaturas_DB();
-                    }
-                    else
-                    {
-                        MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.panelBotones.Enabled = false;
-                        return;
-                    }
-                }
 
             }
 
@@ -1235,6 +1216,26 @@ namespace PELOSCALVO
             {
                 this.SerieText.Text = "A";
             }
+
+            LimpiarDatos();
+            if (ClsConexionSql.SibaseDatosSql)
+            {
+                ActualizarFacturaSql();
+
+            }
+            else
+            {
+                if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                {
+                   // ActualizarFaturas_DB();
+                }
+                else
+                {
+                    MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.panelBotones.Enabled = false;
+                    return;
+                }
+            }
             // this.NombreEmpresaReguistro.Visible = false;
             // this.PanelArriba.Tag = "SI";
         }
@@ -1274,13 +1275,14 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
+                            dsCONFIGURACCION.Clear();
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
                             AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
                             if (ClasDatos.NombreFactura == "Nota2")
                             {
                                 AdactaPelos = new OleDbDataAdapter(consultaDetalle2, ClsConexionDb.CadenaConexion);
-                                AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura2);
+                               AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura2);
                             }
 
                             AdactaPelos.Dispose();
@@ -2161,14 +2163,16 @@ namespace PELOSCALVO
             {
                 if (MessageBox.Show(" ¿Eliminar: " + ClasDatos.NombreFactura, " ELIMINAR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    String Consulta = "DELETE FROM [Dt" + ClasDatos.NombreFactura + "] WHERE EnlaceFactura= @EnlaceFactura ";
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-                        String Consulta = "DELETE FROM [Dt" + ClasDatos.NombreFactura + "] WHERE ElaceFactura=" + this.EnlaceFactu.Text;
+         
                         ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
                         if (NuevaConexion.SiConexionSql)
                         {
                             try
                             {
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceFactura", this.EnlaceFactu.Text);
                                 NuevaConexion.ComandoSql.ExecuteNonQuery();
                                 this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
                                 this.dtNuevaFacturaBindingSource.EndEdit();
@@ -2194,12 +2198,12 @@ namespace PELOSCALVO
                     {
                         if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
-                            String Consulta = "DELETE FROM [Dt" + ClasDatos.NombreFactura + "] WHERE ElaceFactura=" + this.EnlaceFactu.Text;
                             ClsConexionDb NuevaConexion = new ClsConexionDb(Consulta);
                             if (NuevaConexion.SiConexionDb)
                             {
                                 try
                                 {
+                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", this.EnlaceFactu.Text);
                                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                                     this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
                                     this.dtNuevaFacturaBindingSource.EndEdit();

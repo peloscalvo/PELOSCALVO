@@ -217,7 +217,7 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores",Convert.ToInt32(this.Id_proveedor.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         this.dtProveedoresBindingSource.EndEdit();
@@ -275,7 +275,7 @@ namespace PELOSCALVO
                         this.dataGridProveedores.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.Id_proveedor.Text = VALORid.ToString();
                     }
-                    
+
                 }
 
                 ModificarOjetosProv();
@@ -295,7 +295,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (Id_proveedor.Text == string.Empty & Enlace_Proveedor.Text == string.Empty)
+            if (this.Id_proveedor.Text == string.Empty & this.Enlace_Proveedor.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -305,63 +305,62 @@ namespace PELOSCALVO
                 BorrarErrorProveedor();
                 if (ValidarProveedor())
                 {
+                    try
                     {
-                        try
+                        foreach (DataGridViewRow fila in this.dataGridProveedores.Rows)
                         {
-                            foreach (DataGridViewRow fila in this.dataGridProveedores.Rows)
+                            if (fila.Cells[1].ToString() == this.NombreProveedor.Text)
                             {
-                                if (fila.Cells[1].ToString() == this.NombreProveedor.Text)
+                                if (this.dataGridProveedores.CurrentCell.RowIndex == fila.Index)
                                 {
-                                    if (this.dataGridProveedores.CurrentCell.RowIndex == fila.Index)
-                                    {
-                                        break;
-                                    }
-                                    MessageBox.Show(this.NombreProveedor.Text.ToString(), "YA EXISTE ESTA PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    this.NombreProveedor.Focus();
-                                    this.NombreProveedor.SelectAll();
-                                    return;
+                                    break;
                                 }
-
+                                MessageBox.Show(this.NombreProveedor.Text.ToString(), "YA EXISTE ESTA PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.NombreProveedor.Focus();
+                                this.NombreProveedor.SelectAll();
+                                return;
                             }
+
                         }
-                        catch (Exception ex)
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            GuardarProveedoresSql();
+                        }
+                        else
                         {
 
-                            MessageBox.Show(ex.Message);
-                        }
-                        if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            if (ClsConexionSql.SibaseDatosSql)
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarProveedoresSql();
+                                GuardarProveedoresDb();
                             }
                             else
                             {
-
-                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                                {
-                                    GuardarProveedoresDb();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    this.PanelBotones_pro.Enabled = false;
-                                }
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.PanelBotones_pro.Enabled = false;
                             }
                         }
                     }
+
                 }
             }
         }
 
         private void BtnModificarProveedor_Click(object sender, EventArgs e)
         {
-            if(dtProveedoresBindingSource.Count > 0)
+            if (this.dtProveedoresBindingSource.Count > 0)
             {
                 this.PanelBotones_pro.Tag = "Modificar";
                 ModificarOjetosProv();
             }
-         
+
         }
 
         private void BtnEliminarProveedor_Click(object sender, EventArgs e)
@@ -417,16 +416,16 @@ namespace PELOSCALVO
                 catch (Exception)
                 {
 
-                  //  throw;
+                    //  throw;
                 }
-                
+
             }
             RestaurarOjetosProv();
         }
 
         private void BtnSalir_pro_Click(object sender, EventArgs e)
         {
-            if (BtnGuardarProve.Enabled == false)
+            if (this.BtnGuardarProve.Enabled == false)
             {
 
 
@@ -437,5 +436,5 @@ namespace PELOSCALVO
             }
         }
     }
-    
+
 }

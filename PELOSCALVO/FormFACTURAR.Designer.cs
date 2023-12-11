@@ -740,9 +740,8 @@ namespace PELOSCALVO
             this.DtConfiTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiBindingSource, "EnlaceDtconfi", true));
             this.DtConfiTxt.Location = new System.Drawing.Point(960, 10);
             this.DtConfiTxt.Name = "DtConfiTxt";
-            this.DtConfiTxt.Size = new System.Drawing.Size(13, 13);
+            this.DtConfiTxt.Size = new System.Drawing.Size(0, 13);
             this.DtConfiTxt.TabIndex = 74;
-            this.DtConfiTxt.Text = "1";
             // 
             // EnlaceFactu
             // 
@@ -750,9 +749,8 @@ namespace PELOSCALVO
             this.EnlaceFactu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "EnlaceFactura", true));
             this.EnlaceFactu.Location = new System.Drawing.Point(91, 10);
             this.EnlaceFactu.Name = "EnlaceFactu";
-            this.EnlaceFactu.Size = new System.Drawing.Size(13, 13);
+            this.EnlaceFactu.Size = new System.Drawing.Size(0, 13);
             this.EnlaceFactu.TabIndex = 73;
-            this.EnlaceFactu.Text = "1";
             // 
             // proveedoresComboBox
             // 
