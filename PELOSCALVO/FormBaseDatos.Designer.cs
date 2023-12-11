@@ -53,6 +53,7 @@ namespace PELOSCALVO
             this.ErrorVer = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TabArchivos = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.BtnLeerSql = new System.Windows.Forms.Button();
             this.BtnLeer = new System.Windows.Forms.Button();
             this.Info_Res = new System.Windows.Forms.Label();
@@ -310,6 +311,7 @@ namespace PELOSCALVO
             // TabArchivos
             // 
             this.TabArchivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TabArchivos.Controls.Add(this.button1);
             this.TabArchivos.Controls.Add(this.BtnLeerSql);
             this.TabArchivos.Controls.Add(this.BtnLeer);
             this.TabArchivos.Controls.Add(this.Info_Res);
@@ -338,13 +340,23 @@ namespace PELOSCALVO
             this.TabArchivos.Click += new System.EventHandler(this.TabArchivos_Click);
             this.TabArchivos.MouseEnter += new System.EventHandler(this.TabArchivos_MouseEnter);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(669, 96);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 102;
+            this.button1.Text = "&Leer sql";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BtnLeerSql
             // 
             this.BtnLeerSql.Location = new System.Drawing.Point(669, 136);
             this.BtnLeerSql.Name = "BtnLeerSql";
             this.BtnLeerSql.Size = new System.Drawing.Size(75, 23);
             this.BtnLeerSql.TabIndex = 101;
-            this.BtnLeerSql.Text = "&Leer";
+            this.BtnLeerSql.Text = "&Leer sql";
             this.BtnLeerSql.UseVisualStyleBackColor = true;
             this.BtnLeerSql.Click += new System.EventHandler(this.BtnLeerSql_Click);
             // 
@@ -918,5 +930,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.TabPage TabLista;
         private System.Windows.Forms.ListBox ListaTablas;
         private System.Windows.Forms.Button BtnActualizar_Servidor;
+        private System.Windows.Forms.Button button1;
     }
 }

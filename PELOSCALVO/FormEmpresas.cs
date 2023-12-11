@@ -409,6 +409,8 @@ namespace PELOSCALVO
                         byte[] IMAGENnUEVA = ConvertirImagen(this.imagenEmpresaPictureBox);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
+                        this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                        Validate();
                         NuevaConexion = new ClsConexionDb(ConsultaDescuetos);////Guarda Descuentos Clientes
                         if (NuevaConexion.SiConexionDb)
                         {

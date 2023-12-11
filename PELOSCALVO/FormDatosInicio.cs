@@ -146,19 +146,31 @@ namespace PELOSCALVO
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
-
             List<string> tableNames = new List<string>();
-            for (int i = 0; i < userTables.Rows.Count; i++)
+            if (userTables != null)
             {
-                // ListaTablasPrincipal.Items.Add(userTables.Rows[i][2].ToString());
-            
-                    if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                try
+                {
+                    for (int i = 0; i < userTables.Rows.Count; i++)
                     {
-                        tableNames.Add(userTables.Rows[i][2].ToString());
+                        // ListaTablasPrincipal.Items.Add(userTables.Rows[i][2].ToString());
+
+                        if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                        {
+                            tableNames.Add(userTables.Rows[i][2].ToString());
+                        }
+
+
                     }
+                }
+                catch (Exception ex)
+                {
 
-
+                    MessageBox.Show(ex.Message.ToString());
+                }
+              
             }
+
             return tableNames;
         }
 

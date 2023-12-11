@@ -78,17 +78,27 @@ namespace PELOSCALVO
             this.SerieArticulosText.Items.Clear();
             this.SerieClientesText2.Items.Clear();
             List<string> tableNames = new List<string>();
-            for (int i = 0; i < userTables.Rows.Count; i++)
+            if (userTables != null)
             {
-                this.ListaTablas.Items.Add(userTables.Rows[i][2].ToString());
-                if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                try
                 {
-                    this.SerieArticulosText.Items.Add(userTables.Rows[i][2].ToString());
-                    this.SerieClientesText2.Items.Add(userTables.Rows[i][2].ToString());
-                    tableNames.Add(userTables.Rows[i][2].ToString());
+                    for (int i = 0; i < userTables.Rows.Count; i++)
+                    {
+                        this.ListaTablas.Items.Add(userTables.Rows[i][2].ToString());
+                        if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                        {
+                            this.SerieArticulosText.Items.Add(userTables.Rows[i][2].ToString());
+                            this.SerieClientesText2.Items.Add(userTables.Rows[i][2].ToString());
+                            tableNames.Add(userTables.Rows[i][2].ToString());
+                        }
+
+                    }
                 }
+                catch (Exception ex)
+                {
 
-
+                    MessageBox.Show(ex.Message.ToString());
+                }
 
             }
             return tableNames;
@@ -105,7 +115,7 @@ namespace PELOSCALVO
                     string[] restrictions = new string[4];
                     restrictions[3] = "Table";
                     connection.Open();
-                    userTables = connection.GetSchema("Tables", restrictions);
+                    userTables = connection.GetSchema("Tables");
                 }
                 catch (Exception ex)
                 {
@@ -115,19 +125,31 @@ namespace PELOSCALVO
             }
             this.SerieArticulosText.Items.Clear();
             this.SerieClientesText2.Items.Clear();
+            this.ListaTablas.Items.Clear();
             List<string> tableNames = new List<string>();
-            for (int i = 0; i < userTables.Rows.Count; i++)
+            try
             {
-                this.ListaTablas.Items.Add(userTables.Rows[i][2].ToString());
-                if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                if (userTables != null)
                 {
-                    this.SerieArticulosText.Items.Add(userTables.Rows[i][2].ToString());
-                    this.SerieClientesText2.Items.Add(userTables.Rows[i][2].ToString());
-                    tableNames.Add(userTables.Rows[i][2].ToString());
+                    for (int i = 0; i < userTables.Rows.Count; i++)
+                    {
+                        this.ListaTablas.Items.Add(userTables.Rows[i][2].ToString());
+                        if (!userTables.Rows[i][2].ToString().Contains("Dt"))
+                        {
+                            this.SerieArticulosText.Items.Add(userTables.Rows[i][2].ToString());
+                            this.SerieClientesText2.Items.Add(userTables.Rows[i][2].ToString());
+                            tableNames.Add(userTables.Rows[i][2].ToString());
+                        }
+
+                    }
+
                 }
+               // return tableNames;
+            }
+            catch (Exception ex)
+            {
 
-
-
+                MessageBox.Show(ex.Message.ToString());
             }
             return tableNames;
         }
@@ -1504,11 +1526,10 @@ namespace PELOSCALVO
         {
             if (ClsConexionSql.CadenaConexion != string.Empty)
             {
-                ObtenerTablasSql();
-                return;
+               // ObtenerTablasSql();
                 string consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
                " not like 'Dt%'and O.COLUMN_NAME= 'APODOCLIEN'  order by ORDINAL_POSITION";
-                consulta = "SELECT *FROM sys.Tables where sys.tables.name not like 'Dt%'";
+                consulta = "SELECT  [name] FROM [PAIS].[sys].[tables]";
                 //  ClsConexionSql.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                 ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
 
@@ -1580,7 +1601,7 @@ namespace PELOSCALVO
                     string[] restrictions = new string[4];
                     restrictions[3] = "Instance";
                     connection.Open();
-                    userTables = connection.GetSchema("InstanceName", restrictions);
+                    userTables = connection.GetSchema("Instance", restrictions);
                 }
                 catch (Exception ex)
                 {
@@ -1590,11 +1611,19 @@ namespace PELOSCALVO
             }
             //this.Servidor.Items.Clear();
             List<string> tableNames = new List<string>();
-            for (int i = 0; i < userTables.Rows.Count; i++)
+            try
             {
-                this.Servidor.Items.Add(userTables.Rows[i][2].ToString());
+                for (int i = 0; i < userTables.Rows.Count; i++)
+                {
+                    this.Servidor.Items.Add(userTables.Rows[i][2].ToString());
 
                     tableNames.Add(userTables.Rows[i][2].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
             }
             return tableNames;
         }
@@ -1605,11 +1634,10 @@ namespace PELOSCALVO
 
         }
 
-
-
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ObtenerTablasSql();
+        }
     }
 
 }

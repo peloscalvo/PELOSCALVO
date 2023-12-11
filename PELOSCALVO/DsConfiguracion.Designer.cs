@@ -1902,13 +1902,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtTarifaTipoRow FindById(int Id) {
-                return ((DtTarifaTipoRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 DtTarifaTipoDataTable cln = ((DtTarifaTipoDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1938,10 +1931,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnTarifaTipo);
                 this.columnEnlaceTarifa = new global::System.Data.DataColumn("EnlaceTarifa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceTarifa);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
                 this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
+                this.columnTarifaTipo.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4684,12 +4675,7 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TarifaTipo {
                 get {
-                    try {
-                        return ((string)(this[this.tableDtTarifaTipo.TarifaTipoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TarifaTipo\' de la tabla \'DtTarifaTipo\' es DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDtTarifaTipo.TarifaTipoColumn]));
                 }
                 set {
                     this[this.tableDtTarifaTipo.TarifaTipoColumn] = value;
@@ -4721,18 +4707,6 @@ namespace PELOSCALVO {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["DtConfi_DtTarifaTipo"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTarifaTipoNull() {
-                return this.IsNull(this.tableDtTarifaTipo.TarifaTipoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTarifaTipoNull() {
-                this[this.tableDtTarifaTipo.TarifaTipoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

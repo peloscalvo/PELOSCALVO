@@ -68,6 +68,18 @@
         </Point>
       </RoutePoints>
     </Connector>
+    <Connector ID="DesignRelation:DtConfiguracionPrincipal_DtNuevaFactura" ZOrder="1" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>405</X>
+          <Y>259</Y>
+        </Point>
+        <Point>
+          <X>451</X>
+          <Y>259</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
     <Connector ID="DesignRelation:DtNuevaFactura_DtDetallesFactura" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -97,18 +109,6 @@
         <Point>
           <X>645</X>
           <Y>232</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:DtConfiguracionPrincipal_DtNuevaFactura" ZOrder="1" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>405</X>
-          <Y>259</Y>
-        </Point>
-        <Point>
-          <X>451</X>
-          <Y>259</Y>
         </Point>
       </RoutePoints>
     </Connector>

@@ -592,9 +592,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Datos\Configuracion.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\Pdf.png" />
     <None Include="Resources\iconmonstr-arrow-35-24.png" />
     <None Include="Resources\iconmonstr-undo-4-24.png" />
@@ -643,6 +640,7 @@
     <None Include="Resources\flecha.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Datos\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

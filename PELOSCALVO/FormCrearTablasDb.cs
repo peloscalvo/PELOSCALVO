@@ -163,7 +163,7 @@ namespace PELOSCALVO
                     string TablaDtconfi = "CREATE TABLE[DtConfi] ([EnlaceDtconfi] varchar primary key ,[ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                         "[EmpresaENLACE] varchar not null ,[IdConexionConfi] INTEGER not null, [AñoDeEjercicio] varchar  ," +
                            " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
-                    string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([Id] INTEGER primary key, [TarifaTipo] varchar, [EnlaceTarifa] varchar not null," +
+                    string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([Id] INTEGER , [TarifaTipo] varchar, [EnlaceTarifa] varchar not null," +
                         "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY (EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
 
@@ -843,13 +843,9 @@ namespace PELOSCALVO
         private void ExtensionTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
             if( ExtensionTxt.Text != string.Empty & BaseDatosTxt1.Text != string.Empty)
-            {
-                if(ListaTablasPrincipal.Items.Count <= 0)
-                {
-             
+            {           
                     ListaTablasPrincipal.DataSource = ObtenerTablasDb();
-                    TablanuevaTxt.DataSource = ObtenerTablasDb();
-                }
+                    TablanuevaTxt.DataSource = ObtenerTablasDb();              
                
             }
           

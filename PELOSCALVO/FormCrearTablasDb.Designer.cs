@@ -297,7 +297,6 @@ namespace PELOSCALVO
             // 
             this.ExtensionTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "TipoExtensionArticulos", true));
             this.ExtensionTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ExtensionTxt.Enabled = false;
             this.ExtensionTxt.FormattingEnabled = true;
             this.ExtensionTxt.Items.AddRange(new object[] {
             "accdb",

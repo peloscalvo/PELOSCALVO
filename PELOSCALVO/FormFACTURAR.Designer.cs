@@ -97,6 +97,7 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalDtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage1Factura = new System.Windows.Forms.TabPage();
+            this.DtConfiTxt = new System.Windows.Forms.Label();
             this.EnlaceFactu = new System.Windows.Forms.Label();
             this.proveedoresComboBox = new System.Windows.Forms.ComboBox();
             this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -151,7 +152,7 @@ namespace PELOSCALVO
             this.tabPage3Factura = new System.Windows.Forms.TabPage();
             this.CheckDescuentos = new System.Windows.Forms.RadioButton();
             this.IdDescuento = new System.Windows.Forms.Label();
-            this.dtConfiDtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.NumTotales = new System.Windows.Forms.NumericUpDown();
             this.Numimporte = new System.Windows.Forms.NumericUpDown();
@@ -159,9 +160,9 @@ namespace PELOSCALVO
             this.NumPrecio = new System.Windows.Forms.NumericUpDown();
             this.imagenEmpresaPicture2 = new System.Windows.Forms.PictureBox();
             this.tarifaTipoComboBox = new System.Windows.Forms.ComboBox();
+            this.dtConfiDtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtArticulosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.articulos = new PELOSCALVO.Articulos();
-            this.dtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelBotones = new System.Windows.Forms.Panel();
             this.BtnSalirFactura = new System.Windows.Forms.Button();
             this.BtnImprimirFactura = new System.Windows.Forms.Button();
@@ -254,16 +255,16 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFacturaDataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFactura2BindingSource)).BeginInit();
             this.tabPage3Factura.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiDtTarifaTipoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumTotales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Numimporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumDescuento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenEmpresaPicture2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiDtTarifaTipoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).BeginInit();
             this.panelBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNuevaFacturaDataGridView)).BeginInit();
@@ -285,7 +286,7 @@ namespace PELOSCALVO
             // numeroFacturaLabel
             // 
             numeroFacturaLabel.AutoSize = true;
-            numeroFacturaLabel.Location = new System.Drawing.Point(44, 39);
+            numeroFacturaLabel.Location = new System.Drawing.Point(44, 40);
             numeroFacturaLabel.Name = "numeroFacturaLabel";
             numeroFacturaLabel.Size = new System.Drawing.Size(44, 13);
             numeroFacturaLabel.TabIndex = 0;
@@ -294,7 +295,7 @@ namespace PELOSCALVO
             // apodoLabel
             // 
             apodoLabel.AutoSize = true;
-            apodoLabel.Location = new System.Drawing.Point(15, 69);
+            apodoLabel.Location = new System.Drawing.Point(15, 70);
             apodoLabel.Name = "apodoLabel";
             apodoLabel.Size = new System.Drawing.Size(73, 13);
             apodoLabel.TabIndex = 2;
@@ -303,7 +304,7 @@ namespace PELOSCALVO
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(41, 101);
+            nombreLabel.Location = new System.Drawing.Point(41, 102);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(47, 13);
             nombreLabel.TabIndex = 4;
@@ -312,7 +313,7 @@ namespace PELOSCALVO
             // direccionLabel
             // 
             direccionLabel.AutoSize = true;
-            direccionLabel.Location = new System.Drawing.Point(33, 127);
+            direccionLabel.Location = new System.Drawing.Point(33, 128);
             direccionLabel.Name = "direccionLabel";
             direccionLabel.Size = new System.Drawing.Size(55, 13);
             direccionLabel.TabIndex = 6;
@@ -321,7 +322,7 @@ namespace PELOSCALVO
             // calleLabel
             // 
             calleLabel.AutoSize = true;
-            calleLabel.Location = new System.Drawing.Point(55, 153);
+            calleLabel.Location = new System.Drawing.Point(55, 154);
             calleLabel.Name = "calleLabel";
             calleLabel.Size = new System.Drawing.Size(33, 13);
             calleLabel.TabIndex = 8;
@@ -330,7 +331,7 @@ namespace PELOSCALVO
             // numeroCalleLabel
             // 
             numeroCalleLabel.AutoSize = true;
-            numeroCalleLabel.Location = new System.Drawing.Point(15, 182);
+            numeroCalleLabel.Location = new System.Drawing.Point(15, 183);
             numeroCalleLabel.Name = "numeroCalleLabel";
             numeroCalleLabel.Size = new System.Drawing.Size(73, 13);
             numeroCalleLabel.TabIndex = 10;
@@ -339,7 +340,7 @@ namespace PELOSCALVO
             // dniLabel
             // 
             dniLabel.AutoSize = true;
-            dniLabel.Location = new System.Drawing.Point(391, 39);
+            dniLabel.Location = new System.Drawing.Point(391, 40);
             dniLabel.Name = "dniLabel";
             dniLabel.Size = new System.Drawing.Size(26, 13);
             dniLabel.TabIndex = 12;
@@ -348,7 +349,7 @@ namespace PELOSCALVO
             // localidadLabel
             // 
             localidadLabel.AutoSize = true;
-            localidadLabel.Location = new System.Drawing.Point(454, 98);
+            localidadLabel.Location = new System.Drawing.Point(454, 99);
             localidadLabel.Name = "localidadLabel";
             localidadLabel.Size = new System.Drawing.Size(56, 13);
             localidadLabel.TabIndex = 14;
@@ -357,7 +358,7 @@ namespace PELOSCALVO
             // provinciaLabel
             // 
             provinciaLabel.AutoSize = true;
-            provinciaLabel.Location = new System.Drawing.Point(456, 124);
+            provinciaLabel.Location = new System.Drawing.Point(456, 125);
             provinciaLabel.Name = "provinciaLabel";
             provinciaLabel.Size = new System.Drawing.Size(54, 13);
             provinciaLabel.TabIndex = 16;
@@ -366,7 +367,7 @@ namespace PELOSCALVO
             // codigoPostalLabel
             // 
             codigoPostalLabel.AutoSize = true;
-            codigoPostalLabel.Location = new System.Drawing.Point(682, 34);
+            codigoPostalLabel.Location = new System.Drawing.Point(683, 40);
             codigoPostalLabel.Name = "codigoPostalLabel";
             codigoPostalLabel.Size = new System.Drawing.Size(75, 13);
             codigoPostalLabel.TabIndex = 18;
@@ -375,7 +376,7 @@ namespace PELOSCALVO
             // nonbreAlmacenLabel
             // 
             nonbreAlmacenLabel.AutoSize = true;
-            nonbreAlmacenLabel.Location = new System.Drawing.Point(682, 66);
+            nonbreAlmacenLabel.Location = new System.Drawing.Point(796, 85);
             nonbreAlmacenLabel.Name = "nonbreAlmacenLabel";
             nonbreAlmacenLabel.Size = new System.Drawing.Size(89, 13);
             nonbreAlmacenLabel.TabIndex = 20;
@@ -459,7 +460,7 @@ namespace PELOSCALVO
             // pais_FactLabel
             // 
             pais_FactLabel.AutoSize = true;
-            pais_FactLabel.Location = new System.Drawing.Point(480, 152);
+            pais_FactLabel.Location = new System.Drawing.Point(480, 153);
             pais_FactLabel.Name = "pais_FactLabel";
             pais_FactLabel.Size = new System.Drawing.Size(30, 13);
             pais_FactLabel.TabIndex = 27;
@@ -533,7 +534,7 @@ namespace PELOSCALVO
             // 
             obrasLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             obrasLabel.AutoSize = true;
-            obrasLabel.Location = new System.Drawing.Point(986, 37);
+            obrasLabel.Location = new System.Drawing.Point(986, 41);
             obrasLabel.Name = "obrasLabel";
             obrasLabel.Size = new System.Drawing.Size(33, 13);
             obrasLabel.TabIndex = 70;
@@ -542,7 +543,7 @@ namespace PELOSCALVO
             // proveedoresLabel
             // 
             proveedoresLabel.AutoSize = true;
-            proveedoresLabel.Location = new System.Drawing.Point(409, 179);
+            proveedoresLabel.Location = new System.Drawing.Point(409, 180);
             proveedoresLabel.Name = "proveedoresLabel";
             proveedoresLabel.Size = new System.Drawing.Size(101, 13);
             proveedoresLabel.TabIndex = 71;
@@ -663,7 +664,6 @@ namespace PELOSCALVO
             // ejerciciosDeAñoComboBox
             // 
             this.ejerciciosDeAñoComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ejerciciosDeAñoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EjerciciosDeAño", true));
             this.ejerciciosDeAñoComboBox.DataSource = this.dtConfiguracionPrincipalDtConfiBindingSource;
             this.ejerciciosDeAñoComboBox.DisplayMember = "EjerciciosDeAño";
             this.ejerciciosDeAñoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -688,6 +688,7 @@ namespace PELOSCALVO
             // tabPage1Factura
             // 
             this.tabPage1Factura.AutoScroll = true;
+            this.tabPage1Factura.Controls.Add(this.DtConfiTxt);
             this.tabPage1Factura.Controls.Add(Label11);
             this.tabPage1Factura.Controls.Add(this.EnlaceFactu);
             this.tabPage1Factura.Controls.Add(proveedoresLabel);
@@ -733,13 +734,25 @@ namespace PELOSCALVO
             this.tabPage1Factura.UseVisualStyleBackColor = true;
             this.tabPage1Factura.MouseEnter += new System.EventHandler(this.TabPage1_MouseEnter);
             // 
+            // DtConfiTxt
+            // 
+            this.DtConfiTxt.AutoSize = true;
+            this.DtConfiTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiBindingSource, "EnlaceDtconfi", true));
+            this.DtConfiTxt.Location = new System.Drawing.Point(960, 10);
+            this.DtConfiTxt.Name = "DtConfiTxt";
+            this.DtConfiTxt.Size = new System.Drawing.Size(13, 13);
+            this.DtConfiTxt.TabIndex = 74;
+            this.DtConfiTxt.Text = "1";
+            // 
             // EnlaceFactu
             // 
+            this.EnlaceFactu.AutoSize = true;
             this.EnlaceFactu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "EnlaceFactura", true));
             this.EnlaceFactu.Location = new System.Drawing.Point(91, 10);
             this.EnlaceFactu.Name = "EnlaceFactu";
-            this.EnlaceFactu.Size = new System.Drawing.Size(362, 23);
+            this.EnlaceFactu.Size = new System.Drawing.Size(13, 13);
             this.EnlaceFactu.TabIndex = 73;
+            this.EnlaceFactu.Text = "1";
             // 
             // proveedoresComboBox
             // 
@@ -747,7 +760,7 @@ namespace PELOSCALVO
             this.proveedoresComboBox.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
             this.proveedoresComboBox.DisplayMember = "Proveedores";
             this.proveedoresComboBox.FormattingEnabled = true;
-            this.proveedoresComboBox.Location = new System.Drawing.Point(514, 176);
+            this.proveedoresComboBox.Location = new System.Drawing.Point(514, 177);
             this.proveedoresComboBox.MaxLength = 60;
             this.proveedoresComboBox.Name = "proveedoresComboBox";
             this.proveedoresComboBox.Size = new System.Drawing.Size(234, 21);
@@ -772,7 +785,7 @@ namespace PELOSCALVO
             this.obrasComboBox.DisplayMember = "Obras";
             this.obrasComboBox.Enabled = false;
             this.obrasComboBox.FormattingEnabled = true;
-            this.obrasComboBox.Location = new System.Drawing.Point(1025, 34);
+            this.obrasComboBox.Location = new System.Drawing.Point(1025, 38);
             this.obrasComboBox.MaxLength = 60;
             this.obrasComboBox.Name = "obrasComboBox";
             this.obrasComboBox.Size = new System.Drawing.Size(236, 21);
@@ -806,7 +819,7 @@ namespace PELOSCALVO
             // 
             this.BtnBuscarClientesFact.Enabled = false;
             this.BtnBuscarClientesFact.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
-            this.BtnBuscarClientesFact.Location = new System.Drawing.Point(368, 66);
+            this.BtnBuscarClientesFact.Location = new System.Drawing.Point(368, 67);
             this.BtnBuscarClientesFact.Name = "BtnBuscarClientesFact";
             this.BtnBuscarClientesFact.Size = new System.Drawing.Size(39, 23);
             this.BtnBuscarClientesFact.TabIndex = 69;
@@ -820,7 +833,7 @@ namespace PELOSCALVO
             this.pais_FactComboBox.DisplayMember = "PaisesPaises";
             this.pais_FactComboBox.Enabled = false;
             this.pais_FactComboBox.FormattingEnabled = true;
-            this.pais_FactComboBox.Location = new System.Drawing.Point(514, 149);
+            this.pais_FactComboBox.Location = new System.Drawing.Point(514, 150);
             this.pais_FactComboBox.MaxLength = 60;
             this.pais_FactComboBox.Name = "pais_FactComboBox";
             this.pais_FactComboBox.Size = new System.Drawing.Size(257, 21);
@@ -864,7 +877,7 @@ namespace PELOSCALVO
             // 
             this.numeroFacturaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NumeroFactura", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.numeroFacturaTextBox.Enabled = false;
-            this.numeroFacturaTextBox.Location = new System.Drawing.Point(94, 37);
+            this.numeroFacturaTextBox.Location = new System.Drawing.Point(94, 38);
             this.numeroFacturaTextBox.Name = "numeroFacturaTextBox";
             this.numeroFacturaTextBox.Size = new System.Drawing.Size(203, 20);
             this.numeroFacturaTextBox.TabIndex = 1;
@@ -874,7 +887,7 @@ namespace PELOSCALVO
             this.apodoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.apodoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Apodo", true));
             this.apodoTextBox.Enabled = false;
-            this.apodoTextBox.Location = new System.Drawing.Point(94, 66);
+            this.apodoTextBox.Location = new System.Drawing.Point(94, 67);
             this.apodoTextBox.MaxLength = 34;
             this.apodoTextBox.Name = "apodoTextBox";
             this.apodoTextBox.Size = new System.Drawing.Size(253, 20);
@@ -884,7 +897,7 @@ namespace PELOSCALVO
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Nombre", true));
             this.nombreTextBox.Enabled = false;
-            this.nombreTextBox.Location = new System.Drawing.Point(94, 98);
+            this.nombreTextBox.Location = new System.Drawing.Point(94, 99);
             this.nombreTextBox.MaxLength = 50;
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(333, 20);
@@ -894,7 +907,7 @@ namespace PELOSCALVO
             // 
             this.direccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Direccion", true));
             this.direccionTextBox.Enabled = false;
-            this.direccionTextBox.Location = new System.Drawing.Point(94, 124);
+            this.direccionTextBox.Location = new System.Drawing.Point(94, 125);
             this.direccionTextBox.MaxLength = 45;
             this.direccionTextBox.Name = "direccionTextBox";
             this.direccionTextBox.Size = new System.Drawing.Size(313, 20);
@@ -904,7 +917,7 @@ namespace PELOSCALVO
             // 
             this.calleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Calle", true));
             this.calleTextBox.Enabled = false;
-            this.calleTextBox.Location = new System.Drawing.Point(94, 150);
+            this.calleTextBox.Location = new System.Drawing.Point(94, 151);
             this.calleTextBox.MaxLength = 24;
             this.calleTextBox.Name = "calleTextBox";
             this.calleTextBox.Size = new System.Drawing.Size(121, 20);
@@ -914,7 +927,7 @@ namespace PELOSCALVO
             // 
             this.numeroCalleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NumeroCalle", true));
             this.numeroCalleTextBox.Enabled = false;
-            this.numeroCalleTextBox.Location = new System.Drawing.Point(94, 179);
+            this.numeroCalleTextBox.Location = new System.Drawing.Point(94, 180);
             this.numeroCalleTextBox.MaxLength = 5;
             this.numeroCalleTextBox.Name = "numeroCalleTextBox";
             this.numeroCalleTextBox.Size = new System.Drawing.Size(121, 20);
@@ -924,7 +937,7 @@ namespace PELOSCALVO
             // 
             this.dniTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Dni", true));
             this.dniTextBox.Enabled = false;
-            this.dniTextBox.Location = new System.Drawing.Point(423, 36);
+            this.dniTextBox.Location = new System.Drawing.Point(423, 37);
             this.dniTextBox.MaxLength = 14;
             this.dniTextBox.Name = "dniTextBox";
             this.dniTextBox.Size = new System.Drawing.Size(233, 20);
@@ -935,7 +948,7 @@ namespace PELOSCALVO
             // 
             this.localidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Localidad", true));
             this.localidadTextBox.Enabled = false;
-            this.localidadTextBox.Location = new System.Drawing.Point(514, 95);
+            this.localidadTextBox.Location = new System.Drawing.Point(514, 96);
             this.localidadTextBox.MaxLength = 25;
             this.localidadTextBox.Name = "localidadTextBox";
             this.localidadTextBox.Size = new System.Drawing.Size(257, 20);
@@ -948,7 +961,7 @@ namespace PELOSCALVO
             this.provinciaComboBox.DisplayMember = "ProvinciasProvincias";
             this.provinciaComboBox.Enabled = false;
             this.provinciaComboBox.FormattingEnabled = true;
-            this.provinciaComboBox.Location = new System.Drawing.Point(514, 121);
+            this.provinciaComboBox.Location = new System.Drawing.Point(514, 122);
             this.provinciaComboBox.MaxLength = 60;
             this.provinciaComboBox.Name = "provinciaComboBox";
             this.provinciaComboBox.Size = new System.Drawing.Size(257, 21);
@@ -964,7 +977,7 @@ namespace PELOSCALVO
             // 
             this.codigoPostalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "CodigoPostal", true));
             this.codigoPostalTextBox.Enabled = false;
-            this.codigoPostalTextBox.Location = new System.Drawing.Point(763, 33);
+            this.codigoPostalTextBox.Location = new System.Drawing.Point(764, 37);
             this.codigoPostalTextBox.MaxLength = 30;
             this.codigoPostalTextBox.Name = "codigoPostalTextBox";
             this.codigoPostalTextBox.Size = new System.Drawing.Size(121, 20);
@@ -978,7 +991,7 @@ namespace PELOSCALVO
             this.AlmacenTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AlmacenTxt.Enabled = false;
             this.AlmacenTxt.FormattingEnabled = true;
-            this.AlmacenTxt.Location = new System.Drawing.Point(777, 63);
+            this.AlmacenTxt.Location = new System.Drawing.Point(891, 82);
             this.AlmacenTxt.Name = "AlmacenTxt";
             this.AlmacenTxt.Size = new System.Drawing.Size(298, 21);
             this.AlmacenTxt.TabIndex = 21;
@@ -1394,7 +1407,7 @@ namespace PELOSCALVO
             // IdDescuento
             // 
             this.IdDescuento.AutoSize = true;
-            this.IdDescuento.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "IdTarifa", true, System.Windows.Forms.DataSourceUpdateMode.Never, null, "N0"));
+            this.IdDescuento.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtTarifaTipoBindingSource, "Id", true));
             this.IdDescuento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.IdDescuento.Location = new System.Drawing.Point(71, 28);
             this.IdDescuento.Name = "IdDescuento";
@@ -1402,10 +1415,10 @@ namespace PELOSCALVO
             this.IdDescuento.TabIndex = 70;
             this.IdDescuento.Text = "0";
             // 
-            // dtConfiDtTarifaTipoBindingSource
+            // dtTarifaTipoBindingSource
             // 
-            this.dtConfiDtTarifaTipoBindingSource.DataMember = "DtConfi_DtTarifaTipo";
-            this.dtConfiDtTarifaTipoBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.dtTarifaTipoBindingSource.DataMember = "DtTarifaTipo";
+            this.dtTarifaTipoBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // panel2
             // 
@@ -1518,6 +1531,11 @@ namespace PELOSCALVO
             this.tarifaTipoComboBox.TabIndex = 9;
             this.tarifaTipoComboBox.SelectedIndexChanged += new System.EventHandler(this.TarifaTipoComboBox_SelectedIndexChanged);
             // 
+            // dtConfiDtTarifaTipoBindingSource
+            // 
+            this.dtConfiDtTarifaTipoBindingSource.DataMember = "DtConfi_DtTarifaTipo";
+            this.dtConfiDtTarifaTipoBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            // 
             // dtArticulosBindingSource
             // 
             this.dtArticulosBindingSource.DataMember = "DtArticulos";
@@ -1527,11 +1545,6 @@ namespace PELOSCALVO
             // 
             this.articulos.DataSetName = "Articulos";
             this.articulos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dtTarifaTipoBindingSource
-            // 
-            this.dtTarifaTipoBindingSource.DataMember = "DtTarifaTipo";
-            this.dtTarifaTipoBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // panelBotones
             // 
@@ -2078,7 +2091,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFactura2BindingSource)).EndInit();
             this.tabPage3Factura.ResumeLayout(false);
             this.tabPage3Factura.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiDtTarifaTipoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumTotales)).EndInit();
@@ -2086,9 +2099,9 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.NumDescuento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenEmpresaPicture2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiDtTarifaTipoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).EndInit();
             this.panelBotones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNuevaFacturaDataGridView)).EndInit();
@@ -2217,5 +2230,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn CobradaFactura;
         private System.Windows.Forms.BindingSource dtAlmacenesBindingSource;
         private System.Windows.Forms.BindingSource fKDtPaisesDtProvinciasBindingSource;
+        private System.Windows.Forms.Label DtConfiTxt;
     }
 }

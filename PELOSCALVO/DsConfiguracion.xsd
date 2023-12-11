@@ -64,7 +64,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="TarifaTipo" msprop:Generator_ColumnVarNameInTable="columnTarifaTipo" msprop:Generator_ColumnPropNameInRow="TarifaTipo" msprop:Generator_ColumnPropNameInTable="TarifaTipoColumn" msprop:Generator_UserColumnName="TarifaTipo" type="xs:string" minOccurs="0" />
+              <xs:element name="TarifaTipo" msprop:Generator_ColumnVarNameInTable="columnTarifaTipo" msprop:Generator_ColumnPropNameInRow="TarifaTipo" msprop:Generator_ColumnPropNameInTable="TarifaTipoColumn" msprop:Generator_UserColumnName="TarifaTipo" type="xs:string" />
               <xs:element name="EnlaceTarifa" msprop:Generator_ColumnVarNameInTable="columnEnlaceTarifa" msprop:Generator_ColumnPropNameInRow="EnlaceTarifa" msprop:Generator_ColumnPropNameInTable="EnlaceTarifaColumn" msprop:Generator_UserColumnName="EnlaceTarifa" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
@@ -152,10 +152,6 @@
     <xs:unique name="DtConfiguracionPrincipalKey1">
       <xs:selector xpath=".//mstns:DtConfiguracionPrincipal" />
       <xs:field xpath="mstns:NombreEmpresaReguistro" />
-    </xs:unique>
-    <xs:unique name="DtTarifaTipo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DtTarifaTipo" />
-      <xs:field xpath="mstns:Id" />
     </xs:unique>
     <xs:unique name="DtNuevaFactura_Constraint1" msdata:ConstraintName="Constraint1">
       <xs:selector xpath=".//mstns:DtNuevaFactura" />
