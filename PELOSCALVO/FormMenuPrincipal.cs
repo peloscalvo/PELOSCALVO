@@ -75,7 +75,7 @@ namespace PELOSCALVO
         }
         private void CrearArchivos_Xml_Principal()
         {
-            if (EspacioDiscosPrincipal(ClasDatos.RutaMultidatos, 30))
+            if (EspacioDiscosPrincipal(Directory.GetCurrentDirectory(), 30))
             {
                 try
                 {

@@ -295,13 +295,13 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (Id_proveedor.Text  ==string.Empty & Enlace_Proveedor.Text == string.Empty)
+            if (Id_proveedor.Text == string.Empty & Enlace_Proveedor.Text == string.Empty)
             {
-                MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 25))
-
+            if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 25))
+            {
                 BorrarErrorProveedor();
                 if (ValidarProveedor())
                 {
@@ -351,6 +351,7 @@ namespace PELOSCALVO
                         }
                     }
                 }
+            }
         }
 
         private void BtnModificarProveedor_Click(object sender, EventArgs e)

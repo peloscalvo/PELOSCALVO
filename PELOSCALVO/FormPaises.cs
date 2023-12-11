@@ -328,52 +328,54 @@ namespace PELOSCALVO
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosPais(ClasDatos.RutaMultidatos, 25))
+            if (EspacioDiscosPais(Directory.GetCurrentDirectory(), 25))
+            {
 
                 BorrarErrorPais();
-            if (ValidarPais())
-            {
+                if (ValidarPais())
                 {
-                    try
                     {
-                        foreach (DataGridViewRow fila in this.dataGridPais.Rows)
+                        try
                         {
-                            if (fila.Cells[1].ToString() == this.NombrePais.Text)
+                            foreach (DataGridViewRow fila in this.dataGridPais.Rows)
                             {
-                                if (this.dataGridPais.CurrentCell.RowIndex == fila.Index)
+                                if (fila.Cells[1].ToString() == this.NombrePais.Text)
                                 {
-                                    break;
+                                    if (this.dataGridPais.CurrentCell.RowIndex == fila.Index)
+                                    {
+                                        break;
+                                    }
+                                    MessageBox.Show(this.NombrePais.Text.ToString(), "YA EXISTE ESTA PAIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.NombrePais.Focus();
+                                    this.NombrePais.SelectAll();
+                                    return;
                                 }
-                                MessageBox.Show(this.NombrePais.Text.ToString(), "YA EXISTE ESTA PAIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.NombrePais.Focus();
-                                this.NombrePais.SelectAll();
-                                return;
+
                             }
-
                         }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Pais ? ", " GUARDAR PAIS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            GuardarPaisSql();
-                        }
-                        else
+                        catch (Exception ex)
                         {
 
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            MessageBox.Show(ex.Message);
+                        }
+                        if (MessageBox.Show(" ¿Aceptar Guardar Pais ? ", " GUARDAR PAIS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            if (ClsConexionSql.SibaseDatosSql)
                             {
-                                GuardarPaiesDb();
+                                GuardarPaisSql();
                             }
                             else
                             {
-                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.PanelBotones_Pais.Enabled = false;
+
+                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                                {
+                                    GuardarPaiesDb();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    this.PanelBotones_Pais.Enabled = false;
+                                }
                             }
                         }
                     }

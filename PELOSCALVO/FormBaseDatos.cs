@@ -571,21 +571,7 @@ namespace PELOSCALVO
 
                 this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
             }
-            string Rutacorreos = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml";
-            if (!File.Exists(Rutacorreos))
-            {
-                MessageBox.Show("Falta Archivo " + "\n" + Rutacorreos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.BtnBuscarServidor.Enabled = false;
-                this.BtnGuardarDatosArchivos.Enabled = false;
 
-            }
-            if (!File.Exists(ClasDatos.RutaMultidatos))
-            {
-                MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaMultidatos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                // this.BtnBuscarServidor.Enabled = false;
-                //  this.BtnGuardarDatosArchivos.Enabled = false;
-
-            }
             if (FormMenuPrincipal.menu2principal.dsServidor != null)
             {
                 this.dtServidorBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsServidor;
@@ -1225,7 +1211,7 @@ namespace PELOSCALVO
                     }
                     if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                     {
-                        if (FormMenuPrincipal.menu2principal.EspacioDiscosPrincipal(ClasDatos.RutaMulti2, 20))
+                        if (FormMenuPrincipal.menu2principal.EspacioDiscosPrincipal(Directory.GetCurrentDirectory(), 20))
                         {
                             FormMenuPrincipal.menu2principal.dsServidor.WriteXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
 

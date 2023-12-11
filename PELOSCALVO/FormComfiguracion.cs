@@ -32,7 +32,7 @@ namespace PELOSCALVO
         }
         private void CrearArchivos_Xml_Confi()
         {
-            if (EspacioDiscosConfi(ClasDatos.RutaDatosPrincipal, 30))
+            if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 30))
             {
                 try
                 {
@@ -44,10 +44,10 @@ namespace PELOSCALVO
 
                     for (int i = 1; i <= 5; i++)
                     {
-                        if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaDatosPrincipal + " FN" + i))
+                        if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.RutaDatosPrincipal + "Guardar Cosas" + i))
                         {
                             DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal);
-                            dir.CreateSubdirectory(ClasDatos.RutaDatosPrincipal + " FN" + i);
+                            dir.CreateSubdirectory(ClasDatos.RutaDatosPrincipal + "Guardar Cosas" + i);
                         }
                     }
 

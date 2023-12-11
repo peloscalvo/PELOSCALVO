@@ -673,7 +673,7 @@ namespace PELOSCALVO
         }
         private void BtnGuardarCorreo_EMP_Click(object sender, EventArgs e)
         {
-            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaMulti2, 30))
+            if (EspacioDiscosCorreo_EMP(Directory.GetCurrentDirectory(), 30))
             {
                 try
                 {
@@ -731,24 +731,6 @@ namespace PELOSCALVO
                 {
 
                     MessageBox.Show(ex.Message.ToString());
-                }
-            }
-        }
-
-        private void BtnGuardarCorreoCli_Click(object sender, EventArgs e)
-        {
-            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaMultidatos, 30))
-            {
-                if (File.Exists(ClasDatos.RutaMulti2))
-                {
-                    this.DataGridCorreoCliente.EndEdit();
-                    Validate();
-                    FormMenuPrincipal.menu2principal.dsCorreos.WriteXml(this.Rutacorreos);
-                    MessageBox.Show("Se Actualizo Con Exito", "CORREO EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("No Se Guardo", "FALTAN ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -842,51 +824,52 @@ namespace PELOSCALVO
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaMultidatos, 25))
-
-                BorrarErrorCorreoEmpresa();
-            if (ValidarCorreoEmpresa())
+            if (EspacioDiscosCorreo_EMP(Directory.GetCurrentDirectory(), 25))
             {
+                BorrarErrorCorreoEmpresa();
+                if (ValidarCorreoEmpresa())
                 {
-                    try
                     {
-                        foreach (DataGridViewRow fila in this.DatagridCorreosEmpresa.Rows)
+                        try
                         {
-                            if (fila.Cells[1].ToString() == this.CorreoEletronico.Text)
+                            foreach (DataGridViewRow fila in this.DatagridCorreosEmpresa.Rows)
                             {
-                                if (this.DatagridCorreosEmpresa.CurrentCell.RowIndex == fila.Index)
+                                if (fila.Cells[1].ToString() == this.CorreoEletronico.Text)
                                 {
-                                    break;
+                                    if (this.DatagridCorreosEmpresa.CurrentCell.RowIndex == fila.Index)
+                                    {
+                                        break;
+                                    }
+                                    MessageBox.Show(this.CorreoEletronico.Text.ToString(), "YA EXISTE ESTA CORREO ELETRONICO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    // this.CorreoEletronico.Focus();
+
                                 }
-                                MessageBox.Show(this.CorreoEletronico.Text.ToString(), "YA EXISTE ESTA CORREO ELETRONICO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                // this.CorreoEletronico.Focus();
 
                             }
-
                         }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Correo ? ", " GUARDAR CORREO ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            GuardarCorreo_EmpSql();
-                        }
-                        else
+                        catch (Exception ex)
                         {
 
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            MessageBox.Show(ex.Message);
+                        }
+                        if (MessageBox.Show(" ¿Aceptar Guardar Correo ? ", " GUARDAR CORREO ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            if (ClsConexionSql.SibaseDatosSql)
                             {
-                                GuardarCorreo_EmpresaDb();
+                                GuardarCorreo_EmpSql();
                             }
                             else
                             {
-                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.PanelBotones_CorreoEmp.Enabled = false;
+
+                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                                {
+                                    GuardarCorreo_EmpresaDb();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    this.PanelBotones_CorreoEmp.Enabled = false;
+                                }
                             }
                         }
                     }
@@ -1087,7 +1070,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosCorreo_EMP(ClasDatos.RutaMultidatos, 25))
+            if (EspacioDiscosCorreo_EMP(Directory.GetCurrentDirectory(), 25))
 
                 BorrarErrorCorreoCli();
             if (ValidarCorreoCli())

@@ -11,8 +11,6 @@ namespace PELOSCALVO
         public static string RutaFactura = "";
         public static string RutaDatosPrincipal = "Datos";
         public static string RutaBaseDatosDb = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "Datos App Peloscalvo.accdb";
-        public static string RutaMultidatos = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "MultiDatos.Xml";
-        public static string RutaMulti2 = Directory.GetCurrentDirectory() + "\\" + RutaDatosPrincipal + "\\" + "Multi2.Xml";
         public static string NombreFactura = "Factura";
         public static string Datos1Datos2 = "";
         public static Boolean OkFacturar = false;

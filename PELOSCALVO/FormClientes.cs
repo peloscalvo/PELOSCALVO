@@ -404,25 +404,9 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
-            if (Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal))
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal))
             {
-                if (!File.Exists(ClasDatos.RutaMulti2))
-                {
-
-                    this.panelBotonesClientes.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-                if (!File.Exists(ClasDatos.RutaMultidatos))
-                {
-                    MessageBox.Show("Falta Archivo De Configuracion", "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-
-
-            }
-            else
-            {
+  
                 MessageBox.Show("Debe Restructurar Sistema", "DIRECTORIO " + ClasDatos.RutaDatosPrincipal + " NO EXISTE");
                 this.panelBotonesClientes.Enabled = false;
                 return;
@@ -443,7 +427,7 @@ namespace PELOSCALVO
             BORRARerrores();
             //email_bien_escrito();
 
-            if (EspacioDiscosCli(ClasDatos.RutaMultidatos, 10))
+            if (EspacioDiscosCli(Directory.GetCurrentDirectory(), 10))
             {
                 if (VALIDARcampos())
                 {

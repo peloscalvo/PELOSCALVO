@@ -371,52 +371,53 @@ namespace PELOSCALVO
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosObra(ClasDatos.RutaMultidatos, 25))
-
-                BorrarErrorTari();
-            if (ValidarTarifa())
+            if (EspacioDiscosObra(Directory.GetCurrentDirectory(), 25))
             {
+                BorrarErrorTari();
+                if (ValidarTarifa())
                 {
-                    try
                     {
-                        foreach (DataGridViewRow fila in this.dtTarifaTipoDataGridView.Rows)
+                        try
                         {
-                            if (fila.Cells[1].ToString() == this.tarifaTipoTextBox.Text)
+                            foreach (DataGridViewRow fila in this.dtTarifaTipoDataGridView.Rows)
                             {
-                                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == fila.Index)
+                                if (fila.Cells[1].ToString() == this.tarifaTipoTextBox.Text)
                                 {
-                                    break;
+                                    if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == fila.Index)
+                                    {
+                                        break;
+                                    }
+                                    MessageBox.Show(this.tarifaTipoTextBox.Text.ToString(), "YA EXISTE ESTE TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.tarifaTipoTextBox.Focus();
+                                    this.tarifaTipoTextBox.SelectAll();
+                                    return;
                                 }
-                                MessageBox.Show(this.tarifaTipoTextBox.Text.ToString(), "YA EXISTE ESTE TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.tarifaTipoTextBox.Focus();
-                                this.tarifaTipoTextBox.SelectAll();
-                                return;
+
                             }
-
                         }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Tarifa ? ", " GUARDAR TARIFA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            GuardarTarifaSql();
-                        }
-                        else
+                        catch (Exception ex)
                         {
 
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            MessageBox.Show(ex.Message);
+                        }
+                        if (MessageBox.Show(" ¿Aceptar Guardar Tarifa ? ", " GUARDAR TARIFA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            if (ClsConexionSql.SibaseDatosSql)
                             {
-                                GuardarTarifaDb();
+                                GuardarTarifaSql();
                             }
                             else
                             {
-                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.panelBotonesTipoTarifa.Enabled = false;
+
+                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                                {
+                                    GuardarTarifaDb();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    this.panelBotonesTipoTarifa.Enabled = false;
+                                }
                             }
                         }
                     }

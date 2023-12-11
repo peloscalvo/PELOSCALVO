@@ -37,17 +37,6 @@ namespace PELOSCALVO
                     this.TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
                 }
 
-                if (File.Exists(this.Rutacorreos))
-                {
-                    // FormMenuPrincipal.menu2principal.dsCorreos.ReadXml(Rutacorreos);
-
-                }
-                else
-                {
-                    MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaMultidatos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    // this.BtnBuscarServidor.Enabled = false;
-                    // this.BtnGuardarDatosArchivos.Enabled = false;
-                }
             }
             catch (Exception ex)
             {

@@ -336,13 +336,11 @@ namespace PELOSCALVO
 
         private void BtnGuardarInico_Click(object sender, EventArgs e)
         {
-            if (EspacioDiscosInicio(ClasDatos.RutaMultidatos, 25))
-
-                BorrarErroresInicio();
-            if (ValidarInicio())
+            if (EspacioDiscosInicio(Directory.GetCurrentDirectory(), 25))
             {
-                
-                  
+                BorrarErroresInicio();
+                if (ValidarInicio())
+                {
                     if (MessageBox.Show(" ¿Aceptar Guardar Datos De Inicio ? ", " GUARDAR DATOS INICIO ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         if (ClsConexionSql.SibaseDatosSql)
@@ -351,7 +349,6 @@ namespace PELOSCALVO
                         }
                         else
                         {
-
                             if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
                                 GuardarInicioDb();
@@ -363,7 +360,8 @@ namespace PELOSCALVO
                             }
                         }
                     }
-                
+
+                }
             }
         }
 

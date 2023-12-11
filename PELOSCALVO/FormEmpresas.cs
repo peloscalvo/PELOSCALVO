@@ -43,16 +43,7 @@ namespace PELOSCALVO
 
             //dtObrasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
             //dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
-            if (!File.Exists(ClasDatos.RutaMultidatos))
-            {
-                MessageBox.Show("Archivo : " + ClasDatos.RutaMultidatos, "DEBE RESTRUCTURAR ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-            }
-            if (!File.Exists(ClasDatos.RutaMulti2))
-            {
-                MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "DEBE RESTRUCTURAR ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            }
             if (!File.Exists(ClasDatos.RutaBaseDatosDb))
             {
                 MessageBox.Show("Archivo : " + ClasDatos.RutaBaseDatosDb, "FALTA ARCHIVO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -211,7 +202,7 @@ namespace PELOSCALVO
         }
         private void GuardarEmpresasSql()
         {
-            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
+            if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 25))
             {
                 String ConsultaDescuetos = "";
                 string consulta = "";
@@ -363,7 +354,7 @@ namespace PELOSCALVO
 
         private void GuardarEmpresasDb()
         {
-            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 20))
+            if (EspacioDiscosConfi (Directory.GetCurrentDirectory(), 20))
             {
                 String ConsultaDescuetos = "";
                 string consulta = "";
@@ -479,7 +470,7 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 25))
+            if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 25))
             {
                 try
                 {

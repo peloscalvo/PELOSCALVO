@@ -328,52 +328,53 @@ namespace PELOSCALVO
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosProvincia(ClasDatos.RutaMultidatos, 25))
-
-                BorrarErrorProvi();
-            if (ValidarProvi())
+            if (EspacioDiscosProvincia(Directory.GetCurrentDirectory(), 25))
             {
+                BorrarErrorProvi();
+                if (ValidarProvi())
                 {
-                    try
                     {
-                        foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
+                        try
                         {
-                            if (fila.Cells[1].ToString() == this.ProvinciaText.Text)
+                            foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
                             {
-                                if (this.dataGridProvincias.CurrentCell.RowIndex == fila.Index)
+                                if (fila.Cells[1].ToString() == this.ProvinciaText.Text)
                                 {
-                                    break;
+                                    if (this.dataGridProvincias.CurrentCell.RowIndex == fila.Index)
+                                    {
+                                        break;
+                                    }
+                                    MessageBox.Show(this.ProvinciaText.Text.ToString(), "YA EXISTE ESTA PROVINCIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.ProvinciaText.Focus();
+                                    this.ProvinciaText.SelectAll();
+                                    return;
                                 }
-                                MessageBox.Show(this.ProvinciaText.Text.ToString(), "YA EXISTE ESTA PROVINCIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.ProvinciaText.Focus();
-                                this.ProvinciaText.SelectAll();
-                                return;
+
                             }
-
                         }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Provincia ? ", " GUARDAR PROVINCIA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            GuardarProvinciaSql();
-                        }
-                        else
+                        catch (Exception ex)
                         {
 
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            MessageBox.Show(ex.Message);
+                        }
+                        if (MessageBox.Show(" ¿Aceptar Guardar Provincia ? ", " GUARDAR PROVINCIA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            if (ClsConexionSql.SibaseDatosSql)
                             {
-                                GuardarProvinciaDb();
+                                GuardarProvinciaSql();
                             }
                             else
                             {
-                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.PanelBotones_Provincia.Enabled = false;
+
+                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                                {
+                                    GuardarProvinciaDb();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    this.PanelBotones_Provincia.Enabled = false;
+                                }
                             }
                         }
                     }

@@ -1123,17 +1123,7 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
 
-            if (Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal))
-            {
-                if (!File.Exists(ClasDatos.RutaMulti2))
-                {
-                    this.panelBotones.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-
-                }
-
-                if (File.Exists(ClasDatos.RutaMultidatos))
+                if (File.Exists(ClasDatos.RutaBaseDatosDb))
                 {
                     if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
                     {
@@ -1187,7 +1177,7 @@ namespace PELOSCALVO
                     return;
                 }
 
-            }
+            
 
             if (this.dtConfiBindingSource.Count > 0)
             {

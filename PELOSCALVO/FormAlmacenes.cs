@@ -320,7 +320,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosAlmacen(ClasDatos.RutaMultidatos, 25))
+            if (EspacioDiscosAlmacen(Directory.GetCurrentDirectory(), 25))
 
                 BorrarErrorAlmacen();
             if (ValidarAlmacen())

@@ -336,52 +336,53 @@ namespace PELOSCALVO
                 Id_Familia.Text = I.ToString();
                 return;
             }
-            if (EspacioDiscosFami(ClasDatos.RutaMultidatos, 25))
-
-                BorrarErrorFami();
-            if (ValidarFami())
+            if (EspacioDiscosFami(Directory.GetCurrentDirectory(), 25))
             {
+                BorrarErrorFami();
+                if (ValidarFami())
                 {
-                    try
                     {
-                        foreach (DataGridViewRow fila in this.DtGridFamilia.Rows)
+                        try
                         {
-                            if (fila.Cells[1].ToString() == this.FamiliaTex.Text)
+                            foreach (DataGridViewRow fila in this.DtGridFamilia.Rows)
                             {
-                                if (this.DtGridFamilia.CurrentCell.RowIndex == fila.Index)
+                                if (fila.Cells[1].ToString() == this.FamiliaTex.Text)
                                 {
-                                    break;
+                                    if (this.DtGridFamilia.CurrentCell.RowIndex == fila.Index)
+                                    {
+                                        break;
+                                    }
+                                    MessageBox.Show(this.FamiliaTex.Text.ToString(), "YA EXISTE ESTA ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.FamiliaTex.Focus();
+                                    this.FamiliaTex.SelectAll();
+                                    return;
                                 }
-                                MessageBox.Show(this.FamiliaTex.Text.ToString(), "YA EXISTE ESTA ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.FamiliaTex.Focus();
-                                this.FamiliaTex.SelectAll();
-                                return;
+
                             }
-
                         }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Familia ? ", " GUARDAR FAMILIAS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            GuardarFamiliaSql();
-                        }
-                        else
+                        catch (Exception ex)
                         {
 
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            MessageBox.Show(ex.Message);
+                        }
+                        if (MessageBox.Show(" ¿Aceptar Guardar Familia ? ", " GUARDAR FAMILIAS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            if (ClsConexionSql.SibaseDatosSql)
                             {
-                                GuardarFamiliaDb();
+                                GuardarFamiliaSql();
                             }
                             else
                             {
-                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.panelFamilia.Enabled = false;
+
+                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                                {
+                                    GuardarFamiliaDb();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    this.panelFamilia.Enabled = false;
+                                }
                             }
                         }
                     }

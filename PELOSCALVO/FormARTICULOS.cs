@@ -202,16 +202,6 @@ namespace PELOSCALVO
                     return;
                 }
             }
-            if (!File.Exists(ClasDatos.RutaMultidatos))
-            {
-
-                MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaMultidatos, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.BtnNuevoArticulo.Enabled = false;
-                this.BtnModificarArticulo.Enabled = false;
-                this.BtnBuscarArticulo.Enabled = false;
-                return;
-
-            }
 
             this.FiltrarBajas.Text = "Articulos De Alta";
             this.ContadorDatos3.Text = this.dtPreciosDataGridView.RowCount.ToString();
@@ -367,7 +357,7 @@ namespace PELOSCALVO
             if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
             {
                 this.dtPreciosDataGridView.Focus();
-                if (EspacioDiscos(ClasDatos.RutaMultidatos, 200))
+                if (EspacioDiscos(Directory.GetCurrentDirectory(), 30))
                 {
                     BORRARerrores();
                     if (this.idArticulo.Text == string.Empty)
