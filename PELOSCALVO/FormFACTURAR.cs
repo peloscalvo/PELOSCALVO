@@ -178,18 +178,18 @@ namespace PELOSCALVO
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
-           // string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.EmpresaReguistro.Text + "/" + Id;
+            // string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.EmpresaReguistro.Text + "/" + Id;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
-            string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]" +
-             " ,[DescuentoDetalle],[PrecioDetalle],[IvaDetalle] ,[ImporteDetalle],[EnlaceDetalle])" +
-             " VALUES( @ReferenciaDetalle, @CantidadDetalle, @DescripccionDetalle, @DescuentoDetalle, " +
-             " @PrecioDetalle, @IvaDetalle, @ImporteDetalle, @EnlaceDetalle) ";
+            string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]," +
+             " [PrecioDetalle],[DescuentoDetalle],[IvaDetalle] ,[ImporteDetalle],[EnlaceDetalle])" +
+             " VALUES( @ReferenciaDetalle, @CantidadDetalle, @DescripccionDetalle, @PrecioDetalle, " +
+             " @DescuentoDetalle, @IvaDetalle, @ImporteDetalle, @EnlaceDetalle) ";
 
             string ConsultaDetalle2 = "INSERT INTO [DtDetalles2_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]" +
-                         " ,[DescuentoDetalle],[PrecioDetalle],[ImporteDetalle],[EnlaceDetalle])" +
-                         " VALUES( @ReferenciaDetalle, @CantidadDetalle, @DescripccionDetalle, @DescuentoDetalle, " +
-                         " @PrecioDetalle, @ImporteDetalle, @EnlaceDetalle) ";
+                         " ,[PrecioDetalle],[DescuentoDetalle],[ImporteDetalle],[EnlaceDetalle])" +
+                         " VALUES( @ReferenciaDetalle, @CantidadDetalle, @DescripccionDetalle, @PrecioDetalle, " +
+                         " @DescuentoDetalle, @ImporteDetalle, @EnlaceDetalle) ";
             if (this.panelBotones.Tag.ToString() == "Nuevo")
             {
                 Consulta = "INSERT INTO [Dt" + ClasDatos.NombreFactura + "]([EnlaceFactura],[NumeroFactura],[Apodo] ,[Nombre],[Direccion],[Calle]" +
@@ -255,7 +255,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaCobro", DBNull.Value);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CobradaFactura", (object)DBNull.Value);///canbiar valor a cobrada
                 }
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(DtConfiTxt.Text) ? (object)DBNull.Value : DtConfiTxt.Text);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.DtConfiTxt.Text) ? (object)DBNull.Value : this.DtConfiTxt.Text);
                 try
                 {
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
@@ -454,15 +454,15 @@ namespace PELOSCALVO
             string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.EmpresaReguistro.Text + "/" + Id;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
-            string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]" +
-             " ,[DescuentoDetalle],[PrecioDetalle],[IvaDetalle] ,[ImporteDetalle],[EnlaceDetalle])" +
-             " VALUES( @ReferenciaDetalle, @CantidadDetalle, @DescripccionDetalle, @DescuentoDetalle, " +
-             " @PrecioDetalle, @IvaDetalle, @ImporteDetalle, @EnlaceDetalle) ";
+            string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]," +
+              " [PrecioDetalle],[DescuentoDetalle],[IvaDetalle] ,[ImporteDetalle],[EnlaceDetalle])" +
+              " VALUES( @ReferenciaDetalle, @CantidadDetalle, @DescripccionDetalle, @PrecioDetalle, " +
+              " @DescuentoDetalle, @IvaDetalle, @ImporteDetalle, @EnlaceDetalle) ";
 
             string ConsultaDetalle2 = "INSERT INTO [DtDetalles2_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]" +
-                         " ,[DescuentoDetalle],[PrecioDetalle],[ImporteDetalle],[EnlaceDetalle])" +
-                         " VALUES( @ReferenciaDetalle, @CantidadDetalle, @DescripccionDetalle, @DescuentoDetalle, " +
-                         " @PrecioDetalle, @ImporteDetalle, @EnlaceDetalle) ";
+                 " ,[PrecioDetalle],[DescuentoDetalle],[ImporteDetalle],[EnlaceDetalle])" +
+                 " VALUES( @ReferenciaDetalle, @CantidadDetalle, @DescripccionDetalle, @PrecioDetalle, " +
+                 " @DescuentoDetalle, @ImporteDetalle, @EnlaceDetalle) ";
             if (this.panelBotones.Tag.ToString() == "Nuevo")
             {
                 Consulta = "INSERT INTO [Dt" + ClasDatos.NombreFactura + "]([EnlaceFactura],[NumeroFactura],[Apodo] ,[Nombre],[Direccion],[Calle]" +
@@ -1002,8 +1002,8 @@ namespace PELOSCALVO
                             // ActualizarFaturas_DB();
                         }
 
-                        this.dtDetallesFacturaBindingSource.ResetBindings(true);
                         this.dtDetallesFacturaBindingSource.ResetBindings(false);
+                        //this.dtDetallesFacturaBindingSource.ResetBindings(false);
                     }
                 }
                 this.dtDetallesFacturaDataGridView.Refresh();
@@ -1221,14 +1221,14 @@ namespace PELOSCALVO
             LimpiarDatos();
             if (ClsConexionSql.SibaseDatosSql)
             {
-                ActualizarFacturaSql();
+                // ActualizarFacturaSql();
 
             }
             else
             {
                 if (File.Exists(ClasDatos.RutaBaseDatosDb))
                 {
-                   // ActualizarFaturas_DB();
+                    // ActualizarFaturas_DB();
                 }
                 else
                 {
@@ -1276,14 +1276,14 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            dsCONFIGURACCION.Clear();
+                            this.dsCONFIGURACCION.Clear();
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
                             AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
                             if (ClasDatos.NombreFactura == "Nota2")
                             {
                                 AdactaPelos = new OleDbDataAdapter(consultaDetalle2, ClsConexionDb.CadenaConexion);
-                               AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura2);
+                                AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura2);
                             }
 
                             AdactaPelos.Dispose();
@@ -1322,44 +1322,42 @@ namespace PELOSCALVO
         {
             if (this.PanelArriba.Tag.ToString() == "SI")
             {
-                  FiltrarFactura();
+                FiltrarFactura();
             }
         }
         private void FiltrarFactura()
         {
-            if (this.PanelArriba.Tag.ToString() == "SI")
+
+            //this.dsCONFIGURACCION.DtDetallesFactura.Clear();
+            // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
+            // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+            if (this.EmpresaReguistro.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
             {
-                //this.dsCONFIGURACCION.DtDetallesFactura.Clear();
-                // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
-                // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
-                if (this.EmpresaReguistro.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
+                try
                 {
-                    try
-                    {
 
-                        string Enlace = this.EmpresaReguistro.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text;
-                        this.dtNuevaFacturaBindingSource.Filter = "( [EnlaceFactura]   LIKE '" + Enlace + "%'" + ")";
-                        this.dtNuevaFacturaDataGridView.Refresh();
-                    }
-                    catch (Exception ex)
-                    {
+                    string Enlace = this.EmpresaReguistro.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text;
+                    this.dtNuevaFacturaBindingSource.Filter = "( [EnlaceFactura]   LIKE '" + Enlace + "%'" + ")";
+                    this.dtNuevaFacturaDataGridView.Refresh();
+                }
+                catch (Exception ex)
+                {
 
-                        MessageBox.Show(ex.Message.ToString());
-                    }
-
-
+                    MessageBox.Show(ex.Message.ToString());
                 }
 
+
             }
+
+
 
         }
         private void SerieText_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.PanelArriba.Tag.ToString() == "SI")
-            {
-                FiltrarFactura();
 
-            }
+            FiltrarFactura();
+
+
         }
 
         private void DtDetallesFacturaDataGridView_KeyPress(object sender, KeyPressEventArgs e)
@@ -1613,11 +1611,19 @@ namespace PELOSCALVO
 
                 }
 
-                if (e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5)
+                if (e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 5)
                 {
                     if (this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString() == "0")
                     {
                         this.dtDetallesFacturaDataGridView.CurrentCell.Value = DBNull.Value;
+                    }
+
+                }
+                if (e.ColumnIndex == 5)
+                {
+                    if (!String.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
+                    {
+                        this.dtDetallesFacturaDataGridView.CurrentCell.Value = Convert.ToDouble(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()) / 100;
                     }
 
                 }
@@ -2078,7 +2084,7 @@ namespace PELOSCALVO
         {
             if (this.tarifaTipoComboBox.SelectedIndex < 2 || this.tarifaTipoComboBox.SelectedIndex > 5)
             {
-               // MessageBox.Show("Pvp1" + "\n" + "Pvp2" + "\n" + "Plus" + "\n" + "Iva", "NO VALIDO", MessageBoxButtons.OK);
+                // MessageBox.Show("Pvp1" + "\n" + "Pvp2" + "\n" + "Plus" + "\n" + "Iva", "NO VALIDO", MessageBoxButtons.OK);
                 return;
             }
             if (this.CheckDescuentos.Checked == false)
@@ -2167,7 +2173,7 @@ namespace PELOSCALVO
                     String Consulta = "DELETE FROM [Dt" + ClasDatos.NombreFactura + "] WHERE EnlaceFactura= @EnlaceFactura ";
                     if (ClsConexionSql.SibaseDatosSql)
                     {
-         
+
                         ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
                         if (NuevaConexion.SiConexionSql)
                         {
@@ -2357,7 +2363,7 @@ namespace PELOSCALVO
 
         private void SerieText_Click(object sender, EventArgs e)
         {
-            this.PanelArriba.Tag = "SI";
+            // this.PanelArriba.Tag = "SI";
         }
 
         private void tipoInpuestoIVALabel1_MouseEnter(object sender, EventArgs e)
@@ -2367,34 +2373,33 @@ namespace PELOSCALVO
 
         private void EmpresaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.dtNuevaFacturaBindingSource.Filter = "";
+            FiltrarFactura();
 
         }
 
         private void EmpresaPrincipal_Enter(object sender, EventArgs e)
         {
-            this.PanelArriba.Tag = "SI";
+            // this.PanelArriba.Tag = "SI";
         }
 
         private void NombreEmpresaReguistro_TextChanged(object sender, EventArgs e)
         {
-            if (this.PanelArriba.Tag.ToString() == "SI")
+
+            LimpiarDatos();
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                LimpiarDatos();
-                if (ClsConexionSql.SibaseDatosSql)
-                {
-                    ActualizarFacturaSql();
-                }
-                else
-                {
-                    ActualizarFaturas_DB();
-                }
+                ActualizarFacturaSql();
             }
+            else
+            {
+                ActualizarFaturas_DB();
+            }
+
         }
 
         private void EmpresaPrincipal_MouseEnter(object sender, EventArgs e)
         {
-            this.PanelArriba.Tag = "SI";
+            //this.PanelArriba.Tag = "SI";
             // NombreEmpresaConfi.Visible = true;
             // NombreEmpresaConfi.ForeColor = color;
 
@@ -2412,12 +2417,12 @@ namespace PELOSCALVO
 
         private void ejerciciosDeAñoComboBox_Click_1(object sender, EventArgs e)
         {
-            this.PanelArriba.Tag = "SI";
+            // this.PanelArriba.Tag = "SI";
         }
 
         private void EmpresaPrincipal_Click(object sender, EventArgs e)
         {
-            this.PanelArriba.Tag = "SI";
+            //this.PanelArriba.Tag = "SI";
         }
 
         private void EmpresaReguistro_Click(object sender, EventArgs e)
@@ -2428,6 +2433,19 @@ namespace PELOSCALVO
         private void AlmacenTxt_Click(object sender, EventArgs e)
         {
             this.AlmacenTxt.DroppedDown = true;
+        }
+
+        private void EmpresaPrincipal_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            LimpiarDatos();
+            if (ClsConexionSql.SibaseDatosSql)
+            {
+                ActualizarFacturaSql();
+            }
+            else
+            {
+                ActualizarFaturas_DB();
+            }
         }
     }
 }

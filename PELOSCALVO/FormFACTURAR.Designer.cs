@@ -607,6 +607,7 @@ namespace PELOSCALVO
             this.EmpresaPrincipal.Size = new System.Drawing.Size(377, 24);
             this.EmpresaPrincipal.TabIndex = 73;
             this.EmpresaPrincipal.SelectedIndexChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedIndexChanged);
+            this.EmpresaPrincipal.SelectionChangeCommitted += new System.EventHandler(this.EmpresaPrincipal_SelectionChangeCommitted);
             this.EmpresaPrincipal.SelectedValueChanged += new System.EventHandler(this.EmpresaPrincipal_SelectedValueChanged);
             this.EmpresaPrincipal.Click += new System.EventHandler(this.EmpresaPrincipal_Click);
             this.EmpresaPrincipal.Enter += new System.EventHandler(this.EmpresaPrincipal_Enter);

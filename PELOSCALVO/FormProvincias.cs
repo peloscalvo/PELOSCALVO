@@ -172,7 +172,7 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProvincias]   WHERE Id= '@Id'";
+                string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id and Enlace= @Enlace";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
@@ -180,6 +180,7 @@ namespace PELOSCALVO
                         if (NuevaConexion.SiConexionDb)
                         {
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Provincias.Text));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace", this.PaisTxt.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProvincias.Rows.RemoveAt(this.dataGridProvincias.CurrentCell.RowIndex);
                             this.DtProvinciasBindinsource.EndEdit();
@@ -213,7 +214,7 @@ namespace PELOSCALVO
         private void EliminarProvinciaSql()
         {
 
-            string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id";
+            string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id and Enlace= @Enlace";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
@@ -221,9 +222,10 @@ namespace PELOSCALVO
                     if (NuevaConexion.SiConexionSql)
                     {
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Provincias.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace", this.PaisTxt.Text);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProvincias.Rows.RemoveAt(this.dataGridProvincias.CurrentCell.RowIndex);
-                        this.dtPaisesBindingSource.EndEdit();
+                        this.DtProvinciasBindinsource.EndEdit();
                         Validate();
                         MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

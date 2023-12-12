@@ -35,6 +35,7 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
+            this.TipoCopia.Text = "Copiar  a Tabla Nueva";
         }
         private bool VALIDARcampos_ArchivosTablas()
         {
@@ -96,7 +97,7 @@ namespace PELOSCALVO
                     string[] restrictions = new string[4];
                     restrictions[3] = "Table";
                     connection.Open();
-     
+
                     userTables = connection.GetSchema("Tables", restrictions);
                 }
                 catch (Exception ex)
@@ -110,23 +111,23 @@ namespace PELOSCALVO
             for (int i = 0; i < userTables.Rows.Count; i++)
             {
                 // ListaTablasPrincipal.Items.Add(userTables.Rows[i][2].ToString());
-                if (ChckListar.Checked)
+                if (this.ChckListar.Checked)
                 {
                     if (!userTables.Rows[i][2].ToString().Contains("Dt"))
                     {
                         tableNames.Add(userTables.Rows[i][2].ToString());
                     }
-                    
+
                 }
                 else
                 {
                     tableNames.Add(userTables.Rows[i][2].ToString());
                 }
-            
+
             }
             return tableNames;
         }
-    
+
 
         private void BtnTablasCrear_Click(object sender, EventArgs e)
         {
@@ -457,7 +458,7 @@ namespace PELOSCALVO
                             using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
                             {
 
-         
+
                                 if (i != 3)
                                 {
                                     try
@@ -565,14 +566,13 @@ namespace PELOSCALVO
 
         private void BtnCrearTablaArti_Click(object sender, EventArgs e)
         {
-            if (this.BaseDatosTxt1.Text != "Datos App Peloscalvo")
+            BORRARerror_ArchivosT();
+            if (string.IsNullOrEmpty(this.ArticulosTxt.Text))
             {
-                MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
+                MessageBox.Show("Campo de Articulo Vacio", "RELLENE LOS CAMPOS", MessageBoxButtons.OK);
+                this.ArticulosTxt.Focus();
                 return;
             }
-
-            BORRARerror_ArchivosT();
-            if (VALIDARcampos_ArchivosTablas())
             {
                 string Ruta2 = "";
                 if (this.BaseDatosTxt1.Tag.ToString() == "SI")
@@ -601,6 +601,7 @@ namespace PELOSCALVO
 
                     using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
                     {
+                        NuevaConexion.Open();
                         using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos, NuevaConexion))
                         {
                             try
@@ -624,58 +625,59 @@ namespace PELOSCALVO
 
         private void BtnCrearTablaCli_Click(object sender, EventArgs e)
         {
-            if (this.ExtensionTxt.Text == "DBF")
+            if (string.IsNullOrEmpty(this.ClientesTxt.Text))
             {
-                MessageBox.Show("Este Tipo DE Archivo No Se Puede Crear", "CREAR", MessageBoxButtons.OK);
+                MessageBox.Show("Campo de Cliete Vacio", "RELLENE LOS CAMPOS", MessageBoxButtons.OK);
+                this.ClientesTxt.Focus();
                 return;
             }
             BORRARerror_ArchivosT();
-            if (VALIDARcampos_ArchivosTablas())
+
+            if (MessageBox.Show("\n" + " Crear Tabla  " + this.ClientesTxt.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                if (MessageBox.Show("\n" + " Crear Tabla  " + this.ClientesTxt.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                string Ruta2 = "";
+                if (this.BaseDatosTxt1.Tag.ToString() == "SI")
                 {
-                    string Ruta2 = "";
-                    if (this.BaseDatosTxt1.Tag.ToString() == "SI")
-                    {
-                        Ruta2 = this.ClientesTxt.Text;
-                    }
-                    else
-                    {
-                        Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
-                    }
+                    Ruta2 = this.ClientesTxt.Text;
+                }
+                else
+                {
+                    Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
+                }
 
-                    Random r = new Random();
-                    int valor = r.Next(10, 90000000);
-                    string TablaCliente = this.ClientesTxt.Text;
-                    string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
-                        "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
-                        "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
-                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
-                        " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
-                        ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
+                Random r = new Random();
+                int valor = r.Next(10, 90000000);
+                string TablaCliente = this.ClientesTxt.Text;
+                string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                    "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
+                    "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
+                    ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
+                    " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
+                    ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
 
-                    string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
-                    using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
+                string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
+                using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
+                {
+                    NuevaConexion.Open();
+                    using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente, NuevaConexion))
                     {
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente, NuevaConexion))
+                        try
                         {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                                MessageBox.Show("Creada Con exito" + "\n" + this.ClientesTxt.Text, "CREAR TABLA", MessageBoxButtons.OK);
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR " + ConsultaCliente, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            ComandoDb.ExecuteNonQuery();
+                            MessageBox.Show("Creada Con exito" + "\n" + this.ClientesTxt.Text, "CREAR TABLA", MessageBoxButtons.OK);
                         }
+                        catch (Exception ex)
+                        {
 
+
+                            MessageBox.Show(ex.Message, "ERROR " + ConsultaCliente, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
 
                 }
+
             }
+
         }
 
         private void BaseDatosTxt1_TextChanged(object sender, EventArgs e)
@@ -693,6 +695,12 @@ namespace PELOSCALVO
 
         private void BtnCrearBackupDb_Click(object sender, EventArgs e)
         {
+            if (this.ExtensionTxt.Text != string.Empty)
+            {
+                MessageBox.Show("Debe elegir una Extension Valida", "CAMPO VACIO", MessageBoxButtons.OK);
+                return;
+            }
+
             if (this.BaseDatos2.Text != string.Empty || this.BaseDatos2.Text != string.Empty)
             {
 
@@ -723,14 +731,14 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                       Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
+                        Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
                     }
-                 
+
                     string consulta = "BACKUP DATABASE [" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + "] TO  DISK = N'" + RutaDestino + "\\" + CarpetaCopia + "\\" + "\\" + NonbreBackup + ".bak' WITH NOFORMAT, NOINIT,  NAME = N'" + this.BaseDatos2.Text + " Copia de seguridad', SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
                     // string cadenaConexion = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + ";Initial Catalog=" + Cadena2 + ";Integrated Security=True";
                     try
                     {
-                        File.Copy(Ruta, RutaDestino);
+                        File.Copy(Ruta, RutaDestino+"\\"+CarpetaCopia+ this.BaseDatos2.Text + "." + this.ExtensionTxt.Text);
                         MessageBox.Show("Se Creo Base Datos Correctamente" + "\n" + Ruta, "COPIA SEGURIDAD", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -767,62 +775,88 @@ namespace PELOSCALVO
 
         private void BtnCopiarTabla_Click(object sender, EventArgs e)
         {
-            if (this.TablaCopiarTxt.Text ==string.Empty)
+            if (this.TablaCopiarTxt.Text == string.Empty)
             {
                 MessageBox.Show("Debe Escojer Tabla A Copiar", "COPIAR", MessageBoxButtons.OK);
-               // TablanuevaTxt.Focus();
-                return;
-            }
-            if (this.TablanuevaTxt.Text == string.Empty)
-            {
-                MessageBox.Show("Debe Nueva Donde Copiar", "COPIAR", MessageBoxButtons.OK);
                 // TablanuevaTxt.Focus();
                 return;
             }
-            if (this.TablanuevaTxt.Text == this.TablaCopiarTxt.Text)
+            if (this.TipoCopia.SelectedIndex == 0)
             {
-                MessageBox.Show("La Tabla No Puede Copiarse a Si Misma", "COPIAR", MessageBoxButtons.OK);
-                // TablanuevaTxt.Focus();
-                return;
+                if (this.TablaNuevaTxt.Text == string.Empty)
+                {
+                    MessageBox.Show("Debe Nueva Donde Copiar", "COPIAR", MessageBoxButtons.OK);
+                    // TablanuevaTxt.Focus();
+                    return;
+                }
+                if (this.TablaNuevaTxt.Text == this.TablaCopiarTxt.Text)
+                {
+                    MessageBox.Show("La Tabla No Puede Copiarse a Si Misma", "COPIAR", MessageBoxButtons.OK);
+                    // TablanuevaTxt.Focus();
+                    return;
+                }
             }
-            FolderBrowserDialog CarpetaElegir = new FolderBrowserDialog();
-            if (CarpetaElegir.ShowDialog() == DialogResult.OK)
+            if (this.TipoCopia.SelectedIndex == 1)
             {
-                this.InfoProcesoText.BackColor = Color.FromArgb(234, 210, 8);
-                this.InfoProcesoText.Text = " Copiando Tabla de Base Datos: " + this.BaseDatos2.Text + " .............. .......Espere Un Momento !!!!!!!";
-                this.InfoProcesoText.Refresh();
-                Application.DoEvents();
-                string Ruta = "";
-                if (this.BaseDatosTxt1.Tag.ToString() == "SI")
+                if (this.TablaExistenteTxt.Text == string.Empty)
                 {
-                    Ruta = this.BaseDatosTxt1.Text;
+                    MessageBox.Show("Debe Nueva Donde Copiar", "COPIAR", MessageBoxButtons.OK);
+                    // TablanuevaTxt.Focus();
+                    return;
                 }
-                else
+                if (this.TablaExistenteTxt.Text == this.TablaCopiarTxt.Text)
                 {
-                    Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
+                    MessageBox.Show("La Tabla No Puede Copiarse a Si Misma", "COPIAR", MessageBoxButtons.OK);
+                    // TablanuevaTxt.Focus();
+                    return;
                 }
+            }
 
-                string consulta = "INSERT INTO ["+TablanuevaTxt.Text+"] SELECT* FROM " + TablaCopiarTxt.Text + "order by Descripcci asc";
-                string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
-                try
+            string consulta = "";
+
+            this.InfoProcesoText.BackColor = Color.FromArgb(234, 210, 8);
+            this.InfoProcesoText.Text = " Copiando Tabla de Base Datos: " + this.BaseDatos2.Text + " .............. .......Espere Un Momento !!!!!!!";
+            this.InfoProcesoText.Refresh();
+            Application.DoEvents();
+            string Ruta = "";
+            if (this.BaseDatosTxt1.Tag.ToString() == "SI")
+            {
+                Ruta = this.BaseDatosTxt1.Text;
+            }
+            else
+            {
+                Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
+            }
+            if (this.TipoCopia.SelectedIndex == 0)
+            {
+                consulta = "select * into [" + this.TablaNuevaTxt.Text + "]  FROM     [" + this.TablaCopiarTxt.Text + "]";
+
+            }
+            else
+            {
+                consulta = "INSERT INTO [" + this.TablaExistenteTxt.Text + "] SELECT* FROM " + this.TablaCopiarTxt.Text;
+            }
+
+            string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
+            try
+            {
+                using (OleDbConnection NuevaConexion = new OleDbConnection(cadenaConexion))
                 {
-                    using (OleDbConnection NuevaConexion = new OleDbConnection(cadenaConexion))
+                    using (OleDbCommand comando = new OleDbCommand(consulta, NuevaConexion))
                     {
-                        using (OleDbCommand comando = new OleDbCommand(consulta, NuevaConexion))
-                        {
-                             NuevaConexion.Open();
-                             comando.ExecuteNonQuery();
+                        NuevaConexion.Open();
+                        comando.ExecuteNonQuery();
 
-                            MessageBox.Show("Copiaron Los Datos A Tabla Correctamente" + "\n" + Ruta, "COPIA TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        MessageBox.Show("Copiaron Los Datos A Tabla Correctamente" + "\n" + Ruta, "COPIA TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message.ToString());
-                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+
 
             this.InfoProcesoText.Text = "Indica La Base Datos a Crear Copia De Seguridad";
             this.InfoProcesoText.BackColor = this.BackColor;
@@ -831,13 +865,15 @@ namespace PELOSCALVO
 
         private void ExtensionTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if( ExtensionTxt.Text != string.Empty & BaseDatosTxt1.Text != string.Empty)
-            {           
-                    ListaTablasPrincipal.DataSource = ObtenerTablasDb();
-                    TablanuevaTxt.DataSource = ObtenerTablasDb();              
-               
+            if (this.ExtensionTxt.Text != string.Empty & this.BaseDatosTxt1.Text != string.Empty)
+            {
+                this.ListaTablasPrincipal.DataSource = ObtenerTablasDb();
+                this.TablaExistenteTxt.DataSource = ObtenerTablasDb();
+                this.ArticulosTxt.DataSource = ObtenerTablasDb();
+                this.ClientesTxt.DataSource = ObtenerTablasDb();
+
             }
-          
+
         }
 
         private void ListaTablasPrincipal_Click(object sender, EventArgs e)
@@ -845,8 +881,8 @@ namespace PELOSCALVO
             if (this.ExtensionTxt.Text == string.Empty)
             {
                 MessageBox.Show("Falta Tipo Extenxision", "EXTENSION NO VALIDA", MessageBoxButtons.OK);
-                TabControlPrincipal.SelectedIndex = 0;
-                 ExtensionTxt.Focus();
+                this.TabControlPrincipal.SelectedIndex = 0;
+                this.ExtensionTxt.Focus();
                 return;
             }
             if (this.ListaTablasPrincipal.SelectedIndex >= 0)
@@ -857,20 +893,34 @@ namespace PELOSCALVO
 
         private void ArticulosTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ExtensionTxt.Text != string.Empty & BaseDatosTxt1.Text != string.Empty)
+            if (this.ExtensionTxt.Text != string.Empty & this.BaseDatosTxt1.Text != string.Empty)
             {
 
-                ExtensionTxt.Enabled = true;
+                this.ExtensionTxt.Enabled = true;
             }
         }
 
         private void ClientesTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ExtensionTxt.Text != string.Empty & BaseDatosTxt1.Text != string.Empty)
+            if (this.ExtensionTxt.Text != string.Empty & this.BaseDatosTxt1.Text != string.Empty)
             {
 
-                ExtensionTxt.Enabled = true;
+                this.ExtensionTxt.Enabled = true;
             }
+        }
+
+        private void TipoCopia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.TipoCopia.SelectedIndex == 0)
+            {
+                this.TablaNuevaTxt.BringToFront();
+            }
+            if (this.TipoCopia.SelectedIndex == 1)
+            {
+                this.TablaExistenteTxt.BringToFront();
+            }
+
+
         }
     }
 }
