@@ -112,7 +112,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ALMACNEN");
+                MessageBox.Show(ex.Message, "FAMILIA PRODUCTOS");
             }
             finally
             {
@@ -154,7 +154,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ALMACNEN");
+                MessageBox.Show(ex.Message, "FAMILIA PRODUCTOS");
             }
             finally
             {
@@ -392,7 +392,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarFamilia_Click(object sender, EventArgs e)
         {
-            if (this.DtGridFamilia.RowCount >= 0)
+            if (this.dtFamiliaProductosBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {

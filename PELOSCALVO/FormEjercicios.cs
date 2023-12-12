@@ -277,6 +277,32 @@ namespace PELOSCALVO
             }
 
         }
+        private void SiEjercicio()
+        {
+            int i = 0;
+            foreach (DataGridViewRow fila in this.dtConfiDataGridView.Rows)
+            {
+                if (fila.Cells[2].Value != null)
+                {
+                    if (fila.Cells[2].Value.ToString() == this.ejerciciosDeAñoTextBox.Text)
+                    {
+                        if (i == this.dtConfiDataGridView.CurrentCell.RowIndex)
+                        {
+                            goto seguir2;
+                        }
+                        Random r = new Random();
+                        int VALORid = r.Next(5, 100);
+                        ejerciciosDeAñoTextBox.Text = ejerciciosDeAñoTextBox.Text + "_" + VALORid.ToString();
+                    }
+                }
+                seguir2:
+                if (i == this.dtConfiDataGridView.Rows.Count)
+                {
+                    break;
+                }
+                i++;
+            }
+        }
         private void BtnNuevoEjercicio_Click(object sender, EventArgs e)
         {
             try
@@ -328,7 +354,8 @@ namespace PELOSCALVO
                     this.ejerciciosDeAñoTextBox.Text = " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
                     this.añoDeEjercicioTextBox.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
-               
+                SiEjercicio();
+
                 ModificarOjetos_Ej();
             }
             catch (Exception ex)
@@ -385,6 +412,7 @@ namespace PELOSCALVO
             if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
             {
                 int i = 0;
+                string Ejercicio = ejerciciosDeAñoTextBox.Text;
                 foreach (DataGridViewRow fila in this.dtConfiDataGridView.Rows)
                 {
                     if (fila.Cells[2].Value != null)
@@ -401,7 +429,7 @@ namespace PELOSCALVO
                             this.ejerciciosDeAñoTextBox.ReadOnly = false;
                             this.ejerciciosDeAñoTextBox.SelectAll();
                             this.ejerciciosDeAñoTextBox.Select(4, 4);
-                            MessageBox.Show(this.ejerciciosDeAñoTextBox.Text, "Este Ejercicio Ya Existe", MessageBoxButtons.OK);
+                            MessageBox.Show(Ejercicio, "Este Ejercicio Ya Existe", MessageBoxButtons.OK);
                             return;
                         }
                     }

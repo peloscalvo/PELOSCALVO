@@ -427,7 +427,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarProvincia_Click(object sender, EventArgs e)
         {
-            if (this.dtPaisesBindingSource.Count > 0)
+            if (this.DtProvinciasBindinsource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {

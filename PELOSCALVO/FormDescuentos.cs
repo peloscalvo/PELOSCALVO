@@ -256,7 +256,7 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (this.dtTarifaTipoDataGridView.RowCount > 7)
+            if (this.dtTarifaTipoDataGridView.RowCount > 6)
             {
                 MessageBox.Show("Maximo Permitido", "LIMITE");
                 return;
@@ -319,7 +319,7 @@ namespace PELOSCALVO
                     return;
                 }
 
-                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex >= 7)
+                if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex >= 6)
                 {
                     MessageBox.Show("Este Descuento No Se Puede Modificar", "Descuento");
                     return;

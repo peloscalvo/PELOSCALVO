@@ -54,7 +54,6 @@ namespace PELOSCALVO
             this.BtnCancelarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnGuardarDescuentos = new System.Windows.Forms.Button();
             this.panelBotonesTipoTarifa = new System.Windows.Forms.Panel();
-            this.BtnBuscarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnNuevoTipoTarifa = new System.Windows.Forms.Button();
             this.BtnModificarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnSalirTipoTarifa = new System.Windows.Forms.Button();
@@ -196,6 +195,7 @@ namespace PELOSCALVO
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtTarifaTipoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtTarifaTipoDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dtTarifaTipoDataGridView.EnableHeadersVisualStyles = false;
             this.dtTarifaTipoDataGridView.Location = new System.Drawing.Point(0, 0);
             this.dtTarifaTipoDataGridView.Name = "dtTarifaTipoDataGridView";
             this.dtTarifaTipoDataGridView.ReadOnly = true;
@@ -263,7 +263,7 @@ namespace PELOSCALVO
             this.BtnCancelarTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarTipoTarifa.Location = new System.Drawing.Point(589, 411);
+            this.BtnCancelarTipoTarifa.Location = new System.Drawing.Point(629, 411);
             this.BtnCancelarTipoTarifa.Name = "BtnCancelarTipoTarifa";
             this.BtnCancelarTipoTarifa.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarTipoTarifa.TabIndex = 54;
@@ -297,32 +297,12 @@ namespace PELOSCALVO
             // 
             this.panelBotonesTipoTarifa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelBotonesTipoTarifa.BackColor = System.Drawing.Color.Transparent;
-            this.panelBotonesTipoTarifa.Controls.Add(this.BtnBuscarTipoTarifa);
             this.panelBotonesTipoTarifa.Controls.Add(this.BtnNuevoTipoTarifa);
             this.panelBotonesTipoTarifa.Controls.Add(this.BtnModificarTipoTarifa);
             this.panelBotonesTipoTarifa.Location = new System.Drawing.Point(12, 390);
             this.panelBotonesTipoTarifa.Name = "panelBotonesTipoTarifa";
             this.panelBotonesTipoTarifa.Size = new System.Drawing.Size(401, 63);
             this.panelBotonesTipoTarifa.TabIndex = 52;
-            // 
-            // BtnBuscarTipoTarifa
-            // 
-            this.BtnBuscarTipoTarifa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnBuscarTipoTarifa.BackColor = System.Drawing.Color.Transparent;
-            this.BtnBuscarTipoTarifa.FlatAppearance.BorderSize = 0;
-            this.BtnBuscarTipoTarifa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnBuscarTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnBuscarTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscarTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
-            this.BtnBuscarTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnBuscarTipoTarifa.Location = new System.Drawing.Point(166, 3);
-            this.BtnBuscarTipoTarifa.Name = "BtnBuscarTipoTarifa";
-            this.BtnBuscarTipoTarifa.Size = new System.Drawing.Size(77, 63);
-            this.BtnBuscarTipoTarifa.TabIndex = 8;
-            this.BtnBuscarTipoTarifa.Text = "Buscar";
-            this.BtnBuscarTipoTarifa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnBuscarTipoTarifa.UseVisualStyleBackColor = false;
             // 
             // BtnNuevoTipoTarifa
             // 
@@ -442,7 +422,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCancelarTipoTarifa;
         public System.Windows.Forms.Button BtnGuardarDescuentos;
         private System.Windows.Forms.Panel panelBotonesTipoTarifa;
-        private System.Windows.Forms.Button BtnBuscarTipoTarifa;
         private System.Windows.Forms.Button BtnNuevoTipoTarifa;
         private System.Windows.Forms.Button BtnModificarTipoTarifa;
         private System.Windows.Forms.BindingSource dtConfiDtTarifaTipoBindingSource;

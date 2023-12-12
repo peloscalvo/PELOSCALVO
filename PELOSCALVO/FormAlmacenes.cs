@@ -284,7 +284,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarAlmacen_Click(object sender, EventArgs e)
         {
-            if (this.dataGridAlmacenes.RowCount >= 0)
+            if (this.dtAlmacenesBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {

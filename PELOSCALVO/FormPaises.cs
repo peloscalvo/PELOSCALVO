@@ -289,7 +289,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarPais_Click(object sender, EventArgs e)
         {
-            if (this.dataGridPais.RowCount >= 0)
+            if (this.DtPaisBindinsource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
