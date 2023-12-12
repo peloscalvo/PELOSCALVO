@@ -1003,6 +1003,7 @@ namespace PELOSCALVO
                         }
 
                         this.dtDetallesFacturaBindingSource.ResetBindings(true);
+                        this.dtDetallesFacturaBindingSource.ResetBindings(false);
                     }
                 }
                 this.dtDetallesFacturaDataGridView.Refresh();
@@ -1321,7 +1322,7 @@ namespace PELOSCALVO
         {
             if (this.PanelArriba.Tag.ToString() == "SI")
             {
-                //  FiltrarFactura();
+                  FiltrarFactura();
             }
         }
         private void FiltrarFactura()
@@ -2366,7 +2367,7 @@ namespace PELOSCALVO
 
         private void EmpresaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.dtNuevaFacturaBindingSource.Filter = "";
 
         }
 

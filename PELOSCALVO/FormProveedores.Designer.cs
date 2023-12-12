@@ -42,8 +42,7 @@ namespace PELOSCALVO
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtConfiguracionPrincipalDtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PanelProveedores = new System.Windows.Forms.Panel();
             this.Enlace_Proveedor = new System.Windows.Forms.Label();
             this.Id_proveedor = new System.Windows.Forms.Label();
@@ -70,8 +69,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtProveedoresBindingSource)).BeginInit();
             this.PanelProveedores.SuspendLayout();
             this.PanelBotones_pro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProveedores)).BeginInit();
@@ -134,15 +132,10 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
             this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
-            // dtProveedoresBindingSource
+            // DtProveedoresBindingSource
             // 
-            this.dtProveedoresBindingSource.DataMember = "DtProveedores";
-            this.dtProveedoresBindingSource.DataSource = this.dsCONFIGURACCION;
-            // 
-            // dtConfiguracionPrincipalDtProveedoresBindingSource
-            // 
-            this.dtConfiguracionPrincipalDtProveedoresBindingSource.DataMember = "DtConfiguracionPrincipal_DtProveedores";
-            this.dtConfiguracionPrincipalDtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.DtProveedoresBindingSource.DataMember = "DtConfiguracionPrincipal_DtProveedores";
+            this.DtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // PanelProveedores
             // 
@@ -170,7 +163,7 @@ namespace PELOSCALVO
             // Id_proveedor
             // 
             this.Id_proveedor.AutoSize = true;
-            this.Id_proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtProveedoresBindingSource, "Id_Proveedores", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.Id_proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.DtProveedoresBindingSource, "Id_Proveedores", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.Id_proveedor.Location = new System.Drawing.Point(74, 14);
             this.Id_proveedor.Name = "Id_proveedor";
             this.Id_proveedor.Size = new System.Drawing.Size(13, 13);
@@ -274,7 +267,7 @@ namespace PELOSCALVO
             // 
             // NombreProveedor
             // 
-            this.NombreProveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtProveedoresBindingSource, "Proveedores", true));
+            this.NombreProveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.DtProveedoresBindingSource, "Proveedores", true));
             this.NombreProveedor.Location = new System.Drawing.Point(74, 43);
             this.NombreProveedor.MaxLength = 40;
             this.NombreProveedor.Name = "NombreProveedor";
@@ -315,8 +308,8 @@ namespace PELOSCALVO
             this.idProveedoresDataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn11});
-            this.dataGridProveedores.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.dtConfiguracionPrincipalDtProveedoresBindingSource, "Id_Proveedores", true));
-            this.dataGridProveedores.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
+            this.dataGridProveedores.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.DtProveedoresBindingSource, "Id_Proveedores", true));
+            this.dataGridProveedores.DataSource = this.DtProveedoresBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -455,8 +448,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtProveedoresBindingSource)).EndInit();
             this.PanelProveedores.ResumeLayout(false);
             this.PanelProveedores.PerformLayout();
             this.PanelBotones_pro.ResumeLayout(false);
@@ -473,8 +465,7 @@ namespace PELOSCALVO
         private DsMultidatos dsMultidatos;
         private DsCONFIGURACCION dsCONFIGURACCION;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
-        private System.Windows.Forms.BindingSource dtProveedoresBindingSource;
-        private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtProveedoresBindingSource;
+        private System.Windows.Forms.BindingSource DtProveedoresBindingSource;
         private System.Windows.Forms.Panel PanelProveedores;
         private System.Windows.Forms.Label Enlace_Proveedor;
         private System.Windows.Forms.Label Id_proveedor;

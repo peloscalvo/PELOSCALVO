@@ -85,7 +85,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelFamilia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtFamiliaProductos]([Id],[Familia]]) VALUES( @Id,@Familia)";
+                consulta = "  INSERT INTO [DtFamiliaProductos]  VALUES( @Id,@Familia)";
 
             }
             else
@@ -127,7 +127,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelFamilia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtFamiliaProductos]([Id],[Familia]]) VALUES( @Id,@Familia)";
+                consulta = "  INSERT INTO [DtFamiliaProductos] VALUES( @Id,@Familia)";
 
             }
             else

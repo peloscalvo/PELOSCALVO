@@ -77,6 +77,26 @@ namespace PELOSCALVO
             }
             return ok;
         }
+        private void LimpiarCorreo_Empresa()
+        {
+            this.NombreEmpresa.Text = string.Empty;
+            this.CorreoEletronico.Text = string.Empty;
+            this.Usuario.Text = string.Empty;
+            this.Contraseña.Text = string.Empty;
+            this.smtp.Text = string.Empty;
+            this.Puerto.Text = string.Empty;
+            this.Timeof.Text = string.Empty;
+
+        }
+        private void limpiarCorreo_Cli()
+        {
+            Id_CorreoCli.Text =string.Empty;
+            this.EmpresaCli.Text = string.Empty;   
+            this.RazonSocial.Text = string.Empty;
+            this.Direcion.Text = string.Empty;
+            CorreoEletronicoCli.Text = string.Empty;
+
+        }
         private void ModificarOjetosCorreo_Cli()
         {
             this.EmpresaCli.ReadOnly = false;
@@ -229,7 +249,12 @@ namespace PELOSCALVO
             this.NombreEmpresa.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[1].FormattedValue.ToString();
             this.CorreoEletronico.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[2].FormattedValue.ToString();
             this.Usuario.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[3].FormattedValue.ToString();
-            this.Contraseña.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[4].FormattedValue.ToString();
+            if (string.IsNullOrEmpty(this.DatagridCorreosEmpresa.Rows[II].Cells[4].FormattedValue.ToString()))
+            {
+                ClasCodificarPass Decodificar = new ClasCodificarPass();
+                string Pass = Decodificar.Dedificar(this.DatagridCorreosEmpresa.Rows[II].Cells[4].FormattedValue.ToString());
+                this.Contraseña.Text = Pass;
+            }      
             this.smtp.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[5].FormattedValue.ToString();
             this.Puerto.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[6].FormattedValue.ToString();
             this.Timeof.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[7].FormattedValue.ToString();
@@ -377,6 +402,7 @@ namespace PELOSCALVO
                     this.DataGridCorreoCliente.EndEdit();
                     this.CorreosClientebindingSource.EndEdit();
                     Validate();
+                    LimpiarCorreo_Empresa();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosCorreo_E();
                 }
@@ -472,7 +498,8 @@ namespace PELOSCALVO
                     this.DatagridCorreosEmpresa.EndEdit();
                     this.CorreosbindingSource.EndEdit();
                     Validate();
-                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpiarCorreo_Cli();
+                    MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
                     RestaurarOjetosCorreo_E();
                 }
             }
@@ -524,6 +551,7 @@ namespace PELOSCALVO
                     this.DatagridCorreosEmpresa.EndEdit();
                     this.CorreosbindingSource.EndEdit();
                     Validate();
+                    LimpiarCorreo_Empresa();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosCorreo_E();
                 }
@@ -728,7 +756,7 @@ namespace PELOSCALVO
             {
                 try
                 {
-
+                    LimpiarCorreo_Empresa();
                     ExtraerDatagrid();
                 }
                 catch (Exception ex)
@@ -746,7 +774,7 @@ namespace PELOSCALVO
             {
                 try
                 {
-
+                    limpiarCorreo_Cli();
                     ExtraerDatagridCliente();
                 }
                 catch (Exception ex)
@@ -815,6 +843,7 @@ namespace PELOSCALVO
                 this.Puerto.Text = "587";
                 this.CorreoEletronico.Focus();
                 this.CorreoEletronico.Select(1, 1);
+                LimpiarCorreo_Empresa();
                 ModificarOjetosCorreo_E();
 
             }
@@ -997,7 +1026,7 @@ namespace PELOSCALVO
             {
                 try
                 {
-
+                    LimpiarCorreo_Empresa();
                     ExtraerDatagrid();
                 }
                 catch (Exception ex)
@@ -1037,6 +1066,7 @@ namespace PELOSCALVO
                 this.CorreoEletronicoCli.Text = "Ejemplo@Gmail.com";
                 this.CorreoEletronicoCli.Focus();
                 // this.CorreoEletronicoCli.Select(1, 1);
+                limpiarCorreo_Cli();
                 ModificarOjetosCorreo_Cli();
 
             }
@@ -1177,7 +1207,7 @@ namespace PELOSCALVO
             {
                 try
                 {
-
+                    limpiarCorreo_Cli();
                     ExtraerDatagridCliente();
                 }
                 catch (Exception ex)

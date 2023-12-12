@@ -737,7 +737,7 @@ namespace PELOSCALVO
             // DtConfiTxt
             // 
             this.DtConfiTxt.AutoSize = true;
-            this.DtConfiTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiBindingSource, "EnlaceDtconfi", true));
+            this.DtConfiTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EnlaceDtconfi", true));
             this.DtConfiTxt.Location = new System.Drawing.Point(960, 10);
             this.DtConfiTxt.Name = "DtConfiTxt";
             this.DtConfiTxt.Size = new System.Drawing.Size(0, 13);

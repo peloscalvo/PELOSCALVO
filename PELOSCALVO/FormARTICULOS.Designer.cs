@@ -128,13 +128,13 @@ namespace PELOSCALVO
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.dtInicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelBotonesArticulo = new System.Windows.Forms.Panel();
-            this.BtnSalirArticulo = new System.Windows.Forms.Button();
             this.BtnImprimirArticulo = new System.Windows.Forms.Button();
             this.BtnEnviarMailArticulo = new System.Windows.Forms.Button();
             this.BtnEliminarArticulo = new System.Windows.Forms.Button();
             this.BtnBuscarArticulo = new System.Windows.Forms.Button();
             this.BtnNuevoArticulo = new System.Windows.Forms.Button();
             this.BtnModificarArticulo = new System.Windows.Forms.Button();
+            this.BtnSalirArticulo = new System.Windows.Forms.Button();
             this.BtnCancelarArticulo = new System.Windows.Forms.Button();
             this.BtnGuardarArticulo = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -192,7 +192,7 @@ namespace PELOSCALVO
             Pvp2Label.AutoSize = true;
             Pvp2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             Pvp2Label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Pvp2Label.Location = new System.Drawing.Point(66, 146);
+            Pvp2Label.Location = new System.Drawing.Point(19, 146);
             Pvp2Label.Name = "Pvp2Label";
             Pvp2Label.Size = new System.Drawing.Size(42, 15);
             Pvp2Label.TabIndex = 16;
@@ -203,7 +203,7 @@ namespace PELOSCALVO
             PlusLabel.AutoSize = true;
             PlusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             PlusLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            PlusLabel.Location = new System.Drawing.Point(69, 171);
+            PlusLabel.Location = new System.Drawing.Point(19, 171);
             PlusLabel.Name = "PlusLabel";
             PlusLabel.Size = new System.Drawing.Size(39, 15);
             PlusLabel.TabIndex = 36;
@@ -1008,7 +1008,7 @@ namespace PELOSCALVO
             // 
             this.ValenteLab.AutoSize = true;
             this.ValenteLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ValenteLab.Location = new System.Drawing.Point(66, 120);
+            this.ValenteLab.Location = new System.Drawing.Point(19, 120);
             this.ValenteLab.Name = "ValenteLab";
             this.ValenteLab.Size = new System.Drawing.Size(42, 15);
             this.ValenteLab.TabIndex = 59;
@@ -1019,7 +1019,7 @@ namespace PELOSCALVO
             // 
             this.BenitoLab.AutoSize = true;
             this.BenitoLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BenitoLab.Location = new System.Drawing.Point(62, 93);
+            this.BenitoLab.Location = new System.Drawing.Point(19, 93);
             this.BenitoLab.Name = "BenitoLab";
             this.BenitoLab.Size = new System.Drawing.Size(46, 15);
             this.BenitoLab.TabIndex = 58;
@@ -1030,7 +1030,7 @@ namespace PELOSCALVO
             // 
             this.SuarezLab.AutoSize = true;
             this.SuarezLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuarezLab.Location = new System.Drawing.Point(66, 66);
+            this.SuarezLab.Location = new System.Drawing.Point(19, 66);
             this.SuarezLab.Name = "SuarezLab";
             this.SuarezLab.Size = new System.Drawing.Size(42, 15);
             this.SuarezLab.TabIndex = 57;
@@ -1041,7 +1041,7 @@ namespace PELOSCALVO
             // 
             this.CastyLab.AutoSize = true;
             this.CastyLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CastyLab.Location = new System.Drawing.Point(66, 39);
+            this.CastyLab.Location = new System.Drawing.Point(19, 39);
             this.CastyLab.Name = "CastyLab";
             this.CastyLab.Size = new System.Drawing.Size(42, 15);
             this.CastyLab.TabIndex = 56;
@@ -1173,7 +1173,7 @@ namespace PELOSCALVO
             // 
             // EmpresaArticulos
             // 
-            this.EmpresaArticulos.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "EmpresaInicio", true));
+            this.EmpresaArticulos.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
             this.EmpresaArticulos.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.EmpresaArticulos.DisplayMember = "EmpresaConfi";
             this.EmpresaArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1183,6 +1183,7 @@ namespace PELOSCALVO
             this.EmpresaArticulos.Size = new System.Drawing.Size(294, 21);
             this.EmpresaArticulos.TabIndex = 29;
             this.EmpresaArticulos.SelectedIndexChanged += new System.EventHandler(this.EmpresaArticulos_SelectedIndexChanged);
+            this.EmpresaArticulos.SelectionChangeCommitted += new System.EventHandler(this.EmpresaArticulos_SelectionChangeCommitted);
             this.EmpresaArticulos.Validated += new System.EventHandler(this.EmpresaArticulos_Validated);
             // 
             // dtInicioMultiBindingSource
@@ -1215,28 +1216,6 @@ namespace PELOSCALVO
             this.panelBotonesArticulo.Size = new System.Drawing.Size(459, 63);
             this.panelBotonesArticulo.TabIndex = 31;
             this.panelBotonesArticulo.Tag = "stop";
-            // 
-            // BtnSalirArticulo
-            // 
-            this.BtnSalirArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSalirArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSalirArticulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnSalirArticulo.FlatAppearance.BorderSize = 0;
-            this.BtnSalirArticulo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnSalirArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnSalirArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSalirArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnSalirArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
-            this.BtnSalirArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirArticulo.Location = new System.Drawing.Point(931, 579);
-            this.BtnSalirArticulo.Name = "BtnSalirArticulo";
-            this.BtnSalirArticulo.Size = new System.Drawing.Size(77, 63);
-            this.BtnSalirArticulo.TabIndex = 12;
-            this.BtnSalirArticulo.Text = "Salir";
-            this.BtnSalirArticulo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnSalirArticulo.UseVisualStyleBackColor = false;
-            this.BtnSalirArticulo.Click += new System.EventHandler(this.BtnSalirArticulo_Click);
             // 
             // BtnImprimirArticulo
             // 
@@ -1362,6 +1341,28 @@ namespace PELOSCALVO
             this.BtnModificarArticulo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnModificarArticulo.UseVisualStyleBackColor = false;
             this.BtnModificarArticulo.Click += new System.EventHandler(this.BtnModificarArticulo_Click);
+            // 
+            // BtnSalirArticulo
+            // 
+            this.BtnSalirArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSalirArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSalirArticulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnSalirArticulo.FlatAppearance.BorderSize = 0;
+            this.BtnSalirArticulo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnSalirArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnSalirArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSalirArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalirArticulo.ForeColor = System.Drawing.Color.Black;
+            this.BtnSalirArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnSalirArticulo.Location = new System.Drawing.Point(931, 579);
+            this.BtnSalirArticulo.Name = "BtnSalirArticulo";
+            this.BtnSalirArticulo.Size = new System.Drawing.Size(77, 63);
+            this.BtnSalirArticulo.TabIndex = 12;
+            this.BtnSalirArticulo.Text = "Salir";
+            this.BtnSalirArticulo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnSalirArticulo.UseVisualStyleBackColor = false;
+            this.BtnSalirArticulo.Click += new System.EventHandler(this.BtnSalirArticulo_Click);
             // 
             // BtnCancelarArticulo
             // 

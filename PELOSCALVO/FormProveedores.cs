@@ -19,7 +19,7 @@ namespace PELOSCALVO
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
 
-                    this.dtProveedoresBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
+                    this.DtProveedoresBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
                 }
 
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
@@ -104,7 +104,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
                     this.dataGridProveedores.EndEdit();
-                    this.dtProveedoresBindingSource.EndEdit();
+                    this.DtProveedoresBindingSource.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();
                 }
@@ -146,7 +146,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
-                    this.dtProveedoresBindingSource.EndEdit();
+                    this.DtProveedoresBindingSource.EndEdit();
                     this.dataGridProveedores.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();
@@ -179,7 +179,7 @@ namespace PELOSCALVO
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
-                            this.dtProveedoresBindingSource.EndEdit();
+                            this.DtProveedoresBindingSource.EndEdit();
                             Validate();
                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -220,7 +220,7 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
-                        this.dtProveedoresBindingSource.EndEdit();
+                        this.DtProveedoresBindingSource.EndEdit();
                         Validate();
                         MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -254,8 +254,8 @@ namespace PELOSCALVO
             try
             {
                 int numeroFILA = this.dataGridProveedores.Rows.Count;
-                this.dtProveedoresBindingSource.AddNew();
-                if (this.dataGridProveedores.CurrentCell.RowIndex == 0)
+                this.DtProveedoresBindingSource.AddNew();
+                if (this.dataGridProveedores.RowCount == 0)
                 {
                     this.Id_proveedor.Text = "1";
                     this.dataGridProveedores.Rows[0].Cells[0].Value = "1";
@@ -355,7 +355,7 @@ namespace PELOSCALVO
 
         private void BtnModificarProveedor_Click(object sender, EventArgs e)
         {
-            if (this.dtProveedoresBindingSource.Count > 0)
+            if (this.DtProveedoresBindingSource.Count > 0)
             {
                 this.PanelBotones_pro.Tag = "Modificar";
                 ModificarOjetosProv();
@@ -365,7 +365,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarProveedor_Click(object sender, EventArgs e)
         {
-            if (this.dtProveedoresBindingSource.Count > 0)
+            if (this.DtProveedoresBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -401,7 +401,7 @@ namespace PELOSCALVO
         private void BtnCancelarProve_Click(object sender, EventArgs e)
         {
             BorrarErrorProveedor();
-            if (this.dtProveedoresBindingSource.Count > 0)
+            if (this.DtProveedoresBindingSource.Count > 0)
             {
                 try
                 {
@@ -435,6 +435,8 @@ namespace PELOSCALVO
                 }
             }
         }
+
+     
     }
 
 }

@@ -418,7 +418,7 @@ namespace PELOSCALVO
             // 
             // BtnExaminarB
             // 
-            this.BtnExaminarB.Location = new System.Drawing.Point(438, 17);
+            this.BtnExaminarB.Location = new System.Drawing.Point(637, 17);
             this.BtnExaminarB.Name = "BtnExaminarB";
             this.BtnExaminarB.Size = new System.Drawing.Size(75, 23);
             this.BtnExaminarB.TabIndex = 94;
@@ -440,7 +440,7 @@ namespace PELOSCALVO
             this.NombreArchivoDatos.Location = new System.Drawing.Point(150, 19);
             this.NombreArchivoDatos.Name = "NombreArchivoDatos";
             this.NombreArchivoDatos.ReadOnly = true;
-            this.NombreArchivoDatos.Size = new System.Drawing.Size(271, 20);
+            this.NombreArchivoDatos.Size = new System.Drawing.Size(471, 20);
             this.NombreArchivoDatos.TabIndex = 92;
             this.NombreArchivoDatos.Tag = "";
             this.NombreArchivoDatos.Text = "Datos App Peloscalvo";

@@ -82,7 +82,7 @@ namespace PELOSCALVO
                 {
                     if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
                     {
-                        String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text  + "]";
+                        String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "]";
                         string consulta = "Delete from " + TipoTabla + "  WHERE ID= @ID";
                         //  ClsConexionDb.CadenaConexion = cadena;
                         ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -91,7 +91,7 @@ namespace PELOSCALVO
                             {
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@ID", this.idArticulo.Text);
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
-                                this.dtPreciosDataGridView.Rows.RemoveAt(this.dtPreciosDataGridView.CurrentCell.RowIndex);       
+                                this.dtPreciosDataGridView.Rows.RemoveAt(this.dtPreciosDataGridView.CurrentCell.RowIndex);
                                 this.dtArticulosBindingSource.EndEdit();
                                 Validate();
                                 MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -118,28 +118,28 @@ namespace PELOSCALVO
 
             try
             {
-                int Fila = EmpresaArticulos.SelectedIndex;
-                if (dtConfiguracionPrincipalBindingSource.Count > 0)
+                int Fila = this.EmpresaArticulos.SelectedIndex;
+                if (this.dtConfiguracionPrincipalBindingSource.Count > 0)
                 {
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2+Fila]["TarifaTipo"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.CastyLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2+Fila]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2+Fila]["TarifaTipo"].ToString();
+                        this.CastyLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString();
                     }
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3+Fila]["TarifaTipo"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.SuarezLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3+Fila]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3+Fila]["TarifaTipo"].ToString();
+                        this.SuarezLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString();
                     }
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4+Fila]["TarifaTipo"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.BenitoLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
+                        this.BenitoLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString();
                     }
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5]["TarifaTipo"].ToString() != string.Empty)
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.ValenteLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5 + Fila]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[5 + Fila]["TarifaTipo"].ToString();
+                        this.ValenteLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
+                        this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
                     }
                 }
             }
@@ -192,8 +192,8 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
             this.dtArticulosBindingSource.Filter = "[BAJA]" + "=" + Convert.ToBoolean("false");
-            dtArticulosBindingSource.Sort= "[Descripcci]";
-          //  FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = "[Descripcci]";
+            this.dtArticulosBindingSource.Sort = "[Descripcci]";
+            //  FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = "[Descripcci]";
             if (ClsConexionSql.SibaseDatosSql == false)
             {
                 if (!File.Exists(ClasDatos.RutaBaseDatosDb))
@@ -304,7 +304,8 @@ namespace PELOSCALVO
             BORRARerrores();
             try
             {
-              //  LimpiarTextox();
+                //  LimpiarTextox();
+                this.panelBotonesArticulo.Tag = "NUEVO";
                 this.FiltrarBajas.Text = "Todos";
                 this.dtPreciosDataGridView.Refresh();
                 this.dtPreciosDataGridView.Sort(this.dtPreciosDataGridView.Columns[0], ListSortDirection.Ascending);
@@ -337,8 +338,6 @@ namespace PELOSCALVO
                     this.dtPreciosDataGridView.Rows[numeroFILA].Selected = true;
                 }
 
-
-                this.panelBotonesArticulo.Tag = "NUEVO";
                 this.panelDesc1.Enabled = true;
                 this.ReferenciaTextBox.Focus();
                 this.tabControl1Articulo.SelectedIndex = 0;
@@ -386,7 +385,7 @@ namespace PELOSCALVO
                                         return;
                                     }
                                 }
-                            seguir2:
+                                seguir2:
                                 if (i == this.dtPreciosDataGridView.Rows.Count)
                                 {
                                     break;
@@ -399,7 +398,7 @@ namespace PELOSCALVO
                                 GuardarArticulosSQL();
                             }
                             else
-                            { 
+                            {
                                 if (File.Exists(ClasDatos.RutaBaseDatosDb))
                                 {
                                     GuardarArticulosDB();
@@ -419,7 +418,7 @@ namespace PELOSCALVO
                 }
 
             }
-    
+
         }
 
         private void BtnCancelarArticulo_Click(object sender, EventArgs e)
@@ -439,7 +438,7 @@ namespace PELOSCALVO
             catch (Exception)
             {
 
-               // throw;
+                // throw;
             }
             this.dtPreciosDataGridView.Focus();
         }
@@ -471,7 +470,7 @@ namespace PELOSCALVO
                 }
             }
 
-         
+
         }
 
         private void FormARTICULOS_FormClosing(object sender, FormClosingEventArgs e)
@@ -542,12 +541,12 @@ namespace PELOSCALVO
                         {
                             EliminarArticuloSql();
                         }
-               
+
                     }
                     catch (Exception)
                     {
 
-                      //  throw;
+                        //  throw;
                     }
                     this.dtPreciosDataGridView.Refresh();
                 }
@@ -789,7 +788,7 @@ namespace PELOSCALVO
                         return;
                     }
                 }
-            seguir2:
+                seguir2:
                 if (i == this.dtPreciosDataGridView.Rows.Count)
                 {
                     break;
@@ -900,33 +899,33 @@ namespace PELOSCALVO
         {
             if (this.RegistLbel.Tag.ToString() != "stop" && this.FiltrarBajas.SelectedIndex >= 0)
             {
-                    string concepto = @"[Descripcci]";
-                    string fieldName = string.Concat("[", this.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
-                    if (this.FiltrarBajas.SelectedIndex == 0)
-                    {
-                        this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
-                        this.SiBajaarti = false;
-                        this.dtArticulosBindingSource.Filter = fieldName + "=" + this.SiBajaarti;
-                        FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
-                    }
-                    if (this.FiltrarBajas.SelectedIndex == 1)
-                    {
-                        this.SiBajaarti = true;
-                        this.dtArticulosBindingSource.Filter = fieldName + "=" + this.SiBajaarti;
-                        FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
-                    }
-                    if (this.FiltrarBajas.SelectedIndex == 2)
-                    {
-                        this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
-                        this.dtArticulosBindingSource.Filter = "";
-                        FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
-                        this.dtPreciosDataGridView.EndEdit();
-                        ColorearBajas();
-                    }
-                    this.ContadorDatos3.Text = this.dtPreciosDataGridView.Rows.Count.ToString();
-                    ValidarCalculosPrecios();
-                    Validate();
-                    AñadirId();           
+                string concepto = @"[Descripcci]";
+                string fieldName = string.Concat("[", this.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
+                if (this.FiltrarBajas.SelectedIndex == 0)
+                {
+                    this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
+                    this.SiBajaarti = false;
+                    this.dtArticulosBindingSource.Filter = fieldName + "=" + this.SiBajaarti;
+                    FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
+                }
+                if (this.FiltrarBajas.SelectedIndex == 1)
+                {
+                    this.SiBajaarti = true;
+                    this.dtArticulosBindingSource.Filter = fieldName + "=" + this.SiBajaarti;
+                    FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
+                }
+                if (this.FiltrarBajas.SelectedIndex == 2)
+                {
+                    this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
+                    this.dtArticulosBindingSource.Filter = "";
+                    FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = concepto;
+                    this.dtPreciosDataGridView.EndEdit();
+                    ColorearBajas();
+                }
+                this.ContadorDatos3.Text = this.dtPreciosDataGridView.Rows.Count.ToString();
+                ValidarCalculosPrecios();
+                Validate();
+                AñadirId();
             }
 
         }
@@ -1098,14 +1097,20 @@ namespace PELOSCALVO
         {
             String TipoTabla = FormMenuPrincipal.menu2principal.InfoArticulo.Text;
             string consulta = "";
-            if (this.idArticulo.Tag.ToString() == "MODIFICAR")
+            if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
             {
-                consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE,GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY,SUAREZDESC = @SUAREZDESC," +
-                  "SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES,VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO,STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
+                consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA," +
+               " @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES," +
+               " @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
+
             }
-            if (this.idArticulo.Tag.ToString() == "NUEVO")
+            else
             {
-                consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA, @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES, @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
+                consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
+              ",GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY" +
+              ",SUAREZDESC = @SUAREZDESC, SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES," +
+              "VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO," +
+              "STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
 
             }
 
@@ -1174,17 +1179,22 @@ namespace PELOSCALVO
         {
             String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "]";
             string Consulta = "";
-            if (this.idArticulo.Tag.ToString() == "MODIFICAR")
+            if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
             {
-                Consulta = "UPDATE " + TipoTabla + " SET Id = @Id,REFERENCIA = @REFERENCIA  , DESCRIPCCI =  @DESCRIPCCI ,COSTE = @COSTE,GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY,SUAREZDESC = @SUAREZDESC," +
-                  "SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES,VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO,STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
-            }
-            if (this.idArticulo.Tag.ToString() == "NUEVO")
-            {
-                Consulta = "INSERT INTO " + TipoTabla + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA, @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES, @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE,@MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
+                Consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA," +
+               " @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES," +
+               " @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
 
             }
-            // ClsConexionDb.CadenaConexion = cadena;/// no necesita enviar ya conecto
+            else
+            {
+                Consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
+              ",GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY" +
+              ",SUAREZDESC = @SUAREZDESC, SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES," +
+              "VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO," +
+              "STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
+
+            }
             ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
             {
                 NuevaConexion.ComandoSql.CommandType = CommandType.Text;
@@ -1252,29 +1262,29 @@ namespace PELOSCALVO
         {
             if (this.RegistLbel.Tag.ToString() != "stop" && this.BtnGuardarArticulo.Enabled == false)
             {
-                   try
+                try
+                {
+                    if (this.FiltrarFamiliaArt.SelectedIndex >= 0)
                     {
-                        if (this.FiltrarFamiliaArt.SelectedIndex >= 0)
+                        this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
+                        string FilaFamilia = string.Concat("[", FormMenuPrincipal.menu2principal.articulos.DtArticulos.Columns["Familia"].ColumnName, "]");
+                        string baja = string.Concat("[", FormMenuPrincipal.menu2principal.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
+                        FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = FilaFamilia;
+
+                        this.dtArticulosBindingSource.Filter = FilaFamilia + " LIKE '%" + this.FiltrarFamiliaArt.Text + "%'" + "and " + baja + "=" + this.SiBajaarti;
+
+                        if (this.FiltrarBajas.SelectedIndex == 2)
                         {
-                            this.dtPreciosDataGridView.DefaultCellStyle.ForeColor = Color.Black;
-                            string FilaFamilia = string.Concat("[", FormMenuPrincipal.menu2principal.articulos.DtArticulos.Columns["Familia"].ColumnName, "]");
-                            string baja = string.Concat("[", FormMenuPrincipal.menu2principal.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
-                            FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView.Sort = FilaFamilia;
-
-                            this.dtArticulosBindingSource.Filter = FilaFamilia + " LIKE '%" + this.FiltrarFamiliaArt.Text + "%'" + "and " + baja + "=" + this.SiBajaarti;
-
-                            if (this.FiltrarBajas.SelectedIndex == 2)
-                            {
-                                ColorearBajas();
-                            }
+                            ColorearBajas();
                         }
                     }
-                    catch (Exception)
-                    {
+                }
+                catch (Exception)
+                {
 
-                        //  throw;
-                    }
-      
+                    //  throw;
+                }
+
             }
         }
 
@@ -1380,11 +1390,10 @@ namespace PELOSCALVO
 
         private void tarifaTipoArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.tarifaTipoArticulos.Items.Count >= 6)
-            {
 
-               LlenarDescuentos();
-            }
+
+            LlenarDescuentos();
+
         }
 
         private void PlusDescTextBox_Leave(object sender, EventArgs e)
@@ -1414,7 +1423,12 @@ namespace PELOSCALVO
 
         private void FiltrarFamiliaArt_Enter(object sender, EventArgs e)
         {
-            RegistLbel.Tag = "stop";
+            this.RegistLbel.Tag = "stop";
+        }
+
+        private void EmpresaArticulos_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            LlenarDescuentos();
         }
     }
 }
