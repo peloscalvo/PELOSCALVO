@@ -592,7 +592,7 @@ namespace PELOSCALVO
                     string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
-                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
+                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDes] DECIMAL ,[Valente] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
 
@@ -695,7 +695,7 @@ namespace PELOSCALVO
 
         private void BtnCrearBackupDb_Click(object sender, EventArgs e)
         {
-            if (this.ExtensionTxt.Text != string.Empty)
+            if (this.ExtensionTxt.Text == string.Empty)
             {
                 MessageBox.Show("Debe elegir una Extension Valida", "CAMPO VACIO", MessageBoxButtons.OK);
                 return;
@@ -714,6 +714,7 @@ namespace PELOSCALVO
                     // string RutaOrigen = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal;
                     string RutaDestino = CarpetaElegir.SelectedPath;
                     string CarpetaCopia = "Copia Seguridad De PeloscalvoApp";
+                    string Archivo = this.BaseDatos2.Text +"_"+  String.Format("{0:dd-MM-yyyy hhmmss}", DateTime.Now);
                     string NonbreBackup = "Backup De" + this.BaseDatos2.Text + String.Format("{0:dd-MM-yyyy hh:mm:ss}", DateTime.Now);
                     //string BACKUP = RutaDestino + "\\" + CarpetaCopia;
 
@@ -738,7 +739,7 @@ namespace PELOSCALVO
                     // string cadenaConexion = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + ";Initial Catalog=" + Cadena2 + ";Integrated Security=True";
                     try
                     {
-                        File.Copy(Ruta, RutaDestino+"\\"+CarpetaCopia+ this.BaseDatos2.Text + "." + this.ExtensionTxt.Text);
+                        File.Copy(Ruta, RutaDestino+"\\"+CarpetaCopia + "\\"+ Archivo + "." + this.ExtensionTxt.Text);
                         MessageBox.Show("Se Creo Base Datos Correctamente" + "\n" + Ruta, "COPIA SEGURIDAD", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -834,7 +835,7 @@ namespace PELOSCALVO
             }
             else
             {
-                consulta = "INSERT INTO [" + this.TablaExistenteTxt.Text + "] SELECT* FROM " + this.TablaCopiarTxt.Text;
+                consulta = "INSERT INTO [" + this.TablaExistenteTxt.Text + "] SELECT* FROM [" + this.TablaCopiarTxt.Text+"]";
             }
 
             string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
@@ -847,7 +848,7 @@ namespace PELOSCALVO
                         NuevaConexion.Open();
                         comando.ExecuteNonQuery();
 
-                        MessageBox.Show("Copiaron Los Datos A Tabla Correctamente" + "\n" + Ruta, "COPIA TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Copiaron Los Datos A Tabla Correctamente" + "\n" + TablaCopiarTxt.Text, "COPIA TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
