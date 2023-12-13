@@ -232,7 +232,6 @@ namespace PELOSCALVO
             this.DatagridCorreosEmpresa.AllowDrop = true;
             this.DatagridCorreosEmpresa.AllowUserToAddRows = false;
             this.DatagridCorreosEmpresa.AllowUserToDeleteRows = false;
-            this.DatagridCorreosEmpresa.AllowUserToOrderColumns = true;
             this.DatagridCorreosEmpresa.AllowUserToResizeRows = false;
             this.DatagridCorreosEmpresa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DatagridCorreosEmpresa.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(70)))));
@@ -265,6 +264,7 @@ namespace PELOSCALVO
             this.DatagridCorreosEmpresa.Size = new System.Drawing.Size(958, 243);
             this.DatagridCorreosEmpresa.TabIndex = 52;
             this.DatagridCorreosEmpresa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagriCorreosEmpresa_CellClick);
+            this.DatagridCorreosEmpresa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridCorreosEmpresa_CellContentClick);
             this.DatagridCorreosEmpresa.SelectionChanged += new System.EventHandler(this.DatagridCorreosEmpresa_SelectionChanged);
             // 
             // dataGridViewImageColumn1

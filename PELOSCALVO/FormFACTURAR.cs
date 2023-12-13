@@ -1218,17 +1218,17 @@ namespace PELOSCALVO
                 this.SerieText.Text = "A";
             }
 
-            LimpiarDatos();
+            FiltrarFactura();
             if (ClsConexionSql.SibaseDatosSql)
             {
-                // ActualizarFacturaSql();
+                ActualizarFacturaSql();
 
             }
             else
             {
                 if (File.Exists(ClasDatos.RutaBaseDatosDb))
                 {
-                    // ActualizarFaturas_DB();
+                     ActualizarFaturas_DB();
                 }
                 else
                 {
@@ -1238,28 +1238,10 @@ namespace PELOSCALVO
                 }
             }
             // this.NombreEmpresaReguistro.Visible = false;
-            // this.PanelArriba.Tag = "SI";
+             this.PanelArriba.Tag = "SI";
             FiltrarFactura();
         }
-        private void LimpiarDatos()
-        {
-            try
-            {
-                this.dsCONFIGURACCION.DtDetallesFactura.Clear();
-                this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
-                this.dsCONFIGURACCION.DtNuevaFactura.Clear();
-                this.dsCONFIGURACCION.Clear();
-                // dtNuevaFacturaBindingSource.Clear();
-                this.dtDetallesFacturaBindingSource.Clear();
-                this.dtDetallesFactura2BindingSource.Clear();
-                //dtNuevaFacturaBindingSource.Clear();
-            }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
         private void ActualizarFaturas_DB()
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
@@ -1267,6 +1249,14 @@ namespace PELOSCALVO
                 if (this.EmpresaReguistro.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
                 {
                     // string consulta = "SELECT * from DtNuevaFactura";
+                   // this.dsCONFIGURACCION.DtDetallesFactura.Clear();
+                   // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
+                   // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
+                    this.dsCONFIGURACCION.Clear();
+                    // dtNuevaFacturaBindingSource.Clear();
+                    this.dtDetallesFacturaBindingSource.Clear();
+                    this.dtDetallesFactura2BindingSource.Clear();
+                    dtNuevaFacturaBindingSource.Clear();
                     string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.EmpresaReguistro.Text + "'";
                     string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
 
@@ -1277,10 +1267,9 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            this.dsCONFIGURACCION.Clear();
                             FiltrarFactura();
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
-                            MessageBox.Show(dtNuevaFacturaBindingSource.Count.ToString());
+                             InfoTxt2.Text =  dtNuevaFacturaBindingSource.Count.ToString();
                             AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
                             AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
                             if (ClasDatos.NombreFactura == "Nota2")
@@ -2409,16 +2398,19 @@ namespace PELOSCALVO
         private void NombreEmpresaReguistro_TextChanged(object sender, EventArgs e)
         {
             FiltrarFactura();
-            LimpiarDatos();
-            if (ClsConexionSql.SibaseDatosSql)
+            if (this.PanelArriba.Tag.ToString() == "SI")
             {
-                ActualizarFacturaSql();
-            }
-            else
-            {
-                ActualizarFaturas_DB();
-            }
 
+
+                if (ClsConexionSql.SibaseDatosSql)
+                {
+                    ActualizarFacturaSql();
+                }
+                else
+                {
+                    ActualizarFaturas_DB();
+                }
+            }
         }
 
         private void EmpresaPrincipal_MouseEnter(object sender, EventArgs e)
@@ -2457,19 +2449,6 @@ namespace PELOSCALVO
         private void AlmacenTxt_Click(object sender, EventArgs e)
         {
             this.AlmacenTxt.DroppedDown = true;
-        }
-
-        private void EmpresaPrincipal_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            LimpiarDatos();
-            if (ClsConexionSql.SibaseDatosSql)
-            {
-                //ActualizarFacturaSql();
-            }
-            else
-            {
-                //ActualizarFaturas_DB();
-            }
         }
 
         private void dtDetallesFacturaDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
