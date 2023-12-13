@@ -1056,13 +1056,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtProvinciasRow FindById(short Id) {
-                return ((DtProvinciasRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 DtProvinciasDataTable cln = ((DtProvinciasDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1092,10 +1085,7 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnId);
                 this.columnEnlace = new global::System.Data.DataColumn("Enlace", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlace);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
                 this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

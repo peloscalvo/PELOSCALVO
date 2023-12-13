@@ -405,7 +405,7 @@ namespace PELOSCALVO
                 string TablaArticulos = this.SerieArticulosTabla.Text;
                 string TablaClientes = this.SerieClientesTabla.Text;
                 string ConsutaArticulos = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'" + TablaArticulos + "') AND type in (N'U'))" +
-                "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] NOT NULL, [Referencia] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
+                "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] primary key NOT NULL, [Referencia] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
                 "[Ganancia] [numeric](19, 3) NULL,[Pvp1] [numeric](19, 3) NULL,[PvpIva] [numeric](19, 3) NULL,[Pvp2Desc] [numeric](19, 3) NULL,[Pvp2] [numeric](19, 3) NULL," +
                 "[CastyDesc] [numeric](19, 3) NULL,[Casty] [numeric](19, 3) NULL,[SuarezDesc] [numeric](19, 3) NULL,[Suarez] [numeric](19, 3) NULL,[BenitoDesc] [numeric](19, 3) NULL," +
                 "[Benito] [numeric](19, 3) NULL,[ValenteDes] [numeric](19, 3) NULL,[Valente] [numeric](19, 3) NULL,[PlusDesc] [numeric](19, 3) NULL,[Plus] [numeric](19, 3) NULL," +
@@ -413,7 +413,7 @@ namespace PELOSCALVO
                 "[BAJA] [bit]DEFAULT 0 NOT NULL, [Fatu] [bit]DEFAULT 0 NOT NULL)";
                 /////consulta  CLIENTES           CLIENTES   /////////////////
                 string ConsultaClientes = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaClientes + "]') AND type in (N'U'))" +
-                    " CREATE TABLE [" + TablaClientes + "]( [IDCLIENTE][int] NOT NULL,[APODOCLIEN] [varchar](255) NULL,[NOMBRECLIE] [archar](255) NULL,[DIRECCIONC] [varchar](255) NULL," +
+                    " CREATE TABLE [" + TablaClientes + "]( [IDCLIENTE][int]primary key NOT NULL,[APODOCLIEN] [varchar](255) NULL,[NOMBRECLIE] [archar](255) NULL,[DIRECCIONC] [varchar](255) NULL," +
                     "[TELEFONOCL] [varchar](30) NULL,[MOVILCLIEN] [varchar](50) NULL,[CORREOCLIE] [varchar](255) NULL,[DNICLIENTE] [varchar](30) NULL,[LOCALIDADC] [varchar](255) NULL," +
                     "[CODIGOPOST] [varchar](50) NULL,[PAISCLIENT] [varchar](255) NULL,[FECHAALTAC] [date] NULL,[CALLECLIEN] [varchar](255) NULL,[NUMEROCALL] [varchar](40) NULL," +
                     "[PROVINCIAC] [varchar](100) NULL,[TARIFATIPO] [varchar](50) NULL,[TIPODNI] [varchar](50) NULL,[TIPOCLIENT] [varchar](50) NULL,[DESCUENTOC] [numeric](19, 3) NULL," +
@@ -439,11 +439,11 @@ namespace PELOSCALVO
                 " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                 string ConsultaTablas = "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
-                        "   CREATE TABLE [DtAlmacenes]( [Id_almacenes]int null,[Almacenes][varchar](60) NULL ,[Enlace_Almacenes] [varchar](250) Not NULL, " +
+                        "   CREATE TABLE [DtAlmacenes]( [Id_almacenes]int not null,[Almacenes][varchar](60) NULL ,[Enlace_Almacenes] [varchar](250) Not NULL, " +
                         " CONSTRAINT F_DtAlmacenes FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                         "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProveedores]') AND type in (N'U'))" +
-                      "   CREATE TABLE [DtProveedores]( [Id_Proveedores]int null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [varchar](250) Not NULL, " +
+                      "   CREATE TABLE [DtProveedores]( [Id_Proveedores]int not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [varchar](250) Not NULL, " +
                       " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                       "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +
@@ -451,7 +451,7 @@ namespace PELOSCALVO
                       " CONSTRAINT F_DtTarifaTipo FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
-               " CREATE TABLE [DtAlmacenes]( [Id][int] NOT NULL,[Almacenes] varchar(80) NULL ,[EmpresaENLACE] [varchar](250)  NULL, " +
+               " CREATE TABLE [DtAlmacenes]( [Id][int] NOT NULL,[Almacenes] varchar(80) NULL ,[EmpresaENLACE] [varchar](250)not  NULL, " +
                      " CONSTRAINT F_DtConfi FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtFamiliaProductos]') AND type in (N'U'))" +
@@ -461,14 +461,14 @@ namespace PELOSCALVO
             " CREATE TABLE [DtPaises]( [Id][int]  NOT NULL,[PaisesPaises] varchar(80) primary key  NOT NULL)" +
               
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProvincias]') AND type in (N'U'))" +
-                 " CREATE TABLE [DtProvincias]( [Id][int] primary key NOT NULL,[ProvinciasProvincias] varchar(80) NULL,[Enlace]varchar(80) NOT NULL ," +
+                 " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[ProvinciasProvincias] varchar(80) NULL,[Enlace]varchar(80) NOT NULL ," +
               " CONSTRAINT F_DtProvincias FOREIGN KEY (Enlace)REFERENCES DtPaises(PaisesPaises) ON UPDATE CASCADE ON DELETE CASCADE )" +
                
               "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
                    " CREATE TABLE [DtObras]( [Id][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
 
                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtInicioMulti]') AND type in (N'U'))" +
-                   " CREATE TABLE [DtInicioMulti]( [Id][int] NOT NULL,[EmpresaInicio] varchar(200) NULL" +
+                   " CREATE TABLE [DtInicioMulti]( [Id][int]primary key NOT NULL,[EmpresaInicio] varchar(200) NULL" +
                    ",[EjercicioInicio] varchar(80) NULL,[SerieInicio] varchar(5) NULL,[NombreArchivoDatos] varchar(80) NULL" +
                    ",[RutaArchivoDatos] varchar(200) NULL,[SerieProvinciaInicio] varchar(80) NULL,[SeriePaisInicio] varchar(80) NULL" +
                    "[ArchivoArticulos] varchar(80) NULL,[TipoExtensionArticulos] varchar(3) NULL,[ArchivoClientes] varchar(80) NULL)" +
@@ -479,11 +479,11 @@ namespace PELOSCALVO
                    ",[Timeof] [int] NULL)"+
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtCorreosCliente]') AND type in (N'U'))" +
-                  " CREATE TABLE [DtCorreosCliente]( [Id][int] NOT NULL,[RazonSocial] varchar(200) NULL,[EmpresaNombre] varchar(200) NULL" +
+                  " CREATE TABLE [DtCorreosCliente]( [Id][int]primary key NOT NULL,[RazonSocial] varchar(200) NULL,[EmpresaNombre] varchar(200) NULL" +
                  ",[Direcion] varchar(150) NULL,[CorreoEletronico_cli] varchar(200) NULL)"+
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtUsuario]') AND type in (N'U'))" +
-           " CREATE TABLE [DtUsuario]( [Id][int] NOT NULL,[Usuario] varchar(200) NULL,[Nombre] varchar(200) NULL" +
+           " CREATE TABLE [DtUsuario]( [Id][int]primary key NOT NULL,[Usuario] varchar(200) NULL,[Nombre] varchar(200) NULL" +
           ",[Direcion] varchar(150) NULL,[Cargo] varchar(200) NULL,[Varios] varchar(150) NULL,[CorreoEletronico] varchar(200) NULL)";
                 string cadenaConexion = "Data Source=" + this.ServidorCrear.Text + ";Initial Catalog=" + NombreBaseDatos + ";Integrated Security=True";
                 try

@@ -249,7 +249,7 @@ namespace PELOSCALVO
             this.NombreEmpresa.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[1].FormattedValue.ToString();
             this.CorreoEletronico.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[2].FormattedValue.ToString();
             this.Usuario.Text = this.DatagridCorreosEmpresa.Rows[II].Cells[3].FormattedValue.ToString();
-            if (string.IsNullOrEmpty(this.DatagridCorreosEmpresa.Rows[II].Cells[4].FormattedValue.ToString()))
+            if (!string.IsNullOrEmpty(this.DatagridCorreosEmpresa.Rows[II].Cells[4].FormattedValue.ToString()))
             {
                 ClasCodificarPass Decodificar = new ClasCodificarPass();
                 string Pass = Decodificar.Dedificar(this.DatagridCorreosEmpresa.Rows[II].Cells[4].FormattedValue.ToString());
@@ -752,7 +752,7 @@ namespace PELOSCALVO
 
         private void DatagriCorreosEmpresa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex > -1)
             {
                 try
                 {
@@ -770,7 +770,7 @@ namespace PELOSCALVO
 
         private void DataGridCorreoCliente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex > -1)
             {
                 try
                 {

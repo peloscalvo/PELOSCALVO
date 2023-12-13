@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comun;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -178,10 +179,12 @@ namespace PELOSCALVO
         }
         private void LimpiarCamposEmpresa()
         {
+            EmpresaTxt.Text = string.Empty;
             this.UsuarioCorreo.Text = string.Empty;
             this.ContraseñaCorreo.Text = string.Empty;
             this.PuertoCorreo.Text = string.Empty;
             this.SmtpCorreo.Text = string.Empty;
+            TiempoEspera.Text = string.Empty;
         }
         private void CorreoEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -190,30 +193,36 @@ namespace PELOSCALVO
                 LimpiarCamposEmpresa();
                 int II = this.CorreoEmpresa.SelectedIndex;
                 var fila = FormMenuPrincipal.menu2principal.dsCorreos;
-                if (fila.Tables["Dtcorreos"].Rows[II]["smtp"].ToString() != string.Empty)
+       
+                if (!string.IsNullOrEmpty(fila.Tables["DtCorreos"].Rows[II]["NombreEmpresa"].ToString()))
                 {
-                    this.SmtpCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["CorreoEletronico"].ToString();
+                    this.EmpresaTxt.Text = fila.Tables["DtCorreos"].Rows[II]["NombreEmpresa"].ToString();
                 }
-                if (fila.Tables["Dtcorreos"].Rows[II]["smtp"].ToString() != string.Empty)
-                {
-                    this.CorreoEmpresa.Text = fila.Tables["DtCorreos"].Rows[II]["CorreoEletronico"].ToString();
-                }
-                if (fila.Tables["Dtcorreos"].Rows[II]["Usuario"].ToString() != string.Empty)
+
+                if (!string.IsNullOrEmpty(fila.Tables["DtCorreos"].Rows[II]["Usuario"].ToString()))
                 {
                     this.UsuarioCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Usuario"].ToString();
                 }
-                if (fila.Tables["Dtcorreos"].Rows[II]["Contraseña"].ToString() != string.Empty)
+          
+                if (!string.IsNullOrEmpty(fila.Tables["DtCorreos"].Rows[II]["Contraseña"].ToString()))
                 {
-                    this.ContraseñaCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Contraseña"].ToString();
+                    ClasCodificarPass Decodificar = new ClasCodificarPass();
+                    string Pass = Decodificar.Dedificar(fila.Tables["DtCorreos"].Rows[II]["Contraseña"].ToString());
+                    this.ContraseñaCorreo.Text = Pass;
                 }
-                if (fila.Tables["Dtcorreos"].Rows[II]["Puerto"].ToString() != string.Empty)
+                if (!string.IsNullOrEmpty(fila.Tables["DtCorreos"].Rows[II]["smtp"].ToString()))
+                {
+                    this.SmtpCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["smtp"].ToString();
+                }
+                if (!string.IsNullOrEmpty(fila.Tables["DtCorreos"].Rows[II]["Puerto"].ToString()))
                 {
                     this.PuertoCorreo.Text = fila.Tables["DtCorreos"].Rows[II]["Puerto"].ToString();
                 }
-                if (fila.Tables["Dtcorreos"].Rows[II]["Timeof"].ToString() != string.Empty)
+                if (!string.IsNullOrEmpty(fila.Tables["DtCorreos"].Rows[II]["Timeof"].ToString()))
                 {
                     this.TiempoEspera.Text = fila.Tables["DtCorreos"].Rows[II]["Timeof"].ToString();
                 }
+  
             }
         }
 

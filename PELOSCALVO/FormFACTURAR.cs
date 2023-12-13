@@ -2471,6 +2471,11 @@ namespace PELOSCALVO
                 //ActualizarFaturas_DB();
             }
         }
+
+        private void dtDetallesFacturaDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

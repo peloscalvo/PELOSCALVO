@@ -66,6 +66,8 @@ namespace PELOSCALVO
             this.label11 = new System.Windows.Forms.Label();
             this.BtnExaminarCorreo = new System.Windows.Forms.Button();
             this.TabConfiCorreo = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.EmpresaTxt = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtCorreoBindingSource)).BeginInit();
@@ -145,6 +147,8 @@ namespace PELOSCALVO
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.EmpresaTxt);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.TiempoEspera);
             this.groupBox1.Controls.Add(this.CorreoEmpresa);
@@ -161,14 +165,14 @@ namespace PELOSCALVO
             this.groupBox1.Controls.Add(this.UsuarioCorreo);
             this.groupBox1.Location = new System.Drawing.Point(46, 171);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(684, 154);
+            this.groupBox1.Size = new System.Drawing.Size(684, 212);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(623, 102);
+            this.label10.Location = new System.Drawing.Point(623, 142);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(43, 13);
             this.label10.TabIndex = 24;
@@ -176,7 +180,7 @@ namespace PELOSCALVO
             // 
             // TiempoEspera
             // 
-            this.TiempoEspera.Location = new System.Drawing.Point(591, 118);
+            this.TiempoEspera.Location = new System.Drawing.Point(591, 158);
             this.TiempoEspera.Name = "TiempoEspera";
             this.TiempoEspera.Size = new System.Drawing.Size(77, 20);
             this.TiempoEspera.TabIndex = 23;
@@ -204,7 +208,7 @@ namespace PELOSCALVO
             // 
             // BtnVerPass
             // 
-            this.BtnVerPass.Location = new System.Drawing.Point(510, 80);
+            this.BtnVerPass.Location = new System.Drawing.Point(510, 120);
             this.BtnVerPass.Name = "BtnVerPass";
             this.BtnVerPass.Size = new System.Drawing.Size(75, 23);
             this.BtnVerPass.TabIndex = 18;
@@ -216,7 +220,7 @@ namespace PELOSCALVO
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(249, 121);
+            this.label8.Location = new System.Drawing.Point(249, 161);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 17;
@@ -224,7 +228,7 @@ namespace PELOSCALVO
             // 
             // SmtpCorreo
             // 
-            this.SmtpCorreo.Location = new System.Drawing.Point(286, 118);
+            this.SmtpCorreo.Location = new System.Drawing.Point(286, 158);
             this.SmtpCorreo.Name = "SmtpCorreo";
             this.SmtpCorreo.Size = new System.Drawing.Size(299, 20);
             this.SmtpCorreo.TabIndex = 16;
@@ -235,7 +239,7 @@ namespace PELOSCALVO
             this.ChekSSL.AutoSize = true;
             this.ChekSSL.Checked = true;
             this.ChekSSL.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ChekSSL.Location = new System.Drawing.Point(510, 52);
+            this.ChekSSL.Location = new System.Drawing.Point(510, 92);
             this.ChekSSL.Name = "ChekSSL";
             this.ChekSSL.Size = new System.Drawing.Size(46, 17);
             this.ChekSSL.TabIndex = 15;
@@ -245,7 +249,7 @@ namespace PELOSCALVO
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 121);
+            this.label7.Location = new System.Drawing.Point(27, 161);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 13);
             this.label7.TabIndex = 14;
@@ -254,7 +258,7 @@ namespace PELOSCALVO
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 85);
+            this.label5.Location = new System.Drawing.Point(4, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 12;
@@ -262,7 +266,7 @@ namespace PELOSCALVO
             // 
             // ContraseñaCorreo
             // 
-            this.ContraseñaCorreo.Location = new System.Drawing.Point(74, 82);
+            this.ContraseñaCorreo.Location = new System.Drawing.Point(74, 122);
             this.ContraseñaCorreo.Name = "ContraseñaCorreo";
             this.ContraseñaCorreo.PasswordChar = '*';
             this.ContraseñaCorreo.Size = new System.Drawing.Size(420, 20);
@@ -270,7 +274,7 @@ namespace PELOSCALVO
             // 
             // PuertoCorreo
             // 
-            this.PuertoCorreo.Location = new System.Drawing.Point(74, 118);
+            this.PuertoCorreo.Location = new System.Drawing.Point(74, 158);
             this.PuertoCorreo.Name = "PuertoCorreo";
             this.PuertoCorreo.Size = new System.Drawing.Size(121, 20);
             this.PuertoCorreo.TabIndex = 13;
@@ -281,7 +285,7 @@ namespace PELOSCALVO
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 56);
+            this.label6.Location = new System.Drawing.Point(22, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 10;
@@ -289,7 +293,7 @@ namespace PELOSCALVO
             // 
             // UsuarioCorreo
             // 
-            this.UsuarioCorreo.Location = new System.Drawing.Point(74, 53);
+            this.UsuarioCorreo.Location = new System.Drawing.Point(74, 93);
             this.UsuarioCorreo.Name = "UsuarioCorreo";
             this.UsuarioCorreo.Size = new System.Drawing.Size(420, 20);
             this.UsuarioCorreo.TabIndex = 9;
@@ -420,6 +424,22 @@ namespace PELOSCALVO
             this.TabConfiCorreo.Text = "Configuracion";
             this.TabConfiCorreo.UseVisualStyleBackColor = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 60);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 13);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Empresa:";
+            // 
+            // EmpresaTxt
+            // 
+            this.EmpresaTxt.Location = new System.Drawing.Point(74, 57);
+            this.EmpresaTxt.Name = "EmpresaTxt";
+            this.EmpresaTxt.Size = new System.Drawing.Size(420, 20);
+            this.EmpresaTxt.TabIndex = 25;
+            // 
             // FormEnviarCorreos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,6 +501,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnLimpiarAdjuntos;
         private System.Windows.Forms.ListBox ListaDeAdjuntos;
         private System.Windows.Forms.Label InfoProcesoText;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox EmpresaTxt;
     }
 }
 
