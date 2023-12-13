@@ -854,12 +854,12 @@ namespace PELOSCALVO
                     int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
                     if (this.cobradaFacturaCheckBox.Checked == true)
                     {
-                        this.dsCONFIGURACCION.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
                     }
                     else
                     {
                         this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                        this.dsCONFIGURACCION.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
                     }
 
                     if (ClsConexionSql.SibaseDatosSql)
@@ -1058,14 +1058,14 @@ namespace PELOSCALVO
                     {
 
                         SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
-                        AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
+                        AdactaPelos.Fill(this.dsFacturas.DtNuevaFactura);
                         AdactaPelos = new SqlDataAdapter(consultaDetalle, ClsConexionSql.CadenaConexion);
-                        AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
+                        AdactaPelos.Fill(this.dsFacturas.DtDetallesFactura);
 
                         if (ClasDatos.NombreFactura == "Nota2")
                         {
                             AdactaPelos = new SqlDataAdapter(consultaDetalle2, ClsConexionSql.CadenaConexion);
-                            AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura2);
+                            AdactaPelos.Fill(this.dsFacturas.DtDetallesFactura2);
                         }
                         AdactaPelos.Dispose();
                     }
@@ -1263,14 +1263,14 @@ namespace PELOSCALVO
                         if (NuevaConexion.SiConexionDb)
                         {
                             FiltrarFactura();
-                            AdactaPelos.Fill(this.dsCONFIGURACCION.DtNuevaFactura);
+                            AdactaPelos.Fill(this.dsFacturas.DtNuevaFactura);
                              InfoTxt2.Text =  dtNuevaFacturaBindingSource.Count.ToString();
                             AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
-                            AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura);
+                            AdactaPelos.Fill(this.dsFacturas.DtDetallesFactura);
                             if (ClasDatos.NombreFactura == "Nota2")
                             {
                                 AdactaPelos = new OleDbDataAdapter(consultaDetalle2, ClsConexionDb.CadenaConexion);
-                                AdactaPelos.Fill(this.dsCONFIGURACCION.DtDetallesFactura2);
+                                AdactaPelos.Fill(this.dsFacturas.DtDetallesFactura2);
                             }
 
                             AdactaPelos.Dispose();
