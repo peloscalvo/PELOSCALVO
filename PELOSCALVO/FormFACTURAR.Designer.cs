@@ -164,7 +164,6 @@ namespace PELOSCALVO
             this.TipoNota = new System.Windows.Forms.Label();
             this.panelTotales = new System.Windows.Forms.Panel();
             this.TotalFactura2 = new System.Windows.Forms.Label();
-            this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.InfoTxt2 = new System.Windows.Forms.Label();
             this.numeroFacturaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -190,6 +189,8 @@ namespace PELOSCALVO
             this.descuentoDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnlaceDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dsFacturas = new PELOSCALVO.DsFacturas();
+            this.dsClientes = new PELOSCALVO.DsClientes();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -262,6 +263,8 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).BeginInit();
             this.panelTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsFacturas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // empresaENLACELabel
@@ -560,7 +563,7 @@ namespace PELOSCALVO
             // dtNuevaFacturaBindingSource
             // 
             this.dtNuevaFacturaBindingSource.DataMember = "DtNuevaFactura";
-            this.dtNuevaFacturaBindingSource.DataSource = this.dsCONFIGURACCION;
+            this.dtNuevaFacturaBindingSource.DataSource = this.dsFacturas;
             // 
             // dtConfiguracionPrincipalDtConfiBindingSource
             // 
@@ -1671,13 +1674,10 @@ namespace PELOSCALVO
             this.TotalFactura2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.TotalFactura2.Visible = false;
             // 
-            // dtArticulosTableAdapter
-            // 
-            this.dtArticulosTableAdapter.ClearBeforeFill = true;
-            // 
             // dtClientesBindingSource
             // 
             this.dtClientesBindingSource.DataMember = "DtClientes";
+            this.dtClientesBindingSource.DataSource = this.dsClientes;
             // 
             // InfoTxt2
             // 
@@ -1917,6 +1917,16 @@ namespace PELOSCALVO
             this.EnlaceDetalle.Name = "EnlaceDetalle";
             this.EnlaceDetalle.ReadOnly = true;
             // 
+            // dsFacturas
+            // 
+            this.dsFacturas.DataSetName = "DsFacturas";
+            this.dsFacturas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dsClientes
+            // 
+            this.dsClientes.DataSetName = "DsClientes";
+            this.dsClientes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1989,6 +1999,8 @@ namespace PELOSCALVO
             this.panelTotales.ResumeLayout(false);
             this.panelTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsFacturas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2050,7 +2062,6 @@ namespace PELOSCALVO
         public System.Windows.Forms.TextBox codigoPostalTextBox;
         private DsMultidatos dsMultidatos;
         public System.Windows.Forms.PictureBox imagenEmpresaPicture2;
-        private ArticulosTableAdapters.DtArticulosTableAdapter dtArticulosTableAdapter;
         public System.Windows.Forms.BindingSource dtArticulosBindingSource;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private System.Windows.Forms.BindingSource dtPaisesBindingSource;
@@ -2102,5 +2113,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoDetalleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnlaceDetalle;
+        private DsFacturas dsFacturas;
+        private DsClientes dsClientes;
     }
 }

@@ -179,6 +179,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DsFacturas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsFacturas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DsMulti2.cs">
       <DependentUpon>DsMulti2.xsd</DependentUpon>
     </Compile>
@@ -504,6 +509,17 @@
     </None>
     <None Include="DsConfiguracion.xss">
       <DependentUpon>DsConfiguracion.xsd</DependentUpon>
+    </None>
+    <None Include="DsFacturas.xsc">
+      <DependentUpon>DsFacturas.xsd</DependentUpon>
+    </None>
+    <None Include="DsFacturas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsFacturas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DsFacturas.xss">
+      <DependentUpon>DsFacturas.xsd</DependentUpon>
     </None>
     <None Include="DsMulti2.xsc">
       <DependentUpon>DsMulti2.xsd</DependentUpon>

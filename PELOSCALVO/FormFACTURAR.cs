@@ -1248,14 +1248,9 @@ namespace PELOSCALVO
             {
                 if (this.EmpresaReguistro.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
                 {
-                    // string consulta = "SELECT * from DtNuevaFactura";
-                   // this.dsCONFIGURACCION.DtDetallesFactura.Clear();
-                   // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
-                   // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
-                    this.dsCONFIGURACCION.Clear();
-                    // dtNuevaFacturaBindingSource.Clear();
                     this.dtDetallesFacturaBindingSource.Clear();
                     this.dtDetallesFactura2BindingSource.Clear();
+                    this.dsFacturas.Clear();
                     dtNuevaFacturaBindingSource.Clear();
                     string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.EmpresaReguistro.Text + "'";
                     string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
