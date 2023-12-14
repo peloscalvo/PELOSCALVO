@@ -47,11 +47,9 @@ namespace PELOSCALVO
             this.panel1 = new System.Windows.Forms.Panel();
             this.PictureServidor = new System.Windows.Forms.PictureBox();
             this.PictureArchivo = new System.Windows.Forms.PictureBox();
-            this.articulos = new PELOSCALVO.Articulos();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.ErrorVer = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TabArchivos = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.BtnLeerSql = new System.Windows.Forms.Button();
@@ -107,11 +105,9 @@ namespace PELOSCALVO
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureServidor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureArchivo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             this.TabArchivos.SuspendLayout();
             this.panel2.SuspendLayout();
             this.TabServidor.SuspendLayout();
@@ -256,7 +252,7 @@ namespace PELOSCALVO
             this.panel1.Controls.Add(this.CheckActivarDb);
             this.panel1.Controls.Add(this.PictureArchivo);
             this.panel1.Controls.Add(this.CheckAtivarServidor);
-            this.panel1.Location = new System.Drawing.Point(139, 356);
+            this.panel1.Location = new System.Drawing.Point(29, 356);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(149, 85);
             this.panel1.TabIndex = 66;
@@ -284,11 +280,6 @@ namespace PELOSCALVO
             this.PictureArchivo.TabIndex = 84;
             this.PictureArchivo.TabStop = false;
             // 
-            // articulos
-            // 
-            this.articulos.DataSetName = "Articulos";
-            this.articulos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dtInicioMultiBindingSource
             // 
             this.dtInicioMultiBindingSource.DataMember = "DtInicioMulti";
@@ -303,10 +294,6 @@ namespace PELOSCALVO
             // 
             this.ErrorVer.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.ErrorVer.ContainerControl = this;
-            // 
-            // dtConfiguracionPrincipalBindingSource
-            // 
-            this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
             // 
             // TabArchivos
             // 
@@ -437,6 +424,7 @@ namespace PELOSCALVO
             // 
             // NombreArchivoDatos
             // 
+            this.NombreArchivoDatos.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "NombreArchivoDatos", true));
             this.NombreArchivoDatos.Location = new System.Drawing.Point(150, 19);
             this.NombreArchivoDatos.Name = "NombreArchivoDatos";
             this.NombreArchivoDatos.ReadOnly = true;
@@ -858,11 +846,9 @@ namespace PELOSCALVO
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureServidor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureArchivo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorVer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             this.TabArchivos.ResumeLayout(false);
             this.TabArchivos.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -881,13 +867,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.RadioButton CheckAtivarServidor;
         private System.Windows.Forms.RadioButton CheckActivarDb;
         private System.Windows.Forms.Panel panel1;
-        public Articulos articulos;
         private System.Windows.Forms.BindingSource dtServidorBindingSource;
         private DsServidor dsServidor;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private DsMultidatos dsMultidatos;
         private System.Windows.Forms.ErrorProvider ErrorVer;
-        public System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
         private System.Windows.Forms.PictureBox PictureServidor;
         private System.Windows.Forms.PictureBox PictureArchivo;
         private System.Windows.Forms.TabControl TabArchivoSql;

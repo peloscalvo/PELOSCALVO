@@ -21,7 +21,7 @@ namespace PELOSCALVO
                 if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
-
+                    this.dtConfiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
                 }
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
@@ -49,8 +49,8 @@ namespace PELOSCALVO
             }
             else
             {
-                ArchivoArticuloTxt.DataSource = ObtenerTablasDb();
-                ArchivoClienteTxt.DataSource = ObtenerTablasDb();
+                this.ArchivoArticuloTxt.DataSource = ObtenerTablasDb();
+                this.ArchivoClienteTxt.DataSource = ObtenerTablasDb();
             }
 
         }
@@ -207,7 +207,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Inicio.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Inicio.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaInicio", string.IsNullOrEmpty(this.EmpresaInicio.Text) ? (object)DBNull.Value : this.EmpresaInicio.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioInicio", string.IsNullOrEmpty(this.EmpresaInicio.Text) ? (object)DBNull.Value : this.EmpresaInicio.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioInicio", string.IsNullOrEmpty(this.EjercicioInicio.Text) ? (object)DBNull.Value : this.EjercicioInicio.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieInicio", string.IsNullOrEmpty(this.SerieInicio.Text) ? (object)DBNull.Value : this.SerieInicio.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreArchivoDatos", string.IsNullOrEmpty(ClasDatos.RutaBaseDatosDb) ? (object)DBNull.Value : ClasDatos.RutaBaseDatosDb);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@RutaArchivoDatos", string.IsNullOrEmpty(Ruta) ? (object)DBNull.Value : Ruta);
@@ -273,7 +273,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Inicio.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Inicio.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaInicio", string.IsNullOrEmpty(this.EmpresaInicio.Text) ? (object)DBNull.Value : this.EmpresaInicio.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioInicio", string.IsNullOrEmpty(this.EmpresaInicio.Text) ? (object)DBNull.Value : this.EmpresaInicio.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioInicio", string.IsNullOrEmpty(this.EjercicioInicio.Text) ? (object)DBNull.Value : this.EjercicioInicio.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieInicio", string.IsNullOrEmpty(this.SerieInicio.Text) ? (object)DBNull.Value : this.SerieInicio.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreArchivoDatos", string.IsNullOrEmpty(ClasDatos.RutaBaseDatosDb) ? (object)DBNull.Value : ClasDatos.RutaBaseDatosDb);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@RutaArchivoDatos", string.IsNullOrEmpty(Ruta) ? (object)DBNull.Value : Ruta);
@@ -308,13 +308,13 @@ namespace PELOSCALVO
         private void ModificarOjetosInicio()
         {
             this.PanelDatosInicio.Enabled = true;
-            PanelBotones_Inicio.Enabled = false;
+            this.PanelBotones_Inicio.Enabled = false;
             this.BtnGuardarInico.Enabled = true;
             this.BtnCancelarInicio.Enabled = true;
         }
         private void RestaurarOjetosInico()
         {
-            PanelBotones_Inicio.Enabled = false;
+            this.PanelBotones_Inicio.Enabled = false;
             this.PanelDatosInicio.Enabled = true;
             this.BtnGuardarInico.Enabled = false;
             this.BtnCancelarInicio.Enabled = false;
@@ -353,25 +353,20 @@ namespace PELOSCALVO
             if (EspacioDiscosInicio(Directory.GetCurrentDirectory(), 25))
             {
 
-                    if (MessageBox.Show(" ¿Aceptar Guardar Datos De Inicio ? ", " GUARDAR DATOS INICIO ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(" ¿Aceptar Guardar Datos De Inicio ? ", " GUARDAR DATOS INICIO ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    if (File.Exists(ClasDatos.RutaMultidatos))
                     {
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            GuardarInicioSql();
-                        }
-                        else
-                        {
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                            {
-                                GuardarInicioDb();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.PanelBotones_Inicio.Enabled = false;
-                            }
-                        }
+                      FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
                     }
+                    else
+                    {
+                        MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.PanelBotones_Inicio.Enabled = false;
+                    }
+
+                }
 
             }
         }

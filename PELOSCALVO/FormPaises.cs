@@ -7,8 +7,10 @@ namespace PELOSCALVO
 {
     public partial class FormPaises : Form
     {
+         public static FormPaises MenuB;
         public FormPaises()
         {
+            FormPaises.MenuB = this;
             InitializeComponent();
         }
         private void FormPaises_Load(object sender, EventArgs e)
@@ -419,6 +421,13 @@ namespace PELOSCALVO
             }
         }
 
-
+        private void BtnBuscarPais_Click(object sender, EventArgs e)
+        {
+            FormBuscar frm = new FormBuscar();
+            frm.ShowDialog();
+            frm.BringToFront();
+            ClasDatos.QUEform = "Paises";
+            frm.CargarDatos(DtPaisBindinsource," PaisesPaises");
+        }
     }
 }

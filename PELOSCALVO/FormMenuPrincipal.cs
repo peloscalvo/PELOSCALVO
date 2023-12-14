@@ -109,6 +109,17 @@ namespace PELOSCALVO
 
                     }
 
+                    if (File.Exists(ClasDatos.RutaMultidatos))
+                    {
+                        this.dsMultidatos.ReadXml(ClasDatos.RutaMultidatos);
+
+
+                    }
+                    else
+                    {
+                        CrearArchivosXml(ClasDatos.RutaMultidatos);
+
+                    }
 
                 }
                 catch (Exception ex)

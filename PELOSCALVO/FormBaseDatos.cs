@@ -19,6 +19,73 @@ namespace PELOSCALVO
         {
             InitializeComponent();
         }
+        private void FormBaseDatos_Load(object sender, EventArgs e)
+        {
+            if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+            {
+
+               // this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
+            }
+
+            if (FormMenuPrincipal.menu2principal.dsServidor != null)
+            {
+                this.dtServidorBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsServidor;
+            }
+            if (ClsConexionSql.SibaseDatosSql == false)
+            {
+                if (!File.Exists(ClasDatos.RutaBaseDatosDb))
+                {
+                    MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaBaseDatosDb, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+            }
+
+            if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
+            {
+
+            }
+
+            try
+            {
+                if (FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Count < 3)
+                {
+
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(".");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(Local)");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(localdb)\\MSSQLLocalDB");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(localdb)\\SQLVICTOR");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(string.Format(@"{0}\SQLEXPRESS", Environment.MachineName));
+                    FormMenuPrincipal.menu2principal.dsServidor.WriteXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR");
+            }
+            //this.Servidor.Items.Add(string.Format(@"{0}\SQLEXPRESS", SL);
+
+            Validate();
+            this.Autenticacion.Text = "Autenticacion De Windows";
+
+            CanbiarOjetos();
+            this.Servidor.Tag = "SEGUIR";
+            this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
+            this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
+            this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
+        }
+        private bool EspacioDiscosBase(string nombreDisco, int Espacio)
+        {
+
+            bool ok = true;
+            DriveInfo discoBuscar = new DriveInfo(nombreDisco);
+            if (discoBuscar.AvailableFreeSpace / 1024 / 1024 < Espacio)
+            {
+                MessageBox.Show("Libere Espacio en disco", "Espacio Insuficiente en :" + discoBuscar.Name, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ok = false;
+            }
+            return ok;
+        }
         public void Listar_InstantciasSql()
         {
 
@@ -166,11 +233,15 @@ namespace PELOSCALVO
                 ok = false;
                 this.ErrorVer.SetError(this.SerieClientesText2, " (( Elija Una Opcion ..))");
             }
-            if (this.TipoExtension_b.Text == string.Empty)
+            if (this.NombreArchivoDatos.ToString() == "Datos App Peloscalvo")
             {
-                ok = false;
-                this.ErrorVer.SetError(this.TipoExtension_b, " (( Elija Una Opcion ..))");
+                if (this.TipoExtension_b.Text == string.Empty)
+                {
+                    ok = false;
+                    this.ErrorVer.SetError(this.TipoExtension_b, " (( Elija Una Opcion ..))");
+                }
             }
+
             return ok;
 
         }
@@ -232,7 +303,20 @@ namespace PELOSCALVO
             this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
             this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
         }
-
+        private void GuardarMultidatos()
+        {
+            if (EspacioDiscosBase(ClasDatos.RutaMultidatos,5))
+            {
+                if (File.Exists(ClasDatos.RutaMultidatos))
+                {
+                    FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
+                }
+                else
+                {
+                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
         private void BuscarEmpresas()
         {
             int TTempresas = FormMenuPrincipal.menu2principal.dtConfiguracionPrincipalBindingSource.Count - 1;
@@ -267,7 +351,7 @@ namespace PELOSCALVO
             string ConsultaFamilia = "SELECT * from [DtFamiliaProductos]";
             string ConsultaCorreoCli = "SELECT * from [DtCorreosCliente]";
             string ConsultaCorreoEmpresa = "SELECT * from [DtCorreos]";
-            string ConsutaInicio = "SELECT * from [DtInicioMulti]";
+           // string ConsutaInicio = "SELECT * from [DtInicioMulti]";
 
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             OleDbDataAdapter AdactaPelos = new OleDbDataAdapter(consulta, ClsConexionDb.CadenaConexion);
@@ -294,8 +378,6 @@ namespace PELOSCALVO
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos);
                     AdactaPelos = new OleDbDataAdapter(ConsultaCorreoCli, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreosCliente);
-                    AdactaPelos = new OleDbDataAdapter(ConsutaInicio, ClsConexionDb.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti);
                     AdactaPelos = new OleDbDataAdapter(ConsultaCorreoEmpresa, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreos);
                     AdactaPelos.Dispose();
@@ -331,7 +413,7 @@ namespace PELOSCALVO
             string ConsultaFamilia = "SELECT * from [DtFamiliaProductos]";
             string ConsultaCorreoCli = "SELECT * from [DtCorreosCliente]";
             string ConsultaCorreoEmpresa = "SELECT * from [DtCorreos]";
-            string ConsutaInicio = "SELECT * from [DtInicioMulti]";
+           // string ConsutaInicio = "SELECT * from [DtInicioMulti]";
 
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
@@ -358,8 +440,6 @@ namespace PELOSCALVO
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtObras);
                     AdactaPelos = new SqlDataAdapter(ConsultaCorreoCli, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreosCliente);
-                    AdactaPelos = new SqlDataAdapter(ConsutaInicio, ClsConexionDb.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti);
                     AdactaPelos = new SqlDataAdapter(ConsultaCorreoEmpresa, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreos);
                     AdactaPelos.Dispose();
@@ -586,88 +666,7 @@ namespace PELOSCALVO
             // ClsConexionDb NuevaConexion = new ClsConexionDb("");
 
         }
-        private void FormBaseDatos_Load(object sender, EventArgs e)
-        {
-            if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
-            {
-
-                this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-            }
-
-            if (FormMenuPrincipal.menu2principal.dsServidor != null)
-            {
-                this.dtServidorBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsServidor;
-            }
-            if (ClsConexionSql.SibaseDatosSql == false)
-            {
-                if (!File.Exists(ClasDatos.RutaBaseDatosDb))
-                {
-                    MessageBox.Show("Falta Archivo " + "\n" + ClasDatos.RutaBaseDatosDb, "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-
-            }
-
-            if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
-            {
-
-            }
-            if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
-            {
-                this.SerieArticulosText.Text = FormMenuPrincipal.menu2principal.InfoArticulo.Text;
-            }
-            if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
-            {
-                this.SerieClientesText2.Text = FormMenuPrincipal.menu2principal.InfoClientes.Text;
-            }
-            if (FormMenuPrincipal.menu2principal.InfoExtension.Text != string.Empty)
-            {
-                if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "SERVIDOR EN RED")
-                {
-                    this.TipoExtension_b.Text = string.Empty;
-                }
-                else
-                {
-                    this.TipoExtension_b.Text = FormMenuPrincipal.menu2principal.InfoExtension.Text;
-
-                }
-
-            }
-            try
-            {
-                if (this.Servidor.Items.Count < 4)
-                {
-                    for (int i = 0; i < 7; i++)
-                    {
-                        this.dtServidorBindingSource.AddNew();
-
-                        // this.dsServidor.Tables["DtServidor"].Rows[0]["Servidores"] = ".";
-                    }
-                    Validate();
-                    FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[0]["Servidores"] = ".";
-                    FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[1]["Servidores"] = "(Local)";
-                    FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[2]["Servidores"] = "(localdb)\\MSSQLLocalDB";
-                    FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[3]["Servidores"] = "(localdb)\\SQLVICTOR";
-                    FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[4]["Servidores"] = @".\SQLEXPRESS";
-                    FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[5]["Servidores"] = string.Format(@"{0}\SQLEXPRESS", Environment.MachineName);
-                    FormMenuPrincipal.menu2principal.dsServidor.WriteXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "ERROR");
-            }
-            //this.Servidor.Items.Add(string.Format(@"{0}\SQLEXPRESS", SL);
-
-            Validate();
-            this.Autenticacion.Text = "Autenticacion De Windows";
-
-            CanbiarOjetos();
-            this.Servidor.Tag = "SEGUIR";
-            this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
-            this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
-            this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
-        }
+ 
 
         private void ActualizarClientes_DB()
         {
@@ -1144,7 +1143,7 @@ namespace PELOSCALVO
             {
                 if (MessageBox.Show("Desea Conectar Archivo Local" + "\n" + "Dbf - Mdb - Accdb  ", "GUARDAR", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
-                    if (this.TabArchivos.Tag.ToString() == "SI")
+                    if (this.NombreArchivoDatos.ToString() == "Datos App Peloscalvo")
                     {
                         ClasDatos.RutaBaseDatosDb = this.NombreArchivoDatos.Text;
                     }
@@ -1172,7 +1171,7 @@ namespace PELOSCALVO
                     {
                         MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO EXISTE", MessageBoxButtons.OK);
                     }
-
+                    GuardarMultidatos();
                     // ClasCorreos.ListaCorreosCliente.lista.Add();               
                     FormMenuPrincipal.menu2principal.InfoArticulo.Text = this.SerieArticulosText.Text;
                     FormMenuPrincipal.menu2principal.InfoClientes.Text = this.SerieClientesText2.Text;
@@ -1303,6 +1302,7 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message.ToString(), "ERROR CONFIGURACION", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    GuardarMultidatos();
                     Contador();
                     this.Servidor.Tag = "SEGUIR";
                 }
@@ -1334,7 +1334,7 @@ namespace PELOSCALVO
                         FormMenuPrincipal.menu2principal.InfoCarpeta.Text = Path.GetDirectoryName(BuscarArchivo.FileName.ToString());
                         FormMenuPrincipal.menu2principal.InfoBaseDatos.Text = Path.GetFileName(BuscarArchivo.FileName.ToString());
                         FormMenuPrincipal.menu2principal.InfoCarpeta.Text = Path.GetDirectoryName(BuscarArchivo.FileName.ToString());
-                        this.TabArchivos.Tag = "SI";
+                        //this.TabArchivos.Tag = "SI";
                         this.NombreArchivoDatos.BackColor = Color.Bisque;
                     }
                     else

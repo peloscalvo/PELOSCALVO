@@ -177,6 +177,7 @@ namespace PELOSCALVO
             this.BtnBuscarPais.Text = "Buscar";
             this.BtnBuscarPais.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnBuscarPais.UseVisualStyleBackColor = false;
+            this.BtnBuscarPais.Click += new System.EventHandler(this.BtnBuscarPais_Click);
             // 
             // BtnNuevoPais
             // 
@@ -388,9 +389,9 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnModificarPais;
         private System.Windows.Forms.TextBox NombrePais;
         public System.Windows.Forms.Button BtnGuardarPais;
-        private System.Windows.Forms.DataGridView dataGridPais;
         private DsMulti2 dsMulti2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn PaisesPaises;
+        public System.Windows.Forms.DataGridView dataGridPais;
     }
 }
