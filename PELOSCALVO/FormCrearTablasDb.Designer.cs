@@ -37,6 +37,8 @@ namespace PELOSCALVO
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label label7;
+            System.Windows.Forms.Label label8;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCrearTablasDb));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -70,6 +72,11 @@ namespace PELOSCALVO
             this.BtnCopiarTabla = new System.Windows.Forms.Button();
             this.TablaNuevaTxt = new System.Windows.Forms.TextBox();
             this.TablaExistenteTxt = new System.Windows.Forms.ComboBox();
+            this.TabBorrar = new System.Windows.Forms.TabPage();
+            this.BtnEliminarTabla = new System.Windows.Forms.Button();
+            this.TablaBorrarTxt = new System.Windows.Forms.TextBox();
+            this.BtnLimpiarTabla = new System.Windows.Forms.Button();
+            this.ListaTablasPrincipal2 = new System.Windows.Forms.ListBox();
             this.InfoProcesoText = new System.Windows.Forms.Label();
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -80,6 +87,8 @@ namespace PELOSCALVO
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
@@ -88,6 +97,7 @@ namespace PELOSCALVO
             this.TabInicio.SuspendLayout();
             this.TabCopia.SuspendLayout();
             this.TabCopiarTabla.SuspendLayout();
+            this.TabBorrar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -133,17 +143,17 @@ namespace PELOSCALVO
             label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label2.Location = new System.Drawing.Point(89, 17);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(198, 26);
+            label2.Size = new System.Drawing.Size(211, 26);
             label2.TabIndex = 123;
             label2.Tag = "";
-            label2.Text = "TABLA PRINCIPAL";
+            label2.Text = "TABLAS DE DATOS";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.Location = new System.Drawing.Point(415, 310);
+            label3.Location = new System.Drawing.Point(366, 310);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(99, 16);
             label3.TabIndex = 125;
@@ -153,7 +163,7 @@ namespace PELOSCALVO
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label4.Location = new System.Drawing.Point(29, 310);
+            label4.Location = new System.Drawing.Point(10, 310);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(40, 16);
             label4.TabIndex = 126;
@@ -162,11 +172,34 @@ namespace PELOSCALVO
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(472, 269);
+            label5.Location = new System.Drawing.Point(423, 285);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(42, 13);
             label5.TabIndex = 127;
             label5.Text = "Donde:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label7.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label7.Location = new System.Drawing.Point(70, 28);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(211, 26);
+            label7.TabIndex = 125;
+            label7.Tag = "";
+            label7.Text = "TABLAS DE DATOS";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label8.Location = new System.Drawing.Point(32, 331);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(40, 16);
+            label8.TabIndex = 133;
+            label8.Text = "De ..";
             // 
             // panel3
             // 
@@ -345,7 +378,7 @@ namespace PELOSCALVO
             this.BtnSalirT.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalirT.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalirT.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirT.Location = new System.Drawing.Point(786, 336);
+            this.BtnSalirT.Location = new System.Drawing.Point(757, 336);
             this.BtnSalirT.Name = "BtnSalirT";
             this.BtnSalirT.Size = new System.Drawing.Size(77, 63);
             this.BtnSalirT.TabIndex = 117;
@@ -371,7 +404,7 @@ namespace PELOSCALVO
             this.BtnConectar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConectar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnConectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnConectar.Location = new System.Drawing.Point(728, 215);
+            this.BtnConectar.Location = new System.Drawing.Point(699, 215);
             this.BtnConectar.Name = "BtnConectar";
             this.BtnConectar.Size = new System.Drawing.Size(108, 42);
             this.BtnConectar.TabIndex = 118;
@@ -385,11 +418,12 @@ namespace PELOSCALVO
             this.TabControlPrincipal.Controls.Add(this.TabInicio);
             this.TabControlPrincipal.Controls.Add(this.TabCopia);
             this.TabControlPrincipal.Controls.Add(this.TabCopiarTabla);
+            this.TabControlPrincipal.Controls.Add(this.TabBorrar);
             this.TabControlPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
             this.TabControlPrincipal.Location = new System.Drawing.Point(0, 0);
             this.TabControlPrincipal.Name = "TabControlPrincipal";
             this.TabControlPrincipal.SelectedIndex = 0;
-            this.TabControlPrincipal.Size = new System.Drawing.Size(902, 442);
+            this.TabControlPrincipal.Size = new System.Drawing.Size(873, 442);
             this.TabControlPrincipal.TabIndex = 119;
             // 
             // TabInicio
@@ -415,7 +449,7 @@ namespace PELOSCALVO
             this.TabInicio.Location = new System.Drawing.Point(4, 22);
             this.TabInicio.Name = "TabInicio";
             this.TabInicio.Padding = new System.Windows.Forms.Padding(3);
-            this.TabInicio.Size = new System.Drawing.Size(894, 416);
+            this.TabInicio.Size = new System.Drawing.Size(865, 416);
             this.TabInicio.TabIndex = 0;
             this.TabInicio.Tag = "NO";
             this.TabInicio.Text = "Principal";
@@ -425,10 +459,11 @@ namespace PELOSCALVO
             this.ChckListar.AutoSize = true;
             this.ChckListar.Location = new System.Drawing.Point(360, 170);
             this.ChckListar.Name = "ChckListar";
-            this.ChckListar.Size = new System.Drawing.Size(139, 17);
+            this.ChckListar.Size = new System.Drawing.Size(86, 17);
             this.ChckListar.TabIndex = 119;
-            this.ChckListar.Text = "Listar Todas Las Tablas";
+            this.ChckListar.Text = "Listar Basico";
             this.ChckListar.UseVisualStyleBackColor = true;
+            this.ChckListar.CheckedChanged += new System.EventHandler(this.ChckListar_CheckedChanged);
             // 
             // TabCopia
             // 
@@ -439,7 +474,7 @@ namespace PELOSCALVO
             this.TabCopia.Location = new System.Drawing.Point(4, 22);
             this.TabCopia.Name = "TabCopia";
             this.TabCopia.Padding = new System.Windows.Forms.Padding(3);
-            this.TabCopia.Size = new System.Drawing.Size(894, 416);
+            this.TabCopia.Size = new System.Drawing.Size(865, 416);
             this.TabCopia.TabIndex = 1;
             this.TabCopia.Text = "Copia Seguridad";
             // 
@@ -473,7 +508,7 @@ namespace PELOSCALVO
             this.BtnCrearBackupDb.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCrearBackupDb.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnCrearBackupDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrearBackupDb.Location = new System.Drawing.Point(667, 249);
+            this.BtnCrearBackupDb.Location = new System.Drawing.Point(638, 249);
             this.BtnCrearBackupDb.Name = "BtnCrearBackupDb";
             this.BtnCrearBackupDb.Size = new System.Drawing.Size(187, 42);
             this.BtnCrearBackupDb.TabIndex = 77;
@@ -498,9 +533,10 @@ namespace PELOSCALVO
             this.TabCopiarTabla.Location = new System.Drawing.Point(4, 22);
             this.TabCopiarTabla.Name = "TabCopiarTabla";
             this.TabCopiarTabla.Padding = new System.Windows.Forms.Padding(3);
-            this.TabCopiarTabla.Size = new System.Drawing.Size(894, 416);
+            this.TabCopiarTabla.Size = new System.Drawing.Size(865, 416);
             this.TabCopiarTabla.TabIndex = 2;
-            this.TabCopiarTabla.Text = "Trasnsferir Datos";
+            this.TabCopiarTabla.Text = "Transferir Datos";
+            this.TabCopiarTabla.Click += new System.EventHandler(this.TabCopiarTabla_Click);
             // 
             // TipoCopia
             // 
@@ -509,7 +545,7 @@ namespace PELOSCALVO
             this.TipoCopia.Items.AddRange(new object[] {
             "Copiar  a Tabla Nueva",
             "Copiar a Tabla Existete"});
-            this.TipoCopia.Location = new System.Drawing.Point(520, 266);
+            this.TipoCopia.Location = new System.Drawing.Point(471, 282);
             this.TipoCopia.Name = "TipoCopia";
             this.TipoCopia.Size = new System.Drawing.Size(249, 21);
             this.TipoCopia.TabIndex = 128;
@@ -517,7 +553,7 @@ namespace PELOSCALVO
             // 
             // TablaCopiarTxt
             // 
-            this.TablaCopiarTxt.Location = new System.Drawing.Point(89, 308);
+            this.TablaCopiarTxt.Location = new System.Drawing.Point(56, 309);
             this.TablaCopiarTxt.Name = "TablaCopiarTxt";
             this.TablaCopiarTxt.ReadOnly = true;
             this.TablaCopiarTxt.Size = new System.Drawing.Size(293, 20);
@@ -529,15 +565,16 @@ namespace PELOSCALVO
             this.ListaTablasPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ListaTablasPrincipal.FormattingEnabled = true;
             this.ListaTablasPrincipal.HorizontalScrollbar = true;
-            this.ListaTablasPrincipal.Location = new System.Drawing.Point(19, 49);
+            this.ListaTablasPrincipal.Location = new System.Drawing.Point(13, 60);
             this.ListaTablasPrincipal.Name = "ListaTablasPrincipal";
             this.ListaTablasPrincipal.Size = new System.Drawing.Size(363, 238);
             this.ListaTablasPrincipal.TabIndex = 122;
             this.ListaTablasPrincipal.Click += new System.EventHandler(this.ListaTablasPrincipal_Click);
+            this.ListaTablasPrincipal.SelectedIndexChanged += new System.EventHandler(this.ListaTablasPrincipal_SelectedIndexChanged);
             // 
             // BtnCopiarTabla
             // 
-            this.BtnCopiarTabla.Location = new System.Drawing.Point(793, 366);
+            this.BtnCopiarTabla.Location = new System.Drawing.Point(744, 362);
             this.BtnCopiarTabla.Name = "BtnCopiarTabla";
             this.BtnCopiarTabla.Size = new System.Drawing.Size(75, 23);
             this.BtnCopiarTabla.TabIndex = 118;
@@ -547,7 +584,7 @@ namespace PELOSCALVO
             // 
             // TablaNuevaTxt
             // 
-            this.TablaNuevaTxt.Location = new System.Drawing.Point(520, 310);
+            this.TablaNuevaTxt.Location = new System.Drawing.Point(471, 309);
             this.TablaNuevaTxt.Name = "TablaNuevaTxt";
             this.TablaNuevaTxt.Size = new System.Drawing.Size(348, 20);
             this.TablaNuevaTxt.TabIndex = 129;
@@ -558,18 +595,75 @@ namespace PELOSCALVO
             this.TablaExistenteTxt.DisplayMember = "A";
             this.TablaExistenteTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TablaExistenteTxt.FormattingEnabled = true;
-            this.TablaExistenteTxt.Location = new System.Drawing.Point(520, 309);
+            this.TablaExistenteTxt.Location = new System.Drawing.Point(471, 309);
             this.TablaExistenteTxt.MaxLength = 50;
             this.TablaExistenteTxt.Name = "TablaExistenteTxt";
             this.TablaExistenteTxt.Size = new System.Drawing.Size(348, 21);
             this.TablaExistenteTxt.TabIndex = 114;
+            // 
+            // TabBorrar
+            // 
+            this.TabBorrar.BackColor = System.Drawing.SystemColors.Control;
+            this.TabBorrar.Controls.Add(this.BtnEliminarTabla);
+            this.TabBorrar.Controls.Add(label8);
+            this.TabBorrar.Controls.Add(this.TablaBorrarTxt);
+            this.TabBorrar.Controls.Add(this.BtnLimpiarTabla);
+            this.TabBorrar.Controls.Add(label7);
+            this.TabBorrar.Controls.Add(this.ListaTablasPrincipal2);
+            this.TabBorrar.Location = new System.Drawing.Point(4, 22);
+            this.TabBorrar.Name = "TabBorrar";
+            this.TabBorrar.Padding = new System.Windows.Forms.Padding(3);
+            this.TabBorrar.Size = new System.Drawing.Size(865, 416);
+            this.TabBorrar.TabIndex = 3;
+            this.TabBorrar.Text = "Borrar Datos";
+            // 
+            // BtnEliminarTabla
+            // 
+            this.BtnEliminarTabla.Location = new System.Drawing.Point(548, 330);
+            this.BtnEliminarTabla.Name = "BtnEliminarTabla";
+            this.BtnEliminarTabla.Size = new System.Drawing.Size(75, 23);
+            this.BtnEliminarTabla.TabIndex = 134;
+            this.BtnEliminarTabla.Text = "&Eliminar Tabla";
+            this.BtnEliminarTabla.UseVisualStyleBackColor = true;
+            this.BtnEliminarTabla.Click += new System.EventHandler(this.BtnEliminarTabla_Click);
+            // 
+            // TablaBorrarTxt
+            // 
+            this.TablaBorrarTxt.Location = new System.Drawing.Point(78, 330);
+            this.TablaBorrarTxt.Name = "TablaBorrarTxt";
+            this.TablaBorrarTxt.ReadOnly = true;
+            this.TablaBorrarTxt.Size = new System.Drawing.Size(334, 20);
+            this.TablaBorrarTxt.TabIndex = 132;
+            this.TablaBorrarTxt.Tag = "NO";
+            // 
+            // BtnLimpiarTabla
+            // 
+            this.BtnLimpiarTabla.Location = new System.Drawing.Point(450, 331);
+            this.BtnLimpiarTabla.Name = "BtnLimpiarTabla";
+            this.BtnLimpiarTabla.Size = new System.Drawing.Size(75, 23);
+            this.BtnLimpiarTabla.TabIndex = 131;
+            this.BtnLimpiarTabla.Text = "&Borrar Datos";
+            this.BtnLimpiarTabla.UseVisualStyleBackColor = true;
+            this.BtnLimpiarTabla.Click += new System.EventHandler(this.BtnLimpiarTabla_Click);
+            // 
+            // ListaTablasPrincipal2
+            // 
+            this.ListaTablasPrincipal2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListaTablasPrincipal2.FormattingEnabled = true;
+            this.ListaTablasPrincipal2.HorizontalScrollbar = true;
+            this.ListaTablasPrincipal2.Location = new System.Drawing.Point(8, 66);
+            this.ListaTablasPrincipal2.Name = "ListaTablasPrincipal2";
+            this.ListaTablasPrincipal2.Size = new System.Drawing.Size(363, 238);
+            this.ListaTablasPrincipal2.TabIndex = 124;
+            this.ListaTablasPrincipal2.Click += new System.EventHandler(this.ListaTablasPrincipal2_Click);
+            this.ListaTablasPrincipal2.SelectedIndexChanged += new System.EventHandler(this.ListaTablasPrincipal2_SelectedIndexChanged);
             // 
             // InfoProcesoText
             // 
             this.InfoProcesoText.AutoSize = true;
             this.InfoProcesoText.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.InfoProcesoText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoProcesoText.Location = new System.Drawing.Point(0, 444);
+            this.InfoProcesoText.Location = new System.Drawing.Point(0, 437);
             this.InfoProcesoText.Margin = new System.Windows.Forms.Padding(3);
             this.InfoProcesoText.Name = "InfoProcesoText";
             this.InfoProcesoText.Padding = new System.Windows.Forms.Padding(2, 4, 2, 5);
@@ -591,7 +685,7 @@ namespace PELOSCALVO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 469);
+            this.ClientSize = new System.Drawing.Size(873, 462);
             this.Controls.Add(this.InfoProcesoText);
             this.Controls.Add(this.TabControlPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -612,6 +706,8 @@ namespace PELOSCALVO
             this.TabCopia.PerformLayout();
             this.TabCopiarTabla.ResumeLayout(false);
             this.TabCopiarTabla.PerformLayout();
+            this.TabBorrar.ResumeLayout(false);
+            this.TabBorrar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -656,5 +752,10 @@ namespace PELOSCALVO
         private DsMultidatos dsMultidatos;
         public System.Windows.Forms.ComboBox TipoCopia;
         private System.Windows.Forms.TextBox TablaNuevaTxt;
+        private System.Windows.Forms.TabPage TabBorrar;
+        private System.Windows.Forms.TextBox TablaBorrarTxt;
+        private System.Windows.Forms.Button BtnLimpiarTabla;
+        private System.Windows.Forms.ListBox ListaTablasPrincipal2;
+        private System.Windows.Forms.Button BtnEliminarTabla;
     }
 }

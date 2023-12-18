@@ -359,6 +359,7 @@ namespace PELOSCALVO
                     if (File.Exists(ClasDatos.RutaMultidatos))
                     {
                       FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
+                        MessageBox.Show("Se guardo Con Exito", "GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {

@@ -14,6 +14,8 @@ namespace PELOSCALVO
         public FormCrearTablasDb()
         {
             InitializeComponent();
+            var tt = new ToolTip();
+            tt.SetToolTip(BtnEliminarTabla, "Recuerda Que Si Eliminas No Se Podra Revertir");
         }
         private void FormCrearTablasDb_Load(object sender, EventArgs e)
         {
@@ -175,9 +177,9 @@ namespace PELOSCALVO
                       " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                     string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER primary key, [FamiliaProductos] varchar)";
-                    string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER not null,[PaisesPaises] varchar primary key)";
-                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER not null, [ProvinciasProvincias] varchar,[Enlace] varchar NOT NULL," +
-                   " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (Enlace)REFERENCES DtPaises(PaisesPaises) ON UPDATE CASCADE ON DELETE CASCADE )";
+                    string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER not null,[Paises] varchar primary key)";
+                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER not null, [Provincias] varchar,[Enlace] varchar NOT NULL," +
+                   " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (Enlace)REFERENCES DtPaises(Paises) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaObra = "CREATE TABLE[DtObras] ([Id] INTEGER primary key,[Obras] varchar)";
                     string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER primary key," +
                         "[EmpresaInicio] varchar,[EjercicioInicio] varchar,[SerieInicio] varchar,[NombreArchivoDatos] varchar," +
@@ -714,7 +716,7 @@ namespace PELOSCALVO
                     // string RutaOrigen = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal;
                     string RutaDestino = CarpetaElegir.SelectedPath;
                     string CarpetaCopia = "Copia Seguridad De PeloscalvoApp";
-                    string Archivo = this.BaseDatos2.Text +"_"+  String.Format("{0:dd-MM-yyyy hhmmss}", DateTime.Now);
+                    string Archivo = this.BaseDatos2.Text + "_" + String.Format("{0:dd-MM-yyyy hhmmss}", DateTime.Now);
                     string NonbreBackup = "Backup De" + this.BaseDatos2.Text + String.Format("{0:dd-MM-yyyy hh:mm:ss}", DateTime.Now);
                     //string BACKUP = RutaDestino + "\\" + CarpetaCopia;
 
@@ -739,7 +741,7 @@ namespace PELOSCALVO
                     // string cadenaConexion = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text + ";Initial Catalog=" + Cadena2 + ";Integrated Security=True";
                     try
                     {
-                        File.Copy(Ruta, RutaDestino+"\\"+CarpetaCopia + "\\"+ Archivo + "." + this.ExtensionTxt.Text);
+                        File.Copy(Ruta, RutaDestino + "\\" + CarpetaCopia + "\\" + Archivo + "." + this.ExtensionTxt.Text);
                         MessageBox.Show("Se Creo Base Datos Correctamente" + "\n" + Ruta, "COPIA SEGURIDAD", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -835,7 +837,7 @@ namespace PELOSCALVO
             }
             else
             {
-                consulta = "INSERT INTO [" + this.TablaExistenteTxt.Text + "] SELECT* FROM [" + this.TablaCopiarTxt.Text+"]";
+                consulta = "INSERT INTO [" + this.TablaExistenteTxt.Text + "] SELECT* FROM [" + this.TablaCopiarTxt.Text + "]";
             }
 
             string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
@@ -846,9 +848,9 @@ namespace PELOSCALVO
                     using (OleDbCommand comando = new OleDbCommand(consulta, NuevaConexion))
                     {
                         NuevaConexion.Open();
-                        comando.ExecuteNonQuery();
+                     comando.ExecuteNonQuery();
 
-                        MessageBox.Show("Copiaron Los Datos A Tabla Correctamente" + "\n" + TablaCopiarTxt.Text, "COPIA TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Copiaron Los Datos A Tabla Correctamente" + "\n" + this.TablaCopiarTxt.Text, "COPIA TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -869,6 +871,7 @@ namespace PELOSCALVO
             if (this.ExtensionTxt.Text != string.Empty & this.BaseDatosTxt1.Text != string.Empty)
             {
                 this.ListaTablasPrincipal.DataSource = ObtenerTablasDb();
+                this.ListaTablasPrincipal2.DataSource = ObtenerTablasDb();
                 this.TablaExistenteTxt.DataSource = ObtenerTablasDb();
                 this.ArticulosTxt.DataSource = ObtenerTablasDb();
                 this.ClientesTxt.DataSource = ObtenerTablasDb();
@@ -922,6 +925,177 @@ namespace PELOSCALVO
             }
 
 
+        }
+
+        private void ListaTablasPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListaTablasPrincipal2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListaTablasPrincipal2_Click(object sender, EventArgs e)
+        {
+            if (this.ExtensionTxt.Text == string.Empty)
+            {
+                MessageBox.Show("Falta Tipo Extenxision", "EXTENSION NO VALIDA", MessageBoxButtons.OK);
+                this.TabControlPrincipal.SelectedIndex = 0;
+                this.ExtensionTxt.Focus();
+                return;
+            }
+            if (this.ListaTablasPrincipal2.SelectedIndex >= 0)
+            {
+                this.TablaBorrarTxt.Text = this.ListaTablasPrincipal2.SelectedItem.ToString();
+            }
+        }
+
+        private void ChckListar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.ChckListar.Checked)
+            {
+                this.ChckListar.Text = "Listar Basico";
+
+            }
+            else
+            {
+                this.ChckListar.Text = "Lista Todas Las Tablas";
+            }
+        }
+
+        private void TabCopiarTabla_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnLimpiarTabla_Click(object sender, EventArgs e)
+        {
+            if (this.TablaBorrarTxt.Text == string.Empty)
+            {
+                MessageBox.Show("Debe Escojer Tabla A Borrar Datos", "LIMPIAR", MessageBoxButtons.OK);
+                // TablanuevaTxt.Focus();
+                return;
+            }
+            if (this.TablaBorrarTxt.Text == "DtConfiguracionPrincipal" && this.TablaBorrarTxt.Text == "DtConfi")
+            {
+                MessageBox.Show("Si Borra Esta Tabla Perdera Datos Facturacion Asociados a Esta", "LIMPIAR", MessageBoxButtons.OK);
+          
+            }
+
+            if (MessageBox.Show("Desea Borrar Datos a Tabla" + "\\" + TablaBorrarTxt.Text, "BORRAR DATOS", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+
+
+                string consulta = "";
+
+                this.InfoProcesoText.BackColor = Color.FromArgb(234, 210, 8);
+                this.InfoProcesoText.Text = " limpiando Datos ...: " + this.TablaBorrarTxt.Text + " .............. .......Espere Un Momento !!!!!!!";
+                this.InfoProcesoText.Refresh();
+                Application.DoEvents();
+                string Ruta = "";
+                if (this.BaseDatosTxt1.Tag.ToString() == "SI")
+                {
+                    Ruta = this.BaseDatosTxt1.Text;
+                }
+                else
+                {
+                    Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
+                }
+
+                consulta = " DELETE  * FROM [" + this.TablaBorrarTxt.Text + "]";
+
+
+                string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
+                try
+                {
+                    using (OleDbConnection NuevaConexion = new OleDbConnection(cadenaConexion))
+                    {
+                        using (OleDbCommand comando = new OleDbCommand(consulta, NuevaConexion))
+                        {
+                            NuevaConexion.Open();
+                            comando.ExecuteNonQuery();
+
+                            MessageBox.Show("Borrado de Datos A Tabla Correctamente" + "\n" + this.TablaCopiarTxt.Text, "LIMPIAR TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+
+                this.InfoProcesoText.Text = "Indica La Base Datos a Crear Copia De Seguridad";
+                this.InfoProcesoText.BackColor = this.BackColor;
+                this.InfoProcesoText.Refresh();
+            }
+        }
+
+        private void BtnEliminarTabla_Click(object sender, EventArgs e)
+        {
+            if (this.TablaBorrarTxt.Text == string.Empty)
+            {
+                MessageBox.Show("Debe Escojer Tabla A Borrar Datos", "LIMPIAR", MessageBoxButtons.OK);
+                // TablanuevaTxt.Focus();
+                return;
+            }
+            if (TablaBorrarTxt.Text.Contains("Dt"))
+            {
+                MessageBox.Show("Esta Tabla No Se Puede Borrar ", "ELIMINAR", MessageBoxButtons.OK);
+                return;
+            }
+            MessageBox.Show("Recuerda Que Si Continua No Podra Revertir Datos ", "ELIMINAR", MessageBoxButtons.OK);
+            if (MessageBox.Show("Desea Eliminar Tabla" + "\\" + TablaBorrarTxt.Text, "ELIMINAR TABLA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+
+
+                string consulta = "";
+
+                this.InfoProcesoText.BackColor = Color.FromArgb(234, 210, 8);
+                this.InfoProcesoText.Text = " limpiando Datos ...: " + this.TablaBorrarTxt.Text + " .............. .......Espere Un Momento !!!!!!!";
+                this.InfoProcesoText.Refresh();
+                Application.DoEvents();
+                string Ruta = "";
+                if (this.BaseDatosTxt1.Tag.ToString() == "SI")
+                {
+                    Ruta = this.BaseDatosTxt1.Text;
+                }
+                else
+                {
+                    Ruta = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatos2.Text + "." + this.ExtensionTxt.Text;
+                }
+
+                consulta = " DROP TABLE [" + this.TablaBorrarTxt.Text + "]";
+
+
+                string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta;
+                try
+                {
+                    using (OleDbConnection NuevaConexion = new OleDbConnection(cadenaConexion))
+                    {
+                        using (OleDbCommand comando = new OleDbCommand(consulta, NuevaConexion))
+                        {
+                            NuevaConexion.Open();
+                            comando.ExecuteNonQuery();
+
+                            MessageBox.Show("Eliminada Tabla Correctamente" + "\n" + this.TablaCopiarTxt.Text, "ELIMINAR TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+
+                this.InfoProcesoText.Text = "Indica La Base Datos a Crear Copia De Seguridad";
+                this.InfoProcesoText.BackColor = this.BackColor;
+                this.InfoProcesoText.Refresh();
+            }
         }
     }
 }

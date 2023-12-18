@@ -52,7 +52,8 @@ namespace PELOSCALVO
             this.BtnGuardarPais = new System.Windows.Forms.Button();
             this.dataGridPais = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PaisesPaises = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paises = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).BeginInit();
@@ -259,7 +260,7 @@ namespace PELOSCALVO
             // 
             // NombrePais
             // 
-            this.NombrePais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.DtPaisBindinsource, "PaisesPaises", true));
+            this.NombrePais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.DtPaisBindinsource, "Paises", true));
             this.NombrePais.Location = new System.Drawing.Point(50, 40);
             this.NombrePais.MaxLength = 40;
             this.NombrePais.Name = "NombrePais";
@@ -308,7 +309,8 @@ namespace PELOSCALVO
             this.dataGridPais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPais.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.PaisesPaises});
+            this.paises,
+            this.IdFila});
             this.dataGridPais.DataSource = this.DtPaisBindinsource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -334,18 +336,25 @@ namespace PELOSCALVO
             dataGridViewCellStyle2.Format = "N0";
             dataGridViewCellStyle2.NullValue = null;
             this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.idDataGridViewTextBoxColumn.FillWeight = 220F;
+            this.idDataGridViewTextBoxColumn.FillWeight = 73.09644F;
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // PaisesPaises
+            // paises
             // 
-            this.PaisesPaises.DataPropertyName = "PaisesPaises";
-            this.PaisesPaises.FillWeight = 600F;
-            this.PaisesPaises.HeaderText = "Paises";
-            this.PaisesPaises.Name = "PaisesPaises";
-            this.PaisesPaises.ReadOnly = true;
+            this.paises.DataPropertyName = "Paises";
+            this.paises.FillWeight = 300F;
+            this.paises.HeaderText = "Paises";
+            this.paises.Name = "paises";
+            this.paises.ReadOnly = true;
+            // 
+            // IdFila
+            // 
+            this.IdFila.HeaderText = "IdFila";
+            this.IdFila.Name = "IdFila";
+            this.IdFila.ReadOnly = true;
+            this.IdFila.Visible = false;
             // 
             // FormPaises
             // 
@@ -390,8 +399,10 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox NombrePais;
         public System.Windows.Forms.Button BtnGuardarPais;
         private DsMulti2 dsMulti2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PaisesPaises;
         public System.Windows.Forms.DataGridView dataGridPais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaisesPaises;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paises;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFila;
     }
 }

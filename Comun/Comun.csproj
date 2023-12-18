@@ -45,6 +45,7 @@
     <Compile Include="ClasArticulos.cs" />
     <Compile Include="ClasCodificarPass.cs" />
     <Compile Include="ClasCorreos.cs" />
+    <Compile Include="ClasDetalleGrid.cs" />
     <Compile Include="ClasTarifa.cs" />
     <Compile Include="ClasSi_Existe_Fatu.cs" />
     <Compile Include="ClasValidarDni.cs" />

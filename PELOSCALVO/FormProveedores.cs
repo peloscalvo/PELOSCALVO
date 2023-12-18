@@ -169,7 +169,7 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores";
+                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores WHERE Id= @Id and Enlace_Proveedores= @Enlace_Proveedores";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
@@ -177,6 +177,7 @@ namespace PELOSCALVO
                         if (NuevaConexion.SiConexionDb)
                         {
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", this.Enlace_Proveedor.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                             this.DtProveedoresBindingSource.EndEdit();
@@ -210,7 +211,7 @@ namespace PELOSCALVO
         private void EliminarProveedorSql()
         {
 
-            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores";
+            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores and Enlace_Proveedores= @Enlace_Proveedores";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
@@ -218,6 +219,7 @@ namespace PELOSCALVO
                     if (NuevaConexion.SiConexionSql)
                     {
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", this.Enlace_Proveedor.Text);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         this.DtProveedoresBindingSource.EndEdit();
@@ -309,7 +311,7 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.dataGridProveedores.Rows)
                         {
-                            if (fila.Cells[1].ToString() == this.NombreProveedor.Text)
+                            if (fila.Cells[1].Value.ToString() == this.NombreProveedor.Text)
                             {
                                 if (this.dataGridProveedores.CurrentCell.RowIndex == fila.Index)
                                 {

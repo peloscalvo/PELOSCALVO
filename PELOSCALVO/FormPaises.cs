@@ -30,6 +30,16 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        public void AñadirIdBuscar()
+        {
+            int ii = 0;
+            foreach (DataGridViewRow fila in this.dataGridPais.Rows)
+            {
+                fila.Cells["IdFila"].Value = ii.ToString();
+                ii++;
+            }
+
+        }
         private void ModificarOjetosPais()
         {
             this.NombrePais.ReadOnly = false;
@@ -81,12 +91,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Pais.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtPaises] VALUES([@Id],[@PaisesPaises])";
+                consulta = "  INSERT INTO [DtPaises] VALUES([@Id],[@Paises])";
 
             }
             else
             {
-                consulta = "UPDATE [DtPaises] SET [Id] = @Id,[PaisesPaises] = @PaisesPaises, " +
+                consulta = "UPDATE [DtPaises] SET [Id] = @Id,[Paises] = @Paises, " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -95,7 +105,7 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionDb)
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Pais.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Pais.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@PaisesPaises", string.IsNullOrEmpty(this.NombrePais.Text) ? (object)DBNull.Value : this.NombrePais.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Paises", string.IsNullOrEmpty(this.NombrePais.Text) ? (object)DBNull.Value : this.NombrePais.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -123,12 +133,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Pais.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtPaises] VALUES([@Id],[@PaisesPaises])";
+                consulta = "  INSERT INTO [DtPaises] VALUES([@Id],[@Paises])";
 
             }
             else
             {
-                consulta = "UPDATE [DtPaises] SET [Id] = @Id,[PaisesPaises] = @PaisesPaises, " +
+                consulta = "UPDATE [DtPaises] SET [Id] = @Id,[Paises] = @Paises, " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -137,7 +147,7 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionSql)
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Pais.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Pais.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@PaisesPaises", string.IsNullOrEmpty(this.NombrePais.Text) ? (object)DBNull.Value : this.NombrePais.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Paises", string.IsNullOrEmpty(this.NombrePais.Text) ? (object)DBNull.Value : this.NombrePais.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
@@ -333,7 +343,7 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.dataGridPais.Rows)
                         {
-                            if (fila.Cells["PaisesPaises"].ToString() == this.NombrePais.Text)
+                            if (fila.Cells[1].Value.ToString() == this.NombrePais.Text)
                             {
                                 if (this.dataGridPais.CurrentCell.RowIndex == fila.Index)
                                 {
@@ -424,10 +434,12 @@ namespace PELOSCALVO
         private void BtnBuscarPais_Click(object sender, EventArgs e)
         {
             FormBuscar frm = new FormBuscar();
-            frm.ShowDialog();
+            frm.CargarDatos(1, " Paises","PaisesPaises");
             frm.BringToFront();
             ClasDatos.QUEform = "Paises";
-            frm.CargarDatos(DtPaisBindinsource," PaisesPaises");
+            frm.ShowDialog();
+        
+           
         }
     }
 }

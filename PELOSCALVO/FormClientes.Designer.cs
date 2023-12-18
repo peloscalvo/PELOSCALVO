@@ -964,7 +964,7 @@ namespace PELOSCALVO
             // 
             this.paisClienteComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "PAISCLIENT", true));
             this.paisClienteComboBox1.DataSource = this.dtPaisesBindingSource;
-            this.paisClienteComboBox1.DisplayMember = "PaisesPaises";
+            this.paisClienteComboBox1.DisplayMember = "Paises";
             this.paisClienteComboBox1.FormattingEnabled = true;
             this.paisClienteComboBox1.Location = new System.Drawing.Point(89, 43);
             this.paisClienteComboBox1.Name = "paisClienteComboBox1";
@@ -985,7 +985,7 @@ namespace PELOSCALVO
             // 
             this.provinciaClienteComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "PROVINCIAC", true));
             this.provinciaClienteComboBox1.DataSource = this.dtProvinciasBindingSource;
-            this.provinciaClienteComboBox1.DisplayMember = "ProvinciasProvincias";
+            this.provinciaClienteComboBox1.DisplayMember = "Provincias";
             this.provinciaClienteComboBox1.FormattingEnabled = true;
             this.provinciaClienteComboBox1.Location = new System.Drawing.Point(89, 14);
             this.provinciaClienteComboBox1.Name = "provinciaClienteComboBox1";

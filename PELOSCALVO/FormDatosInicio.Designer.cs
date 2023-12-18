@@ -60,7 +60,6 @@ namespace PELOSCALVO
             this.dtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ArchivoArticuloTxt = new System.Windows.Forms.ComboBox();
             this.ProvinciaInicio = new System.Windows.Forms.ComboBox();
-            this.fKDtPaisesDtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PaisInicio = new System.Windows.Forms.ComboBox();
             this.dtInicioDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +91,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             this.PanelDatosInicio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioDataGridView)).BeginInit();
             this.PanelBotones_Inicio.SuspendLayout();
             this.SuspendLayout();
@@ -205,8 +203,8 @@ namespace PELOSCALVO
             // 
             // dtProvinciasBindingSource
             // 
-            this.dtProvinciasBindingSource.DataMember = "DtPaises";
-            this.dtProvinciasBindingSource.DataSource = this.dsMulti2;
+            this.dtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
+            this.dtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
             // 
             // dtInicioMultiBindingSource
             // 
@@ -340,8 +338,8 @@ namespace PELOSCALVO
             // ProvinciaInicio
             // 
             this.ProvinciaInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "SerieProvinciaInicio", true));
-            this.ProvinciaInicio.DataSource = this.fKDtPaisesDtProvinciasBindingSource;
-            this.ProvinciaInicio.DisplayMember = "ProvinciasProvincias";
+            this.ProvinciaInicio.DataSource = this.dtProvinciasBindingSource;
+            this.ProvinciaInicio.DisplayMember = "Provincias";
             this.ProvinciaInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProvinciaInicio.FormattingEnabled = true;
             this.ProvinciaInicio.Location = new System.Drawing.Point(103, 100);
@@ -349,16 +347,11 @@ namespace PELOSCALVO
             this.ProvinciaInicio.Size = new System.Drawing.Size(268, 21);
             this.ProvinciaInicio.TabIndex = 37;
             // 
-            // fKDtPaisesDtProvinciasBindingSource
-            // 
-            this.fKDtPaisesDtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
-            this.fKDtPaisesDtProvinciasBindingSource.DataSource = this.dtProvinciasBindingSource;
-            // 
             // PaisInicio
             // 
             this.PaisInicio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "SeriePaisInicio", true));
             this.PaisInicio.DataSource = this.dtPaisesBindingSource;
-            this.PaisInicio.DisplayMember = "PaisesPaises";
+            this.PaisInicio.DisplayMember = "Paises";
             this.PaisInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaisInicio.FormattingEnabled = true;
             this.PaisInicio.Location = new System.Drawing.Point(103, 128);
@@ -591,7 +584,6 @@ namespace PELOSCALVO
             this.PanelDatosInicio.ResumeLayout(false);
             this.PanelDatosInicio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioDataGridView)).EndInit();
             this.PanelBotones_Inicio.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -631,6 +623,5 @@ namespace PELOSCALVO
         public System.Windows.Forms.Button BtnGuardarInico;
         private System.Windows.Forms.Label Id_Inicio;
         private System.Windows.Forms.BindingSource dtConfiBindingSource;
-        private System.Windows.Forms.BindingSource fKDtPaisesDtProvinciasBindingSource;
     }
 }

@@ -424,7 +424,6 @@ namespace PELOSCALVO
             // 
             // NombreArchivoDatos
             // 
-            this.NombreArchivoDatos.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "NombreArchivoDatos", true));
             this.NombreArchivoDatos.Location = new System.Drawing.Point(150, 19);
             this.NombreArchivoDatos.Name = "NombreArchivoDatos";
             this.NombreArchivoDatos.ReadOnly = true;

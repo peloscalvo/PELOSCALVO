@@ -292,7 +292,7 @@ namespace PELOSCALVO
                         }
                         Random r = new Random();
                         int VALORid = r.Next(5, 100);
-                        ejerciciosDeAñoTextBox.Text = ejerciciosDeAñoTextBox.Text + "_" + VALORid.ToString();
+                        this.ejerciciosDeAñoTextBox.Text = this.ejerciciosDeAñoTextBox.Text + "_" + VALORid.ToString();
                     }
                 }
                 seguir2:
@@ -318,7 +318,6 @@ namespace PELOSCALVO
                 int numeroFILA = this.dtConfiDataGridView.Rows.Count;
                 this.dtConfiDataGridView.Sort(this.dtConfiDataGridView.Columns[0], ListSortDirection.Ascending);
                 this.dtConfiguracionPrincipalDtConfiBindingSource.AddNew();
-                this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
                 if (this.dtConfiDataGridView.CurrentCell.RowIndex == 0)
                 {
                     this.IdConfi.Text = "1";
@@ -328,18 +327,19 @@ namespace PELOSCALVO
                 {
                     if (this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value.ToString() == string.Empty)
                     {
-                       
+
                         this.dtConfiDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.IdConfi.Text = VALORid.ToString();
                     }
                     else
                     {
-                         VALORid = Convert.ToInt32(this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
+                        VALORid = Convert.ToInt32(this.dtConfiDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
                         this.dtConfiDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.IdConfi.Text = VALORid.ToString();
                     }
 
                 }
+       
                 string fecha = String.Format("{0:yyyy}", DateTime.Now);
                 if (fecha == this.dtConfiDataGridView.Rows[numeroFILA].Cells[3].Value.ToString())
 
@@ -354,6 +354,7 @@ namespace PELOSCALVO
                     this.ejerciciosDeAñoTextBox.Text = " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
                     this.añoDeEjercicioTextBox.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
+                this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
                 SiEjercicio();
 
                 ModificarOjetos_Ej();
@@ -412,7 +413,7 @@ namespace PELOSCALVO
             if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
             {
                 int i = 0;
-                string Ejercicio = ejerciciosDeAñoTextBox.Text;
+                string Ejercicio = this.ejerciciosDeAñoTextBox.Text;
                 foreach (DataGridViewRow fila in this.dtConfiDataGridView.Rows)
                 {
                     if (fila.Cells[2].Value != null)
@@ -425,7 +426,7 @@ namespace PELOSCALVO
                             }
                             Random r = new Random();
                             int VALORid = r.Next(5, 100);
-                            ejerciciosDeAñoTextBox.Text = ejerciciosDeAñoTextBox.Text+"_" + VALORid.ToString();
+                            this.ejerciciosDeAñoTextBox.Text = this.ejerciciosDeAñoTextBox.Text + "_" + VALORid.ToString();
                             this.ejerciciosDeAñoTextBox.ReadOnly = false;
                             this.ejerciciosDeAñoTextBox.SelectAll();
                             this.ejerciciosDeAñoTextBox.Select(4, 4);
@@ -447,7 +448,7 @@ namespace PELOSCALVO
                     {
                         Random r = new Random();
                         int VALORid = r.Next(500, 1000000);
-                        EnlaceDtconfi.Text = ejerciciosDeAñoTextBox.Text + "/" + EmpresaEnlace.Text + "/" + IdConfi.Text;
+                        this.EnlaceDtconfi.Text = this.ejerciciosDeAñoTextBox.Text + "/" + this.EmpresaEnlace.Text + "/" + this.IdConfi.Text;
 
                         if (ClsConexionSql.SibaseDatosSql)
                         {
@@ -479,10 +480,11 @@ namespace PELOSCALVO
 
         private void BtnEliminarEjercicio_Click(object sender, EventArgs e)
         {
+            if (FormMenuPrincipal.menu2principal.SiOpenFatu == 0)
             {
                 if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 0)
                 {
-                    if (MessageBox.Show("Desea Eliminar La Ejercicio", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Desea Eliminar La Ejercicio Y Todo Su Contenido", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
 
                         if (ClsConexionSql.SibaseDatosSql)
@@ -495,6 +497,10 @@ namespace PELOSCALVO
                         }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe Cerrar Formulario De  ((( FACTURACION )))", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

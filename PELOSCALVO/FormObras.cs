@@ -331,7 +331,7 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.dataGridObras.Rows)
                         {
-                            if (fila.Cells[1].ToString() == this.ObraTxt.Text)
+                            if (fila.Cells[1].Value.ToString() == this.ObraTxt.Text)
                             {
                                 if (this.dataGridObras.CurrentCell.RowIndex == fila.Index)
                                 {

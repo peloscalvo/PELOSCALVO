@@ -120,6 +120,103 @@ namespace PELOSCALVO
             }
 
         }
+        private void LlenarGrid1()
+        {
+
+            int II = 0;
+            try
+            {
+                foreach (var item in ClasDetalleGrid.Listadetalle1.lista)
+                {
+
+                    if (!string.IsNullOrEmpty(item.Referencia))
+                    {
+                        dtDetallesFacturaDataGridView.Rows[II].Cells[0].Value = item.Referencia;
+                    }
+                    if (!string.IsNullOrEmpty(item.Referencia))
+                    {
+                        dtDetallesFacturaDataGridView.Rows[II].Cells[2].Value = item.Cantidad;
+                    }
+                    if (!string.IsNullOrEmpty(item.Referencia))
+                    {
+                        dtDetallesFacturaDataGridView.Rows[II].Cells[3].Value = item.Descripcci;
+                    }
+                    if (!string.IsNullOrEmpty(item.Referencia))
+                    {
+                        dtDetallesFacturaDataGridView.Rows[II].Cells[4].Value = item.Precio;
+                    }
+                    if (!string.IsNullOrEmpty(item.Referencia))
+                    {
+                        dtDetallesFacturaDataGridView.Rows[II].Cells[5].Value = item.Descuento;
+                    }
+                    if (!string.IsNullOrEmpty(item.Referencia))
+                    {
+                        dtDetallesFacturaDataGridView.Rows[II].Cells[6].Value = item.Iva;
+                    }
+                    if (!string.IsNullOrEmpty(item.Referencia))
+                    {
+                        dtDetallesFacturaDataGridView.Rows[II].Cells[7].Value = item.Importe;
+                    }
+                    II++;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+        private void ExtraerGrid1()
+        {
+            try
+            {
+                int Valor4 = 0;
+                ClasDetalleGrid.Listadetalle1.lista.Clear();
+                foreach (DataGridViewRow row in dtDetallesFacturaDataGridView.Rows)
+                {
+                    if(Valor4 >= dtDetallesFacturaDataGridView.RowCount-1)
+                    {
+                        break;
+                    }
+                    ClasDetalleGrid.Detalle item = new ClasDetalleGrid.Detalle();
+                    if (row.Cells[0].Value.ToString() != string.Empty)
+                    {
+                        item.Referencia = row.Cells[0].Value.ToString();
+                    }
+                    if (row.Cells[2].Value.ToString() != string.Empty)
+                    {
+                        item.Cantidad = row.Cells[2].Value.ToString();
+                    }
+                    if (row.Cells[3].Value.ToString() != string.Empty)
+                    {
+                        item.Descripcci = row.Cells[3].Value.ToString();
+                    }
+                    if (row.Cells[4].Value.ToString() != string.Empty)
+                    {
+                        item.Precio = row.Cells[4].Value.ToString();
+                    }
+                    if (row.Cells[5].Value.ToString() != string.Empty)
+                    {
+                        item.Descuento = row.Cells[5].Value.ToString();
+                    }
+                    if (row.Cells[6].Value.ToString() != string.Empty)
+                    {
+                        item.Iva = row.Cells[6].Value.ToString();
+                    }
+                    if (row.Cells[7].Value.ToString() != string.Empty)
+                    {
+                        item.Importe = row.Cells[7].Value.ToString();
+                    }
+                    Valor4++;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
         private void analizarStock(DataGridView DatagriStock)
         {
             int Fila2 = 0;
@@ -178,7 +275,7 @@ namespace PELOSCALVO
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
-             string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.EmpresaReguistro.Text + "/" + Id;
+            string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.EmpresaReguistro.Text + "/" + Id;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
             string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]," +
@@ -988,21 +1085,10 @@ namespace PELOSCALVO
                     if (this.panelBotones.Tag.ToString() == "Nuevo")
                     {
                         this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
-                        // this.dtDetallesFacturaBindingSource.Clear();
-                        // this.dtDetallesFactura2BindingSource.Clear();
                     }
                     else
                     {
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            // ActualizarFacturaSql();
-                        }
-                        else
-                        {
-                            // ActualizarFaturas_DB();
-                        }
-
-                        this.dtDetallesFacturaBindingSource.ResetBindings(false);
+                        LlenarGrid1();
                         //this.dtDetallesFacturaBindingSource.ResetBindings(false);
                     }
                 }
@@ -1037,6 +1123,7 @@ namespace PELOSCALVO
                 this.apodoTextBox.Focus();
                 this.numeroFacturaTextBox.Enabled = false;
                 this.panelBotones.Tag = "Modificar";
+                ExtraerGrid1();
             }
         }
 
@@ -1222,7 +1309,7 @@ namespace PELOSCALVO
             {
                 if (File.Exists(ClasDatos.RutaBaseDatosDb))
                 {
-                     ActualizarFaturas_DB();
+                    ActualizarFaturas_DB();
                 }
                 else
                 {
@@ -1232,10 +1319,67 @@ namespace PELOSCALVO
                 }
             }
             // this.NombreEmpresaReguistro.Visible = false;
-             this.PanelArriba.Tag = "SI";
+            this.PanelArriba.Tag = "SI";
             FiltrarFactura();
         }
+        private void StockDb(DataGridView  Datagri4)
+        {
+            string Enlace = EmpresaReguistro.Text + "/" + AlmacenTxt.Text;
+            string consulta = "SELECT [Referencia],[Stock],[Enlace] from [DtStock]" + "Where  Referencia= @Referencia  and  Enlace= @Enlace ";
+            string Nueva = "INSERT INTO [DtStock] VALUES([@Id],[@Stock])";
+            string Modificar = "UPDATE[DtStock] SET[Id] = @Id,[Stock] = @Stock ,[Enlace] = @Enlace" +
+                " WHERE  Referencia= @Referencia  and  Enlace= @Enlace ";
+            ClsConexionDb ConexionStock = new ClsConexionDb(consulta);
+            try
+            {
+                if (ConexionStock.SiConexionDb)
+                {
+                    int FilaStock = ConexionStock.ComandoDb.ExecuteNonQuery();
+                    if(FilaStock > 0)
+                    {
+                        ConexionStock = new ClsConexionDb(Modificar);
+                        foreach (DataGridViewRow Fila in Datagri4.Rows)
+                        {
+                            if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
+                            {
+                                ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", Fila.Cells[0].Value.ToString());
+                                ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                ConexionStock.ComandoDb.ExecuteNonQuery();
+                                ConexionStock.ComandoDb.Parameters.Clear();
+                            }
 
+                        }
+                    }
+                    else
+                    {
+                        ConexionStock = new ClsConexionDb(Nueva);
+
+                        foreach (DataGridViewRow Fila in Datagri4.Rows)
+                        {
+                            if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
+                            {
+                                ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", Fila.Cells[0].Value.ToString());
+                                ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                ConexionStock.ComandoDb.ExecuteNonQuery();
+                                ConexionStock.ComandoDb.Parameters.Clear();
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            if (ConexionStock.CerrarConexionDB)
+            {
+
+            }
+        }
         private void ActualizarFaturas_DB()
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
@@ -1245,7 +1389,7 @@ namespace PELOSCALVO
                     this.dtDetallesFacturaBindingSource.Clear();
                     this.dtDetallesFactura2BindingSource.Clear();
                     this.dsFacturas.Clear();
-                   // dtNuevaFacturaBindingSource.Clear();
+                    // dtNuevaFacturaBindingSource.Clear();
                     string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.EmpresaReguistro.Text + "'";
                     string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
 
@@ -1258,8 +1402,8 @@ namespace PELOSCALVO
                         {
                             FiltrarFactura();
                             AdactaPelos.Fill(this.dsFacturas.DtNuevaFactura);
-                             InfoTxt2.Text =  dtNuevaFacturaBindingSource.Count.ToString();
-                            if (dtNuevaFacturaBindingSource.Count > 0)
+                            this.InfoTxt2.Text = this.dtNuevaFacturaBindingSource.Count.ToString();
+                            if (this.dtNuevaFacturaBindingSource.Count > 0)
                             {
                                 AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
                                 AdactaPelos.Fill(this.dsFacturas.DtDetallesFactura);
@@ -2280,14 +2424,10 @@ namespace PELOSCALVO
                 if (NombreItem.Contains("Lineablanco"))
                 {
                     NombreItem = NombreItem.Replace("Lineablanco", "");
-
-                }
-                if (NombreItem.Contains("Lineablanco"))
-                {
-                    NombreItem = NombreItem.Replace("Lineablanco", "");
                     Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex + 1;
                     // DataRow FilaNueva = new DataTable(dtd);
-                    DataTable dt = (DataTable)this.dtDetallesFacturaBindingSource.DataSource;
+                   // DataTable dt = (DataTable)dsFacturas.DtDetallesFactura;
+                    DataTable dt = new DataTable();
                     var row = dt.NewRow();
                     //this.dtDetallesFacturaBindingSource.Insert(Fila, row);
                     // this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
@@ -2377,7 +2517,7 @@ namespace PELOSCALVO
 
         private void EmpresaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // FiltrarFactura();
+            // FiltrarFactura();
 
         }
 

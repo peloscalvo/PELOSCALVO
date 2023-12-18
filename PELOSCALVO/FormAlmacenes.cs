@@ -330,7 +330,7 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.dataGridAlmacenes.Rows)
                         {
-                            if (fila.Cells[1].ToString() == this.almacenesTextBox.Text)
+                            if (fila.Cells[1].Value.ToString() == this.almacenesTextBox.Text)
                             {
                                 if (this.dataGridAlmacenes.CurrentCell.RowIndex == fila.Index)
                                 {

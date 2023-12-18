@@ -247,29 +247,7 @@ namespace PELOSCALVO
                 e.Handled = true;
             }
         }
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void BtnCopySecurite_Click(object sender, EventArgs e)
-        {
-
-        }
-       private void crearCopiaSimpleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void crearEjercioNuevoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.tabMENU.Parent = null;
-        }
-
-        private void familiasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.tabMENU.Parent = null;
-        }
 
         private void añadirBaseDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -87,12 +87,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@ProvinciasProvincias],[@Enlace])";
+                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@Provincias],[@Enlace])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias,[Enlace] = @Enlace " +
+                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[Provincias] = @Provincias,[Enlace] = @Enlace " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -101,7 +101,7 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionDb)
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@ProvinciasProvincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Provincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(this.Enlace_Pais.Text) ? (object)DBNull.Value : this.Enlace_Pais.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
@@ -130,12 +130,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@ProvinciasProvincias],[@Enlace])";
+                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@Provincias],[@Enlace])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[ProvinciasProvincias] = @ProvinciasProvincias,[Enlace] = @Enlace " +
+                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[Provincias] = @Provincias,[Enlace] = @Enlace " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -144,7 +144,7 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionSql)
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@ProvinciasProvincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Provincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(this.Enlace_Pais.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Enlace_Pais.Text));
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
@@ -339,7 +339,7 @@ namespace PELOSCALVO
                         {
                             foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
                             {
-                                if (fila.Cells[1].ToString() == this.ProvinciaText.Text)
+                                if (fila.Cells[1].Value.ToString() == this.ProvinciaText.Text)
                                 {
                                     if (this.dataGridProvincias.CurrentCell.RowIndex == fila.Index)
                                     {

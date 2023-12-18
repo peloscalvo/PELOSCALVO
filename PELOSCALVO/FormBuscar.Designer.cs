@@ -29,34 +29,29 @@ namespace PELOSCALVO
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscar));
             this.DataGridBuscar = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Buscador2 = new System.Windows.Forms.TextBox();
             this.TipoBuscar2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Contador3 = new System.Windows.Forms.Label();
-            this.BindingBuscarSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBuscar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BindingBuscarSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DataGridBuscar
             // 
             this.DataGridBuscar.AllowUserToAddRows = false;
             this.DataGridBuscar.AllowUserToDeleteRows = false;
-            this.DataGridBuscar.AutoGenerateColumns = false;
             this.DataGridBuscar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridBuscar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Dato,
             this.IdFila});
-            this.DataGridBuscar.DataSource = this.BindingBuscarSource;
             this.DataGridBuscar.Location = new System.Drawing.Point(2, 63);
             this.DataGridBuscar.Name = "DataGridBuscar";
             this.DataGridBuscar.ReadOnly = true;
@@ -66,12 +61,36 @@ namespace PELOSCALVO
             this.DataGridBuscar.TabIndex = 0;
             this.DataGridBuscar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBuscar_CellDoubleClick);
             // 
+            // Id
+            // 
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Id.FillWeight = 120F;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Dato
+            // 
+            this.Dato.FillWeight = 300F;
+            this.Dato.HeaderText = "Dato";
+            this.Dato.Name = "Dato";
+            this.Dato.ReadOnly = true;
+            // 
+            // IdFila
+            // 
+            this.IdFila.HeaderText = "IdFila";
+            this.IdFila.Name = "IdFila";
+            this.IdFila.ReadOnly = true;
+            // 
             // Buscador2
             // 
             this.Buscador2.Location = new System.Drawing.Point(220, 12);
             this.Buscador2.Name = "Buscador2";
             this.Buscador2.Size = new System.Drawing.Size(366, 20);
             this.Buscador2.TabIndex = 6;
+            this.Buscador2.TextChanged += new System.EventHandler(this.Buscador2_TextChanged);
             // 
             // TipoBuscar2
             // 
@@ -109,29 +128,6 @@ namespace PELOSCALVO
             this.Contador3.Text = "0";
             this.Contador3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Id
-            // 
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Id.FillWeight = 120F;
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // Dato
-            // 
-            this.Dato.FillWeight = 300F;
-            this.Dato.HeaderText = "Dato";
-            this.Dato.Name = "Dato";
-            this.Dato.ReadOnly = true;
-            // 
-            // IdFila
-            // 
-            this.IdFila.HeaderText = "IdFila";
-            this.IdFila.Name = "IdFila";
-            this.IdFila.ReadOnly = true;
-            // 
             // FormBuscar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,7 +147,6 @@ namespace PELOSCALVO
             this.Text = "Buscar";
             this.Load += new System.EventHandler(this.FormBuscar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBuscar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BindingBuscarSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,7 +159,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.ComboBox TipoBuscar2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Contador3;
-        private System.Windows.Forms.BindingSource BindingBuscarSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dato;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFila;

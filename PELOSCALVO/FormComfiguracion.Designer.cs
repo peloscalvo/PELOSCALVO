@@ -52,7 +52,6 @@ namespace PELOSCALVO
             this.dtNombresTablasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idProveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabMENU = new System.Windows.Forms.TabPage();
             this.BtnRestructurar = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolArchivo = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +70,6 @@ namespace PELOSCALVO
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnSalirConfi = new System.Windows.Forms.Button();
-            this.tabControlTodo = new System.Windows.Forms.TabControl();
             this.dtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
@@ -87,9 +85,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNombresTablasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).BeginInit();
-            this.tabMENU.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.tabControlTodo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -205,22 +201,6 @@ namespace PELOSCALVO
             this.idProveedoresDataGridViewTextBoxColumn.ReadOnly = true;
             this.idProveedoresDataGridViewTextBoxColumn.Width = 153;
             // 
-            // tabMENU
-            // 
-            this.tabMENU.Controls.Add(this.BtnRestructurar);
-            this.tabMENU.Controls.Add(this.menuStrip);
-            this.tabMENU.Controls.Add(this.BtnSalirConfi);
-            this.tabMENU.Location = new System.Drawing.Point(4, 25);
-            this.tabMENU.Name = "tabMENU";
-            this.tabMENU.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMENU.Size = new System.Drawing.Size(1012, 531);
-            this.tabMENU.TabIndex = 0;
-            this.tabMENU.Text = "Menu Principal";
-            this.tabMENU.UseVisualStyleBackColor = true;
-            this.tabMENU.Click += new System.EventHandler(this.tabMENU_Click);
-            this.tabMENU.Enter += new System.EventHandler(this.tabMENU_Enter);
-            this.tabMENU.MouseEnter += new System.EventHandler(this.TabMENU_MouseEnter);
-            // 
             // BtnRestructurar
             // 
             this.BtnRestructurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
@@ -231,7 +211,7 @@ namespace PELOSCALVO
             this.BtnRestructurar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRestructurar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_arrow_35_24;
             this.BtnRestructurar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnRestructurar.Location = new System.Drawing.Point(665, 315);
+            this.BtnRestructurar.Location = new System.Drawing.Point(680, 297);
             this.BtnRestructurar.Name = "BtnRestructurar";
             this.BtnRestructurar.Padding = new System.Windows.Forms.Padding(0, 0, 12, 0);
             this.BtnRestructurar.Size = new System.Drawing.Size(277, 42);
@@ -247,10 +227,10 @@ namespace PELOSCALVO
             this.toolArchivo,
             this.toolCopiaSeguridad,
             this.ayudaToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(3, 3);
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip.Size = new System.Drawing.Size(1006, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1020, 24);
             this.menuStrip.TabIndex = 45;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.MouseLeave += new System.EventHandler(this.menuStrip_MouseLeave);
@@ -330,8 +310,6 @@ namespace PELOSCALVO
             this.crearCopiaSimpleToolStripMenuItem.Name = "crearCopiaSimpleToolStripMenuItem";
             this.crearCopiaSimpleToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.crearCopiaSimpleToolStripMenuItem.Text = "Crear copia Simple";
-            this.crearCopiaSimpleToolStripMenuItem.Click += new System.EventHandler(this.crearCopiaSimpleToolStripMenuItem_Click);
-            // 
             // crearCopiaCompletaToolStripMenuItem1
             // 
             this.crearCopiaCompletaToolStripMenuItem1.Name = "crearCopiaCompletaToolStripMenuItem1";
@@ -378,7 +356,7 @@ namespace PELOSCALVO
             this.BtnSalirConfi.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalirConfi.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
             this.BtnSalirConfi.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalirConfi.Location = new System.Drawing.Point(902, 460);
+            this.BtnSalirConfi.Location = new System.Drawing.Point(915, 465);
             this.BtnSalirConfi.Name = "BtnSalirConfi";
             this.BtnSalirConfi.Size = new System.Drawing.Size(77, 63);
             this.BtnSalirConfi.TabIndex = 13;
@@ -386,21 +364,6 @@ namespace PELOSCALVO
             this.BtnSalirConfi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnSalirConfi.UseVisualStyleBackColor = false;
             this.BtnSalirConfi.Click += new System.EventHandler(this.BtnSalirTipoTarifa_Click);
-            // 
-            // tabControlTodo
-            // 
-            this.tabControlTodo.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.tabControlTodo.Controls.Add(this.tabMENU);
-            this.tabControlTodo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControlTodo.HotTrack = true;
-            this.tabControlTodo.Location = new System.Drawing.Point(0, 0);
-            this.tabControlTodo.MinimumSize = new System.Drawing.Size(32, 32);
-            this.tabControlTodo.Name = "tabControlTodo";
-            this.tabControlTodo.SelectedIndex = 0;
-            this.tabControlTodo.Size = new System.Drawing.Size(1020, 560);
-            this.tabControlTodo.TabIndex = 0;
-            this.tabControlTodo.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            this.tabControlTodo.MouseEnter += new System.EventHandler(this.TabControl1_MouseEnter);
             // 
             // dtTarifaTipoBindingSource
             // 
@@ -412,7 +375,9 @@ namespace PELOSCALVO
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 556);
-            this.Controls.Add(this.tabControlTodo);
+            this.Controls.Add(this.BtnSalirConfi);
+            this.Controls.Add(this.BtnRestructurar);
+            this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(32, 39);
@@ -435,13 +400,11 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNombresTablasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatosBindingSource)).EndInit();
-            this.tabMENU.ResumeLayout(false);
-            this.tabMENU.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.tabControlTodo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -467,8 +430,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn idProveedoresDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource dtNombresTablasBindingSource;
         private System.Windows.Forms.BindingSource dsMultidatosBindingSource;
-        private System.Windows.Forms.TabControl tabControlTodo;
-        private System.Windows.Forms.TabPage tabMENU;
         private System.Windows.Forms.Button BtnRestructurar;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolArchivo;

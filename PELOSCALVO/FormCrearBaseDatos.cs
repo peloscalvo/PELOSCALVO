@@ -413,7 +413,7 @@ namespace PELOSCALVO
                 "[BAJA] [bit]DEFAULT 0 NOT NULL, [Fatu] [bit]DEFAULT 0 NOT NULL)";
                 /////consulta  CLIENTES           CLIENTES   /////////////////
                 string ConsultaClientes = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaClientes + "]') AND type in (N'U'))" +
-                    " CREATE TABLE [" + TablaClientes + "]( [IDCLIENTE][int]primary key NOT NULL,[APODOCLIEN] [varchar](255) NULL,[NOMBRECLIE] [archar](255) NULL,[DIRECCIONC] [varchar](255) NULL," +
+                    " CREATE TABLE [" + TablaClientes + "]( [IDCLIENTE][int]primary key NOT NULL,[APODOCLIEN] [varchar](255) NULL,[NOMBRECLIE] [varchar](255) NULL,[DIRECCIONC] [varchar](255) NULL," +
                     "[TELEFONOCL] [varchar](30) NULL,[MOVILCLIEN] [varchar](50) NULL,[CORREOCLIE] [varchar](255) NULL,[DNICLIENTE] [varchar](30) NULL,[LOCALIDADC] [varchar](255) NULL," +
                     "[CODIGOPOST] [varchar](50) NULL,[PAISCLIENT] [varchar](255) NULL,[FECHAALTAC] [date] NULL,[CALLECLIEN] [varchar](255) NULL,[NUMEROCALL] [varchar](40) NULL," +
                     "[PROVINCIAC] [varchar](100) NULL,[TARIFATIPO] [varchar](50) NULL,[TIPODNI] [varchar](50) NULL,[TIPOCLIENT] [varchar](50) NULL,[DESCUENTOC] [numeric](19, 3) NULL," +
@@ -458,11 +458,11 @@ namespace PELOSCALVO
               " CREATE TABLE [DtFamiliaProductos]( [Id][int] NOT NULL,[Familia] varchar(80) NULL)" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtPaises]') AND type in (N'U'))" +
-            " CREATE TABLE [DtPaises]( [Id][int]  NOT NULL,[PaisesPaises] varchar(80) primary key  NOT NULL)" +
+            " CREATE TABLE [DtPaises]( [Id][int]  NOT NULL,[Paises] varchar(80) primary key  NOT NULL)" +
               
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProvincias]') AND type in (N'U'))" +
-                 " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[ProvinciasProvincias] varchar(80) NULL,[Enlace]varchar(80) NOT NULL ," +
-              " CONSTRAINT F_DtProvincias FOREIGN KEY (Enlace)REFERENCES DtPaises(PaisesPaises) ON UPDATE CASCADE ON DELETE CASCADE )" +
+                 " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[Provincias] varchar(80) NULL,[Enlace]varchar(80) NOT NULL ," +
+              " CONSTRAINT F_DtProvincias FOREIGN KEY (Enlace)REFERENCES DtPaises(Paises) ON UPDATE CASCADE ON DELETE CASCADE )" +
                
               "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
                    " CREATE TABLE [DtObras]( [Id][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
@@ -524,7 +524,7 @@ namespace PELOSCALVO
                                 "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[FechaFactura] [date] NULL," +
                                 "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
                                 "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
-                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace](250) NULL,[EnlaceDtconfi](250) NULL," + "CONSTRAINT F_DtConfi" + TablaFactu + VALORid.ToString() +
+                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [varchar](250) NULL,[EnlaceDtconfi](250) NULL," + "CONSTRAINT F_DtConfi" + TablaFactu + VALORid.ToString() +
                                "FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                                 "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +

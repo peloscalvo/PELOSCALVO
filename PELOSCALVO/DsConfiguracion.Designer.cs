@@ -489,10 +489,6 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnAñoDeEjercicio;
             
-            private global::System.Data.DataColumn columnSerieArticulos;
-            
-            private global::System.Data.DataColumn columnSerieClientes;
-            
             private global::System.Data.DataColumn columnEnlaceDtconfi;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -578,22 +574,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SerieArticulosColumn {
-                get {
-                    return this.columnSerieArticulos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SerieClientesColumn {
-                get {
-                    return this.columnSerieClientes;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn EnlaceDtconfiColumn {
                 get {
                     return this.columnEnlaceDtconfi;
@@ -637,7 +617,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, string SerieArticulos, string SerieClientes, string EnlaceDtconfi) {
+            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, string EnlaceDtconfi) {
                 DtConfiRow rowDtConfiRow = ((DtConfiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfiguraccionBasica,
@@ -646,8 +626,6 @@ namespace PELOSCALVO {
                         null,
                         IdConexionConfi,
                         AñoDeEjercicio,
-                        SerieArticulos,
-                        SerieClientes,
                         EnlaceDtconfi};
                 if ((parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi != null)) {
                     columnValuesArray[3] = parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi[2];
@@ -680,8 +658,6 @@ namespace PELOSCALVO {
                 this.columnEmpresaENLACE = base.Columns["EmpresaENLACE"];
                 this.columnIdConexionConfi = base.Columns["IdConexionConfi"];
                 this.columnAñoDeEjercicio = base.Columns["AñoDeEjercicio"];
-                this.columnSerieArticulos = base.Columns["SerieArticulos"];
-                this.columnSerieClientes = base.Columns["SerieClientes"];
                 this.columnEnlaceDtconfi = base.Columns["EnlaceDtconfi"];
             }
             
@@ -700,10 +676,6 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnIdConexionConfi);
                 this.columnAñoDeEjercicio = new global::System.Data.DataColumn("AñoDeEjercicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAñoDeEjercicio);
-                this.columnSerieArticulos = new global::System.Data.DataColumn("SerieArticulos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSerieArticulos);
-                this.columnSerieClientes = new global::System.Data.DataColumn("SerieClientes", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSerieClientes);
                 this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceDtconfi);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -2297,38 +2269,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SerieArticulos {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtConfi.SerieArticulosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SerieArticulos\' de la tabla \'DtConfi\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtConfi.SerieArticulosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SerieClientes {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtConfi.SerieClientesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SerieClientes\' de la tabla \'DtConfi\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtConfi.SerieClientesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string EnlaceDtconfi {
                 get {
                     try {
@@ -2424,30 +2364,6 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetAñoDeEjercicioNull() {
                 this[this.tableDtConfi.AñoDeEjercicioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSerieArticulosNull() {
-                return this.IsNull(this.tableDtConfi.SerieArticulosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSerieArticulosNull() {
-                this[this.tableDtConfi.SerieArticulosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSerieClientesNull() {
-                return this.IsNull(this.tableDtConfi.SerieClientesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSerieClientesNull() {
-                this[this.tableDtConfi.SerieClientesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

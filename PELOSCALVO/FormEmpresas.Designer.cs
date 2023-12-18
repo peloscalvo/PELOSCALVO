@@ -546,6 +546,7 @@ namespace PELOSCALVO
             this.BtnImprimirEmpresa.Text = "Imprimir";
             this.BtnImprimirEmpresa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnImprimirEmpresa.UseVisualStyleBackColor = false;
+            this.BtnImprimirEmpresa.Click += new System.EventHandler(this.BtnImprimirEmpresa_Click);
             // 
             // BtnEliminarEmpresa
             // 
@@ -585,6 +586,7 @@ namespace PELOSCALVO
             this.BtnBuscarEmpresa.Text = "Buscar";
             this.BtnBuscarEmpresa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnBuscarEmpresa.UseVisualStyleBackColor = false;
+            this.BtnBuscarEmpresa.Click += new System.EventHandler(this.BtnBuscarEmpresa_Click);
             // 
             // BtnNuevaEmpresa
             // 
@@ -787,9 +789,9 @@ namespace PELOSCALVO
             // 
             // Paistxt
             // 
-            this.Paistxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "PaisesPaises", true));
+            this.Paistxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "PaisEmpresa", true));
             this.Paistxt.DataSource = this.dtPaisesBindingSource;
-            this.Paistxt.DisplayMember = "PaisesPaises";
+            this.Paistxt.DisplayMember = "Paises";
             this.Paistxt.Enabled = false;
             this.Paistxt.FormattingEnabled = true;
             this.Paistxt.Location = new System.Drawing.Point(700, 246);
@@ -809,9 +811,9 @@ namespace PELOSCALVO
             // 
             // ProvinciaTxt
             // 
-            this.ProvinciaTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtProvinciasBindingSource, "ProvinciasProvincias", true));
+            this.ProvinciaTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "ProvinciaEmpresa", true));
             this.ProvinciaTxt.DataSource = this.dtProvinciasBindingSource;
-            this.ProvinciaTxt.DisplayMember = "ProvinciasProvincias";
+            this.ProvinciaTxt.DisplayMember = "Provincias";
             this.ProvinciaTxt.Enabled = false;
             this.ProvinciaTxt.FormattingEnabled = true;
             this.ProvinciaTxt.Location = new System.Drawing.Point(373, 243);

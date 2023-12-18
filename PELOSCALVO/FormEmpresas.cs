@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -12,6 +13,11 @@ namespace PELOSCALVO
         public FormEmpresas()
         {
             InitializeComponent();
+            ToolTip tt2 = new ToolTip();
+            tt2.SetToolTip(BtnEliminarEmpresa, "Elimina La Empresa");
+            tt2.SetToolTip(BtnSalirEmpresa, "Salir De Empresa");
+            tt2.IsBalloon = true;
+           tt2.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
 
         private void FormEmpresas_Load(object sender, EventArgs e)
@@ -22,12 +28,11 @@ namespace PELOSCALVO
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
 
-
                 }
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
                     this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
-                   // this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;        
+                    // this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;        
                 }
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
@@ -263,20 +268,40 @@ namespace PELOSCALVO
                         {
                             for (int Fila = 1; Fila < 8; Fila++)
                             {
-                        
+
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Fila);
                                 if (Fila == 6)
                                 {
 
                                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", "IVA");
-
+                                    FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "IVA" + Fila.ToString(), this.EmpresaReguistro.Text);
                                 }
                                 else
                                 {
                                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
+                                    FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.EmpresaReguistro.Text);
                                 }
-                              
+
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                                NuevaConexion.ComandoSql.ExecuteNonQuery();
+                                NuevaConexion.ComandoSql.Parameters.Clear();
+
+                            }
+                            string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
+                            string Ejercicio = "EJERCICIO   " + String.Format("{0:yyyy}", DateTime.Now);
+                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([EnlaceDtconfi],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                                  "[AñoDeEjercicio]) VALUES(@EnlaceDtconfi, @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                                     "  @AñoDeEjercicio)";
+                            NuevaConexion = new ClsConexionSql(ConsultaEjercios);////Guarda Ejercicio a empresa
+                            if (NuevaConexion.SiConexionSql)
+                            {
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", Ejercicio + "/" + this.EmpresaReguistro.Text + "/" + "1");
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", Basica);
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", 21);
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", Ejercicio);
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdConexionConfi", 1);
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", String.Format("{0:yyyy}", DateTime.Now));
                                 NuevaConexion.ComandoSql.ExecuteNonQuery();
                                 NuevaConexion.ComandoSql.Parameters.Clear();
 
@@ -354,13 +379,12 @@ namespace PELOSCALVO
 
         private void GuardarEmpresasDb()
         {
-            if (EspacioDiscosConfi (Directory.GetCurrentDirectory(), 20))
+            if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 20))
             {
-                String ConsultaDescuetos = "";
                 string consulta = "";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                 {
-                    ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
+
                     consulta = "  INSERT INTO [DtConfiguracionPrincipal]([EmpresaConfi],[IdEmpresa],[NombreEmpresa],[DireccionEmpresa],[LocalidadEmpresa]" +
                  " ,[CodigoPostalEmpresa],[ProvinciaEmpresa],[TelefonoEmpresa],[CorreoEmpresa],[WepEmpresa] ,[RegimenIvaEmpresa]" +
                      " ,[PaisEmpresa],[SerieDeFacturacionEmpresa],[Telefono2Empresa],[MovilEmpresa],[CifEmpresa],[NombreEmpresaReguistro]" +
@@ -373,7 +397,6 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    ConsultaDescuetos = " UPDATE [DtTarifaTipo] SET [Id] = @Id,[TarifaTipo] =@TarifaTipo,[EnlaceTarifa]= @EnlaceTarifa";
                     consulta = "UPDATE [DtConfiguracionPrincipal] SET [EmpresaConfi] = @EmpresaConfi,[IdEmpresa] = @IdEmpresa, [NombreEmpresa] = @NombreEmpresa, " +
                         "[DireccionEmpresa] = @DireccionEmpresa, [LocalidadEmpresa] = @LocalidadEmpresa,[CodigoPostalEmpresa] = @CodigoPostalEmpresa,  [ProvinciaEmpresa] = @ProvinciaEmpresa, " +
                         " [TelefonoEmpresa] = @TelefonoEmpresa, [CorreoEmpresa] = @CorreoEmpresa,  [WepEmpresa] = @WepEmpresa, [RegimenIvaEmpresa] = @RegimenIvaEmpresa, [PaisEmpresa] = @PaisEmpresa, " +
@@ -411,31 +434,59 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
                         Validate();
-                        NuevaConexion = new ClsConexionDb(ConsultaDescuetos);////Guarda Descuentos Clientes
-                        if (NuevaConexion.SiConexionDb)
+                        if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                         {
+                            string ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
+                            string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
+                            string Ejercicio = "EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
+                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([EnlaceDtconfi],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                                  "[AñoDeEjercicio]) VALUES(@EnlaceDtconfi, @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                                     "  @AñoDeEjercicio)";
 
-                            string Tarifa = "Pvp";
-
-                            for (int Fila = 1; Fila < 8; Fila++)
+                            NuevaConexion = new ClsConexionDb(ConsultaDescuetos);////Guarda Descuentos Clientes
+                            if (NuevaConexion.SiConexionDb)
                             {
 
-                 
-                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Fila);
-                                if (Fila == 7)
+                                string Tarifa = "Pvp";
+
+                                for (int Fila = 1; Fila < 8; Fila++)
                                 {
 
-                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo","IVA");
+
+                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Fila);
+                                    if (Fila == 7)
+                                    {
+
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", "IVA");
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "IVA", this.EmpresaReguistro.Text);
+                                    }
+                                    else
+                                    {
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.EmpresaReguistro.Text);
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
+                                    }
+
+                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                                    NuevaConexion.ComandoDb.ExecuteNonQuery();
+                                    NuevaConexion.ComandoDb.Parameters.Clear();
 
                                 }
-                                else
-                                {
-                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
-                                }
-                            
-                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                            }
+
+                            NuevaConexion = new ClsConexionDb(ConsultaEjercios);////Guarda Ejercicio a empresa
+                            if (NuevaConexion.SiConexionDb)
+                            {
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", Ejercicio + "/" + this.EmpresaReguistro.Text + "/" + "1");
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", Basica);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", 21);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjerciciosDeAño", Ejercicio);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdConexionConfi", 1);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", String.Format("{0:yyyy}", DateTime.Now));
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
                                 NuevaConexion.ComandoDb.Parameters.Clear();
+                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica , 21,Ejercicio ,this.EmpresaReguistro.Text,1,
+                                    String.Format("{0:yyyy}", DateTime.Now), Ejercicio + "/" + this.EmpresaReguistro.Text + "/" + "1");
                             }
                         }
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -478,7 +529,7 @@ namespace PELOSCALVO
                 {
                     foreach (DataGridViewRow fila in this.dtConfiguracionPrincipalDataGridView.Rows)
                     {
-                        if (fila.Cells[1].ToString() == this.empresaConfiComboBox.Text)
+                        if (fila.Cells[1].Value.ToString() == this.EmpresaRazonTxt.Text)
                         {
                             if (this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex == fila.Index)
                             {
@@ -643,22 +694,29 @@ namespace PELOSCALVO
         }
         private void BtnEliminarEmpresa_Click(object sender, EventArgs e)
         {
-            if (this.dtConfiguracionPrincipalBindingSource.Count > 0)
+            if (FormMenuPrincipal.menu2principal.SiOpenFatu == 0)
             {
-                if (MessageBox.Show("Desea Eliminar Permanentemente y Todo su Contenido", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (this.dtConfiguracionPrincipalBindingSource.Count > 0)
                 {
-
-                    if (ClsConexionSql.SibaseDatosSql)
+                    if (MessageBox.Show("Desea Eliminar Permanentemente y Todo su Contenido", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        EliminarEmpresaSql();
-                    }
-                    else
-                    {
-                        EliminarEmpresaBb();
-                    }
+
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            EliminarEmpresaSql();
+                        }
+                        else
+                        {
+                            EliminarEmpresaBb();
+                        }
 
 
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe Cerrar Formulario De  ((( FACTURACION )))", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -677,5 +735,18 @@ namespace PELOSCALVO
                 e.Cancel = true;
             }
         }
+
+        private void BtnImprimirEmpresa_Click(object sender, EventArgs e)
+        {
+            SystemSounds.Exclamation.Play();
+            SystemSounds.Beep.Play();
+        }
+
+        private void BtnBuscarEmpresa_Click(object sender, EventArgs e)
+        {
+            SystemSounds.Beep.Play();
+        }
+
+    
     }
 }
