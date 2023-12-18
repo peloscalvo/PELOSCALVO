@@ -38,9 +38,10 @@ namespace PELOSCALVO
             this.Text = Nombrefila;
             Fila = IdFila;
             ColumnaB = colunma;
-            this.DataGridBuscar.Columns[1].HeaderText = Nombrefila;
+            this.DataGridBuscar.Columns[1].HeaderText = Nombrefila; 
             this.DataGridBuscar.Columns[0].DataPropertyName = "Id";
             this.DataGridBuscar.Columns[1].DataPropertyName = colunma;
+            this.DataGridBuscar.Columns[2].DataPropertyName = "IdFila";
         }
         public void BuscarDatos()
         {

@@ -23,10 +23,10 @@ namespace PELOSCALVO
         }
         private void FormBaseDatos_Load(object sender, EventArgs e)
         {
-            if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+            if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti != null)
             {
 
-                // this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
+                this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti;
             }
 
             if (FormMenuPrincipal.menu2principal.dsServidor != null)

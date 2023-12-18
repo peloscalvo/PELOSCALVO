@@ -29,6 +29,7 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
+            AñadirIdBuscar();
         }
         public void AñadirIdBuscar()
         {
