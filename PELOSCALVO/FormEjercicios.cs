@@ -420,7 +420,7 @@ namespace PELOSCALVO
                     {
                         if (fila.Cells[2].Value.ToString() == this.ejerciciosDeAñoTextBox.Text)
                         {
-                            if (i == this.dtConfiDataGridView.CurrentCell.RowIndex)
+                            if (fila.Index == this.dtConfiDataGridView.CurrentCell.RowIndex)
                             {
                                 goto seguir2;
                             }

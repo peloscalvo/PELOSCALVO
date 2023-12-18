@@ -320,12 +320,11 @@ namespace PELOSCALVO
             {
                 int TotalServidores = this.ServidorCrear.Items.Count;
                 this.ServidorCrear.Tag = "PARAR";
-                String ServidorCrearNuevo = this.ServidorCrear.Text;
                 bool SiExisteServidor = true;
                 for (int i = 0; i < TotalServidores; i++)
                 {
 
-                    if (this.dsServidor.Tables["DtServidor"].Rows[i]["Servidores"].ToString().Equals(ServidorCrearNuevo, StringComparison.OrdinalIgnoreCase))
+                    if (this.dsServidor.Tables["DtServidor"].Rows[i]["Servidores"].ToString().Equals(this.ServidorCrear.Text, StringComparison.OrdinalIgnoreCase))
                     {
                         SiExisteServidor = false;
                     }
@@ -333,19 +332,9 @@ namespace PELOSCALVO
                 }
                 if (SiExisteServidor)
                 {
-                    string ServidorAnalizar = "";
-                    if (this.ServidoresLabel.Text != string.Empty)
+                    if (!string.IsNullOrEmpty(this.ServidorCrear.Text))
                     {
-                        ServidorAnalizar = this.ServidoresLabel.Text;
-                    }
-                    this.dtServidorBindingSource.AddNew();
-                    // this.dsServidor.Tables["DtServidor"].Rows[TotalServidores-1]["Servidores"] = ServidorCrearNuevo;
-                    // ServidorCrear.SelectedIndex = TotalServidores;
-                    //ServidorCrear.Text = ServidorCrearNuevo;
-                    if (ServidorAnalizar != string.Empty)
-                    {
-                        this.ServidoresLabel.Text = ServidorAnalizar;
-                        this.dtServidorBindingSource.EndEdit();
+                        FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(ServidorCrear.Text);
                         Validate();
                         if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                         {
@@ -721,10 +710,7 @@ namespace PELOSCALVO
             }
             if (this.TabCrear.SelectedIndex == 3)
             {
-                if (this.ServidorCrear.Text != string.Empty)
-                {
-                    this.ServidoresLabel.Text = this.ServidorCrear.Text;
-                }
+     
                 this.InfoProcesoText.Text = "Indica Instancia A Crear";
             }
             if (this.TabCrear.SelectedIndex == 4)
@@ -841,10 +827,7 @@ namespace PELOSCALVO
 
         private void ServidorCrear_TextChanged(object sender, EventArgs e)
         {
-            if (this.ServidorCrear.Tag.ToString() == "SEGUIR")
-            {
-                this.ServidoresLabel.Text = this.ServidorCrear.Text;
-            }
+       
         }
 
         private void ServidorCrear_Validated(object sender, EventArgs e)

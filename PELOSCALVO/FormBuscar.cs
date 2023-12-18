@@ -20,9 +20,12 @@ namespace PELOSCALVO
         {
             if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
             {
-                this.verViev =FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
-               // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                if (ClasDatos.QUEform == "Paises")
+                {
+                    this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
+                    // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                    DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                }
             }
 
            // this.BindingBuscarSource.DataSource = DataSourceDatos;

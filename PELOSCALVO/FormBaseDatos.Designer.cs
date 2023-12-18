@@ -673,6 +673,7 @@ namespace PELOSCALVO
             this.Servidor.SelectedIndexChanged += new System.EventHandler(this.Servidor_SelectedIndexChanged);
             this.Servidor.Enter += new System.EventHandler(this.Servidor_Enter);
             this.Servidor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Servidor_KeyPress);
+            this.Servidor.Validating += new System.ComponentModel.CancelEventHandler(this.Servidor_Validating);
             this.Servidor.Validated += new System.EventHandler(this.Servidor_Validated);
             // 
             // InfoProcesoText2

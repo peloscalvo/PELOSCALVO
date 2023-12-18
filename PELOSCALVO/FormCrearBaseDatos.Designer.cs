@@ -51,7 +51,6 @@ namespace PELOSCALVO
             this.checkPass2 = new System.Windows.Forms.CheckBox();
             this.ContraseñaSql2 = new System.Windows.Forms.TextBox();
             this.AutenticacionCrear = new System.Windows.Forms.ComboBox();
-            this.ServidoresLabel = new System.Windows.Forms.Label();
             this.BtnBuscarServidorCrear = new System.Windows.Forms.Button();
             this.ServidorCrear = new System.Windows.Forms.ComboBox();
             this.TabCrearTablas = new System.Windows.Forms.TabPage();
@@ -241,7 +240,6 @@ namespace PELOSCALVO
             this.TabBaseDatos.Controls.Add(this.panelSql2);
             this.TabBaseDatos.Controls.Add(this.AutenticacionCrear);
             this.TabBaseDatos.Controls.Add(label4);
-            this.TabBaseDatos.Controls.Add(this.ServidoresLabel);
             this.TabBaseDatos.Controls.Add(this.BtnBuscarServidorCrear);
             this.TabBaseDatos.Controls.Add(this.ServidorCrear);
             this.TabBaseDatos.Controls.Add(idConexionConfiLabel);
@@ -319,15 +317,6 @@ namespace PELOSCALVO
             this.AutenticacionCrear.Size = new System.Drawing.Size(291, 21);
             this.AutenticacionCrear.TabIndex = 80;
             this.AutenticacionCrear.SelectedIndexChanged += new System.EventHandler(this.AutenticacionCrear_SelectedIndexChanged);
-            // 
-            // ServidoresLabel
-            // 
-            this.ServidoresLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtServidorBindingSource, "Servidores", true));
-            this.ServidoresLabel.Location = new System.Drawing.Point(74, 44);
-            this.ServidoresLabel.Name = "ServidoresLabel";
-            this.ServidoresLabel.Size = new System.Drawing.Size(294, 23);
-            this.ServidoresLabel.TabIndex = 78;
-            this.ServidoresLabel.Text = "Info";
             // 
             // BtnBuscarServidorCrear
             // 
@@ -850,7 +839,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label Backuptext;
         private System.Windows.Forms.Label NombreBaseTablas;
         private System.Windows.Forms.Label InfoProcesoText;
-        private System.Windows.Forms.Label ServidoresLabel;
         private System.Windows.Forms.TabPage TabInstacias;
         private System.Windows.Forms.Button BtnDesactivarInstancia;
         private System.Windows.Forms.Button BtnActivarInstancia;

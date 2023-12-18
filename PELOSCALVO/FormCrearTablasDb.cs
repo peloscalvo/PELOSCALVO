@@ -192,7 +192,8 @@ namespace PELOSCALVO
                        ", [Direcion] varchar, [CorreoEletronico_cli] varchar)";
                     string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER primary key, [Usuario] varchar, [Nombre] varchar," +
                           "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
-
+                    string TablaMovimientos = "   CREATE TABLE [DtMovimientos]([Id] COUNTER (1,1) primary key,[Referencia] varchar , [Stock] INTEGER default 0, [Enlace] varchar," +
+                   "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
                     string Ruta2 = "";
                     if (this.TabInicio.Tag.ToString() == "SI")
                     {
@@ -412,7 +413,19 @@ namespace PELOSCALVO
                                 MessageBox.Show(ex.Message, "ERROR  USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
+                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaMovimientos, NuevaConexion))
+                        {
+                            try
+                            {
+                                ComandoDb.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
 
+
+                                MessageBox.Show(ex.Message, "ERROR " + "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                         for (int i = 1; i < 7; i++)
                         {
                             if (i == 2)

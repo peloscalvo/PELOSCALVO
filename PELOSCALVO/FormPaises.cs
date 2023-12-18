@@ -434,7 +434,7 @@ namespace PELOSCALVO
         private void BtnBuscarPais_Click(object sender, EventArgs e)
         {
             FormBuscar frm = new FormBuscar();
-            frm.CargarDatos(1, " Paises","PaisesPaises");
+            frm.CargarDatos(1, " Paises","Paises");
             frm.BringToFront();
             ClasDatos.QUEform = "Paises";
             frm.ShowDialog();

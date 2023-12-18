@@ -894,12 +894,12 @@ namespace PELOSCALVO
             {
                 int TotalServidores = this.Servidor.Items.Count;
                 this.Servidor.Tag = "PARAR";
-                String ServidorCrearNuevo = this.Servidor.Text;
                 bool SiExisteServidor = true;
+        
                 for (int i = 0; i < TotalServidores; i++)
                 {
 
-                    if (FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[i]["Servidores"].ToString().Equals(ServidorCrearNuevo, StringComparison.OrdinalIgnoreCase))
+                    if (FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[i]["Servidores"].ToString().Equals(Servidor.Text, StringComparison.OrdinalIgnoreCase))
                     {
                         SiExisteServidor = false;
                     }
@@ -907,16 +907,10 @@ namespace PELOSCALVO
                 }
                 if (SiExisteServidor)
                 {
-                    string ServidorAnalizar = "";
-                    if (this.Servidor.Text != string.Empty)
+
+                    if (!string.IsNullOrEmpty( this.Servidor.Text))
                     {
-                        ServidorAnalizar = this.Servidor.Text;
-                    }
-                    this.dtServidorBindingSource.AddNew();
-                    if (ServidorAnalizar != string.Empty)
-                    {
-                        this.Servidor.Text = ServidorAnalizar;
-                        this.dtServidorBindingSource.EndEdit();
+                        FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(Servidor.Text);
                         Validate();
                         if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                         {
@@ -1654,6 +1648,11 @@ namespace PELOSCALVO
             {
                 ObtenerTablasSql();
             }
+        }
+
+        private void Servidor_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ////BuscarServidor();
         }
     }
 

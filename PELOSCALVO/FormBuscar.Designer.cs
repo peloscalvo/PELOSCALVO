@@ -30,15 +30,16 @@ namespace PELOSCALVO
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscar));
             this.DataGridBuscar = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Buscador2 = new System.Windows.Forms.TextBox();
             this.TipoBuscar2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Contador3 = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBuscar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,29 +61,6 @@ namespace PELOSCALVO
             this.DataGridBuscar.Size = new System.Drawing.Size(796, 300);
             this.DataGridBuscar.TabIndex = 0;
             this.DataGridBuscar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBuscar_CellDoubleClick);
-            // 
-            // Id
-            // 
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Id.FillWeight = 120F;
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // Dato
-            // 
-            this.Dato.FillWeight = 300F;
-            this.Dato.HeaderText = "Dato";
-            this.Dato.Name = "Dato";
-            this.Dato.ReadOnly = true;
-            // 
-            // IdFila
-            // 
-            this.IdFila.HeaderText = "IdFila";
-            this.IdFila.Name = "IdFila";
-            this.IdFila.ReadOnly = true;
             // 
             // Buscador2
             // 
@@ -127,6 +105,32 @@ namespace PELOSCALVO
             this.Contador3.TabIndex = 11;
             this.Contador3.Text = "0";
             this.Contador3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Id
+            // 
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Id.FillWeight = 120F;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Dato
+            // 
+            this.Dato.FillWeight = 300F;
+            this.Dato.HeaderText = "Dato";
+            this.Dato.Name = "Dato";
+            this.Dato.ReadOnly = true;
+            // 
+            // IdFila
+            // 
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.IdFila.DefaultCellStyle = dataGridViewCellStyle2;
+            this.IdFila.HeaderText = "IdFila";
+            this.IdFila.Name = "IdFila";
+            this.IdFila.ReadOnly = true;
             // 
             // FormBuscar
             // 
