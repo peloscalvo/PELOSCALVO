@@ -2,6 +2,7 @@
 using ComunApp;
 using Conexiones;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
@@ -181,8 +182,9 @@ namespace PELOSCALVO
                     {
                         break;
                     }
-                    // List<ClasDetalleGrid.Detalle> lista = new List<ClasDetalleGrid.Detalle>();
-
+                     List<ClasDetalleGrid.Detalle> lista = new List<ClasDetalleGrid.Detalle>();
+                    // lista ggg =  ClasDetalleGrid.Detalle;
+                   // ClasDetalleGrid.Listadetalle1.lista itemo = new ClasDetalleGrid.Listadetalle1();
                     ClasDetalleGrid.Detalle item = new ClasDetalleGrid.Detalle();
                     if (row.Cells[0].Value.ToString() != string.Empty)
                     {
@@ -259,7 +261,11 @@ namespace PELOSCALVO
                 ok = false;
                 this.errorProvider1.SetError(this.dniTextBox, "_ingresar Dni (( minimo 4 Caracteres))");
             }
-
+            if (this.AlmacenTxt.Text != string.Empty)
+            {
+                ok = false;
+                this.errorProvider1.SetError(this.AlmacenTxt, "_ingresar Almacen (( minimo 1 Caracteres))");
+            }
             return ok;
 
         }
@@ -896,6 +902,10 @@ namespace PELOSCALVO
                             this.pais_FactComboBox.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString();
                         }
                     }
+                    if (this.AlmacenTxt.Items.Count > 0)
+                    {
+                        this.AlmacenTxt.SelectedIndex = 0;
+                    }
                     ModificarOjetosFatu();
                     BORRARerrores();
 
@@ -1331,11 +1341,17 @@ namespace PELOSCALVO
         }
         private void StockDb(DataGridView Datagri4)
         {
+            int Id_Almacen = 0;
+            int FilaALMACEN = Convert.ToInt32(this.AlmacenTxt.SelectedIndex);
+            if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtAlmacenes"].Rows[FilaALMACEN]["Id"].ToString() != string.Empty)
+            {
+                Id_Almacen = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtAlmacenes"].Rows[FilaALMACEN]["Id"].ToString());
+            }
             string Enlace = this.EmpresaReguistro.Text + "/" + this.AlmacenTxt.Text;
             string consulta = "SELECT [Referencia],[Stock],[Enlace] from [DtMovimientos]" + "Where  Referencia= @Referencia  and  Enlace= @Enlace ";
-            string Nueva = "INSERT INTO [DtMovimientos] VALUES([@Referencia],[@Stock],[@Enlace])";
-            string Modificar = "UPDATE[DtMovimientos] SET[Referencia] = @Referencia,[Stock] = @Stock ,[Enlace] = @Enlace" +
-                " WHERE  Referencia= @Referencia  and  Enlace= @Enlace ";
+            string Nueva = "INSERT INTO [DtMovimientos] VALUES([@Referencia],[@Stock],[@Enlace],[@Id_Empresa],[@Id_Almacen])";
+            string Modificar = "UPDATE[DtMovimientos] SET[Referencia] = @Referencia,[Stock] = @Stock ,[Enlace] = @Enlace"+
+               ",[Id_Empresa] = @Id_Empresa,[Id_Almacen] = @Id_Almacen WHERE  Referencia= @Referencia  and  Enlace= @Enlace ";
             int Stock = 0;
             int FilaStock = 0;
             OleDbDataReader reader;
@@ -1345,19 +1361,19 @@ namespace PELOSCALVO
 
                 foreach (DataGridViewRow Fila in Datagri4.Rows)
                 {
-                    ConexionStock = new ClsConexionDb(consulta);
-                    if (ConexionStock.SiConexionDb)
+                    if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
                     {
-                        ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", Fila.Cells[0].Value.ToString());
-                        ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                        FilaStock = ConexionStock.ComandoDb.ExecuteNonQuery();
-                        ConexionStock.ComandoDb.Parameters.Clear();
-                        if (FilaStock > 0)
+                        ConexionStock = new ClsConexionDb(consulta);
+                        if (ConexionStock.SiConexionDb)
                         {
-                            ConexionStock = new ClsConexionDb(Modificar);
-                            if (ConexionStock.SiConexionDb)
+                            ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", Fila.Cells[0].Value.ToString());
+                            ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                            FilaStock = ConexionStock.ComandoDb.ExecuteNonQuery();
+                            ConexionStock.ComandoDb.Parameters.Clear();
+                            if (FilaStock > 0)
                             {
-                                if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
+                                ConexionStock = new ClsConexionDb(Modificar);
+                                if (ConexionStock.SiConexionDb)
                                 {
                                     reader = ConexionStock.ComandoDb.ExecuteReader();
                                     if (reader.HasRows)
@@ -1368,30 +1384,29 @@ namespace PELOSCALVO
                                             Stock = Convert.ToInt32(reader["Stock"]) - Convert.ToInt32(Fila.Cells[2].Value.ToString());
                                         }
                                     }
-                                    if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
-                                    {
-
-                                        ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
-                                        ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
-                                        ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                                        ConexionStock.ComandoDb.ExecuteNonQuery();
-                                        ConexionStock.ComandoDb.Parameters.Clear();
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            ConexionStock = new ClsConexionDb(Nueva);
-                            if (ConexionStock.SiConexionDb)
-                            {
-                                if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
-                                {
                                     ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
                                     ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
                                     ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
+                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
                                     ConexionStock.ComandoDb.ExecuteNonQuery();
                                     ConexionStock.ComandoDb.Parameters.Clear();
+                                }
+                            }
+                            else
+                            {
+                                ConexionStock = new ClsConexionDb(Nueva);
+                                if (ConexionStock.SiConexionDb)
+                                {
+
+                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
+                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
+                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
+                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
+                                    ConexionStock.ComandoDb.ExecuteNonQuery();
+                                    ConexionStock.ComandoDb.Parameters.Clear();
+
                                 }
                             }
                         }

@@ -190,6 +190,7 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsClientes = new PELOSCALVO.DsClientes();
+            this.Id_Empresa = new System.Windows.Forms.Label();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -685,6 +686,7 @@ namespace PELOSCALVO
             // tabPage1Factura
             // 
             this.tabPage1Factura.AutoScroll = true;
+            this.tabPage1Factura.Controls.Add(this.Id_Empresa);
             this.tabPage1Factura.Controls.Add(this.InfoTxt2);
             this.tabPage1Factura.Controls.Add(Label11);
             this.tabPage1Factura.Controls.Add(this.EnlaceFactu);
@@ -1916,6 +1918,15 @@ namespace PELOSCALVO
             this.dsClientes.DataSetName = "DsClientes";
             this.dsClientes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // Id_Empresa
+            // 
+            this.Id_Empresa.AutoSize = true;
+            this.Id_Empresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true));
+            this.Id_Empresa.Location = new System.Drawing.Point(888, 106);
+            this.Id_Empresa.Name = "Id_Empresa";
+            this.Id_Empresa.Size = new System.Drawing.Size(0, 13);
+            this.Id_Empresa.TabIndex = 76;
+            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2103,5 +2114,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn EnlaceDetalle;
         private DsFacturas dsFacturas;
         private DsClientes dsClientes;
+        private System.Windows.Forms.Label Id_Empresa;
     }
 }

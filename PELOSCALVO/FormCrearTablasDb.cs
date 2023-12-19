@@ -193,7 +193,7 @@ namespace PELOSCALVO
                     string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER primary key, [Usuario] varchar, [Nombre] varchar," +
                           "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
                     string TablaMovimientos = "   CREATE TABLE [DtMovimientos]([Id] COUNTER (1,1) primary key,[Referencia] varchar , [Stock] INTEGER default 0, [Enlace] varchar," +
-                   "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
+                   "[Id_Empresa] INTEGER, [Id_Almacen] INTEGER, [Varios] varchar ,[contar] varchar)";
                     string Ruta2 = "";
                     if (this.TabInicio.Tag.ToString() == "SI")
                     {
