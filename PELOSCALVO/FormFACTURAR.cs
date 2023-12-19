@@ -189,22 +189,22 @@ namespace PELOSCALVO
                     if (row.Cells[0].Value.ToString() != string.Empty)
                     {
                         item.Referencia = row.Cells[0].Value.ToString();
-                        ClasDetalleGrid.Listadetalle1.lista.Add(item);
+                      //  ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[2].Value.ToString() != string.Empty)
                     {
                         item.Cantidad = row.Cells[2].Value.ToString();
-                        ClasDetalleGrid.Listadetalle1.lista.Add(item);
+                       // ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[3].Value.ToString() != string.Empty)
                     {
                         item.Descripcci = row.Cells[3].Value.ToString();
-                        ClasDetalleGrid.Listadetalle1.lista.Add(item);
+                      //  ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[4].Value.ToString() != string.Empty)
                     {
                         item.Precio = row.Cells[4].Value.ToString();
-                        ClasDetalleGrid.Listadetalle1.lista.Add(item);
+                       // ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[5].Value.ToString() != string.Empty)
                     {
@@ -213,7 +213,7 @@ namespace PELOSCALVO
                     if (row.Cells[6].Value.ToString() != string.Empty)
                     {
                         item.Iva = row.Cells[6].Value.ToString();
-                        ClasDetalleGrid.Listadetalle1.lista.Add(item);
+                      //  ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[7].Value.ToString() != string.Empty)
                     {
