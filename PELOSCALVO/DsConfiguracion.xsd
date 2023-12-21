@@ -9,16 +9,26 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
+  <xs:element name="DtAlmacenes" msprop:Generator_TableClassName="DtAlmacenesDataTable" msprop:Generator_TableVarName="tableDtAlmacenes" msprop:Generator_TablePropName="DtAlmacenes" msprop:Generator_RowDeletingName="DtAlmacenesRowDeleting" msprop:Generator_RowChangingName="DtAlmacenesRowChanging" msprop:Generator_RowEvHandlerName="DtAlmacenesRowChangeEventHandler" msprop:Generator_RowDeletedName="DtAlmacenesRowDeleted" msprop:Generator_UserTableName="DtAlmacenes" msprop:Generator_RowChangedName="DtAlmacenesRowChanged" msprop:Generator_RowEvArgName="DtAlmacenesRowChangeEvent" msprop:Generator_RowClassName="DtAlmacenesRow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+        <xs:element name="Almacenes" msprop:Generator_ColumnVarNameInTable="columnAlmacenes" msprop:Generator_ColumnPropNameInRow="Almacenes" msprop:Generator_ColumnPropNameInTable="AlmacenesColumn" msprop:Generator_UserColumnName="Almacenes" type="xs:string" minOccurs="0" />
+        <xs:element name="Enlace_Almacenes" msprop:Generator_ColumnVarNameInTable="columnEnlace_Almacenes" msprop:Generator_ColumnPropNameInRow="Enlace_Almacenes" msprop:Generator_ColumnPropNameInTable="Enlace_AlmacenesColumn" msprop:Generator_UserColumnName="Enlace_Almacenes" type="xs:int" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DsCONFIGURACCION" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsCONFIGURACCION" msprop:Generator_UserDSName="DsCONFIGURACCION">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="DtAlmacenes" />
         <xs:element name="DtConfi" msprop:Generator_TableClassName="DtConfiDataTable" msprop:Generator_TableVarName="tableDtConfi" msprop:Generator_TablePropName="DtConfi" msprop:Generator_RowDeletingName="DtConfiRowDeleting" msprop:Generator_RowChangingName="DtConfiRowChanging" msprop:Generator_RowEvHandlerName="DtConfiRowChangeEventHandler" msprop:Generator_RowDeletedName="DtConfiRowDeleted" msprop:Generator_UserTableName="DtConfi" msprop:Generator_RowChangedName="DtConfiRowChanged" msprop:Generator_RowEvArgName="DtConfiRowChangeEvent" msprop:Generator_RowClassName="DtConfiRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ConfiguraccionBasica" msprop:Generator_ColumnVarNameInTable="columnConfiguraccionBasica" msprop:Generator_ColumnPropNameInRow="ConfiguraccionBasica" msprop:Generator_ColumnPropNameInTable="ConfiguraccionBasicaColumn" msprop:Generator_UserColumnName="ConfiguraccionBasica" type="xs:string" minOccurs="0" />
               <xs:element name="TipoInpuestoIVA" msprop:Generator_ColumnVarNameInTable="columnTipoInpuestoIVA" msprop:Generator_ColumnPropNameInRow="TipoInpuestoIVA" msprop:Generator_ColumnPropNameInTable="TipoInpuestoIVAColumn" msprop:Generator_UserColumnName="TipoInpuestoIVA" type="xs:int" minOccurs="0" />
               <xs:element name="EjerciciosDeAño" msprop:Generator_ColumnVarNameInTable="columnEjerciciosDeAño" msprop:Generator_ColumnPropNameInRow="EjerciciosDeAño" msprop:Generator_ColumnPropNameInTable="EjerciciosDeAñoColumn" msprop:Generator_UserColumnName="EjerciciosDeAño" type="xs:string" minOccurs="0" />
-              <xs:element name="EmpresaENLACE" msprop:Generator_ColumnVarNameInTable="columnEmpresaENLACE" msprop:Generator_ColumnPropNameInRow="EmpresaENLACE" msprop:Generator_ColumnPropNameInTable="EmpresaENLACEColumn" msprop:Generator_UserColumnName="EmpresaENLACE" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpresaENLACE" msprop:Generator_ColumnVarNameInTable="columnEmpresaENLACE" msprop:Generator_ColumnPropNameInRow="EmpresaENLACE" msprop:Generator_ColumnPropNameInTable="EmpresaENLACEColumn" msprop:Generator_UserColumnName="EmpresaENLACE" type="xs:int" minOccurs="0" />
               <xs:element name="IdConexionConfi" msprop:Generator_ColumnVarNameInTable="columnIdConexionConfi" msprop:Generator_ColumnPropNameInRow="IdConexionConfi" msprop:Generator_ColumnPropNameInTable="IdConexionConfiColumn" msprop:Generator_UserColumnName="IdConexionConfi" type="xs:int" minOccurs="0" />
               <xs:element name="AñoDeEjercicio" msprop:Generator_ColumnVarNameInTable="columnAñoDeEjercicio" msprop:Generator_ColumnPropNameInRow="AñoDeEjercicio" msprop:Generator_ColumnPropNameInTable="AñoDeEjercicioColumn" msprop:Generator_UserColumnName="AñoDeEjercicio" type="xs:string" minOccurs="0" />
               <xs:element name="EnlaceDtconfi" msprop:Generator_ColumnVarNameInTable="columnEnlaceDtconfi" msprop:Generator_ColumnPropNameInRow="EnlaceDtconfi" msprop:Generator_ColumnPropNameInTable="EnlaceDtconfiColumn" msprop:Generator_UserColumnName="EnlaceDtconfi" type="xs:string" minOccurs="0" />
@@ -30,7 +40,6 @@
             <xs:sequence>
               <xs:element name="EmpresaConfi" msprop:Generator_ColumnVarNameInTable="columnEmpresaConfi" msprop:Generator_ColumnPropNameInRow="EmpresaConfi" msprop:Generator_ColumnPropNameInTable="EmpresaConfiColumn" msprop:Generator_UserColumnName="EmpresaConfi" type="xs:string" minOccurs="0" />
               <xs:element name="IdEmpresa" msprop:Generator_ColumnVarNameInTable="columnIdEmpresa" msprop:Generator_ColumnPropNameInRow="IdEmpresa" msprop:Generator_ColumnPropNameInTable="IdEmpresaColumn" msprop:Generator_UserColumnName="IdEmpresa" type="xs:int" minOccurs="0" />
-              <xs:element name="NombreEmpresaReguistro" msprop:Generator_ColumnVarNameInTable="columnNombreEmpresaReguistro" msprop:Generator_ColumnPropNameInRow="NombreEmpresaReguistro" msprop:Generator_ColumnPropNameInTable="NombreEmpresaReguistroColumn" msprop:Generator_UserColumnName="NombreEmpresaReguistro" type="xs:string" minOccurs="0" />
               <xs:element name="NombreEmpresa" msprop:Generator_ColumnVarNameInTable="columnNombreEmpresa" msprop:Generator_ColumnPropNameInRow="NombreEmpresa" msprop:Generator_ColumnPropNameInTable="NombreEmpresaColumn" msprop:Generator_UserColumnName="NombreEmpresa" type="xs:string" minOccurs="0" />
               <xs:element name="DireccionEmpresa" msprop:Generator_ColumnVarNameInTable="columnDireccionEmpresa" msprop:Generator_ColumnPropNameInRow="DireccionEmpresa" msprop:Generator_ColumnPropNameInTable="DireccionEmpresaColumn" msprop:Generator_UserColumnName="DireccionEmpresa" type="xs:string" minOccurs="0" />
               <xs:element name="LocalidadEmpresa" msprop:Generator_ColumnVarNameInTable="columnLocalidadEmpresa" msprop:Generator_ColumnPropNameInRow="LocalidadEmpresa" msprop:Generator_ColumnPropNameInTable="LocalidadEmpresaColumn" msprop:Generator_UserColumnName="LocalidadEmpresa" type="xs:string" minOccurs="0" />
@@ -46,15 +55,6 @@
               <xs:element name="MovilEmpresa" msprop:Generator_ColumnVarNameInTable="columnMovilEmpresa" msprop:Generator_ColumnPropNameInRow="MovilEmpresa" msprop:Generator_ColumnPropNameInTable="MovilEmpresaColumn" msprop:Generator_UserColumnName="MovilEmpresa" type="xs:string" minOccurs="0" />
               <xs:element name="CifEmpresa" msprop:Generator_ColumnVarNameInTable="columnCifEmpresa" msprop:Generator_ColumnPropNameInRow="CifEmpresa" msprop:Generator_ColumnPropNameInTable="CifEmpresaColumn" msprop:Generator_UserColumnName="CifEmpresa" type="xs:string" minOccurs="0" />
               <xs:element name="ImagenEmpresa" msprop:Generator_ColumnVarNameInTable="columnImagenEmpresa" msprop:Generator_ColumnPropNameInRow="ImagenEmpresa" msprop:Generator_ColumnPropNameInTable="ImagenEmpresaColumn" msprop:Generator_UserColumnName="ImagenEmpresa" type="xs:base64Binary" minOccurs="0" />
-              <xs:element name="DtAlmacenes" msprop:Generator_TableClassName="DtAlmacenesDataTable" msprop:Generator_TableVarName="tableDtAlmacenes" msprop:Generator_TablePropName="DtAlmacenes" msprop:Generator_RowDeletingName="DtAlmacenesRowDeleting" msprop:Generator_RowChangingName="DtAlmacenesRowChanging" msprop:Generator_RowEvHandlerName="DtAlmacenesRowChangeEventHandler" msprop:Generator_RowDeletedName="DtAlmacenesRowDeleted" msprop:Generator_UserTableName="DtAlmacenes" msprop:Generator_RowChangedName="DtAlmacenesRowChanged" msprop:Generator_RowEvArgName="DtAlmacenesRowChangeEvent" msprop:Generator_RowClassName="DtAlmacenesRow" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
-                    <xs:element name="Almacenes" msprop:Generator_ColumnVarNameInTable="columnAlmacenes" msprop:Generator_ColumnPropNameInRow="Almacenes" msprop:Generator_ColumnPropNameInTable="AlmacenesColumn" msprop:Generator_UserColumnName="Almacenes" type="xs:string" minOccurs="0" />
-                    <xs:element name="Enlace_Almacenes" msprop:Generator_ColumnVarNameInTable="columnEnlace_Almacenes" msprop:Generator_ColumnPropNameInRow="Enlace_Almacenes" msprop:Generator_ColumnPropNameInTable="Enlace_AlmacenesColumn" msprop:Generator_UserColumnName="Enlace_Almacenes" type="xs:string" minOccurs="0" />
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -63,7 +63,7 @@
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
               <xs:element name="TarifaTipo" msprop:Generator_ColumnVarNameInTable="columnTarifaTipo" msprop:Generator_ColumnPropNameInRow="TarifaTipo" msprop:Generator_ColumnPropNameInTable="TarifaTipoColumn" msprop:Generator_UserColumnName="TarifaTipo" type="xs:string" />
-              <xs:element name="EnlaceTarifa" msprop:Generator_ColumnVarNameInTable="columnEnlaceTarifa" msprop:Generator_ColumnPropNameInRow="EnlaceTarifa" msprop:Generator_ColumnPropNameInTable="EnlaceTarifaColumn" msprop:Generator_UserColumnName="EnlaceTarifa" type="xs:string" minOccurs="0" />
+              <xs:element name="EnlaceTarifa" msprop:Generator_ColumnVarNameInTable="columnEnlaceTarifa" msprop:Generator_ColumnPropNameInRow="EnlaceTarifa" msprop:Generator_ColumnPropNameInTable="EnlaceTarifaColumn" msprop:Generator_UserColumnName="EnlaceTarifa" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -72,7 +72,7 @@
             <xs:sequence>
               <xs:element name="Id_Proveedores" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msdata:Caption="Id_almacenes" msprop:Generator_ColumnVarNameInTable="columnId_Proveedores" msprop:Generator_ColumnPropNameInRow="Id_Proveedores" msprop:Generator_ColumnPropNameInTable="Id_ProveedoresColumn" msprop:Generator_UserColumnName="Id_Proveedores" type="xs:int" minOccurs="0" />
               <xs:element name="Proveedores" msdata:Caption="Almacenes" msprop:Generator_ColumnVarNameInTable="columnProveedores" msprop:Generator_ColumnPropNameInRow="Proveedores" msprop:Generator_ColumnPropNameInTable="ProveedoresColumn" msprop:Generator_UserColumnName="Proveedores" type="xs:string" minOccurs="0" />
-              <xs:element name="Enlace_Proveedores" msdata:Caption="Enlace_Almacenes" msprop:Generator_ColumnVarNameInTable="columnEnlace_Proveedores" msprop:Generator_ColumnPropNameInRow="Enlace_Proveedores" msprop:Generator_ColumnPropNameInTable="Enlace_ProveedoresColumn" msprop:Generator_UserColumnName="Enlace_Proveedores" type="xs:string" minOccurs="0" />
+              <xs:element name="Enlace_Proveedores" msdata:Caption="Enlace_Almacenes" msprop:Generator_ColumnVarNameInTable="columnEnlace_Proveedores" msprop:Generator_ColumnPropNameInRow="Enlace_Proveedores" msprop:Generator_ColumnPropNameInTable="Enlace_ProveedoresColumn" msprop:Generator_UserColumnName="Enlace_Proveedores" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -82,25 +82,25 @@
       <xs:selector xpath=".//mstns:DtConfi" />
       <xs:field xpath="mstns:EnlaceDtconfi" />
     </xs:unique>
-    <xs:unique name="DtConfiguracionPrincipalKey1">
+    <xs:unique name="DtConfiguracionPrincipal_Constraint1" msdata:ConstraintName="Constraint1">
       <xs:selector xpath=".//mstns:DtConfiguracionPrincipal" />
-      <xs:field xpath="mstns:NombreEmpresaReguistro" />
+      <xs:field xpath="mstns:IdEmpresa" />
     </xs:unique>
-    <xs:keyref name="DtConfiguracionPrincipal_DtProveedores" refer="DtConfiguracionPrincipalKey1" msprop:rel_Generator_UserChildTable="DtProveedores" msprop:rel_Generator_ChildPropName="GetDtProveedoresRows" msprop:rel_Generator_UserRelationName="DtConfiguracionPrincipal_DtProveedores" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:rel_Generator_RelationVarName="relationDtConfiguracionPrincipal_DtProveedores" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal">
+    <xs:keyref name="FK_DtConfiguracionPrincipal_DtProveedores" refer="DtConfiguracionPrincipal_Constraint1" msprop:rel_Generator_UserChildTable="DtProveedores" msprop:rel_Generator_ChildPropName="GetDtProveedoresRows" msprop:rel_Generator_UserRelationName="FK_DtConfiguracionPrincipal_DtProveedores" msprop:rel_Generator_RelationVarName="relationFK_DtConfiguracionPrincipal_DtProveedores" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow">
       <xs:selector xpath=".//mstns:DtProveedores" />
       <xs:field xpath="mstns:Enlace_Proveedores" />
     </xs:keyref>
-    <xs:keyref name="DtConfi_DtTarifaTipo" refer="DtConfiguracionPrincipalKey1" msprop:rel_Generator_UserChildTable="DtTarifaTipo" msprop:rel_Generator_ChildPropName="GetDtTarifaTipoRows" msprop:rel_Generator_UserRelationName="DtConfi_DtTarifaTipo" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:rel_Generator_RelationVarName="relationDtConfi_DtTarifaTipo" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal">
+    <xs:keyref name="FK_DtConfiguracionPrincipal_DtTarifaTipo" refer="DtConfiguracionPrincipal_Constraint1" msprop:rel_Generator_UserChildTable="DtTarifaTipo" msprop:rel_Generator_ChildPropName="GetDtTarifaTipoRows" msprop:rel_Generator_UserRelationName="FK_DtConfiguracionPrincipal_DtTarifaTipo" msprop:rel_Generator_RelationVarName="relationFK_DtConfiguracionPrincipal_DtTarifaTipo" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow">
       <xs:selector xpath=".//mstns:DtTarifaTipo" />
       <xs:field xpath="mstns:EnlaceTarifa" />
     </xs:keyref>
-    <xs:keyref name="DtConfiguracionPrincipal_DtAlmacenes" refer="DtConfiguracionPrincipalKey1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="DtAlmacenes" msprop:rel_Generator_ChildPropName="GetDtAlmacenesRows" msprop:rel_Generator_UserRelationName="DtConfiguracionPrincipal_DtAlmacenes" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:rel_Generator_RelationVarName="relationDtConfiguracionPrincipal_DtAlmacenes" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal">
-      <xs:selector xpath=".//mstns:DtAlmacenes" />
-      <xs:field xpath="mstns:Enlace_Almacenes" />
-    </xs:keyref>
-    <xs:keyref name="DtConfiguracionPrincipal_DtConfi" refer="DtConfiguracionPrincipalKey1" msprop:rel_Generator_UserChildTable="DtConfi" msprop:rel_Generator_ChildPropName="GetDtConfiRows" msprop:rel_Generator_UserRelationName="DtConfiguracionPrincipal_DtConfi" msprop:rel_Generator_RelationVarName="relationDtConfiguracionPrincipal_DtConfi" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow">
+    <xs:keyref name="FK_DtConfiguracionPrincipal_DtConfi" refer="DtConfiguracionPrincipal_Constraint1" msprop:rel_Generator_UserChildTable="DtConfi" msprop:rel_Generator_ChildPropName="GetDtConfiRows" msprop:rel_Generator_UserRelationName="FK_DtConfiguracionPrincipal_DtConfi" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow" msprop:rel_Generator_RelationVarName="relationFK_DtConfiguracionPrincipal_DtConfi" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal">
       <xs:selector xpath=".//mstns:DtConfi" />
       <xs:field xpath="mstns:EmpresaENLACE" />
+    </xs:keyref>
+    <xs:keyref name="FK_DtConfiguracionPrincipal_DtAlmacenes" refer="DtConfiguracionPrincipal_Constraint1" msprop:rel_Generator_UserChildTable="DtAlmacenes" msprop:rel_Generator_ChildPropName="GetDtAlmacenesRows" msprop:rel_Generator_UserRelationName="FK_DtConfiguracionPrincipal_DtAlmacenes" msprop:rel_Generator_RelationVarName="relationFK_DtConfiguracionPrincipal_DtAlmacenes" msprop:rel_Generator_UserParentTable="DtConfiguracionPrincipal" msprop:rel_Generator_ParentPropName="DtConfiguracionPrincipalRow">
+      <xs:selector xpath=".//mstns:DtAlmacenes" />
+      <xs:field xpath="mstns:Enlace_Almacenes" />
     </xs:keyref>
   </xs:element>
 </xs:schema>

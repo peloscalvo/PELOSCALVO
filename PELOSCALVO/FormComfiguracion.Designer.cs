@@ -101,7 +101,7 @@ namespace PELOSCALVO
             // 
             // dtConfiguracionPrincipalDtConfiBindingSource
             // 
-            this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "DtConfiguracionPrincipal_DtConfi";
+            this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtConfi";
             this.dtConfiguracionPrincipalDtConfiBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // dsMultidatos
@@ -111,7 +111,7 @@ namespace PELOSCALVO
             // 
             // dtConfiDtTarifaTipoBindingSource
             // 
-            this.dtConfiDtTarifaTipoBindingSource.DataMember = "DtConfi_DtTarifaTipo";
+            this.dtConfiDtTarifaTipoBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtTarifaTipo";
             this.dtConfiDtTarifaTipoBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // dtInicioMultiBindingSource
@@ -310,6 +310,7 @@ namespace PELOSCALVO
             this.crearCopiaSimpleToolStripMenuItem.Name = "crearCopiaSimpleToolStripMenuItem";
             this.crearCopiaSimpleToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.crearCopiaSimpleToolStripMenuItem.Text = "Crear copia Simple";
+            // 
             // crearCopiaCompletaToolStripMenuItem1
             // 
             this.crearCopiaCompletaToolStripMenuItem1.Name = "crearCopiaCompletaToolStripMenuItem1";

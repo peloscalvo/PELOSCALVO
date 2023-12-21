@@ -187,7 +187,7 @@ namespace PELOSCALVO
             // 
             // dtConfiguracionPrincipalDtConfiBindingSource
             // 
-            this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "DtConfiguracionPrincipal_DtConfi";
+            this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtConfi";
             this.dtConfiguracionPrincipalDtConfiBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // BtnCancelarEjercicio
@@ -473,7 +473,7 @@ namespace PELOSCALVO
             // EmpresaEnlace
             // 
             this.EmpresaEnlace.AutoSize = true;
-            this.EmpresaEnlace.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
+            this.EmpresaEnlace.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.EmpresaEnlace.Location = new System.Drawing.Point(99, 352);
             this.EmpresaEnlace.Name = "EmpresaEnlace";
             this.EmpresaEnlace.Size = new System.Drawing.Size(0, 13);

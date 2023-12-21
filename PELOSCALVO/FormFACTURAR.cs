@@ -36,88 +36,96 @@ namespace PELOSCALVO
             int columna = 7;
             int columna2 = 6;
 
-            if (this.tabControl1Factura.SelectedIndex == 2)
+            try
             {
-                columna = 6;
-                columna2 = 6;
-            }
-            if (DatagriCalcular.CurrentCell.RowIndex > -1)
-            {
-                if (ClasDatos.NombreFactura == "Albaranes")
-                {
-                    if (DatagriCalcular.CurrentCell.RowIndex >= 40)
-                    {
-                        DatagriCalcular.AllowUserToAddRows = false;
-                    }
-                }
-
-                int FILAcelda = DatagriCalcular.CurrentCell.RowIndex;
-                if (DatagriCalcular.Rows[FILAcelda].Cells[2].Value != DBNull.Value && DatagriCalcular.Rows[FILAcelda].Cells[2].Value.ToString() != string.Empty && DatagriCalcular.Rows[FILAcelda].Cells[2].Value.ToString() != null)
-                {
-                    cantidad = Convert.ToDouble(DatagriCalcular.Rows[FILAcelda].Cells[2].Value);
-                }
-                if (DatagriCalcular.Rows[FILAcelda].Cells[4].Value != DBNull.Value && DatagriCalcular.Rows[FILAcelda].Cells[4].Value.ToString() != string.Empty && DatagriCalcular.Rows[FILAcelda].Cells[4].Value.ToString() != null)
-                {
-                    precio = Convert.ToDouble(DatagriCalcular.Rows[FILAcelda].Cells[4].Value);
-
-                }
-                if (DatagriCalcular.Rows[FILAcelda].Cells[5].Value != DBNull.Value && DatagriCalcular.Rows[FILAcelda].Cells[5].Value.ToString() != string.Empty)
-                {
-                    descuento = Convert.ToDouble(DatagriCalcular.Rows[FILAcelda].Cells[5].Value);
-                }
-                if (DatagriCalcular.Rows[FILAcelda].Cells[6].Value == DBNull.Value || DatagriCalcular.Rows[FILAcelda].Cells[6].Value.ToString() == string.Empty)
-                {
-                    DatagriCalcular.Rows[FILAcelda].Cells[6].Value = this.tipoInpuestoIVANumericUpDown.Value;
-                }
-
-                importe = precio * cantidad - (precio * cantidad) * ((descuento / 100));
-                DatagriCalcular.CurrentRow.Cells[columna].Value = importe.ToString();
-
-
-
-
-                foreach (DataGridViewRow row in DatagriCalcular.Rows)
-                {
-
-                    if (row.Cells[columna].Value != null && row.Cells[columna].Value != DBNull.Value && row.Cells[columna].Value.ToString() != string.Empty)
-                    {
-
-                        TTotalSuma += (Double)row.Cells[columna].Value;
-
-
-                        if (row.Cells[columna2].Value != DBNull.Value && row.Cells[columna2].Value != null && row.Cells[columna2].Value.ToString() != string.Empty)
-                        {
-
-                            sumaIva += (Double)row.Cells[columna].Value - ((Double)row.Cells[columna].Value * (Convert.ToDouble(row.Cells[columna2].Value) / 100));
-                        }
-
-                    }
-                }
-                if (DatagriCalcular.Rows[FILAcelda].Cells[4].Value == DBNull.Value || DatagriCalcular.Rows[FILAcelda].Cells[2].Value == DBNull.Value)
-                {
-                    DatagriCalcular.Rows[FILAcelda].Cells[columna].Value = DBNull.Value;
-                }
                 if (this.tabControl1Factura.SelectedIndex == 2)
                 {
-                    this.TotalFactura2.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma));
+                    columna = 6;
+                    columna2 = 6;
                 }
-                else
+                if (DatagriCalcular.CurrentCell.RowIndex > -1)
                 {
-                    if (TTotalSuma == 0)
+                    if (ClasDatos.NombreFactura == "Albaranes")
                     {
-                        this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
-                        this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
-                        this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                        if (DatagriCalcular.CurrentCell.RowIndex >= 40)
+                        {
+                            DatagriCalcular.AllowUserToAddRows = false;
+                        }
+                    }
+
+                    int FILAcelda = DatagriCalcular.CurrentCell.RowIndex;
+                    if (DatagriCalcular.Rows[FILAcelda].Cells[2].Value != DBNull.Value && DatagriCalcular.Rows[FILAcelda].Cells[2].Value.ToString() != string.Empty && DatagriCalcular.Rows[FILAcelda].Cells[2].Value.ToString() != null)
+                    {
+                        cantidad = Convert.ToDouble(DatagriCalcular.Rows[FILAcelda].Cells[2].Value);
+                    }
+                    if (DatagriCalcular.Rows[FILAcelda].Cells[4].Value != DBNull.Value && DatagriCalcular.Rows[FILAcelda].Cells[4].Value.ToString() != string.Empty && DatagriCalcular.Rows[FILAcelda].Cells[4].Value.ToString() != null)
+                    {
+                        precio = Convert.ToDouble(DatagriCalcular.Rows[FILAcelda].Cells[4].Value);
+
+                    }
+                    if (DatagriCalcular.Rows[FILAcelda].Cells[5].Value != DBNull.Value && DatagriCalcular.Rows[FILAcelda].Cells[5].Value.ToString() != string.Empty)
+                    {
+                        descuento = Convert.ToDouble(DatagriCalcular.Rows[FILAcelda].Cells[5].Value);
+                    }
+                    if (DatagriCalcular.Rows[FILAcelda].Cells[6].Value == DBNull.Value || DatagriCalcular.Rows[FILAcelda].Cells[6].Value.ToString() == string.Empty)
+                    {
+                        DatagriCalcular.Rows[FILAcelda].Cells[6].Value = this.tipoInpuestoIVANumericUpDown.Value;
+                    }
+
+                    importe = precio * cantidad - (precio * cantidad) * ((descuento / 100));
+                    DatagriCalcular.CurrentRow.Cells[columna].Value = importe.ToString();
+
+
+
+
+                    foreach (DataGridViewRow row in DatagriCalcular.Rows)
+                    {
+
+                        if (row.Cells[columna].Value != null && row.Cells[columna].Value != DBNull.Value && row.Cells[columna].Value.ToString() != string.Empty)
+                        {
+
+                            TTotalSuma += (Double)row.Cells[columna].Value;
+
+
+                            if (row.Cells[columna2].Value != DBNull.Value && row.Cells[columna2].Value != null && row.Cells[columna2].Value.ToString() != string.Empty)
+                            {
+
+                                sumaIva += (Double)row.Cells[columna].Value - ((Double)row.Cells[columna].Value * (Convert.ToDouble(row.Cells[columna2].Value) / 100));
+                            }
+
+                        }
+                    }
+                    if (DatagriCalcular.Rows[FILAcelda].Cells[4].Value == DBNull.Value || DatagriCalcular.Rows[FILAcelda].Cells[2].Value == DBNull.Value)
+                    {
+                        DatagriCalcular.Rows[FILAcelda].Cells[columna].Value = DBNull.Value;
+                    }
+                    if (this.tabControl1Factura.SelectedIndex == 2)
+                    {
+                        this.TotalFactura2.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma));
                     }
                     else
                     {
-                        this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma));
-                        this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma - sumaIva));
-                        this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma + (TTotalSuma - sumaIva)));
+                        if (TTotalSuma == 0)
+                        {
+                            this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                            this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                            this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                        }
+                        else
+                        {
+                            this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma));
+                            this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma - sumaIva));
+                            this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma + (TTotalSuma - sumaIva)));
+                        }
                     }
+
+
                 }
+            }
+            catch (Exception ex)
+            {
 
-
+                MessageBox.Show(ex.Message.ToString(),"CALCULAR IMPORTES");
             }
 
         }
@@ -129,7 +137,7 @@ namespace PELOSCALVO
             {
                 foreach (var item in ClasDetalleGrid.Listadetalle1.lista)
                 {
-                    if (this.dtDetallesFacturaDataGridView.RowCount < ClasDetalleGrid.Listadetalle1.lista.Count)
+                    if (this.dtDetallesFacturaDataGridView.RowCount < ClasDetalleGrid.Listadetalle1.lista.Count+1)
                     {
                         this.dtDetallesFacturaBindingSource.AddNew();
                     }
@@ -183,28 +191,22 @@ namespace PELOSCALVO
                         break;
                     }
                      List<ClasDetalleGrid.Detalle> lista = new List<ClasDetalleGrid.Detalle>();
-                    // lista ggg =  ClasDetalleGrid.Detalle;
-                   // ClasDetalleGrid.Listadetalle1.lista itemo = new ClasDetalleGrid.Listadetalle1();
                     ClasDetalleGrid.Detalle item = new ClasDetalleGrid.Detalle();
                     if (row.Cells[0].Value.ToString() != string.Empty)
                     {
                         item.Referencia = row.Cells[0].Value.ToString();
-                      //  ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[2].Value.ToString() != string.Empty)
                     {
                         item.Cantidad = row.Cells[2].Value.ToString();
-                       // ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[3].Value.ToString() != string.Empty)
                     {
                         item.Descripcci = row.Cells[3].Value.ToString();
-                      //  ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[4].Value.ToString() != string.Empty)
                     {
                         item.Precio = row.Cells[4].Value.ToString();
-                       // ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[5].Value.ToString() != string.Empty)
                     {
@@ -213,14 +215,12 @@ namespace PELOSCALVO
                     if (row.Cells[6].Value.ToString() != string.Empty)
                     {
                         item.Iva = row.Cells[6].Value.ToString();
-                      //  ClasDetalleGrid.Listadetalle1.lista.Add(item);
                     }
                     if (row.Cells[7].Value.ToString() != string.Empty)
                     {
                         item.Importe = row.Cells[7].Value.ToString();
                     }
                     ClasDetalleGrid.Listadetalle1.lista.Add(item);
-                   // ClasDetalleGrid.Listadetalle1.lista.(item.Referencia,item.Cantidad);
                     Valor4++;
                 }
             }
@@ -267,7 +267,7 @@ namespace PELOSCALVO
                 ok = false;
                 this.errorProvider1.SetError(this.dniTextBox, "_ingresar Dni (( minimo 4 Caracteres))");
             }
-            if (this.AlmacenTxt.Text != string.Empty)
+            if (String.IsNullOrEmpty(this.AlmacenTxt.Text))
             {
                 ok = false;
                 this.errorProvider1.SetError(this.AlmacenTxt, "_ingresar Almacen (( minimo 1 Caracteres))");
@@ -293,7 +293,7 @@ namespace PELOSCALVO
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
-            string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.EmpresaReguistro.Text + "/" + Id;
+            string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.Id_Empresa.Text + "/" + Id;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
             string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]," +
@@ -356,7 +356,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : this.Id_Empresa.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
 
 
@@ -567,7 +567,7 @@ namespace PELOSCALVO
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
-            string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.EmpresaReguistro.Text + "/" + Id;
+            string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.Id_Empresa.Text + "/" + Id;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
             string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]," +
@@ -630,7 +630,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.EmpresaReguistro.Text) ? (object)DBNull.Value : this.EmpresaReguistro.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : this.Id_Empresa.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
 
 
@@ -884,7 +884,7 @@ namespace PELOSCALVO
                     Salto_Atras:
                     Random r = new Random();
                     VALOR_MAS = r.Next(5, 10000);
-                    this.EnlaceFactu.Text = this.EmpresaReguistro.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
+                    this.EnlaceFactu.Text = this.Id_Empresa.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
                     this.FechaFactura.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
                     this.dtNuevaFacturaDataGridView.Rows[this.dtNuevaFacturaDataGridView.Rows.Count - 1].Selected = true;
                     // this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
@@ -931,7 +931,7 @@ namespace PELOSCALVO
 
         private void BtnGuardarFactura_Click(object sender, EventArgs e)
         {
-            if (this.EmpresaReguistro.Text == string.Empty & this.EmpresaPrincipal.Text == string.Empty)
+            if (this.Id_Empresa.Text == string.Empty & this.EmpresaPrincipal.Text == string.Empty)
             {
                 MessageBox.Show("Falta  Empresa", "EMPRESA");
                 return;
@@ -1061,7 +1061,7 @@ namespace PELOSCALVO
             this.dtDetallesFacturaDataGridView2.Refresh();
             this.BtnGuardarFactura.Enabled = true;
             this.BtnCancelarfactura.Enabled = true;
-            this.panelBotones.Enabled = true;
+            this.panelBotones.Enabled = false;
             this.PanelArriba.Enabled = false;
             this.BtnBuscarClientesFact.Enabled = true;
             this.dtNuevaFacturaDataGridView.Enabled = false;
@@ -1153,11 +1153,11 @@ namespace PELOSCALVO
         private void ActualizarFacturaSql()
         {
             // string consulta = "SELECT * from DtNuevaFactura";
-            if (this.EmpresaReguistro.Text != string.Empty)
+            if (this.Id_Empresa.Text != string.Empty)
             {
 
 
-                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.EmpresaReguistro.Text + "'";
+                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.Id_Empresa.Text + "'";
                 string consultaDetalle = "SELECT * from [DtDetalles_" + ClasDatos.NombreFactura + "]";
                 string consultaDetalle2 = "SELECT * from [DtDetalles2_" + ClasDatos.NombreFactura + "]";
                 ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -1312,7 +1312,7 @@ namespace PELOSCALVO
                 this.tabPage4Factura.Parent = null;
                 this.TotalFactura2.Visible = false;
             }
-            if (this.EmpresaReguistro.Text == string.Empty)
+            if (this.Id_Empresa.Text == string.Empty)
             {
                 MessageBox.Show("Faltan Datos o Datos Erradicos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.panelBotones.Enabled = false;
@@ -1353,7 +1353,7 @@ namespace PELOSCALVO
             {
                 Id_Almacen = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtAlmacenes"].Rows[FilaALMACEN]["Id"].ToString());
             }
-            string Enlace = this.EmpresaReguistro.Text + "/" + this.AlmacenTxt.Text;
+            string Enlace = this.Id_Empresa.Text + "/" + this.AlmacenTxt.Text;
             string consulta = "SELECT [Referencia],[Stock],[Enlace] from [DtMovimientos]" + "Where  Referencia= @Referencia  and  Enlace= @Enlace ";
             string Nueva = "INSERT INTO [DtMovimientos] VALUES([@Referencia],[@Stock],[@Enlace],[@Id_Empresa],[@Id_Almacen])";
             string Modificar = "UPDATE[DtMovimientos] SET[Referencia] = @Referencia,[Stock] = @Stock ,[Enlace] = @Enlace"+
@@ -1362,6 +1362,8 @@ namespace PELOSCALVO
             int FilaStock = 0;
             OleDbDataReader reader;
             ClsConexionDb ConexionStock = new ClsConexionDb(consulta);
+            ClsConexionDb ConexionMofificar = new ClsConexionDb(Modificar);
+            ClsConexionDb ConexionNueva = new ClsConexionDb(Nueva);
             try
             {
 
@@ -1369,7 +1371,7 @@ namespace PELOSCALVO
                 {
                     if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
                     {
-                        ConexionStock = new ClsConexionDb(consulta);
+                       // ConexionStock = new ClsConexionDb(consulta);
                         if (ConexionStock.SiConexionDb)
                         {
                             ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", Fila.Cells[0].Value.ToString());
@@ -1378,8 +1380,8 @@ namespace PELOSCALVO
                             ConexionStock.ComandoDb.Parameters.Clear();
                             if (FilaStock > 0)
                             {
-                                ConexionStock = new ClsConexionDb(Modificar);
-                                if (ConexionStock.SiConexionDb)
+                        
+                                if (ConexionMofificar.SiConexionDb)
                                 {
                                     reader = ConexionStock.ComandoDb.ExecuteReader();
                                     if (reader.HasRows)
@@ -1390,28 +1392,28 @@ namespace PELOSCALVO
                                             Stock = Convert.ToInt32(reader["Stock"]) - Convert.ToInt32(Fila.Cells[2].Value.ToString());
                                         }
                                     }
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
-                                    ConexionStock.ComandoDb.ExecuteNonQuery();
-                                    ConexionStock.ComandoDb.Parameters.Clear();
+                                    ConexionMofificar.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
+                                    ConexionMofificar.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
+                                    ConexionMofificar.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                    ConexionMofificar.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
+                                    ConexionMofificar.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
+                                    ConexionMofificar.ComandoDb.ExecuteNonQuery();
+                                    ConexionMofificar.ComandoDb.Parameters.Clear();
                                 }
                             }
                             else
                             {
-                                ConexionStock = new ClsConexionDb(Nueva);
-                                if (ConexionStock.SiConexionDb)
+ 
+                                if (ConexionNueva.SiConexionDb)
                                 {
-
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
-                                    ConexionStock.ComandoDb.ExecuteNonQuery();
-                                    ConexionStock.ComandoDb.Parameters.Clear();
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
+                                    ConexionNueva.ComandoDb.ExecuteNonQuery();
+                                    ConexionNueva.ComandoDb.Parameters.Clear();
+        
 
                                 }
                             }
@@ -1434,13 +1436,13 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                if (this.EmpresaReguistro.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
+                if (this.Id_Empresa.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
                 {
                     this.dtDetallesFacturaBindingSource.Clear();
                     this.dtDetallesFactura2BindingSource.Clear();
                     this.dsFacturas.Clear();
                     // dtNuevaFacturaBindingSource.Clear();
-                    string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.EmpresaReguistro.Text + "'";
+                    string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.Id_Empresa.Text + "'";
                     string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
 
                     string consultaDetalle2 = "SELECT * from DtDetalles2_" + ClasDatos.NombreFactura;
@@ -1452,7 +1454,7 @@ namespace PELOSCALVO
                         {
                             FiltrarFactura();
                             AdactaPelos.Fill(this.dsFacturas.DtNuevaFactura);
-                            this.InfoTxt2.Text = this.dtNuevaFacturaBindingSource.Count.ToString();
+                           // this.InfoTxt2.Text = this.dtNuevaFacturaBindingSource.Count.ToString();
                             if (this.dtNuevaFacturaBindingSource.Count > 0)
                             {
                                 AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
@@ -1508,12 +1510,12 @@ namespace PELOSCALVO
             //this.dsCONFIGURACCION.DtDetallesFactura.Clear();
             // this.dsCONFIGURACCION.DtDetallesFactura2.Clear();
             // this.dsCONFIGURACCION.DtNuevaFactura.Clear();
-            if (this.EmpresaReguistro.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
+            if (this.Id_Empresa.Text != string.Empty && this.ejerciciosDeAñoComboBox.Text != string.Empty && this.SerieText.Text != string.Empty)
             {
                 try
                 {
 
-                    string Enlace = this.EmpresaReguistro.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text;
+                    string Enlace = this.Id_Empresa.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text;
                     this.dtNuevaFacturaBindingSource.Filter = "( [EnlaceFactura]   LIKE '" + Enlace + "%'" + ")";
                     this.dtNuevaFacturaDataGridView.Refresh();
                 }

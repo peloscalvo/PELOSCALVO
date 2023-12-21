@@ -30,7 +30,6 @@ namespace PELOSCALVO
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label label8;
             System.Windows.Forms.Label imagenEmpresaLabel;
             System.Windows.Forms.Label cifEmpresaLabel;
             System.Windows.Forms.Label telefono2EmpresaLabel;
@@ -53,7 +52,6 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmpresas));
-            this.EmpresaReguistro = new System.Windows.Forms.Label();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.BtnEliminarImagenE = new System.Windows.Forms.Button();
@@ -95,7 +93,6 @@ namespace PELOSCALVO
             this.dtPaisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProvinciaTxt = new System.Windows.Forms.ComboBox();
-            label8 = new System.Windows.Forms.Label();
             imagenEmpresaLabel = new System.Windows.Forms.Label();
             cifEmpresaLabel = new System.Windows.Forms.Label();
             telefono2EmpresaLabel = new System.Windows.Forms.Label();
@@ -127,15 +124,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProvinciasBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(31, 423);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(51, 13);
-            label8.TabIndex = 118;
-            label8.Text = "Empresa:";
             // 
             // imagenEmpresaLabel
             // 
@@ -298,15 +286,6 @@ namespace PELOSCALVO
             Label44.Size = new System.Drawing.Size(59, 13);
             Label44.TabIndex = 121;
             Label44.Text = "Provincias:";
-            // 
-            // EmpresaReguistro
-            // 
-            this.EmpresaReguistro.AutoSize = true;
-            this.EmpresaReguistro.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
-            this.EmpresaReguistro.Location = new System.Drawing.Point(97, 423);
-            this.EmpresaReguistro.Name = "EmpresaReguistro";
-            this.EmpresaReguistro.Size = new System.Drawing.Size(0, 13);
-            this.EmpresaReguistro.TabIndex = 117;
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -832,8 +811,6 @@ namespace PELOSCALVO
             this.Controls.Add(Label55);
             this.Controls.Add(this.BtnSalirEmpresa);
             this.Controls.Add(this.dtConfiguracionPrincipalDataGridView);
-            this.Controls.Add(label8);
-            this.Controls.Add(this.EmpresaReguistro);
             this.Controls.Add(this.BtnEliminarImagenE);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BtnImagenEmpresa);
@@ -896,8 +873,6 @@ namespace PELOSCALVO
         }
 
         #endregion
-
-        private System.Windows.Forms.Label EmpresaReguistro;
         private System.Windows.Forms.Button BtnEliminarImagenE;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox imagenEmpresaPictureBox;

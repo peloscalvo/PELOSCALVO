@@ -334,7 +334,7 @@ namespace PELOSCALVO
                 {
                     if (!string.IsNullOrEmpty(this.ServidorCrear.Text))
                     {
-                        FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(ServidorCrear.Text);
+                        FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(this.ServidorCrear.Text);
                         Validate();
                         if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                         {
@@ -416,43 +416,39 @@ namespace PELOSCALVO
 
 
                 string ConsultaEmpresas = "IF not EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfiguracionPrincipal]') AND type in (N'U'))" +
-              "CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] int NULL, [EmpresaConfi][varchar](60) NULL, [NombreEmpresa] [varchar](60) NULL," +
+              "CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] int primary key Not NULL, [EmpresaConfi][varchar](60) NULL, [NombreEmpresa] [varchar](60) NULL," +
                "[DireccionEmpresa] [varchar](60) NULL,[LocalidadEmpresa] [varchar](50) NULL,[CodigoPostalEmpresa] [varchar](25) NULL,[ProvinciaEmpresa] [varchar](30) NULL," +
                "[TelefonoEmpresa] [varchar](20) NULL,[CorreoEmpresa] [varchar](30) NULL,[WepEmpresa] [varchar](40) NULL,[RegimenIvaEmpresa] [varchar](30) NULL," +
                " [PaisEmpresa] [varchar](40) NULL,[SerieDeFacturacionEmpresa] [varchar](10) NULL,[Telefono2Empresa] [varchar](25) NULL,[MovilEmpresa] [varchar](25) NULL," +
-                " [CifEmpresa] [varchar](20) NULL,[NombreEmpresaReguistro] [varchar](250) primary key Not NULL,[ImagenEmpresa] [image] NULL) " +
-               
+                " [CifEmpresa] [varchar](20) NULL,[ImagenEmpresa] [image] NULL) " +
+
                 "IF NOT  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfi]') AND type in (N'U')) " +
                 "CREATE TABLE[DtConfi]([EnlaceDtconfi][varchar](250) primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
-               "[EmpresaENLACE] [varchar](250) NULL,[IdConexionConfi] INT NULL, [AñoDeEjercicio] [varchar](60) NULL," +
-                " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )";
+               "[EmpresaENLACE] [int] NOT NULL,[IdConexionConfi] INT NULL, [AñoDeEjercicio] [varchar](60) NULL," +
+                " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 
-                string ConsultaTablas = "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
-                        "   CREATE TABLE [DtAlmacenes]( [Id_almacenes]int not null,[Almacenes][varchar](60) NULL ,[Enlace_Almacenes] [varchar](250) Not NULL, " +
-                        " CONSTRAINT F_DtAlmacenes FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
-
-                        "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProveedores]') AND type in (N'U'))" +
-                      "   CREATE TABLE [DtProveedores]( [Id_Proveedores]int not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [varchar](250) Not NULL, " +
-                      " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
+                string ConsultaTablas = "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProveedores]') AND type in (N'U'))" +
+                      "   CREATE TABLE [DtProveedores]( [Id_Proveedores]int not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [int] Not NULL, " +
+                      " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                       "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +
-                      "   CREATE TABLE [DtTarifaTipo]( [Id]int null,[TarifaTipo][varchar](60) NULL ,[EnlaceTarifa] [varchar](250) Not NULL, " +
-                      " CONSTRAINT F_DtTarifaTipo FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
+                      "   CREATE TABLE [DtTarifaTipo]( [Id]int null,[TarifaTipo][varchar](60) NULL ,[EnlaceTarifa] [int] Not NULL, " +
+                      " CONSTRAINT F_DtTarifaTipo FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
-               " CREATE TABLE [DtAlmacenes]( [Id][int] NOT NULL,[Almacenes] varchar(80) NULL ,[EmpresaENLACE] [varchar](250)not  NULL, " +
-                     " CONSTRAINT F_DtConfi FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(NombreEmpresaReguistro) ON UPDATE CASCADE ON DELETE CASCADE )" +
+               " CREATE TABLE [DtAlmacenes]( [Id][int] NOT NULL,[Almacenes] varchar(80) NULL ,[Enlace_Almacenes] [int] not  NULL, " +
+                     " CONSTRAINT F_DtConfi FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtFamiliaProductos]') AND type in (N'U'))" +
               " CREATE TABLE [DtFamiliaProductos]( [Id][int] NOT NULL,[Familia] varchar(80) NULL)" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtPaises]') AND type in (N'U'))" +
             " CREATE TABLE [DtPaises]( [Id][int]  NOT NULL,[Paises] varchar(80) primary key  NOT NULL)" +
-              
+
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProvincias]') AND type in (N'U'))" +
                  " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[Provincias] varchar(80) NULL,[Enlace]varchar(80) NOT NULL ," +
               " CONSTRAINT F_DtProvincias FOREIGN KEY (Enlace)REFERENCES DtPaises(Paises) ON UPDATE CASCADE ON DELETE CASCADE )" +
-               
+
               "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
                    " CREATE TABLE [DtObras]( [Id][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
 
@@ -465,11 +461,11 @@ namespace PELOSCALVO
                       "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtCorreos]') AND type in (N'U'))" +
                    " CREATE TABLE [DtCorreos]( [Id][int] NOT NULL,[NombreEmpresa] varchar(150) NULL,[CorreoEletronico] varchar(150) NULL" +
                    ",[Usuario] varchar(150) NULL,[Contraseña] varchar(150) NULL,[smtp] varchar(150) NULL,[Puerto] [int] NULL" +
-                   ",[Timeof] [int] NULL)"+
+                   ",[Timeof] [int] NULL)" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtCorreosCliente]') AND type in (N'U'))" +
                   " CREATE TABLE [DtCorreosCliente]( [Id][int]primary key NOT NULL,[RazonSocial] varchar(200) NULL,[EmpresaNombre] varchar(200) NULL" +
-                 ",[Direcion] varchar(150) NULL,[CorreoEletronico_cli] varchar(200) NULL)"+
+                 ",[Direcion] varchar(150) NULL,[CorreoEletronico_cli] varchar(200) NULL)" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtUsuario]') AND type in (N'U'))" +
            " CREATE TABLE [DtUsuario]( [Id][int]primary key NOT NULL,[Usuario] varchar(200) NULL,[Nombre] varchar(200) NULL" +
@@ -519,7 +515,7 @@ namespace PELOSCALVO
                                 "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +
                                "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle][varchar](50) NULL,[CantidadDetalle] [numeric](13, 3) NULL,[DescripccionDetalle] [varchar](60) NULL," +
                                "[DescuentoDetalle] [numeric](19, 3) NULL,[PrecioDetalle] [numeric](19, 3) NULL,[IvaDetalle] [numeric](10, 3) NULL,[ImporteDetalle] [numeric](19, 3) NULL," +
-                               "[EnlaceDetalle] [varchar](250) not NULL, CONSTRAINT FK_" + i+TablaFactu + VALORid + " FOREIGN KEY(EnlaceDetalle)REFERENCES " + TablaFactu + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE" + ")";
+                               "[EnlaceDetalle] [varchar](250) not NULL, CONSTRAINT FK_" + i + TablaFactu + VALORid + " FOREIGN KEY(EnlaceDetalle)REFERENCES " + TablaFactu + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE" + ")";
 
 
                                 using (SqlCommand comando3 = new SqlCommand(ConsultaFacturacion, NuevaConexion))
@@ -531,7 +527,7 @@ namespace PELOSCALVO
                                     }
                                     if (i == 3)
                                     {
-                                       
+
                                         Tabladetalle = "DtDetalles2_Nota2";
                                     }
                                     if (i == 4)
@@ -710,7 +706,7 @@ namespace PELOSCALVO
             }
             if (this.TabCrear.SelectedIndex == 3)
             {
-     
+
                 this.InfoProcesoText.Text = "Indica Instancia A Crear";
             }
             if (this.TabCrear.SelectedIndex == 4)
@@ -827,7 +823,7 @@ namespace PELOSCALVO
 
         private void ServidorCrear_TextChanged(object sender, EventArgs e)
         {
-       
+
         }
 
         private void ServidorCrear_Validated(object sender, EventArgs e)
@@ -943,11 +939,11 @@ namespace PELOSCALVO
 
         private void ListaNueva_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(ListaNueva.SelectedItem.ToString()))
+            if (!string.IsNullOrEmpty(this.ListaNueva.SelectedItem.ToString()))
             {
-                ServidorCrear.Text = ListaNueva.SelectedItem.ToString();
+                this.ServidorCrear.Text = this.ListaNueva.SelectedItem.ToString();
             }
-           
+
         }
     }
 }

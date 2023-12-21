@@ -140,7 +140,7 @@ namespace PELOSCALVO
             // 
             // dtAlmacenesBindingSource
             // 
-            this.dtAlmacenesBindingSource.DataMember = "DtConfiguracionPrincipal_DtAlmacenes";
+            this.dtAlmacenesBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtAlmacenes";
             this.dtAlmacenesBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // panelAlmacenes
@@ -161,7 +161,7 @@ namespace PELOSCALVO
             // Enlace_almacen
             // 
             this.Enlace_almacen.AutoSize = true;
-            this.Enlace_almacen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
+            this.Enlace_almacen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true));
             this.Enlace_almacen.Location = new System.Drawing.Point(71, 72);
             this.Enlace_almacen.Name = "Enlace_almacen";
             this.Enlace_almacen.Size = new System.Drawing.Size(0, 13);
@@ -170,7 +170,7 @@ namespace PELOSCALVO
             // id_almacenes
             // 
             this.id_almacenes.AutoSize = true;
-            this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id", true));
             this.id_almacenes.Location = new System.Drawing.Point(74, 14);
             this.id_almacenes.Name = "id_almacenes";
             this.id_almacenes.Size = new System.Drawing.Size(13, 13);
