@@ -2176,8 +2176,19 @@ namespace PELOSCALVO
 
         private void DtDetallesFacturaDataGridView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex == this.dtDetallesFacturaBindingSource.Count - 1)
+            if (this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex >-1)
             {
+                if (e.KeyCode == Keys.Down)
+                {
+                    if (this.dtDetallesFacturaDataGridView.CurrentCell.ColumnIndex == 0)
+                    {
+
+                        if (this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex == this.dtDetallesFacturaDataGridView.RowCount - 1)
+                        {
+                            dtDetallesFacturaBindingSource.AddNew();
+                        }
+                    }
+                }
                 // dtDetallesFacturaBindingSource.AddNew();
             }
         }
@@ -2512,20 +2523,23 @@ namespace PELOSCALVO
         }
         private void dtDetallesFacturaDataGridView_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (BtnGuardarFactura.Enabled == true)
             {
-                ContextMenuStrip menu = new ContextMenuStrip();
-                int posicion = this.dtDetallesFacturaDataGridView.HitTest(e.X, e.Y).RowIndex;
-                if (posicion > -1)
+                if (e.Button == MouseButtons.Right)
                 {
-                    menu.Items.Add("Duplicar Linea").Name = "DuplicarLinea" + posicion;
-                    menu.Items.Add("nueva Linea en Blanco").Name = "Lineablanco" + posicion;
-                    menu.Items.Add("Eliminar Linea").Name = "EliminarLinea" + posicion;
-                    menu.Items.Add("Duplicar Esta Linea").Name = "DuplicarArticulo" + posicion;
-                    menu.Items.Add("Nuevo Articulo").Name = "NuevoArticulo" + posicion;
+                    ContextMenuStrip menu = new ContextMenuStrip();
+                    int posicion = this.dtDetallesFacturaDataGridView.HitTest(e.X, e.Y).RowIndex;
+                    if (posicion > -1)
+                    {
+                        menu.Items.Add("Duplicar Linea").Name = "DuplicarLinea" + posicion;
+                        menu.Items.Add("nueva Linea en Blanco").Name = "Lineablanco" + posicion;
+                        menu.Items.Add("Eliminar Linea").Name = "EliminarLinea" + posicion;
+                        menu.Items.Add("Duplicar Esta Linea").Name = "DuplicarArticulo" + posicion;
+                        menu.Items.Add("Nuevo Articulo").Name = "NuevoArticulo" + posicion;
+                    }
+                    menu.Show(this.dtDetallesFacturaDataGridView, e.X, e.Y);
+                    menu.ItemClicked += new ToolStripItemClickedEventHandler(MenuDatagriClick);
                 }
-                menu.Show(this.dtDetallesFacturaDataGridView, e.X, e.Y);
-                menu.ItemClicked += new ToolStripItemClickedEventHandler(MenuDatagriClick);
             }
         }
         public Boolean email_bien_escritoFactu()

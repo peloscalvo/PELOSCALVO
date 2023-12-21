@@ -36,11 +36,6 @@ namespace PELOSCALVO
             this.dsClientes = new PELOSCALVO.DsClientes();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtClientes2DataGridView = new System.Windows.Forms.DataGridView();
-            this.TIPObuscarCLIENTESfoma = new System.Windows.Forms.ComboBox();
-            this.BuscarClientesText = new System.Windows.Forms.TextBox();
-            this.ContadorDatos = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BtnCancelarBCliente = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aPODOCLIENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nOMBRECLIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +44,6 @@ namespace PELOSCALVO
             this.mOVILCLIENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cORREOCLIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lOCALIDADCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dNICLIENT2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DNICLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cODIGOPOSTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pAISCLIENTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +68,11 @@ namespace PELOSCALVO
             this.bANCODCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bANCONCUEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPObuscarCLIENTESfoma = new System.Windows.Forms.ComboBox();
+            this.BuscarClientesText = new System.Windows.Forms.TextBox();
+            this.ContadorDatos = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BtnCancelarBCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientes2DataGridView)).BeginInit();
@@ -108,7 +107,6 @@ namespace PELOSCALVO
             this.mOVILCLIENDataGridViewTextBoxColumn,
             this.cORREOCLIEDataGridViewTextBoxColumn,
             this.lOCALIDADCDataGridViewTextBoxColumn,
-            this.dNICLIENT2DataGridViewTextBoxColumn,
             this.DNICLIENTE,
             this.cODIGOPOSTDataGridViewTextBoxColumn,
             this.pAISCLIENTDataGridViewTextBoxColumn,
@@ -142,77 +140,6 @@ namespace PELOSCALVO
             this.dtClientes2DataGridView.Size = new System.Drawing.Size(957, 324);
             this.dtClientes2DataGridView.TabIndex = 2;
             this.dtClientes2DataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtClientes2DataGridView_CellDoubleClick);
-            // 
-            // TIPObuscarCLIENTESfoma
-            // 
-            this.TIPObuscarCLIENTESfoma.FormattingEnabled = true;
-            this.TIPObuscarCLIENTESfoma.Items.AddRange(new object[] {
-            "Todos",
-            "Razon Social",
-            "Nombre",
-            "Direccion",
-            "Dni",
-            "Telefono",
-            "Movil"});
-            this.TIPObuscarCLIENTESfoma.Location = new System.Drawing.Point(12, 12);
-            this.TIPObuscarCLIENTESfoma.Name = "TIPObuscarCLIENTESfoma";
-            this.TIPObuscarCLIENTESfoma.Size = new System.Drawing.Size(195, 21);
-            this.TIPObuscarCLIENTESfoma.TabIndex = 3;
-            this.TIPObuscarCLIENTESfoma.Text = "Todos";
-            this.TIPObuscarCLIENTESfoma.SelectedIndexChanged += new System.EventHandler(this.TIPObuscarCLIENTESfoma_SelectedIndexChanged);
-            // 
-            // BuscarClientesText
-            // 
-            this.BuscarClientesText.Location = new System.Drawing.Point(228, 12);
-            this.BuscarClientesText.Name = "BuscarClientesText";
-            this.BuscarClientesText.Size = new System.Drawing.Size(366, 20);
-            this.BuscarClientesText.TabIndex = 4;
-            this.BuscarClientesText.Click += new System.EventHandler(this.BuscarClientesText_Click);
-            this.BuscarClientesText.TextChanged += new System.EventHandler(this.BuscarClientesText_TextChanged);
-            // 
-            // ContadorDatos
-            // 
-            this.ContadorDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ContadorDatos.AutoSize = true;
-            this.ContadorDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContadorDatos.Location = new System.Drawing.Point(338, 416);
-            this.ContadorDatos.Name = "ContadorDatos";
-            this.ContadorDatos.Size = new System.Drawing.Size(19, 20);
-            this.ContadorDatos.TabIndex = 5;
-            this.ContadorDatos.Text = "0";
-            this.ContadorDatos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(233, 416);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Reguistros #";
-            // 
-            // BtnCancelarBCliente
-            // 
-            this.BtnCancelarBCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCancelarBCliente.BackColor = System.Drawing.Color.Transparent;
-            this.BtnCancelarBCliente.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelarBCliente.FlatAppearance.BorderSize = 0;
-            this.BtnCancelarBCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnCancelarBCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnCancelarBCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancelarBCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarBCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
-            this.BtnCancelarBCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarBCliente.Location = new System.Drawing.Point(886, 407);
-            this.BtnCancelarBCliente.Name = "BtnCancelarBCliente";
-            this.BtnCancelarBCliente.Size = new System.Drawing.Size(89, 42);
-            this.BtnCancelarBCliente.TabIndex = 33;
-            this.BtnCancelarBCliente.Text = "Cancelar";
-            this.BtnCancelarBCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnCancelarBCliente.UseVisualStyleBackColor = false;
-            this.BtnCancelarBCliente.Click += new System.EventHandler(this.BtnCancelarBCliente_Click);
             // 
             // Column1
             // 
@@ -279,14 +206,6 @@ namespace PELOSCALVO
             this.lOCALIDADCDataGridViewTextBoxColumn.Name = "lOCALIDADCDataGridViewTextBoxColumn";
             this.lOCALIDADCDataGridViewTextBoxColumn.ReadOnly = true;
             this.lOCALIDADCDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dNICLIENT2DataGridViewTextBoxColumn
-            // 
-            this.dNICLIENT2DataGridViewTextBoxColumn.DataPropertyName = "DNICLIENT2";
-            this.dNICLIENT2DataGridViewTextBoxColumn.HeaderText = "DNICLIENT2";
-            this.dNICLIENT2DataGridViewTextBoxColumn.Name = "dNICLIENT2DataGridViewTextBoxColumn";
-            this.dNICLIENT2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.dNICLIENT2DataGridViewTextBoxColumn.Visible = false;
             // 
             // DNICLIENTE
             // 
@@ -490,6 +409,77 @@ namespace PELOSCALVO
             this.IdFila.Name = "IdFila";
             this.IdFila.ReadOnly = true;
             // 
+            // TIPObuscarCLIENTESfoma
+            // 
+            this.TIPObuscarCLIENTESfoma.FormattingEnabled = true;
+            this.TIPObuscarCLIENTESfoma.Items.AddRange(new object[] {
+            "Todos",
+            "Razon Social",
+            "Nombre",
+            "Direccion",
+            "Dni",
+            "Telefono",
+            "Movil"});
+            this.TIPObuscarCLIENTESfoma.Location = new System.Drawing.Point(12, 12);
+            this.TIPObuscarCLIENTESfoma.Name = "TIPObuscarCLIENTESfoma";
+            this.TIPObuscarCLIENTESfoma.Size = new System.Drawing.Size(195, 21);
+            this.TIPObuscarCLIENTESfoma.TabIndex = 3;
+            this.TIPObuscarCLIENTESfoma.Text = "Todos";
+            this.TIPObuscarCLIENTESfoma.SelectedIndexChanged += new System.EventHandler(this.TIPObuscarCLIENTESfoma_SelectedIndexChanged);
+            // 
+            // BuscarClientesText
+            // 
+            this.BuscarClientesText.Location = new System.Drawing.Point(228, 12);
+            this.BuscarClientesText.Name = "BuscarClientesText";
+            this.BuscarClientesText.Size = new System.Drawing.Size(366, 20);
+            this.BuscarClientesText.TabIndex = 4;
+            this.BuscarClientesText.Click += new System.EventHandler(this.BuscarClientesText_Click);
+            this.BuscarClientesText.TextChanged += new System.EventHandler(this.BuscarClientesText_TextChanged);
+            // 
+            // ContadorDatos
+            // 
+            this.ContadorDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ContadorDatos.AutoSize = true;
+            this.ContadorDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContadorDatos.Location = new System.Drawing.Point(338, 416);
+            this.ContadorDatos.Name = "ContadorDatos";
+            this.ContadorDatos.Size = new System.Drawing.Size(19, 20);
+            this.ContadorDatos.TabIndex = 5;
+            this.ContadorDatos.Text = "0";
+            this.ContadorDatos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(233, 416);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Reguistros #";
+            // 
+            // BtnCancelarBCliente
+            // 
+            this.BtnCancelarBCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelarBCliente.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCancelarBCliente.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCancelarBCliente.FlatAppearance.BorderSize = 0;
+            this.BtnCancelarBCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnCancelarBCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnCancelarBCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelarBCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelarBCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarBCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCancelarBCliente.Location = new System.Drawing.Point(886, 407);
+            this.BtnCancelarBCliente.Name = "BtnCancelarBCliente";
+            this.BtnCancelarBCliente.Size = new System.Drawing.Size(89, 42);
+            this.BtnCancelarBCliente.TabIndex = 33;
+            this.BtnCancelarBCliente.Text = "Cancelar";
+            this.BtnCancelarBCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancelarBCliente.UseVisualStyleBackColor = false;
+            this.BtnCancelarBCliente.Click += new System.EventHandler(this.BtnCancelarBCliente_Click);
+            // 
             // FormBuscarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,7 +498,7 @@ namespace PELOSCALVO
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "FormBuscarClientes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Buscar cliente";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormBuscarClientes_Load);
