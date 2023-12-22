@@ -378,13 +378,14 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 20))
             {
+                string Almacenes = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
                 string consulta = "";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                 {
 
                     consulta = "  INSERT INTO [DtConfiguracionPrincipal]([EmpresaConfi],[IdEmpresa],[NombreEmpresa],[DireccionEmpresa],[LocalidadEmpresa]" +
                  " ,[CodigoPostalEmpresa],[ProvinciaEmpresa],[TelefonoEmpresa],[CorreoEmpresa],[WepEmpresa] ,[RegimenIvaEmpresa]" +
-                     " ,[PaisEmpresa],[SerieDeFacturacionEmpresa],[Telefono2Empresa],[MovilEmpresa],[CifEmpresa],[NombreEmpresaReguistro]" +
+                     " ,[PaisEmpresa],[SerieDeFacturacionEmpresa],[Telefono2Empresa],[MovilEmpresa],[CifEmpresa]" +
                      "  ,[ImagenEmpresa])  VALUES( @EmpresaConfi, @IdEmpresa, @NombreEmpresa, @DireccionEmpresa, @LocalidadEmpresa," +
                        " @CodigoPostalEmpresa, @ProvinciaEmpresa, @TelefonoEmpresa, @CorreoEmpresa, @WepEmpresa, @RegimenIvaEmpresa," +
                        " @PaisEmpresa, @SerieDeFacturacionEmpresa, @Telefono2Empresa, @MovilEmpresa, @CifEmpresa, @ImagenEmpresa)";
@@ -482,6 +483,17 @@ namespace PELOSCALVO
                                 NuevaConexion.ComandoDb.Parameters.Clear();
                                 FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica , 21,Ejercicio ,this.idEmpresa.Text,1,
                                     String.Format("{0:yyyy}", DateTime.Now), Ejercicio + "/" + this.idEmpresa.Text + "/" + "1");
+                            }
+                            
+                            NuevaConexion = new ClsConexionDb(Almacenes);////Guarda almacen
+                            if (NuevaConexion.SiConexionDb)
+                            {
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id",1);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Almacenes", "Almacen Central");
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", Convert.ToInt32(idEmpresa.Text));
+                                NuevaConexion.ComandoDb.ExecuteNonQuery();
+                                NuevaConexion.ComandoDb.Parameters.Clear();
+                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.Rows.Add(1, "Almacen Central", Convert.ToInt32(idEmpresa.Text));
                             }
                         }
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();

@@ -665,9 +665,6 @@ namespace PELOSCALVO
                             {
                                 item.Fatu = Convert.ToBoolean(reader["Fatu"]);
                             }
-
-
-                            // item.IdFILA = Convert.ToInt32(reader["IdFILA"]);
                             ClasArticulos.ListaArticulos.lista.Add(item);
                         }
                     }
