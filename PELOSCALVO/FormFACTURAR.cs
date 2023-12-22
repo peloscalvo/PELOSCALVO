@@ -125,7 +125,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString(),"CALCULAR IMPORTES");
+                MessageBox.Show(ex.Message.ToString(), "CALCULAR IMPORTES");
             }
 
         }
@@ -137,7 +137,7 @@ namespace PELOSCALVO
             {
                 foreach (var item in ClasDetalleGrid.Listadetalle1.lista)
                 {
-                    if (this.dtDetallesFacturaDataGridView.RowCount < ClasDetalleGrid.Listadetalle1.lista.Count+1)
+                    if (this.dtDetallesFacturaDataGridView.RowCount < ClasDetalleGrid.Listadetalle1.lista.Count + 1)
                     {
                         this.dtDetallesFacturaBindingSource.AddNew();
                     }
@@ -190,7 +190,7 @@ namespace PELOSCALVO
                     {
                         break;
                     }
-                     List<ClasDetalleGrid.Detalle> lista = new List<ClasDetalleGrid.Detalle>();
+                    List<ClasDetalleGrid.Detalle> lista = new List<ClasDetalleGrid.Detalle>();
                     ClasDetalleGrid.Detalle item = new ClasDetalleGrid.Detalle();
                     if (row.Cells[0].Value.ToString() != string.Empty)
                     {
@@ -538,7 +538,7 @@ namespace PELOSCALVO
                     }
                 }
 
-                StockDb(this.dtDetallesFacturaDataGridView);
+                GuardarStockDb(this.dtDetallesFacturaDataGridView);
             }
 
             if (VALIDAR_DATOS == "ERROR")
@@ -971,6 +971,8 @@ namespace PELOSCALVO
                 }
                 if (MessageBox.Show(" ¿Aceptar Guardar ? ", " GUARDAR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    ClasDetalleGrid.Listadetalle1.lista.Clear();
+                    ClasDetalleGrid.Listadetalle2.lista.Clear();
                     int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
                     if (this.cobradaFacturaCheckBox.Checked == true)
                     {
@@ -1345,7 +1347,7 @@ namespace PELOSCALVO
             this.PanelArriba.Tag = "SI";
             FiltrarFactura();
         }
-        private void StockDb(DataGridView Datagri4)
+        private void GuardarStockDb(DataGridView Datagri4)
         {
             int Id_Almacen = 0;
             int FilaALMACEN = Convert.ToInt32(this.AlmacenTxt.SelectedIndex);
@@ -1355,68 +1357,77 @@ namespace PELOSCALVO
             }
             string Enlace = this.Id_Empresa.Text + "/" + this.AlmacenTxt.Text;
             string consulta = "SELECT [Referencia],[Stock],[Enlace] from [DtMovimientos]" + "Where  Referencia= @Referencia  and  Enlace= @Enlace ";
-            string Nueva = "INSERT INTO [DtMovimientos] VALUES([@Referencia],[@Stock],[@Enlace],[@Id_Empresa],[@Id_Almacen])";
-            string Modificar = "UPDATE[DtMovimientos] SET[Referencia] = @Referencia,[Stock] = @Stock ,[Enlace] = @Enlace"+
+            string Nueva = "INSERT INTO  [DtMovimientos] (Referencia,Stock,Enlace,Id_Empresa,Id_Almacen) VALUES(@Referencia,@Stock,@Enlace,@Id_Empresa,@Id_Almacen)";
+            string Modificar = "UPDATE[DtMovimientos] SET[Referencia] = @Referencia,[Stock] = @Stock ,[Enlace] = @Enlace" +
                ",[Id_Empresa] = @Id_Empresa,[Id_Almacen] = @Id_Almacen WHERE  Referencia= @Referencia  and  Enlace= @Enlace ";
             int Stock = 0;
-            int FilaStock = 0;
+            //int FilaStock = 0;
             OleDbDataReader reader;
             ClsConexionDb ConexionStock = new ClsConexionDb(consulta);
-
+            ClsConexionDb ConexionNueva = new ClsConexionDb(Nueva);
+            ClsConexionDb ConexionModificar = new ClsConexionDb(Modificar);
             try
             {
-
-                foreach (DataGridViewRow Fila in Datagri4.Rows)
+                if (ConexionStock.SiConexionDb)
                 {
-                    if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
+                    foreach (DataGridViewRow Fila in Datagri4.Rows)
                     {
-                       // ConexionStock = new ClsConexionDb(consulta);
-                        if (ConexionStock.SiConexionDb)
+                        if (Fila.Index == Datagri4.RowCount - 1)
                         {
+                            break;
+                        }
+                        if (!string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()))
+                        {
+                            // ConexionStock = new ClsConexionDb(consulta);
+
                             ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", Fila.Cells[0].Value.ToString());
                             ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                            FilaStock = ConexionStock.ComandoDb.ExecuteNonQuery();
-                            ConexionStock.ComandoDb.Parameters.Clear();
-                            if (FilaStock > 0)
+                            // ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", FilaStock);
+                            reader = ConexionStock.ComandoDb.ExecuteReader();
+
+                            if (reader.HasRows)
                             {
-                                ConexionStock = new ClsConexionDb(Modificar);
-                                if (ConexionStock.SiConexionDb)
+
+                                if (ConexionModificar.SiConexionDb)
                                 {
-                                    reader = ConexionStock.ComandoDb.ExecuteReader();
+                                    //reader = ConexionStock.ComandoDb.ExecuteReader();
                                     if (reader.HasRows)
                                     {
                                         if (!string.IsNullOrEmpty(Fila.Cells[2].Value.ToString()))
                                         {
-
-                                            Stock = Convert.ToInt32(reader["Stock"]) - Convert.ToInt32(Fila.Cells[2].Value.ToString());
+                                            while (reader.Read())
+                                            {
+                                                Stock = Convert.ToInt32(reader["Stock"]) - Convert.ToInt32(Fila.Cells[2].Value.ToString());
+                                            }
                                         }
                                     }
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
-                                    ConexionStock.ComandoDb.ExecuteNonQuery();
-                                    ConexionStock.ComandoDb.Parameters.Clear();
+                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
+                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
+                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
+                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
+                                    ConexionModificar.ComandoDb.ExecuteNonQuery();
+                                    ConexionModificar.ComandoDb.Parameters.Clear();
                                 }
                             }
                             else
                             {
-                                ConexionStock = new ClsConexionDb(Nueva);
-                                if (ConexionStock.SiConexionDb)
+
+                                if (ConexionNueva.SiConexionDb)
                                 {
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
-                                    ConexionStock.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
-                                    ConexionStock.ComandoDb.ExecuteNonQuery();
-                                    ConexionStock.ComandoDb.Parameters.Clear();
-        
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
+                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
+                                    ConexionNueva.ComandoDb.ExecuteNonQuery();
+                                    ConexionNueva.ComandoDb.Parameters.Clear();
+
 
                                 }
                             }
                         }
+                        ConexionStock.ComandoDb.Parameters.Clear();
                     }
                 }
 
@@ -1426,7 +1437,16 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
+            ConexionStock.ComandoDb.Parameters.Clear();
             if (ConexionStock.CerrarConexionDB)
+            {
+
+            }
+            if (ConexionNueva.CerrarConexionDB)
+            {
+
+            }
+            if (ConexionModificar.CerrarConexionDB)
             {
 
             }
@@ -1453,7 +1473,7 @@ namespace PELOSCALVO
                         {
                             FiltrarFactura();
                             AdactaPelos.Fill(this.dsFacturas.DtNuevaFactura);
-                           // this.InfoTxt2.Text = this.dtNuevaFacturaBindingSource.Count.ToString();
+                            // this.InfoTxt2.Text = this.dtNuevaFacturaBindingSource.Count.ToString();
                             if (this.dtNuevaFacturaBindingSource.Count > 0)
                             {
                                 AdactaPelos = new OleDbDataAdapter(consultaDetalle, ClsConexionDb.CadenaConexion);
@@ -1597,21 +1617,23 @@ namespace PELOSCALVO
         {
             if (e.RowIndex > -1)
             {
-                if (e.ColumnIndex == 1)
+
+                if (this.BtnGuardarFactura.Enabled == true)
                 {
-                    if (this.dtArticulosBindingSource.Count < 0)
+                    if (e.ColumnIndex == 1)
                     {
-                        MessageBox.Show(" Archivo ARTICULOS No Existe O  VACIO ", " FALTA O VACIO ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
-                    }
-                    else
-                    {
-                        ClasDatos.ValorBuscado = e.RowIndex;
-                        int numeroFILA = this.dtNuevaFacturaDataGridView.Rows.Count;
-                        if (numeroFILA > 0)
+                        if (this.dtArticulosBindingSource.Count < 0)
                         {
-                            if (this.BtnGuardarFactura.Enabled == true)
+                            MessageBox.Show(" Archivo ARTICULOS No Existe O  VACIO ", " FALTA O VACIO ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            return;
+                        }
+                        else
+                        {
+                            ClasDatos.ValorBuscado = e.RowIndex;
+                            int numeroFILA = this.dtNuevaFacturaDataGridView.Rows.Count;
+                            if (numeroFILA > 0)
                             {
+
                                 ClasDatos.OkFacturar = true;
                                 ClasDatos.Datos1Datos2 = "Nota1";
                                 // dtNuevaFacturaDataGridView.CurrentCell.Selected = false;
@@ -1622,33 +1644,41 @@ namespace PELOSCALVO
                                 frm.BringToFront();
 
 
+
                             }
                         }
+
+
+
                     }
-
-
-
-                }
-                if (e.ColumnIndex == 0 || e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 6)
-                {
-                    if (string.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
+                    try
                     {
-                        this.SoloNumerosText = this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString();
-                    }
+                        if (e.ColumnIndex == 0 || e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 6)
+                        {
+                            if (string.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
+                            {
+                                this.SoloNumerosText = this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString();
+                            }
 
-                }
-                if (e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5)
-                {
-                    if (string.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
-                    {
-                        this.dtDetallesFacturaDataGridView.CurrentCell.Value = 0;
+                        }
+                        if (e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5)
+                        {
+                            if (string.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
+                            {
+                                this.dtDetallesFacturaDataGridView.CurrentCell.Value = 0;
+                            }
+                            this.dtDetallesFacturaDataGridView.BeginEdit(true);
+                        }
                     }
-                    this.dtDetallesFacturaDataGridView.BeginEdit(true);
+                    catch (Exception)
+                    {
+
+                        // throw;
+                    }
                 }
+
+
             }
-
-
-
         }
 
         private void DtDetallesFacturaDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -1789,21 +1819,29 @@ namespace PELOSCALVO
 
                 }
 
-                if (e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 5)
+                try
                 {
-                    if (this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString() == "0")
+                    if (e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 5)
                     {
-                        this.dtDetallesFacturaDataGridView.CurrentCell.Value = DBNull.Value;
-                    }
+                        if (this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString() == "0")
+                        {
+                            this.dtDetallesFacturaDataGridView.CurrentCell.Value = DBNull.Value;
+                        }
 
+                    }
+                    if (e.ColumnIndex == 5)
+                    {
+                        if (!String.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
+                        {
+                            // this.dtDetallesFacturaDataGridView.CurrentCell.Value = Convert.ToDouble(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()) / 100;
+                        }
+
+                    }
                 }
-                if (e.ColumnIndex == 5)
+                catch (Exception)
                 {
-                    if (!String.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
-                    {
-                        this.dtDetallesFacturaDataGridView.CurrentCell.Value = Convert.ToDouble(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()) / 100;
-                    }
 
+                    // throw;
                 }
             }
             CalcularImportes(this.dtDetallesFacturaDataGridView);
@@ -2175,7 +2213,7 @@ namespace PELOSCALVO
 
         private void DtDetallesFacturaDataGridView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex >-1)
+            if (this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex > -1)
             {
                 if (e.KeyCode == Keys.Down)
                 {
@@ -2184,7 +2222,7 @@ namespace PELOSCALVO
 
                         if (this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex == this.dtDetallesFacturaDataGridView.RowCount - 1)
                         {
-                            dtDetallesFacturaBindingSource.AddNew();
+                            this.dtDetallesFacturaBindingSource.AddNew();
                         }
                     }
                 }
@@ -2522,7 +2560,7 @@ namespace PELOSCALVO
         }
         private void dtDetallesFacturaDataGridView_MouseClick(object sender, MouseEventArgs e)
         {
-            if (BtnGuardarFactura.Enabled == true)
+            if (this.BtnGuardarFactura.Enabled == true)
             {
                 if (e.Button == MouseButtons.Right)
                 {
