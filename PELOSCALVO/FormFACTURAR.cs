@@ -24,6 +24,15 @@ namespace PELOSCALVO
         {
             InitializeComponent();
             FormFacturar.menu2FACTURAR = this;
+            ToolTip InfoEliminar = new ToolTip();
+            InfoEliminar.SetToolTip(BtnEliminarFactura, "Eliminar Factura");
+            InfoEliminar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            InfoEliminar.IsBalloon = true;
+            ToolTip Info = new ToolTip();
+            Info.SetToolTip(BtnNuevoFactura, "Nueva Factura");
+            Info.SetToolTip(BtnModificarFactura, "Moodificar Factura");
+            Info.SetToolTip(BtnBuscarFactura, "Buscar Factura");
+            // Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
         private void CalcularImportes(DataGridView DatagriCalcular)
         {
@@ -1734,7 +1743,7 @@ namespace PELOSCALVO
                     {
                         if (this.dtArticulosBindingSource.Count < 0)
                         {
-                            MessageBox.Show(" Archivo ARTICULOS No Existe O  VACIO ", " FALTA O VACIO ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show(" Archivo ARTICULOS No Existe O  VACIO ", " FALTA O VACIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
                         else
@@ -2299,23 +2308,22 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count < 1)
+            if (FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count < 0)
             {
 
-                MessageBox.Show("No Hay Clientes", " ARCHIVO NO EXISTE O VACIO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No Hay Clientes", " ARCHIVO NO EXISTE O VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             ClasDatos.ValorBuscado = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
-            int numeroFILA = this.dtNuevaFacturaDataGridView.Rows.Count;
-            if (numeroFILA >= 0)
+            if (this.dtNuevaFacturaDataGridView.Rows.Count >= 0)
             {
 
                 ClasDatos.OkFacturar = true;
                 ClasDatos.Datos1Datos2 = "Nota1";
                 // dtNuevaFacturaDataGridView.CurrentCell.Selected = false;
                 FormBuscarClientes frm = new FormBuscarClientes();
-                frm.FormClosed += (o, args) => numeroFILA = 1;
+               // frm.FormClosed += (o, args) => numeroFILA = 1;
                 frm.ShowDialog();
                 frm.BringToFront();
             }

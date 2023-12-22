@@ -11,6 +11,14 @@ namespace PELOSCALVO
         public FormEjercicios()
         {
             InitializeComponent();
+            ToolTip InfoEliminar = new ToolTip();
+            InfoEliminar.SetToolTip(BtnEliminarEjercicio, "Se Borrara Permanentemente " + "\n" + "(EJERCICIOS DE EMPRESA)" + "\n" + "(FACTURACION)");
+            InfoEliminar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            InfoEliminar.IsBalloon = true;
+            ToolTip InfoSalir = new ToolTip();
+            InfoSalir.SetToolTip(BtnSalirEjerc, "Salir De Ejercicio");
+            InfoSalir.IsBalloon = true;
+            InfoSalir.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
         private void FormEjercicios_Load(object sender, EventArgs e)
         {

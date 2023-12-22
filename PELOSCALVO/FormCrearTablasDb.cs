@@ -14,8 +14,15 @@ namespace PELOSCALVO
         public FormCrearTablasDb()
         {
             InitializeComponent();
-            var tt = new ToolTip();
-            tt.SetToolTip(BtnEliminarTabla, "Recuerda Que Si Eliminas No Se Podra Revertir");
+
+            ToolTip InfoEliminar = new ToolTip();
+            InfoEliminar.SetToolTip(BtnEliminarTabla, "Recuerda Que Si Eliminas No Se Podra Revertir");
+            InfoEliminar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            InfoEliminar.IsBalloon = true;
+            ToolTip InfoSalir = new ToolTip();
+            InfoSalir.SetToolTip(BtnSalirT, "Salir De Crea Tablas");
+            InfoSalir.IsBalloon = true;
+            InfoSalir.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
         private void FormCrearTablasDb_Load(object sender, EventArgs e)
         {

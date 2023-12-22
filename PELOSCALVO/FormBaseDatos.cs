@@ -18,8 +18,13 @@ namespace PELOSCALVO
         public FormBaseDatos()
         {
             InitializeComponent();
-            var tt = new ToolTip();
-            tt.SetToolTip(BtnRestablecer, "Cierra toda Conexion y Restablece datos");
+            ToolTip InfoRestablecer = new ToolTip();
+            InfoRestablecer.SetToolTip(BtnRestablecer, "Cierra toda Conexion y Restablece datos");
+            InfoRestablecer.SetToolTip(BtnGuardarDatosArchivos, "Guarda Configuracion Local");
+            InfoRestablecer.SetToolTip(BtnGuardarArchivo_Sql, "Guarda Configuracion Servidor");
+            InfoRestablecer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            InfoRestablecer.IsBalloon = true;
+
         }
         private void FormBaseDatos_Load(object sender, EventArgs e)
         {

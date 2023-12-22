@@ -13,11 +13,14 @@ namespace PELOSCALVO
         public FormEmpresas()
         {
             InitializeComponent();
-            ToolTip tt2 = new ToolTip();
-            tt2.SetToolTip(BtnEliminarEmpresa, "Elimina La Empresa");
-            tt2.SetToolTip(BtnSalirEmpresa, "Salir De Empresa");
-            tt2.IsBalloon = true;
-           tt2.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            ToolTip InfoEliminar = new ToolTip();
+            InfoEliminar.SetToolTip(BtnEliminarEmpresa, "Se Borrara Permanentemente (EMPRESSA)" + "\n" + "(EJERCICIOS DE EMPRESA)" + "\n" + "(FACTURACION)");
+            InfoEliminar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            InfoEliminar.IsBalloon = true;
+            ToolTip InfoSalir = new ToolTip();
+            InfoSalir.SetToolTip(BtnSalirEmpresa, "Salir De Empresa");
+            InfoSalir.IsBalloon = true;
+            InfoSalir.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
 
         private void FormEmpresas_Load(object sender, EventArgs e)
