@@ -126,7 +126,6 @@ namespace PELOSCALVO
             this.EmpresaArticulos = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
-            this.dtInicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelBotonesArticulo = new System.Windows.Forms.Panel();
             this.BtnImprimirArticulo = new System.Windows.Forms.Button();
             this.BtnEnviarMailArticulo = new System.Windows.Forms.Button();
@@ -138,8 +137,6 @@ namespace PELOSCALVO
             this.BtnCancelarArticulo = new System.Windows.Forms.Button();
             this.BtnGuardarArticulo = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
-            this.tableAdapterManager = new PELOSCALVO.ArticulosTableAdapters.TableAdapterManager();
             this.RegistLbel = new System.Windows.Forms.Label();
             this.ContadorDatos3 = new System.Windows.Forms.Label();
             this.FiltrarBajas = new System.Windows.Forms.ComboBox();
@@ -182,7 +179,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtInicioBindingSource)).BeginInit();
             this.panelBotonesArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -1158,7 +1154,7 @@ namespace PELOSCALVO
             // 
             // dtConfiDtTarifaTipoBindingSource
             // 
-            this.dtConfiDtTarifaTipoBindingSource.DataMember = "DtConfi_DtTarifaTipo";
+            this.dtConfiDtTarifaTipoBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtTarifaTipo";
             this.dtConfiDtTarifaTipoBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // dtConfiguracionPrincipalBindingSource
@@ -1195,11 +1191,6 @@ namespace PELOSCALVO
             // 
             this.dsMultidatos.DataSetName = "DsMultidatos";
             this.dsMultidatos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dtInicioBindingSource
-            // 
-            this.dtInicioBindingSource.DataSource = this.dsMultidatos;
-            this.dtInicioBindingSource.Position = 0;
             // 
             // panelBotonesArticulo
             // 
@@ -1414,16 +1405,6 @@ namespace PELOSCALVO
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // dtArticulosTableAdapter
-            // 
-            this.dtArticulosTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.DtArticulosTableAdapter = this.dtArticulosTableAdapter;
-            this.tableAdapterManager.UpdateOrder = PELOSCALVO.ArticulosTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // RegistLbel
             // 
             this.RegistLbel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1542,7 +1523,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtInicioBindingSource)).EndInit();
             this.panelBotonesArticulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -1593,13 +1573,10 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label ValenteLab;
         private System.Windows.Forms.Label BenitoLab;
         private System.Windows.Forms.Label SuarezLab;
-        private System.Windows.Forms.BindingSource dtInicioBindingSource;
         private System.Windows.Forms.BindingSource dtConfiDtTarifaTipoBindingSource;
         private System.Windows.Forms.ComboBox tarifaTipoArticulos;
         private DsMultidatos dsMultidatos;
         private System.Windows.Forms.ComboBox DescripcionBuscarArt;
-        private ArticulosTableAdapters.DtArticulosTableAdapter dtArticulosTableAdapter;
-        private ArticulosTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private System.Windows.Forms.Label RegistLbel;
         private System.Windows.Forms.Label ContadorDatos3;

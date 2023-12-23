@@ -994,8 +994,8 @@ namespace PELOSCALVO
             // 
             // dtProvinciasBindingSource
             // 
-            this.dtProvinciasBindingSource.DataMember = "DtProvincias";
-            this.dtProvinciasBindingSource.DataSource = this.dsMulti2;
+            this.dtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
+            this.dtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
             // 
             // dniClienteTipoComboBox
             // 

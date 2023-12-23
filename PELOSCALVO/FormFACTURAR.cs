@@ -140,12 +140,19 @@ namespace PELOSCALVO
         }
         private void LlenarGrid1()
         {
-            dtDetallesFacturaBindingSource.Clear();
+           // dsFacturas.DtDetallesFactura.
+        
             int II = 0;
             try
             {
+               // dtDetallesFacturaBindingSource.Clear();
                 foreach (var item in ClasDetalleGrid.Listadetalle1.lista)
                 {
+                    if (this.dtDetallesFacturaDataGridView.RowCount > ClasDetalleGrid.Listadetalle1.lista.Count)
+                    {
+                        this.dtDetallesFacturaBindingSource.RemoveCurrent();
+                       // this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
+                    }
                     if (this.dtDetallesFacturaDataGridView.RowCount < ClasDetalleGrid.Listadetalle1.lista.Count + 1)
                     {
                         this.dtDetallesFacturaBindingSource.AddNew();

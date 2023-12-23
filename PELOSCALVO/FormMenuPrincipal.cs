@@ -25,7 +25,7 @@ namespace PELOSCALVO
         int V1, PX, PV;
         public FormMenuPrincipal()
         {
-
+            InitializeComponent();
             this.DtCorreos.Columns.Add("Id", typeof(int));
             this.DtCorreos.Columns.Add("NombreEmpresa", typeof(string));
             this.DtCorreos.Columns.Add("CorreoEletronico", typeof(string));
@@ -43,7 +43,16 @@ namespace PELOSCALVO
             this.DtCorreosCliente.Columns.Add("CorreoEletronico_cli", typeof(string));
             this.dsCorreos.Tables.Add(this.DtCorreosCliente);
             // fila["NombreEmpresa"] = "faf";
-            InitializeComponent();
+          
+            ToolTip Info = new ToolTip();
+            Info.SetToolTip(BtnSql, "Configurar Conexion A Datos");
+            Info.SetToolTip(BtnCarpeteDatos, "Abrir Carpeta Datos");
+            Info.IsBalloon = true;
+            Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            ToolTip Info2 = new ToolTip();
+            Info2.SetToolTip(BtnCalculadora, "Calculadora");
+            Info2.SetToolTip(BtnAbrirChrome, "Navegador Chrome");
+            Info2.SetToolTip(BtnArchivos, "Abrir Archivos");
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
@@ -725,17 +734,17 @@ namespace PELOSCALVO
             }
             this.PanelAcesosDire.Width = this.panelContenedorForm.Width;
             this.PanelAcesosDire.Height = this.panelContenedorForm.Height;
-            if (this.BtnInfo.Tag.ToString() == "SI")
+            if (this.BtnArchivos.Tag.ToString() == "SI")
             {
                 this.PanelAcesosDire.BringToFront();
-                this.BtnInfo.Tag = "NO";
+                this.BtnArchivos.Tag = "NO";
                 this.PanelAcesosDire.Visible = true;
 
 
             }
             else
             {
-                this.BtnInfo.Tag = "SI";
+                this.BtnArchivos.Tag = "SI";
                 this.PanelAcesosDire.Visible = false;
             }
 

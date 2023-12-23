@@ -23,17 +23,11 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.dsCorreos != null)
                 {
-                    // BindingSource CorreosbindingSource = new BindingSource();
                     this.CorreosbindingSource.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
                     this.DatagridCorreosEmpresa.DataSource = this.CorreosbindingSource.DataSource;
-                    //this.DatagridCorreosEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
                     this.CorreosClientebindingSource.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
                     this.DataGridCorreoCliente.DataSource = this.CorreosClientebindingSource.DataSource;
-                    //MessageBox.Show(FormMenuPrincipal.menu2principal.DtCorreos.Rows.Count.ToString());
-                    //  if(DatagriCorreosEmpresa.RowCount<= 0)
-                    //{
-                    //    DataGridCorreoCliente.Rows[0].Cells[0].Value=""
-                    // }
+ 
                 }
             }
             catch (Exception)

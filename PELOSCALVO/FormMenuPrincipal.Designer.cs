@@ -50,24 +50,6 @@ namespace PELOSCALVO
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.BtnConsultas = new System.Windows.Forms.Button();
             this.PanelAcesosDire = new System.Windows.Forms.Panel();
-            this.PanelInfo_P = new System.Windows.Forms.Panel();
-            this.Panel_info2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.InfoExtension = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.InfoCarpeta = new System.Windows.Forms.Label();
-            this.InfoClientes = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.InfoBaseDatos = new System.Windows.Forms.Label();
-            this.InfoArticulo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ContadorFactu = new System.Windows.Forms.Label();
-            this.ContadorArticulos = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.RegistLbel = new System.Windows.Forms.Label();
-            this.ContadorClientes = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,10 +87,30 @@ namespace PELOSCALVO
             this.correosEletronicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datosDeInicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PanelInfo_P = new System.Windows.Forms.Panel();
+            this.Panel_info2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Info_Carpeta = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.InfoExtension = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.InfoCarpeta = new System.Windows.Forms.Label();
+            this.InfoClientes = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.InfoBaseDatos = new System.Windows.Forms.Label();
+            this.InfoArticulo = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ContadorFactu = new System.Windows.Forms.Label();
+            this.ContadorArticulos = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.RegistLbel = new System.Windows.Forms.Label();
+            this.ContadorClientes = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.BtnInfo = new System.Windows.Forms.Button();
+            this.BtnArchivos = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
             this.BtnVentas = new System.Windows.Forms.Button();
             this.BtnCompras = new System.Windows.Forms.Button();
@@ -124,7 +126,7 @@ namespace PELOSCALVO
             this.btnCorreo = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BtnArchivo = new System.Windows.Forms.Button();
+            this.BtnInfo = new System.Windows.Forms.Button();
             this.PanelBarraTitulo = new System.Windows.Forms.Panel();
             this.panelAplicaciones = new System.Windows.Forms.Panel();
             this.BtnAbrirChrome = new System.Windows.Forms.Button();
@@ -157,17 +159,15 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Info_Carpeta = new System.Windows.Forms.Label();
             this.panelContenedorPrincipal.SuspendLayout();
             this.panelContenedorForm.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
             this.panelventas.SuspendLayout();
             this.PanelAcesosDire.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.PanelInfo_P.SuspendLayout();
             this.Panel_info2.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.menuStrip.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).BeginInit();
@@ -479,242 +479,6 @@ namespace PELOSCALVO
             this.PanelAcesosDire.Visible = false;
             this.PanelAcesosDire.MouseEnter += new System.EventHandler(this.PanelAcesosDire_MouseEnter);
             // 
-            // PanelInfo_P
-            // 
-            this.PanelInfo_P.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            this.PanelInfo_P.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PanelInfo_P.Controls.Add(this.Panel_info2);
-            this.PanelInfo_P.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PanelInfo_P.Location = new System.Drawing.Point(6, 43);
-            this.PanelInfo_P.Name = "PanelInfo_P";
-            this.PanelInfo_P.Size = new System.Drawing.Size(865, 293);
-            this.PanelInfo_P.TabIndex = 2;
-            this.PanelInfo_P.Tag = "ABRIR";
-            this.PanelInfo_P.Visible = false;
-            this.PanelInfo_P.MouseLeave += new System.EventHandler(this.PanelInfo_P_MouseLeave);
-            // 
-            // Panel_info2
-            // 
-            this.Panel_info2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.Panel_info2.Controls.Add(this.label5);
-            this.Panel_info2.Controls.Add(this.Info_Carpeta);
-            this.Panel_info2.Controls.Add(this.label4);
-            this.Panel_info2.Controls.Add(this.InfoExtension);
-            this.Panel_info2.Controls.Add(this.label3);
-            this.Panel_info2.Controls.Add(this.InfoCarpeta);
-            this.Panel_info2.Controls.Add(this.InfoClientes);
-            this.Panel_info2.Controls.Add(this.label2);
-            this.Panel_info2.Controls.Add(this.InfoBaseDatos);
-            this.Panel_info2.Controls.Add(this.InfoArticulo);
-            this.Panel_info2.Controls.Add(this.label1);
-            this.Panel_info2.Controls.Add(this.panel7);
-            this.Panel_info2.Cursor = System.Windows.Forms.Cursors.No;
-            this.Panel_info2.Location = new System.Drawing.Point(8, 8);
-            this.Panel_info2.Name = "Panel_info2";
-            this.Panel_info2.Size = new System.Drawing.Size(845, 273);
-            this.Panel_info2.TabIndex = 3;
-            this.Panel_info2.Tag = "stop";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(98, 224);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 23);
-            this.label4.TabIndex = 95;
-            this.label4.Text = "Carpeta:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // InfoExtension
-            // 
-            this.InfoExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoExtension.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoExtension.Location = new System.Drawing.Point(658, 159);
-            this.InfoExtension.Name = "InfoExtension";
-            this.InfoExtension.Size = new System.Drawing.Size(110, 23);
-            this.InfoExtension.TabIndex = 2;
-            this.InfoExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(554, 157);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 23);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Extension:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // InfoCarpeta
-            // 
-            this.InfoCarpeta.AutoSize = true;
-            this.InfoCarpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoCarpeta.ForeColor = System.Drawing.Color.White;
-            this.InfoCarpeta.Location = new System.Drawing.Point(440, 46);
-            this.InfoCarpeta.Name = "InfoCarpeta";
-            this.InfoCarpeta.Size = new System.Drawing.Size(0, 20);
-            this.InfoCarpeta.TabIndex = 94;
-            this.InfoCarpeta.Tag = "";
-            // 
-            // InfoClientes
-            // 
-            this.InfoClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoClientes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoClientes.Location = new System.Drawing.Point(200, 160);
-            this.InfoClientes.Name = "InfoClientes";
-            this.InfoClientes.Size = new System.Drawing.Size(316, 23);
-            this.InfoClientes.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(29, 157);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 23);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Nombre Tarifa Clientes:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // InfoBaseDatos
-            // 
-            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoBaseDatos.Location = new System.Drawing.Point(177, 201);
-            this.InfoBaseDatos.Name = "InfoBaseDatos";
-            this.InfoBaseDatos.Size = new System.Drawing.Size(632, 23);
-            this.InfoBaseDatos.TabIndex = 93;
-            this.InfoBaseDatos.Tag = "stop";
-            // 
-            // InfoArticulo
-            // 
-            this.InfoArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoArticulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoArticulo.Location = new System.Drawing.Point(200, 126);
-            this.InfoArticulo.Name = "InfoArticulo";
-            this.InfoArticulo.Size = new System.Drawing.Size(341, 23);
-            this.InfoArticulo.TabIndex = 0;
-            this.InfoArticulo.Tag = "stop";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(18, 123);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 23);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Nombre Tarifa de Articulos:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.panel7.Controls.Add(this.label8);
-            this.panel7.Controls.Add(this.ContadorFactu);
-            this.panel7.Controls.Add(this.ContadorArticulos);
-            this.panel7.Controls.Add(this.label7);
-            this.panel7.Controls.Add(this.RegistLbel);
-            this.panel7.Controls.Add(this.ContadorClientes);
-            this.panel7.Location = new System.Drawing.Point(27, 20);
-            this.panel7.Margin = new System.Windows.Forms.Padding(1);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(396, 85);
-            this.panel7.TabIndex = 92;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(7, 4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(187, 20);
-            this.label8.TabIndex = 87;
-            this.label8.Tag = "";
-            this.label8.Text = "Total reguistros Articulos:";
-            // 
-            // ContadorFactu
-            // 
-            this.ContadorFactu.AutoSize = true;
-            this.ContadorFactu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContadorFactu.ForeColor = System.Drawing.Color.White;
-            this.ContadorFactu.Location = new System.Drawing.Point(219, 61);
-            this.ContadorFactu.Name = "ContadorFactu";
-            this.ContadorFactu.Size = new System.Drawing.Size(19, 20);
-            this.ContadorFactu.TabIndex = 90;
-            this.ContadorFactu.Text = "0";
-            this.ContadorFactu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ContadorArticulos
-            // 
-            this.ContadorArticulos.AutoSize = true;
-            this.ContadorArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContadorArticulos.ForeColor = System.Drawing.Color.White;
-            this.ContadorArticulos.Location = new System.Drawing.Point(219, 4);
-            this.ContadorArticulos.Name = "ContadorArticulos";
-            this.ContadorArticulos.Size = new System.Drawing.Size(19, 20);
-            this.ContadorArticulos.TabIndex = 84;
-            this.ContadorArticulos.Text = "0";
-            this.ContadorArticulos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(4, 61);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(198, 20);
-            this.label7.TabIndex = 89;
-            this.label7.Tag = "";
-            this.label7.Text = "Total reguistros Empresas:";
-            // 
-            // RegistLbel
-            // 
-            this.RegistLbel.AutoSize = true;
-            this.RegistLbel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegistLbel.ForeColor = System.Drawing.Color.White;
-            this.RegistLbel.Location = new System.Drawing.Point(7, 34);
-            this.RegistLbel.Name = "RegistLbel";
-            this.RegistLbel.Size = new System.Drawing.Size(180, 20);
-            this.RegistLbel.TabIndex = 85;
-            this.RegistLbel.Tag = "";
-            this.RegistLbel.Text = "Total reguistros clientes:";
-            // 
-            // ContadorClientes
-            // 
-            this.ContadorClientes.AutoSize = true;
-            this.ContadorClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContadorClientes.ForeColor = System.Drawing.Color.White;
-            this.ContadorClientes.Location = new System.Drawing.Point(219, 34);
-            this.ContadorClientes.Name = "ContadorClientes";
-            this.ContadorClientes.Size = new System.Drawing.Size(19, 20);
-            this.ContadorClientes.TabIndex = 86;
-            this.ContadorClientes.Text = "0";
-            this.ContadorClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // menuStrip
             // 
             this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
@@ -1002,6 +766,270 @@ namespace PELOSCALVO
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ay&uda";
             // 
+            // PanelInfo_P
+            // 
+            this.PanelInfo_P.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            this.PanelInfo_P.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PanelInfo_P.Controls.Add(this.Panel_info2);
+            this.PanelInfo_P.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PanelInfo_P.Location = new System.Drawing.Point(6, 43);
+            this.PanelInfo_P.Name = "PanelInfo_P";
+            this.PanelInfo_P.Size = new System.Drawing.Size(865, 293);
+            this.PanelInfo_P.TabIndex = 2;
+            this.PanelInfo_P.Tag = "ABRIR";
+            this.PanelInfo_P.Visible = false;
+            this.PanelInfo_P.MouseLeave += new System.EventHandler(this.PanelInfo_P_MouseLeave);
+            // 
+            // Panel_info2
+            // 
+            this.Panel_info2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.Panel_info2.Controls.Add(this.label5);
+            this.Panel_info2.Controls.Add(this.Info_Carpeta);
+            this.Panel_info2.Controls.Add(this.label4);
+            this.Panel_info2.Controls.Add(this.InfoExtension);
+            this.Panel_info2.Controls.Add(this.label3);
+            this.Panel_info2.Controls.Add(this.InfoCarpeta);
+            this.Panel_info2.Controls.Add(this.InfoClientes);
+            this.Panel_info2.Controls.Add(this.label2);
+            this.Panel_info2.Controls.Add(this.InfoBaseDatos);
+            this.Panel_info2.Controls.Add(this.InfoArticulo);
+            this.Panel_info2.Controls.Add(this.label1);
+            this.Panel_info2.Controls.Add(this.panel7);
+            this.Panel_info2.Cursor = System.Windows.Forms.Cursors.No;
+            this.Panel_info2.Location = new System.Drawing.Point(8, 8);
+            this.Panel_info2.Name = "Panel_info2";
+            this.Panel_info2.Size = new System.Drawing.Size(845, 273);
+            this.Panel_info2.TabIndex = 3;
+            this.Panel_info2.Tag = "stop";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(98, 199);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 23);
+            this.label5.TabIndex = 97;
+            this.label5.Text = "Archivo:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // Info_Carpeta
+            // 
+            this.Info_Carpeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Info_Carpeta.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Info_Carpeta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Info_Carpeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Info_Carpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Info_Carpeta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Info_Carpeta.Location = new System.Drawing.Point(177, 226);
+            this.Info_Carpeta.Name = "Info_Carpeta";
+            this.Info_Carpeta.Size = new System.Drawing.Size(632, 23);
+            this.Info_Carpeta.TabIndex = 96;
+            this.Info_Carpeta.Tag = "stop";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(98, 224);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 23);
+            this.label4.TabIndex = 95;
+            this.label4.Text = "Carpeta:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // InfoExtension
+            // 
+            this.InfoExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoExtension.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoExtension.Location = new System.Drawing.Point(658, 159);
+            this.InfoExtension.Name = "InfoExtension";
+            this.InfoExtension.Size = new System.Drawing.Size(110, 23);
+            this.InfoExtension.TabIndex = 2;
+            this.InfoExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(554, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 23);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Extension:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // InfoCarpeta
+            // 
+            this.InfoCarpeta.AutoSize = true;
+            this.InfoCarpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoCarpeta.ForeColor = System.Drawing.Color.White;
+            this.InfoCarpeta.Location = new System.Drawing.Point(440, 46);
+            this.InfoCarpeta.Name = "InfoCarpeta";
+            this.InfoCarpeta.Size = new System.Drawing.Size(0, 20);
+            this.InfoCarpeta.TabIndex = 94;
+            this.InfoCarpeta.Tag = "";
+            // 
+            // InfoClientes
+            // 
+            this.InfoClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoClientes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoClientes.Location = new System.Drawing.Point(200, 160);
+            this.InfoClientes.Name = "InfoClientes";
+            this.InfoClientes.Size = new System.Drawing.Size(316, 23);
+            this.InfoClientes.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(29, 157);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(161, 23);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Nombre Tarifa Clientes:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // InfoBaseDatos
+            // 
+            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoBaseDatos.Location = new System.Drawing.Point(177, 201);
+            this.InfoBaseDatos.Name = "InfoBaseDatos";
+            this.InfoBaseDatos.Size = new System.Drawing.Size(632, 23);
+            this.InfoBaseDatos.TabIndex = 93;
+            this.InfoBaseDatos.Tag = "stop";
+            // 
+            // InfoArticulo
+            // 
+            this.InfoArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoArticulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoArticulo.Location = new System.Drawing.Point(200, 126);
+            this.InfoArticulo.Name = "InfoArticulo";
+            this.InfoArticulo.Size = new System.Drawing.Size(341, 23);
+            this.InfoArticulo.TabIndex = 0;
+            this.InfoArticulo.Tag = "stop";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(18, 123);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(176, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Nombre Tarifa de Articulos:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Controls.Add(this.ContadorFactu);
+            this.panel7.Controls.Add(this.ContadorArticulos);
+            this.panel7.Controls.Add(this.label7);
+            this.panel7.Controls.Add(this.RegistLbel);
+            this.panel7.Controls.Add(this.ContadorClientes);
+            this.panel7.Location = new System.Drawing.Point(27, 20);
+            this.panel7.Margin = new System.Windows.Forms.Padding(1);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(396, 85);
+            this.panel7.TabIndex = 92;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(7, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(187, 20);
+            this.label8.TabIndex = 87;
+            this.label8.Tag = "";
+            this.label8.Text = "Total reguistros Articulos:";
+            // 
+            // ContadorFactu
+            // 
+            this.ContadorFactu.AutoSize = true;
+            this.ContadorFactu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContadorFactu.ForeColor = System.Drawing.Color.White;
+            this.ContadorFactu.Location = new System.Drawing.Point(219, 61);
+            this.ContadorFactu.Name = "ContadorFactu";
+            this.ContadorFactu.Size = new System.Drawing.Size(19, 20);
+            this.ContadorFactu.TabIndex = 90;
+            this.ContadorFactu.Text = "0";
+            this.ContadorFactu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ContadorArticulos
+            // 
+            this.ContadorArticulos.AutoSize = true;
+            this.ContadorArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContadorArticulos.ForeColor = System.Drawing.Color.White;
+            this.ContadorArticulos.Location = new System.Drawing.Point(219, 4);
+            this.ContadorArticulos.Name = "ContadorArticulos";
+            this.ContadorArticulos.Size = new System.Drawing.Size(19, 20);
+            this.ContadorArticulos.TabIndex = 84;
+            this.ContadorArticulos.Text = "0";
+            this.ContadorArticulos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(4, 61);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(198, 20);
+            this.label7.TabIndex = 89;
+            this.label7.Tag = "";
+            this.label7.Text = "Total reguistros Empresas:";
+            // 
+            // RegistLbel
+            // 
+            this.RegistLbel.AutoSize = true;
+            this.RegistLbel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegistLbel.ForeColor = System.Drawing.Color.White;
+            this.RegistLbel.Location = new System.Drawing.Point(7, 34);
+            this.RegistLbel.Name = "RegistLbel";
+            this.RegistLbel.Size = new System.Drawing.Size(180, 20);
+            this.RegistLbel.TabIndex = 85;
+            this.RegistLbel.Tag = "";
+            this.RegistLbel.Text = "Total reguistros clientes:";
+            // 
+            // ContadorClientes
+            // 
+            this.ContadorClientes.AutoSize = true;
+            this.ContadorClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContadorClientes.ForeColor = System.Drawing.Color.White;
+            this.ContadorClientes.Location = new System.Drawing.Point(219, 34);
+            this.ContadorClientes.Name = "ContadorClientes";
+            this.ContadorClientes.Size = new System.Drawing.Size(19, 20);
+            this.ContadorClientes.TabIndex = 86;
+            this.ContadorClientes.Text = "0";
+            this.ContadorClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(61)))), ((int)(((byte)(69)))));
@@ -1016,7 +1044,7 @@ namespace PELOSCALVO
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
             this.panelMenu.Controls.Add(this.pictureBox7);
-            this.panelMenu.Controls.Add(this.BtnInfo);
+            this.panelMenu.Controls.Add(this.BtnArchivos);
             this.panelMenu.Controls.Add(this.btnConfiguracion);
             this.panelMenu.Controls.Add(this.BtnVentas);
             this.panelMenu.Controls.Add(this.BtnCompras);
@@ -1032,7 +1060,7 @@ namespace PELOSCALVO
             this.panelMenu.Controls.Add(this.btnCorreo);
             this.panelMenu.Controls.Add(this.pictureBox2);
             this.panelMenu.Controls.Add(this.pictureBox1);
-            this.panelMenu.Controls.Add(this.BtnArchivo);
+            this.panelMenu.Controls.Add(this.BtnInfo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 43);
             this.panelMenu.Name = "panelMenu";
@@ -1048,27 +1076,27 @@ namespace PELOSCALVO
             this.pictureBox7.TabIndex = 17;
             this.pictureBox7.TabStop = false;
             // 
-            // BtnInfo
+            // BtnArchivos
             // 
-            this.BtnInfo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BtnInfo.FlatAppearance.BorderSize = 0;
-            this.BtnInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(80)))), ((int)(((byte)(30)))));
-            this.BtnInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(115)))), ((int)(((byte)(9)))));
-            this.BtnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInfo.ForeColor = System.Drawing.Color.Silver;
-            this.BtnInfo.Image = global::PELOSCALVO.Properties.Resources.INFO;
-            this.BtnInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnInfo.Location = new System.Drawing.Point(3, 359);
-            this.BtnInfo.Name = "BtnInfo";
-            this.BtnInfo.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
-            this.BtnInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BtnInfo.Size = new System.Drawing.Size(227, 40);
-            this.BtnInfo.TabIndex = 16;
-            this.BtnInfo.Tag = "SI";
-            this.BtnInfo.Text = "Archivo";
-            this.BtnInfo.UseVisualStyleBackColor = true;
-            this.BtnInfo.Click += new System.EventHandler(this.BtnInfo_Click);
+            this.BtnArchivos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnArchivos.FlatAppearance.BorderSize = 0;
+            this.BtnArchivos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(80)))), ((int)(((byte)(30)))));
+            this.BtnArchivos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(115)))), ((int)(((byte)(9)))));
+            this.BtnArchivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnArchivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnArchivos.ForeColor = System.Drawing.Color.Silver;
+            this.BtnArchivos.Image = global::PELOSCALVO.Properties.Resources.INFO;
+            this.BtnArchivos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnArchivos.Location = new System.Drawing.Point(3, 359);
+            this.BtnArchivos.Name = "BtnArchivos";
+            this.BtnArchivos.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.BtnArchivos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.BtnArchivos.Size = new System.Drawing.Size(227, 40);
+            this.BtnArchivos.TabIndex = 16;
+            this.BtnArchivos.Tag = "SI";
+            this.BtnArchivos.Text = "Archivo";
+            this.BtnArchivos.UseVisualStyleBackColor = true;
+            this.BtnArchivos.Click += new System.EventHandler(this.BtnInfo_Click);
             // 
             // btnConfiguracion
             // 
@@ -1298,26 +1326,26 @@ namespace PELOSCALVO
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // BtnArchivo
+            // BtnInfo
             // 
-            this.BtnArchivo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BtnArchivo.FlatAppearance.BorderSize = 0;
-            this.BtnArchivo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
-            this.BtnArchivo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
-            this.BtnArchivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnArchivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnArchivo.ForeColor = System.Drawing.Color.Orange;
-            this.BtnArchivo.Image = global::PELOSCALVO.Properties.Resources.barras4;
-            this.BtnArchivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnArchivo.Location = new System.Drawing.Point(3, 80);
-            this.BtnArchivo.Name = "BtnArchivo";
-            this.BtnArchivo.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
-            this.BtnArchivo.Size = new System.Drawing.Size(227, 40);
-            this.BtnArchivo.TabIndex = 0;
-            this.BtnArchivo.Tag = "";
-            this.BtnArchivo.Text = "PANEL";
-            this.BtnArchivo.UseVisualStyleBackColor = true;
-            this.BtnArchivo.Click += new System.EventHandler(this.BtnArchivo_Click);
+            this.BtnInfo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnInfo.FlatAppearance.BorderSize = 0;
+            this.BtnInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
+            this.BtnInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
+            this.BtnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnInfo.ForeColor = System.Drawing.Color.Orange;
+            this.BtnInfo.Image = global::PELOSCALVO.Properties.Resources.barras4;
+            this.BtnInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnInfo.Location = new System.Drawing.Point(3, 80);
+            this.BtnInfo.Name = "BtnInfo";
+            this.BtnInfo.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.BtnInfo.Size = new System.Drawing.Size(227, 40);
+            this.BtnInfo.TabIndex = 0;
+            this.BtnInfo.Tag = "";
+            this.BtnInfo.Text = "PANEL";
+            this.BtnInfo.UseVisualStyleBackColor = true;
+            this.BtnInfo.Click += new System.EventHandler(this.BtnArchivo_Click);
             // 
             // PanelBarraTitulo
             // 
@@ -1657,34 +1685,6 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(98, 199);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 23);
-            this.label5.TabIndex = 97;
-            this.label5.Text = "Archivo:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // Info_Carpeta
-            // 
-            this.Info_Carpeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Info_Carpeta.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Info_Carpeta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Info_Carpeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Info_Carpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Info_Carpeta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Info_Carpeta.Location = new System.Drawing.Point(177, 226);
-            this.Info_Carpeta.Name = "Info_Carpeta";
-            this.Info_Carpeta.Size = new System.Drawing.Size(632, 23);
-            this.Info_Carpeta.TabIndex = 96;
-            this.Info_Carpeta.Tag = "stop";
-            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1707,13 +1707,13 @@ namespace PELOSCALVO
             this.panelventas.ResumeLayout(false);
             this.PanelAcesosDire.ResumeLayout(false);
             this.PanelAcesosDire.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.PanelInfo_P.ResumeLayout(false);
             this.Panel_info2.ResumeLayout(false);
             this.Panel_info2.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).EndInit();
@@ -1766,7 +1766,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnListaClientes;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button BtnArchivo;
+        private System.Windows.Forms.Button BtnInfo;
         private System.Windows.Forms.Timer tmExpandirMenu;
         private System.Windows.Forms.Timer tmContraerMenu;
         private System.Windows.Forms.Timer tmFechaHora;
@@ -1806,7 +1806,7 @@ namespace PELOSCALVO
         public DsCONFIGURACCION dsCONFIGURACCION;
         public System.Windows.Forms.Panel PanelInfo_P;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Button BtnInfo;
+        private System.Windows.Forms.Button BtnArchivos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
