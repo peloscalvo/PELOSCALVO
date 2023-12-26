@@ -814,7 +814,7 @@ namespace PELOSCALVO
             // 
             this.pais_FactComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Pais_Fact", true));
             this.pais_FactComboBox.DataSource = this.dtPaisesBindingSource;
-            this.pais_FactComboBox.DisplayMember = "PaisesPaises";
+            this.pais_FactComboBox.DisplayMember = "Paises";
             this.pais_FactComboBox.Enabled = false;
             this.pais_FactComboBox.FormattingEnabled = true;
             this.pais_FactComboBox.Location = new System.Drawing.Point(514, 150);
@@ -942,7 +942,7 @@ namespace PELOSCALVO
             // 
             this.provinciaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Provincia", true));
             this.provinciaComboBox.DataSource = this.fKDtPaisesDtProvinciasBindingSource;
-            this.provinciaComboBox.DisplayMember = "ProvinciasProvincias";
+            this.provinciaComboBox.DisplayMember = "Provincias";
             this.provinciaComboBox.Enabled = false;
             this.provinciaComboBox.FormattingEnabled = true;
             this.provinciaComboBox.Location = new System.Drawing.Point(514, 122);

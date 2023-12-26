@@ -138,52 +138,69 @@ namespace PELOSCALVO
             }
 
         }
-        private void LlenarGrid1()
+        private void LlenarGrid(DataGridView dataGrid,int valor)
         {
-           // dsFacturas.DtDetallesFactura.
-        
             int II = 0;
             try
             {
                // dtDetallesFacturaBindingSource.Clear();
                 foreach (var item in ClasDetalleGrid.Listadetalle1.lista)
                 {
-                    if (this.dtDetallesFacturaDataGridView.RowCount > ClasDetalleGrid.Listadetalle1.lista.Count)
+                    if (valor == 1)
                     {
-                        this.dtDetallesFacturaBindingSource.RemoveCurrent();
-                       // this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
+                        if (dataGrid.RowCount > ClasDetalleGrid.Listadetalle1.lista.Count + 1)
+                        {
+                            // this.dtDetallesFacturaBindingSource.RemoveCurrent();
+                            this.dtDetallesFacturaDataGridView.Rows.RemoveAt(this.dtDetallesFacturaDataGridView.RowCount);
+                        }
+                        if (this.dtDetallesFacturaDataGridView.RowCount < ClasDetalleGrid.Listadetalle1.lista.Count + 1)
+                        {
+                            this.dtDetallesFacturaBindingSource.AddNew();
+                        }
+
                     }
-                    if (this.dtDetallesFacturaDataGridView.RowCount < ClasDetalleGrid.Listadetalle1.lista.Count + 1)
+                    else
                     {
-                        this.dtDetallesFacturaBindingSource.AddNew();
+                        if (dataGrid.RowCount > ClasDetalleGrid.Listadetalle2.lista.Count + 1)
+                        {
+                            // this.dtDetallesFactura2BindingSource.RemoveCurrent();
+                            this.dtDetallesFacturaDataGridView2.Rows.RemoveAt(this.dtDetallesFacturaDataGridView2.RowCount);
+                        }
+                        if (dataGrid.RowCount < ClasDetalleGrid.Listadetalle2.lista.Count + 1)
+                        {
+                            this.dtDetallesFactura2BindingSource.AddNew();
+                        }
+
                     }
+           
+              
                     if (!string.IsNullOrEmpty(item.Referencia))
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[II].Cells[0].Value = item.Referencia;
+                        dataGrid.Rows[II].Cells[0].Value = item.Referencia;
                     }
                     if (!string.IsNullOrEmpty(item.Cantidad))
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[II].Cells[2].Value = item.Cantidad;
+                        dataGrid.Rows[II].Cells[2].Value = item.Cantidad;
                     }
                     if (!string.IsNullOrEmpty(item.Descripcci))
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[II].Cells[3].Value = item.Descripcci;
+                        dataGrid.Rows[II].Cells[3].Value = item.Descripcci;
                     }
                     if (!string.IsNullOrEmpty(item.Precio))
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[II].Cells[4].Value = item.Precio;
+                        dataGrid.Rows[II].Cells[4].Value = item.Precio;
                     }
                     if (!string.IsNullOrEmpty(item.Descuento))
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[II].Cells[5].Value = item.Descuento;
+                        dataGrid.Rows[II].Cells[5].Value = item.Descuento;
                     }
                     if (!string.IsNullOrEmpty(item.Iva))
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[II].Cells[6].Value = item.Iva;
+                        dataGrid.Rows[II].Cells[6].Value = item.Iva;
                     }
                     if (!string.IsNullOrEmpty(item.Importe))
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[II].Cells[7].Value = item.Importe;
+                        dataGrid.Rows[II].Cells[7].Value = item.Importe;
                     }
                     II++;
                 }
@@ -194,19 +211,26 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        private void ExtraerGrid1()
+        private void ExtraerGrid(DataGridView dataGrid, int valor)
         {
             try
             {
-                int Valor4 = 0;
-                ClasDetalleGrid.Listadetalle1.lista.Clear();
-                foreach (DataGridViewRow row in this.dtDetallesFacturaDataGridView.Rows)
+                int V = 0;
+                if (valor == 1)
                 {
-                    if (Valor4 >= this.dtDetallesFacturaDataGridView.RowCount - 1)
+                    ClasDetalleGrid.Listadetalle1.lista.Clear();
+                }
+                else
+                {
+                    ClasDetalleGrid.Listadetalle2.lista.Clear();
+                }
+              
+                foreach (DataGridViewRow row in dataGrid.Rows)
+                {
+                    if (V >= dataGrid.RowCount - 1)
                     {
                         break;
-                    }
-                    List<ClasDetalleGrid.Detalle> lista = new List<ClasDetalleGrid.Detalle>();
+                    }             
                     ClasDetalleGrid.Detalle item = new ClasDetalleGrid.Detalle();
                     if (row.Cells[0].Value.ToString() != string.Empty)
                     {
@@ -228,16 +252,38 @@ namespace PELOSCALVO
                     {
                         item.Descuento = row.Cells[5].Value.ToString();
                     }
-                    if (row.Cells[6].Value.ToString() != string.Empty)
+                    if (valor == 1)
                     {
-                        item.Iva = row.Cells[6].Value.ToString();
+                        if (row.Cells[6].Value.ToString() != string.Empty)
+                        {
+                            item.Iva = row.Cells[6].Value.ToString();
+                        }
                     }
-                    if (row.Cells[7].Value.ToString() != string.Empty)
+                    if (valor == 1)
                     {
-                        item.Importe = row.Cells[7].Value.ToString();
+                        if (row.Cells[7].Value.ToString() != string.Empty)
+                        {
+                            item.Importe = row.Cells[7].Value.ToString();
+                        }
                     }
-                    ClasDetalleGrid.Listadetalle1.lista.Add(item);
-                    Valor4++;
+                    else
+                    {
+                        if (row.Cells[6].Value.ToString() != string.Empty)
+                        {
+                            item.Importe = row.Cells[6].Value.ToString();
+                        }
+                    }
+             
+                    if (valor == 1)
+                    {
+                        ClasDetalleGrid.Listadetalle1.lista.Add(item);
+                    }
+                    else
+                    {
+                        ClasDetalleGrid.Listadetalle2.lista.Add(item);
+                    }
+                
+                    V++;
                 }
             }
             catch (Exception ex)
@@ -559,7 +605,7 @@ namespace PELOSCALVO
                 }
                 if (this.panelBotones.Tag.ToString() == "Modificar")
                 {
-                    RstaurarStockDb();
+                    GuardarRestaurarStockDb();
                 }
                 GuardarStockDb(this.dtDetallesFacturaDataGridView);
             }
@@ -935,6 +981,10 @@ namespace PELOSCALVO
                     {
                         this.AlmacenTxt.SelectedIndex = 0;
                     }
+                    if (this.obrasComboBox.Items.Count > 0)
+                    {
+                        this.obrasComboBox.SelectedIndex = 0;
+                    }
                     ModificarOjetosFatu();
                     BORRARerrores();
 
@@ -1009,8 +1059,7 @@ namespace PELOSCALVO
                     if (ClsConexionSql.SibaseDatosSql)
                     {
                         GuardarFactuSql();
-                        ClasDetalleGrid.Listadetalle1.lista.Clear();
-                        ClasDetalleGrid.Listadetalle2.lista.Clear();
+
                     }
                     else
                     {
@@ -1019,8 +1068,7 @@ namespace PELOSCALVO
                             if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
                                 GuardarFactuDB();
-                                ClasDetalleGrid.Listadetalle1.lista.Clear();
-                                ClasDetalleGrid.Listadetalle2.lista.Clear();
+             ;
                             }
                             else
                             {
@@ -1138,8 +1186,11 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                        LlenarGrid1();
-                        //this.dtDetallesFacturaBindingSource.ResetBindings(false);
+                        LlenarGrid(dtDetallesFacturaDataGridView,1);
+                        if (ClasDatos.NombreFactura == "Nota2")
+                        {
+                            LlenarGrid(dtDetallesFacturaDataGridView2, 2);
+                        }
                     }
                 }
                 this.dtDetallesFacturaDataGridView.Refresh();
@@ -1173,7 +1224,11 @@ namespace PELOSCALVO
                 this.apodoTextBox.Focus();
                 this.numeroFacturaTextBox.Enabled = false;
                 this.panelBotones.Tag = "Modificar";
-                ExtraerGrid1();
+                ExtraerGrid(dtDetallesFacturaDataGridView,1);
+                if (ClasDatos.NombreFactura == "Nota2")
+                {
+                    ExtraerGrid(dtDetallesFacturaDataGridView2, 2);
+                }
             }
         }
 
@@ -1372,8 +1427,9 @@ namespace PELOSCALVO
             this.PanelArriba.Tag = "SI";
             FiltrarFactura();
         }
-        private void RstaurarStockDb()
+        private void GuardarRestaurarStockDb()
         {
+            
             int Id_Almacen = 0;
             int FilaALMACEN = Convert.ToInt32(this.AlmacenTxt.SelectedIndex);
             if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtAlmacenes"].Rows[FilaALMACEN]["Id"].ToString() != string.Empty)

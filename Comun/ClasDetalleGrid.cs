@@ -38,7 +38,7 @@ namespace Comun
         }
         public static class Listadetalle2
         {
-            public static List<Detalle2> lista = new List<Detalle2>();
+            public static List<Detalle> lista = new List<Detalle>();
         }
     }
 }

@@ -1177,14 +1177,17 @@ namespace PELOSCALVO
         {
             try
             {
-                if (this.DataGridCorreoCliente.Rows.Count >= 0)
+                if (BtnGuardarCorreoCli.Enabled == false)
                 {
-                    if (this.CorreosClientebindingSource.Count > 0)
+                    if (this.DataGridCorreoCliente.Rows.Count >= 0)
                     {
+                        if (this.CorreosClientebindingSource.Count > 0)
+                        {
 
-                        limpiarCorreo_Cli();
-                        ExtraerDatagridCliente();
+                            limpiarCorreo_Cli();
+                            ExtraerDatagridCliente();
 
+                        }
                     }
                 }
             }
@@ -1216,14 +1219,19 @@ namespace PELOSCALVO
         {
             try
             {
-                if (this.DatagridCorreosEmpresa.Rows.Count >= 0)
+                if (BtnGuardarCorreo_E.Enabled == false)
                 {
-                    if (this.CorreosbindingSource.Count > 0)
+
+
+                    if (this.DatagridCorreosEmpresa.Rows.Count >= 0)
                     {
+                        if (this.CorreosbindingSource.Count > 0)
+                        {
 
-                        LimpiarCorreo_Empresa();
-                        ExtraerDatagrid();
+                            LimpiarCorreo_Empresa();
+                            ExtraerDatagrid();
 
+                        }
                     }
                 }
             }
