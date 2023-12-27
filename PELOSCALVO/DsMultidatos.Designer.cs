@@ -225,7 +225,7 @@ namespace PELOSCALVO {
         private void InitClass() {
             this.DataSetName = "DsMultidatos";
             this.Prefix = "";
-            this.Namespace = "PELOSCALVO";
+            this.Namespace = "http://PelosCalvo";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDtInicioMulti = new DtInicioMultiDataTable();

@@ -897,7 +897,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, string EnlaceDtconfi) {
+            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, int EnlaceDtconfi) {
                 DtConfiRow rowDtConfiRow = ((DtConfiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfiguraccionBasica,
@@ -956,7 +956,7 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnIdConexionConfi);
                 this.columnAñoDeEjercicio = new global::System.Data.DataColumn("AñoDeEjercicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAñoDeEjercicio);
-                this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceDtconfi);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnEnlaceDtconfi}, false));
@@ -2346,10 +2346,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EnlaceDtconfi {
+            public int EnlaceDtconfi {
                 get {
                     try {
-                        return ((string)(this[this.tableDtConfi.EnlaceDtconfiColumn]));
+                        return ((int)(this[this.tableDtConfi.EnlaceDtconfiColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceDtconfi\' de la tabla \'DtConfi\' es DBNull.", e);

@@ -61,15 +61,18 @@ namespace PELOSCALVO
             }
             try
             {
-                if (FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Count < 3)
+                if (FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Count < 4)
                 {
-
-                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(".");
                     FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(Local)");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(".");
                     FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(localdb)\\MSSQLLocalDB");
                     FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(localdb)\\SQLVICTOR");
                     FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(string.Format(@"{0}\SQLEXPRESS", Environment.MachineName));
-                    FormMenuPrincipal.menu2principal.dsServidor.WriteXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
+                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
+                    {
+                        FormMenuPrincipal.menu2principal.dsServidor.WriteXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
+
+                    }
                 }
             }
             catch (Exception ex)

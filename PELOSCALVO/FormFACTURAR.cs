@@ -343,19 +343,21 @@ namespace PELOSCALVO
             this.errorProvider1.SetError(this.nombreTextBox, "");
             this.errorProvider1.SetError(this.direccionTextBox, "");
             this.errorProvider1.SetError(this.dniTextBox, "");
-            this.errorProvider1.SetError(this.numeroFacturaTextBox, "");
+            this.errorProvider1.SetError(this.NumeroFactura, "");
         }
 
 
         public void GuardarFactuDB()
         {
+            Random r = new Random();
+            int Id_valor = r.Next(3, 99999);
             string VALIDAR_DATOS = "";
             string VALIDAR_Dtfactura = "  Se Guardo Correctamente";
             string VALIDAR_Dtdetalle = "  Se Guardo Correctamente";
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
-            string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.Id_Empresa.Text + "/" + Id;
+            int EnlaceDtconfi =(EmpresaPrincipal.SelectedIndex+1)+ Id+ (SerieText.SelectedIndex + 1)+ Convert.ToInt32( NumeroFactura.Text)+Id_valor;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
             string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]," +
@@ -397,7 +399,7 @@ namespace PELOSCALVO
             if (NuevaConexion.SiConexionDb)
             {
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : this.EnlaceFactu.Text);
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.numeroFacturaTextBox.Text) ? (object)DBNull.Value : Convert.ToInt32(this.numeroFacturaTextBox.Text));
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.NumeroFactura.Text) ? (object)DBNull.Value : Convert.ToInt32(this.NumeroFactura.Text));
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.apodoTextBox.Text) ? (object)DBNull.Value : this.apodoTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.nombreTextBox.Text) ? (object)DBNull.Value : this.nombreTextBox.Text);
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(this.direccionTextBox.Text) ? (object)DBNull.Value : this.direccionTextBox.Text);
@@ -432,7 +434,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaCobro", DBNull.Value);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CobradaFactura", (object)DBNull.Value);///canbiar valor a cobrada
                 }
-                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(EnlaceDtconfi) ? (object)DBNull.Value : EnlaceDtconfi);
+                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(EnlaceDtconfi.ToString()) ? (object)DBNull.Value : EnlaceDtconfi);
                 try
                 {
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
@@ -678,7 +680,7 @@ namespace PELOSCALVO
             if (NuevaConexion.SiConexionSql)
             {
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : this.EnlaceFactu.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.numeroFacturaTextBox.Text) ? (object)DBNull.Value : Convert.ToInt32(this.numeroFacturaTextBox.Text));
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.NumeroFactura.Text) ? (object)DBNull.Value : Convert.ToInt32(this.NumeroFactura.Text));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.apodoTextBox.Text) ? (object)DBNull.Value : this.apodoTextBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.nombreTextBox.Text) ? (object)DBNull.Value : this.nombreTextBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(this.direccionTextBox.Text) ? (object)DBNull.Value : this.direccionTextBox.Text);
@@ -940,13 +942,13 @@ namespace PELOSCALVO
                             Random rR = new Random();
                             VALORid = rR.Next(5000, 100000000);
                             this.dtNuevaFacturaDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                            this.numeroFacturaTextBox.Text = VALORid.ToString();
+                            this.NumeroFactura.Text = VALORid.ToString();
                         }
                         else
                         {
                             VALORid = Convert.ToInt32(this.dtNuevaFacturaDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
                             this.dtNuevaFacturaDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                            this.numeroFacturaTextBox.Text = VALORid.ToString();
+                            this.NumeroFactura.Text = VALORid.ToString();
 
                         }
                     }
@@ -1222,7 +1224,7 @@ namespace PELOSCALVO
                 this.tabControl1Factura.SelectedIndex = 0;
                 ModificarOjetosFatu();
                 this.apodoTextBox.Focus();
-                this.numeroFacturaTextBox.Enabled = false;
+                this.NumeroFactura.Enabled = false;
                 this.panelBotones.Tag = "Modificar";
                 ExtraerGrid(dtDetallesFacturaDataGridView,1);
                 if (ClasDatos.NombreFactura == "Nota2")

@@ -138,41 +138,39 @@ namespace PELOSCALVO
 
         private void FormCrearBaseDatos_Load(object sender, EventArgs e)
         {
-            if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
+            if (!File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
             {
-                this.dsServidor.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
 
-
-            }
-            else
-            {
                 FormMenuPrincipal.menu2principal.CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
 
             }
 
-
-            if (this.dtServidorBindingSource.Count < 6)
+            try
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    this.dtServidorBindingSource.AddNew();
 
-                    // this.dsServidor.Tables["DtServidor"].Rows[0]["Servidores"] = ".";
-                }
-                Validate();
-                this.dsServidor.Tables["DtServidor"].Rows[1]["Servidores"] = "(Local)";
-                this.dsServidor.Tables["DtServidor"].Rows[0]["Servidores"] = ".";
-                this.dsServidor.Tables["DtServidor"].Rows[2]["Servidores"] = "(localdb)\\MSSQLLocalDB";
-                this.dsServidor.Tables["DtServidor"].Rows[3]["Servidores"] = "(localdb)\\SQLVICTOR";
-                this.dsServidor.Tables["DtServidor"].Rows[4]["Servidores"] = @".\SQLEXPRESS";
-                this.dsServidor.Tables["DtServidor"].Rows[5]["Servidores"] = string.Format(@"{0}\SQLEXPRESS", Environment.MachineName);
-                Validate();
-                if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
+
+                if (FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Count < 4)
                 {
-                    this.dsServidor.WriteXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(Local)");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(".");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(localdb)\\MSSQLLocalDB");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(localdb)\\SQLVICTOR");
+                    FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(string.Format(@"{0}\SQLEXPRESS", Environment.MachineName));
+                    FormMenuPrincipal.menu2principal.dsServidor.WriteXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
+                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
+                    {
+                        FormMenuPrincipal.menu2principal.dsServidor.WriteXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
+
+                    }
 
                 }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR");
+            }
+
             this.SerieArticulosTabla.Text = "Tarifa1";
             this.SerieClientesTabla.Text = "Listado1";
             this.AutenticacionCrear.Text = "Autenticacion De Windows";
@@ -423,7 +421,7 @@ namespace PELOSCALVO
                 " [CifEmpresa] [varchar](20) NULL,[ImagenEmpresa] [image] NULL) " +
 
                 "IF NOT  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfi]') AND type in (N'U')) " +
-                "CREATE TABLE[DtConfi]([EnlaceDtconfi][varchar](250) primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
+                "CREATE TABLE[DtConfi]([EnlaceDtconfi][int] primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
                "[EmpresaENLACE] [int] NOT NULL,[IdConexionConfi] INT NULL, [AñoDeEjercicio] [varchar](60) NULL," +
                 " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 
@@ -509,7 +507,7 @@ namespace PELOSCALVO
                                 "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[FechaFactura] [date] NULL," +
                                 "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
                                 "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
-                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [varchar](250) NULL,[EnlaceDtconfi][varchar](250) NOT NULL," + "CONSTRAINT F_DtConfi" + TablaFactu + VALORid.ToString() +
+                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [varchar](250) NULL,[EnlaceDtconfi][int] NOT NULL," + "CONSTRAINT F_DtConfi" + TablaFactu + VALORid.ToString() +
                                "FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(EnlaceDtconfi) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                                 "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +
@@ -634,7 +632,7 @@ namespace PELOSCALVO
                     // string RutaOrigen = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal;
                     string RutaDestino = CarpetaElegir.SelectedPath;
                     string CarpetaCopia = "Copia Seguridad De PeloscalvoApp";
-                    string NonbreBackup = "Backup De" + this.Backuptext.Text + String.Format("{0:dd-MM-yyyy hh:mm:ss}", DateTime.Now);
+                    string NonbreBackup = "Backup De " + this.Backuptext.Text + " " + String.Format("{0:dd-MM-yyyy hhmmss}", DateTime.Now);
                     //string BACKUP = RutaDestino + "\\" + CarpetaCopia;
 
 

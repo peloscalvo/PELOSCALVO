@@ -276,7 +276,7 @@ namespace PELOSCALVO {
         private void InitClass() {
             this.DataSetName = "DsMulti2";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DsMulti2.xsd";
+            this.Namespace = "http://PelosCalvo";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDtObras = new DtObrasDataTable();
