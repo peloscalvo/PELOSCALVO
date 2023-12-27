@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.OleDb;
-using System.Data.SqlClient;
 //using System.Windows.Forms;
 
 namespace Conexiones
@@ -17,19 +16,19 @@ namespace Conexiones
             try
             {
                 this.conexionDb = new OleDbConnection(ClsConexionDb.CadenaConexion);
-                ComandoDb = new OleDbCommand(consulta, conexionDb);
+                this.ComandoDb = new OleDbCommand(consulta, this.conexionDb);
             }
             catch (Exception)
             {
 
-               /// MessageBox.Show(ex.Message.ToString(), "(((ERROR))) Base Datos Archivo");
+                /// MessageBox.Show(ex.Message.ToString(), "(((ERROR))) Base Datos Archivo");
             }
         }
         public bool SiConexionDb
         {
             get
             {
-              
+
                 if (this.conexionDb.State == System.Data.ConnectionState.Closed)
                 {
                     try
@@ -38,16 +37,16 @@ namespace Conexiones
                         this.conexionDb.Open();
 
                     }
-     
-                    catch (Exception )
+
+                    catch (Exception)
                     {
-                     // MessageBox.Show(ex.Message.ToString());
+                        // MessageBox.Show(ex.Message.ToString());
                         return false;
                     }
 
                 }
                 return true;
-            } 
+            }
         }
         public bool CerrarConexionDB
         {
@@ -73,10 +72,10 @@ namespace Conexiones
     }
 
 
-  
 
 
-    }
+
+}
 
 
 

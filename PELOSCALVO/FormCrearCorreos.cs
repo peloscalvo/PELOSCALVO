@@ -37,6 +37,10 @@ namespace PELOSCALVO
             }
             try
             {
+                ClassCorreosDB FF = new ClassCorreosDB();
+                FF.FF();
+                this.CorreosbindingSource.DataSource = ClassCorreosDB.DtCorreos;
+                this.CorreosClientebindingSource.DataSource = ClassCorreosDB.DtCorreosCliente;
                 //this.DatagridCorreosEmpresa.Columns[1].Width = 190;//NombreEmpresa
                 //  this.DatagridCorreosEmpresa.Columns[2].Width = 140;//CorreoEletronico
                 // this.DatagridCorreosEmpresa.Columns[3].Width = 120;//Usuario
@@ -481,6 +485,8 @@ namespace PELOSCALVO
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
                         FormMenuPrincipal.menu2principal.DtCorreosCliente.Rows.Add(this.Id_CorreoCli.Text, this.RazonSocial.Text, this.EmpresaCli.Text, this.Direcion.Text,
+                      this.CorreoEletronicoCli.Text);
+                        ClassCorreosDB.DtCorreosCliente.Rows.Add(this.Id_CorreoCli.Text, this.RazonSocial.Text, this.EmpresaCli.Text, this.Direcion.Text,
                       this.CorreoEletronicoCli.Text);
                     }
                     else

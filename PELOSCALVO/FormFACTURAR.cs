@@ -632,13 +632,15 @@ namespace PELOSCALVO
 
         public void GuardarFactuSql()
         {
+            Random r = new Random();
+            int Id_valor = r.Next(3, 99999);
             string VALIDAR_DATOS = "";
             string VALIDAR_Dtfactura = "  Se Guardo Correctamente";
             string VALIDAR_Dtdetalle = "  Se Guardo Correctamente";
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
-            string EnlaceDtconfi = this.ejerciciosDeAñoComboBox.Text + "/" + this.Id_Empresa.Text + "/" + Id;
+            int EnlaceDtconfi = (EmpresaPrincipal.SelectedIndex + 1) + Id + (SerieText.SelectedIndex + 1) + Convert.ToInt32(NumeroFactura.Text) + Id_valor;
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
             string ConsultaDetalle = "INSERT INTO [DtDetalles_" + ClasDatos.NombreFactura + "] ([ReferenciaDetalle],[CantidadDetalle],[DescripccionDetalle]," +
@@ -715,7 +717,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaCobro", DBNull.Value);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CobradaFactura", (object)DBNull.Value);///canbiar valor a cobrada
                 }
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(EnlaceDtconfi) ? (object)DBNull.Value : EnlaceDtconfi);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(EnlaceDtconfi.ToString()) ? (object)DBNull.Value : EnlaceDtconfi);
                 try
                 {
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
