@@ -1,6 +1,7 @@
 ﻿using Conexiones;
 using System;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 
@@ -12,11 +13,11 @@ namespace PELOSCALVO
         {
             InitializeComponent();
             ToolTip InfoEliminar = new ToolTip();
-            InfoEliminar.SetToolTip(BtnEliminarEjercicio, "Se Borrara Permanentemente " + "\n" + "(EJERCICIOS DE EMPRESA)" + "\n" + "(FACTURACION)");
+            InfoEliminar.SetToolTip(this.BtnEliminarEjercicio, "Se Borrara Permanentemente " + "\n" + "(EJERCICIOS DE EMPRESA)" + "\n" + "(FACTURACION)");
             InfoEliminar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             InfoEliminar.IsBalloon = true;
             ToolTip InfoSalir = new ToolTip();
-            InfoSalir.SetToolTip(BtnSalirEjerc, "Salir De Ejercicio");
+            InfoSalir.SetToolTip(this.BtnSalirEjerc, "Salir De Ejercicio");
             InfoSalir.IsBalloon = true;
             InfoSalir.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
@@ -140,7 +141,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value : this.EnlaceDtconfi.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value :Convert.ToInt32( this.EnlaceDtconfi.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
@@ -191,7 +192,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value : this.EnlaceDtconfi.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value :Convert.ToInt32( this.EnlaceDtconfi.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
@@ -321,9 +322,12 @@ namespace PELOSCALVO
                     MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                     return;
                 }
+                SqlDataReader reader;
                 Random r = new Random();
                 int VALORid = r.Next(500, 1000000);
                 int numeroFILA = this.dtConfiDataGridView.Rows.Count;
+                string DtConfi = "";
+                int I = 0;
                 this.dtConfiDataGridView.Sort(this.dtConfiDataGridView.Columns[0], ListSortDirection.Ascending);
                 this.dtConfiguracionPrincipalDtConfiBindingSource.AddNew();
                 if (this.dtConfiDataGridView.CurrentCell.RowIndex == 0)
@@ -347,7 +351,7 @@ namespace PELOSCALVO
                     }
 
                 }
-       
+
                 string fecha = String.Format("{0:yyyy}", DateTime.Now);
                 if (fecha == this.dtConfiDataGridView.Rows[numeroFILA].Cells[3].Value.ToString())
 
@@ -363,6 +367,40 @@ namespace PELOSCALVO
                     this.añoDeEjercicioTextBox.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
                 this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
+                string Consulta = "SELECT [EnlaceDtconfi] FROM [DtConfi] where " + "DtConfi.EnlaceDtconfi=@EnlaceDtconfi";
+                ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
+                Regresar:
+                DtConfi = Convert.ToInt32(this.CambiarDeEmpresa1.SelectedIndex + 1).ToString() + this.IdConfi.Text + r.Next(5, 9999).ToString();
+                if (NuevaConexion.SiConexionSql)
+                {
+                    if (I < 500)
+                    {
+
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", DtConfi.ToString());
+                        reader = NuevaConexion.ComandoSql.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            if (reader.Read())
+                            {
+                                I++;
+                                goto Regresar;
+
+                            }
+                        }
+
+                        else
+                        {
+                            this.EnlaceDtconfi.Text = DtConfi.ToString();
+                        }
+                    }
+                    else
+                    {
+                        panel1Ejercicio.Enabled = false;
+                        MessageBox.Show("No Se Puede Continuar", "ERROR FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+
                 SiEjercicio();
 
                 ModificarOjetos_Ej();
@@ -454,9 +492,6 @@ namespace PELOSCALVO
                 {
                     if (MessageBox.Show(" ¿Aceptar Guardar Ejercicio ? ", " GUARDAR DATOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        Random r = new Random();
-                        int VALORid = r.Next(500, 1000000);
-                        this.EnlaceDtconfi.Text = this.ejerciciosDeAñoTextBox.Text + "/" + this.EmpresaEnlace.Text + "/" + this.IdConfi.Text;
 
                         if (ClsConexionSql.SibaseDatosSql)
                         {

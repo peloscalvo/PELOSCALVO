@@ -16,8 +16,12 @@ namespace ComunApp
                 SqlDataReader r = NuevaConexion.ComandoSql.ExecuteReader();
                 if (r.HasRows)
                 {
-                    ok = true;
+                    if (r.Read())
+                    {
+                        ok = true;
+                    }
                 }
+                 
                 else
                 {
                     ok = false;

@@ -492,7 +492,7 @@ namespace PELOSCALVO
             // EnlaceDtconfi
             // 
             this.EnlaceDtconfi.AutoSize = true;
-            this.EnlaceDtconfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EnlaceDtconfi", true));
+            this.EnlaceDtconfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EnlaceDtconfi", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.EnlaceDtconfi.Location = new System.Drawing.Point(83, 381);
             this.EnlaceDtconfi.Name = "EnlaceDtconfi";
             this.EnlaceDtconfi.Size = new System.Drawing.Size(0, 13);
