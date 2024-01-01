@@ -1,6 +1,7 @@
 ﻿using Conexiones;
 using System;
 using System.ComponentModel;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
@@ -125,15 +126,15 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
-                consulta = "INSERT INTO [DtConfi] ([EnlaceDtconfi],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES(@EnlaceDtconfi, @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                consulta = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [EnlaceDtconfi] = @EnlaceDtconfi,[EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
-                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EnlaceDtconfi = @EnlaceDtconfi";
+                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE IdEnlace = @IdEnlace";
             }
 
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -141,7 +142,6 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value :Convert.ToInt32( this.EnlaceDtconfi.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
@@ -156,6 +156,25 @@ namespace PELOSCALVO
                     Validate();
                     MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetos_Ej();
+                    if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
+                    {
+                        consulta = "Select max(IdEnlace) from [DtConfi]";
+                        NuevaConexion = new ClsConexionDb(consulta);
+                        if (NuevaConexion.SiConexionDb)
+                        {
+                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                if (reader.Read())
+                                {
+                                    if (!string.IsNullOrEmpty((reader["IdEnlace"]).ToString()))
+                                    {
+                                        this.IdEnlace.Text = reader["IdEnlace"].ToString();
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -176,15 +195,15 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
-                consulta = "INSERT INTO [DtConfi] ([EnlaceDtconfi],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES(@EnlaceDtconfi, @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                consulta = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [EnlaceDtconfi] = @EnlaceDtconfi,[EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
-                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE EnlaceDtconfi = @EnlaceDtconfi";
+                   " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE IdEnlace = @IdEnlace";
             }
 
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -192,7 +211,6 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(this.EnlaceDtconfi.Text) ? (object)DBNull.Value :Convert.ToInt32( this.EnlaceDtconfi.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
@@ -207,6 +225,26 @@ namespace PELOSCALVO
                     Validate();
                     MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetos_Ej();
+
+                    if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
+                    {
+                        consulta = "Select max(IdEnlace) from [DtConfi]";
+                        NuevaConexion = new ClsConexionSql(consulta);
+                        if (NuevaConexion.SiConexionSql)
+                        {
+                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                if (reader.Read())
+                                {
+                                    if (!string.IsNullOrEmpty((reader["IdEnlace"]).ToString()))
+                                    {
+                                        this.IdEnlace.Text = reader["IdEnlace"].ToString();
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -224,14 +262,14 @@ namespace PELOSCALVO
         }
         private void EliminarEjercicioSql()
         {
-            string consulta = "Delete from  [DtConfi]   WHERE Id= @Id";
+            string consulta = "Delete from  [DtConfi]   WHERE IdEnlace= @IdEnlace";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.IdConfi.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEnlace", Convert.ToInt32(this.IdEnlace.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
                         this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
@@ -256,14 +294,14 @@ namespace PELOSCALVO
         }
         private void EliminarEjercicioBb()
         {
-            string consulta = "Delete from  [DtConfi]   WHERE Id= @Id";
+            string consulta = "Delete from  [DtConfi]   WHERE IdEnlace= @IdEnlace";
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionDb)
                     {
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.IdConfi.Text));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEnlace", Convert.ToInt32(this.IdEnlace.Text));
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
                         this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
                         this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
@@ -367,42 +405,7 @@ namespace PELOSCALVO
                     this.añoDeEjercicioTextBox.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
                 this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
-                string Consulta = "SELECT [EnlaceDtconfi] FROM [DtConfi] where " + "DtConfi.EnlaceDtconfi=@EnlaceDtconfi";
-                ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
-                Regresar:
-                DtConfi = Convert.ToInt32(this.CambiarDeEmpresa1.SelectedIndex + 1).ToString() + this.IdConfi.Text + r.Next(5, 9999).ToString();
-                if (NuevaConexion.SiConexionSql)
-                {
-                    if (I < 500)
-                    {
-
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", DtConfi.ToString());
-                        reader = NuevaConexion.ComandoSql.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            if (reader.Read())
-                            {
-                                I++;
-                                goto Regresar;
-
-                            }
-                        }
-
-                        else
-                        {
-                            this.EnlaceDtconfi.Text = DtConfi.ToString();
-                        }
-                    }
-                    else
-                    {
-                        panel1Ejercicio.Enabled = false;
-                        MessageBox.Show("No Se Puede Continuar", "ERROR FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
-
                 SiEjercicio();
-
                 ModificarOjetos_Ej();
             }
             catch (Exception ex)
@@ -527,6 +530,11 @@ namespace PELOSCALVO
             {
                 if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 0)
                 {
+                    if (String.IsNullOrEmpty(this.IdEnlace.Text))
+                    {
+                        MessageBox.Show("Falta Id ", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (MessageBox.Show("Desea Eliminar La Ejercicio Y Todo Su Contenido", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
 

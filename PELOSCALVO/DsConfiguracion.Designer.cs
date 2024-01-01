@@ -769,7 +769,7 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnAñoDeEjercicio;
             
-            private global::System.Data.DataColumn columnEnlaceDtconfi;
+            private global::System.Data.DataColumn columnIdEnlace;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -854,9 +854,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn EnlaceDtconfiColumn {
+            public global::System.Data.DataColumn IdEnlaceColumn {
                 get {
-                    return this.columnEnlaceDtconfi;
+                    return this.columnIdEnlace;
                 }
             }
             
@@ -897,7 +897,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, int EnlaceDtconfi) {
+            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, int IdEnlace) {
                 DtConfiRow rowDtConfiRow = ((DtConfiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfiguraccionBasica,
@@ -906,7 +906,7 @@ namespace PELOSCALVO {
                         null,
                         IdConexionConfi,
                         AñoDeEjercicio,
-                        EnlaceDtconfi};
+                        IdEnlace};
                 if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi != null)) {
                     columnValuesArray[3] = parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi[1];
                 }
@@ -938,7 +938,7 @@ namespace PELOSCALVO {
                 this.columnEmpresaENLACE = base.Columns["EmpresaENLACE"];
                 this.columnIdConexionConfi = base.Columns["IdConexionConfi"];
                 this.columnAñoDeEjercicio = base.Columns["AñoDeEjercicio"];
-                this.columnEnlaceDtconfi = base.Columns["EnlaceDtconfi"];
+                this.columnIdEnlace = base.Columns["IdEnlace"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -956,11 +956,11 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnIdConexionConfi);
                 this.columnAñoDeEjercicio = new global::System.Data.DataColumn("AñoDeEjercicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAñoDeEjercicio);
-                this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEnlaceDtconfi);
+                this.columnIdEnlace = new global::System.Data.DataColumn("IdEnlace", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdEnlace);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnEnlaceDtconfi}, false));
-                this.columnEnlaceDtconfi.Unique = true;
+                                this.columnIdEnlace}, false));
+                this.columnIdEnlace.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2346,17 +2346,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int EnlaceDtconfi {
+            public int IdEnlace {
                 get {
                     try {
-                        return ((int)(this[this.tableDtConfi.EnlaceDtconfiColumn]));
+                        return ((int)(this[this.tableDtConfi.IdEnlaceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceDtconfi\' de la tabla \'DtConfi\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdEnlace\' de la tabla \'DtConfi\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtConfi.EnlaceDtconfiColumn] = value;
+                    this[this.tableDtConfi.IdEnlaceColumn] = value;
                 }
             }
             
@@ -2445,14 +2445,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsEnlaceDtconfiNull() {
-                return this.IsNull(this.tableDtConfi.EnlaceDtconfiColumn);
+            public bool IsIdEnlaceNull() {
+                return this.IsNull(this.tableDtConfi.IdEnlaceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetEnlaceDtconfiNull() {
-                this[this.tableDtConfi.EnlaceDtconfiColumn] = global::System.Convert.DBNull;
+            public void SetIdEnlaceNull() {
+                this[this.tableDtConfi.IdEnlaceColumn] = global::System.Convert.DBNull;
             }
         }
         

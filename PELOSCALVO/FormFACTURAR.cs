@@ -357,9 +357,9 @@ namespace PELOSCALVO
             string Consulta = "";
             int EnlaceDtconfi = 0;
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
-            if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EnlaceDtconfi"].ToString()))
+            if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
             {
-                EnlaceDtconfi = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EnlaceDtconfi"].ToString());
+                EnlaceDtconfi = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
             }
             else
             {
@@ -1091,7 +1091,7 @@ namespace PELOSCALVO
                             if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
                                 GuardarFactuDB();
-                                ;
+                                
                             }
                             else
                             {

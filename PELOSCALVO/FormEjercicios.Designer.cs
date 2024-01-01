@@ -68,7 +68,7 @@ namespace PELOSCALVO
             this.BtnSalirEjerc = new System.Windows.Forms.Button();
             this.EmpresaEnlace = new System.Windows.Forms.Label();
             this.IdConfi = new System.Windows.Forms.Label();
-            this.EnlaceDtconfi = new System.Windows.Forms.Label();
+            this.IdEnlace = new System.Windows.Forms.Label();
             tipoInpuestoIVALabel = new System.Windows.Forms.Label();
             configuraccionBasicaLabel = new System.Windows.Forms.Label();
             ejerciciosDeAñoLabel = new System.Windows.Forms.Label();
@@ -489,14 +489,14 @@ namespace PELOSCALVO
             this.IdConfi.TabIndex = 78;
             this.IdConfi.Text = "1";
             // 
-            // EnlaceDtconfi
+            // IdEnlace
             // 
-            this.EnlaceDtconfi.AutoSize = true;
-            this.EnlaceDtconfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EnlaceDtconfi", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.EnlaceDtconfi.Location = new System.Drawing.Point(83, 381);
-            this.EnlaceDtconfi.Name = "EnlaceDtconfi";
-            this.EnlaceDtconfi.Size = new System.Drawing.Size(0, 13);
-            this.EnlaceDtconfi.TabIndex = 79;
+            this.IdEnlace.AutoSize = true;
+            this.IdEnlace.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "IdEnlace", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.IdEnlace.Location = new System.Drawing.Point(83, 381);
+            this.IdEnlace.Name = "IdEnlace";
+            this.IdEnlace.Size = new System.Drawing.Size(0, 13);
+            this.IdEnlace.TabIndex = 79;
             // 
             // FormEjercicios
             // 
@@ -504,7 +504,7 @@ namespace PELOSCALVO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 530);
             this.Controls.Add(enlaceDtconfiLabel);
-            this.Controls.Add(this.EnlaceDtconfi);
+            this.Controls.Add(this.IdEnlace);
             this.Controls.Add(this.IdConfi);
             this.Controls.Add(this.EmpresaEnlace);
             this.Controls.Add(this.BtnSalirEjerc);
@@ -572,6 +572,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn AñoDeEjercicio;
         private System.Windows.Forms.Label IdConfi;
-        private System.Windows.Forms.Label EnlaceDtconfi;
+        private System.Windows.Forms.Label IdEnlace;
     }
 }
