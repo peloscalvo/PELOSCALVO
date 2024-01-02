@@ -381,6 +381,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
+                        this.Contraseña.Text = Pass;
                         ClassCorreosDB.DtCorreos.Rows.Add(this.Id_Correo_E.Text, this.NombreEmpresa.Text, this.CorreoEletronico.Text, this.Usuario.Text,
                                this.Contraseña.Text, this.smtp.Text, this.Puerto.Text, this.Timeof.Text);
                     }
@@ -388,11 +389,11 @@ namespace PELOSCALVO
                     {
                          LlenarDatagrid();
                     }
-                    this.Contraseña.Text = Pass;
+                
                     this.DataGridCorreoCliente.EndEdit();
                     this.CorreosClientebindingSource.EndEdit();
                     Validate();
-                    LimpiarCorreo_Empresa();
+                   // LimpiarCorreo_Empresa();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosCorreo_E();
                 }
@@ -505,7 +506,7 @@ namespace PELOSCALVO
                     this.DatagridCorreosEmpresa.EndEdit();
                     this.CorreosbindingSource.EndEdit();
                     Validate();
-                    limpiarCorreo_Cli();
+                   // limpiarCorreo_Cli();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosCorreo_E();
                 }
@@ -556,6 +557,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
+                        this.Contraseña.Text = Pass;
                         ClassCorreosDB.DtCorreos.Rows.Add(this.Id_Correo_E.Text, this.NombreEmpresa.Text, this.CorreoEletronico.Text, this.Usuario.Text,
                                this.Contraseña.Text, this.smtp.Text, this.Puerto.Text, this.Timeof.Text);
                     }
@@ -563,11 +565,11 @@ namespace PELOSCALVO
                     {
                         LlenarDatagrid();
                     }
-                    this.Contraseña.Text = Pass;
+                  
                     this.DatagridCorreosEmpresa.EndEdit();
                     this.CorreosbindingSource.EndEdit();
                     Validate();
-                    LimpiarCorreo_Empresa();
+                    //LimpiarCorreo_Empresa();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR CORREO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosCorreo_E();
                 }

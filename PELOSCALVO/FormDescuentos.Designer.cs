@@ -129,12 +129,13 @@ namespace PELOSCALVO
             // EnlaceTarifa
             // 
             this.EnlaceTarifa.AutoSize = true;
-            this.EnlaceTarifa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresaReguistro", true));
+            this.EnlaceTarifa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.EnlaceTarifa.Location = new System.Drawing.Point(78, 319);
             this.EnlaceTarifa.Name = "EnlaceTarifa";
             this.EnlaceTarifa.Size = new System.Drawing.Size(0, 13);
             this.EnlaceTarifa.TabIndex = 65;
             this.EnlaceTarifa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EnlaceTarifa.Click += new System.EventHandler(this.EnlaceTarifa_Click);
             // 
             // dtConfiDtTarifaTipoBindingSource
             // 
