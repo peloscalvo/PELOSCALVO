@@ -444,8 +444,8 @@ namespace PELOSCALVO
             " CREATE TABLE [DtPaises]( [Id][int]  NOT NULL,[Paises] varchar(80) primary key  NOT NULL)" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProvincias]') AND type in (N'U'))" +
-                 " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[Provincias] varchar(80) NULL,[Enlace]varchar(80) NOT NULL ," +
-              " CONSTRAINT F_DtProvincias FOREIGN KEY (Enlace)REFERENCES DtPaises(Paises) ON UPDATE CASCADE ON DELETE CASCADE )" +
+                 " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[Provincias] varchar(80) NULL,[IdEnlace][int] NOT NULL ," +
+              " CONSTRAINT F_DtProvincias FOREIGN KEY (IdEnlace)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
               "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
                    " CREATE TABLE [DtObras]( [Id][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +

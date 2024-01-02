@@ -27,15 +27,15 @@ namespace PELOSCALVO
         {
             try
             {
-                if (FormMenuPrincipal.menu2principal.DtCorreos != null)
+                if (ClassCorreosDB.DtCorreos != null)
                 {
                     this.CorreoEmpresa.DisplayMember = "CorreoEletronico";
-                    this.CorreoEmpresa.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
+                    this.CorreoEmpresa.DataSource = ClassCorreosDB.DtCorreos;
                 }
-                if (FormMenuPrincipal.menu2principal.DtCorreosCliente != null)
+                if (ClassCorreosDB.DtCorreosCliente != null)
                 {
                     this.TxtNombreCliente.DisplayMember = "CorreoEletronico_cli";
-                    this.TxtNombreCliente.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
+                    this.TxtNombreCliente.DataSource = ClassCorreosDB.DtCorreosCliente;
                 }
 
             }
@@ -192,7 +192,7 @@ namespace PELOSCALVO
             {
                 LimpiarCamposEmpresa();
                 int II = this.CorreoEmpresa.SelectedIndex;
-                var fila = FormMenuPrincipal.menu2principal.dsCorreos;
+                var fila = ClassCorreosDB.dsCorreos;
        
                 if (!string.IsNullOrEmpty(fila.Tables["DtCorreos"].Rows[II]["NombreEmpresa"].ToString()))
                 {

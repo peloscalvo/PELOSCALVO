@@ -8,7 +8,7 @@ namespace Comun
         public static DataTable DtCorreos = new DataTable("DtCorreos");
         public static DataTable DtCorreosCliente = new DataTable("DtCorreosCliente");
        
-        public  void FF()
+        public  void AdColunnas()
         {
             DtCorreos.Columns.Add("Id", typeof(int));
             DtCorreos.Columns.Add("NombreEmpresa", typeof(string));

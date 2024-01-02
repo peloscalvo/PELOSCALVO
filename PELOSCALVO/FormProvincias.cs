@@ -87,12 +87,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@Provincias],[@Enlace])";
+                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@Provincias],[@IdEnlace])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[Provincias] = @Provincias,[Enlace] = @Enlace " +
+                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[Provincias] = @Provincias,[IdEnlace] = @IdEnlace " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -102,7 +102,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Provincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(this.Enlace_Pais.Text) ? (object)DBNull.Value : this.Enlace_Pais.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(this.Id_pais.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_pais.Text));
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -130,12 +130,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_Provincia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@Provincias],[@Enlace])";
+                consulta = "  INSERT INTO [DtProvincias] VALUES([@Id],[@Provincias],[@IdEnlace])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[Provincias] = @Provincias,[Enlace] = @Enlace " +
+                consulta = "UPDATE [DtProvincias] SET [Id] = @Id,[Provincias] = @Provincias,[IdEnlace] = @IdEnlace " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -145,7 +145,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Provincias.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Provincias.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Provincias", string.IsNullOrEmpty(this.ProvinciaText.Text) ? (object)DBNull.Value : this.ProvinciaText.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(this.Enlace_Pais.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Enlace_Pais.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(this.Id_pais.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_pais.Text));
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
@@ -172,7 +172,7 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id and Enlace= @Enlace";
+                string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id and IdEnlace= @IdEnlace";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
@@ -180,7 +180,7 @@ namespace PELOSCALVO
                         if (NuevaConexion.SiConexionDb)
                         {
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Provincias.Text));
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace", this.PaisTxt.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEnlace", Convert.ToInt32(this.Id_pais.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProvincias.Rows.RemoveAt(this.dataGridProvincias.CurrentCell.RowIndex);
                             this.DtProvinciasBindinsource.EndEdit();
@@ -214,7 +214,7 @@ namespace PELOSCALVO
         private void EliminarProvinciaSql()
         {
 
-            string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id and Enlace= @Enlace";
+            string consulta = "Delete from  [DtProvincias]   WHERE Id= @Id and IdEnlace= @IdEnlace";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
@@ -222,7 +222,7 @@ namespace PELOSCALVO
                     if (NuevaConexion.SiConexionSql)
                     {
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_Provincias.Text));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace", this.PaisTxt.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEnlace", Convert.ToInt32(this.Id_pais.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProvincias.Rows.RemoveAt(this.dataGridProvincias.CurrentCell.RowIndex);
                         this.DtProvinciasBindinsource.EndEdit();
@@ -325,7 +325,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Un Pais", "PAIS");
                 return;
             }
-            if (Id_Provincias.Text == string.Empty & Enlace_Pais.Text == string.Empty)
+            if (Id_Provincias.Text == string.Empty & Id_pais.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

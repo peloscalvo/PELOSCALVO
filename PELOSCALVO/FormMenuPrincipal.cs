@@ -1,4 +1,5 @@
 ﻿
+using Comun;
 using Conexiones;
 using System;
 using System.Data;
@@ -12,9 +13,6 @@ namespace PELOSCALVO
 {
     public partial class FormMenuPrincipal : Form
     {
-        public DataSet dsCorreos = new DataSet("Dscorreos");
-        public DataTable DtCorreos = new DataTable("DtCorreos");
-        public DataTable DtCorreosCliente = new DataTable("DtCorreosCliente");
         // public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
         public byte SiOpenFatu = 0;
@@ -25,25 +23,7 @@ namespace PELOSCALVO
         int V1, PX, PV;
         public FormMenuPrincipal()
         {
-            InitializeComponent();
-            this.DtCorreos.Columns.Add("Id", typeof(int));
-            this.DtCorreos.Columns.Add("NombreEmpresa", typeof(string));
-            this.DtCorreos.Columns.Add("CorreoEletronico", typeof(string));
-            this.DtCorreos.Columns.Add("Usuario", typeof(string));
-            this.DtCorreos.Columns.Add("Contraseña", typeof(string));
-            this.DtCorreos.Columns.Add("smtp", typeof(string));
-            this.DtCorreos.Columns.Add("Puerto", typeof(int));
-            this.DtCorreos.Columns.Add("Timeof", typeof(int));
-            this.dsCorreos.Tables.Add(this.DtCorreos);
-
-            this.DtCorreosCliente.Columns.Add("Id", typeof(int));
-            this.DtCorreosCliente.Columns.Add("RazonSocial", typeof(string));
-            this.DtCorreosCliente.Columns.Add("EmpresaNombre", typeof(string));
-            this.DtCorreosCliente.Columns.Add("Direcion", typeof(string));
-            this.DtCorreosCliente.Columns.Add("CorreoEletronico_cli", typeof(string));
-            this.dsCorreos.Tables.Add(this.DtCorreosCliente);
-            // fila["NombreEmpresa"] = "faf";
-          
+            InitializeComponent();         
             ToolTip Info = new ToolTip();
             Info.SetToolTip(BtnSql, "Configurar Conexion A Datos");
             Info.SetToolTip(BtnCarpeteDatos, "Abrir Carpeta Datos");
@@ -57,6 +37,8 @@ namespace PELOSCALVO
             SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
             this.PanelInfo_P.Width = this.PanelInfo_P.Width = 0;
+            ClassCorreosDB Col = new ClassCorreosDB();
+            Col.AdColunnas();
         }
         private int tolerance = 15;
         private const int WM_NCHITTEST = 132;

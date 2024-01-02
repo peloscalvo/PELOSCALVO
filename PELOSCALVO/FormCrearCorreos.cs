@@ -21,11 +21,11 @@ namespace PELOSCALVO
         {
             try
             {
-                if (FormMenuPrincipal.menu2principal.dsCorreos != null)
+                if (ClassCorreosDB.dsCorreos != null)
                 {
-                    this.CorreosbindingSource.DataSource = FormMenuPrincipal.menu2principal.DtCorreos;
+                    this.CorreosbindingSource.DataSource = ClassCorreosDB.DtCorreos;
                     this.DatagridCorreosEmpresa.DataSource = this.CorreosbindingSource.DataSource;
-                    this.CorreosClientebindingSource.DataSource = FormMenuPrincipal.menu2principal.DtCorreosCliente;
+                    this.CorreosClientebindingSource.DataSource = ClassCorreosDB.DtCorreosCliente;
                     this.DataGridCorreoCliente.DataSource = this.CorreosClientebindingSource.DataSource;
  
                 }
@@ -36,9 +36,7 @@ namespace PELOSCALVO
                 // throw;
             }
             try
-            {
-                ClassCorreosDB FF = new ClassCorreosDB();
-                FF.FF();
+            {       
                 this.CorreosbindingSource.DataSource = ClassCorreosDB.DtCorreos;
                 this.CorreosClientebindingSource.DataSource = ClassCorreosDB.DtCorreosCliente;
                 //this.DatagridCorreosEmpresa.Columns[1].Width = 190;//NombreEmpresa
@@ -365,10 +363,11 @@ namespace PELOSCALVO
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
-                ClasCodificarPass Codificar = new ClasCodificarPass();
-                string Pass = Codificar.Codificar(this.Contraseña.Text);
+            
                 if (NuevaConexion.SiConexionDb)
                 {
+                    ClasCodificarPass Codificar = new ClasCodificarPass();
+                    string Pass = Codificar.Codificar(this.Contraseña.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Correo_E.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Correo_E.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.NombreEmpresa.Text) ? (object)DBNull.Value : this.NombreEmpresa.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CorreoEletronico", string.IsNullOrEmpty(this.CorreoEletronico.Text) ? (object)DBNull.Value : this.CorreoEletronico.Text);
@@ -381,14 +380,14 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
-                        FormMenuPrincipal.menu2principal.DtCorreos.Rows.Add(this.Id_Correo_E.Text, this.NombreEmpresa.Text, this.CorreoEletronico.Text, this.Usuario.Text,
+                        ClassCorreosDB.DtCorreos.Rows.Add(this.Id_Correo_E.Text, this.NombreEmpresa.Text, this.CorreoEletronico.Text, this.Usuario.Text,
                                this.Contraseña.Text, this.smtp.Text, this.Puerto.Text, this.Timeof.Text);
                     }
                     else
                     {
                          LlenarDatagrid();
                     }
-
+                    this.Contraseña.Text = Pass;
                     this.DataGridCorreoCliente.EndEdit();
                     this.CorreosClientebindingSource.EndEdit();
                     Validate();
@@ -435,8 +434,16 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CorreoEletronico_cli", string.IsNullOrEmpty(this.CorreoEletronicoCli.Text) ? (object)DBNull.Value : this.CorreoEletronicoCli.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
-                    FormMenuPrincipal.menu2principal.DtCorreosCliente.Rows.Add(this.Id_CorreoCli.Text, this.RazonSocial.Text, this.EmpresaCli.Text, this.Direcion.Text,
-                        this.CorreoEletronicoCli.Text);
+                    if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
+                    {
+                        ClassCorreosDB.DtCorreosCliente.Rows.Add(this.Id_CorreoCli.Text, this.RazonSocial.Text, this.EmpresaCli.Text, this.Direcion.Text,
+                                         this.CorreoEletronicoCli.Text);
+                    }
+                    else
+                    {
+                        LlenarDatagridCliente();
+                    }
+             
                     this.DataGridCorreoCliente.EndEdit();
                     this.CorreosClientebindingSource.EndEdit();
                     Validate();
@@ -484,8 +491,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
-                        FormMenuPrincipal.menu2principal.DtCorreosCliente.Rows.Add(this.Id_CorreoCli.Text, this.RazonSocial.Text, this.EmpresaCli.Text, this.Direcion.Text,
-                      this.CorreoEletronicoCli.Text);
+    
                         ClassCorreosDB.DtCorreosCliente.Rows.Add(this.Id_CorreoCli.Text, this.RazonSocial.Text, this.EmpresaCli.Text, this.Direcion.Text,
                       this.CorreoEletronicoCli.Text);
                     }
@@ -532,10 +538,11 @@ namespace PELOSCALVO
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
-                ClasCodificarPass Codificar = new ClasCodificarPass();
-                string Pass = Codificar.Codificar(this.Contraseña.Text);
+  
                 if (NuevaConexion.SiConexionSql)
                 {
+                    ClasCodificarPass Codificar = new ClasCodificarPass();
+                    string Pass = Codificar.Codificar(this.Contraseña.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_Correo_E.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Correo_E.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.NombreEmpresa.Text) ? (object)DBNull.Value : this.NombreEmpresa.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CorreoEletronico", string.IsNullOrEmpty(this.CorreoEletronico.Text) ? (object)DBNull.Value : this.CorreoEletronico.Text);
@@ -548,13 +555,14 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
-                        FormMenuPrincipal.menu2principal.DtCorreos.Rows.Add(this.Id_Correo_E.Text, this.NombreEmpresa.Text, this.CorreoEletronico.Text, this.Usuario.Text,
+                        ClassCorreosDB.DtCorreos.Rows.Add(this.Id_Correo_E.Text, this.NombreEmpresa.Text, this.CorreoEletronico.Text, this.Usuario.Text,
                                this.Contraseña.Text, this.smtp.Text, this.Puerto.Text, this.Timeof.Text);
                     }
                     else
                     {
                         LlenarDatagrid();
                     }
+                    this.Contraseña.Text = Pass;
                     this.DatagridCorreosEmpresa.EndEdit();
                     this.CorreosbindingSource.EndEdit();
                     Validate();
@@ -728,34 +736,7 @@ namespace PELOSCALVO
             }
 
         }
-        private void BtnGuardarCorreo_EMP_Click(object sender, EventArgs e)
-        {
-            if (EspacioDiscosCorreo_EMP(Directory.GetCurrentDirectory(), 30))
-            {
-                try
-                {
 
-                    if (File.Exists(this.Rutacorreos))
-                    {
-                        this.DatagridCorreosEmpresa.EndEdit();
-                        Validate();
-                        //var dataSet = Comun.DataGrid_2.GetDataSet(this.DatagridCorreosEmpresa);
-                        // ME.WriteXml(File.OpenWrite(this.Rutacorreos));
-                        FormMenuPrincipal.menu2principal.DtCorreos.WriteXml(this.Rutacorreos);
-                        MessageBox.Show("Se Actualizo Con Exito", "correos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No Se Guardo", "FALTAN ARCHIVOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message.ToString());
-                }
-            }
-        }
 
         private void DatagriCorreosEmpresa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -814,7 +795,7 @@ namespace PELOSCALVO
             {
                 int numeroFILA = this.CorreosbindingSource.Count;
 
-                if (this.CorreosbindingSource.Count >= 0)
+                if (this.CorreosbindingSource.Count <= 0)
                 {
                     this.Id_Correo_E.Text = "1";
                 }
@@ -1022,7 +1003,7 @@ namespace PELOSCALVO
             {
                 int numeroFILA = this.CorreosClientebindingSource.Count;
 
-                if (this.CorreosClientebindingSource.Count >= 0)
+                if (this.CorreosClientebindingSource.Count <= 0)
                 {
                     this.Id_CorreoCli.Text = "1";
                 }

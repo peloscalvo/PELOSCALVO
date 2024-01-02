@@ -40,6 +40,8 @@ namespace PELOSCALVO
             this.label4 = new System.Windows.Forms.Label();
             this.TxtCC = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.EmpresaTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.TiempoEspera = new System.Windows.Forms.TextBox();
             this.CorreoEmpresa = new System.Windows.Forms.ComboBox();
@@ -66,8 +68,6 @@ namespace PELOSCALVO
             this.label11 = new System.Windows.Forms.Label();
             this.BtnExaminarCorreo = new System.Windows.Forms.Button();
             this.TabConfiCorreo = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
-            this.EmpresaTxt = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorCorreo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtCorreoBindingSource)).BeginInit();
@@ -168,6 +168,22 @@ namespace PELOSCALVO
             this.groupBox1.Size = new System.Drawing.Size(684, 212);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 60);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 13);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Empresa:";
+            // 
+            // EmpresaTxt
+            // 
+            this.EmpresaTxt.Location = new System.Drawing.Point(74, 57);
+            this.EmpresaTxt.Name = "EmpresaTxt";
+            this.EmpresaTxt.Size = new System.Drawing.Size(420, 20);
+            this.EmpresaTxt.TabIndex = 25;
             // 
             // label10
             // 
@@ -423,22 +439,6 @@ namespace PELOSCALVO
             this.TabConfiCorreo.TabIndex = 1;
             this.TabConfiCorreo.Text = "Configuracion";
             this.TabConfiCorreo.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 60);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 13);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "Empresa:";
-            // 
-            // EmpresaTxt
-            // 
-            this.EmpresaTxt.Location = new System.Drawing.Point(74, 57);
-            this.EmpresaTxt.Name = "EmpresaTxt";
-            this.EmpresaTxt.Size = new System.Drawing.Size(420, 20);
-            this.EmpresaTxt.TabIndex = 25;
             // 
             // FormEnviarCorreos
             // 

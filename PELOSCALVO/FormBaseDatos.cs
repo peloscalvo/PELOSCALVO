@@ -415,9 +415,9 @@ namespace PELOSCALVO
                     AdactaPelos = new OleDbDataAdapter(ConsultaFamilia, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos);
                     AdactaPelos = new OleDbDataAdapter(ConsultaCorreoCli, ClsConexionDb.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreosCliente);
+                    AdactaPelos.Fill(ClassCorreosDB.DtCorreosCliente);
                     AdactaPelos = new OleDbDataAdapter(ConsultaCorreoEmpresa, ClsConexionDb.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreos);
+                    AdactaPelos.Fill(ClassCorreosDB.DtCorreos);
                     AdactaPelos.Dispose();
 
                     this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
@@ -477,9 +477,9 @@ namespace PELOSCALVO
                     AdactaPelos = new SqlDataAdapter(ConsultaOBRA, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsMulti2.DtObras);
                     AdactaPelos = new SqlDataAdapter(ConsultaCorreoCli, ClsConexionDb.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreosCliente);
+                    AdactaPelos.Fill(ClassCorreosDB.DtCorreosCliente);
                     AdactaPelos = new SqlDataAdapter(ConsultaCorreoEmpresa, ClsConexionDb.CadenaConexion);
-                    AdactaPelos.Fill(FormMenuPrincipal.menu2principal.DtCorreos);
+                    AdactaPelos.Fill(ClassCorreosDB.DtCorreos);
                     AdactaPelos.Dispose();
 
                     this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
@@ -1189,7 +1189,7 @@ namespace PELOSCALVO
                     // FormMenuPrincipal.menu2principal.dsMultidatos.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                     FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
-                    FormMenuPrincipal.menu2principal.dsCorreos.Clear();
+                    ClassCorreosDB.dsCorreos.Clear();
                     FormMenuPrincipal.menu2principal.dsClientes.Clear();
                     if (File.Exists(ClasDatos.RutaBaseDatosDb))
                     {
@@ -1318,7 +1318,7 @@ namespace PELOSCALVO
                         FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();
                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                         FormMenuPrincipal.menu2principal.dsMulti2.Clear();
-                        FormMenuPrincipal.menu2principal.dsCorreos.Clear();
+                        ClassCorreosDB.dsCorreos.Clear();
                         FormMenuPrincipal.menu2principal.dsClientes.Clear();
                         ActualizarPrincipal_Sql();//EMPRESAS Y EJERCICIOS
                         ActualizarArticulosSql();
@@ -1522,7 +1522,7 @@ namespace PELOSCALVO
                 this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
                 this.CheckAtivarServidor.Checked = false;
                 this.CheckActivarDb.Checked = false;
-                FormMenuPrincipal.menu2principal.dsCorreos.Clear();
+                ClassCorreosDB.dsCorreos.Clear();
                 FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Clear();
                 FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Clear();
                 FormMenuPrincipal.menu2principal.articulos.DtArticulos.Clear();

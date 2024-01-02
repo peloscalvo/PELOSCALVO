@@ -289,15 +289,15 @@ namespace PELOSCALVO {
             base.Tables.Add(this.tableDtFamiliaProductos);
             global::System.Data.ForeignKeyConstraint fkc;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_DtPaises_DtProvincias", new global::System.Data.DataColumn[] {
-                        this.tableDtPaises.PaisesColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtProvincias.EnlaceColumn});
+                        this.tableDtPaises.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtProvincias.IdEnlaceColumn});
             this.tableDtProvincias.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_DtPaises_DtProvincias = new global::System.Data.DataRelation("FK_DtPaises_DtProvincias", new global::System.Data.DataColumn[] {
-                        this.tableDtPaises.PaisesColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtProvincias.EnlaceColumn}, false);
+                        this.tableDtPaises.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtProvincias.IdEnlaceColumn}, false);
             this.Relations.Add(this.relationFK_DtPaises_DtProvincias);
         }
         
@@ -817,10 +817,10 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnId);
                 this.columnIdFila = new global::System.Data.DataColumn("IdFila", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdFila);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint3", new global::System.Data.DataColumn[] {
-                                this.columnPaises}, false));
-                this.columnPaises.Unique = true;
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnId}, false));
                 this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -958,7 +958,7 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnEnlace;
+            private global::System.Data.DataColumn columnIdEnlace;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1011,9 +1011,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn EnlaceColumn {
+            public global::System.Data.DataColumn IdEnlaceColumn {
                 get {
-                    return this.columnEnlace;
+                    return this.columnIdEnlace;
                 }
             }
             
@@ -1061,7 +1061,7 @@ namespace PELOSCALVO {
                         Id,
                         null};
                 if ((parentDtPaisesRowByFK_DtPaises_DtProvincias != null)) {
-                    columnValuesArray[2] = parentDtPaisesRowByFK_DtPaises_DtProvincias[0];
+                    columnValuesArray[2] = parentDtPaisesRowByFK_DtPaises_DtProvincias[1];
                 }
                 rowDtProvinciasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtProvinciasRow);
@@ -1087,7 +1087,7 @@ namespace PELOSCALVO {
             internal void InitVars() {
                 this.columnProvincias = base.Columns["Provincias"];
                 this.columnId = base.Columns["Id"];
-                this.columnEnlace = base.Columns["Enlace"];
+                this.columnIdEnlace = base.Columns["IdEnlace"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1097,8 +1097,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnProvincias);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnEnlace = new global::System.Data.DataColumn("Enlace", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEnlace);
+                this.columnIdEnlace = new global::System.Data.DataColumn("IdEnlace", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdEnlace);
                 this.columnId.AllowDBNull = false;
             }
             
@@ -1688,17 +1688,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Enlace {
+            public int IdEnlace {
                 get {
                     try {
-                        return ((string)(this[this.tableDtProvincias.EnlaceColumn]));
+                        return ((int)(this[this.tableDtProvincias.IdEnlaceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Enlace\' de la tabla \'DtProvincias\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdEnlace\' de la tabla \'DtProvincias\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtProvincias.EnlaceColumn] = value;
+                    this[this.tableDtProvincias.IdEnlaceColumn] = value;
                 }
             }
             
@@ -1727,14 +1727,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsEnlaceNull() {
-                return this.IsNull(this.tableDtProvincias.EnlaceColumn);
+            public bool IsIdEnlaceNull() {
+                return this.IsNull(this.tableDtProvincias.IdEnlaceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetEnlaceNull() {
-                this[this.tableDtProvincias.EnlaceColumn] = global::System.Convert.DBNull;
+            public void SetIdEnlaceNull() {
+                this[this.tableDtProvincias.IdEnlaceColumn] = global::System.Convert.DBNull;
             }
         }
         

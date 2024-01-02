@@ -44,7 +44,7 @@ namespace PELOSCALVO
             this.dtPaisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.PanelProvincias = new System.Windows.Forms.Panel();
-            this.Enlace_Pais = new System.Windows.Forms.Label();
+            this.Id_pais = new System.Windows.Forms.Label();
             this.Id_Provincias = new System.Windows.Forms.Label();
             this.PanelBotones_Provincia = new System.Windows.Forms.Panel();
             this.BtnEliminarProvincia = new System.Windows.Forms.Button();
@@ -101,11 +101,11 @@ namespace PELOSCALVO
             // enlaceLabel
             // 
             enlaceLabel.AutoSize = true;
-            enlaceLabel.Location = new System.Drawing.Point(17, 78);
+            enlaceLabel.Location = new System.Drawing.Point(545, 327);
             enlaceLabel.Name = "enlaceLabel";
-            enlaceLabel.Size = new System.Drawing.Size(43, 13);
+            enlaceLabel.Size = new System.Drawing.Size(19, 13);
             enlaceLabel.TabIndex = 58;
-            enlaceLabel.Text = "Enlace:";
+            enlaceLabel.Text = "Id:";
             // 
             // BtnGuardarProvincia
             // 
@@ -155,8 +155,6 @@ namespace PELOSCALVO
             // 
             // PanelProvincias
             // 
-            this.PanelProvincias.Controls.Add(enlaceLabel);
-            this.PanelProvincias.Controls.Add(this.Enlace_Pais);
             this.PanelProvincias.Controls.Add(this.Id_Provincias);
             this.PanelProvincias.Controls.Add(this.PanelBotones_Provincia);
             this.PanelProvincias.Controls.Add(label10);
@@ -167,14 +165,14 @@ namespace PELOSCALVO
             this.PanelProvincias.Size = new System.Drawing.Size(479, 180);
             this.PanelProvincias.TabIndex = 77;
             // 
-            // Enlace_Pais
+            // Id_pais
             // 
-            this.Enlace_Pais.AutoSize = true;
-            this.Enlace_Pais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "Paises", true));
-            this.Enlace_Pais.Location = new System.Drawing.Point(71, 78);
-            this.Enlace_Pais.Name = "Enlace_Pais";
-            this.Enlace_Pais.Size = new System.Drawing.Size(0, 13);
-            this.Enlace_Pais.TabIndex = 59;
+            this.Id_pais.AutoSize = true;
+            this.Id_pais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.Id_pais.Location = new System.Drawing.Point(582, 323);
+            this.Id_pais.Name = "Id_pais";
+            this.Id_pais.Size = new System.Drawing.Size(0, 13);
+            this.Id_pais.TabIndex = 59;
             // 
             // Id_Provincias
             // 
@@ -403,6 +401,8 @@ namespace PELOSCALVO
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 459);
+            this.Controls.Add(enlaceLabel);
+            this.Controls.Add(this.Id_pais);
             this.Controls.Add(this.PaisTxt);
             this.Controls.Add(Label4);
             this.Controls.Add(this.BtnGuardarProvincia);
@@ -448,7 +448,7 @@ namespace PELOSCALVO
         private DsMulti2 dsMulti2;
         private System.Windows.Forms.ComboBox PaisTxt;
         private System.Windows.Forms.BindingSource dtPaisesBindingSource;
-        private System.Windows.Forms.Label Enlace_Pais;
+        private System.Windows.Forms.Label Id_pais;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }

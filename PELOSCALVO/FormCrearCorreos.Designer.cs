@@ -369,7 +369,7 @@ namespace PELOSCALVO
             // checkPassCorreo
             // 
             this.checkPassCorreo.AutoSize = true;
-            this.checkPassCorreo.Location = new System.Drawing.Point(840, 333);
+            this.checkPassCorreo.Location = new System.Drawing.Point(884, 334);
             this.checkPassCorreo.Name = "checkPassCorreo";
             this.checkPassCorreo.Size = new System.Drawing.Size(61, 17);
             this.checkPassCorreo.TabIndex = 90;
