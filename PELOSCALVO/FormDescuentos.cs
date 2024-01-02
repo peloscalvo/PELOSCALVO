@@ -1,5 +1,6 @@
 ﻿using Conexiones;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -265,6 +266,7 @@ namespace PELOSCALVO
             try
             {
                 int VALORid = 0;
+               // this.dtTarifaTipoDataGridView.Sort(this.dtTarifaTipoDataGridView.Columns[0], ListSortDirection.Ascending);
                 int numeroFILA = this.dtTarifaTipoDataGridView.Rows.Count;
                 this.dtConfiDtTarifaTipoBindingSource.AddNew();
                 if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 0)

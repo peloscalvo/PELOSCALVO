@@ -44,20 +44,21 @@ namespace PELOSCALVO
             this.dtPaisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.PanelProvincias = new System.Windows.Forms.Panel();
-            this.Id_pais = new System.Windows.Forms.Label();
             this.Id_Provincias = new System.Windows.Forms.Label();
             this.PanelBotones_Provincia = new System.Windows.Forms.Panel();
             this.BtnEliminarProvincia = new System.Windows.Forms.Button();
             this.BtnBuscarProvincia = new System.Windows.Forms.Button();
             this.BtnNuevoProvincia = new System.Windows.Forms.Button();
             this.BtnModificarProvincia = new System.Windows.Forms.Button();
+            this.Id_pais = new System.Windows.Forms.Label();
             this.BtnCancelarProvincia = new System.Windows.Forms.Button();
             this.BtnSalir_Provincias = new System.Windows.Forms.Button();
             this.ErrorProve = new System.Windows.Forms.ErrorProvider(this.components);
             this.dataGridProvincias = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PaisTxt = new System.Windows.Forms.ComboBox();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             Label4 = new System.Windows.Forms.Label();
@@ -165,15 +166,6 @@ namespace PELOSCALVO
             this.PanelProvincias.Size = new System.Drawing.Size(479, 180);
             this.PanelProvincias.TabIndex = 77;
             // 
-            // Id_pais
-            // 
-            this.Id_pais.AutoSize = true;
-            this.Id_pais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.Id_pais.Location = new System.Drawing.Point(582, 323);
-            this.Id_pais.Name = "Id_pais";
-            this.Id_pais.Size = new System.Drawing.Size(0, 13);
-            this.Id_pais.TabIndex = 59;
-            // 
             // Id_Provincias
             // 
             this.Id_Provincias.AutoSize = true;
@@ -237,6 +229,7 @@ namespace PELOSCALVO
             this.BtnBuscarProvincia.Text = "Buscar";
             this.BtnBuscarProvincia.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnBuscarProvincia.UseVisualStyleBackColor = false;
+            this.BtnBuscarProvincia.Click += new System.EventHandler(this.BtnBuscarProvincia_Click);
             // 
             // BtnNuevoProvincia
             // 
@@ -278,6 +271,15 @@ namespace PELOSCALVO
             this.BtnModificarProvincia.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnModificarProvincia.UseVisualStyleBackColor = false;
             this.BtnModificarProvincia.Click += new System.EventHandler(this.BtnModificarProvincia_Click);
+            // 
+            // Id_pais
+            // 
+            this.Id_pais.AutoSize = true;
+            this.Id_pais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.Id_pais.Location = new System.Drawing.Point(582, 323);
+            this.Id_pais.Name = "Id_pais";
+            this.Id_pais.Size = new System.Drawing.Size(0, 13);
+            this.Id_pais.TabIndex = 59;
             // 
             // BtnCancelarProvincia
             // 
@@ -347,6 +349,7 @@ namespace PELOSCALVO
             this.dataGridProvincias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProvincias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
+            this.IdFila,
             this.Column1});
             this.dataGridProvincias.DataSource = this.DtProvinciasBindinsource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -367,6 +370,16 @@ namespace PELOSCALVO
             this.dataGridProvincias.Size = new System.Drawing.Size(923, 257);
             this.dataGridProvincias.TabIndex = 74;
             // 
+            // PaisTxt
+            // 
+            this.PaisTxt.DataSource = this.dtPaisesBindingSource;
+            this.PaisTxt.DisplayMember = "Paises";
+            this.PaisTxt.FormattingEnabled = true;
+            this.PaisTxt.Location = new System.Drawing.Point(570, 290);
+            this.PaisTxt.Name = "PaisTxt";
+            this.PaisTxt.Size = new System.Drawing.Size(330, 21);
+            this.PaisTxt.TabIndex = 81;
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -378,6 +391,13 @@ namespace PELOSCALVO
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // IdFila
+            // 
+            this.IdFila.HeaderText = "IdFila";
+            this.IdFila.Name = "IdFila";
+            this.IdFila.ReadOnly = true;
+            this.IdFila.Visible = false;
+            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "Provincias";
@@ -385,16 +405,6 @@ namespace PELOSCALVO
             this.Column1.HeaderText = "Provincias";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            // 
-            // PaisTxt
-            // 
-            this.PaisTxt.DataSource = this.dtPaisesBindingSource;
-            this.PaisTxt.DisplayMember = "Paises";
-            this.PaisTxt.FormattingEnabled = true;
-            this.PaisTxt.Location = new System.Drawing.Point(570, 290);
-            this.PaisTxt.Name = "PaisTxt";
-            this.PaisTxt.Size = new System.Drawing.Size(330, 21);
-            this.PaisTxt.TabIndex = 81;
             // 
             // FormProvincias
             // 
@@ -443,13 +453,14 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCancelarProvincia;
         private System.Windows.Forms.Button BtnSalir_Provincias;
         private System.Windows.Forms.ErrorProvider ErrorProve;
-        private System.Windows.Forms.DataGridView dataGridProvincias;
         private System.Windows.Forms.BindingSource DtProvinciasBindinsource;
         private DsMulti2 dsMulti2;
         private System.Windows.Forms.ComboBox PaisTxt;
         private System.Windows.Forms.BindingSource dtPaisesBindingSource;
         private System.Windows.Forms.Label Id_pais;
+        public System.Windows.Forms.DataGridView dataGridProvincias;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFila;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

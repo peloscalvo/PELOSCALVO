@@ -8,7 +8,7 @@ namespace PELOSCALVO
     {
         public static FormBuscar MenuB;
         public static string ColumnaB = "";
-        public static int Fila =0;
+        public static int Fila = 0;
         DataView verViev = default;
         public FormBuscar()
         {
@@ -24,21 +24,27 @@ namespace PELOSCALVO
                 {
                     this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
                     // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                    DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                    this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                }
+                if (ClasDatos.QUEform == "Provincias")
+                {
+                    this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias.DefaultView;
+                    // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                    this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
                 }
             }
 
-           // this.BindingBuscarSource.DataSource = DataSourceDatos;
-           // this.DataGridBuscar.Columns[1].HeaderText = Columna;
+            // this.BindingBuscarSource.DataSource = DataSourceDatos;
+            // this.DataGridBuscar.Columns[1].HeaderText = Columna;
 
 
         }
-        public void CargarDatos(int IdFila, string Nombrefila,string colunma)
+        public void CargarDatos(int IdFila, string Nombrefila, string colunma)
         {
             this.Text = Nombrefila;
             Fila = IdFila;
             ColumnaB = colunma;
-            this.DataGridBuscar.Columns[1].HeaderText = Nombrefila; 
+            this.DataGridBuscar.Columns[1].HeaderText = Nombrefila;
             this.DataGridBuscar.Columns[0].DataPropertyName = "Id";
             this.DataGridBuscar.Columns[1].DataPropertyName = colunma;
             this.DataGridBuscar.Columns[2].DataPropertyName = "IdFila";
@@ -51,7 +57,7 @@ namespace PELOSCALVO
                 //this.DataGridBuscar.Columns[Fila].HeaderText = Columna;
                 if (this.TipoBuscar2.SelectedIndex == 0)
                 {
-                    this.verViev.RowFilter = ColumnaB+ " LIKE '%" + this.Buscador2.Text + "%'";
+                    this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
 
                 }
 
@@ -62,7 +68,7 @@ namespace PELOSCALVO
 
 
                 }
-                DataGridBuscar.DataSource = verViev;
+                this.DataGridBuscar.DataSource = this.verViev;
             }
             catch (Exception ex)
             {
@@ -76,26 +82,34 @@ namespace PELOSCALVO
 
         private void DataGridBuscar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (ClasDatos.QUEform == "Paises")
+
+            if (e.RowIndex >= 0)
             {
-                if(e.RowIndex >= 0)
+                try
                 {
-                    try
+                    ClasDatos.ValorBuscado = Convert.ToInt32(this.DataGridBuscar.Rows[e.RowIndex].Cells["IdFila"].Value);
+                    if (ClasDatos.ValorBuscado >= 0)
                     {
-                        ClasDatos.ValorBuscado = Convert.ToInt32(this.DataGridBuscar.Rows[e.RowIndex].Cells["IdFila"].Value);
-                        if (ClasDatos.ValorBuscado >= 0)
+                        if (ClasDatos.QUEform == "Paises")
                         {
-                            FormPaises.MenuB.dataGridPais.CurrentCell = DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
+                            FormPaises.MenuB.dataGridPais.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
                             FormPaises.MenuB.dataGridPais.CurrentCell.Selected = true;
                         }
-                    }
-                    catch (Exception ex)
-                    {
 
-                        MessageBox.Show(ex.Message.ToString());
+                    }
+                    if (ClasDatos.QUEform == "Provincias")
+                    {
+                        FormProvincias.MenuB.dataGridProvincias.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
+                        FormProvincias.MenuB.dataGridProvincias.CurrentCell.Selected = true;
                     }
                 }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
+
         }
 
         private void Buscador2_TextChanged(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using Comun;
 using Conexiones;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -793,6 +794,7 @@ namespace PELOSCALVO
             this.PanelBotones_CorreoEmp.Tag = "Nuevo";
             try
             {
+                this.DatagridCorreosEmpresa.Sort(this.DatagridCorreosEmpresa.Columns[0], ListSortDirection.Ascending);
                 int numeroFILA = this.CorreosbindingSource.Count;
 
                 if (this.CorreosbindingSource.Count <= 0)
@@ -1001,6 +1003,7 @@ namespace PELOSCALVO
             this.PanelBotonesCorreoCli.Tag = "Nuevo";
             try
             {
+                this.DataGridCorreoCliente.Sort(this.DataGridCorreoCliente.Columns[0], ListSortDirection.Ascending);
                 int numeroFILA = this.CorreosClientebindingSource.Count;
 
                 if (this.CorreosClientebindingSource.Count <= 0)

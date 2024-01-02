@@ -946,7 +946,6 @@ namespace PELOSCALVO
             }
             try
             {
-                this.dtNuevaFacturaDataGridView.Refresh();
                 this.dtNuevaFacturaDataGridView.Sort(this.dtNuevaFacturaDataGridView.Columns[0], ListSortDirection.Ascending);
                 int numeroFILA = this.dtNuevaFacturaDataGridView.Rows.Count;
                 this.dtNuevaFacturaBindingSource.AddNew();

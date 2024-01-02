@@ -1,40 +1,47 @@
 ﻿using Conexiones;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
 {
     public partial class FormProvincias : Form
     {
+        public static FormProvincias MenuB;
         public FormProvincias()
         {
             InitializeComponent();
+            FormProvincias.MenuB = this;
         }
         private void FormProvincias_Load(object sender, EventArgs e)
         {
             try
             {
-    
+
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
                     this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
 
                 }
-            
+               
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message.ToString());
             }
+            AñadirIdProvincias();
+        }
+        public void AñadirIdProvincias()
+        {
+            int ii = 0;
+            foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
+            {
+                fila.Cells["IdFila"].Value = ii.ToString();
+                ii++;
+            }
+
         }
         private void ModificarOjetosProvi()
         {
@@ -255,23 +262,24 @@ namespace PELOSCALVO
                 {
                     FormPaises frm = new FormPaises();
                     frm.TopLevel = false;
-                   // frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+                    // frm.Anchor = System.Windows.Forms.AnchorStyles.None;
                     frm.Show();
                     frm.BringToFront();
 
                 }
-                    return;
+                return;
             }
-            if (PaisTxt.Text ==string.Empty)
+            if (this.PaisTxt.Text == string.Empty)
             {
                 MessageBox.Show("Elija un Pais", "Pais");
-                PaisTxt.Focus();
-                PaisTxt.SelectAll();
+                this.PaisTxt.Focus();
+                this.PaisTxt.SelectAll();
                 return;
             }
             this.PanelBotones_Provincia.Tag = "Nuevo";
             try
             {
+                this.dataGridProvincias.Sort(this.dataGridProvincias.Columns[0], ListSortDirection.Ascending);
                 int numeroFILA = this.dataGridProvincias.Rows.Count;
                 this.DtProvinciasBindinsource.AddNew();
                 if (this.dataGridProvincias.CurrentCell.RowIndex == 0)
@@ -296,9 +304,9 @@ namespace PELOSCALVO
                     }
 
                 }
-                ProvinciaText.Text = "La Coruña";
-                ProvinciaText.Focus();
-                ProvinciaText.SelectAll();
+                this.ProvinciaText.Text = "La Coruña";
+                this.ProvinciaText.Focus();
+                this.ProvinciaText.SelectAll();
                 ModificarOjetosProvi();
 
             }
@@ -311,7 +319,7 @@ namespace PELOSCALVO
 
         private void BtnModificarProvincia_Click(object sender, EventArgs e)
         {
-            if (dtPaisesBindingSource.Count > 0)
+            if (this.dtPaisesBindingSource.Count > 0)
             {
                 this.PanelBotones_Provincia.Tag = "Modificar";
                 ModificarOjetosProvi();
@@ -325,7 +333,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Un Pais", "PAIS");
                 return;
             }
-            if (Id_Provincias.Text == string.Empty & Id_pais.Text == string.Empty)
+            if (this.Id_Provincias.Text == string.Empty & this.Id_pais.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -335,50 +343,50 @@ namespace PELOSCALVO
                 BorrarErrorProvi();
                 if (ValidarProvi())
                 {
-          try
+                    try
+                    {
+                        foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
                         {
-                            foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
+                            if (fila.Cells[1].Value.ToString() == this.ProvinciaText.Text)
                             {
-                                if (fila.Cells[1].Value.ToString() == this.ProvinciaText.Text)
+                                if (this.dataGridProvincias.CurrentCell.RowIndex == fila.Index)
                                 {
-                                    if (this.dataGridProvincias.CurrentCell.RowIndex == fila.Index)
-                                    {
-                                        break;
-                                    }
-                                    MessageBox.Show(this.ProvinciaText.Text.ToString(), "YA EXISTE ESTA PROVINCIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    this.ProvinciaText.Focus();
-                                    this.ProvinciaText.SelectAll();
-                                    return;
+                                    break;
                                 }
-
+                                MessageBox.Show(this.ProvinciaText.Text.ToString(), "YA EXISTE ESTA PROVINCIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.ProvinciaText.Focus();
+                                this.ProvinciaText.SelectAll();
+                                return;
                             }
+
                         }
-                        catch (Exception ex)
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (MessageBox.Show(" ¿Aceptar Guardar Provincia ? ", " GUARDAR PROVINCIA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            GuardarProvinciaSql();
+                        }
+                        else
                         {
 
-                            MessageBox.Show(ex.Message);
-                        }
-                        if (MessageBox.Show(" ¿Aceptar Guardar Provincia ? ", " GUARDAR PROVINCIA ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            if (ClsConexionSql.SibaseDatosSql)
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarProvinciaSql();
+                                GuardarProvinciaDb();
                             }
                             else
                             {
-
-                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                                {
-                                    GuardarProvinciaDb();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    this.PanelBotones_Provincia.Enabled = false;
-                                }
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.PanelBotones_Provincia.Enabled = false;
                             }
                         }
-                    
+                    }
+
                 }
             }
         }
@@ -452,6 +460,15 @@ namespace PELOSCALVO
                     }
                 }
             }
+        }
+
+        private void BtnBuscarProvincia_Click(object sender, EventArgs e)
+        {
+            FormBuscar frm = new FormBuscar();
+            frm.CargarDatos(1, " Provincias", "Provincias");
+            frm.BringToFront();
+            ClasDatos.QUEform = "Provincias";
+            frm.ShowDialog();
         }
     }
 }

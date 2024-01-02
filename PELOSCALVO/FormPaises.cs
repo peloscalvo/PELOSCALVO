@@ -1,5 +1,6 @@
 ﻿using Conexiones;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -9,9 +10,9 @@ namespace PELOSCALVO
     {
          public static FormPaises MenuB;
         public FormPaises()
-        {
-            FormPaises.MenuB = this;
+        {        
             InitializeComponent();
+            FormPaises.MenuB = this;
         }
         private void FormPaises_Load(object sender, EventArgs e)
         {
@@ -254,6 +255,7 @@ namespace PELOSCALVO
             this.PanelBotones_Pais.Tag = "Nuevo";
             try
             {
+                this.dataGridPais.Sort(this.dataGridPais.Columns[0], ListSortDirection.Ascending);
                 int numeroFILA = this.dataGridPais.Rows.Count;
                 this.DtPaisBindinsource.AddNew();
                 if (this.dataGridPais.CurrentCell.RowIndex == 0)
@@ -278,7 +280,10 @@ namespace PELOSCALVO
                     }
 
                 }
-                this.NombrePais.Text = "España";
+                if (DtPaisBindinsource.Count <= 0)
+                {
+                    this.NombrePais.Text = "España";
+                }
                 this.NombrePais.Focus();
                 this.NombrePais.SelectAll();
                 ModificarOjetosPais();
