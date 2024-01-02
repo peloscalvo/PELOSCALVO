@@ -40,7 +40,7 @@ namespace PELOSCALVO
             }
             if (this.dtInicioMultiBindingSource.Count > 0)
             {
-                this.BtnGuardarInico.Enabled = false;
+                this.BtnNuevoInicio.Enabled = false;
             }
             if (ClsConexionSql.SibaseDatosSql)
             {
@@ -366,7 +366,10 @@ namespace PELOSCALVO
                         MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         this.PanelBotones_Inicio.Enabled = false;
                     }
-
+                    if (this.dtInicioMultiBindingSource.Count > 0)
+                    {
+                        this.BtnNuevoInicio.Enabled = false;
+                    }
                 }
 
             }
