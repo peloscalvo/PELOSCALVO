@@ -576,10 +576,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtAlmacenesRow AddDtAlmacenesRow(string Almacenes, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtAlmacenes) {
+            public DtAlmacenesRow AddDtAlmacenesRow(int Id, string Almacenes, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtAlmacenes) {
                 DtAlmacenesRow rowDtAlmacenesRow = ((DtAlmacenesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        Id,
                         Almacenes,
                         null};
                 if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtAlmacenes != null)) {
@@ -621,7 +621,6 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnAlmacenes);
                 this.columnEnlace_Almacenes = new global::System.Data.DataColumn("Enlace_Almacenes", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlace_Almacenes);
-                this.columnId.AutoIncrement = true;
                 this.columnId.AutoIncrementSeed = 1;
                 this.columnId.AllowDBNull = false;
             }
@@ -1965,10 +1964,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtProveedoresRow AddDtProveedoresRow(string Proveedores, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtProveedores) {
+            public DtProveedoresRow AddDtProveedoresRow(int Id_Proveedores, string Proveedores, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtProveedores) {
                 DtProveedoresRow rowDtProveedoresRow = ((DtProveedoresRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        Id_Proveedores,
                         Proveedores,
                         null};
                 if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtProveedores != null)) {
@@ -2010,7 +2009,6 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnProveedores);
                 this.columnEnlace_Proveedores = new global::System.Data.DataColumn("Enlace_Proveedores", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlace_Proveedores);
-                this.columnId_Proveedores.AutoIncrement = true;
                 this.columnId_Proveedores.AutoIncrementSeed = 1;
                 this.columnId_Proveedores.Caption = "Id_almacenes";
                 this.columnProveedores.Caption = "Almacenes";

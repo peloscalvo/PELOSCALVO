@@ -489,10 +489,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtObrasRow AddDtObrasRow(string Obras) {
+            public DtObrasRow AddDtObrasRow(int Id, string Obras) {
                 DtObrasRow rowDtObrasRow = ((DtObrasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        Id,
                         Obras};
                 rowDtObrasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtObrasRow);
@@ -536,7 +536,6 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnObras);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
-                this.columnId.AutoIncrement = true;
                 this.columnId.AutoIncrementSeed = 1;
                 this.columnId.AllowDBNull = false;
                 this.columnId.Unique = true;
