@@ -33,7 +33,7 @@ namespace PELOSCALVO
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuPrincipal));
             this.panelContenedorPrincipal = new System.Windows.Forms.Panel();
-            this.panelContenedorForm = new System.Windows.Forms.Panel();
+            this.PanelForms = new System.Windows.Forms.Panel();
             this.panelSUBventas = new System.Windows.Forms.Panel();
             this.BtnCrearAlbaranes = new System.Windows.Forms.Button();
             this.BtnCrearPresupustos = new System.Windows.Forms.Button();
@@ -160,7 +160,7 @@ namespace PELOSCALVO
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedorPrincipal.SuspendLayout();
-            this.panelContenedorForm.SuspendLayout();
+            this.PanelForms.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
             this.panelventas.SuspendLayout();
             this.PanelAcesosDire.SuspendLayout();
@@ -192,7 +192,7 @@ namespace PELOSCALVO
             // panelContenedorPrincipal
             // 
             this.panelContenedorPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
-            this.panelContenedorPrincipal.Controls.Add(this.panelContenedorForm);
+            this.panelContenedorPrincipal.Controls.Add(this.PanelForms);
             this.panelContenedorPrincipal.Controls.Add(this.panel1);
             this.panelContenedorPrincipal.Controls.Add(this.panelMenu);
             this.panelContenedorPrincipal.Controls.Add(this.PanelBarraTitulo);
@@ -202,25 +202,25 @@ namespace PELOSCALVO
             this.panelContenedorPrincipal.Size = new System.Drawing.Size(1100, 600);
             this.panelContenedorPrincipal.TabIndex = 0;
             // 
-            // panelContenedorForm
+            // PanelForms
             // 
-            this.panelContenedorForm.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelContenedorForm.BackgroundImage = global::PELOSCALVO.Properties.Resources.LogoPeloscalvo;
-            this.panelContenedorForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panelContenedorForm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelContenedorForm.Controls.Add(this.panelSUBventas);
-            this.panelContenedorForm.Controls.Add(this.panelventas);
-            this.panelContenedorForm.Controls.Add(this.PanelAcesosDire);
-            this.panelContenedorForm.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panelContenedorForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedorForm.Location = new System.Drawing.Point(230, 43);
-            this.panelContenedorForm.Margin = new System.Windows.Forms.Padding(0);
-            this.panelContenedorForm.Name = "panelContenedorForm";
-            this.panelContenedorForm.Size = new System.Drawing.Size(870, 532);
-            this.panelContenedorForm.TabIndex = 6;
-            this.panelContenedorForm.Tag = "Stop";
-            this.panelContenedorForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedorForm_Paint);
-            this.panelContenedorForm.MouseEnter += new System.EventHandler(this.panelContenedorForm_MouseEnter);
+            this.PanelForms.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PanelForms.BackgroundImage = global::PELOSCALVO.Properties.Resources.LogoPeloscalvo;
+            this.PanelForms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PanelForms.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PanelForms.Controls.Add(this.panelSUBventas);
+            this.PanelForms.Controls.Add(this.panelventas);
+            this.PanelForms.Controls.Add(this.PanelAcesosDire);
+            this.PanelForms.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PanelForms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelForms.Location = new System.Drawing.Point(230, 43);
+            this.PanelForms.Margin = new System.Windows.Forms.Padding(0);
+            this.PanelForms.Name = "PanelForms";
+            this.PanelForms.Size = new System.Drawing.Size(870, 532);
+            this.PanelForms.TabIndex = 6;
+            this.PanelForms.Tag = "Stop";
+            this.PanelForms.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedorForm_Paint);
+            this.PanelForms.MouseEnter += new System.EventHandler(this.panelContenedorForm_MouseEnter);
             // 
             // panelSUBventas
             // 
@@ -472,9 +472,10 @@ namespace PELOSCALVO
             this.PanelAcesosDire.BackColor = System.Drawing.SystemColors.MenuBar;
             this.PanelAcesosDire.Controls.Add(this.menuStrip);
             this.PanelAcesosDire.Controls.Add(this.PanelInfo_P);
-            this.PanelAcesosDire.Location = new System.Drawing.Point(0, -2);
+            this.PanelAcesosDire.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelAcesosDire.Location = new System.Drawing.Point(0, 0);
             this.PanelAcesosDire.Name = "PanelAcesosDire";
-            this.PanelAcesosDire.Size = new System.Drawing.Size(865, 526);
+            this.PanelAcesosDire.Size = new System.Drawing.Size(866, 528);
             this.PanelAcesosDire.TabIndex = 3;
             this.PanelAcesosDire.Visible = false;
             this.PanelAcesosDire.MouseEnter += new System.EventHandler(this.PanelAcesosDire_MouseEnter);
@@ -1699,10 +1700,11 @@ namespace PELOSCALVO
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PELOSCALVO";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMenuPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FormMenuPrincipal_Load);
             this.MouseEnter += new System.EventHandler(this.FormMenuPrincipal_MouseEnter);
             this.panelContenedorPrincipal.ResumeLayout(false);
-            this.panelContenedorForm.ResumeLayout(false);
+            this.PanelForms.ResumeLayout(false);
             this.panelSUBventas.ResumeLayout(false);
             this.panelventas.ResumeLayout(false);
             this.PanelAcesosDire.ResumeLayout(false);
@@ -1793,7 +1795,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCrearNotas;
         public System.Windows.Forms.Button btnCrearFactura;
         private System.Windows.Forms.Panel panelAplicaciones;
-        public System.Windows.Forms.Panel panelContenedorForm;
+        public System.Windows.Forms.Panel PanelForms;
         private System.Windows.Forms.Button BtnCrearAlbaranes;
         private System.Windows.Forms.Button BtnCalculadora;
         private System.Windows.Forms.Button BtnCarpeteDatos;

@@ -280,7 +280,7 @@ namespace PELOSCALVO
                     }
 
                 }
-                if (DtPaisBindinsource.Count <= 0)
+                if (DtPaisBindinsource.Count <= 2)
                 {
                     this.NombrePais.Text = "España";
                 }
@@ -355,7 +355,7 @@ namespace PELOSCALVO
                                 {
                                     break;
                                 }
-                                MessageBox.Show(this.NombrePais.Text.ToString(), "YA EXISTE ESTA PAIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show(this.NombrePais.Text.ToString(), "YA EXISTE ESTE PAIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.NombrePais.Focus();
                                 this.NombrePais.SelectAll();
                                 return;

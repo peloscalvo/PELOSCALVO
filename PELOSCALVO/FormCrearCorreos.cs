@@ -87,7 +87,7 @@ namespace PELOSCALVO
         }
         private void limpiarCorreo_Cli()
         {
-            this.Id_CorreoCli.Text = string.Empty;
+            //this.Id_CorreoCli.Text = string.Empty;
             this.EmpresaCli.Text = string.Empty;
             this.RazonSocial.Text = string.Empty;
             this.Direcion.Text = string.Empty;
@@ -818,12 +818,12 @@ namespace PELOSCALVO
                     }
 
                 }
+                LimpiarCorreo_Empresa();
                 this.CorreoEletronico.Text = "Peloscalvo@Gmail.com";
                 this.smtp.Text = "Gmail.com";
                 this.Puerto.Text = "587";
                 this.CorreoEletronico.Focus();
                 this.CorreoEletronico.Select(1, 1);
-                LimpiarCorreo_Empresa();
                 ModificarOjetosCorreo_E();
 
             }
@@ -1027,10 +1027,10 @@ namespace PELOSCALVO
                     }
 
                 }
+                limpiarCorreo_Cli();
                 this.CorreoEletronicoCli.Text = "Ejemplo@Gmail.com";
                 this.CorreoEletronicoCli.Focus();
                 // this.CorreoEletronicoCli.Select(1, 1);
-                limpiarCorreo_Cli();
                 ModificarOjetosCorreo_Cli();
 
             }

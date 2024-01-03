@@ -75,7 +75,7 @@ namespace PELOSCALVO
         {
             bool ok = true;
 
-            if (this.ProvinciaText.Text.Length < 5)
+            if (this.ProvinciaText.Text.Length < 3)
             {
                 ok = false;
                 this.ErrorProve.SetError(this.ProvinciaText, "_ingresar Nonbre Provincia valido (( minimo 3 Caracteres))");

@@ -385,7 +385,6 @@ namespace PELOSCALVO
             this.Timeof.ReadOnly = true;
             this.Timeof.Size = new System.Drawing.Size(102, 20);
             this.Timeof.TabIndex = 89;
-            this.Timeof.Text = "11";
             this.Timeof.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Timeof_KeyPress);
             // 
             // smtp

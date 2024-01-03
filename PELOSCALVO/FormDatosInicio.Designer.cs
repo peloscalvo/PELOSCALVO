@@ -442,6 +442,7 @@ namespace PELOSCALVO
             this.BtnCancelarInicio.Text = "Cancelar";
             this.BtnCancelarInicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelarInicio.UseVisualStyleBackColor = false;
+            this.BtnCancelarInicio.Click += new System.EventHandler(this.BtnCancelarInicio_Click);
             // 
             // BtnSalir_Inico
             // 

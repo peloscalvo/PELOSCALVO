@@ -358,8 +358,17 @@ namespace PELOSCALVO
 
                     if (File.Exists(ClasDatos.RutaMultidatos))
                     {
-                      FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
-                        MessageBox.Show("Se guardo Con Exito", "GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        try
+                        {
+                            FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
+                            MessageBox.Show("Se guardo Con Exito", "GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            RestaurarOjetosInico();
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message.ToString(), "ERROR AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
@@ -390,6 +399,11 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void BtnCancelarInicio_Click(object sender, EventArgs e)
+        {
+            RestaurarOjetosInico();
         }
     }
 }

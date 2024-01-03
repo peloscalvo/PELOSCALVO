@@ -62,10 +62,10 @@ namespace PELOSCALVO
         private bool ValidarBasica()
         {
             bool ok = true;
-            if (this.IdConfi.Text.Length < 1)
+            if (string.IsNullOrEmpty( this.IdConfi.Text))
             {
                 ok = false;
-                this.ErrorEjercicios.SetError(this.IdConfi, "_ingresar Id valido (( minimo 4 Caracteres))");
+                this.ErrorEjercicios.SetError(this.IdConfi, "_ingresar Id valido (( Vacio no Valido))");
             }
             if (this.configuraccionBasicaTextBox.Text.Length < 4)
             {
@@ -77,10 +77,10 @@ namespace PELOSCALVO
                 ok = false;
                 this.ErrorEjercicios.SetError(this.ejerciciosDeAñoTextBox, "_ingresar Ejercicio valido (( minimo 4 Caracteres))");
             }
-            if (this.EmpresaEnlace.Text.Length < 4)
+            if (this.IdEmpresa.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorEjercicios.SetError(this.EmpresaEnlace, "_ingresar Enlace Empresa valido (( minimo 4 Caracteres))");
+                this.ErrorEjercicios.SetError(this.IdEmpresa, "_ingresar Enlace Empresa valido (( minimo 4 Caracteres))");
                 if (this.añoDeEjercicioTextBox.Text.Length < 4)
                 {
                     ok = false;
@@ -94,7 +94,7 @@ namespace PELOSCALVO
             this.ErrorEjercicios.SetError(this.IdConfi, "");
             this.ErrorEjercicios.SetError(this.configuraccionBasicaTextBox, "");
             this.ErrorEjercicios.SetError(this.ejerciciosDeAñoTextBox, "");
-            this.ErrorEjercicios.SetError(this.EmpresaEnlace, "");
+            this.ErrorEjercicios.SetError(this.IdEmpresa, "");
             this.ErrorEjercicios.SetError(this.añoDeEjercicioTextBox, "");
         }
         private void RestaurarOjetos_Ej()
@@ -142,7 +142,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : this.IdEmpresa.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
@@ -211,7 +211,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.EmpresaEnlace.Text) ? (object)DBNull.Value : this.EmpresaEnlace.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : this.IdEmpresa.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
@@ -454,11 +454,17 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (string.IsNullOrEmpty(this.EmpresaEnlace.Text))
+            if (string.IsNullOrEmpty(this.IdEmpresa.Text))
             {
                 MessageBox.Show("Eliga Empresa Valida", "EMPRESA");
+                return;
             }
 
+            if (string.IsNullOrEmpty(this.IdConfi.Text))
+            {
+                MessageBox.Show("Falta Id", "ERROR APP",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
             if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
             {
                 int i = 0;

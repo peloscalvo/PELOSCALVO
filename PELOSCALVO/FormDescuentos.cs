@@ -106,7 +106,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.IdTarifa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdTarifa.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(this.tarifaTipoTextBox.Text) ? (object)DBNull.Value : this.tarifaTipoTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EnlaceTarifa.Text) ? (object)DBNull.Value :Convert.ToInt32( this.EnlaceTarifa.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value :Convert.ToInt32( this.IdEmpresa.Text));
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -149,7 +149,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.IdTarifa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdTarifa.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(this.tarifaTipoTextBox.Text) ? (object)DBNull.Value : this.tarifaTipoTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.EnlaceTarifa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.EnlaceTarifa.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdEmpresa.Text));
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();

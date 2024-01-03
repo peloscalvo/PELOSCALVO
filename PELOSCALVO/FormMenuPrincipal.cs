@@ -298,7 +298,7 @@ namespace PELOSCALVO
 
                 frm.TopLevel = false;
                 //  frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                this.PanelForms.Controls.Add(frm);
                 //frm.FormBorderStyle = FormBorderStyle.None;
                 frm.FormClosed += (o, args) => this.SiOpenClie = 0;
                 frm.Show();
@@ -346,7 +346,7 @@ namespace PELOSCALVO
                 // frm.Dock = DockStyle.Fill;
                 frm.WindowState = FormWindowState.Maximized;
                 //  frm.Anchor = System.Windows.Forms.AnchorStyles.None;
-                this.panelContenedorForm.Controls.Add(frm);
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenArti = 0;
                 frm.Show();
                 frm.BringToFront();
@@ -422,7 +422,7 @@ namespace PELOSCALVO
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
                 //  frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -458,7 +458,7 @@ namespace PELOSCALVO
                 FormComfiguracion frm = new FormComfiguracion();
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                this.PanelForms.Controls.Add(frm);
                 //frm.FormBorderStyle = FormBorderStyle.None;
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.Show();
@@ -475,7 +475,7 @@ namespace PELOSCALVO
                 FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
                 //  frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenUser = 0;
                 frm.Show();
                 frm.BringToFront();
@@ -512,7 +512,7 @@ namespace PELOSCALVO
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -559,7 +559,7 @@ namespace PELOSCALVO
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -597,7 +597,7 @@ namespace PELOSCALVO
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -636,7 +636,7 @@ namespace PELOSCALVO
                 frm.TopLevel = false;
                 frm.Dock = DockStyle.Fill;
                 // this.panelContenedorForm.Controls.Add(frm);
-                this.panelContenedorForm.Parent = frm;
+                this.PanelForms.Parent = frm;
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -667,7 +667,7 @@ namespace PELOSCALVO
         {
             if (this.panelAplicaciones.Visible == false)
             {
-                this.panelContenedorForm.Tag = "SEGUIR";
+                this.PanelForms.Tag = "SEGUIR";
                 this.panelAplicaciones.Visible = true;
             }
             else
@@ -714,8 +714,8 @@ namespace PELOSCALVO
                     return;
                 }
             }
-            this.PanelAcesosDire.Width = this.panelContenedorForm.Width;
-            this.PanelAcesosDire.Height = this.panelContenedorForm.Height;
+           // this.PanelAcesosDire.Width = this.PanelForms.Width;
+           // this.PanelAcesosDire.Height = this.PanelForms.Height;
             if (this.BtnArchivos.Tag.ToString() == "SI")
             {
                 this.PanelAcesosDire.BringToFront();
@@ -813,7 +813,7 @@ namespace PELOSCALVO
             // frm.Dock = DockStyle.Fill;
             // frm.WindowState = FormWindowState.Maximized;
             //frm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.FormClosed += (o, args) => this.SiOpenArti = 0;
             frm.Show();
             frm.BringToFront();
@@ -823,7 +823,7 @@ namespace PELOSCALVO
         {
             FormProveedores frm = new FormProveedores();
             frm.TopLevel = false;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
 
@@ -833,7 +833,7 @@ namespace PELOSCALVO
         {
             FormEjercicios frm = new FormEjercicios();
             frm.TopLevel = false;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -865,7 +865,7 @@ namespace PELOSCALVO
             FormAlmacenes frm = new FormAlmacenes();
             frm.TopLevel = false;
             //frm.WindowState = FormWindowState.Maximized;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -874,7 +874,7 @@ namespace PELOSCALVO
         {
             FormFamiliaProductos frm = new FormFamiliaProductos();
             frm.TopLevel = false;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -912,7 +912,7 @@ namespace PELOSCALVO
             FormPaises frm = new FormPaises();
             frm.TopLevel = false;
             frm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -922,7 +922,7 @@ namespace PELOSCALVO
             FormProvincias frm = new FormProvincias();
             frm.TopLevel = false;
             frm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             // frm.WindowState = FormWindowState.Maximized;
             frm.BringToFront();
@@ -932,7 +932,7 @@ namespace PELOSCALVO
         {
             FormObras frm = new FormObras();
             frm.TopLevel = false;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -951,7 +951,7 @@ namespace PELOSCALVO
         {
             FormDescuentos frm = new FormDescuentos();
             frm.TopLevel = false;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -976,7 +976,7 @@ namespace PELOSCALVO
         {
             FormCrearCorreos frm = new FormCrearCorreos();
             frm.TopLevel = false;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -985,9 +985,17 @@ namespace PELOSCALVO
         {
             FormDatosInicio frm = new FormDatosInicio();
             frm.TopLevel = false;
-            this.panelContenedorForm.Controls.Add(frm);
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
+        }
+
+        private void FormMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (PanelForms.Controls.Count >1)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void BtnSql_Click(object sender, EventArgs e)
@@ -1035,7 +1043,7 @@ namespace PELOSCALVO
 
         private void tmFechaHora_Tick(object sender, EventArgs e)
         {
-            if (this.panelContenedorForm.Tag.ToString() == "SEGUIR")
+            if (this.PanelForms.Tag.ToString() == "SEGUIR")
             {
                 this.lbFecha.Text = DateTime.Now.ToLongDateString();
                 this.lblHora.Text = DateTime.Now.ToString("HH:mm:ssss");

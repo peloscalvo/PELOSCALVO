@@ -32,7 +32,6 @@ namespace PELOSCALVO
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label idTarifaLabel;
             System.Windows.Forms.Label tarifaTipoLabel;
-            System.Windows.Forms.Label Label4;
             System.Windows.Forms.Label ConfiLabel1;
             System.Windows.Forms.Label idEmpresaLabel1;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,7 +40,6 @@ namespace PELOSCALVO
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDescuentos));
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.EnlaceTarifa = new System.Windows.Forms.Label();
             this.dtConfiDtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.IdEmpresa = new System.Windows.Forms.Label();
             this.IdTarifa = new System.Windows.Forms.Label();
@@ -60,7 +58,6 @@ namespace PELOSCALVO
             this.ErrorDescuentos = new System.Windows.Forms.ErrorProvider(this.components);
             idTarifaLabel = new System.Windows.Forms.Label();
             tarifaTipoLabel = new System.Windows.Forms.Label();
-            Label4 = new System.Windows.Forms.Label();
             ConfiLabel1 = new System.Windows.Forms.Label();
             idEmpresaLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
@@ -74,7 +71,7 @@ namespace PELOSCALVO
             // idTarifaLabel
             // 
             idTarifaLabel.AutoSize = true;
-            idTarifaLabel.Location = new System.Drawing.Point(53, 292);
+            idTarifaLabel.Location = new System.Drawing.Point(55, 304);
             idTarifaLabel.Name = "idTarifaLabel";
             idTarifaLabel.Size = new System.Drawing.Size(19, 13);
             idTarifaLabel.TabIndex = 58;
@@ -83,20 +80,11 @@ namespace PELOSCALVO
             // tarifaTipoLabel
             // 
             tarifaTipoLabel.AutoSize = true;
-            tarifaTipoLabel.Location = new System.Drawing.Point(11, 355);
+            tarifaTipoLabel.Location = new System.Drawing.Point(13, 334);
             tarifaTipoLabel.Name = "tarifaTipoLabel";
             tarifaTipoLabel.Size = new System.Drawing.Size(61, 13);
             tarifaTipoLabel.TabIndex = 59;
             tarifaTipoLabel.Text = "Tarifa Tipo:";
-            // 
-            // Label4
-            // 
-            Label4.AutoSize = true;
-            Label4.Location = new System.Drawing.Point(21, 319);
-            Label4.Name = "Label4";
-            Label4.Size = new System.Drawing.Size(43, 13);
-            Label4.TabIndex = 61;
-            Label4.Text = "Enlace:";
             // 
             // ConfiLabel1
             // 
@@ -126,17 +114,6 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
             this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
-            // EnlaceTarifa
-            // 
-            this.EnlaceTarifa.AutoSize = true;
-            this.EnlaceTarifa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.EnlaceTarifa.Location = new System.Drawing.Point(78, 319);
-            this.EnlaceTarifa.Name = "EnlaceTarifa";
-            this.EnlaceTarifa.Size = new System.Drawing.Size(0, 13);
-            this.EnlaceTarifa.TabIndex = 65;
-            this.EnlaceTarifa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EnlaceTarifa.Click += new System.EventHandler(this.EnlaceTarifa_Click);
-            // 
             // dtConfiDtTarifaTipoBindingSource
             // 
             this.dtConfiDtTarifaTipoBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtTarifaTipo";
@@ -159,7 +136,7 @@ namespace PELOSCALVO
             this.IdTarifa.AutoSize = true;
             this.IdTarifa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.IdTarifa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.IdTarifa.Location = new System.Drawing.Point(78, 289);
+            this.IdTarifa.Location = new System.Drawing.Point(80, 304);
             this.IdTarifa.Name = "IdTarifa";
             this.IdTarifa.Size = new System.Drawing.Size(15, 15);
             this.IdTarifa.TabIndex = 63;
@@ -234,7 +211,7 @@ namespace PELOSCALVO
             // tarifaTipoTextBox
             // 
             this.tarifaTipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "TarifaTipo", true));
-            this.tarifaTipoTextBox.Location = new System.Drawing.Point(78, 352);
+            this.tarifaTipoTextBox.Location = new System.Drawing.Point(80, 331);
             this.tarifaTipoTextBox.Name = "tarifaTipoTextBox";
             this.tarifaTipoTextBox.ReadOnly = true;
             this.tarifaTipoTextBox.Size = new System.Drawing.Size(283, 20);
@@ -378,14 +355,12 @@ namespace PELOSCALVO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 465);
             this.Controls.Add(this.BtnSalirTipoTarifa);
-            this.Controls.Add(this.EnlaceTarifa);
             this.Controls.Add(this.IdEmpresa);
             this.Controls.Add(this.IdTarifa);
             this.Controls.Add(this.dtTarifaTipoDataGridView);
             this.Controls.Add(idTarifaLabel);
             this.Controls.Add(tarifaTipoLabel);
             this.Controls.Add(this.tarifaTipoTextBox);
-            this.Controls.Add(Label4);
             this.Controls.Add(ConfiLabel1);
             this.Controls.Add(this.empresaConfiComboBox1);
             this.Controls.Add(idEmpresaLabel1);
@@ -414,7 +389,6 @@ namespace PELOSCALVO
 
         private DsCONFIGURACCION dsCONFIGURACCION;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
-        private System.Windows.Forms.Label EnlaceTarifa;
         private System.Windows.Forms.Label IdEmpresa;
         private System.Windows.Forms.Label IdTarifa;
         private System.Windows.Forms.DataGridView dtTarifaTipoDataGridView;

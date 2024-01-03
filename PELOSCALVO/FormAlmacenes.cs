@@ -139,7 +139,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Almacenes", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.IdEmpresaAlm.Text) ? (object)DBNull.Value : this.IdEmpresaAlm.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -182,7 +182,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Almacenes", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.IdEmpresaAlm.Text) ? (object)DBNull.Value : this.IdEmpresaAlm.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
@@ -315,7 +315,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (id_almacenes.Text == string.Empty & Enlace_almacen.Text == string.Empty)
+            if (id_almacenes.Text == string.Empty & IdEmpresaAlm.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -336,7 +336,7 @@ namespace PELOSCALVO
                                 {
                                     break;
                                 }
-                                MessageBox.Show(this.almacenesTextBox.Text.ToString(), "YA EXISTE ESTA ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show(this.almacenesTextBox.Text.ToString(), "YA EXISTE ESTE ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.almacenesTextBox.Focus();
                                 this.almacenesTextBox.SelectAll();
                                 return;

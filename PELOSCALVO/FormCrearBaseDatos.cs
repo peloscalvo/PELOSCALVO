@@ -441,7 +441,7 @@ namespace PELOSCALVO
               " CREATE TABLE [DtFamiliaProductos]( [Id][int] NOT NULL,[Familia] varchar(80) NULL)" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtPaises]') AND type in (N'U'))" +
-            " CREATE TABLE [DtPaises]( [Id][int]  NOT NULL,[Paises] varchar(80) primary key  NOT NULL)" +
+            " CREATE TABLE [DtPaises]( [Id][int] primary key NOT NULL,[Paises] varchar(80)  NULL)" +
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProvincias]') AND type in (N'U'))" +
                  " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[Provincias] varchar(80) NULL,[IdEnlace][int] NOT NULL ," +

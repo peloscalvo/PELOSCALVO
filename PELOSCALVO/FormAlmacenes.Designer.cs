@@ -30,7 +30,6 @@ namespace PELOSCALVO
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label enlace_AlmacenesLabel1;
             System.Windows.Forms.Label id_almacenesLabel;
             System.Windows.Forms.Label almacenesLabel;
             System.Windows.Forms.Label enlace_AlmacenesLabel;
@@ -38,6 +37,7 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label label1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlmacenes));
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
@@ -46,7 +46,7 @@ namespace PELOSCALVO
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelAlmacenes = new System.Windows.Forms.Panel();
-            this.Enlace_almacen = new System.Windows.Forms.Label();
+            this.IdEmpresaAlm = new System.Windows.Forms.Label();
             this.id_almacenes = new System.Windows.Forms.Label();
             this.BotonesAlmacenes = new System.Windows.Forms.Panel();
             this.BtnEliminarAlmacen = new System.Windows.Forms.Button();
@@ -62,10 +62,10 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen = new System.Windows.Forms.Button();
             this.BtnGuardarAlmacen = new System.Windows.Forms.Button();
             this.BtnSalirAlmacen = new System.Windows.Forms.Button();
-            enlace_AlmacenesLabel1 = new System.Windows.Forms.Label();
             id_almacenesLabel = new System.Windows.Forms.Label();
             almacenesLabel = new System.Windows.Forms.Label();
             enlace_AlmacenesLabel = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
@@ -76,15 +76,6 @@ namespace PELOSCALVO
             this.BotonesAlmacenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlmacenes)).BeginInit();
             this.SuspendLayout();
-            // 
-            // enlace_AlmacenesLabel1
-            // 
-            enlace_AlmacenesLabel1.AutoSize = true;
-            enlace_AlmacenesLabel1.Location = new System.Drawing.Point(7, 72);
-            enlace_AlmacenesLabel1.Name = "enlace_AlmacenesLabel1";
-            enlace_AlmacenesLabel1.Size = new System.Drawing.Size(43, 13);
-            enlace_AlmacenesLabel1.TabIndex = 56;
-            enlace_AlmacenesLabel1.Text = "Enlace:";
             // 
             // id_almacenesLabel
             // 
@@ -145,9 +136,7 @@ namespace PELOSCALVO
             // 
             // panelAlmacenes
             // 
-            this.panelAlmacenes.Controls.Add(this.Enlace_almacen);
             this.panelAlmacenes.Controls.Add(this.id_almacenes);
-            this.panelAlmacenes.Controls.Add(enlace_AlmacenesLabel1);
             this.panelAlmacenes.Controls.Add(this.BotonesAlmacenes);
             this.panelAlmacenes.Controls.Add(id_almacenesLabel);
             this.panelAlmacenes.Controls.Add(almacenesLabel);
@@ -158,14 +147,14 @@ namespace PELOSCALVO
             this.panelAlmacenes.TabIndex = 62;
             this.panelAlmacenes.Tag = "NO";
             // 
-            // Enlace_almacen
+            // IdEmpresaAlm
             // 
-            this.Enlace_almacen.AutoSize = true;
-            this.Enlace_almacen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true));
-            this.Enlace_almacen.Location = new System.Drawing.Point(71, 72);
-            this.Enlace_almacen.Name = "Enlace_almacen";
-            this.Enlace_almacen.Size = new System.Drawing.Size(0, 13);
-            this.Enlace_almacen.TabIndex = 59;
+            this.IdEmpresaAlm.AutoSize = true;
+            this.IdEmpresaAlm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true));
+            this.IdEmpresaAlm.Location = new System.Drawing.Point(586, 351);
+            this.IdEmpresaAlm.Name = "IdEmpresaAlm";
+            this.IdEmpresaAlm.Size = new System.Drawing.Size(0, 13);
+            this.IdEmpresaAlm.TabIndex = 59;
             // 
             // id_almacenes
             // 
@@ -433,11 +422,22 @@ namespace PELOSCALVO
             this.BtnSalirAlmacen.UseVisualStyleBackColor = false;
             this.BtnSalirAlmacen.Click += new System.EventHandler(this.BtnSalirAlmacen_Click);
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(545, 351);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(19, 13);
+            label1.TabIndex = 122;
+            label1.Text = "Id:";
+            // 
             // FormAlmacenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 508);
+            this.Controls.Add(label1);
+            this.Controls.Add(this.IdEmpresaAlm);
             this.Controls.Add(this.BtnSalirAlmacen);
             this.Controls.Add(this.BtnCancelarAlmacen);
             this.Controls.Add(this.BtnGuardarAlmacen);
@@ -475,7 +475,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private System.Windows.Forms.BindingSource dtAlmacenesBindingSource;
         private System.Windows.Forms.Panel panelAlmacenes;
-        private System.Windows.Forms.Label Enlace_almacen;
+        private System.Windows.Forms.Label IdEmpresaAlm;
         private System.Windows.Forms.Label id_almacenes;
         private System.Windows.Forms.Panel BotonesAlmacenes;
         private System.Windows.Forms.Button BtnEliminarAlmacen;
