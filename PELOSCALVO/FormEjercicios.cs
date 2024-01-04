@@ -77,10 +77,10 @@ namespace PELOSCALVO
                 ok = false;
                 this.ErrorEjercicios.SetError(this.ejerciciosDeAñoTextBox, "_ingresar Ejercicio valido (( minimo 4 Caracteres))");
             }
-            if (this.IdEmpresa.Text.Length < 4)
+            if (string.IsNullOrEmpty(this.IdEmpresa.Text))
             {
                 ok = false;
-                this.ErrorEjercicios.SetError(this.IdEmpresa, "_ingresar Enlace Empresa valido (( minimo 4 Caracteres))");
+                this.ErrorEjercicios.SetError(this.IdEmpresa, "_ingresar Id Empresa valido (( Vacio no Valido))");
                 if (this.añoDeEjercicioTextBox.Text.Length < 4)
                 {
                     ok = false;

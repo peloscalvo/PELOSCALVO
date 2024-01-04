@@ -992,7 +992,7 @@ namespace PELOSCALVO
 
         private void FormMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (PanelForms.Controls.Count >1)
+            if (PanelForms.Controls.Count >=1)
             {
                 e.Cancel = true;
             }

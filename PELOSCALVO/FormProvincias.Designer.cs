@@ -57,8 +57,8 @@ namespace PELOSCALVO
             this.dataGridProvincias = new System.Windows.Forms.DataGridView();
             this.PaisTxt = new System.Windows.Forms.ComboBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             Label4 = new System.Windows.Forms.Label();
@@ -349,8 +349,8 @@ namespace PELOSCALVO
             this.dataGridProvincias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProvincias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.IdFila,
-            this.Column1});
+            this.Column1,
+            this.IdFila});
             this.dataGridProvincias.DataSource = this.DtProvinciasBindinsource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -391,13 +391,6 @@ namespace PELOSCALVO
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // IdFila
-            // 
-            this.IdFila.HeaderText = "IdFila";
-            this.IdFila.Name = "IdFila";
-            this.IdFila.ReadOnly = true;
-            this.IdFila.Visible = false;
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "Provincias";
@@ -405,6 +398,13 @@ namespace PELOSCALVO
             this.Column1.HeaderText = "Provincias";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // IdFila
+            // 
+            this.IdFila.HeaderText = "IdFila";
+            this.IdFila.Name = "IdFila";
+            this.IdFila.ReadOnly = true;
+            this.IdFila.Visible = false;
             // 
             // FormProvincias
             // 
@@ -460,7 +460,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label Id_pais;
         public System.Windows.Forms.DataGridView dataGridProvincias;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdFila;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFila;
     }
 }

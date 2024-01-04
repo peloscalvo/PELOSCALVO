@@ -347,7 +347,7 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
                         {
-                            if (fila.Cells[1].Value.ToString() == this.ProvinciaText.Text)
+                            if (fila.Cells[0].Value.ToString() == this.ProvinciaText.Text)
                             {
                                 if (this.dataGridProvincias.CurrentCell.RowIndex == fila.Index)
                                 {

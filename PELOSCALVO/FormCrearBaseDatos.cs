@@ -138,13 +138,17 @@ namespace PELOSCALVO
 
         private void FormCrearBaseDatos_Load(object sender, EventArgs e)
         {
+
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
             {
 
                 FormMenuPrincipal.menu2principal.CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
 
             }
-
+            if (FormMenuPrincipal.menu2principal.dsServidor != null)
+            {
+                this.dtServidorBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsServidor;
+            }
             try
             {
 
@@ -170,9 +174,14 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message, "ERROR");
             }
-
-            this.SerieArticulosTabla.Text = "Tarifa1";
-            this.SerieClientesTabla.Text = "Listado1";
+            if(SerieArticulosTabla.Items.Count > 0)
+            {
+                this.SerieArticulosTabla.SelectedIndex=0;
+            }
+            if (SerieClientesTabla.Items.Count > 0)
+            {
+                this.SerieClientesTabla.SelectedIndex = 0;
+            }
             this.AutenticacionCrear.Text = "Autenticacion De Windows";
             string[] instancias;
             instancias = ClsOjetos.instanciasInstaladas();
@@ -391,7 +400,7 @@ namespace PELOSCALVO
                 /// ARTICULOS ARTICULOS
                 string TablaArticulos = this.SerieArticulosTabla.Text;
                 string TablaClientes = this.SerieClientesTabla.Text;
-                string ConsutaArticulos = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'" + TablaArticulos + "') AND type in (N'U'))" +
+                string ConsutaArticulos = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaArticulos + "]') AND type in (N'U'))" +
                 "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] primary key NOT NULL, [Referencia] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
                 "[Ganancia] [numeric](19, 3) NULL,[Pvp1] [numeric](19, 3) NULL,[PvpIva] [numeric](19, 3) NULL,[Pvp2Desc] [numeric](19, 3) NULL,[Pvp2] [numeric](19, 3) NULL," +
                 "[CastyDesc] [numeric](19, 3) NULL,[Casty] [numeric](19, 3) NULL,[SuarezDesc] [numeric](19, 3) NULL,[Suarez] [numeric](19, 3) NULL,[BenitoDesc] [numeric](19, 3) NULL," +
@@ -435,7 +444,7 @@ namespace PELOSCALVO
 
                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
                " CREATE TABLE [DtAlmacenes]( [Id][int] NOT NULL,[Almacenes] varchar(80) NULL ,[Enlace_Almacenes] [int] not  NULL, " +
-                     " CONSTRAINT F_DtConfi FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
+                     " CONSTRAINT F_DtALMACENES FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtFamiliaProductos]') AND type in (N'U'))" +
               " CREATE TABLE [DtFamiliaProductos]( [Id][int] NOT NULL,[Familia] varchar(80) NULL)" +
@@ -453,7 +462,7 @@ namespace PELOSCALVO
                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtInicioMulti]') AND type in (N'U'))" +
                    " CREATE TABLE [DtInicioMulti]( [Id][int]primary key NOT NULL,[EmpresaInicio] varchar(200) NULL" +
                    ",[EjercicioInicio] varchar(80) NULL,[SerieInicio] varchar(5) NULL,[NombreArchivoDatos] varchar(80) NULL" +
-                   ",[RutaArchivoDatos] varchar(200) NULL,[SerieProvinciaInicio] varchar(80) NULL,[SeriePaisInicio] varchar(80) NULL" +
+                   ",[RutaArchivoDatos] varchar(200) NULL,[SerieProvinciaInicio] varchar(80) NULL,[SeriePaisInicio] varchar(80) NULL," +
                    "[ArchivoArticulos] varchar(80) NULL,[TipoExtensionArticulos] varchar(3) NULL,[ArchivoClientes] varchar(80) NULL)" +
 
                       "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtCorreos]') AND type in (N'U'))" +
@@ -500,18 +509,18 @@ namespace PELOSCALVO
                         if (this.CheckFacturacion.Checked == true)
                         {
                             Random r = new Random();
-                            int VALORid = r.Next(10000, 900000000);
+                            int VALORid = r.Next(10000, 900000);
                             for (int i = 1; i <= 7; i++)
                             {
-                                VALORid = r.Next(500, 900000000);
+                                VALORid = r.Next(500, 90000);
                                 ConsultaFacturacion = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaFactu + "]') AND type in (N'U')) " +
-                                "CREATE TABLE [" + TablaFactu + "]([EnlaceFactura] [varchar](250) primary key NOT NULL, [NumeroFactura] int NOT NULL,[Apodo] [varchar](50) NULL,[Nombre] [varchar](60) NULL," +
+                                "CREATE TABLE [" + TablaFactu + "]([EnlaceFactura] [varchar](250) primary key Not NULL, [NumeroFactura] int NOT NULL,[Apodo] [varchar](50) NULL,[Nombre] [varchar](60) NULL," +
                                 "[Direccion] [varchar](50) NULL,[Calle] [varchar](30) NULL,[NumeroCalle] [varchar](20) NULL,[Dni] [Varchar](16) NULL,[Localidad] [varchar](50) NULL," +
                                 "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[FechaFactura] [date] NULL," +
                                 "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
                                 "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
-                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [varchar](250) NULL,[EnlaceDtconfi][int] NOT NULL," + "CONSTRAINT F_DtConfi" + TablaFactu + VALORid.ToString() +
-                               "FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )" +
+                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [varchar](250) NULL,[EnlaceDtconfi][int] NOT NULL," +
+                                "CONSTRAINT F_" + TablaFactu + VALORid.ToString() +" FOREIGN KEY(EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                                 "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +
                                "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle][varchar](50) NULL,[CantidadDetalle] [numeric](13, 3) NULL,[DescripccionDetalle] [varchar](60) NULL," +
