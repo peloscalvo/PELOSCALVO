@@ -1347,6 +1347,7 @@ namespace PELOSCALVO
             this.BtnInfo.Text = "PANEL";
             this.BtnInfo.UseVisualStyleBackColor = true;
             this.BtnInfo.Click += new System.EventHandler(this.BtnArchivo_Click);
+            this.BtnInfo.MouseEnter += new System.EventHandler(this.BtnInfo_MouseEnter);
             // 
             // PanelBarraTitulo
             // 

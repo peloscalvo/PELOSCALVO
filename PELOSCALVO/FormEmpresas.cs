@@ -14,11 +14,11 @@ namespace PELOSCALVO
         {
             InitializeComponent();
             ToolTip InfoEliminar = new ToolTip();
-            InfoEliminar.SetToolTip(BtnEliminarEmpresa, "Se Borrara Permanentemente (EMPRESSA)" + "\n" + "(EJERCICIOS DE EMPRESA)" + "\n" + "(FACTURACION)");
+            InfoEliminar.SetToolTip(this.BtnEliminarEmpresa, "Se Borrara Permanentemente (EMPRESSA)" + "\n" + "(EJERCICIOS DE EMPRESA)" + "\n" + "(FACTURACION)");
             InfoEliminar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             InfoEliminar.IsBalloon = true;
             ToolTip InfoSalir = new ToolTip();
-            InfoSalir.SetToolTip(BtnSalirEmpresa, "Salir De Empresa");
+            InfoSalir.SetToolTip(this.BtnSalirEmpresa, "Salir De Empresa");
             InfoSalir.IsBalloon = true;
             InfoSalir.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
@@ -282,21 +282,20 @@ namespace PELOSCALVO
                                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.idEmpresa.Text);
                                 }
 
-                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value :Convert.ToInt32( this.idEmpresa.Text));
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                 NuevaConexion.ComandoSql.ExecuteNonQuery();
                                 NuevaConexion.ComandoSql.Parameters.Clear();
 
                             }
                             string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
                             string Ejercicio = "EJERCICIO   " + String.Format("{0:yyyy}", DateTime.Now);
-                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([EnlaceDtconfi],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                                  "[AñoDeEjercicio]) VALUES(@EnlaceDtconfi, @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                                  "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                                      "  @AñoDeEjercicio)";
                             NuevaConexion = new ClsConexionSql(ConsultaEjercios);////Guarda Ejercicio a empresa
                             if (NuevaConexion.SiConexionSql)
                             {
-                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceDtconfi", Ejercicio + "/" + this.idEmpresa.Text + "/" + "1");
-                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value :Convert.ToInt32( this.idEmpresa.Text));
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", Basica);
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", 21);
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", Ejercicio);
@@ -438,8 +437,8 @@ namespace PELOSCALVO
                             string ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
                             string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
                             string Ejercicio = "EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
-                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([EnlaceDtconfi],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                                  "[AñoDeEjercicio]) VALUES(@EnlaceDtconfi, @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                                  "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                                      "  @AñoDeEjercicio)";
 
                             NuevaConexion = new ClsConexionDb(ConsultaDescuetos);////Guarda Descuentos Clientes
@@ -465,7 +464,7 @@ namespace PELOSCALVO
                                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
                                     }
 
-                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value :Convert.ToInt32( this.idEmpresa.Text));
+                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                                     NuevaConexion.ComandoDb.Parameters.Clear();
 
@@ -475,8 +474,7 @@ namespace PELOSCALVO
                             NuevaConexion = new ClsConexionDb(ConsultaEjercios);////Guarda Ejercicio a empresa
                             if (NuevaConexion.SiConexionDb)
                             {
-                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", Ejercicio + "/" + this.idEmpresa.Text + "/" + "1");
-                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value :Convert.ToInt32( this.idEmpresa.Text));
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", Basica);
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", 21);
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjerciciosDeAño", Ejercicio);
@@ -484,19 +482,19 @@ namespace PELOSCALVO
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", String.Format("{0:yyyy}", DateTime.Now));
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
                                 NuevaConexion.ComandoDb.Parameters.Clear();
-                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica , 21,Ejercicio ,this.idEmpresa.Text,1,
+                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica, 21, Ejercicio, this.idEmpresa.Text, 1,
                                     String.Format("{0:yyyy}", DateTime.Now), Ejercicio + "/" + this.idEmpresa.Text + "/" + "1");
                             }
-                            
+
                             NuevaConexion = new ClsConexionDb(Almacenes);////Guarda almacen
                             if (NuevaConexion.SiConexionDb)
                             {
-                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id",1);
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", 1);
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@Almacenes", "Almacen Central");
-                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", Convert.ToInt32(idEmpresa.Text));
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", Convert.ToInt32(this.idEmpresa.Text));
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
                                 NuevaConexion.ComandoDb.Parameters.Clear();
-                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.Rows.Add(1, "Almacen Central", Convert.ToInt32(idEmpresa.Text));
+                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.Rows.Add(1, "Almacen Central", Convert.ToInt32(this.idEmpresa.Text));
                             }
                         }
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -637,7 +635,7 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEmpresa",Convert.ToInt32( this.idEmpresa.Text));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEmpresa", Convert.ToInt32(this.idEmpresa.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dtConfiguracionPrincipalDataGridView.Rows.RemoveAt(this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex);
                             this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -677,7 +675,7 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEmpresa",Convert.ToInt32( this.idEmpresa.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEmpresa", Convert.ToInt32(this.idEmpresa.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dtConfiguracionPrincipalDataGridView.Rows.RemoveAt(this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex);
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -734,7 +732,7 @@ namespace PELOSCALVO
         {
             if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
             {
-              ///  this.EmpresaReguistro.Text = this.EmpresaRazonTxt.Text;///NO HACE FALTA
+                ///  this.EmpresaReguistro.Text = this.EmpresaRazonTxt.Text;///NO HACE FALTA
             }
         }
 
@@ -757,6 +755,6 @@ namespace PELOSCALVO
             SystemSounds.Beep.Play();
         }
 
-    
+
     }
 }

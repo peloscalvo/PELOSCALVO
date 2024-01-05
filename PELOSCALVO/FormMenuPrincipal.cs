@@ -26,13 +26,14 @@ namespace PELOSCALVO
             InitializeComponent();         
             ToolTip Info = new ToolTip();
             Info.SetToolTip(BtnSql, "Configurar Conexion A Datos");
-            Info.SetToolTip(BtnCarpeteDatos, "Abrir Carpeta Datos");
             Info.IsBalloon = true;
             Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             ToolTip Info2 = new ToolTip();
             Info2.SetToolTip(BtnCalculadora, "Calculadora");
             Info2.SetToolTip(BtnAbrirChrome, "Navegador Chrome");
             Info2.SetToolTip(BtnArchivos, "Abrir Archivos");
+            Info2.SetToolTip(BtnCarpeteDatos, "Abrir Explorador Datos");
+            Info.SetToolTip(BtnCarpetasPdf, "Abrir Explorador P.D.F");
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
@@ -996,6 +997,11 @@ namespace PELOSCALVO
             {
                 e.Cancel = true;
             }
+        }
+
+        private void BtnInfo_MouseEnter(object sender, EventArgs e)
+        {
+            MessageBox.Show(PanelForms.Controls.Count.ToString());
         }
 
         private void BtnSql_Click(object sender, EventArgs e)

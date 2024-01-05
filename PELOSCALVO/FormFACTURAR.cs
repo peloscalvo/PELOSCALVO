@@ -343,6 +343,7 @@ namespace PELOSCALVO
             this.errorProvider1.SetError(this.direccionTextBox, "");
             this.errorProvider1.SetError(this.dniTextBox, "");
             this.errorProvider1.SetError(this.NumeroFactura, "");
+            this.errorProvider1.SetError(this.AlmacenTxt, "");
         }
 
 
@@ -403,8 +404,6 @@ namespace PELOSCALVO
             }
 
             ClsConexionDb NuevaConexion = new ClsConexionDb(Consulta);
-
-
             if (NuevaConexion.SiConexionDb)
             {
                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : this.EnlaceFactu.Text);
@@ -911,7 +910,7 @@ namespace PELOSCALVO
                 {
                     if (this.panelBotones.Tag.ToString() == "Modificar")
                     {
-                       /// GuardarRestaurarStockDb();
+                        /// GuardarRestaurarStockDb();
                     }
                     GuardarStockSql(this.dtDetallesFacturaDataGridView);
                 }
@@ -1075,7 +1074,7 @@ namespace PELOSCALVO
                         return;
                     }
                 }
-                if (MessageBox.Show(" ¿Aceptar Guardar ? ", " GUARDAR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(" ¿Aceptar Guardar ? ", " GUARDAR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
@@ -1096,27 +1095,19 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                        try
+
+                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                            {
-                                GuardarFactuDB();
-
-                            }
-                            else
-                            {
-                                MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO SE ENCUENTRA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            }
-                            // RestaraurarOjetosFatu();
-
+                            GuardarFactuDB();
 
                         }
-                        catch (Exception ex)
+                        else
                         {
+                            MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO SE ENCUENTRA", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                            MessageBox.Show(ex.Message, "ERROR AL GUARDAR DATOS A ARCHIVO XML");
                         }
+                        // RestaraurarOjetosFatu();
+
                     }
 
 
@@ -2861,11 +2852,11 @@ namespace PELOSCALVO
                     NombreItem = NombreItem.Replace("DuplicarArticulo", "");
                     Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex + 1;
                     var row = this.dsFacturas.DtDetallesFactura.NewRow();
-
-                    this.dtDetallesFacturaBindingSource.Insert(Fila, row);
+                    //this.dtDetallesFacturaBindingSource.Insert(Fila, row);
+                    this.dtDetallesFacturaDataGridView.Rows.Insert(Fila, row);
                     if (!string.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[3].Value.ToString()))
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[Fila + 1].Cells[3].Value = this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[3].Value;
+                        //  this.dtDetallesFacturaDataGridView.Rows[Fila + 1].Cells[3].Value = this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[3].Value;
                     }
 
                 }
@@ -2972,7 +2963,7 @@ namespace PELOSCALVO
 
         private void EmpresaPrincipal_MouseEnter(object sender, EventArgs e)
         {
-            Id_Empresa.Width = 246;
+            this.Id_Empresa.Width = 246;
 
         }
 
@@ -2983,7 +2974,7 @@ namespace PELOSCALVO
 
         private void EmpresaPrincipal_MouseLeave(object sender, EventArgs e)
         {
-            Id_Empresa.Width = 0;
+            this.Id_Empresa.Width = 0;
         }
 
         private void ejerciciosDeAñoComboBox_Click_1(object sender, EventArgs e)
@@ -3009,12 +3000,12 @@ namespace PELOSCALVO
 
         private void PanelArriba_MouseEnter(object sender, EventArgs e)
         {
-            Id_Empresa.Width = 246;
+            this.Id_Empresa.Width = 246;
         }
 
         private void PanelArriba_MouseLeave(object sender, EventArgs e)
         {
-            Id_Empresa.Width = 0;
+            this.Id_Empresa.Width = 0;
         }
     }
 }

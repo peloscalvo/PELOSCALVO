@@ -36,30 +36,7 @@ namespace PELOSCALVO
 
                 // throw;
             }
-            try
-            {       
-                this.CorreosbindingSource.DataSource = ClassCorreosDB.DtCorreos;
-                this.CorreosClientebindingSource.DataSource = ClassCorreosDB.DtCorreosCliente;
-                //this.DatagridCorreosEmpresa.Columns[1].Width = 190;//NombreEmpresa
-                //  this.DatagridCorreosEmpresa.Columns[2].Width = 140;//CorreoEletronico
-                // this.DatagridCorreosEmpresa.Columns[3].Width = 120;//Usuario
-                // this.DatagridCorreosEmpresa.Columns[4].Width = 120;//Contraseña
-                // this.DatagridCorreosEmpresa.Columns[5].Width = 60;//smtp
-                // this.DatagridCorreosEmpresa.Columns[6].Width = 60;//tiempoespera
-                //DatagridCorreosEmpresa.Columns[6].Width = 60;//eliminar
 
-                // this.DataGridCorreoCliente.Columns[1].Width = 190;//RazonSocial
-                //  this.DataGridCorreoCliente.Columns[1].Width = 140;//EmpresaNombre
-                //  this.DataGridCorreoCliente.Columns[2].Width = 140;//Direcion
-                // this.DataGridCorreoCliente.Columns[3].Width = 120;//CorreoEletronico_cli
-                // DataGridCorreoCliente.Columns[4].Width = 140;//eliminar
-                //DatagridCorreosEmpresa.Columns[0].Width = 60;//Puerto
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
 
         }
         private bool EspacioDiscosCorreo_EMP(string nombreDisco, int Espacio)
@@ -160,22 +137,22 @@ namespace PELOSCALVO
             if (this.EmpresaCli.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.EmpresaCli, "_ingresar Nonbre Nombre Empreasa valido (( minimo 4 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.EmpresaCli, "_ingresar Nonbre  valido (( minimo 4 Caracteres))");
             }
             if (this.CorreoEletronicoCli.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.CorreoEletronicoCli, "_ingresar Nonbre Nombre Correeo Eletronico valido (( minimo 4 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.CorreoEletronicoCli, "_ingresar Correeo Eletronico valido (( minimo 4 Caracteres))");
             }
             if (this.RazonSocial.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.RazonSocial, "_ingresar Nonbre Nombre Razon Social valido (( minimo 4 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.RazonSocial, "_ingresar Razon Social valido (( minimo 4 Caracteres))");
             }
             if (this.Direcion.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.Direcion, "_ingresar Nonbre Nombre Direccion valido (( minimo 4 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.Direcion, "_ingresar Direccion valido (( minimo 4 Caracteres))");
             }
             return ok;
         }
@@ -194,28 +171,28 @@ namespace PELOSCALVO
             if (this.NombreEmpresa.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.NombreEmpresa, "_ingresar Nonbre Nombre Empreasa valido (( minimo 4 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.NombreEmpresa, "_ingresar Nonbre De Empreasa valido (( minimo 4 Caracteres))");
             }
             if (this.CorreoEletronico.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.CorreoEletronico, "_ingresar Nonbre Nombre Correeo Eletronico valido (( minimo 4 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.CorreoEletronico, "_ingresar Correeo Eletronico valido (( minimo 4 Caracteres))");
             }
             if (this.Usuario.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.Usuario, "_ingresar Nonbre Nombre USUARIO valido (( minimo 4 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.Usuario, "_ingresar USUARIO valido (( minimo 4 Caracteres))");
             }
 
             if (this.Contraseña.Text == string.Empty)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.Contraseña, "_ingresar Nonbre Nombre CONTRASEÑA valido (( minimo 1 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.Contraseña, "_ingresar CONTRASEÑA valido (( minimo 1 Caracteres))");
             }
             if (this.smtp.Text == String.Empty)
             {
                 ok = false;
-                this.ErrorCorreosCrear.SetError(this.smtp, "_ingresar Nonbre Nombre SMTP valido (( minimo 1 Caracteres))");
+                this.ErrorCorreosCrear.SetError(this.smtp, "_ingresar SMTP valido (( minimo 1 Caracteres))");
             }
             if (this.Puerto.Text == String.Empty)
             {
@@ -326,7 +303,9 @@ namespace PELOSCALVO
                 }
                 if (!string.IsNullOrEmpty(this.Contraseña.Text))
                 {
-                    this.DatagridCorreosEmpresa.Rows[II].Cells[4].Value = this.Contraseña.Text.ToString();
+                    ClasCodificarPass Codificar = new ClasCodificarPass();
+                    string Pass = Codificar.Codificar(this.Contraseña.Text);
+                    this.DatagridCorreosEmpresa.Rows[II].Cells[4].Value = Pass;
                 }
                 if (!string.IsNullOrEmpty(this.smtp.Text))
                 {
@@ -381,9 +360,9 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
-                        this.Contraseña.Text = Pass;
+                     
                         ClassCorreosDB.DtCorreos.Rows.Add(this.Id_Correo_E.Text, this.NombreEmpresa.Text, this.CorreoEletronico.Text, this.Usuario.Text,
-                               this.Contraseña.Text, this.smtp.Text, this.Puerto.Text, this.Timeof.Text);
+                               Pass, this.smtp.Text, this.Puerto.Text, this.Timeof.Text);
                     }
                     else
                     {
@@ -491,9 +470,8 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CorreoEletronico_cli", string.IsNullOrEmpty(this.CorreoEletronicoCli.Text) ? (object)DBNull.Value : this.CorreoEletronicoCli.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-                    if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
-                    {
-    
+                    if (this.PanelBotonesCorreoCli.Tag.ToString() == "Nuevo")
+                    {  
                         ClassCorreosDB.DtCorreosCliente.Rows.Add(this.Id_CorreoCli.Text, this.RazonSocial.Text, this.EmpresaCli.Text, this.Direcion.Text,
                       this.CorreoEletronicoCli.Text);
                     }
@@ -557,9 +535,9 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
-                        this.Contraseña.Text = Pass;
+                 
                         ClassCorreosDB.DtCorreos.Rows.Add(this.Id_Correo_E.Text, this.NombreEmpresa.Text, this.CorreoEletronico.Text, this.Usuario.Text,
-                               this.Contraseña.Text, this.smtp.Text, this.Puerto.Text, this.Timeof.Text);
+                               Pass, this.smtp.Text, this.Puerto.Text, this.Timeof.Text);
                     }
                     else
                     {
@@ -865,17 +843,19 @@ namespace PELOSCALVO
                         {
                             foreach (DataGridViewRow fila in this.DatagridCorreosEmpresa.Rows)
                             {
-                                if (fila.Cells[1].ToString() == this.CorreoEletronico.Text)
+                                if (!string.IsNullOrEmpty(fila.Cells[1].ToString()))
                                 {
-                                    if (this.DatagridCorreosEmpresa.CurrentCell.RowIndex == fila.Index)
+                                    if (fila.Cells[1].ToString() == this.CorreoEletronico.Text)
                                     {
-                                        break;
+                                        if (this.DatagridCorreosEmpresa.CurrentCell.RowIndex == fila.Index)
+                                        {
+                                            break;
+                                        }
+                                        MessageBox.Show(this.CorreoEletronico.Text.ToString(), "YA EXISTE ESTA CORREO ELETRONICO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        // this.CorreoEletronico.Focus();
+
                                     }
-                                    MessageBox.Show(this.CorreoEletronico.Text.ToString(), "YA EXISTE ESTA CORREO ELETRONICO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    // this.CorreoEletronico.Focus();
-
                                 }
-
                             }
                         }
                         catch (Exception ex)
@@ -917,8 +897,8 @@ namespace PELOSCALVO
                 {
                     if (this.PanelBotones_CorreoEmp.Tag.ToString() == "Nuevo")
                     {
-
-                        this.DatagridCorreosEmpresa.Rows.RemoveAt(this.DatagridCorreosEmpresa.CurrentCell.RowIndex);
+                       // LimpiarCorreo_Empresa();
+                       // this.DatagridCorreosEmpresa.Rows.RemoveAt(this.DatagridCorreosEmpresa.CurrentCell.RowIndex);
 
                     }
                 }
@@ -1060,7 +1040,7 @@ namespace PELOSCALVO
                     if (this.PanelBotonesCorreoCli.Tag.ToString() == "Nuevo")
                     {
 
-                        this.DataGridCorreoCliente.Rows.RemoveAt(this.DataGridCorreoCliente.CurrentCell.RowIndex);
+                      //  this.DataGridCorreoCliente.Rows.RemoveAt(this.DataGridCorreoCliente.CurrentCell.RowIndex);
 
                     }
                 }
@@ -1096,15 +1076,18 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.DataGridCorreoCliente.Rows)
                         {
-                            if (fila.Cells[1].ToString() == this.CorreoEletronicoCli.Text)
+                            if (!string.IsNullOrEmpty(fila.Cells[1].ToString()))
                             {
-                                if (this.DataGridCorreoCliente.CurrentCell.RowIndex == fila.Index)
+                                if (fila.Cells[1].ToString() == this.CorreoEletronicoCli.Text)
                                 {
-                                    break;
-                                }
-                                MessageBox.Show(this.CorreoEletronicoCli.Text.ToString(), "YA EXISTE ESTA CORREO ELETRONICO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                // this.CorreoEletronico.Focus();
+                                    if (this.DataGridCorreoCliente.CurrentCell.RowIndex == fila.Index)
+                                    {
+                                        break;
+                                    }
+                                    MessageBox.Show(this.CorreoEletronicoCli.Text.ToString(), "YA EXISTE ESTA CORREO ELETRONICO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    // this.CorreoEletronico.Focus();
 
+                                }
                             }
 
                         }
