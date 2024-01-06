@@ -44,6 +44,7 @@ namespace PELOSCALVO
             this.BtnGuardarAlmacen.Enabled = true;
             this.BtnCancelarAlmacen.Enabled = true;
             this.dataGridAlmacenes.Enabled = false;
+            SelecionarEmpresa2.Enabled = false;
         }
         private void RestaurarOjetos_Alm()
         {
@@ -51,6 +52,7 @@ namespace PELOSCALVO
             this.BtnGuardarAlmacen.Enabled = false;
             this.BtnCancelarAlmacen.Enabled = false;
             this.dataGridAlmacenes.Enabled = true;
+            SelecionarEmpresa2.Enabled = true;
         }
         private bool EspacioDiscosAlmacen(string nombreDisco, int Espacio)
         {
@@ -425,7 +427,11 @@ namespace PELOSCALVO
 
         private void BtnBuscarAlmacen_Click(object sender, EventArgs e)
         {
-
+            FormBuscar frm = new FormBuscar();
+            frm.CargarDatos(1, " Almacenes", "Almacenes");
+            frm.BringToFront();
+            ClasDatos.QUEform = "Almacen";
+            frm.ShowDialog();
         }
     }
 }

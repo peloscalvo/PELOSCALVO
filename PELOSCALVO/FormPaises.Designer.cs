@@ -53,7 +53,6 @@ namespace PELOSCALVO
             this.dataGridPais = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paises = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).BeginInit();
@@ -309,8 +308,7 @@ namespace PELOSCALVO
             this.dataGridPais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPais.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.paises,
-            this.IdFila});
+            this.paises});
             this.dataGridPais.DataSource = this.DtPaisBindinsource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -348,13 +346,6 @@ namespace PELOSCALVO
             this.paises.HeaderText = "Paises";
             this.paises.Name = "paises";
             this.paises.ReadOnly = true;
-            // 
-            // IdFila
-            // 
-            this.IdFila.HeaderText = "IdFila";
-            this.IdFila.Name = "IdFila";
-            this.IdFila.ReadOnly = true;
-            this.IdFila.Visible = false;
             // 
             // FormPaises
             // 
@@ -403,6 +394,5 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn PaisesPaises;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paises;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdFila;
     }
 }

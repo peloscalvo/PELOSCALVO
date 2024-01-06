@@ -109,6 +109,7 @@ namespace PELOSCALVO
             this.ContadorClientes = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.Conectado = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.BtnArchivos = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
@@ -137,7 +138,6 @@ namespace PELOSCALVO
             this.BtnCarpeteDatos = new System.Windows.Forms.Button();
             this.BtnCalculadora = new System.Windows.Forms.Button();
             this.Logo2 = new System.Windows.Forms.Label();
-            this.btnNormal = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.btnMaximizar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
@@ -169,6 +169,7 @@ namespace PELOSCALVO
             this.Panel_info2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
@@ -1044,6 +1045,7 @@ namespace PELOSCALVO
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.panelMenu.Controls.Add(this.Conectado);
             this.panelMenu.Controls.Add(this.pictureBox7);
             this.panelMenu.Controls.Add(this.BtnArchivos);
             this.panelMenu.Controls.Add(this.btnConfiguracion);
@@ -1067,6 +1069,17 @@ namespace PELOSCALVO
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(230, 557);
             this.panelMenu.TabIndex = 2;
+            // 
+            // Conectado
+            // 
+            this.Conectado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Conectado.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
+            this.Conectado.Location = new System.Drawing.Point(12, 15);
+            this.Conectado.Name = "Conectado";
+            this.Conectado.Size = new System.Drawing.Size(22, 22);
+            this.Conectado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Conectado.TabIndex = 85;
+            this.Conectado.TabStop = false;
             // 
             // pictureBox7
             // 
@@ -1355,12 +1368,12 @@ namespace PELOSCALVO
             this.PanelBarraTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelBarraTitulo.Controls.Add(this.panelAplicaciones);
             this.PanelBarraTitulo.Controls.Add(this.Logo2);
-            this.PanelBarraTitulo.Controls.Add(this.btnNormal);
             this.PanelBarraTitulo.Controls.Add(this.btnMinimizar);
             this.PanelBarraTitulo.Controls.Add(this.btnMaximizar);
             this.PanelBarraTitulo.Controls.Add(this.btnCerrar);
             this.PanelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelBarraTitulo.Location = new System.Drawing.Point(0, 0);
+            this.PanelBarraTitulo.Margin = new System.Windows.Forms.Padding(0);
             this.PanelBarraTitulo.Name = "PanelBarraTitulo";
             this.PanelBarraTitulo.Size = new System.Drawing.Size(1100, 43);
             this.PanelBarraTitulo.TabIndex = 1;
@@ -1380,7 +1393,7 @@ namespace PELOSCALVO
             this.panelAplicaciones.Controls.Add(this.BtnSql);
             this.panelAplicaciones.Controls.Add(this.BtnCarpeteDatos);
             this.panelAplicaciones.Controls.Add(this.BtnCalculadora);
-            this.panelAplicaciones.Location = new System.Drawing.Point(232, 5);
+            this.panelAplicaciones.Location = new System.Drawing.Point(256, 6);
             this.panelAplicaciones.Margin = new System.Windows.Forms.Padding(1);
             this.panelAplicaciones.Name = "panelAplicaciones";
             this.panelAplicaciones.Size = new System.Drawing.Size(679, 32);
@@ -1511,28 +1524,12 @@ namespace PELOSCALVO
             this.Logo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.Logo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logo2.ForeColor = System.Drawing.Color.White;
-            this.Logo2.Location = new System.Drawing.Point(35, 15);
+            this.Logo2.Location = new System.Drawing.Point(5, 13);
             this.Logo2.Name = "Logo2";
             this.Logo2.Size = new System.Drawing.Size(96, 16);
             this.Logo2.TabIndex = 4;
             this.Logo2.Text = "PELOSCALVO";
             this.Logo2.MouseEnter += new System.EventHandler(this.Logo2_MouseEnter);
-            // 
-            // btnNormal
-            // 
-            this.btnNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNormal.BackgroundImage = global::PELOSCALVO.Properties.Resources.Normal;
-            this.btnNormal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNormal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNormal.FlatAppearance.BorderSize = 0;
-            this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNormal.Location = new System.Drawing.Point(992, 0);
-            this.btnNormal.Name = "btnNormal";
-            this.btnNormal.Size = new System.Drawing.Size(43, 43);
-            this.btnNormal.TabIndex = 3;
-            this.btnNormal.UseVisualStyleBackColor = true;
-            this.btnNormal.Visible = false;
-            this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
             // 
             // btnMinimizar
             // 
@@ -1552,7 +1549,7 @@ namespace PELOSCALVO
             // btnMaximizar
             // 
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.BackgroundImage = global::PELOSCALVO.Properties.Resources.maximize2;
+            this.btnMaximizar.BackgroundImage = global::PELOSCALVO.Properties.Resources.Normal;
             this.btnMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.FlatAppearance.BorderSize = 0;
@@ -1561,6 +1558,7 @@ namespace PELOSCALVO
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(43, 43);
             this.btnMaximizar.TabIndex = 1;
+            this.btnMaximizar.Tag = "MIN";
             this.btnMaximizar.UseVisualStyleBackColor = true;
             this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
@@ -1718,6 +1716,7 @@ namespace PELOSCALVO
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
@@ -1749,7 +1748,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Panel panelContenedorPrincipal;
         private System.Windows.Forms.Panel PanelBarraTitulo;
         private System.Windows.Forms.Label Logo2;
-        private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Button btnMaximizar;
         private System.Windows.Forms.Button btnCerrar;
@@ -1873,6 +1871,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.ToolStripMenuItem datosDeInicioToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label Info_Carpeta;
+        public System.Windows.Forms.PictureBox Conectado;
     }
 }
 

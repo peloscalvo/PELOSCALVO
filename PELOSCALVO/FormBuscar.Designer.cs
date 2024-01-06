@@ -30,7 +30,6 @@ namespace PELOSCALVO
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscar));
             this.DataGridBuscar = new System.Windows.Forms.DataGridView();
             this.Buscador2 = new System.Windows.Forms.TextBox();
@@ -39,7 +38,6 @@ namespace PELOSCALVO
             this.Contador3 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBuscar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,8 +49,7 @@ namespace PELOSCALVO
             this.DataGridBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridBuscar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.Dato,
-            this.IdFila});
+            this.Dato});
             this.DataGridBuscar.Location = new System.Drawing.Point(2, 63);
             this.DataGridBuscar.Name = "DataGridBuscar";
             this.DataGridBuscar.ReadOnly = true;
@@ -67,7 +64,7 @@ namespace PELOSCALVO
             this.Buscador2.Location = new System.Drawing.Point(220, 12);
             this.Buscador2.Name = "Buscador2";
             this.Buscador2.Size = new System.Drawing.Size(366, 20);
-            this.Buscador2.TabIndex = 6;
+            this.Buscador2.TabIndex = 1;
             this.Buscador2.TextChanged += new System.EventHandler(this.Buscador2_TextChanged);
             // 
             // TipoBuscar2
@@ -80,7 +77,7 @@ namespace PELOSCALVO
             this.TipoBuscar2.Location = new System.Drawing.Point(4, 12);
             this.TipoBuscar2.Name = "TipoBuscar2";
             this.TipoBuscar2.Size = new System.Drawing.Size(195, 21);
-            this.TipoBuscar2.TabIndex = 5;
+            this.TipoBuscar2.TabIndex = 2;
             this.TipoBuscar2.Text = "Todos";
             // 
             // label1
@@ -123,15 +120,6 @@ namespace PELOSCALVO
             this.Dato.Name = "Dato";
             this.Dato.ReadOnly = true;
             // 
-            // IdFila
-            // 
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.IdFila.DefaultCellStyle = dataGridViewCellStyle2;
-            this.IdFila.HeaderText = "IdFila";
-            this.IdFila.Name = "IdFila";
-            this.IdFila.ReadOnly = true;
-            // 
             // FormBuscar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +153,5 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label Contador3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dato;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdFila;
     }
 }

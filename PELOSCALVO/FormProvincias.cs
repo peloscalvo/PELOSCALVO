@@ -31,18 +31,9 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
-            AñadirIdProvincias();
-        }
-        public void AñadirIdProvincias()
-        {
-            int ii = 0;
-            foreach (DataGridViewRow fila in this.dataGridProvincias.Rows)
-            {
-                fila.Cells["IdFila"].Value = ii.ToString();
-                ii++;
-            }
 
         }
+
         private void ModificarOjetosProvi()
         {
             this.ProvinciaText.ReadOnly = false;
@@ -124,7 +115,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "PROVINCIAS");
+                MessageBox.Show(ex.Message, "PROVINCIAS ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
@@ -167,7 +158,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "PROVINCIAS");
+                MessageBox.Show(ex.Message, "PROVINCIAS ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -202,7 +193,7 @@ namespace PELOSCALVO
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show(ex.Message, "PROVINCIAS ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -244,7 +235,7 @@ namespace PELOSCALVO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "PROVINCIAS ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

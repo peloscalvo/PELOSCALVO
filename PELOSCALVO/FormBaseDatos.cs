@@ -301,6 +301,7 @@ namespace PELOSCALVO
                     this.CheckActivarDb.Checked = false;
                     this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
+                  FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
                 }
             }
             else
@@ -312,6 +313,7 @@ namespace PELOSCALVO
                     this.CheckActivarDb.Checked = true;
                     this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO1;
                 }
             }
         }

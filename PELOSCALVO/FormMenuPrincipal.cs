@@ -174,14 +174,24 @@ namespace PELOSCALVO
         int sw, sh;
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            this.lx = this.Location.X;
-            this.ly = this.Location.Y;
-            this.sw = this.Size.Width;
-            this.sh = this.Size.Height;
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-            this.btnMaximizar.Visible = false;
-            this.btnNormal.Visible = true;
+            if (btnMaximizar.Tag.ToString() == "MIN")
+            {
+                btnMaximizar.Tag = "MAX";
+                this.Size = new Size(this.sw, this.sh);
+                this.Location = new Point(this.lx, this.ly);
+                btnMaximizar.Image = Properties.Resources.maximize2;
+            }
+            else
+            {
+                btnMaximizar.Tag = "MIN";
+                this.lx = this.Location.X;
+                this.ly = this.Location.Y;
+                this.sw = this.Size.Width;
+                this.sh = this.Size.Height;
+                this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+                this.Location = Screen.PrimaryScreen.WorkingArea.Location;
+                btnMaximizar.Image = Properties.Resources.Normal;
+            }
 
         }
 
@@ -189,8 +199,8 @@ namespace PELOSCALVO
         {
             this.Size = new Size(this.sw, this.sh);
             this.Location = new Point(this.lx, this.ly);
-            this.btnNormal.Visible = false;
-            this.btnMaximizar.Visible = true;
+           // this.btnNormal.Visible = false;
+           // this.btnMaximizar.Visible = true;
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -1001,7 +1011,7 @@ namespace PELOSCALVO
 
         private void BtnInfo_MouseEnter(object sender, EventArgs e)
         {
-            MessageBox.Show(PanelForms.Controls.Count.ToString());
+            //MessageBox.Show(PanelForms.Controls.Count.ToString());
         }
 
         private void BtnSql_Click(object sender, EventArgs e)

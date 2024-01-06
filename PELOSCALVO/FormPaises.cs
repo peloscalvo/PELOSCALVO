@@ -30,18 +30,9 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
-            AñadirIdBuscar();
+           // AñadirIdBuscar();
         }
-        public void AñadirIdBuscar()
-        {
-            int ii = 0;
-            foreach (DataGridViewRow fila in this.dataGridPais.Rows)
-            {
-                fila.Cells["IdFila"].Value = ii.ToString();
-                ii++;
-            }
 
-        }
         private void ModificarOjetosPais()
         {
             this.NombrePais.ReadOnly = false;

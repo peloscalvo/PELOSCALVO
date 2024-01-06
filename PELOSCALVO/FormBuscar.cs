@@ -18,25 +18,55 @@ namespace PELOSCALVO
 
         private void FormBuscar_Load(object sender, EventArgs e)
         {
-            if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
+            try
             {
-                if (ClasDatos.QUEform == "Paises")
+                if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
-                    this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
-                    // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                    this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                    if (ClasDatos.QUEform == "Paises")
+                    {
+                        this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
+                        // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                    }
+                    if (ClasDatos.QUEform == "Provincias")
+                    {
+                        this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias.DefaultView;
+                        // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
+                        this.DataGridBuscar.Columns[3].Visible = false;
+                    }
+
+                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+                    {
+                        if (ClasDatos.QUEform == "Almacen")
+                        {
+
+                            this.verViev = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.DefaultView;
+                            // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                            this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes;
+                        }
+                    }
                 }
-                if (ClasDatos.QUEform == "Provincias")
-                {
-                    this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias.DefaultView;
-                    // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                    this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
-                }
+                AñadirIdBuscar();
+                Buscador2.Focus();
+                // this.BindingBuscarSource.DataSource = DataSourceDatos;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // this.BindingBuscarSource.DataSource = DataSourceDatos;
-            // this.DataGridBuscar.Columns[1].HeaderText = Columna;
 
+        }
+        public void AñadirIdBuscar()
+        {
+            int ii = 0;
+            foreach (DataGridViewRow fila in this.DataGridBuscar.Rows)
+            {
+                fila.Cells["IdFila"].Value = ii.ToString();
+                ii++;
+            }
 
         }
         public void CargarDatos(int IdFila, string Nombrefila, string colunma)
@@ -47,7 +77,8 @@ namespace PELOSCALVO
             this.DataGridBuscar.Columns[1].HeaderText = Nombrefila;
             this.DataGridBuscar.Columns[0].DataPropertyName = "Id";
             this.DataGridBuscar.Columns[1].DataPropertyName = colunma;
-            this.DataGridBuscar.Columns[2].DataPropertyName = "IdFila";
+            //this.DataGridBuscar.Columns[2].DataPropertyName = "IdFila";
+            this.DataGridBuscar.Columns.Add("IdFila", "Id_F");
         }
         public void BuscarDatos()
         {
