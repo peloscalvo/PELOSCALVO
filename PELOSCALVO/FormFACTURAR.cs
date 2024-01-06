@@ -1076,17 +1076,21 @@ namespace PELOSCALVO
                 }
                 if (MessageBox.Show(" ¿Aceptar Guardar ? ", " GUARDAR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-
-                    int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
-                    if (this.cobradaFacturaCheckBox.Checked == true)
+                    if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
                     {
-                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                        int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
+                        if (this.cobradaFacturaCheckBox.Checked == true)
+                        {
+                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                        }
+                        else
+                        {
+                            //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
+                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+                        }
                     }
-                    else
-                    {
-                        //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
-                    }
+               
+         
 
                     if (ClsConexionSql.SibaseDatosSql)
                     {

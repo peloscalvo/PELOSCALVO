@@ -208,11 +208,7 @@ namespace PELOSCALVO
         }
         private void GuardarClientesDb()
         {
-            string DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text + " De Clientes";
-            if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
-            {
-                DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text;
-            }
+            string DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text;
             string Consulta = "";
             if (this.panelBotonesClientes.Tag.ToString() == "Nuevo")
             {
@@ -289,7 +285,7 @@ namespace PELOSCALVO
         }
         private void GuardarClientesSql()
         {
-            string DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text + " De Clientes";
+            string DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text;
             string Consulta = "";
             if (this.panelBotonesClientes.Tag.ToString() == "Nuevo")
             {
@@ -389,8 +385,8 @@ namespace PELOSCALVO
                 }
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
-                    this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
-                    this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
+                    this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                   // this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
 
                 }
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)

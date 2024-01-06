@@ -420,8 +420,6 @@ namespace PELOSCALVO
                     AdactaPelos.Fill(ClassCorreosDB.DtCorreos);
                     AdactaPelos.Dispose();
 
-                    this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
-
                 }
             }
             catch (Exception ex)
@@ -481,8 +479,6 @@ namespace PELOSCALVO
                     AdactaPelos = new SqlDataAdapter(ConsultaCorreoEmpresa, ClsConexionDb.CadenaConexion);
                     AdactaPelos.Fill(ClassCorreosDB.DtCorreos);
                     AdactaPelos.Dispose();
-
-                    this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
 
                 }
             }
