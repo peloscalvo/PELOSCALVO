@@ -169,7 +169,7 @@ namespace PELOSCALVO
                                 {
                                     if (!string.IsNullOrEmpty((reader["IdEnlace"]).ToString()))
                                     {
-                                        this.IdEnlace.Text = reader["IdEnlace"].ToString();
+                                        this.IdEnlace.Text =Convert.ToInt32( reader["IdEnlace"].ToString()+1).ToString();
                                     }
                                 }
                             }
@@ -180,7 +180,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"ERROR GUARDAR",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
@@ -239,7 +239,7 @@ namespace PELOSCALVO
                                 {
                                     if (!string.IsNullOrEmpty((reader["IdEnlace"]).ToString()))
                                     {
-                                        this.IdEnlace.Text = reader["IdEnlace"].ToString();
+                                        this.IdEnlace.Text = Convert.ToInt32(reader["IdEnlace"].ToString() + 1).ToString();
                                     }
                                 }
                             }
@@ -250,7 +250,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "ERROR GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -281,7 +281,7 @@ namespace PELOSCALVO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -313,7 +313,7 @@ namespace PELOSCALVO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

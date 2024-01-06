@@ -304,7 +304,8 @@ namespace PELOSCALVO
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", String.Format("{0:yyyy}", DateTime.Now));
                                 NuevaConexion.ComandoSql.ExecuteNonQuery();
                                 NuevaConexion.ComandoSql.Parameters.Clear();
-
+                                FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica, 21, Ejercicio, this.idEmpresa.Text, 1,
+                                  String.Format("{0:yyyy}", DateTime.Now));
                             }
                             this.dtConfiguracionPrincipalBindingSource.EndEdit();
                             Validate();
@@ -484,7 +485,7 @@ namespace PELOSCALVO
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
                                 NuevaConexion.ComandoDb.Parameters.Clear();
                                 FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica, 21, Ejercicio, this.idEmpresa.Text, 1,
-                                    String.Format("{0:yyyy}", DateTime.Now), Ejercicio + "/" + this.idEmpresa.Text + "/" + "1");
+                                    String.Format("{0:yyyy}", DateTime.Now));
                             }
 
                             NuevaConexion = new ClsConexionDb(Almacenes);////Guarda almacen
