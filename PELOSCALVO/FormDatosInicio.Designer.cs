@@ -322,8 +322,8 @@ namespace PELOSCALVO
             // 
             // dtConfiBindingSource
             // 
-            this.dtConfiBindingSource.DataMember = "DtConfi";
-            this.dtConfiBindingSource.DataSource = this.dsCONFIGURACCION;
+            this.dtConfiBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtConfi";
+            this.dtConfiBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // ArchivoArticuloTxt
             // 

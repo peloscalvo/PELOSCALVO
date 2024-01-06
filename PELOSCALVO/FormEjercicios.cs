@@ -67,24 +67,24 @@ namespace PELOSCALVO
                 ok = false;
                 this.ErrorEjercicios.SetError(this.IdConfi, "_ingresar Id valido (( Vacio no Valido))");
             }
-            if (this.configuraccionBasicaTextBox.Text.Length < 4)
+            if (this.DescripicionEjer.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorEjercicios.SetError(this.configuraccionBasicaTextBox, "_ingresar Descripccion valido (( minimo 4 Caracteres))");
+                this.ErrorEjercicios.SetError(this.DescripicionEjer, "_ingresar Descripccion valido (( minimo 4 Caracteres))");
             }
-            if (this.ejerciciosDeAñoTextBox.Text.Length < 4)
+            if (this.EjercicioTxt.Text.Length < 4)
             {
                 ok = false;
-                this.ErrorEjercicios.SetError(this.ejerciciosDeAñoTextBox, "_ingresar Ejercicio valido (( minimo 4 Caracteres))");
+                this.ErrorEjercicios.SetError(this.EjercicioTxt, "_ingresar Ejercicio valido (( minimo 4 Caracteres))");
             }
             if (string.IsNullOrEmpty(this.IdEmpresa.Text))
             {
                 ok = false;
                 this.ErrorEjercicios.SetError(this.IdEmpresa, "_ingresar Id Empresa valido (( Vacio no Valido))");
-                if (this.añoDeEjercicioTextBox.Text.Length < 4)
+                if (this.AñoTxt.Text.Length < 4)
                 {
                     ok = false;
-                    this.ErrorEjercicios.SetError(this.añoDeEjercicioTextBox, "_ingresar Año valido (( minimo 4 Caracteres))");
+                    this.ErrorEjercicios.SetError(this.AñoTxt, "_ingresar Año valido (( minimo 4 Caracteres))");
                 }
             }
             return ok;
@@ -92,33 +92,33 @@ namespace PELOSCALVO
         private void BorrarErroresBasica()
         {
             this.ErrorEjercicios.SetError(this.IdConfi, "");
-            this.ErrorEjercicios.SetError(this.configuraccionBasicaTextBox, "");
-            this.ErrorEjercicios.SetError(this.ejerciciosDeAñoTextBox, "");
+            this.ErrorEjercicios.SetError(this.DescripicionEjer, "");
+            this.ErrorEjercicios.SetError(this.EjercicioTxt, "");
             this.ErrorEjercicios.SetError(this.IdEmpresa, "");
-            this.ErrorEjercicios.SetError(this.añoDeEjercicioTextBox, "");
+            this.ErrorEjercicios.SetError(this.AñoTxt, "");
         }
         private void RestaurarOjetos_Ej()
         {
             this.dtConfiDataGridView.Enabled = true;
             this.BtnGuardarEjercicio.Enabled = false;
             this.BtnCancelarEjercicio.Enabled = false;
-            this.CambiarDeEmpresa1.Enabled = true;
+            this.EmpresaEjercicioTxt.Enabled = true;
             this.panel1Ejercicio.Enabled = true;
-            this.configuraccionBasicaTextBox.ReadOnly = true;
-            this.tipoInpuestoIVANumericUpDown.Enabled = false;
-            this.ejerciciosDeAñoTextBox.ReadOnly = false;
+            this.DescripicionEjer.ReadOnly = true;
+            this.IvaEjercicioTxt.Enabled = false;
+            this.EjercicioTxt.ReadOnly = true;
             this.dtConfiDataGridView.Refresh();
         }
         private void ModificarOjetos_Ej()
         {
-            this.ejerciciosDeAñoTextBox.ReadOnly = false;
-            this.configuraccionBasicaTextBox.ReadOnly = false;
-            this.tipoInpuestoIVANumericUpDown.Enabled = true;
-            this.tipoInpuestoIVANumericUpDown.Value = 21;
+            this.EjercicioTxt.ReadOnly = false;
+            this.DescripicionEjer.ReadOnly = false;
+            this.IvaEjercicioTxt.Enabled = true;
+            this.IvaEjercicioTxt.Value = 21;
             this.dtConfiDataGridView.Enabled = false;
             this.BtnGuardarEjercicio.Enabled = true;
             this.BtnCancelarEjercicio.Enabled = true;
-            this.CambiarDeEmpresa1.Enabled = false;
+            this.EmpresaEjercicioTxt.Enabled = false;
             this.panel1Ejercicio.Enabled = false;
         }
         private void GuardarEjercicioBb()
@@ -143,11 +143,11 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionDb)
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : this.IdEmpresa.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.DescripicionEjer.Text) ? (object)DBNull.Value : this.DescripicionEjer.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.IvaEjercicioTxt.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IvaEjercicioTxt.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.EjercicioTxt.Text) ? (object)DBNull.Value : this.EjercicioTxt.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdConexionConfi", string.IsNullOrEmpty(this.IdConfi.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdConfi.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.AñoTxt.Text) ? (object)DBNull.Value : this.AñoTxt.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -212,11 +212,11 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionSql)
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : this.IdEmpresa.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.configuraccionBasicaTextBox.Text) ? (object)DBNull.Value : this.configuraccionBasicaTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.tipoInpuestoIVANumericUpDown.Text) ? (object)DBNull.Value : Convert.ToInt32(this.tipoInpuestoIVANumericUpDown.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.ejerciciosDeAñoTextBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.DescripicionEjer.Text) ? (object)DBNull.Value : this.DescripicionEjer.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.IvaEjercicioTxt.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IvaEjercicioTxt.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", string.IsNullOrEmpty(this.EjercicioTxt.Text) ? (object)DBNull.Value : this.EjercicioTxt.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdConexionConfi", string.IsNullOrEmpty(this.IdConfi.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdConfi.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.añoDeEjercicioTextBox.Text) ? (object)DBNull.Value : this.añoDeEjercicioTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.AñoTxt.Text) ? (object)DBNull.Value : this.AñoTxt.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -331,7 +331,7 @@ namespace PELOSCALVO
             {
                 if (fila.Cells[2].Value != null)
                 {
-                    if (fila.Cells[2].Value.ToString() == this.ejerciciosDeAñoTextBox.Text)
+                    if (fila.Cells[2].Value.ToString() == this.EjercicioTxt.Text)
                     {
                         if (i == this.dtConfiDataGridView.CurrentCell.RowIndex)
                         {
@@ -339,7 +339,7 @@ namespace PELOSCALVO
                         }
                         Random r = new Random();
                         int VALORid = r.Next(5, 100);
-                        this.ejerciciosDeAñoTextBox.Text = this.ejerciciosDeAñoTextBox.Text + "_" + VALORid.ToString();
+                        this.EjercicioTxt.Text = this.EjercicioTxt.Text + "_" + VALORid.ToString();
                     }
                 }
                 seguir2:
@@ -396,15 +396,15 @@ namespace PELOSCALVO
                 {
                     int sumarFecha1 = Convert.ToInt32(DateTime.Now.Year.ToString());
                     fecha = Convert.ToString(sumarFecha1 + 1);
-                    this.añoDeEjercicioTextBox.Text = Convert.ToString(fecha);
-                    this.ejerciciosDeAñoTextBox.Text = " EJERCICIO " + fecha;
+                    this.AñoTxt.Text = Convert.ToString(fecha);
+                    this.EjercicioTxt.Text = " EJERCICIO " + fecha;
                 }
                 else
                 {
-                    this.ejerciciosDeAñoTextBox.Text = " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
-                    this.añoDeEjercicioTextBox.Text = String.Format("{0:yyyy}", DateTime.Now);
+                    this.EjercicioTxt.Text = " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
+                    this.AñoTxt.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
-                this.configuraccionBasicaTextBox.Text = "Mi Configurarcion Nueva " + this.añoDeEjercicioTextBox.Text;
+                this.DescripicionEjer.Text = "Mi Configurarcion Nueva " + this.AñoTxt.Text;
                 SiEjercicio();
                 ModificarOjetos_Ej();
             }
@@ -468,12 +468,12 @@ namespace PELOSCALVO
             if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
             {
                 int i = 0;
-                string Ejercicio = this.ejerciciosDeAñoTextBox.Text;
+                string Ejercicio = this.EjercicioTxt.Text;
                 foreach (DataGridViewRow fila in this.dtConfiDataGridView.Rows)
                 {
                     if (fila.Cells[2].Value != null)
                     {
-                        if (fila.Cells[2].Value.ToString() == this.ejerciciosDeAñoTextBox.Text)
+                        if (fila.Cells[2].Value.ToString() == this.EjercicioTxt.Text)
                         {
                             if (fila.Index == this.dtConfiDataGridView.CurrentCell.RowIndex)
                             {
@@ -481,10 +481,10 @@ namespace PELOSCALVO
                             }
                             Random r = new Random();
                             int VALORid = r.Next(5, 100);
-                            this.ejerciciosDeAñoTextBox.Text = this.ejerciciosDeAñoTextBox.Text + "_" + VALORid.ToString();
-                            this.ejerciciosDeAñoTextBox.ReadOnly = false;
-                            this.ejerciciosDeAñoTextBox.SelectAll();
-                            this.ejerciciosDeAñoTextBox.Select(4, 4);
+                            this.EjercicioTxt.Text = this.EjercicioTxt.Text + "_" + VALORid.ToString();
+                            this.EjercicioTxt.ReadOnly = false;
+                            this.EjercicioTxt.SelectAll();
+                            this.EjercicioTxt.Select(4, 4);
                             MessageBox.Show(Ejercicio, "Este Ejercicio Ya Existe", MessageBoxButtons.OK);
                             return;
                         }

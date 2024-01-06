@@ -202,8 +202,9 @@ namespace PELOSCALVO
 
         private void BtnModificarEmpresa_Click(object sender, EventArgs e)
         {
-            if (this.dtConfiguracionPrincipalDataGridView.Rows.Count > 0)
+            if (this.dtConfiguracionPrincipalBindingSource.Count > 0)
             {
+                this.BtnNuevaEmpresa.Tag = "Modificar";
                 ModficarOjetos_E();
             }
         }

@@ -50,6 +50,7 @@ namespace PELOSCALVO
             this.BtnCancelarProvincia.Enabled = true;
             this.BtnGuardarProvincia.Enabled = true;
             this.dataGridProvincias.Enabled = false;
+            PaisTxt.Enabled = false;
         }
         private void RestaurarOjetosProvi()
         {
@@ -58,6 +59,7 @@ namespace PELOSCALVO
             this.BtnCancelarProvincia.Enabled = false;
             this.BtnGuardarProvincia.Enabled = false;
             this.dataGridProvincias.Enabled = true;
+            PaisTxt.Enabled = true;
         }
         private bool EspacioDiscosProvincia(string nombreDisco, int Espacio)
         {
@@ -333,7 +335,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Un Pais", "PAIS");
                 return;
             }
-            if (this.Id_Provincias.Text == string.Empty & this.Id_pais.Text == string.Empty)
+            if ( string.IsNullOrEmpty( this.Id_Provincias.Text) & string.IsNullOrEmpty(this.Id_pais.Text))
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

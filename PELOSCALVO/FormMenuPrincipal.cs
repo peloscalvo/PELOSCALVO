@@ -33,7 +33,7 @@ namespace PELOSCALVO
             Info2.SetToolTip(BtnAbrirChrome, "Navegador Chrome");
             Info2.SetToolTip(BtnArchivos, "Abrir Archivos");
             Info2.SetToolTip(BtnCarpeteDatos, "Abrir Explorador Archivos De Datos");
-            Info.SetToolTip(BtnCarpetasPdf, "Abrir Explorador Archivos P.D.F");
+            Info2.SetToolTip(BtnCarpetasPdf, "Abrir Explorador Archivos P.D.F");
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
