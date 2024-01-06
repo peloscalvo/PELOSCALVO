@@ -357,7 +357,7 @@ namespace PELOSCALVO
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int EnlaceDtconfi = 0;
-            int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
+            int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
             if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
             {
                 EnlaceDtconfi = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
@@ -451,7 +451,7 @@ namespace PELOSCALVO
                 {
                     VALIDAR_DATOS = "ERROR";
                     VALIDAR_Dtfactura = " Tabla" + ClasDatos.NombreFactura + "  no Se guardo ((ERROR))";
-                    MessageBox.Show(ex.Message, "ERROR AL GUARDAR DATOS TABLA PRINCIPAL");
+                    MessageBox.Show(ex.Message, "ERROR AL GUARDAR DATOS TABLA PRINCIPAL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -478,7 +478,7 @@ namespace PELOSCALVO
                             catch (Exception ex)
                             {
 
-                                MessageBox.Show(ex.Message, "ERROR AL GUARDAR ELIMINANDO DATOS1");
+                                MessageBox.Show(ex.Message, "ERROR AL GUARDAR ELIMINANDO DATOS1", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             finally
                             {
@@ -526,7 +526,7 @@ namespace PELOSCALVO
                         {
                             VALIDAR_DATOS = "ERROR";
                             VALIDAR_Dtdetalle = " Tabla Dtdetalle no Se guardo ((ERROR))";
-                            MessageBox.Show(ex.Message, "ERROR AL GUARDAR dtdetalle1");
+                            MessageBox.Show(ex.Message, "ERROR AL GUARDAR dtdetalle1", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         finally
                         {
@@ -556,7 +556,7 @@ namespace PELOSCALVO
                                 catch (Exception ex)
                                 {
 
-                                    MessageBox.Show(ex.Message, "ERROR AL GUARDAR ELIMINANDO DATOS2");
+                                    MessageBox.Show(ex.Message, "ERROR AL GUARDAR ELIMINANDO DATOS2", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                                 finally
                                 {
@@ -601,7 +601,7 @@ namespace PELOSCALVO
                         {
                             VALIDAR_DATOS = "ERROR";
                             VALIDAR_Dtdetalle2 = " Tabla Dtdetalle2 no Se guardo ((ERROR))";
-                            MessageBox.Show(ex.Message, "ERROR AL GUARDAR dtdetalle2");
+                            MessageBox.Show(ex.Message, "ERROR AL GUARDAR dtdetalle2", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         finally
                         {
@@ -1076,42 +1076,50 @@ namespace PELOSCALVO
                 }
                 if (MessageBox.Show(" ¿Aceptar Guardar ? ", " GUARDAR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
+                    try
                     {
-                        int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
-                        if (this.cobradaFacturaCheckBox.Checked == true)
+                        if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
                         {
-                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                            int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
+                            if (this.cobradaFacturaCheckBox.Checked == true)
+                            {
+                                this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                            }
+                            else
+                            {
+                                //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
+                                this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+                            }
                         }
-                        else
+
+
+
+                        if (ClsConexionSql.SibaseDatosSql)
                         {
-                            //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
-                        }
-                    }
-               
-         
-
-                    if (ClsConexionSql.SibaseDatosSql)
-                    {
-                        GuardarFactuSql();
-
-                    }
-                    else
-                    {
-
-                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                        {
-                            GuardarFactuDB();
+                            GuardarFactuSql();
 
                         }
                         else
                         {
-                            MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO SE ENCUENTRA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            {
+                                GuardarFactuDB();
+
+                            }
+                            else
+                            {
+                                MessageBox.Show(ClasDatos.RutaBaseDatosDb, "ARCHIVO NO SE ENCUENTRA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+                            // RestaraurarOjetosFatu();
 
                         }
-                        // RestaraurarOjetosFatu();
+                    }
+                    catch (Exception ex)
+                    {
 
+                        MessageBox.Show(ex.Message, "ERROR AL GUARDAR FALTAN DATOS",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
 
 
@@ -1645,7 +1653,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(),"ERROR STOCK", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ConexionStock.ComandoSql.Parameters.Clear();
             if (ConexionStock.CerrarConexionSql)
@@ -1749,7 +1757,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(),"ERROR STOCK", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ConexionStock.ComandoDb.Parameters.Clear();
             if (ConexionStock.CerrarConexionDB)
