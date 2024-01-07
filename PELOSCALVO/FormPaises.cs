@@ -32,7 +32,16 @@ namespace PELOSCALVO
             }
            // AñadirIdBuscar();
         }
+        public void AñadirIdPais()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsMulti2.DtPaises)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
 
+        }
         private void ModificarOjetosPais()
         {
             this.NombrePais.ReadOnly = false;
@@ -428,13 +437,16 @@ namespace PELOSCALVO
 
         private void BtnBuscarPais_Click(object sender, EventArgs e)
         {
-            FormBuscar frm = new FormBuscar();
-            frm.CargarDatos(1, " Paises","Paises");
-            frm.BringToFront();
-            ClasDatos.QUEform = "Paises";
-            frm.ShowDialog();
-        
-           
+            if (DtPaisBindinsource.Count > 0)
+            {
+                AñadirIdPais();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Paises", "Paises");
+                frm.BringToFront();
+                ClasDatos.QUEform = "Paises";
+                frm.ShowDialog();
+
+            }
         }
     }
 }

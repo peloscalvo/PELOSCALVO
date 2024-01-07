@@ -33,7 +33,16 @@ namespace PELOSCALVO
             }
 
         }
+        public void AñadirIdProvincia()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
 
+        }
         private void ModificarOjetosProvi()
         {
             this.ProvinciaText.ReadOnly = false;
@@ -457,11 +466,15 @@ namespace PELOSCALVO
 
         private void BtnBuscarProvincia_Click(object sender, EventArgs e)
         {
-            FormBuscar frm = new FormBuscar();
-            frm.CargarDatos(1, " Provincias", "Provincias");
-            frm.BringToFront();
-            ClasDatos.QUEform = "Provincias";
-            frm.ShowDialog();
+            if (dtPaisesBindingSource.Count > 0)
+            {
+                AñadirIdProvincia();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Provincias", "Provincias");
+                frm.BringToFront();
+                ClasDatos.QUEform = "Provincias";
+                frm.ShowDialog();
+            }
         }
     }
 }

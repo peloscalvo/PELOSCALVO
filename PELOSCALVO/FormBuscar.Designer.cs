@@ -38,6 +38,7 @@ namespace PELOSCALVO
             this.Contador3 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBuscar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,8 @@ namespace PELOSCALVO
             this.DataGridBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridBuscar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.Dato});
+            this.Dato,
+            this.IdFila});
             this.DataGridBuscar.Location = new System.Drawing.Point(2, 63);
             this.DataGridBuscar.Name = "DataGridBuscar";
             this.DataGridBuscar.ReadOnly = true;
@@ -120,6 +122,12 @@ namespace PELOSCALVO
             this.Dato.Name = "Dato";
             this.Dato.ReadOnly = true;
             // 
+            // IdFila
+            // 
+            this.IdFila.HeaderText = "IdFila";
+            this.IdFila.Name = "IdFila";
+            this.IdFila.ReadOnly = true;
+            // 
             // FormBuscar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,5 +161,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label Contador3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFila;
     }
 }

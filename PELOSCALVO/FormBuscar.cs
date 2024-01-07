@@ -33,7 +33,7 @@ namespace PELOSCALVO
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias.DefaultView;
                         // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
                         this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
-                        this.DataGridBuscar.Columns[3].Visible = false;
+                        //this.DataGridBuscar.Columns[3].Visible = false;
                     }
 
                     if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
@@ -47,7 +47,7 @@ namespace PELOSCALVO
                         }
                     }
                 }
-                AñadirIdBuscar();
+               // AñadirIdBuscar();
                 Buscador2.Focus();
                 // this.BindingBuscarSource.DataSource = DataSourceDatos;
             }
@@ -69,16 +69,26 @@ namespace PELOSCALVO
             }
 
         }
+
         public void CargarDatos(int IdFila, string Nombrefila, string colunma)
         {
-            this.Text = Nombrefila;
-            Fila = IdFila;
-            ColumnaB = colunma;
-            this.DataGridBuscar.Columns[1].HeaderText = Nombrefila;
-            this.DataGridBuscar.Columns[0].DataPropertyName = "Id";
-            this.DataGridBuscar.Columns[1].DataPropertyName = colunma;
-            //this.DataGridBuscar.Columns[2].DataPropertyName = "IdFila";
-            this.DataGridBuscar.Columns.Add("IdFila", "Id_F");
+            try
+            {
+                DataGridBuscar.AutoGenerateColumns = false;
+                this.Text = Nombrefila;
+                Fila = IdFila;
+                ColumnaB = colunma;
+                this.DataGridBuscar.Columns[0].DataPropertyName = "Id";
+                this.DataGridBuscar.Columns[1].HeaderText = Nombrefila;
+                this.DataGridBuscar.Columns[1].DataPropertyName = colunma;
+                this.DataGridBuscar.Columns[2].DataPropertyName = "IdFila";
+                //this.DataGridBuscar.Columns.Add("IdFila", "Id_F");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR AL CARGAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void BuscarDatos()
         {
@@ -104,7 +114,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //this.DataGridBuscar.DataSource = this.BindingBuscarSource;
@@ -137,7 +147,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
