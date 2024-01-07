@@ -354,20 +354,28 @@ namespace PELOSCALVO
             string Consulta = "";
             int EnlaceDtconfi = 0;
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
-            if (Id > this.dtConfiBindingSource.Count - 1)
+            try
             {
-                MessageBox.Show("Falta Id De Ejercicios", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (Id > this.dtConfiBindingSource.Count - 1)
+                {
+                    MessageBox.Show("Falta Id De Ejercicios", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
+                {
+                    EnlaceDtconfi = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
+                }
+                else
+                {
+                    this.panelBotones.Enabled = false;
+                    MessageBox.Show("No Se Puede Continuar", "ERROR FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-            if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
+            catch (OleDbException ex)
             {
-                EnlaceDtconfi = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
-            }
-            else
-            {
-                this.panelBotones.Enabled = false;
-                MessageBox.Show("No Se Puede Continuar", "ERROR FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+
+                MessageBox.Show(ex.Message, "NO GUARDO NADA FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
@@ -1168,9 +1176,9 @@ namespace PELOSCALVO
             BORRARerrores();
             try
             {
-                if (this.dtNuevaFacturaDataGridView.RowCount >= 0)
+                if (dtNuevaFacturaBindingSource.Count > 0)
                 {
-
+  
                     if (this.panelBotones.Tag.ToString() == "Nuevo")
                     {
                         this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
@@ -1475,7 +1483,7 @@ namespace PELOSCALVO
                                             ConexionModificar.ComandoDb.Parameters.Clear();
                                         }
                                     }
-                         
+
                                 }
                             }
                             else
@@ -1483,7 +1491,7 @@ namespace PELOSCALVO
 
                                 if (ConexionNueva.SiConexionDb)
                                 {
-                                    Stock =  Convert.ToInt32(Fila.Cantidad);
+                                    Stock = Convert.ToInt32(Fila.Cantidad);
                                     ConexionNueva.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Referencia) ? (object)DBNull.Value : Fila.Referencia);
                                     ConexionNueva.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
                                     ConexionNueva.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
@@ -1680,7 +1688,7 @@ namespace PELOSCALVO
                                     {
                                         if (reader.Read())
                                         {
-                                           // MessageBox.Show(reader["Stock"].ToString());
+                                            // MessageBox.Show(reader["Stock"].ToString());
                                             Stock = Convert.ToInt32(reader["Stock"].ToString()) - Convert.ToInt32(Fila.Cells[2].Value.ToString());
 
                                             ConexionModificar.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Cells[0].Value.ToString()) ? (object)DBNull.Value : Fila.Cells[0].Value.ToString());
@@ -2484,10 +2492,10 @@ namespace PELOSCALVO
                 MessageBox.Show("No Hay Clientes", " ARCHIVO NO EXISTE O VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
-            ClasDatos.ValorBuscado = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
-            if (this.dtNuevaFacturaDataGridView.Rows.Count >= 0)
+            if (dtNuevaFacturaBindingSource.Count>0)
             {
+                ClasDatos.ValorBuscado = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
+
 
                 ClasDatos.OkFacturar = true;
                 ClasDatos.Datos1Datos2 = "Nota1";

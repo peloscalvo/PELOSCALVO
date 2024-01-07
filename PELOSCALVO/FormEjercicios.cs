@@ -62,7 +62,7 @@ namespace PELOSCALVO
         private bool ValidarBasica()
         {
             bool ok = true;
-            if (string.IsNullOrEmpty( this.IdConfi.Text))
+            if (string.IsNullOrEmpty(this.IdConfi.Text))
             {
                 ok = false;
                 this.ErrorEjercicios.SetError(this.IdConfi, "_ingresar Id valido (( Vacio no Valido))");
@@ -150,12 +150,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.AñoTxt.Text) ? (object)DBNull.Value : this.AñoTxt.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-                    this.dtConfiguracionPrincipalBindingSource.EndEdit();
-                    this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
-                    this.dtConfiDataGridView.EndEdit();
-                    Validate();
-                    MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RestaurarOjetos_Ej();
+
                     if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
                     {
                         consulta = "Select max(IdEnlace) from [DtConfi]";
@@ -167,20 +162,33 @@ namespace PELOSCALVO
                             {
                                 if (reader.Read())
                                 {
-                                    if (!string.IsNullOrEmpty((reader["IdEnlace"]).ToString()))
+                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
                                     {
-                                        this.IdEnlace.Text =Convert.ToInt32( reader["IdEnlace"].ToString()+1).ToString();
+                                        this.IdEnlace.Text = reader[0].ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
                                     }
                                 }
                             }
                         }
+
                     }
+                    this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                    this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
+                    this.dtConfiDataGridView.EndEdit();
+                    Validate();
+                    MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestaurarOjetos_Ej();
+
                 }
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message,"ERROR GUARDAR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERROR GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -462,7 +470,7 @@ namespace PELOSCALVO
 
             if (string.IsNullOrEmpty(this.IdConfi.Text))
             {
-                MessageBox.Show("Falta Id", "ERROR APP",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Falta Id", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))

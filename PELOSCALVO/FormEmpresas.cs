@@ -1,6 +1,7 @@
 ﻿using Conexiones;
 using System;
 using System.ComponentModel;
+using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Media;
@@ -382,6 +383,7 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 20))
             {
+                String Id_Confi="1111111111";
                 string Almacenes = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
                 string consulta = "";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
@@ -484,8 +486,29 @@ namespace PELOSCALVO
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", String.Format("{0:yyyy}", DateTime.Now));
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
                                 NuevaConexion.ComandoDb.Parameters.Clear();
+                                consulta = "Select max(IdEnlace) from [DtConfi]";
+                                NuevaConexion = new ClsConexionDb(consulta);
+                                if (NuevaConexion.SiConexionDb)
+                                {
+                                    OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+                                    if (reader.HasRows)
+                                    {
+                                        if (reader.Read())
+                                        {
+                                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                            {
+                                              Id_Confi = reader[0].ToString();
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
                                 FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica, 21, Ejercicio, this.idEmpresa.Text, 1,
-                                    String.Format("{0:yyyy}", DateTime.Now));
+                                    String.Format("{0:yyyy}", DateTime.Now),Id_Confi);
                             }
 
                             NuevaConexion = new ClsConexionDb(Almacenes);////Guarda almacen
@@ -508,7 +531,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "EMPRESAS");
+                    MessageBox.Show(ex.Message, "EMPRESAS CREAR",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 finally
                 {

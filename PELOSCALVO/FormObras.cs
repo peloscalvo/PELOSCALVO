@@ -384,10 +384,8 @@ namespace PELOSCALVO
                 {
                     if (this.PanelBotones_Obra.Tag.ToString() == "Nuevo")
                     {
-                        if (this.dataGridObras.RowCount > 0)
-                        {
-                            this.dataGridObras.Rows.RemoveAt(this.dataGridObras.CurrentCell.RowIndex);
-                        }
+
+                        this.dataGridObras.Rows.RemoveAt(this.dataGridObras.CurrentCell.RowIndex);
                     }
                     else
                     {

@@ -393,10 +393,8 @@ namespace PELOSCALVO
                 {
                     if (this.PanelBotones_Pais.Tag.ToString() == "Nuevo")
                     {
-                        if (this.dataGridPais.RowCount >= 0)
-                        {
+                  
                             this.dataGridPais.Rows.RemoveAt(this.dataGridPais.CurrentCell.RowIndex);
-                        }
                     }
                 }
                 catch (Exception)
