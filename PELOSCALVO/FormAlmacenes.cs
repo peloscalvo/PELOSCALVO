@@ -1,22 +1,17 @@
 ﻿using Conexiones;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
 {
     public partial class FormAlmacenes : Form
     {
+        public static FormAlmacenes MenuB;
         public FormAlmacenes()
         {
             InitializeComponent();
+            FormAlmacenes.MenuB = this;
         }
         private void FormAlmacenes_Load(object sender, EventArgs e)
         {
@@ -44,7 +39,7 @@ namespace PELOSCALVO
             this.BtnGuardarAlmacen.Enabled = true;
             this.BtnCancelarAlmacen.Enabled = true;
             this.dataGridAlmacenes.Enabled = false;
-            SelecionarEmpresa2.Enabled = false;
+            this.SelecionarEmpresa2.Enabled = false;
         }
         private void RestaurarOjetos_Alm()
         {
@@ -52,7 +47,7 @@ namespace PELOSCALVO
             this.BtnGuardarAlmacen.Enabled = false;
             this.BtnCancelarAlmacen.Enabled = false;
             this.dataGridAlmacenes.Enabled = true;
-            SelecionarEmpresa2.Enabled = true;
+            this.SelecionarEmpresa2.Enabled = true;
         }
         private bool EspacioDiscosAlmacen(string nombreDisco, int Espacio)
         {
@@ -97,7 +92,7 @@ namespace PELOSCALVO
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id",Convert.ToInt32( this.id_almacenes.Text));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.id_almacenes.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
                             this.dtAlmacenesBindingSource.EndEdit();
@@ -217,7 +212,7 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id",Convert.ToInt32( this.id_almacenes.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.id_almacenes.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
                         this.dtAlmacenesBindingSource.EndEdit();
@@ -269,11 +264,11 @@ namespace PELOSCALVO
                         this.dataGridAlmacenes.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.id_almacenes.Text = VALORid.ToString();
                     }
-                  
+
                 }
-                almacenesTextBox.Text = "Almacen Central";
-                almacenesTextBox.Focus();
-                almacenesTextBox.SelectAll();
+                this.almacenesTextBox.Text = "Almacen Central";
+                this.almacenesTextBox.Focus();
+                this.almacenesTextBox.SelectAll();
                 ModificarOjetos_Alm();
 
             }
@@ -317,7 +312,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (id_almacenes.Text == string.Empty & IdEmpresaAlm.Text == string.Empty)
+            if (this.id_almacenes.Text == string.Empty & this.IdEmpresaAlm.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -395,7 +390,7 @@ namespace PELOSCALVO
 
                     //  throw;
                 }
-             
+
             }
             RestaurarOjetos_Alm();
         }
@@ -408,7 +403,7 @@ namespace PELOSCALVO
 
         private void BtnSalirAlmacen_Click(object sender, EventArgs e)
         {
-            if (BtnGuardarAlmacen.Enabled == false)
+            if (this.BtnGuardarAlmacen.Enabled == false)
             {
                 if (MessageBox.Show(" ¿Salir Almacenes ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -427,11 +422,14 @@ namespace PELOSCALVO
 
         private void BtnBuscarAlmacen_Click(object sender, EventArgs e)
         {
-            FormBuscar frm = new FormBuscar();
-            frm.CargarDatos(1, " Almacenes", "Almacenes");
-            frm.BringToFront();
-            ClasDatos.QUEform = "Almacen";
-            frm.ShowDialog();
+            if (this.dtAlmacenesBindingSource.Count > 0)
+            {
+                ClasDatos.QUEform = "Almacen";
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Almacenes", "Almacenes");
+                frm.BringToFront();
+                frm.ShowDialog();
+            }
         }
     }
 }

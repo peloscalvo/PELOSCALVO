@@ -35,20 +35,27 @@ namespace PELOSCALVO
                         this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
                         //this.DataGridBuscar.Columns[3].Visible = false;
                     }
-
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+                    if (ClasDatos.QUEform == "Obras")
                     {
-                        if (ClasDatos.QUEform == "Almacen")
-                        {
 
-                            this.verViev = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.DefaultView;
-                            // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                            this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes;
-                        }
+                        this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtObras.DefaultView;
+                        // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtObras.DefaultView;
+                    }
+
+                }
+                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+                {
+                    if (ClasDatos.QUEform == "Almacen")
+                    {
+
+                        this.verViev = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.DefaultView;
+                        // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes;
                     }
                 }
-               // AñadirIdBuscar();
-                Buscador2.Focus();
+                // AñadirIdBuscar();
+                this.Buscador2.Focus();
                 // this.BindingBuscarSource.DataSource = DataSourceDatos;
             }
             catch (Exception ex)
@@ -74,7 +81,7 @@ namespace PELOSCALVO
         {
             try
             {
-                DataGridBuscar.AutoGenerateColumns = false;
+                this.DataGridBuscar.AutoGenerateColumns = false;
                 this.Text = Nombrefila;
                 Fila = IdFila;
                 ColumnaB = colunma;
@@ -136,13 +143,18 @@ namespace PELOSCALVO
                             FormPaises.MenuB.dataGridPais.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
                             FormPaises.MenuB.dataGridPais.CurrentCell.Selected = true;
                         }
+                        if (ClasDatos.QUEform == "Provincias")
+                        {
+                            FormProvincias.MenuB.dataGridProvincias.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
+                            FormProvincias.MenuB.dataGridProvincias.CurrentCell.Selected = true;
+                        }
+                        if (ClasDatos.QUEform == "Obras")
+                        {
+                            FormObras.MenuB.dataGridObras.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
+                            FormObras.MenuB.dataGridObras.CurrentCell.Selected = true;
+                        }
+                    }
 
-                    }
-                    if (ClasDatos.QUEform == "Provincias")
-                    {
-                        FormProvincias.MenuB.dataGridProvincias.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
-                        FormProvincias.MenuB.dataGridProvincias.CurrentCell.Selected = true;
-                    }
                 }
                 catch (Exception ex)
                 {

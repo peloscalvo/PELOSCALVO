@@ -7,9 +7,11 @@ namespace PELOSCALVO
 {
     public partial class FormObras : Form
     {
+        public static FormObras MenuB;
         public FormObras()
         {
             InitializeComponent();
+            FormObras.MenuB = this;
         }
 
         private void FormObras_Load(object sender, EventArgs e)
@@ -27,6 +29,16 @@ namespace PELOSCALVO
             {
 
                 MessageBox.Show(ex.Message.ToString());
+            }
+
+        }
+        public void AñadirIdObras()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsMulti2.DtObras)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
             }
 
         }
@@ -418,6 +430,19 @@ namespace PELOSCALVO
             if (this.BtnGuardarObra.Enabled == true)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void BtnBuscarObra_Click(object sender, EventArgs e)
+        {
+            if (dtObrasBindingSource.Count > 0)
+            {
+                ClasDatos.QUEform = "Obras";
+                AñadirIdObras();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Obras", "Obras");
+                frm.BringToFront();
+                frm.ShowDialog();
             }
         }
     }

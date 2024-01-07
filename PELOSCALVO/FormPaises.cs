@@ -439,11 +439,11 @@ namespace PELOSCALVO
         {
             if (DtPaisBindinsource.Count > 0)
             {
+                ClasDatos.QUEform = "Paises";
                 AñadirIdPais();
                 FormBuscar frm = new FormBuscar();
                 frm.CargarDatos(1, " Paises", "Paises");
                 frm.BringToFront();
-                ClasDatos.QUEform = "Paises";
                 frm.ShowDialog();
 
             }

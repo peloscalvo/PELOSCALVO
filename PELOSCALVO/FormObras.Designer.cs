@@ -197,6 +197,7 @@ namespace PELOSCALVO
             this.BtnBuscarObra.Text = "Buscar";
             this.BtnBuscarObra.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnBuscarObra.UseVisualStyleBackColor = false;
+            this.BtnBuscarObra.Click += new System.EventHandler(this.BtnBuscarObra_Click);
             // 
             // BtnNuevoObra
             // 
@@ -390,9 +391,9 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCancelarObra;
         private System.Windows.Forms.Button BtnSalir_Obra;
         private System.Windows.Forms.ErrorProvider ErrorProve;
-        private System.Windows.Forms.DataGridView dataGridObras;
         private System.Windows.Forms.BindingSource dtObrasBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idObrasDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn obrasDataGridViewTextBoxColumn;
+        public System.Windows.Forms.DataGridView dataGridObras;
     }
 }
