@@ -90,11 +90,11 @@ namespace PELOSCALVO
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.EmpresaPrincipal = new System.Windows.Forms.ComboBox();
-            this.Id_Empresa = new System.Windows.Forms.Label();
             this.SerieText = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.ejerciciosDeAñoComboBox = new System.Windows.Forms.ComboBox();
+            this.Id_Empresa = new System.Windows.Forms.Label();
             this.dtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage1Factura = new System.Windows.Forms.TabPage();
             this.EnlaceFactu = new System.Windows.Forms.Label();
@@ -189,6 +189,8 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsClientes = new PELOSCALVO.DsClientes();
+            this.BtnBuscarProvi = new System.Windows.Forms.Button();
+            this.BtnBuscarPais = new System.Windows.Forms.Button();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -367,11 +369,11 @@ namespace PELOSCALVO
             // nonbreAlmacenLabel
             // 
             nonbreAlmacenLabel.AutoSize = true;
-            nonbreAlmacenLabel.Location = new System.Drawing.Point(796, 85);
+            nonbreAlmacenLabel.Location = new System.Drawing.Point(834, 85);
             nonbreAlmacenLabel.Name = "nonbreAlmacenLabel";
-            nonbreAlmacenLabel.Size = new System.Drawing.Size(89, 13);
+            nonbreAlmacenLabel.Size = new System.Drawing.Size(51, 13);
             nonbreAlmacenLabel.TabIndex = 20;
-            nonbreAlmacenLabel.Text = "Nonbre Almacen:";
+            nonbreAlmacenLabel.Text = "Almacen:";
             // 
             // ejerciciosDeAñoLabel
             // 
@@ -430,7 +432,7 @@ namespace PELOSCALVO
             // 
             fechaCobroLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             fechaCobroLabel.AutoSize = true;
-            fechaCobroLabel.Location = new System.Drawing.Point(814, 180);
+            fechaCobroLabel.Location = new System.Drawing.Point(900, 180);
             fechaCobroLabel.Name = "fechaCobroLabel";
             fechaCobroLabel.Size = new System.Drawing.Size(71, 13);
             fechaCobroLabel.TabIndex = 26;
@@ -488,7 +490,7 @@ namespace PELOSCALVO
             // 
             fechaFacturaLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             fechaFacturaLabel.AutoSize = true;
-            fechaFacturaLabel.Location = new System.Drawing.Point(806, 150);
+            fechaFacturaLabel.Location = new System.Drawing.Point(892, 150);
             fechaFacturaLabel.Name = "fechaFacturaLabel";
             fechaFacturaLabel.Size = new System.Drawing.Size(79, 13);
             fechaFacturaLabel.TabIndex = 69;
@@ -621,16 +623,6 @@ namespace PELOSCALVO
             this.EmpresaPrincipal.MouseEnter += new System.EventHandler(this.EmpresaPrincipal_MouseEnter);
             this.EmpresaPrincipal.MouseLeave += new System.EventHandler(this.EmpresaPrincipal_MouseLeave);
             // 
-            // Id_Empresa
-            // 
-            this.Id_Empresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.Id_Empresa.Location = new System.Drawing.Point(445, 9);
-            this.Id_Empresa.Name = "Id_Empresa";
-            this.Id_Empresa.Size = new System.Drawing.Size(0, 23);
-            this.Id_Empresa.TabIndex = 72;
-            this.Id_Empresa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Id_Empresa.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
-            // 
             // SerieText
             // 
             this.SerieText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -677,6 +669,16 @@ namespace PELOSCALVO
             this.ejerciciosDeAñoComboBox.SelectedIndexChanged += new System.EventHandler(this.EjerciciosDeAñoComboBox_SelectedIndexChanged_1);
             this.ejerciciosDeAñoComboBox.Click += new System.EventHandler(this.ejerciciosDeAñoComboBox_Click_1);
             // 
+            // Id_Empresa
+            // 
+            this.Id_Empresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.Id_Empresa.Location = new System.Drawing.Point(445, 9);
+            this.Id_Empresa.Name = "Id_Empresa";
+            this.Id_Empresa.Size = new System.Drawing.Size(0, 23);
+            this.Id_Empresa.TabIndex = 72;
+            this.Id_Empresa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Id_Empresa.TextChanged += new System.EventHandler(this.NombreEmpresaReguistro_TextChanged);
+            // 
             // dtConfiBindingSource
             // 
             this.dtConfiBindingSource.DataMember = "DtConfi";
@@ -685,6 +687,8 @@ namespace PELOSCALVO
             // tabPage1Factura
             // 
             this.tabPage1Factura.AutoScroll = true;
+            this.tabPage1Factura.Controls.Add(this.BtnBuscarPais);
+            this.tabPage1Factura.Controls.Add(this.BtnBuscarProvi);
             this.tabPage1Factura.Controls.Add(Label11);
             this.tabPage1Factura.Controls.Add(this.EnlaceFactu);
             this.tabPage1Factura.Controls.Add(proveedoresLabel);
@@ -748,7 +752,7 @@ namespace PELOSCALVO
             this.proveedoresComboBox.Location = new System.Drawing.Point(514, 177);
             this.proveedoresComboBox.MaxLength = 60;
             this.proveedoresComboBox.Name = "proveedoresComboBox";
-            this.proveedoresComboBox.Size = new System.Drawing.Size(234, 21);
+            this.proveedoresComboBox.Size = new System.Drawing.Size(257, 21);
             this.proveedoresComboBox.TabIndex = 72;
             // 
             // dtProveedoresBindingSource
@@ -794,7 +798,7 @@ namespace PELOSCALVO
             this.FechaFactura.Enabled = false;
             this.FechaFactura.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.errorProvider1.SetIconAlignment(this.FechaFactura, System.Windows.Forms.ErrorIconAlignment.BottomRight);
-            this.FechaFactura.Location = new System.Drawing.Point(891, 147);
+            this.FechaFactura.Location = new System.Drawing.Point(977, 147);
             this.FechaFactura.Name = "FechaFactura";
             this.FechaFactura.Size = new System.Drawing.Size(144, 20);
             this.FechaFactura.TabIndex = 70;
@@ -834,7 +838,7 @@ namespace PELOSCALVO
             // 
             this.cobradaFacturaCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cobradaFacturaCheckBox.Enabled = false;
-            this.cobradaFacturaCheckBox.Location = new System.Drawing.Point(1006, 175);
+            this.cobradaFacturaCheckBox.Location = new System.Drawing.Point(1092, 175);
             this.cobradaFacturaCheckBox.Name = "cobradaFacturaCheckBox";
             this.cobradaFacturaCheckBox.Size = new System.Drawing.Size(104, 24);
             this.cobradaFacturaCheckBox.TabIndex = 25;
@@ -847,7 +851,7 @@ namespace PELOSCALVO
             // 
             this.fechaCobroText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.fechaCobroText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "FechaCobro", true));
-            this.fechaCobroText.Location = new System.Drawing.Point(891, 177);
+            this.fechaCobroText.Location = new System.Drawing.Point(977, 177);
             this.fechaCobroText.Mask = "00/00/0000";
             this.fechaCobroText.Name = "fechaCobroText";
             this.fechaCobroText.ReadOnly = true;
@@ -1906,6 +1910,28 @@ namespace PELOSCALVO
             this.dsClientes.DataSetName = "DsClientes";
             this.dsClientes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // BtnBuscarProvi
+            // 
+            this.BtnBuscarProvi.Enabled = false;
+            this.BtnBuscarProvi.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
+            this.BtnBuscarProvi.Location = new System.Drawing.Point(777, 120);
+            this.BtnBuscarProvi.Name = "BtnBuscarProvi";
+            this.BtnBuscarProvi.Size = new System.Drawing.Size(39, 23);
+            this.BtnBuscarProvi.TabIndex = 74;
+            this.BtnBuscarProvi.UseVisualStyleBackColor = true;
+            this.BtnBuscarProvi.Click += new System.EventHandler(this.BtnBuscarProvi_Click);
+            // 
+            // BtnBuscarPais
+            // 
+            this.BtnBuscarPais.Enabled = false;
+            this.BtnBuscarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
+            this.BtnBuscarPais.Location = new System.Drawing.Point(777, 154);
+            this.BtnBuscarPais.Name = "BtnBuscarPais";
+            this.BtnBuscarPais.Size = new System.Drawing.Size(39, 23);
+            this.BtnBuscarPais.TabIndex = 75;
+            this.BtnBuscarPais.UseVisualStyleBackColor = true;
+            this.BtnBuscarPais.Click += new System.EventHandler(this.BtnBuscarPais_Click);
+            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2092,5 +2118,7 @@ namespace PELOSCALVO
         private DsFacturas dsFacturas;
         private DsClientes dsClientes;
         private System.Windows.Forms.Label Id_Empresa;
+        private System.Windows.Forms.Button BtnBuscarProvi;
+        private System.Windows.Forms.Button BtnBuscarPais;
     }
 }

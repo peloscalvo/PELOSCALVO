@@ -439,6 +439,7 @@ namespace PELOSCALVO
         {
             if (DtPaisBindinsource.Count > 0)
             {
+                ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "Paises";
                 AñadirIdPais();
                 FormBuscar frm = new FormBuscar();

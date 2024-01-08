@@ -7,9 +7,11 @@ namespace PELOSCALVO
 {
     public partial class FormProveedores : Form
     {
+        public static FormProveedores MenuB;
         public FormProveedores()
         {
             InitializeComponent();
+            FormProveedores.MenuB = this;
         }
         private void FormProveedores_Load(object sender, EventArgs e)
         {
@@ -44,6 +46,16 @@ namespace PELOSCALVO
                 ok = false;
             }
             return ok;
+        }
+        public void AñadirIdProveedor()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
+
         }
         private bool ValidarProveedor()
         {
@@ -257,7 +269,7 @@ namespace PELOSCALVO
             {
                 int numeroFILA = this.dataGridProveedores.Rows.Count;
                 this.DtProveedoresBindingSource.AddNew();
-                if (this.dataGridProveedores.RowCount == 0)
+                if (DtProveedoresBindingSource.Count <= 1)
                 {
                     this.Id_proveedor.Text = "1";
                     this.dataGridProveedores.Rows[0].Cells[0].Value = "1";
@@ -438,7 +450,19 @@ namespace PELOSCALVO
             }
         }
 
-     
+        private void BtnBuscarProveedor_Click(object sender, EventArgs e)
+        {
+            if (DtProveedoresBindingSource.Count > 0)
+            {
+                ClasDatos.OkFacturar = false;
+                ClasDatos.QUEform = "Proveedores";
+                AñadirIdProveedor();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Proveedores", "Proveedores");
+                frm.BringToFront();
+                frm.ShowDialog();
+            }
+        }
     }
 
 }

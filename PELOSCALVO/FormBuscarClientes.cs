@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.OleDb;
-using System.IO;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -26,16 +24,16 @@ namespace PELOSCALVO
         }
         private void FormBuscarClientes_Load(object sender, EventArgs e)
         {
-  
- 
-                if (FormMenuPrincipal.menu2principal.dsClientes != null)
-                {
-                    dtClientesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsClientes;
+
+
+            if (FormMenuPrincipal.menu2principal.dsClientes != null)
+            {
+                this.dtClientesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsClientes;
                 this.view2 = FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView;
             }
 
             AñadirId();
-            this.ContadorDatos.Text = string.Format("{0:N0" + "}", (Convert.ToInt32(this.dtClientes2DataGridView.Rows.Count).ToString()));
+            this.ContadorDatosCli.Text = string.Format("{0:N0" + "}", (Convert.ToInt32(this.dtClientes2DataGridView.Rows.Count).ToString()));
 
         }
 
@@ -71,9 +69,9 @@ namespace PELOSCALVO
             string fieldName = string.Concat("[", this.dsClientes.DtClientes.Columns[NumeroValidar].ColumnName, "]");
             this.dsClientes.DtClientes.DefaultView.Sort = fieldName;
 
-            view2.RowFilter = string.Empty;
-            view2.RowFilter = fieldName + " LIKE '%" + this.BuscarClientesText.Text + "%'";
-            this.dtClientes2DataGridView.DataSource = view2;
+            this.view2.RowFilter = string.Empty;
+            this.view2.RowFilter = fieldName + " LIKE '%" + this.BuscarClientesText.Text + "%'";
+            this.dtClientes2DataGridView.DataSource = this.view2;
             if (this.TIPObuscarCLIENTESfoma.Text == "Todos")
             {
                 string fieldName2 = string.Concat("[", this.dsClientes.DtClientes.Columns[1].ColumnName, "]");
@@ -82,17 +80,17 @@ namespace PELOSCALVO
                 string sumarfield = fieldName2 + fieldName3 + fieldName4;
                 // dsClientes.DtClientes.DefaultView.Sort = sumarfield;
                 this.dsClientes.DtClientes.DefaultView.Sort = fieldName2;
-                view2.RowFilter = string.Empty;
+                this.view2.RowFilter = string.Empty;
                 if (this.BuscarClientesText.Text != string.Empty)
                     // string A == fieldName2 + " LIKE '%" + BuscarClientesText.Text + "%'";
-                    view2.RowFilter = fieldName2 + " LIKE '%" + this.BuscarClientesText.Text + "%'";
+                    this.view2.RowFilter = fieldName2 + " LIKE '%" + this.BuscarClientesText.Text + "%'";
                 // view2.RowFilter += fieldName3 + " LIKE '%" + BuscarClientesText.Text + "%'";
                 //view2.RowFilter = fieldName3 + view2.RowFilter;
-                this.dtClientes2DataGridView.DataSource = view2;
+                this.dtClientes2DataGridView.DataSource = this.view2;
                 //return;
             }
 
-            this.ContadorDatos.Text = string.Format("{0:N0" + "}", (Convert.ToInt32(this.dtClientes2DataGridView.Rows.Count).ToString()));
+            this.ContadorDatosCli.Text = string.Format("{0:N0" + "}", (Convert.ToInt32(this.dtClientes2DataGridView.Rows.Count).ToString()));
         }
 
         private void TIPObuscarCLIENTESfoma_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,8 +128,8 @@ namespace PELOSCALVO
                     {
 
                         // FormClientes.menu2CLIENTES2.dtClientesDataGridView.Rows[ClasDatos.ValorBuscado].Selected = true;
-                       // FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell = dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[0];
-                        FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell = dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[0];
+                        // FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell = dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[0];
+                        FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[0];
                         FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell.Selected = true;
                     }
                 }

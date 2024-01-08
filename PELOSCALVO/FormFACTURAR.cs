@@ -137,6 +137,16 @@ namespace PELOSCALVO
             }
 
         }
+        public void AñadirIdPaisFactu()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsMulti2.DtPaises)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
+
+        }
         private void LlenarGrid(DataGridView dataGrid, int valor)
         {
             int II = 0;
@@ -2993,6 +3003,36 @@ namespace PELOSCALVO
         private void PanelArriba_MouseLeave(object sender, EventArgs e)
         {
             this.Id_Empresa.Width = 0;
+        }
+
+        private void BtnBuscarProvi_Click(object sender, EventArgs e)
+        {
+            if (fKDtPaisesDtProvinciasBindingSource.Count > 0)
+            {
+                ClasDatos.OkFacturar = true;
+                ClasDatos.QUEform = "Provincias";
+                AñadirIdPaisFactu();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Provincias", "Provincias");
+                frm.BringToFront();
+                frm.ShowDialog();
+
+            }
+        }
+
+        private void BtnBuscarPais_Click(object sender, EventArgs e)
+        {
+            if (dtPaisesBindingSource.Count > 0)
+            {
+                ClasDatos.OkFacturar = true;
+                ClasDatos.QUEform = "Paises";
+                AñadirIdPaisFactu();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Paises", "Paises");
+                frm.BringToFront();
+                frm.ShowDialog();
+
+            }
         }
     }
 }

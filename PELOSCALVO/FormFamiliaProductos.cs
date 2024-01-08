@@ -14,9 +14,11 @@ namespace PELOSCALVO
 {
     public partial class FormFamiliaProductos : Form
     {
+        public static FormFamiliaProductos MenuB;
         public FormFamiliaProductos()
         {
             InitializeComponent();
+            FormFamiliaProductos.MenuB = this;
         }
 
         private void FormFamiliaProductos_Load(object sender, EventArgs e)
@@ -48,6 +50,16 @@ namespace PELOSCALVO
             }
             return ok;
         }
+        public void AñadirIdFamilias()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
+
+        }
         private bool ValidarFami()
         {
             bool ok = true;
@@ -71,14 +83,14 @@ namespace PELOSCALVO
             this.FamiliaTex.ReadOnly = false;
             this.BtnGuardarFamillia.Enabled = true;
             this.BtnCancelarFamilia.Enabled = true;
-            this.DtGridFamilia.Enabled = false;
+            this.DataGridFamilia.Enabled = false;
         }
         private void RestaurarOjetos_Fami()
         {
             this.FamiliaTex.ReadOnly = true;
             this.BtnGuardarFamillia.Enabled = false;
             this.BtnCancelarFamilia.Enabled = false;
-            this.DtGridFamilia.Enabled = true;
+            this.DataGridFamilia.Enabled = true;
         }
         private void GuardarFamiliaDb()
         {
@@ -104,7 +116,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
                     this.dtFamiliaProductosBindingSource.EndEdit();
-                    this.DtGridFamilia.EndEdit();
+                    this.DataGridFamilia.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR FAMILIA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetos_Fami();
                 }
@@ -146,7 +158,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
                     this.dtFamiliaProductosBindingSource.EndEdit();
-                    this.DtGridFamilia.EndEdit();
+                    this.DataGridFamilia.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR FAMILIA ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetos_Fami();
                 }
@@ -179,7 +191,7 @@ namespace PELOSCALVO
                         {
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.Id_Familia.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
-                            this.DtGridFamilia.Rows.RemoveAt(this.DtGridFamilia.CurrentCell.RowIndex);
+                            this.DataGridFamilia.Rows.RemoveAt(this.DataGridFamilia.CurrentCell.RowIndex);
                             this.dtFamiliaProductosBindingSource.EndEdit();
                             Validate();
                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -213,7 +225,7 @@ namespace PELOSCALVO
                     {
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.Id_Familia.Text);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
-                        this.DtGridFamilia.Rows.RemoveAt(this.DtGridFamilia.CurrentCell.RowIndex);
+                        this.DataGridFamilia.Rows.RemoveAt(this.DataGridFamilia.CurrentCell.RowIndex);
                         this.dtFamiliaProductosBindingSource.EndEdit();
                         Validate();
                         MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -241,26 +253,26 @@ namespace PELOSCALVO
             this.panelFamilia.Tag = "Nuevo";
             try
             {
-                int numeroFILA = this.DtGridFamilia.Rows.Count;
+                int numeroFILA = this.DataGridFamilia.Rows.Count;
                 this.dtFamiliaProductosBindingSource.AddNew();
-                if (this.DtGridFamilia.CurrentCell.RowIndex == 0)
+                if (this.DataGridFamilia.CurrentCell.RowIndex == 0)
                 {
                     this.Id_Familia.Text = "1";
-                    this.DtGridFamilia.Rows[0].Cells[0].Value = "1";
+                    this.DataGridFamilia.Rows[0].Cells[0].Value = "1";
                 }
                 if (numeroFILA > 0)
                 {
-                    if (this.DtGridFamilia.Rows[numeroFILA - 1].Cells[0].Value.ToString() == string.Empty)
+                    if (this.DataGridFamilia.Rows[numeroFILA - 1].Cells[0].Value.ToString() == string.Empty)
                     {
                         Random r = new Random();
                         int VALORid = r.Next(5000, 100000000);
-                        this.DtGridFamilia.Rows[numeroFILA].Cells[0].Value = (VALORid);
+                        this.DataGridFamilia.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.Id_Familia.Text = VALORid.ToString();
                     }
                     else
                     {
-                        int VALORid = Convert.ToInt32(this.DtGridFamilia.Rows[numeroFILA - 1].Cells[0].Value) + 1;
-                        this.DtGridFamilia.Rows[numeroFILA].Cells[0].Value = (VALORid);
+                        int VALORid = Convert.ToInt32(this.DataGridFamilia.Rows[numeroFILA - 1].Cells[0].Value) + 1;
+                        this.DataGridFamilia.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.Id_Familia.Text = VALORid.ToString();
                     }
 
@@ -279,15 +291,15 @@ namespace PELOSCALVO
         private void BtnCancelarFamilia_Click(object sender, EventArgs e)
         {
             BorrarErrorFami();
-            if (this.DtGridFamilia.RowCount >= 0)
+            if (this.DataGridFamilia.RowCount >= 0)
             {
                 try
                 {
                     if (this.panelFamilia.Tag.ToString() == "Nuevo")
                     {
-                        if (this.DtGridFamilia.RowCount > 0)
+                        if (this.DataGridFamilia.RowCount > 0)
                         {
-                            this.DtGridFamilia.Rows.RemoveAt(this.DtGridFamilia.CurrentCell.RowIndex);
+                            this.DataGridFamilia.Rows.RemoveAt(this.DataGridFamilia.CurrentCell.RowIndex);
                         }
                     }
                 }
@@ -344,11 +356,11 @@ namespace PELOSCALVO
                     {
                         try
                         {
-                            foreach (DataGridViewRow fila in this.DtGridFamilia.Rows)
+                            foreach (DataGridViewRow fila in this.DataGridFamilia.Rows)
                             {
                                 if (fila.Cells[1].ToString() == this.FamiliaTex.Text)
                                 {
-                                    if (this.DtGridFamilia.CurrentCell.RowIndex == fila.Index)
+                                    if (this.DataGridFamilia.CurrentCell.RowIndex == fila.Index)
                                     {
                                         break;
                                     }
@@ -419,6 +431,21 @@ namespace PELOSCALVO
         private void dtFamiliaProductosBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnBuscarFamilia_Click(object sender, EventArgs e)
+        {
+            if (dtFamiliaProductosBindingSource.Count > 0)
+            {
+                ClasDatos.OkFacturar = true;
+                ClasDatos.QUEform = "Familia";
+                AñadirIdFamilias();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Familia", "Familia");
+                frm.BringToFront();
+                frm.ShowDialog();
+
+            }
         }
     }
 }

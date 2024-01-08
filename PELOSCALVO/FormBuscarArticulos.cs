@@ -12,6 +12,39 @@ namespace PELOSCALVO
         {
             InitializeComponent();
         }
+        private void FormBuscarArticulosEnFacturas_Load(object sender, EventArgs e)
+        {
+            if (FormMenuPrincipal.menu2principal.articulos != null)
+            {
+                this.dtArticulosBindingSource.DataSource = FormMenuPrincipal.menu2principal.articulos.DtArticulos;
+                this.verViev = FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView;
+            }
+            else
+            {
+                MessageBox.Show("Faltan datos", "ARCHIVO ARTICULOS VACIO");
+                return;
+            }
+            if (ClasDatos.OkFacturar == true)
+            {
+                this.FiltrarBajasBuscar.Text = "Articulos De Alta";
+                this.FiltrarBajasBuscar.Visible = true;
+                this.labelfiltrarBUSCAR.Visible = true;
+                // this.dtArticulosBindingSource.DataSource = FormFACTURAR.menu2FACTURAR.dtArticulosBindingSource; 
+
+            }
+            if (ClasDatos.OkFacturar == false)
+            {
+                this.FiltrarBajasBuscar.Visible = true;
+                this.labelfiltrarBUSCAR.Visible = true;
+                // this.dtArticulosBindingSource.DataSource = FormARTICULOS.menu2Articulos.dtArticulosBindingSource;
+
+                this.FiltrarBajasBuscar.Text = FormArticulos.menu2Articulos.FiltrarBajas.Text;
+            }
+            // final abrir articulos
+            this.ContadorDatos2.Text = string.Format("{0:N0" + "}", ((this.dtArticulosBindingSource.Count).ToString()));
+            AñadirIdBuscar();
+            this.BuscarArticulosText.Focus();
+        }
         public void AñadirIdBuscar()
         {
             int ii = 0;
@@ -89,39 +122,6 @@ namespace PELOSCALVO
 
         }
 
-        private void FormBuscarArticulosEnFacturas_Load(object sender, EventArgs e)
-        {
-            if (FormMenuPrincipal.menu2principal.articulos != null)
-            {
-                this.dtArticulosBindingSource.DataSource = FormMenuPrincipal.menu2principal.articulos.DtArticulos;
-                this.verViev = FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView;
-            }
-            else
-            {
-                MessageBox.Show("Faltan datos", "ARCHIVO ARTICULOS VACIO");
-                return;
-            }
-            if (ClasDatos.OkFacturar == true)
-            {
-                this.FiltrarBajasBuscar.Text = "Articulos De Alta";
-                this.FiltrarBajasBuscar.Visible = true;
-                this.labelfiltrarBUSCAR.Visible = true;
-                // this.dtArticulosBindingSource.DataSource = FormFACTURAR.menu2FACTURAR.dtArticulosBindingSource; 
-
-            }
-            if (ClasDatos.OkFacturar == false)
-            {
-                this.FiltrarBajasBuscar.Visible = true;
-                this.labelfiltrarBUSCAR.Visible = true;
-                // this.dtArticulosBindingSource.DataSource = FormARTICULOS.menu2Articulos.dtArticulosBindingSource;
-
-                this.FiltrarBajasBuscar.Text = FormArticulos.menu2Articulos.FiltrarBajas.Text;
-            }
-            // final abrir articulos
-            this.ContadorDatos2.Text = string.Format("{0:N0" + "}", ((this.dtArticulosBindingSource.Count).ToString()));
-            AñadirIdBuscar();
-            this.BuscarArticulosText.Focus();
-        }
 
         private void TIPObuscarArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {

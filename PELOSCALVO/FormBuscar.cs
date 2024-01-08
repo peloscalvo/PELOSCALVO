@@ -20,8 +20,10 @@ namespace PELOSCALVO
         {
             try
             {
+               
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
+
                     if (ClasDatos.QUEform == "Paises")
                     {
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
@@ -32,32 +34,40 @@ namespace PELOSCALVO
                     {
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias.DefaultView;
                         // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
-                        this.DataGridBuscar.DataSource =FormProvincias.MenuB.dataGridProvincias.DataSource;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
+                        // this.DataGridBuscar.DataSource =FormProvincias.MenuB.dataGridProvincias.DataSource;
+                        // this.verViev.RowFilter = "[fff]" + " LIKE '%" + this.BuscarArticulosText.Text + "%'"; 
                         //this.DataGridBuscar.Columns[3].Visible = false;
                     }
                     if (ClasDatos.QUEform == "Obras")
                     {
 
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtObras.DefaultView;
-                        // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                        // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;Proveedores
                         this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtObras;
                     }
-
+                    if (ClasDatos.QUEform == "Familia")
+                    {
+                        this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos.DefaultView;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos;
+                    }
                 }
                 if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
                 {
                     if (ClasDatos.QUEform == "Almacen")
                     {
-
                         this.verViev = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.DefaultView;
-                        // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
                         this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes;
                     }
+                    if (ClasDatos.QUEform == "Proveedores")
+                    {
+                        this.verViev = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores.DefaultView;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores;
+                    }
                 }
-                // AñadirIdBuscar();
-              
-                // this.BindingBuscarSource.DataSource = DataSourceDatos;
+                this.verViev.RowFilter = "";
+                this.Buscador2.Focus();
+                this.ContadorBus.Text = string.Format("{0:N0" + "}", (Convert.ToInt32(this.DataGridBuscar.Rows.Count).ToString()));
             }
             catch (Exception ex)
             {
@@ -72,7 +82,7 @@ namespace PELOSCALVO
             int ii = 0;
             foreach (DataGridViewRow fila in this.DataGridBuscar.Rows)
             {
-               // fila.Cells["IdFila"].Value = ii.ToString();
+                // fila.Cells["IdFila"].Value = ii.ToString();
                 ii++;
             }
 
@@ -82,6 +92,7 @@ namespace PELOSCALVO
         {
             try
             {
+        
                 this.DataGridBuscar.AutoGenerateColumns = false;
                 this.Text = Nombrefila;
                 Fila = IdFila;
@@ -126,7 +137,7 @@ namespace PELOSCALVO
             }
 
             //this.DataGridBuscar.DataSource = this.BindingBuscarSource;
-            this.Contador3.Text = string.Format("{0:N0" + "}", ((this.DataGridBuscar.Rows.Count).ToString()));
+            this.ContadorBus.Text = string.Format("{0:N0" + "}", ((this.DataGridBuscar.Rows.Count).ToString()));
         }
 
         private void DataGridBuscar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -137,24 +148,52 @@ namespace PELOSCALVO
                 try
                 {
                     ClasDatos.ValorBuscado = Convert.ToInt32(this.DataGridBuscar.Rows[e.RowIndex].Cells[2].Value);
+
                     if (ClasDatos.ValorBuscado >= 0)
                     {
-                        if (ClasDatos.QUEform == "Paises")
+                        if (ClasDatos.OkFacturar == true)
                         {
-                            FormPaises.MenuB.dataGridPais.CurrentCell.Selected = false;
-                            FormPaises.MenuB.dataGridPais.CurrentCell = FormPaises.MenuB.dataGridPais.Rows[ClasDatos.ValorBuscado].Cells[0];
-                            FormPaises.MenuB.dataGridPais.CurrentCell.Selected = true;
+                            if (ClasDatos.QUEform == "Paises")
+                            {
+                                FormFacturar.menu2FACTURAR.pais_FactComboBox.Text = this.DataGridBuscar.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                            }
+                            if (ClasDatos.QUEform == "Provincias")
+                            {
+                                FormFacturar.menu2FACTURAR.provinciaComboBox.Text = this.DataGridBuscar.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                            }
                         }
-                        if (ClasDatos.QUEform == "Provincias")
+                        else
                         {
-                            FormProvincias.MenuB.dataGridProvincias.CurrentCell = FormProvincias.MenuB.dataGridProvincias.Rows[ClasDatos.ValorBuscado].Cells[0];
-                            FormProvincias.MenuB.dataGridProvincias.CurrentCell.Selected = true;
+                            if (ClasDatos.QUEform == "Paises")
+                            {
+                                FormPaises.MenuB.dataGridPais.CurrentCell.Selected = false;
+                                FormPaises.MenuB.dataGridPais.CurrentCell = FormPaises.MenuB.dataGridPais.Rows[ClasDatos.ValorBuscado].Cells[0];
+                                FormPaises.MenuB.dataGridPais.CurrentCell.Selected = true;
+                            }
+                            if (ClasDatos.QUEform == "Provincias")
+                            {
+                                FormProvincias.MenuB.dataGridProvincias.CurrentCell = FormProvincias.MenuB.dataGridProvincias.Rows[ClasDatos.ValorBuscado].Cells[0];
+                                FormProvincias.MenuB.dataGridProvincias.CurrentCell.Selected = true;
+                            }
+                            if (ClasDatos.QUEform == "Obras")
+                            {
+                                FormObras.MenuB.dataGridObras.CurrentCell = FormObras.MenuB.dataGridObras.Rows[ClasDatos.ValorBuscado].Cells[0];
+                                FormObras.MenuB.dataGridObras.CurrentCell.Selected = true;
+                            }
+                            if (ClasDatos.QUEform == "Familia")
+                            {
+                                FormFamiliaProductos.MenuB.DataGridFamilia.CurrentCell = FormFamiliaProductos.MenuB.DataGridFamilia.Rows[ClasDatos.ValorBuscado].Cells[0];
+                                FormFamiliaProductos.MenuB.DataGridFamilia.CurrentCell.Selected = true;
+                            }
+                            if (ClasDatos.QUEform == "Proveedores")//Proveedores
+                            {
+                                FormProveedores.MenuB.dataGridProveedores.CurrentCell = FormProveedores.MenuB.dataGridProveedores.Rows[ClasDatos.ValorBuscado].Cells[0];
+                                FormProveedores.MenuB.dataGridProveedores.CurrentCell.Selected = true;
+                            }
                         }
-                        if (ClasDatos.QUEform == "Obras")
-                        {
-                            FormObras.MenuB.dataGridObras.CurrentCell = FormObras.MenuB.dataGridObras.Rows[ClasDatos.ValorBuscado].Cells[0];
-                            FormObras.MenuB.dataGridObras.CurrentCell.Selected = true;
-                        }
+
+
+
                     }
 
                 }
