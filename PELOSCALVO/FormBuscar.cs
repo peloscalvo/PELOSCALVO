@@ -32,7 +32,8 @@ namespace PELOSCALVO
                     {
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias.DefaultView;
                         // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
+                        this.DataGridBuscar.DataSource =FormProvincias.MenuB.dataGridProvincias.DataSource;
                         //this.DataGridBuscar.Columns[3].Visible = false;
                     }
                     if (ClasDatos.QUEform == "Obras")
@@ -40,7 +41,7 @@ namespace PELOSCALVO
 
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtObras.DefaultView;
                         // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtObras.DefaultView;
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtObras;
                     }
 
                 }
@@ -55,7 +56,7 @@ namespace PELOSCALVO
                     }
                 }
                 // AñadirIdBuscar();
-                this.Buscador2.Focus();
+              
                 // this.BindingBuscarSource.DataSource = DataSourceDatos;
             }
             catch (Exception ex)
@@ -63,7 +64,7 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            this.Buscador2.Focus();
 
         }
         public void AñadirIdBuscar()
@@ -71,7 +72,7 @@ namespace PELOSCALVO
             int ii = 0;
             foreach (DataGridViewRow fila in this.DataGridBuscar.Rows)
             {
-                fila.Cells["IdFila"].Value = ii.ToString();
+               // fila.Cells["IdFila"].Value = ii.ToString();
                 ii++;
             }
 
@@ -113,7 +114,7 @@ namespace PELOSCALVO
                 {
 
 
-
+                    this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
 
                 }
                 this.DataGridBuscar.DataSource = this.verViev;
@@ -135,22 +136,23 @@ namespace PELOSCALVO
             {
                 try
                 {
-                    ClasDatos.ValorBuscado = Convert.ToInt32(this.DataGridBuscar.Rows[e.RowIndex].Cells["IdFila"].Value);
+                    ClasDatos.ValorBuscado = Convert.ToInt32(this.DataGridBuscar.Rows[e.RowIndex].Cells[2].Value);
                     if (ClasDatos.ValorBuscado >= 0)
                     {
                         if (ClasDatos.QUEform == "Paises")
                         {
-                            FormPaises.MenuB.dataGridPais.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
+                            FormPaises.MenuB.dataGridPais.CurrentCell.Selected = false;
+                            FormPaises.MenuB.dataGridPais.CurrentCell = FormPaises.MenuB.dataGridPais.Rows[ClasDatos.ValorBuscado].Cells[0];
                             FormPaises.MenuB.dataGridPais.CurrentCell.Selected = true;
                         }
                         if (ClasDatos.QUEform == "Provincias")
                         {
-                            FormProvincias.MenuB.dataGridProvincias.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
+                            FormProvincias.MenuB.dataGridProvincias.CurrentCell = FormProvincias.MenuB.dataGridProvincias.Rows[ClasDatos.ValorBuscado].Cells[0];
                             FormProvincias.MenuB.dataGridProvincias.CurrentCell.Selected = true;
                         }
                         if (ClasDatos.QUEform == "Obras")
                         {
-                            FormObras.MenuB.dataGridObras.CurrentCell = this.DataGridBuscar.Rows[ClasDatos.ValorBuscado].Cells[0];
+                            FormObras.MenuB.dataGridObras.CurrentCell = FormObras.MenuB.dataGridObras.Rows[ClasDatos.ValorBuscado].Cells[0];
                             FormObras.MenuB.dataGridObras.CurrentCell.Selected = true;
                         }
                     }

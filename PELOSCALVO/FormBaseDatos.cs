@@ -19,9 +19,9 @@ namespace PELOSCALVO
         {
             InitializeComponent();
             ToolTip InfoRestablecer = new ToolTip();
-            InfoRestablecer.SetToolTip(BtnRestablecer, "Cierra toda Conexion y Restablece datos");
-            InfoRestablecer.SetToolTip(BtnGuardarDatosArchivos, "Guarda Configuracion Local");
-            InfoRestablecer.SetToolTip(BtnGuardarArchivo_Sql, "Guarda Configuracion Servidor");
+            InfoRestablecer.SetToolTip(this.BtnRestablecer, "Cierra toda Conexion y Restablece datos");
+            InfoRestablecer.SetToolTip(this.BtnGuardarDatosArchivos, "Guarda Configuracion Local");
+            InfoRestablecer.SetToolTip(this.BtnGuardarArchivo_Sql, "Guarda Configuracion Servidor");
             InfoRestablecer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             InfoRestablecer.IsBalloon = true;
 
@@ -301,7 +301,8 @@ namespace PELOSCALVO
                     this.CheckActivarDb.Checked = false;
                     this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
-                  FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Servidor";
                 }
             }
             else
@@ -314,6 +315,7 @@ namespace PELOSCALVO
                     this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
                     FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Db Local";
                 }
             }
         }
@@ -340,7 +342,7 @@ namespace PELOSCALVO
                         else
                         {
                             string Ejercicio = " EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
-                            FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Rows.Add("Empresa",Ejercicio,"A", ClasDatos.RutaBaseDatosDb, Directory.GetCurrentDirectory(), "La Coruña", "España", this.SerieArticulosText.Text,
+                            FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Rows.Add("Empresa", Ejercicio, "A", ClasDatos.RutaBaseDatosDb, Directory.GetCurrentDirectory(), "La Coruña", "España", this.SerieArticulosText.Text,
                                this.TipoExtension_b.Text, this.SerieClientesText2.Text, 1);
                         }
                         FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
@@ -898,11 +900,11 @@ namespace PELOSCALVO
                 int TotalServidores = this.Servidor.Items.Count;
                 this.Servidor.Tag = "PARAR";
                 bool SiExisteServidor = true;
-        
+
                 for (int i = 0; i < TotalServidores; i++)
                 {
 
-                    if (FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[i]["Servidores"].ToString().Equals(Servidor.Text, StringComparison.OrdinalIgnoreCase))
+                    if (FormMenuPrincipal.menu2principal.dsServidor.Tables["DtServidor"].Rows[i]["Servidores"].ToString().Equals(this.Servidor.Text, StringComparison.OrdinalIgnoreCase))
                     {
                         SiExisteServidor = false;
                     }
@@ -911,9 +913,9 @@ namespace PELOSCALVO
                 if (SiExisteServidor)
                 {
 
-                    if (!string.IsNullOrEmpty( this.Servidor.Text))
+                    if (!string.IsNullOrEmpty(this.Servidor.Text))
                     {
-                        FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(Servidor.Text);
+                        FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(this.Servidor.Text);
                         Validate();
                         if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                         {
@@ -1466,15 +1468,15 @@ namespace PELOSCALVO
                         ClasDatos.RutaBaseDatosDb = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                     }
 
-                   // Random r = new Random();
-                  //  int valor = r.Next(10, 90000000);
-                  //  string TablaCliente = "Cliente+" + valor.ToString();
-                    string ConsultaCliente = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + SerieClientesText2.Text + "]') AND type in (N'U'))" +
-               " CREATE TABLE [" + SerieClientesText2.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+                    // Random r = new Random();
+                    //  int valor = r.Next(10, 90000000);
+                    //  string TablaCliente = "Cliente+" + valor.ToString();
+
+                    string ConsultaCliente = " CREATE TABLE [" + this.SerieClientesText2.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
                "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
                "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
                "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
-               "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100) NLL,[BANCODIREC] varchar(150) ," +
+               "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100) ,[BANCODIREC] varchar(150) ," +
                "[BANCOLOCAL] varchar(100) ,[BANCOIBAN] varchar(100) ,[BANCOCODIG] varchar(100) ,[BANCOENTID] varchar(100) ,[BANCOOFIC2] varchar(100) ," +
                "[BANCODC] varchar(100) NULL,[BANCON_CUE] varchar(100) ,[BAJA] bit default 0 )";
 
@@ -1516,12 +1518,13 @@ namespace PELOSCALVO
             if (MessageBox.Show("Restaurar Conexiones y Activar Archivos locales", "CERRAR CONEXIONES Y RESTAURAR", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 this.NombreArchivoDatos.Text = "Datos App Peloscalvo";
-              //  this.TabArchivos.Tag = "NO";
+                //  this.TabArchivos.Tag = "NO";
                 this.NombreArchivoDatos.BackColor = SystemColors.Control;
                 Conexiones.ClsConexionSql.SibaseDatosSql = false;
                 this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
                 this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
                 FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO1;
+                FormMenuPrincipal.menu2principal.InfoConectado.Text = "Desconectado";
                 this.CheckAtivarServidor.Checked = false;
                 this.CheckActivarDb.Checked = false;
                 ClassCorreosDB.dsCorreos.Clear();

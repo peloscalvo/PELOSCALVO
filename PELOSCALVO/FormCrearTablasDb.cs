@@ -158,12 +158,12 @@ namespace PELOSCALVO
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
 
-                    string ConsultaCliente = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + ClientesTxt.Text + "]') AND type in (N'U'))" +
-                " CREATE TABLE [" + ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+
+                    string ConsultaCliente = " CREATE TABLE [" + ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
                 "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
                 "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
                 "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
-                "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100) NLL,[BANCODIREC] varchar(150) ," +
+                "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100),[BANCODIREC] varchar(150) ," +
                 "[BANCOLOCAL] varchar(100) ,[BANCOIBAN] varchar(100) ,[BANCOCODIG] varchar(100) ,[BANCOENTID] varchar(100) ,[BANCOOFIC2] varchar(100) ," +
                 "[BANCODC] varchar(100) NULL,[BANCON_CUE] varchar(100) ,[BAJA] bit default 0 )";
                     string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal] ([IdEmpresa] INTEGER  primary key , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
@@ -665,12 +665,12 @@ namespace PELOSCALVO
                 {
                     Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
                 }
-                string ConsultaCliente = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + ClientesTxt.Text + "]') AND type in (N'U'))" +
-                   " CREATE TABLE [" + ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+
+                string ConsultaCliente = " CREATE TABLE [" + ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
                    "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
                    "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
                    "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
-                   "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100) NLL,[BANCODIREC] varchar(150) ," +
+                   "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100) ,[BANCODIREC] varchar(150) ," +
                    "[BANCOLOCAL] varchar(100) ,[BANCOIBAN] varchar(100) ,[BANCOCODIG] varchar(100) ,[BANCOENTID] varchar(100) ,[BANCOOFIC2] varchar(100) ," +
                    "[BANCODC] varchar(100) NULL,[BANCON_CUE] varchar(100) ,[BAJA] bit default 0 )";
 
@@ -971,6 +971,16 @@ namespace PELOSCALVO
 
         private void ChckListar_CheckedChanged(object sender, EventArgs e)
         {
+            if (this.ExtensionTxt.Text != string.Empty & this.BaseDatosTxt1.Text != string.Empty)
+            {
+                this.ListaTablasPrincipal.DataSource = ObtenerTablasDb();
+                this.ListaTablasPrincipal2.DataSource = ObtenerTablasDb();
+                this.TablaExistenteTxt.DataSource = ObtenerTablasDb();
+                this.ArticulosTxt.DataSource = ObtenerTablasDb();
+                this.ClientesTxt.DataSource = ObtenerTablasDb();
+
+            }
+
             if (this.ChckListar.Checked)
             {
                 this.ChckListar.Text = "Listar Basico";
