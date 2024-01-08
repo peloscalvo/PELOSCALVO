@@ -73,11 +73,6 @@ namespace PELOSCALVO
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsClientes = new PELOSCALVO.DsClientes();
             this.dtClientesDataGridView = new System.Windows.Forms.DataGridView();
-            this.iDCLIENTEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aPODOCLIENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nOMBRECLIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dIRECCIONCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fECHAALTACDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -88,6 +83,7 @@ namespace PELOSCALVO
             this.BtnBuscarClientes2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1Clientes = new System.Windows.Forms.TabPage();
+            this.Id_Clientes = new System.Windows.Forms.Label();
             this.apodoClienteTextBox = new System.Windows.Forms.TextBox();
             this.nombreClienteTextBox = new System.Windows.Forms.TextBox();
             this.direccionClienteTextBox = new System.Windows.Forms.TextBox();
@@ -141,7 +137,11 @@ namespace PELOSCALVO
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.label4 = new System.Windows.Forms.Label();
             this.ContadorDatosClientes = new System.Windows.Forms.Label();
-            this.Id_Clientes = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aPODOCLIENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOMBRECLIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dIRECCIONCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fECHAALTACDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             idClienteLabel = new System.Windows.Forms.Label();
             apodoClienteLabel = new System.Windows.Forms.Label();
             nombreClienteLabel = new System.Windows.Forms.Label();
@@ -532,7 +532,7 @@ namespace PELOSCALVO
             this.dtClientesDataGridView.ColumnHeadersHeight = 30;
             this.dtClientesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtClientesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDCLIENTEDataGridViewTextBoxColumn,
+            this.Id,
             this.aPODOCLIENDataGridViewTextBoxColumn,
             this.nOMBRECLIEDataGridViewTextBoxColumn,
             this.dIRECCIONCDataGridViewTextBoxColumn,
@@ -563,45 +563,6 @@ namespace PELOSCALVO
             this.dtClientesDataGridView.Size = new System.Drawing.Size(1118, 245);
             this.dtClientesDataGridView.TabIndex = 1;
             this.dtClientesDataGridView.Click += new System.EventHandler(this.dtClientesDataGridView_Click);
-            // 
-            // iDCLIENTEDataGridViewTextBoxColumn
-            // 
-            this.iDCLIENTEDataGridViewTextBoxColumn.DataPropertyName = "IDCLIENTE";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.iDCLIENTEDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.iDCLIENTEDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDCLIENTEDataGridViewTextBoxColumn.Name = "iDCLIENTEDataGridViewTextBoxColumn";
-            // 
-            // aPODOCLIENDataGridViewTextBoxColumn
-            // 
-            this.aPODOCLIENDataGridViewTextBoxColumn.DataPropertyName = "APODOCLIEN";
-            this.aPODOCLIENDataGridViewTextBoxColumn.FillWeight = 260F;
-            this.aPODOCLIENDataGridViewTextBoxColumn.HeaderText = "Razon Social";
-            this.aPODOCLIENDataGridViewTextBoxColumn.Name = "aPODOCLIENDataGridViewTextBoxColumn";
-            // 
-            // nOMBRECLIEDataGridViewTextBoxColumn
-            // 
-            this.nOMBRECLIEDataGridViewTextBoxColumn.DataPropertyName = "NOMBRECLIE";
-            this.nOMBRECLIEDataGridViewTextBoxColumn.FillWeight = 300F;
-            this.nOMBRECLIEDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nOMBRECLIEDataGridViewTextBoxColumn.Name = "nOMBRECLIEDataGridViewTextBoxColumn";
-            // 
-            // dIRECCIONCDataGridViewTextBoxColumn
-            // 
-            this.dIRECCIONCDataGridViewTextBoxColumn.DataPropertyName = "DIRECCIONC";
-            this.dIRECCIONCDataGridViewTextBoxColumn.FillWeight = 250F;
-            this.dIRECCIONCDataGridViewTextBoxColumn.HeaderText = "Direccion";
-            this.dIRECCIONCDataGridViewTextBoxColumn.Name = "dIRECCIONCDataGridViewTextBoxColumn";
-            // 
-            // fECHAALTACDataGridViewTextBoxColumn
-            // 
-            this.fECHAALTACDataGridViewTextBoxColumn.DataPropertyName = "FECHAALTAC";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.fECHAALTACDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.fECHAALTACDataGridViewTextBoxColumn.HeaderText = "Fecha";
-            this.fECHAALTACDataGridViewTextBoxColumn.Name = "fECHAALTACDataGridViewTextBoxColumn";
             // 
             // panel1
             // 
@@ -756,6 +717,16 @@ namespace PELOSCALVO
             this.tabPage1Clientes.TabIndex = 0;
             this.tabPage1Clientes.Text = "General";
             this.tabPage1Clientes.UseVisualStyleBackColor = true;
+            // 
+            // Id_Clientes
+            // 
+            this.Id_Clientes.AutoSize = true;
+            this.Id_Clientes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "Id", true));
+            this.Id_Clientes.Location = new System.Drawing.Point(88, 30);
+            this.Id_Clientes.Name = "Id_Clientes";
+            this.Id_Clientes.Size = new System.Drawing.Size(13, 13);
+            this.Id_Clientes.TabIndex = 42;
+            this.Id_Clientes.Text = "0";
             // 
             // apodoClienteTextBox
             // 
@@ -1440,15 +1411,44 @@ namespace PELOSCALVO
             this.ContadorDatosClientes.Text = "0";
             this.ContadorDatosClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Id_Clientes
+            // Id
             // 
-            this.Id_Clientes.AutoSize = true;
-            this.Id_Clientes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "IDCLIENTE", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.Id_Clientes.Location = new System.Drawing.Point(88, 30);
-            this.Id_Clientes.Name = "Id_Clientes";
-            this.Id_Clientes.Size = new System.Drawing.Size(13, 13);
-            this.Id_Clientes.TabIndex = 42;
-            this.Id_Clientes.Text = "0";
+            this.Id.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Id.HeaderText = "Numero";
+            this.Id.Name = "Id";
+            // 
+            // aPODOCLIENDataGridViewTextBoxColumn
+            // 
+            this.aPODOCLIENDataGridViewTextBoxColumn.DataPropertyName = "APODOCLIEN";
+            this.aPODOCLIENDataGridViewTextBoxColumn.FillWeight = 260F;
+            this.aPODOCLIENDataGridViewTextBoxColumn.HeaderText = "Razon Social";
+            this.aPODOCLIENDataGridViewTextBoxColumn.Name = "aPODOCLIENDataGridViewTextBoxColumn";
+            // 
+            // nOMBRECLIEDataGridViewTextBoxColumn
+            // 
+            this.nOMBRECLIEDataGridViewTextBoxColumn.DataPropertyName = "NOMBRECLIE";
+            this.nOMBRECLIEDataGridViewTextBoxColumn.FillWeight = 300F;
+            this.nOMBRECLIEDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nOMBRECLIEDataGridViewTextBoxColumn.Name = "nOMBRECLIEDataGridViewTextBoxColumn";
+            // 
+            // dIRECCIONCDataGridViewTextBoxColumn
+            // 
+            this.dIRECCIONCDataGridViewTextBoxColumn.DataPropertyName = "DIRECCIONC";
+            this.dIRECCIONCDataGridViewTextBoxColumn.FillWeight = 250F;
+            this.dIRECCIONCDataGridViewTextBoxColumn.HeaderText = "Direccion";
+            this.dIRECCIONCDataGridViewTextBoxColumn.Name = "dIRECCIONCDataGridViewTextBoxColumn";
+            // 
+            // fECHAALTACDataGridViewTextBoxColumn
+            // 
+            this.fECHAALTACDataGridViewTextBoxColumn.DataPropertyName = "FECHAALTAC";
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.fECHAALTACDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.fECHAALTACDataGridViewTextBoxColumn.HeaderText = "Fecha";
+            this.fECHAALTACDataGridViewTextBoxColumn.Name = "fECHAALTACDataGridViewTextBoxColumn";
             // 
             // FormClientes
             // 
@@ -1562,10 +1562,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox bANCODIRECTextBox;
         private System.Windows.Forms.TextBox bANCOOFICITextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDCLIENTEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aPODOCLIENDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nOMBRECLIEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dIRECCIONCDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fECHAALTACDataGridViewTextBoxColumn;
         private System.Windows.Forms.DateTimePicker FechaAltaCliente;
         private System.Windows.Forms.TextBox dESCUENTOCTextBox;
         private System.Windows.Forms.ComboBox BancoProvincia;
@@ -1574,5 +1570,10 @@ namespace PELOSCALVO
         private System.Windows.Forms.Panel panelCuenta;
         private System.Windows.Forms.BindingSource dtPaisesBindingSource;
         private System.Windows.Forms.Label Id_Clientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aPODOCLIENDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOMBRECLIEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dIRECCIONCDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fECHAALTACDataGridViewTextBoxColumn;
     }
 }

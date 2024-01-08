@@ -210,23 +210,23 @@ namespace PELOSCALVO
             string Consulta = "";
             if (this.panelBotonesClientes.Tag.ToString() == "Nuevo")
             {
-                Consulta = "INSERT INTO [" + DatoCliente + "] ([IDCLIENTE], [APODOCLIEN], [NOMBRECLIE], [DIRECCIONC], [TELEFONOCL], " +
+                Consulta = "INSERT INTO [" + DatoCliente + "] ([Id], [APODOCLIEN], [NOMBRECLIE], [DIRECCIONC], [TELEFONOCL], " +
                 "[MOVILCLIEN],[CORREOCLIE], [DNICLIENTE],[LOCALIDADC], [CODIGOPOST], [PAISCLIENT], [CALLECLIEN],[NUMEROCALL]," +
                 "[PROVINCIAC], [TARIFATIPO], [TIPODNI], [TIPOCLIENT], [DESCUENTOC], [NUMEROCUEN], [PORTES],[BANCOOFICI], " +
                 "[BANCOPROVI], [BANCODIREC], [BANCOLOCAL], [BANCOIBAN],[BANCOCODIG], [BANCOENTID], [BANCOOFIC2], [BANCODC]," +
-                " [BANCON_CUE], [BAJA], [FECHAALTAC]) VALUES(@IDCLIENTE, @APODOCLIEN, @NOMBRECLIE, @DIRECCIONC, @TELEFONOCL, @MOVILCLIEN," +
+                " [BANCON_CUE], [BAJA], [FECHAALTAC]) VALUES(@Id, @APODOCLIEN, @NOMBRECLIE, @DIRECCIONC, @TELEFONOCL, @MOVILCLIEN," +
                  " @CORREOCLIE, @DNICLIENTE, @LOCALIDADC, @CODIGOPOST, @PAISCLIENT, @CALLECLIEN,@NUMEROCALL, @PROVINCIAC, @TARIFATIPO, @TIPODNI," +
                  " @TIPOCLIENT, @DESCUENTOC, @NUMEROCUEN, @PORTES,@BANCOOFICI, @BANCOPROVI, @BANCODIREC, @BANCOLOCAL, @BANCOIBAN, @BANCOCODIG," +
                  " @BANCOENTID, @BANCOOFIC2, @BANCODC, @BANCON_CUE, @BAJA, @FECHAALTAC)";
             }
             else
             {
-                Consulta = "UPDATE [DtClientes]SET[" + DatoCliente + "] = @IDCLIENTE, [APODOCLIEN] = @APODOCLIEN,[NOMBRECLIE] = @NOMBRECLIE," +
+                Consulta = "UPDATE [" + DatoCliente + "]SET [Id]= @Id, [APODOCLIEN] = @APODOCLIEN,[NOMBRECLIE] = @NOMBRECLIE," +
               " [DIRECCIONC] = @DIRECCIONC, [TELEFONOCL] = @TELEFONOCL, [MOVILCLIEN] = @MOVILCLIEN, [CORREOCLIE] = @CORREOCLIE, [DNICLIENTE] = @DNICLIENTE,[LOCALIDADC] = @LOCALIDADC," +
               "[CODIGOPOST] = @CODIGOPOST,[PAISCLIENT] = @PAISCLIENT, [CALLECLIEN] = @CALLECLIEN,[NUMEROCALL]= @NUMEROCALL, [PROVINCIAC] = @PROVINCIAC," +
               " [TARIFATIPO] = @TARIFATIPO, [TIPODNI] = @TIPODNI,[TIPOCLIENT] = @TIPOCLIENT, [DESCUENTOC] = @DESCUENTOC, [NUMEROCUEN] = @NUMEROCUEN, [PORTES] = @PORTES," +
               "[BANCOOFICI] = @BANCOOFICI,[BANCOPROVI] = @BANCOPROVI,[BANCODIREC] = @BANCODIREC,[BANCOLOCAL] = @BANCOLOCAL, [BANCOIBAN] = @BANCOIBAN, [BANCOCODIG] = @BANCOCODIG," +
-              " [BANCOENTID] = @BANCOENTID, [BANCOOFIC2] = @BANCOOFIC2, [BANCODC] = @BANCODC, [BANCON_CUE] = @BANCON_CUE,[BAJA] = @BAJA, [FECHAALTAC] = @FECHAALTAC WHERE [IDCLIENTE] = @IDCLIENTE";
+              " [BANCOENTID] = @BANCOENTID, [BANCOOFIC2] = @BANCOOFIC2, [BANCODC] = @BANCODC, [BANCON_CUE] = @BANCON_CUE,[BAJA] = @BAJA, [FECHAALTAC] = @FECHAALTAC WHERE [Id] = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(Consulta);
             try
@@ -234,7 +234,7 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionDb)
                 {
                     //añadir guaradar a  qui
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@IDCLIENTE", this.Id_Clientes.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.Id_Clientes.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@APODOCLIEN", this.apodoClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NOMBRECLIE", string.IsNullOrEmpty(this.nombreClienteTextBox.Text) ? (object)DBNull.Value : this.nombreClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.direccionClienteTextBox.Text) ? (object)DBNull.Value : this.direccionClienteTextBox.Text);
@@ -290,7 +290,7 @@ namespace PELOSCALVO
             string Consulta = "";
             if (this.panelBotonesClientes.Tag.ToString() == "Nuevo")
             {
-                Consulta = "INSERT INTO [" + DatoCliente + "] ([IDCLIENTE], [APODOCLIEN], [NOMBRECLIE], [DIRECCIONC], [TELEFONOCL], " +
+                Consulta = "INSERT INTO [" + DatoCliente + "] ([Id], [APODOCLIEN], [NOMBRECLIE], [DIRECCIONC], [TELEFONOCL], " +
                 "[MOVILCLIEN],[CORREOCLIE], [DNICLIENTE],[LOCALIDADC], [CODIGOPOST], [PAISCLIENT], [CALLECLIEN],[NUMEROCALL]," +
                 "[PROVINCIAC], [TARIFATIPO], [TIPODNI], [TIPOCLIENT], [DESCUENTOC], [NUMEROCUEN], [PORTES],[BANCOOFICI], " +
                 "[BANCOPROVI], [BANCODIREC], [BANCOLOCAL], [BANCOIBAN],[BANCOCODIG], [BANCOENTID], [BANCOOFIC2], [BANCODC]," +
@@ -302,12 +302,12 @@ namespace PELOSCALVO
             }
             else
             {
-                Consulta = "UPDATE [" + DatoCliente + "] SET [IDCLIENTE]= @IDCLIENTE, [APODOCLIEN] = @APODOCLIEN,[NOMBRECLIE] = @NOMBRECLIE," +
+                Consulta = "UPDATE [" + DatoCliente + "] SET [Id]= @Id, [APODOCLIEN] = @APODOCLIEN,[NOMBRECLIE] = @NOMBRECLIE," +
               " [DIRECCIONC] = @DIRECCIONC, [TELEFONOCL] = @TELEFONOCL, [MOVILCLIEN] = @MOVILCLIEN, [CORREOCLIE] = @CORREOCLIE, [DNICLIENTE] = @DNICLIENTE,[LOCALIDADC] = @LOCALIDADC," +
               "[CODIGOPOST] = @CODIGOPOST,[PAISCLIENT] = @PAISCLIENT, [CALLECLIEN] = @CALLECLIEN,[NUMEROCALL]= @NUMEROCALL, [PROVINCIAC] = @PROVINCIAC," +
               " [TARIFATIPO] = @TARIFATIPO, [TIPODNI] = @TIPODNI,[TIPOCLIENT] = @TIPOCLIENT, [DESCUENTOC] = @DESCUENTOC, [NUMEROCUEN] = @NUMEROCUEN, [PORTES] = @PORTES," +
               "[BANCOOFICI] = @BANCOOFICI,[BANCOPROVI] = @BANCOPROVI,[BANCODIREC] = @BANCODIREC,[BANCOLOCAL] = @BANCOLOCAL, [BANCOIBAN] = @BANCOIBAN, [BANCOCODIG] = @BANCOCODIG," +
-              " [BANCOENTID] = @BANCOENTID, [BANCOOFIC2] = @BANCOOFIC2, [BANCODC] = @BANCODC, [BANCON_CUE] = @BANCON_CUE,[BAJA] = @BAJA, [FECHAALTAC] = @FECHAALTAC WHERE [IDCLIENTE] = @IDCLIENTE";
+              " [BANCOENTID] = @BANCOENTID, [BANCOOFIC2] = @BANCOOFIC2, [BANCODC] = @BANCODC, [BANCON_CUE] = @BANCON_CUE,[BAJA] = @BAJA, [FECHAALTAC] = @FECHAALTAC WHERE [Id] = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
 
@@ -315,7 +315,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IDCLIENTE", this.Id_Clientes.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.Id_Clientes.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@APODOCLIEN", this.apodoClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NOMBRECLIE", string.IsNullOrEmpty(this.nombreClienteTextBox.Text) ? (object)DBNull.Value : this.nombreClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.direccionClienteTextBox.Text) ? (object)DBNull.Value : this.direccionClienteTextBox.Text);
@@ -603,12 +603,12 @@ namespace PELOSCALVO
                             if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
                             {
                                 String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
-                                string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @ID";
+                                string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @Id";
                                 ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
                                 {
                                     if (NuevaConexion.SiConexionSql)
                                     {
-                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@ID", this.Id_Clientes.Text);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.Id_Clientes.Text);
                                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                                         this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
                                         this.dtClientesDataGridView.Refresh();
@@ -623,26 +623,34 @@ namespace PELOSCALVO
                         catch (Exception ex)
                         {
 
-                            MessageBox.Show(ex.Message.ToString());
+                            MessageBox.Show(ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
                         if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
                         {
-                            String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
-                            string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @ID";
-                            ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                            try
                             {
-                                if (NuevaConexion.SiConexionDb)
+                                String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
+                                string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @Id";
+                                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                                 {
-                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@ID", this.Id_Clientes.Text);
-                                    NuevaConexion.ComandoDb.ExecuteNonQuery();
-                                    this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
-                                    this.dtClientesDataGridView.Refresh();
-                                    MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
+                                    if (NuevaConexion.SiConexionDb)
+                                    {
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@ID", this.Id_Clientes.Text);
+                                        NuevaConexion.ComandoDb.ExecuteNonQuery();
+                                        this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
+                                        this.dtClientesDataGridView.Refresh();
+                                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
 
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
 

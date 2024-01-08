@@ -413,7 +413,7 @@ namespace PELOSCALVO
                     "[TELEFONOCL] [varchar](30) NULL,[MOVILCLIEN] [varchar](50) NULL,[CORREOCLIE] [varchar](255) NULL,[DNICLIENTE] [varchar](30) NULL,[LOCALIDADC] [varchar](255) NULL," +
                     "[CODIGOPOST] [varchar](50) NULL,[PAISCLIENT] [varchar](255) NULL,[FECHAALTAC] [date] NULL,[CALLECLIEN] [varchar](255) NULL,[NUMEROCALL] [varchar](40) NULL," +
                     "[PROVINCIAC] [varchar](100) NULL,[TARIFATIPO] [varchar](50) NULL,[TIPODNI] [varchar](50) NULL,[TIPOCLIENT] [varchar](50) NULL,[DESCUENTOC] [numeric](19, 3) NULL," +
-                    "[NUMEROCUEN] [varchar](255) NULL,[PORTES] [varchar](255) NULL,[BANCOOFICI] [varchar](255) NULL,[BANCOPROVI] [varchar](100) NULL,[BANCODIREC] [varchar](255) NULL," +
+                    "[NUMEROCUEN] [varchar](100) NULL,[PORTES] [varchar](100) NULL,[BANCOOFICI] [varchar](100) NULL,[BANCOPROVI] [varchar](100) NULL,[BANCODIREC] [varchar](150) NULL," +
                     "[BANCOLOCAL] [varchar](100) NULL,[BANCOIBAN] [varchar](100) NULL,[BANCOCODIG] [varchar](100) NULL,[BANCOENTID] [varchar](100) NULL,[BANCOOFIC2] [varchar](100) NULL," +
                     "[BANCODC] [varchar](100) NULL,[BANCON_CUE] [varchar](100) NULL,[BAJA] [bit]default(0) NOT NULL)";
                 //////consulta  FACTURANCION         FACTURACION   /////////////////

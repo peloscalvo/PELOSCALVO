@@ -313,7 +313,7 @@ namespace PELOSCALVO
                     this.CheckActivarDb.Checked = true;
                     this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
-                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO1;
+                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
                 }
             }
         }
@@ -1466,15 +1466,18 @@ namespace PELOSCALVO
                         ClasDatos.RutaBaseDatosDb = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.NombreArchivoDatos.Text + "." + this.TipoExtension_b.Text;
                     }
 
-                    Random r = new Random();
-                    int valor = r.Next(10, 90000000);
-                    string TablaCliente = "Cliente+" + valor.ToString();
-                    string ConsultaCliente = "CREATE TABLE [" + TablaCliente + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
-                        "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
-                        "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
-                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
-                        " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
-                        ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
+                   // Random r = new Random();
+                  //  int valor = r.Next(10, 90000000);
+                  //  string TablaCliente = "Cliente+" + valor.ToString();
+                    string ConsultaCliente = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + SerieClientesText2.Text + "]') AND type in (N'U'))" +
+               " CREATE TABLE [" + SerieClientesText2.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+               "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
+               "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
+               "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
+               "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100) NLL,[BANCODIREC] varchar(150) ," +
+               "[BANCOLOCAL] varchar(100) ,[BANCOIBAN] varchar(100) ,[BANCOCODIG] varchar(100) ,[BANCOENTID] varchar(100) ,[BANCOOFIC2] varchar(100) ," +
+               "[BANCODC] varchar(100) NULL,[BANCON_CUE] varchar(100) ,[BAJA] bit default 0 )";
+
                     ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaCliente);
                     try
@@ -1518,6 +1521,7 @@ namespace PELOSCALVO
                 Conexiones.ClsConexionSql.SibaseDatosSql = false;
                 this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
                 this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO1;
                 this.CheckAtivarServidor.Checked = false;
                 this.CheckActivarDb.Checked = false;
                 ClassCorreosDB.dsCorreos.Clear();
