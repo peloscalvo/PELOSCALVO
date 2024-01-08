@@ -24,23 +24,23 @@ namespace PELOSCALVO {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DsCONFIGURACCION : global::System.Data.DataSet {
         
+        private DtAlmacenesDataTable tableDtAlmacenes;
+        
         private DtConfiDataTable tableDtConfi;
         
         private DtConfiguracionPrincipalDataTable tableDtConfiguracionPrincipal;
-        
-        private DtAlmacenesDataTable tableDtAlmacenes;
         
         private DtTarifaTipoDataTable tableDtTarifaTipo;
         
         private DtProveedoresDataTable tableDtProveedores;
         
-        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtAlmacenes;
+        private global::System.Data.DataRelation relationFK_DtConfiguracionPrincipal_DtAlmacenes;
         
-        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtConfi;
+        private global::System.Data.DataRelation relationFK_DtConfiguracionPrincipal_DtConfi;
         
-        private global::System.Data.DataRelation relationDtConfiguracionPrincipal_DtProveedores;
+        private global::System.Data.DataRelation relationFK_DtConfiguracionPrincipal_DtTarifaTipo;
         
-        private global::System.Data.DataRelation relationDtConfi_DtTarifaTipo;
+        private global::System.Data.DataRelation relationFK_DtConfiguracionPrincipal_DtProveedores;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -70,14 +70,14 @@ namespace PELOSCALVO {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                if ((ds.Tables["DtAlmacenes"] != null)) {
+                    base.Tables.Add(new DtAlmacenesDataTable(ds.Tables["DtAlmacenes"]));
+                }
                 if ((ds.Tables["DtConfi"] != null)) {
                     base.Tables.Add(new DtConfiDataTable(ds.Tables["DtConfi"]));
                 }
                 if ((ds.Tables["DtConfiguracionPrincipal"] != null)) {
                     base.Tables.Add(new DtConfiguracionPrincipalDataTable(ds.Tables["DtConfiguracionPrincipal"]));
-                }
-                if ((ds.Tables["DtAlmacenes"] != null)) {
-                    base.Tables.Add(new DtAlmacenesDataTable(ds.Tables["DtAlmacenes"]));
                 }
                 if ((ds.Tables["DtTarifaTipo"] != null)) {
                     base.Tables.Add(new DtTarifaTipoDataTable(ds.Tables["DtTarifaTipo"]));
@@ -107,6 +107,16 @@ namespace PELOSCALVO {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DtAlmacenesDataTable DtAlmacenes {
+            get {
+                return this.tableDtAlmacenes;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public DtConfiDataTable DtConfi {
             get {
                 return this.tableDtConfi;
@@ -120,16 +130,6 @@ namespace PELOSCALVO {
         public DtConfiguracionPrincipalDataTable DtConfiguracionPrincipal {
             get {
                 return this.tableDtConfiguracionPrincipal;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DtAlmacenesDataTable DtAlmacenes {
-            get {
-                return this.tableDtAlmacenes;
             }
         }
         
@@ -220,14 +220,14 @@ namespace PELOSCALVO {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
+                if ((ds.Tables["DtAlmacenes"] != null)) {
+                    base.Tables.Add(new DtAlmacenesDataTable(ds.Tables["DtAlmacenes"]));
+                }
                 if ((ds.Tables["DtConfi"] != null)) {
                     base.Tables.Add(new DtConfiDataTable(ds.Tables["DtConfi"]));
                 }
                 if ((ds.Tables["DtConfiguracionPrincipal"] != null)) {
                     base.Tables.Add(new DtConfiguracionPrincipalDataTable(ds.Tables["DtConfiguracionPrincipal"]));
-                }
-                if ((ds.Tables["DtAlmacenes"] != null)) {
-                    base.Tables.Add(new DtAlmacenesDataTable(ds.Tables["DtAlmacenes"]));
                 }
                 if ((ds.Tables["DtTarifaTipo"] != null)) {
                     base.Tables.Add(new DtTarifaTipoDataTable(ds.Tables["DtTarifaTipo"]));
@@ -268,6 +268,12 @@ namespace PELOSCALVO {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
+            this.tableDtAlmacenes = ((DtAlmacenesDataTable)(base.Tables["DtAlmacenes"]));
+            if ((initTable == true)) {
+                if ((this.tableDtAlmacenes != null)) {
+                    this.tableDtAlmacenes.InitVars();
+                }
+            }
             this.tableDtConfi = ((DtConfiDataTable)(base.Tables["DtConfi"]));
             if ((initTable == true)) {
                 if ((this.tableDtConfi != null)) {
@@ -278,12 +284,6 @@ namespace PELOSCALVO {
             if ((initTable == true)) {
                 if ((this.tableDtConfiguracionPrincipal != null)) {
                     this.tableDtConfiguracionPrincipal.InitVars();
-                }
-            }
-            this.tableDtAlmacenes = ((DtAlmacenesDataTable)(base.Tables["DtAlmacenes"]));
-            if ((initTable == true)) {
-                if ((this.tableDtAlmacenes != null)) {
-                    this.tableDtAlmacenes.InitVars();
                 }
             }
             this.tableDtTarifaTipo = ((DtTarifaTipoDataTable)(base.Tables["DtTarifaTipo"]));
@@ -298,10 +298,10 @@ namespace PELOSCALVO {
                     this.tableDtProveedores.InitVars();
                 }
             }
-            this.relationDtConfiguracionPrincipal_DtAlmacenes = this.Relations["DtConfiguracionPrincipal_DtAlmacenes"];
-            this.relationDtConfiguracionPrincipal_DtConfi = this.Relations["DtConfiguracionPrincipal_DtConfi"];
-            this.relationDtConfiguracionPrincipal_DtProveedores = this.Relations["DtConfiguracionPrincipal_DtProveedores"];
-            this.relationDtConfi_DtTarifaTipo = this.Relations["DtConfi_DtTarifaTipo"];
+            this.relationFK_DtConfiguracionPrincipal_DtAlmacenes = this.Relations["FK_DtConfiguracionPrincipal_DtAlmacenes"];
+            this.relationFK_DtConfiguracionPrincipal_DtConfi = this.Relations["FK_DtConfiguracionPrincipal_DtConfi"];
+            this.relationFK_DtConfiguracionPrincipal_DtTarifaTipo = this.Relations["FK_DtConfiguracionPrincipal_DtTarifaTipo"];
+            this.relationFK_DtConfiguracionPrincipal_DtProveedores = this.Relations["FK_DtConfiguracionPrincipal_DtProveedores"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -312,33 +312,67 @@ namespace PELOSCALVO {
             this.Namespace = "PELOSCALVO///DsCONFIGURACCION.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableDtAlmacenes = new DtAlmacenesDataTable();
+            base.Tables.Add(this.tableDtAlmacenes);
             this.tableDtConfi = new DtConfiDataTable();
             base.Tables.Add(this.tableDtConfi);
             this.tableDtConfiguracionPrincipal = new DtConfiguracionPrincipalDataTable();
             base.Tables.Add(this.tableDtConfiguracionPrincipal);
-            this.tableDtAlmacenes = new DtAlmacenesDataTable();
-            base.Tables.Add(this.tableDtAlmacenes);
             this.tableDtTarifaTipo = new DtTarifaTipoDataTable();
             base.Tables.Add(this.tableDtTarifaTipo);
             this.tableDtProveedores = new DtProveedoresDataTable();
             base.Tables.Add(this.tableDtProveedores);
-            this.relationDtConfiguracionPrincipal_DtAlmacenes = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtAlmacenes", new global::System.Data.DataColumn[] {
-                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DtConfiguracionPrincipal_DtAlmacenes", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.IdEmpresaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtAlmacenes.Enlace_AlmacenesColumn});
+            this.tableDtAlmacenes.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DtConfiguracionPrincipal_DtConfi", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.IdEmpresaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtConfi.EmpresaENLACEColumn});
+            this.tableDtConfi.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DtConfiguracionPrincipal_DtTarifaTipo", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.IdEmpresaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtTarifaTipo.EnlaceTarifaColumn});
+            this.tableDtTarifaTipo.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DtConfiguracionPrincipal_DtProveedores", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.IdEmpresaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtProveedores.Enlace_ProveedoresColumn});
+            this.tableDtProveedores.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationFK_DtConfiguracionPrincipal_DtAlmacenes = new global::System.Data.DataRelation("FK_DtConfiguracionPrincipal_DtAlmacenes", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.IdEmpresaColumn}, new global::System.Data.DataColumn[] {
                         this.tableDtAlmacenes.Enlace_AlmacenesColumn}, false);
-            this.relationDtConfiguracionPrincipal_DtAlmacenes.Nested = true;
-            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtAlmacenes);
-            this.relationDtConfiguracionPrincipal_DtConfi = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtConfi", new global::System.Data.DataColumn[] {
-                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_DtConfiguracionPrincipal_DtAlmacenes);
+            this.relationFK_DtConfiguracionPrincipal_DtConfi = new global::System.Data.DataRelation("FK_DtConfiguracionPrincipal_DtConfi", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.IdEmpresaColumn}, new global::System.Data.DataColumn[] {
                         this.tableDtConfi.EmpresaENLACEColumn}, false);
-            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtConfi);
-            this.relationDtConfiguracionPrincipal_DtProveedores = new global::System.Data.DataRelation("DtConfiguracionPrincipal_DtProveedores", new global::System.Data.DataColumn[] {
-                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtProveedores.Enlace_ProveedoresColumn}, false);
-            this.Relations.Add(this.relationDtConfiguracionPrincipal_DtProveedores);
-            this.relationDtConfi_DtTarifaTipo = new global::System.Data.DataRelation("DtConfi_DtTarifaTipo", new global::System.Data.DataColumn[] {
-                        this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn}, new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_DtConfiguracionPrincipal_DtConfi);
+            this.relationFK_DtConfiguracionPrincipal_DtTarifaTipo = new global::System.Data.DataRelation("FK_DtConfiguracionPrincipal_DtTarifaTipo", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.IdEmpresaColumn}, new global::System.Data.DataColumn[] {
                         this.tableDtTarifaTipo.EnlaceTarifaColumn}, false);
-            this.Relations.Add(this.relationDtConfi_DtTarifaTipo);
+            this.Relations.Add(this.relationFK_DtConfiguracionPrincipal_DtTarifaTipo);
+            this.relationFK_DtConfiguracionPrincipal_DtProveedores = new global::System.Data.DataRelation("FK_DtConfiguracionPrincipal_DtProveedores", new global::System.Data.DataColumn[] {
+                        this.tableDtConfiguracionPrincipal.IdEmpresaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtProveedores.Enlace_ProveedoresColumn}, false);
+            this.Relations.Add(this.relationFK_DtConfiguracionPrincipal_DtProveedores);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeDtAlmacenes() {
+            return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -350,12 +384,6 @@ namespace PELOSCALVO {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeDtConfiguracionPrincipal() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeDtAlmacenes() {
             return false;
         }
         
@@ -427,19 +455,299 @@ namespace PELOSCALVO {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void DtAlmacenesRowChangeEventHandler(object sender, DtAlmacenesRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtConfiRowChangeEventHandler(object sender, DtConfiRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtConfiguracionPrincipalRowChangeEventHandler(object sender, DtConfiguracionPrincipalRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void DtAlmacenesRowChangeEventHandler(object sender, DtAlmacenesRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtTarifaTipoRowChangeEventHandler(object sender, DtTarifaTipoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtProveedoresRowChangeEventHandler(object sender, DtProveedoresRowChangeEvent e);
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DtAlmacenesDataTable : global::System.Data.TypedTableBase<DtAlmacenesRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnAlmacenes;
+            
+            private global::System.Data.DataColumn columnEnlace_Almacenes;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtAlmacenesDataTable() {
+                this.TableName = "DtAlmacenes";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DtAlmacenesDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected DtAlmacenesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AlmacenesColumn {
+                get {
+                    return this.columnAlmacenes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Enlace_AlmacenesColumn {
+                get {
+                    return this.columnEnlace_Almacenes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtAlmacenesRow this[int index] {
+                get {
+                    return ((DtAlmacenesRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DtAlmacenesRowChangeEventHandler DtAlmacenesRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DtAlmacenesRowChangeEventHandler DtAlmacenesRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DtAlmacenesRowChangeEventHandler DtAlmacenesRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DtAlmacenesRowChangeEventHandler DtAlmacenesRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddDtAlmacenesRow(DtAlmacenesRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtAlmacenesRow AddDtAlmacenesRow(int Id, string Almacenes, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtAlmacenes) {
+                DtAlmacenesRow rowDtAlmacenesRow = ((DtAlmacenesRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        Almacenes,
+                        null};
+                if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtAlmacenes != null)) {
+                    columnValuesArray[2] = parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtAlmacenes[1];
+                }
+                rowDtAlmacenesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDtAlmacenesRow);
+                return rowDtAlmacenesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DtAlmacenesDataTable cln = ((DtAlmacenesDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DtAlmacenesDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnAlmacenes = base.Columns["Almacenes"];
+                this.columnEnlace_Almacenes = base.Columns["Enlace_Almacenes"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnAlmacenes = new global::System.Data.DataColumn("Almacenes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAlmacenes);
+                this.columnEnlace_Almacenes = new global::System.Data.DataColumn("Enlace_Almacenes", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnlace_Almacenes);
+                this.columnId.AutoIncrementSeed = 1;
+                this.columnId.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtAlmacenesRow NewDtAlmacenesRow() {
+                return ((DtAlmacenesRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DtAlmacenesRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DtAlmacenesRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DtAlmacenesRowChanged != null)) {
+                    this.DtAlmacenesRowChanged(this, new DtAlmacenesRowChangeEvent(((DtAlmacenesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DtAlmacenesRowChanging != null)) {
+                    this.DtAlmacenesRowChanging(this, new DtAlmacenesRowChangeEvent(((DtAlmacenesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DtAlmacenesRowDeleted != null)) {
+                    this.DtAlmacenesRowDeleted(this, new DtAlmacenesRowChangeEvent(((DtAlmacenesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DtAlmacenesRowDeleting != null)) {
+                    this.DtAlmacenesRowDeleting(this, new DtAlmacenesRowChangeEvent(((DtAlmacenesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveDtAlmacenesRow(DtAlmacenesRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsCONFIGURACCION ds = new DsCONFIGURACCION();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DtAlmacenesDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -460,11 +768,7 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnAñoDeEjercicio;
             
-            private global::System.Data.DataColumn columnSerieArticulos;
-            
-            private global::System.Data.DataColumn columnSerieClientes;
-            
-            private global::System.Data.DataColumn columnId;
+            private global::System.Data.DataColumn columnIdEnlace;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -549,25 +853,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SerieArticulosColumn {
+            public global::System.Data.DataColumn IdEnlaceColumn {
                 get {
-                    return this.columnSerieArticulos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SerieClientesColumn {
-                get {
-                    return this.columnSerieClientes;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
+                    return this.columnIdEnlace;
                 }
             }
             
@@ -608,7 +896,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, string SerieArticulos, string SerieClientes, string Id) {
+            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, int IdEnlace) {
                 DtConfiRow rowDtConfiRow = ((DtConfiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfiguraccionBasica,
@@ -617,11 +905,9 @@ namespace PELOSCALVO {
                         null,
                         IdConexionConfi,
                         AñoDeEjercicio,
-                        SerieArticulos,
-                        SerieClientes,
-                        Id};
-                if ((parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi != null)) {
-                    columnValuesArray[3] = parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtConfi[2];
+                        IdEnlace};
+                if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi != null)) {
+                    columnValuesArray[3] = parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi[1];
                 }
                 rowDtConfiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtConfiRow);
@@ -651,9 +937,7 @@ namespace PELOSCALVO {
                 this.columnEmpresaENLACE = base.Columns["EmpresaENLACE"];
                 this.columnIdConexionConfi = base.Columns["IdConexionConfi"];
                 this.columnAñoDeEjercicio = base.Columns["AñoDeEjercicio"];
-                this.columnSerieArticulos = base.Columns["SerieArticulos"];
-                this.columnSerieClientes = base.Columns["SerieClientes"];
-                this.columnId = base.Columns["Id"];
+                this.columnIdEnlace = base.Columns["IdEnlace"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -665,18 +949,17 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnTipoInpuestoIVA);
                 this.columnEjerciciosDeAño = new global::System.Data.DataColumn("EjerciciosDeAño", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEjerciciosDeAño);
-                this.columnEmpresaENLACE = new global::System.Data.DataColumn("EmpresaENLACE", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEmpresaENLACE = new global::System.Data.DataColumn("EmpresaENLACE", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaENLACE);
                 this.columnIdConexionConfi = new global::System.Data.DataColumn("IdConexionConfi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdConexionConfi);
                 this.columnAñoDeEjercicio = new global::System.Data.DataColumn("AñoDeEjercicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAñoDeEjercicio);
-                this.columnSerieArticulos = new global::System.Data.DataColumn("SerieArticulos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSerieArticulos);
-                this.columnSerieClientes = new global::System.Data.DataColumn("SerieClientes", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSerieClientes);
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
+                this.columnIdEnlace = new global::System.Data.DataColumn("IdEnlace", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdEnlace);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdEnlace}, false));
+                this.columnIdEnlace.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -814,8 +1097,6 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnIdEmpresa;
             
-            private global::System.Data.DataColumn columnNombreEmpresaReguistro;
-            
             private global::System.Data.DataColumn columnNombreEmpresa;
             
             private global::System.Data.DataColumn columnDireccionEmpresa;
@@ -892,14 +1173,6 @@ namespace PELOSCALVO {
             public global::System.Data.DataColumn IdEmpresaColumn {
                 get {
                     return this.columnIdEmpresa;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NombreEmpresaReguistroColumn {
-                get {
-                    return this.columnNombreEmpresaReguistro;
                 }
             }
             
@@ -1063,7 +1336,6 @@ namespace PELOSCALVO {
             public DtConfiguracionPrincipalRow AddDtConfiguracionPrincipalRow(
                         string EmpresaConfi, 
                         int IdEmpresa, 
-                        string NombreEmpresaReguistro, 
                         string NombreEmpresa, 
                         string DireccionEmpresa, 
                         string LocalidadEmpresa, 
@@ -1083,7 +1355,6 @@ namespace PELOSCALVO {
                 object[] columnValuesArray = new object[] {
                         EmpresaConfi,
                         IdEmpresa,
-                        NombreEmpresaReguistro,
                         NombreEmpresa,
                         DireccionEmpresa,
                         LocalidadEmpresa,
@@ -1123,7 +1394,6 @@ namespace PELOSCALVO {
             internal void InitVars() {
                 this.columnEmpresaConfi = base.Columns["EmpresaConfi"];
                 this.columnIdEmpresa = base.Columns["IdEmpresa"];
-                this.columnNombreEmpresaReguistro = base.Columns["NombreEmpresaReguistro"];
                 this.columnNombreEmpresa = base.Columns["NombreEmpresa"];
                 this.columnDireccionEmpresa = base.Columns["DireccionEmpresa"];
                 this.columnLocalidadEmpresa = base.Columns["LocalidadEmpresa"];
@@ -1148,8 +1418,6 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnEmpresaConfi);
                 this.columnIdEmpresa = new global::System.Data.DataColumn("IdEmpresa", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdEmpresa);
-                this.columnNombreEmpresaReguistro = new global::System.Data.DataColumn("NombreEmpresaReguistro", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombreEmpresaReguistro);
                 this.columnNombreEmpresa = new global::System.Data.DataColumn("NombreEmpresa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNombreEmpresa);
                 this.columnDireccionEmpresa = new global::System.Data.DataColumn("DireccionEmpresa", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1180,9 +1448,9 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnCifEmpresa);
                 this.columnImagenEmpresa = new global::System.Data.DataColumn("ImagenEmpresa", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImagenEmpresa);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("DtConfiguracionPrincipalKey1", new global::System.Data.DataColumn[] {
-                                this.columnNombreEmpresaReguistro}, false));
-                this.columnNombreEmpresaReguistro.Unique = true;
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdEmpresa}, false));
+                this.columnIdEmpresa.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1314,289 +1582,9 @@ namespace PELOSCALVO {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DtAlmacenesDataTable : global::System.Data.TypedTableBase<DtAlmacenesRow> {
-            
-            private global::System.Data.DataColumn columnId_almacenes;
-            
-            private global::System.Data.DataColumn columnAlmacenes;
-            
-            private global::System.Data.DataColumn columnEnlace_Almacenes;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtAlmacenesDataTable() {
-                this.TableName = "DtAlmacenes";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DtAlmacenesDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected DtAlmacenesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Id_almacenesColumn {
-                get {
-                    return this.columnId_almacenes;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn AlmacenesColumn {
-                get {
-                    return this.columnAlmacenes;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Enlace_AlmacenesColumn {
-                get {
-                    return this.columnEnlace_Almacenes;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtAlmacenesRow this[int index] {
-                get {
-                    return ((DtAlmacenesRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtAlmacenesRowChangeEventHandler DtAlmacenesRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtAlmacenesRowChangeEventHandler DtAlmacenesRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtAlmacenesRowChangeEventHandler DtAlmacenesRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtAlmacenesRowChangeEventHandler DtAlmacenesRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddDtAlmacenesRow(DtAlmacenesRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtAlmacenesRow AddDtAlmacenesRow(string Almacenes, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtAlmacenes) {
-                DtAlmacenesRow rowDtAlmacenesRow = ((DtAlmacenesRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Almacenes,
-                        null};
-                if ((parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtAlmacenes != null)) {
-                    columnValuesArray[2] = parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtAlmacenes[2];
-                }
-                rowDtAlmacenesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDtAlmacenesRow);
-                return rowDtAlmacenesRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DtAlmacenesDataTable cln = ((DtAlmacenesDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DtAlmacenesDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal void InitVars() {
-                this.columnId_almacenes = base.Columns["Id_almacenes"];
-                this.columnAlmacenes = base.Columns["Almacenes"];
-                this.columnEnlace_Almacenes = base.Columns["Enlace_Almacenes"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            private void InitClass() {
-                this.columnId_almacenes = new global::System.Data.DataColumn("Id_almacenes", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_almacenes);
-                this.columnAlmacenes = new global::System.Data.DataColumn("Almacenes", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAlmacenes);
-                this.columnEnlace_Almacenes = new global::System.Data.DataColumn("Enlace_Almacenes", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEnlace_Almacenes);
-                this.columnId_almacenes.AutoIncrement = true;
-                this.columnId_almacenes.AutoIncrementSeed = 1;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtAlmacenesRow NewDtAlmacenesRow() {
-                return ((DtAlmacenesRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DtAlmacenesRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DtAlmacenesRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DtAlmacenesRowChanged != null)) {
-                    this.DtAlmacenesRowChanged(this, new DtAlmacenesRowChangeEvent(((DtAlmacenesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DtAlmacenesRowChanging != null)) {
-                    this.DtAlmacenesRowChanging(this, new DtAlmacenesRowChangeEvent(((DtAlmacenesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DtAlmacenesRowDeleted != null)) {
-                    this.DtAlmacenesRowDeleted(this, new DtAlmacenesRowChangeEvent(((DtAlmacenesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DtAlmacenesRowDeleting != null)) {
-                    this.DtAlmacenesRowDeleting(this, new DtAlmacenesRowChangeEvent(((DtAlmacenesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveDtAlmacenesRow(DtAlmacenesRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DsCONFIGURACCION ds = new DsCONFIGURACCION();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DtAlmacenesDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DtTarifaTipoDataTable : global::System.Data.TypedTableBase<DtTarifaTipoRow> {
             
-            private global::System.Data.DataColumn columnIdTarifa;
+            private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnTarifaTipo;
             
@@ -1637,9 +1625,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdTarifaColumn {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnIdTarifa;
+                    return this.columnId;
                 }
             }
             
@@ -1696,14 +1684,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtTarifaTipoRow AddDtTarifaTipoRow(int IdTarifa, string TarifaTipo, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfi_DtTarifaTipo) {
+            public DtTarifaTipoRow AddDtTarifaTipoRow(int Id, string TarifaTipo, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtTarifaTipo) {
                 DtTarifaTipoRow rowDtTarifaTipoRow = ((DtTarifaTipoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        IdTarifa,
+                        Id,
                         TarifaTipo,
                         null};
-                if ((parentDtConfiguracionPrincipalRowByDtConfi_DtTarifaTipo != null)) {
-                    columnValuesArray[2] = parentDtConfiguracionPrincipalRowByDtConfi_DtTarifaTipo[2];
+                if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtTarifaTipo != null)) {
+                    columnValuesArray[2] = parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtTarifaTipo[1];
                 }
                 rowDtTarifaTipoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtTarifaTipoRow);
@@ -1727,7 +1715,7 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnIdTarifa = base.Columns["IdTarifa"];
+                this.columnId = base.Columns["Id"];
                 this.columnTarifaTipo = base.Columns["TarifaTipo"];
                 this.columnEnlaceTarifa = base.Columns["EnlaceTarifa"];
             }
@@ -1735,12 +1723,14 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnIdTarifa = new global::System.Data.DataColumn("IdTarifa", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdTarifa);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columnTarifaTipo = new global::System.Data.DataColumn("TarifaTipo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTarifaTipo);
-                this.columnEnlaceTarifa = new global::System.Data.DataColumn("EnlaceTarifa", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEnlaceTarifa = new global::System.Data.DataColumn("EnlaceTarifa", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceTarifa);
+                this.columnId.AllowDBNull = false;
+                this.columnTarifaTipo.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1974,14 +1964,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtProveedoresRow AddDtProveedoresRow(string Proveedores, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtProveedores) {
+            public DtProveedoresRow AddDtProveedoresRow(int Id_Proveedores, string Proveedores, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtProveedores) {
                 DtProveedoresRow rowDtProveedoresRow = ((DtProveedoresRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        Id_Proveedores,
                         Proveedores,
                         null};
-                if ((parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtProveedores != null)) {
-                    columnValuesArray[2] = parentDtConfiguracionPrincipalRowByDtConfiguracionPrincipal_DtProveedores[2];
+                if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtProveedores != null)) {
+                    columnValuesArray[2] = parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtProveedores[1];
                 }
                 rowDtProveedoresRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtProveedoresRow);
@@ -2017,9 +2007,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnId_Proveedores);
                 this.columnProveedores = new global::System.Data.DataColumn("Proveedores", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProveedores);
-                this.columnEnlace_Proveedores = new global::System.Data.DataColumn("Enlace_Proveedores", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEnlace_Proveedores = new global::System.Data.DataColumn("Enlace_Proveedores", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlace_Proveedores);
-                this.columnId_Proveedores.AutoIncrement = true;
                 this.columnId_Proveedores.AutoIncrementSeed = 1;
                 this.columnId_Proveedores.Caption = "Id_almacenes";
                 this.columnProveedores.Caption = "Almacenes";
@@ -2153,6 +2142,99 @@ namespace PELOSCALVO {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class DtAlmacenesRow : global::System.Data.DataRow {
+            
+            private DtAlmacenesDataTable tableDtAlmacenes;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DtAlmacenesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDtAlmacenes = ((DtAlmacenesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableDtAlmacenes.IdColumn]));
+                }
+                set {
+                    this[this.tableDtAlmacenes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Almacenes {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtAlmacenes.AlmacenesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Almacenes\' de la tabla \'DtAlmacenes\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtAlmacenes.AlmacenesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Enlace_Almacenes {
+                get {
+                    try {
+                        return ((int)(this[this.tableDtAlmacenes.Enlace_AlmacenesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Enlace_Almacenes\' de la tabla \'DtAlmacenes\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtAlmacenes.Enlace_AlmacenesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtConfiguracionPrincipalRow DtConfiguracionPrincipalRow {
+                get {
+                    return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtAlmacenes"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtAlmacenes"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAlmacenesNull() {
+                return this.IsNull(this.tableDtAlmacenes.AlmacenesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAlmacenesNull() {
+                this[this.tableDtAlmacenes.AlmacenesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEnlace_AlmacenesNull() {
+                return this.IsNull(this.tableDtAlmacenes.Enlace_AlmacenesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEnlace_AlmacenesNull() {
+                this[this.tableDtAlmacenes.Enlace_AlmacenesColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class DtConfiRow : global::System.Data.DataRow {
             
             private DtConfiDataTable tableDtConfi;
@@ -2214,10 +2296,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EmpresaENLACE {
+            public int EmpresaENLACE {
                 get {
                     try {
-                        return ((string)(this[this.tableDtConfi.EmpresaENLACEColumn]));
+                        return ((int)(this[this.tableDtConfi.EmpresaENLACEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EmpresaENLACE\' de la tabla \'DtConfi\' es DBNull.", e);
@@ -2262,49 +2344,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SerieArticulos {
+            public int IdEnlace {
                 get {
                     try {
-                        return ((string)(this[this.tableDtConfi.SerieArticulosColumn]));
+                        return ((int)(this[this.tableDtConfi.IdEnlaceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SerieArticulos\' de la tabla \'DtConfi\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdEnlace\' de la tabla \'DtConfi\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtConfi.SerieArticulosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SerieClientes {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtConfi.SerieClientesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SerieClientes\' de la tabla \'DtConfi\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtConfi.SerieClientesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Id {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtConfi.IdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtConfi\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtConfi.IdColumn] = value;
+                    this[this.tableDtConfi.IdEnlaceColumn] = value;
                 }
             }
             
@@ -2312,10 +2362,10 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiguracionPrincipalRow DtConfiguracionPrincipalRow {
                 get {
-                    return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["DtConfiguracionPrincipal_DtConfi"])));
+                    return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtConfi"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["DtConfiguracionPrincipal_DtConfi"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtConfi"]);
                 }
             }
             
@@ -2393,38 +2443,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSerieArticulosNull() {
-                return this.IsNull(this.tableDtConfi.SerieArticulosColumn);
+            public bool IsIdEnlaceNull() {
+                return this.IsNull(this.tableDtConfi.IdEnlaceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSerieArticulosNull() {
-                this[this.tableDtConfi.SerieArticulosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSerieClientesNull() {
-                return this.IsNull(this.tableDtConfi.SerieClientesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSerieClientesNull() {
-                this[this.tableDtConfi.SerieClientesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIdNull() {
-                return this.IsNull(this.tableDtConfi.IdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIdNull() {
-                this[this.tableDtConfi.IdColumn] = global::System.Convert.DBNull;
+            public void SetIdEnlaceNull() {
+                this[this.tableDtConfi.IdEnlaceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2473,23 +2499,6 @@ namespace PELOSCALVO {
                 }
                 set {
                     this[this.tableDtConfiguracionPrincipal.IdEmpresaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string NombreEmpresaReguistro {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NombreEmpresaReguistro\' de la tabla \'DtConfiguracionPrinc" +
-                                "ipal\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn] = value;
                 }
             }
             
@@ -2774,18 +2783,6 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNombreEmpresaReguistroNull() {
-                return this.IsNull(this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNombreEmpresaReguistroNull() {
-                this[this.tableDtConfiguracionPrincipal.NombreEmpresaReguistroColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNombreEmpresaNull() {
                 return this.IsNull(this.tableDtConfiguracionPrincipal.NombreEmpresaColumn);
             }
@@ -2966,156 +2963,46 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtAlmacenesRow[] GetDtAlmacenesRows() {
-                if ((this.Table.ChildRelations["DtConfiguracionPrincipal_DtAlmacenes"] == null)) {
-                    return new DtAlmacenesRow[0];
-                }
-                else {
-                    return ((DtAlmacenesRow[])(base.GetChildRows(this.Table.ChildRelations["DtConfiguracionPrincipal_DtAlmacenes"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiRow[] GetDtConfiRows() {
-                if ((this.Table.ChildRelations["DtConfiguracionPrincipal_DtConfi"] == null)) {
-                    return new DtConfiRow[0];
-                }
-                else {
-                    return ((DtConfiRow[])(base.GetChildRows(this.Table.ChildRelations["DtConfiguracionPrincipal_DtConfi"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtProveedoresRow[] GetDtProveedoresRows() {
-                if ((this.Table.ChildRelations["DtConfiguracionPrincipal_DtProveedores"] == null)) {
+                if ((this.Table.ChildRelations["FK_DtConfiguracionPrincipal_DtProveedores"] == null)) {
                     return new DtProveedoresRow[0];
                 }
                 else {
-                    return ((DtProveedoresRow[])(base.GetChildRows(this.Table.ChildRelations["DtConfiguracionPrincipal_DtProveedores"])));
+                    return ((DtProveedoresRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DtConfiguracionPrincipal_DtProveedores"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtTarifaTipoRow[] GetDtTarifaTipoRows() {
-                if ((this.Table.ChildRelations["DtConfi_DtTarifaTipo"] == null)) {
+                if ((this.Table.ChildRelations["FK_DtConfiguracionPrincipal_DtTarifaTipo"] == null)) {
                     return new DtTarifaTipoRow[0];
                 }
                 else {
-                    return ((DtTarifaTipoRow[])(base.GetChildRows(this.Table.ChildRelations["DtConfi_DtTarifaTipo"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DtAlmacenesRow : global::System.Data.DataRow {
-            
-            private DtAlmacenesDataTable tableDtAlmacenes;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DtAlmacenesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDtAlmacenes = ((DtAlmacenesDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id_almacenes {
-                get {
-                    try {
-                        return ((int)(this[this.tableDtAlmacenes.Id_almacenesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id_almacenes\' de la tabla \'DtAlmacenes\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtAlmacenes.Id_almacenesColumn] = value;
+                    return ((DtTarifaTipoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DtConfiguracionPrincipal_DtTarifaTipo"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Almacenes {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtAlmacenes.AlmacenesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Almacenes\' de la tabla \'DtAlmacenes\' es DBNull.", e);
-                    }
+            public DtConfiRow[] GetDtConfiRows() {
+                if ((this.Table.ChildRelations["FK_DtConfiguracionPrincipal_DtConfi"] == null)) {
+                    return new DtConfiRow[0];
                 }
-                set {
-                    this[this.tableDtAlmacenes.AlmacenesColumn] = value;
+                else {
+                    return ((DtConfiRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DtConfiguracionPrincipal_DtConfi"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Enlace_Almacenes {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtAlmacenes.Enlace_AlmacenesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Enlace_Almacenes\' de la tabla \'DtAlmacenes\' es DBNull.", e);
-                    }
+            public DtAlmacenesRow[] GetDtAlmacenesRows() {
+                if ((this.Table.ChildRelations["FK_DtConfiguracionPrincipal_DtAlmacenes"] == null)) {
+                    return new DtAlmacenesRow[0];
                 }
-                set {
-                    this[this.tableDtAlmacenes.Enlace_AlmacenesColumn] = value;
+                else {
+                    return ((DtAlmacenesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DtConfiguracionPrincipal_DtAlmacenes"])));
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiguracionPrincipalRow DtConfiguracionPrincipalRow {
-                get {
-                    return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["DtConfiguracionPrincipal_DtAlmacenes"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["DtConfiguracionPrincipal_DtAlmacenes"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsId_almacenesNull() {
-                return this.IsNull(this.tableDtAlmacenes.Id_almacenesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetId_almacenesNull() {
-                this[this.tableDtAlmacenes.Id_almacenesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsAlmacenesNull() {
-                return this.IsNull(this.tableDtAlmacenes.AlmacenesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetAlmacenesNull() {
-                this[this.tableDtAlmacenes.AlmacenesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsEnlace_AlmacenesNull() {
-                return this.IsNull(this.tableDtAlmacenes.Enlace_AlmacenesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetEnlace_AlmacenesNull() {
-                this[this.tableDtAlmacenes.Enlace_AlmacenesColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3135,17 +3022,12 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int IdTarifa {
+            public int Id {
                 get {
-                    try {
-                        return ((int)(this[this.tableDtTarifaTipo.IdTarifaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdTarifa\' de la tabla \'DtTarifaTipo\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableDtTarifaTipo.IdColumn]));
                 }
                 set {
-                    this[this.tableDtTarifaTipo.IdTarifaColumn] = value;
+                    this[this.tableDtTarifaTipo.IdColumn] = value;
                 }
             }
             
@@ -3153,12 +3035,7 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TarifaTipo {
                 get {
-                    try {
-                        return ((string)(this[this.tableDtTarifaTipo.TarifaTipoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TarifaTipo\' de la tabla \'DtTarifaTipo\' es DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDtTarifaTipo.TarifaTipoColumn]));
                 }
                 set {
                     this[this.tableDtTarifaTipo.TarifaTipoColumn] = value;
@@ -3167,10 +3044,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EnlaceTarifa {
+            public int EnlaceTarifa {
                 get {
                     try {
-                        return ((string)(this[this.tableDtTarifaTipo.EnlaceTarifaColumn]));
+                        return ((int)(this[this.tableDtTarifaTipo.EnlaceTarifaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceTarifa\' de la tabla \'DtTarifaTipo\' es DBNull.", e);
@@ -3185,35 +3062,11 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiguracionPrincipalRow DtConfiguracionPrincipalRow {
                 get {
-                    return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["DtConfi_DtTarifaTipo"])));
+                    return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtTarifaTipo"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["DtConfi_DtTarifaTipo"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtTarifaTipo"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIdTarifaNull() {
-                return this.IsNull(this.tableDtTarifaTipo.IdTarifaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIdTarifaNull() {
-                this[this.tableDtTarifaTipo.IdTarifaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTarifaTipoNull() {
-                return this.IsNull(this.tableDtTarifaTipo.TarifaTipoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTarifaTipoNull() {
-                this[this.tableDtTarifaTipo.TarifaTipoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3277,10 +3130,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Enlace_Proveedores {
+            public int Enlace_Proveedores {
                 get {
                     try {
-                        return ((string)(this[this.tableDtProveedores.Enlace_ProveedoresColumn]));
+                        return ((int)(this[this.tableDtProveedores.Enlace_ProveedoresColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Enlace_Proveedores\' de la tabla \'DtProveedores\' es DBNull" +
@@ -3296,10 +3149,10 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiguracionPrincipalRow DtConfiguracionPrincipalRow {
                 get {
-                    return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["DtConfiguracionPrincipal_DtProveedores"])));
+                    return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtProveedores"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["DtConfiguracionPrincipal_DtProveedores"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtProveedores"]);
                 }
             }
             
@@ -3337,6 +3190,40 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEnlace_ProveedoresNull() {
                 this[this.tableDtProveedores.Enlace_ProveedoresColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class DtAlmacenesRowChangeEvent : global::System.EventArgs {
+            
+            private DtAlmacenesRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtAlmacenesRowChangeEvent(DtAlmacenesRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtAlmacenesRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
             }
         }
         
@@ -3394,40 +3281,6 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiguracionPrincipalRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class DtAlmacenesRowChangeEvent : global::System.EventArgs {
-            
-            private DtAlmacenesRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtAlmacenesRowChangeEvent(DtAlmacenesRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtAlmacenesRow Row {
                 get {
                     return this.eventRow;
                 }

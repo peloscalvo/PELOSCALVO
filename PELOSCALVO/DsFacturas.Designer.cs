@@ -20,29 +20,25 @@ namespace PELOSCALVO {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("Dtfacturas")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DsFacturas")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class Dtfacturas : global::System.Data.DataSet {
+    public partial class DsFacturas : global::System.Data.DataSet {
         
         private DtNuevaFacturaDataTable tableDtNuevaFactura;
         
         private DtDetallesFacturaDataTable tableDtDetallesFactura;
         
-        private DtfacturasDataTable tableDtfacturas;
-        
         private DtDetallesFactura2DataTable tableDtDetallesFactura2;
         
-        private global::System.Data.DataRelation relationDtfacturas_DtNuevaFactura;
+        private global::System.Data.DataRelation relationDtNuevaFactura_DtDetallesFactura;
         
         private global::System.Data.DataRelation relationDtNuevaFactura_DtDetallesFactura2;
-        
-        private global::System.Data.DataRelation relationDtNuevaFactura_DtDetallesFactura;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public Dtfacturas() {
+        public DsFacturas() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -53,7 +49,7 @@ namespace PELOSCALVO {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected Dtfacturas(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DsFacturas(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -71,9 +67,6 @@ namespace PELOSCALVO {
                 }
                 if ((ds.Tables["DtDetallesFactura"] != null)) {
                     base.Tables.Add(new DtDetallesFacturaDataTable(ds.Tables["DtDetallesFactura"]));
-                }
-                if ((ds.Tables["Dtfacturas"] != null)) {
-                    base.Tables.Add(new DtfacturasDataTable(ds.Tables["Dtfacturas"]));
                 }
                 if ((ds.Tables["DtDetallesFactura2"] != null)) {
                     base.Tables.Add(new DtDetallesFactura2DataTable(ds.Tables["DtDetallesFactura2"]));
@@ -113,16 +106,6 @@ namespace PELOSCALVO {
         public DtDetallesFacturaDataTable DtDetallesFactura {
             get {
                 return this.tableDtDetallesFactura;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DtfacturasDataTable _Dtfacturas {
-            get {
-                return this.tableDtfacturas;
             }
         }
         
@@ -178,7 +161,7 @@ namespace PELOSCALVO {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            Dtfacturas cln = ((Dtfacturas)(base.Clone()));
+            DsFacturas cln = ((DsFacturas)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -208,9 +191,6 @@ namespace PELOSCALVO {
                 }
                 if ((ds.Tables["DtDetallesFactura"] != null)) {
                     base.Tables.Add(new DtDetallesFacturaDataTable(ds.Tables["DtDetallesFactura"]));
-                }
-                if ((ds.Tables["Dtfacturas"] != null)) {
-                    base.Tables.Add(new DtfacturasDataTable(ds.Tables["Dtfacturas"]));
                 }
                 if ((ds.Tables["DtDetallesFactura2"] != null)) {
                     base.Tables.Add(new DtDetallesFactura2DataTable(ds.Tables["DtDetallesFactura2"]));
@@ -260,51 +240,53 @@ namespace PELOSCALVO {
                     this.tableDtDetallesFactura.InitVars();
                 }
             }
-            this.tableDtfacturas = ((DtfacturasDataTable)(base.Tables["Dtfacturas"]));
-            if ((initTable == true)) {
-                if ((this.tableDtfacturas != null)) {
-                    this.tableDtfacturas.InitVars();
-                }
-            }
             this.tableDtDetallesFactura2 = ((DtDetallesFactura2DataTable)(base.Tables["DtDetallesFactura2"]));
             if ((initTable == true)) {
                 if ((this.tableDtDetallesFactura2 != null)) {
                     this.tableDtDetallesFactura2.InitVars();
                 }
             }
-            this.relationDtfacturas_DtNuevaFactura = this.Relations["Dtfacturas_DtNuevaFactura"];
-            this.relationDtNuevaFactura_DtDetallesFactura2 = this.Relations["DtNuevaFactura_DtDetallesFactura2"];
             this.relationDtNuevaFactura_DtDetallesFactura = this.Relations["DtNuevaFactura_DtDetallesFactura"];
+            this.relationDtNuevaFactura_DtDetallesFactura2 = this.Relations["DtNuevaFactura_DtDetallesFactura2"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "Dtfacturas";
+            this.DataSetName = "DsFacturas";
             this.Prefix = "";
-            this.Namespace = "PELOSCALVO//Dtfacturas.xsd";
+            this.Namespace = "http://tempuri.org/DsFacturas.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDtNuevaFactura = new DtNuevaFacturaDataTable();
             base.Tables.Add(this.tableDtNuevaFactura);
             this.tableDtDetallesFactura = new DtDetallesFacturaDataTable();
             base.Tables.Add(this.tableDtDetallesFactura);
-            this.tableDtfacturas = new DtfacturasDataTable();
-            base.Tables.Add(this.tableDtfacturas);
             this.tableDtDetallesFactura2 = new DtDetallesFactura2DataTable();
             base.Tables.Add(this.tableDtDetallesFactura2);
-            this.relationDtfacturas_DtNuevaFactura = new global::System.Data.DataRelation("Dtfacturas_DtNuevaFactura", new global::System.Data.DataColumn[] {
-                        this.tableDtfacturas.IdFacturasColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtNuevaFactura.NumeroFacturaColumn}, false);
-            this.Relations.Add(this.relationDtfacturas_DtNuevaFactura);
-            this.relationDtNuevaFactura_DtDetallesFactura2 = new global::System.Data.DataRelation("DtNuevaFactura_DtDetallesFactura2", new global::System.Data.DataColumn[] {
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtNuevaFactura_DtDetallesFactura", new global::System.Data.DataColumn[] {
                         this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDtDetallesFactura2.EnlaceDetalleColumn}, false);
-            this.Relations.Add(this.relationDtNuevaFactura_DtDetallesFactura2);
+                        this.tableDtDetallesFactura.EnlaceDetalleColumn});
+            this.tableDtDetallesFactura.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("DtNuevaFactura_DtDetallesFactura2", new global::System.Data.DataColumn[] {
+                        this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtDetallesFactura2.EnlaceDetalleColumn});
+            this.tableDtDetallesFactura2.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationDtNuevaFactura_DtDetallesFactura = new global::System.Data.DataRelation("DtNuevaFactura_DtDetallesFactura", new global::System.Data.DataColumn[] {
                         this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
                         this.tableDtDetallesFactura.EnlaceDetalleColumn}, false);
             this.Relations.Add(this.relationDtNuevaFactura_DtDetallesFactura);
+            this.relationDtNuevaFactura_DtDetallesFactura2 = new global::System.Data.DataRelation("DtNuevaFactura_DtDetallesFactura2", new global::System.Data.DataColumn[] {
+                        this.tableDtNuevaFactura.EnlaceFacturaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDtDetallesFactura2.EnlaceDetalleColumn}, false);
+            this.Relations.Add(this.relationDtNuevaFactura_DtDetallesFactura2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -316,12 +298,6 @@ namespace PELOSCALVO {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeDtDetallesFactura() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerialize_Dtfacturas() {
             return false;
         }
         
@@ -342,7 +318,7 @@ namespace PELOSCALVO {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            Dtfacturas ds = new Dtfacturas();
+            DsFacturas ds = new DsFacturas();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -391,9 +367,6 @@ namespace PELOSCALVO {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtDetallesFacturaRowChangeEventHandler(object sender, DtDetallesFacturaRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void DtfacturasRowChangeEventHandler(object sender, DtfacturasRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtDetallesFactura2RowChangeEventHandler(object sender, DtDetallesFactura2RowChangeEvent e);
@@ -458,6 +431,8 @@ namespace PELOSCALVO {
             private global::System.Data.DataColumn columnEnlaceFactura;
             
             private global::System.Data.DataColumn columnEmpresaEnlace;
+            
+            private global::System.Data.DataColumn columnEnlaceDtconfi;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -710,6 +685,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EnlaceDtconfiColumn {
+                get {
+                    return this.columnEnlaceDtconfi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -746,7 +729,7 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtNuevaFacturaRow AddDtNuevaFacturaRow(
-                        DtfacturasRow parentDtfacturasRowByDtfacturas_DtNuevaFactura, 
+                        int NumeroFactura, 
                         string Apodo, 
                         string Nombre, 
                         string Direccion, 
@@ -772,10 +755,11 @@ namespace PELOSCALVO {
                         string EjercicioTipo, 
                         string SerieTipo, 
                         string EnlaceFactura, 
-                        string EmpresaEnlace) {
+                        string EmpresaEnlace, 
+                        string EnlaceDtconfi) {
                 DtNuevaFacturaRow rowDtNuevaFacturaRow = ((DtNuevaFacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        NumeroFactura,
                         Apodo,
                         Nombre,
                         Direccion,
@@ -801,10 +785,8 @@ namespace PELOSCALVO {
                         EjercicioTipo,
                         SerieTipo,
                         EnlaceFactura,
-                        EmpresaEnlace};
-                if ((parentDtfacturasRowByDtfacturas_DtNuevaFactura != null)) {
-                    columnValuesArray[0] = parentDtfacturasRowByDtfacturas_DtNuevaFactura[1];
-                }
+                        EmpresaEnlace,
+                        EnlaceDtconfi};
                 rowDtNuevaFacturaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtNuevaFacturaRow);
                 return rowDtNuevaFacturaRow;
@@ -854,6 +836,7 @@ namespace PELOSCALVO {
                 this.columnSerieTipo = base.Columns["SerieTipo"];
                 this.columnEnlaceFactura = base.Columns["EnlaceFactura"];
                 this.columnEmpresaEnlace = base.Columns["EmpresaEnlace"];
+                this.columnEnlaceDtconfi = base.Columns["EnlaceDtconfi"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -913,6 +896,11 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnEnlaceFactura);
                 this.columnEmpresaEnlace = new global::System.Data.DataColumn("EmpresaEnlace", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaEnlace);
+                this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnlaceDtconfi);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnEnlaceFactura}, false));
+                this.columnEnlaceFactura.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -980,7 +968,7 @@ namespace PELOSCALVO {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Dtfacturas ds = new Dtfacturas();
+                DsFacturas ds = new DsFacturas();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1328,7 +1316,7 @@ namespace PELOSCALVO {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Dtfacturas ds = new Dtfacturas();
+                DsFacturas ds = new DsFacturas();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1347,269 +1335,6 @@ namespace PELOSCALVO {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DtDetallesFacturaDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DtfacturasDataTable : global::System.Data.TypedTableBase<DtfacturasRow> {
-            
-            private global::System.Data.DataColumn columnFacturas;
-            
-            private global::System.Data.DataColumn columnIdFacturas;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtfacturasDataTable() {
-                this.TableName = "Dtfacturas";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DtfacturasDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected DtfacturasDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn FacturasColumn {
-                get {
-                    return this.columnFacturas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdFacturasColumn {
-                get {
-                    return this.columnIdFacturas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtfacturasRow this[int index] {
-                get {
-                    return ((DtfacturasRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtfacturasRowChangeEventHandler DtfacturasRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtfacturasRowChangeEventHandler DtfacturasRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtfacturasRowChangeEventHandler DtfacturasRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DtfacturasRowChangeEventHandler DtfacturasRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddDtfacturasRow(DtfacturasRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtfacturasRow AddDtfacturasRow(string Facturas, int IdFacturas) {
-                DtfacturasRow rowDtfacturasRow = ((DtfacturasRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Facturas,
-                        IdFacturas};
-                rowDtfacturasRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDtfacturasRow);
-                return rowDtfacturasRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DtfacturasDataTable cln = ((DtfacturasDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DtfacturasDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal void InitVars() {
-                this.columnFacturas = base.Columns["Facturas"];
-                this.columnIdFacturas = base.Columns["IdFacturas"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            private void InitClass() {
-                this.columnFacturas = new global::System.Data.DataColumn("Facturas", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFacturas);
-                this.columnIdFacturas = new global::System.Data.DataColumn("IdFacturas", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdFacturas);
-                this.ExtendedProperties.Add("Generator_TablePropName", "_Dtfacturas");
-                this.ExtendedProperties.Add("Generator_UserTableName", "Dtfacturas");
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtfacturasRow NewDtfacturasRow() {
-                return ((DtfacturasRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DtfacturasRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DtfacturasRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DtfacturasRowChanged != null)) {
-                    this.DtfacturasRowChanged(this, new DtfacturasRowChangeEvent(((DtfacturasRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DtfacturasRowChanging != null)) {
-                    this.DtfacturasRowChanging(this, new DtfacturasRowChangeEvent(((DtfacturasRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DtfacturasRowDeleted != null)) {
-                    this.DtfacturasRowDeleted(this, new DtfacturasRowChangeEvent(((DtfacturasRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DtfacturasRowDeleting != null)) {
-                    this.DtfacturasRowDeleting(this, new DtfacturasRowChangeEvent(((DtfacturasRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveDtfacturasRow(DtfacturasRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Dtfacturas ds = new Dtfacturas();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DtfacturasDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1925,7 +1650,7 @@ namespace PELOSCALVO {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Dtfacturas ds = new Dtfacturas();
+                DsFacturas ds = new DsFacturas();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2432,12 +2157,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtfacturasRow DtfacturasRow {
+            public string EnlaceDtconfi {
                 get {
-                    return ((DtfacturasRow)(this.GetParentRow(this.Table.ParentRelations["Dtfacturas_DtNuevaFactura"])));
+                    try {
+                        return ((string)(this[this.tableDtNuevaFactura.EnlaceDtconfiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceDtconfi\' de la tabla \'DtNuevaFactura\' es DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Dtfacturas_DtNuevaFactura"]);
+                    this[this.tableDtNuevaFactura.EnlaceDtconfiColumn] = value;
                 }
             }
             
@@ -2767,6 +2497,18 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEnlaceDtconfiNull() {
+                return this.IsNull(this.tableDtNuevaFactura.EnlaceDtconfiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEnlaceDtconfiNull() {
+                this[this.tableDtNuevaFactura.EnlaceDtconfiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtDetallesFactura2Row[] GetDtDetallesFactura2Rows() {
                 if ((this.Table.ChildRelations["DtNuevaFactura_DtDetallesFactura2"] == null)) {
                     return new DtDetallesFactura2Row[0];
@@ -3042,88 +2784,6 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEnlaceDetalleNull() {
                 this[this.tableDtDetallesFactura.EnlaceDetalleColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DtfacturasRow : global::System.Data.DataRow {
-            
-            private DtfacturasDataTable tableDtfacturas;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DtfacturasRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDtfacturas = ((DtfacturasDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Facturas {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtfacturas.FacturasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Facturas\' de la tabla \'Dtfacturas\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtfacturas.FacturasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int IdFacturas {
-                get {
-                    try {
-                        return ((int)(this[this.tableDtfacturas.IdFacturasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdFacturas\' de la tabla \'Dtfacturas\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtfacturas.IdFacturasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsFacturasNull() {
-                return this.IsNull(this.tableDtfacturas.FacturasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetFacturasNull() {
-                this[this.tableDtfacturas.FacturasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIdFacturasNull() {
-                return this.IsNull(this.tableDtfacturas.IdFacturasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIdFacturasNull() {
-                this[this.tableDtfacturas.IdFacturasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtNuevaFacturaRow[] GetDtNuevaFacturaRows() {
-                if ((this.Table.ChildRelations["Dtfacturas_DtNuevaFactura"] == null)) {
-                    return new DtNuevaFacturaRow[0];
-                }
-                else {
-                    return ((DtNuevaFacturaRow[])(base.GetChildRows(this.Table.ChildRelations["Dtfacturas_DtNuevaFactura"])));
-                }
             }
         }
         
@@ -3410,40 +3070,6 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtDetallesFacturaRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class DtfacturasRowChangeEvent : global::System.EventArgs {
-            
-            private DtfacturasRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtfacturasRowChangeEvent(DtfacturasRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtfacturasRow Row {
                 get {
                     return this.eventRow;
                 }

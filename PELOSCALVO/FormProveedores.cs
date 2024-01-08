@@ -19,7 +19,7 @@ namespace PELOSCALVO
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
 
-
+                    this.DtProveedoresBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
                 }
 
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
@@ -49,10 +49,10 @@ namespace PELOSCALVO
         {
             bool ok = true;
 
-            if (this.NombreProveedor.Text.Length < 4)
+            if (this.NombreProveedor.Text.Length < 2)
             {
                 ok = false;
-                this.ErrorProve.SetError(this.NombreProveedor, "_ingresar Nonbre Proveedor valido (( minimo 4 Caracteres))");
+                this.ErrorProve.SetError(this.NombreProveedor, "_ingresar Nonbre Proveedor valido (( minimo 2 Caracteres))");
             }
 
 
@@ -84,7 +84,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProveedores]([Id_Proveedores],[Proveedores],[Enlace_Proveedores]) VALUES( @Id_Proveedores,@Proveedores,@Enlace_Proveedores)";
+                consulta = "  INSERT INTO [DtProveedores] ([Id_Proveedores],[Proveedores],[Enlace_Proveedores]) VALUES( @Id_Proveedores,@Proveedores,@Enlace_Proveedores)";
 
             }
             else
@@ -97,14 +97,14 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.EmpresaSelect.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
                     this.dataGridProveedores.EndEdit();
-                    this.dtProveedoresBindingSource.EndEdit();
+                    this.DtProveedoresBindingSource.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();
                 }
@@ -112,7 +112,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ALMACNEN");
+                MessageBox.Show(ex.Message, "PROVEEDORES");
             }
             finally
             {
@@ -127,7 +127,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProveedores]([@Id_Proveedores],[@Proveedores],[@Enlace_Proveedores])";
+                consulta = "  INSERT INTO [DtProveedores] VALUES([@Id_Proveedores],[@Proveedores],[@Enlace_Proveedores])";
 
             }
             else
@@ -140,13 +140,13 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.NombreProveedor.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
-                    this.dtProveedoresBindingSource.EndEdit();
+                    this.DtProveedoresBindingSource.EndEdit();
                     this.dataGridProveedores.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();
@@ -155,7 +155,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ALMACNEN");
+                MessageBox.Show(ex.Message, "PROVEEDORES");
             }
             finally
             {
@@ -169,17 +169,18 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores'";
+                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores WHERE Id= @Id and Enlace_Proveedores= @Enlace_Proveedores";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", this.Id_proveedor.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", this.Enlace_Proveedor.Text);
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
-                            this.dtProveedoresBindingSource.EndEdit();
+                            this.DtProveedoresBindingSource.EndEdit();
                             Validate();
                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -210,17 +211,18 @@ namespace PELOSCALVO
         private void EliminarProveedorSql()
         {
 
-            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores'";
+            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores and Enlace_Proveedores= @Enlace_Proveedores";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", this.Id_proveedor.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", this.Enlace_Proveedor.Text);
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
-                        this.dtProveedoresBindingSource.EndEdit();
+                        this.DtProveedoresBindingSource.EndEdit();
                         Validate();
                         MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -244,12 +246,18 @@ namespace PELOSCALVO
 
         private void BtnNuevoProveedor_Click(object sender, EventArgs e)
         {
+            if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
+            {
+                MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
+                return;
+            }
+
             this.PanelBotones_pro.Tag = "Nuevo";
             try
             {
                 int numeroFILA = this.dataGridProveedores.Rows.Count;
-                this.dtProveedoresBindingSource.AddNew();
-                if (this.dataGridProveedores.CurrentCell.RowIndex == 0)
+                this.DtProveedoresBindingSource.AddNew();
+                if (this.dataGridProveedores.RowCount == 0)
                 {
                     this.Id_proveedor.Text = "1";
                     this.dataGridProveedores.Rows[0].Cells[0].Value = "1";
@@ -269,7 +277,7 @@ namespace PELOSCALVO
                         this.dataGridProveedores.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.Id_proveedor.Text = VALORid.ToString();
                     }
-                    
+
                 }
 
                 ModificarOjetosProv();
@@ -289,77 +297,77 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (Id_proveedor.Text  ==string.Empty & Enlace_Proveedor.Text == string.Empty)
+            if (this.Id_proveedor.Text == string.Empty & this.Enlace_Proveedor.Text == string.Empty)
             {
-                MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosConfi(ClasDatos.RutaMultidatos, 25))
-
+            if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 25))
+            {
                 BorrarErrorProveedor();
                 if (ValidarProveedor())
                 {
+                    try
                     {
-                        try
+                        foreach (DataGridViewRow fila in this.dataGridProveedores.Rows)
                         {
-                            foreach (DataGridViewRow fila in this.dataGridProveedores.Rows)
+                            if (fila.Cells[1].Value.ToString() == this.NombreProveedor.Text)
                             {
-                                if (fila.Cells[1].ToString() == this.NombreProveedor.Text)
+                                if (this.dataGridProveedores.CurrentCell.RowIndex == fila.Index)
                                 {
-                                    if (this.dataGridProveedores.CurrentCell.RowIndex == fila.Index)
-                                    {
-                                        break;
-                                    }
-                                    MessageBox.Show(this.NombreProveedor.Text.ToString(), "YA EXISTE ESTA PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    this.NombreProveedor.Focus();
-                                    this.NombreProveedor.SelectAll();
-                                    return;
+                                    break;
                                 }
-
+                                MessageBox.Show(this.NombreProveedor.Text.ToString(), "YA EXISTE ESTA PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.NombreProveedor.Focus();
+                                this.NombreProveedor.SelectAll();
+                                return;
                             }
+
                         }
-                        catch (Exception ex)
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (ClsConexionSql.SibaseDatosSql)
+                        {
+                            GuardarProveedoresSql();
+                        }
+                        else
                         {
 
-                            MessageBox.Show(ex.Message);
-                        }
-                        if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            if (ClsConexionSql.SibaseDatosSql)
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarProveedoresSql();
+                                GuardarProveedoresDb();
                             }
                             else
                             {
-
-                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
-                                {
-                                    GuardarProveedoresDb();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    this.PanelBotones_pro.Enabled = false;
-                                }
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.PanelBotones_pro.Enabled = false;
                             }
                         }
                     }
+
                 }
+            }
         }
 
         private void BtnModificarProveedor_Click(object sender, EventArgs e)
         {
-            if(dtProveedoresBindingSource.Count > 0)
+            if (this.DtProveedoresBindingSource.Count > 0)
             {
                 this.PanelBotones_pro.Tag = "Modificar";
                 ModificarOjetosProv();
             }
-         
+
         }
 
         private void BtnEliminarProveedor_Click(object sender, EventArgs e)
         {
-            if (this.dataGridProveedores.RowCount >= 0)
+            if (this.DtProveedoresBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -395,13 +403,13 @@ namespace PELOSCALVO
         private void BtnCancelarProve_Click(object sender, EventArgs e)
         {
             BorrarErrorProveedor();
-            if (this.dataGridProveedores.RowCount >= 0)
+            if (this.DtProveedoresBindingSource.Count > 0)
             {
                 try
                 {
                     if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
                     {
-                        if (this.dataGridProveedores.RowCount > 0)
+                        if (this.dataGridProveedores.RowCount >= 0)
                         {
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         }
@@ -410,20 +418,27 @@ namespace PELOSCALVO
                 catch (Exception)
                 {
 
-                  //  throw;
+                    //  throw;
                 }
-                
+
             }
             RestaurarOjetosProv();
         }
 
         private void BtnSalir_pro_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (this.BtnGuardarProve.Enabled == false)
             {
-                Close();
+
+
+                if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Close();
+                }
             }
         }
+
+     
     }
-    
+
 }

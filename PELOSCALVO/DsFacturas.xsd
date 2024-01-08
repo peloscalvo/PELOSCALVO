@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="Dtfacturas" targetNamespace="PELOSCALVO//Dtfacturas.xsd" xmlns:mstns="PELOSCALVO//Dtfacturas.xsd" xmlns="PELOSCALVO//Dtfacturas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="DsFacturas" targetNamespace="http://tempuri.org/DsFacturas.xsd" xmlns:mstns="http://tempuri.org/DsFacturas.xsd" xmlns="http://tempuri.org/DsFacturas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -9,10 +9,10 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="Dtfacturas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Dtfacturas" msprop:Generator_UserDSName="Dtfacturas">
+  <xs:element name="DsFacturas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsFacturas" msprop:Generator_UserDSName="DsFacturas">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DtNuevaFactura" msprop:Generator_TableClassName="DtNuevaFacturaDataTable" msprop:Generator_TableVarName="tableDtNuevaFactura" msprop:Generator_RowChangedName="DtNuevaFacturaRowChanged" msprop:Generator_TablePropName="DtNuevaFactura" msprop:Generator_RowDeletingName="DtNuevaFacturaRowDeleting" msprop:Generator_RowChangingName="DtNuevaFacturaRowChanging" msprop:Generator_RowEvHandlerName="DtNuevaFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="DtNuevaFacturaRowDeleted" msprop:Generator_RowClassName="DtNuevaFacturaRow" msprop:Generator_UserTableName="DtNuevaFactura" msprop:Generator_RowEvArgName="DtNuevaFacturaRowChangeEvent">
+        <xs:element name="DtNuevaFactura" msprop:Generator_TableClassName="DtNuevaFacturaDataTable" msprop:Generator_TableVarName="tableDtNuevaFactura" msprop:Generator_TablePropName="DtNuevaFactura" msprop:Generator_RowDeletingName="DtNuevaFacturaRowDeleting" msprop:Generator_RowChangingName="DtNuevaFacturaRowChanging" msprop:Generator_RowEvHandlerName="DtNuevaFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="DtNuevaFacturaRowDeleted" msprop:Generator_UserTableName="DtNuevaFactura" msprop:Generator_RowChangedName="DtNuevaFacturaRowChanged" msprop:Generator_RowEvArgName="DtNuevaFacturaRowChangeEvent" msprop:Generator_RowClassName="DtNuevaFacturaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NumeroFactura" msprop:Generator_ColumnVarNameInTable="columnNumeroFactura" msprop:Generator_ColumnPropNameInRow="NumeroFactura" msprop:Generator_ColumnPropNameInTable="NumeroFacturaColumn" msprop:Generator_UserColumnName="NumeroFactura" type="xs:int" minOccurs="0" />
@@ -42,10 +42,11 @@
               <xs:element name="SerieTipo" msprop:Generator_ColumnVarNameInTable="columnSerieTipo" msprop:Generator_ColumnPropNameInRow="SerieTipo" msprop:Generator_ColumnPropNameInTable="SerieTipoColumn" msprop:Generator_UserColumnName="SerieTipo" type="xs:string" minOccurs="0" />
               <xs:element name="EnlaceFactura" msprop:Generator_ColumnVarNameInTable="columnEnlaceFactura" msprop:Generator_ColumnPropNameInRow="EnlaceFactura" msprop:Generator_ColumnPropNameInTable="EnlaceFacturaColumn" msprop:Generator_UserColumnName="EnlaceFactura" type="xs:string" minOccurs="0" />
               <xs:element name="EmpresaEnlace" msprop:Generator_ColumnVarNameInTable="columnEmpresaEnlace" msprop:Generator_ColumnPropNameInRow="EmpresaEnlace" msprop:Generator_ColumnPropNameInTable="EmpresaEnlaceColumn" msprop:Generator_UserColumnName="EmpresaEnlace" type="xs:string" minOccurs="0" />
+              <xs:element name="EnlaceDtconfi" msprop:Generator_ColumnVarNameInTable="columnEnlaceDtconfi" msprop:Generator_ColumnPropNameInRow="EnlaceDtconfi" msprop:Generator_ColumnPropNameInTable="EnlaceDtconfiColumn" msprop:Generator_UserColumnName="EnlaceDtconfi" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DtDetallesFactura" msprop:Generator_TableClassName="DtDetallesFacturaDataTable" msprop:Generator_TableVarName="tableDtDetallesFactura" msprop:Generator_RowChangedName="DtDetallesFacturaRowChanged" msprop:Generator_TablePropName="DtDetallesFactura" msprop:Generator_RowDeletingName="DtDetallesFacturaRowDeleting" msprop:Generator_RowChangingName="DtDetallesFacturaRowChanging" msprop:Generator_RowEvHandlerName="DtDetallesFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="DtDetallesFacturaRowDeleted" msprop:Generator_RowClassName="DtDetallesFacturaRow" msprop:Generator_UserTableName="DtDetallesFactura" msprop:Generator_RowEvArgName="DtDetallesFacturaRowChangeEvent">
+        <xs:element name="DtDetallesFactura" msprop:Generator_TableClassName="DtDetallesFacturaDataTable" msprop:Generator_TableVarName="tableDtDetallesFactura" msprop:Generator_TablePropName="DtDetallesFactura" msprop:Generator_RowDeletingName="DtDetallesFacturaRowDeleting" msprop:Generator_RowChangingName="DtDetallesFacturaRowChanging" msprop:Generator_RowEvHandlerName="DtDetallesFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="DtDetallesFacturaRowDeleted" msprop:Generator_UserTableName="DtDetallesFactura" msprop:Generator_RowChangedName="DtDetallesFacturaRowChanged" msprop:Generator_RowEvArgName="DtDetallesFacturaRowChangeEvent" msprop:Generator_RowClassName="DtDetallesFacturaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ReferenciaDetalle" msprop:Generator_ColumnVarNameInTable="columnReferenciaDetalle" msprop:Generator_ColumnPropNameInRow="ReferenciaDetalle" msprop:Generator_ColumnPropNameInTable="ReferenciaDetalleColumn" msprop:Generator_UserColumnName="ReferenciaDetalle" type="xs:string" minOccurs="0" />
@@ -56,14 +57,6 @@
               <xs:element name="IvaDetalle" msprop:Generator_ColumnVarNameInTable="columnIvaDetalle" msprop:Generator_ColumnPropNameInRow="IvaDetalle" msprop:Generator_ColumnPropNameInTable="IvaDetalleColumn" msprop:Generator_UserColumnName="IvaDetalle" type="xs:int" minOccurs="0" />
               <xs:element name="ImporteDetalle" msprop:Generator_ColumnVarNameInTable="columnImporteDetalle" msprop:Generator_ColumnPropNameInRow="ImporteDetalle" msprop:Generator_ColumnPropNameInTable="ImporteDetalleColumn" msprop:Generator_UserColumnName="ImporteDetalle" type="xs:double" minOccurs="0" />
               <xs:element name="EnlaceDetalle" msprop:Generator_ColumnVarNameInTable="columnEnlaceDetalle" msprop:Generator_ColumnPropNameInRow="EnlaceDetalle" msprop:Generator_ColumnPropNameInTable="EnlaceDetalleColumn" msprop:Generator_UserColumnName="EnlaceDetalle" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Dtfacturas" msprop:Generator_TableClassName="DtfacturasDataTable" msprop:Generator_TableVarName="tableDtfacturas" msprop:Generator_RowChangedName="DtfacturasRowChanged" msprop:Generator_TablePropName="_Dtfacturas" msprop:Generator_RowDeletingName="DtfacturasRowDeleting" msprop:Generator_RowChangingName="DtfacturasRowChanging" msprop:Generator_RowEvHandlerName="DtfacturasRowChangeEventHandler" msprop:Generator_RowDeletedName="DtfacturasRowDeleted" msprop:Generator_RowClassName="DtfacturasRow" msprop:Generator_UserTableName="Dtfacturas" msprop:Generator_RowEvArgName="DtfacturasRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Facturas" msprop:Generator_ColumnVarNameInTable="columnFacturas" msprop:Generator_ColumnPropNameInRow="Facturas" msprop:Generator_ColumnPropNameInTable="FacturasColumn" msprop:Generator_UserColumnName="Facturas" type="xs:string" minOccurs="0" />
-              <xs:element name="IdFacturas" msprop:Generator_ColumnVarNameInTable="columnIdFacturas" msprop:Generator_ColumnPropNameInRow="IdFacturas" msprop:Generator_ColumnPropNameInTable="IdFacturasColumn" msprop:Generator_UserColumnName="IdFacturas" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -82,12 +75,17 @@
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:DtNuevaFactura" />
+      <xs:field xpath="mstns:EnlaceFactura" />
+    </xs:unique>
+    <xs:keyref name="DtNuevaFactura_DtDetallesFactura2" refer="Constraint1" msprop:rel_Generator_UserChildTable="DtDetallesFactura2" msprop:rel_Generator_ChildPropName="GetDtDetallesFactura2Rows" msprop:rel_Generator_UserRelationName="DtNuevaFactura_DtDetallesFactura2" msprop:rel_Generator_ParentPropName="DtNuevaFacturaRow" msprop:rel_Generator_RelationVarName="relationDtNuevaFactura_DtDetallesFactura2" msprop:rel_Generator_UserParentTable="DtNuevaFactura">
+      <xs:selector xpath=".//mstns:DtDetallesFactura2" />
+      <xs:field xpath="mstns:EnlaceDetalle" />
+    </xs:keyref>
+    <xs:keyref name="DtNuevaFactura_DtDetallesFactura" refer="Constraint1" msprop:rel_Generator_UserChildTable="DtDetallesFactura" msprop:rel_Generator_ChildPropName="GetDtDetallesFacturaRows" msprop:rel_Generator_UserRelationName="DtNuevaFactura_DtDetallesFactura" msprop:rel_Generator_ParentPropName="DtNuevaFacturaRow" msprop:rel_Generator_RelationVarName="relationDtNuevaFactura_DtDetallesFactura" msprop:rel_Generator_UserParentTable="DtNuevaFactura">
+      <xs:selector xpath=".//mstns:DtDetallesFactura" />
+      <xs:field xpath="mstns:EnlaceDetalle" />
+    </xs:keyref>
   </xs:element>
-  <xs:annotation>
-    <xs:appinfo>
-      <msdata:Relationship name="Dtfacturas_DtNuevaFactura" msdata:parent="Dtfacturas" msdata:child="DtNuevaFactura" msdata:parentkey="IdFacturas" msdata:childkey="NumeroFactura" msprop:Generator_UserChildTable="DtNuevaFactura" msprop:Generator_ChildPropName="GetDtNuevaFacturaRows" msprop:Generator_UserRelationName="Dtfacturas_DtNuevaFactura" msprop:Generator_ParentPropName="DtfacturasRow" msprop:Generator_RelationVarName="relationDtfacturas_DtNuevaFactura" msprop:Generator_UserParentTable="Dtfacturas" />
-      <msdata:Relationship name="DtNuevaFactura_DtDetallesFactura2" msdata:parent="DtNuevaFactura" msdata:child="DtDetallesFactura2" msdata:parentkey="EnlaceFactura" msdata:childkey="EnlaceDetalle" msprop:Generator_UserChildTable="DtDetallesFactura2" msprop:Generator_ChildPropName="GetDtDetallesFactura2Rows" msprop:Generator_UserRelationName="DtNuevaFactura_DtDetallesFactura2" msprop:Generator_RelationVarName="relationDtNuevaFactura_DtDetallesFactura2" msprop:Generator_UserParentTable="DtNuevaFactura" msprop:Generator_ParentPropName="DtNuevaFacturaRow" />
-      <msdata:Relationship name="DtNuevaFactura_DtDetallesFactura" msdata:parent="DtNuevaFactura" msdata:child="DtDetallesFactura" msdata:parentkey="EnlaceFactura" msdata:childkey="EnlaceDetalle" msprop:Generator_UserChildTable="DtDetallesFactura" msprop:Generator_ChildPropName="GetDtDetallesFacturaRows" msprop:Generator_UserRelationName="DtNuevaFactura_DtDetallesFactura" msprop:Generator_RelationVarName="relationDtNuevaFactura_DtDetallesFactura" msprop:Generator_UserParentTable="DtNuevaFactura" msprop:Generator_ParentPropName="DtNuevaFacturaRow" />
-    </xs:appinfo>
-  </xs:annotation>
 </xs:schema>

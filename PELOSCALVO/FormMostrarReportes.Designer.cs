@@ -34,12 +34,10 @@ namespace PELOSCALVO
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.Dtfacturas = new PELOSCALVO.Dtfacturas();
             this.DtDetallesFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.DtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.Dtfacturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtNuevaFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsCONFIGURACCION)).BeginInit();
@@ -67,18 +65,14 @@ namespace PELOSCALVO
             // 
             // Dtfacturas
             // 
-            this.Dtfacturas.DataSetName = "Dtfacturas";
-            this.Dtfacturas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // DtDetallesFacturaBindingSource
             // 
             this.DtDetallesFacturaBindingSource.DataMember = "DtDetallesFactura";
-            this.DtDetallesFacturaBindingSource.DataSource = this.Dtfacturas;
+  
             // 
             // DtNuevaFacturaBindingSource
             // 
             this.DtNuevaFacturaBindingSource.DataMember = "DtNuevaFactura";
-            this.DtNuevaFacturaBindingSource.DataSource = this.Dtfacturas;
             // 
             // DsCONFIGURACCION
             // 
@@ -100,7 +94,6 @@ namespace PELOSCALVO
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Impresiones";
             this.Load += new System.EventHandler(this.FormMostrarReportes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Dtfacturas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFacturaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtNuevaFacturaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsCONFIGURACCION)).EndInit();
@@ -113,7 +106,6 @@ namespace PELOSCALVO
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource DtDetallesFacturaBindingSource;
-        private Dtfacturas Dtfacturas;
         private System.Windows.Forms.BindingSource DtNuevaFacturaBindingSource;
         private System.Windows.Forms.BindingSource DtConfiguracionPrincipalBindingSource;
         private DsCONFIGURACCION DsCONFIGURACCION;

@@ -91,7 +91,7 @@ namespace PELOSCALVO
             e.Graphics.DrawString("Fecha:" + FormFacturar.menu2FACTURAR.FechaFactura.Text, Arial10, Brushes.Black, 658, 135 + saltoAbajo1);
             // e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.fechaFacturaTextBox.Text, Arial10, Brushes.Black, 740, 90 + saltoAbajo1,formato);
             saltoAbajo1 = saltoAbajo1 + 13;
-            e.Graphics.DrawString("Numero:" + FormFacturar.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
+            e.Graphics.DrawString("Numero:" + FormFacturar.menu2FACTURAR.NumeroFactura.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
             //e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 740,112 + saltoAbajo1,formato);
             e.Graphics.DrawString(FormFacturar.menu2FACTURAR.direccionTextBox.Text, BookAntiqua, Brushes.Black, margenIzqu - 70, 135 + saltoAbajo1);
             // saltoAbajo1 = saltoAbajo1 + saltoAbajo1;
@@ -135,7 +135,7 @@ namespace PELOSCALVO
             e.Graphics.DrawString("Iva", ArialNegrita10, Brushes.Black, 588, 1110);
             e.Graphics.DrawString("Total", ArialNegrita10, Brushes.Black, 588, 1130);
             e.HasMorePages = false;
-            String NombreArchivo = FormFacturar.menu2FACTURAR.nombreTextBox.Text + " " + FormFacturar.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFacturar.menu2FACTURAR.numeroFacturaTextBox.Text;
+            String NombreArchivo = FormFacturar.menu2FACTURAR.nombreTextBox.Text + " " + FormFacturar.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
             //printNota.PrinterSettings.PrintFileName = "c:\\"+NombreArchivo +".Pdf";
             printPreviewControl1.Document.DocumentName = "c:\\" + NombreArchivo + ".Pdf";
 
@@ -199,7 +199,7 @@ namespace PELOSCALVO
             PrintDocument pd = new PrintDocument();
             if (ClasDatos.OkFacturar == true)
             {
-                NombreArchivo = FormFacturar.menu2FACTURAR.nombreTextBox.Text + " " + FormFacturar.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFacturar.menu2FACTURAR.numeroFacturaTextBox.Text;
+                NombreArchivo = FormFacturar.menu2FACTURAR.nombreTextBox.Text + " " + FormFacturar.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
                 pd.PrintPage += new PrintPageEventHandler(printNota_PrintPage);
                 pd.PrinterSettings.PrintFileName = "c:\\" + NombreArchivo + ".Pdf";
                 printNota.DocumentName = NombreArchivo + ".Pdf";

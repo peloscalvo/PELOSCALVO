@@ -179,6 +179,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DsFacturas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsFacturas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DsMulti2.cs">
+      <DependentUpon>DsMulti2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DsMulti2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,13 +205,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsServidor.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Dsfacturas.cs">
-      <DependentUpon>Dsfacturas.xsd</DependentUpon>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dsfacturas.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Dsfacturas.xsd</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAlmacenes.cs">
       <SubType>Form</SubType>
@@ -228,6 +234,12 @@
     </Compile>
     <Compile Include="FormBienvenida.Designer.cs">
       <DependentUpon>FormBienvenida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBuscar.Designer.cs">
+      <DependentUpon>FormBuscar.cs</DependentUpon>
     </Compile>
     <Compile Include="FormBuscarArticulos.cs">
       <SubType>Form</SubType>
@@ -277,6 +289,18 @@
     <Compile Include="FormCrearTablasDb.Designer.cs">
       <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDatosInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDatosInicio.Designer.cs">
+      <DependentUpon>FormDatosInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDescuentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDescuentos.Designer.cs">
+      <DependentUpon>FormDescuentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEjercicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,11 +349,29 @@
     <Compile Include="FormMostrarReportes.Designer.cs">
       <DependentUpon>FormMostrarReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormObras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormObras.Designer.cs">
+      <DependentUpon>FormObras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPaises.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPaises.Designer.cs">
+      <DependentUpon>FormPaises.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormProveedores.Designer.cs">
       <DependentUpon>FormProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProvincias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProvincias.Designer.cs">
+      <DependentUpon>FormProvincias.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVistaPreliminar.cs">
       <SubType>Form</SubType>
@@ -345,7 +387,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CalculosDNICIF.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAlmacenes.resx">
       <DependentUpon>FormAlmacenes.cs</DependentUpon>
     </EmbeddedResource>
@@ -357,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormBienvenida.resx">
       <DependentUpon>FormBienvenida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBuscar.resx">
+      <DependentUpon>FormBuscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBuscarArticulos.resx">
       <DependentUpon>FormBuscarArticulos.cs</DependentUpon>
@@ -382,6 +429,12 @@
     <EmbeddedResource Include="FormCrearTablasDb.resx">
       <DependentUpon>FormCrearTablasDb.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDatosInicio.resx">
+      <DependentUpon>FormDatosInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDescuentos.resx">
+      <DependentUpon>FormDescuentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEjercicios.resx">
       <DependentUpon>FormEjercicios.cs</DependentUpon>
     </EmbeddedResource>
@@ -406,8 +459,17 @@
     <EmbeddedResource Include="FormMostrarReportes.resx">
       <DependentUpon>FormMostrarReportes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormObras.resx">
+      <DependentUpon>FormObras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPaises.resx">
+      <DependentUpon>FormPaises.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormProveedores.resx">
       <DependentUpon>FormProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProvincias.resx">
+      <DependentUpon>FormProvincias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVistaPreliminar.resx">
       <DependentUpon>FormVistaPreliminar.cs</DependentUpon>
@@ -457,6 +519,17 @@
     <None Include="DsConfiguracion.xss">
       <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </None>
+    <None Include="DsFacturas.xsc">
+      <DependentUpon>DsFacturas.xsd</DependentUpon>
+    </None>
+    <None Include="DsFacturas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsFacturas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DsFacturas.xss">
+      <DependentUpon>DsFacturas.xsd</DependentUpon>
+    </None>
     <None Include="DsMulti2.xsc">
       <DependentUpon>DsMulti2.xsd</DependentUpon>
     </None>
@@ -489,17 +562,6 @@
     </None>
     <None Include="DsServidor.xss">
       <DependentUpon>DsServidor.xsd</DependentUpon>
-    </None>
-    <None Include="Dsfacturas.xsc">
-      <DependentUpon>Dsfacturas.xsd</DependentUpon>
-    </None>
-    <None Include="Dsfacturas.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Dsfacturas.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Dsfacturas.xss">
-      <DependentUpon>Dsfacturas.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
@@ -555,9 +617,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Datos\Configuracion.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\Pdf.png" />
     <None Include="Resources\iconmonstr-arrow-35-24.png" />
     <None Include="Resources\iconmonstr-undo-4-24.png" />
@@ -606,6 +665,7 @@
     <None Include="Resources\flecha.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Datos\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

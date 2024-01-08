@@ -40,9 +40,9 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label enlaceDtconfiLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEjercicios));
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
-            this.dtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
@@ -55,19 +55,20 @@ namespace PELOSCALVO
             this.BtnBuscarEjercicio = new System.Windows.Forms.Button();
             this.BtnNuevoEjercicio = new System.Windows.Forms.Button();
             this.BtnModificarEjercicio = new System.Windows.Forms.Button();
-            this.tipoInpuestoIVANumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.configuraccionBasicaTextBox = new System.Windows.Forms.TextBox();
-            this.ejerciciosDeAñoTextBox = new System.Windows.Forms.TextBox();
-            this.empresaENLACETextBox = new System.Windows.Forms.TextBox();
-            this.IdConfi = new System.Windows.Forms.TextBox();
-            this.añoDeEjercicioTextBox = new System.Windows.Forms.TextBox();
+            this.IvaEjercicioTxt = new System.Windows.Forms.NumericUpDown();
+            this.DescripicionEjer = new System.Windows.Forms.TextBox();
+            this.EjercicioTxt = new System.Windows.Forms.TextBox();
+            this.AñoTxt = new System.Windows.Forms.TextBox();
             this.dtConfiDataGridView = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AñoDeEjercicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CambiarDeEmpresa1 = new System.Windows.Forms.ComboBox();
+            this.EmpresaEjercicioTxt = new System.Windows.Forms.ComboBox();
             this.BtnSalirEjerc = new System.Windows.Forms.Button();
+            this.IdEmpresa = new System.Windows.Forms.Label();
+            this.IdConfi = new System.Windows.Forms.Label();
+            this.IdEnlace = new System.Windows.Forms.Label();
             tipoInpuestoIVALabel = new System.Windows.Forms.Label();
             configuraccionBasicaLabel = new System.Windows.Forms.Label();
             ejerciciosDeAñoLabel = new System.Windows.Forms.Label();
@@ -75,22 +76,22 @@ namespace PELOSCALVO
             idConexionConfiLabel = new System.Windows.Forms.Label();
             añoDeEjercicioLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            enlaceDtconfiLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorEjercicios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).BeginInit();
             this.panel1Ejercicio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IvaEjercicioTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tipoInpuestoIVALabel
             // 
             tipoInpuestoIVALabel.AutoSize = true;
-            tipoInpuestoIVALabel.Location = new System.Drawing.Point(16, 399);
+            tipoInpuestoIVALabel.Location = new System.Drawing.Point(6, 401);
             tipoInpuestoIVALabel.Name = "tipoInpuestoIVALabel";
             tipoInpuestoIVALabel.Size = new System.Drawing.Size(71, 13);
             tipoInpuestoIVALabel.TabIndex = 69;
@@ -99,7 +100,7 @@ namespace PELOSCALVO
             // configuraccionBasicaLabel
             // 
             configuraccionBasicaLabel.AutoSize = true;
-            configuraccionBasicaLabel.Location = new System.Drawing.Point(19, 337);
+            configuraccionBasicaLabel.Location = new System.Drawing.Point(9, 322);
             configuraccionBasicaLabel.Name = "configuraccionBasicaLabel";
             configuraccionBasicaLabel.Size = new System.Drawing.Size(72, 13);
             configuraccionBasicaLabel.TabIndex = 59;
@@ -108,7 +109,7 @@ namespace PELOSCALVO
             // ejerciciosDeAñoLabel
             // 
             ejerciciosDeAñoLabel.AutoSize = true;
-            ejerciciosDeAñoLabel.Location = new System.Drawing.Point(482, 334);
+            ejerciciosDeAñoLabel.Location = new System.Drawing.Point(22, 374);
             ejerciciosDeAñoLabel.Name = "ejerciciosDeAñoLabel";
             ejerciciosDeAñoLabel.Size = new System.Drawing.Size(55, 13);
             ejerciciosDeAñoLabel.TabIndex = 61;
@@ -117,16 +118,16 @@ namespace PELOSCALVO
             // empresaENLACELabel
             // 
             empresaENLACELabel.AutoSize = true;
-            empresaENLACELabel.Location = new System.Drawing.Point(36, 367);
+            empresaENLACELabel.Location = new System.Drawing.Point(502, 352);
             empresaENLACELabel.Name = "empresaENLACELabel";
-            empresaENLACELabel.Size = new System.Drawing.Size(51, 13);
+            empresaENLACELabel.Size = new System.Drawing.Size(19, 13);
             empresaENLACELabel.TabIndex = 63;
-            empresaENLACELabel.Text = "Empresa:";
+            empresaENLACELabel.Text = "Id:";
             // 
             // idConexionConfiLabel
             // 
             idConexionConfiLabel.AutoSize = true;
-            idConexionConfiLabel.Location = new System.Drawing.Point(68, 311);
+            idConexionConfiLabel.Location = new System.Drawing.Point(58, 286);
             idConexionConfiLabel.Name = "idConexionConfiLabel";
             idConexionConfiLabel.Size = new System.Drawing.Size(19, 13);
             idConexionConfiLabel.TabIndex = 65;
@@ -135,7 +136,7 @@ namespace PELOSCALVO
             // añoDeEjercicioLabel
             // 
             añoDeEjercicioLabel.AutoSize = true;
-            añoDeEjercicioLabel.Location = new System.Drawing.Point(499, 308);
+            añoDeEjercicioLabel.Location = new System.Drawing.Point(39, 348);
             añoDeEjercicioLabel.Name = "añoDeEjercicioLabel";
             añoDeEjercicioLabel.Size = new System.Drawing.Size(29, 13);
             añoDeEjercicioLabel.TabIndex = 67;
@@ -144,7 +145,7 @@ namespace PELOSCALVO
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(518, 399);
+            label1.Location = new System.Drawing.Point(470, 321);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(51, 13);
             label1.TabIndex = 56;
@@ -154,11 +155,6 @@ namespace PELOSCALVO
             // 
             this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
             this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dtConfiBindingSource
-            // 
-            this.dtConfiBindingSource.DataMember = "DtConfi";
-            this.dtConfiBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -182,7 +178,7 @@ namespace PELOSCALVO
             // 
             // dtConfiguracionPrincipalDtConfiBindingSource
             // 
-            this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "DtConfiguracionPrincipal_DtConfi";
+            this.dtConfiguracionPrincipalDtConfiBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtConfi";
             this.dtConfiguracionPrincipalDtConfiBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // BtnCancelarEjercicio
@@ -321,68 +317,45 @@ namespace PELOSCALVO
             this.BtnModificarEjercicio.UseVisualStyleBackColor = false;
             this.BtnModificarEjercicio.Click += new System.EventHandler(this.BtnModificarEjercicio_Click);
             // 
-            // tipoInpuestoIVANumericUpDown
+            // IvaEjercicioTxt
             // 
-            this.tipoInpuestoIVANumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtConfiguracionPrincipalDtConfiBindingSource, "TipoInpuestoIVA", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N0"));
-            this.tipoInpuestoIVANumericUpDown.Enabled = false;
-            this.tipoInpuestoIVANumericUpDown.Location = new System.Drawing.Point(93, 395);
-            this.tipoInpuestoIVANumericUpDown.Name = "tipoInpuestoIVANumericUpDown";
-            this.tipoInpuestoIVANumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.tipoInpuestoIVANumericUpDown.TabIndex = 70;
-            this.tipoInpuestoIVANumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.IvaEjercicioTxt.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtConfiguracionPrincipalDtConfiBindingSource, "TipoInpuestoIVA", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N0"));
+            this.IvaEjercicioTxt.Enabled = false;
+            this.IvaEjercicioTxt.Location = new System.Drawing.Point(83, 397);
+            this.IvaEjercicioTxt.Name = "IvaEjercicioTxt";
+            this.IvaEjercicioTxt.Size = new System.Drawing.Size(120, 20);
+            this.IvaEjercicioTxt.TabIndex = 70;
+            this.IvaEjercicioTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // configuraccionBasicaTextBox
+            // DescripicionEjer
             // 
-            this.configuraccionBasicaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "ConfiguraccionBasica", true));
-            this.configuraccionBasicaTextBox.Location = new System.Drawing.Point(93, 334);
-            this.configuraccionBasicaTextBox.MaxLength = 50;
-            this.configuraccionBasicaTextBox.Name = "configuraccionBasicaTextBox";
-            this.configuraccionBasicaTextBox.ReadOnly = true;
-            this.configuraccionBasicaTextBox.Size = new System.Drawing.Size(377, 20);
-            this.configuraccionBasicaTextBox.TabIndex = 60;
+            this.DescripicionEjer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "ConfiguraccionBasica", true));
+            this.DescripicionEjer.Location = new System.Drawing.Point(83, 319);
+            this.DescripicionEjer.MaxLength = 50;
+            this.DescripicionEjer.Name = "DescripicionEjer";
+            this.DescripicionEjer.ReadOnly = true;
+            this.DescripicionEjer.Size = new System.Drawing.Size(377, 20);
+            this.DescripicionEjer.TabIndex = 60;
             // 
-            // ejerciciosDeAñoTextBox
+            // EjercicioTxt
             // 
-            this.ejerciciosDeAñoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EjerciciosDeAño", true));
-            this.ejerciciosDeAñoTextBox.Location = new System.Drawing.Point(543, 331);
-            this.ejerciciosDeAñoTextBox.MaxLength = 50;
-            this.ejerciciosDeAñoTextBox.Name = "ejerciciosDeAñoTextBox";
-            this.ejerciciosDeAñoTextBox.ReadOnly = true;
-            this.ejerciciosDeAñoTextBox.Size = new System.Drawing.Size(221, 20);
-            this.ejerciciosDeAñoTextBox.TabIndex = 62;
+            this.EjercicioTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EjerciciosDeAño", true));
+            this.EjercicioTxt.Location = new System.Drawing.Point(83, 371);
+            this.EjercicioTxt.MaxLength = 50;
+            this.EjercicioTxt.Name = "EjercicioTxt";
+            this.EjercicioTxt.ReadOnly = true;
+            this.EjercicioTxt.Size = new System.Drawing.Size(221, 20);
+            this.EjercicioTxt.TabIndex = 62;
             // 
-            // empresaENLACETextBox
+            // AñoTxt
             // 
-            this.empresaENLACETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EmpresaENLACE", true));
-            this.empresaENLACETextBox.Enabled = false;
-            this.empresaENLACETextBox.Location = new System.Drawing.Point(93, 364);
-            this.empresaENLACETextBox.MaxLength = 40;
-            this.empresaENLACETextBox.Name = "empresaENLACETextBox";
-            this.empresaENLACETextBox.ReadOnly = true;
-            this.empresaENLACETextBox.Size = new System.Drawing.Size(235, 20);
-            this.empresaENLACETextBox.TabIndex = 64;
-            // 
-            // IdConfi
-            // 
-            this.IdConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.IdConfi.Enabled = false;
-            this.IdConfi.Location = new System.Drawing.Point(93, 308);
-            this.IdConfi.MaxLength = 300;
-            this.IdConfi.Name = "IdConfi";
-            this.IdConfi.ReadOnly = true;
-            this.IdConfi.Size = new System.Drawing.Size(158, 20);
-            this.IdConfi.TabIndex = 66;
-            this.IdConfi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // añoDeEjercicioTextBox
-            // 
-            this.añoDeEjercicioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "AñoDeEjercicio", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
-            this.añoDeEjercicioTextBox.Location = new System.Drawing.Point(543, 305);
-            this.añoDeEjercicioTextBox.MaxLength = 4;
-            this.añoDeEjercicioTextBox.Name = "añoDeEjercicioTextBox";
-            this.añoDeEjercicioTextBox.ReadOnly = true;
-            this.añoDeEjercicioTextBox.Size = new System.Drawing.Size(100, 20);
-            this.añoDeEjercicioTextBox.TabIndex = 68;
+            this.AñoTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "AñoDeEjercicio", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+            this.AñoTxt.Location = new System.Drawing.Point(83, 345);
+            this.AñoTxt.MaxLength = 4;
+            this.AñoTxt.Name = "AñoTxt";
+            this.AñoTxt.ReadOnly = true;
+            this.AñoTxt.Size = new System.Drawing.Size(100, 20);
+            this.AñoTxt.TabIndex = 68;
             // 
             // dtConfiDataGridView
             // 
@@ -424,7 +397,7 @@ namespace PELOSCALVO
             // 
             // Id
             // 
-            this.Id.DataPropertyName = "Id";
+            this.Id.DataPropertyName = "IdConexionConfi";
             dataGridViewCellStyle2.Format = "N0";
             dataGridViewCellStyle2.NullValue = null;
             this.Id.DefaultCellStyle = dataGridViewCellStyle2;
@@ -456,16 +429,16 @@ namespace PELOSCALVO
             this.AñoDeEjercicio.ReadOnly = true;
             this.AñoDeEjercicio.Visible = false;
             // 
-            // CambiarDeEmpresa1
+            // EmpresaEjercicioTxt
             // 
-            this.CambiarDeEmpresa1.DataSource = this.dtConfiguracionPrincipalBindingSource;
-            this.CambiarDeEmpresa1.DisplayMember = "EmpresaConfi";
-            this.CambiarDeEmpresa1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CambiarDeEmpresa1.FormattingEnabled = true;
-            this.CambiarDeEmpresa1.Location = new System.Drawing.Point(575, 396);
-            this.CambiarDeEmpresa1.Name = "CambiarDeEmpresa1";
-            this.CambiarDeEmpresa1.Size = new System.Drawing.Size(278, 21);
-            this.CambiarDeEmpresa1.TabIndex = 57;
+            this.EmpresaEjercicioTxt.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            this.EmpresaEjercicioTxt.DisplayMember = "EmpresaConfi";
+            this.EmpresaEjercicioTxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EmpresaEjercicioTxt.FormattingEnabled = true;
+            this.EmpresaEjercicioTxt.Location = new System.Drawing.Point(527, 318);
+            this.EmpresaEjercicioTxt.Name = "EmpresaEjercicioTxt";
+            this.EmpresaEjercicioTxt.Size = new System.Drawing.Size(388, 21);
+            this.EmpresaEjercicioTxt.TabIndex = 57;
             // 
             // BtnSalirEjerc
             // 
@@ -488,30 +461,69 @@ namespace PELOSCALVO
             this.BtnSalirEjerc.UseVisualStyleBackColor = false;
             this.BtnSalirEjerc.Click += new System.EventHandler(this.BtnSalirEjerc_Click);
             // 
+            // IdEmpresa
+            // 
+            this.IdEmpresa.AutoSize = true;
+            this.IdEmpresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.IdEmpresa.Location = new System.Drawing.Point(535, 352);
+            this.IdEmpresa.Name = "IdEmpresa";
+            this.IdEmpresa.Size = new System.Drawing.Size(0, 13);
+            this.IdEmpresa.TabIndex = 77;
+            // 
+            // IdConfi
+            // 
+            this.IdConfi.AutoSize = true;
+            this.IdConfi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "IdConexionConfi", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.IdConfi.Location = new System.Drawing.Point(83, 286);
+            this.IdConfi.Name = "IdConfi";
+            this.IdConfi.Size = new System.Drawing.Size(13, 13);
+            this.IdConfi.TabIndex = 78;
+            this.IdConfi.Text = "1";
+            // 
+            // IdEnlace
+            // 
+            this.IdEnlace.AutoSize = true;
+            this.IdEnlace.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "IdEnlace", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.IdEnlace.Location = new System.Drawing.Point(535, 378);
+            this.IdEnlace.Name = "IdEnlace";
+            this.IdEnlace.Size = new System.Drawing.Size(0, 13);
+            this.IdEnlace.TabIndex = 79;
+            // 
+            // enlaceDtconfiLabel
+            // 
+            enlaceDtconfiLabel.AutoSize = true;
+            enlaceDtconfiLabel.Location = new System.Drawing.Point(478, 378);
+            enlaceDtconfiLabel.Name = "enlaceDtconfiLabel";
+            enlaceDtconfiLabel.Size = new System.Drawing.Size(43, 13);
+            enlaceDtconfiLabel.TabIndex = 78;
+            enlaceDtconfiLabel.Text = "Enlace:";
+            // 
             // FormEjercicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 530);
+            this.Controls.Add(enlaceDtconfiLabel);
+            this.Controls.Add(this.IdEnlace);
+            this.Controls.Add(this.IdConfi);
+            this.Controls.Add(this.IdEmpresa);
             this.Controls.Add(this.BtnSalirEjerc);
             this.Controls.Add(this.BtnCancelarEjercicio);
             this.Controls.Add(this.BtnGuardarEjercicio);
             this.Controls.Add(this.panel1Ejercicio);
             this.Controls.Add(tipoInpuestoIVALabel);
-            this.Controls.Add(this.tipoInpuestoIVANumericUpDown);
+            this.Controls.Add(this.IvaEjercicioTxt);
             this.Controls.Add(configuraccionBasicaLabel);
-            this.Controls.Add(this.configuraccionBasicaTextBox);
-            this.Controls.Add(this.ejerciciosDeAñoTextBox);
-            this.Controls.Add(this.empresaENLACETextBox);
-            this.Controls.Add(this.IdConfi);
-            this.Controls.Add(this.añoDeEjercicioTextBox);
+            this.Controls.Add(this.DescripicionEjer);
+            this.Controls.Add(this.EjercicioTxt);
+            this.Controls.Add(this.AñoTxt);
             this.Controls.Add(ejerciciosDeAñoLabel);
             this.Controls.Add(empresaENLACELabel);
             this.Controls.Add(idConexionConfiLabel);
             this.Controls.Add(añoDeEjercicioLabel);
             this.Controls.Add(this.dtConfiDataGridView);
             this.Controls.Add(label1);
-            this.Controls.Add(this.CambiarDeEmpresa1);
+            this.Controls.Add(this.EmpresaEjercicioTxt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormEjercicios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -519,14 +531,13 @@ namespace PELOSCALVO
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEjercicios_FormClosing);
             this.Load += new System.EventHandler(this.FormEjercicios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorEjercicios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).EndInit();
             this.panel1Ejercicio.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IvaEjercicioTxt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -536,7 +547,6 @@ namespace PELOSCALVO
         #endregion
 
         private DsCONFIGURACCION dsCONFIGURACCION;
-        private System.Windows.Forms.BindingSource dtConfiBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private DsMultidatos dsMultidatos;
@@ -549,18 +559,19 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnBuscarEjercicio;
         private System.Windows.Forms.Button BtnNuevoEjercicio;
         private System.Windows.Forms.Button BtnModificarEjercicio;
-        private System.Windows.Forms.NumericUpDown tipoInpuestoIVANumericUpDown;
-        private System.Windows.Forms.TextBox configuraccionBasicaTextBox;
-        private System.Windows.Forms.TextBox ejerciciosDeAñoTextBox;
-        private System.Windows.Forms.TextBox empresaENLACETextBox;
-        private System.Windows.Forms.TextBox IdConfi;
-        private System.Windows.Forms.TextBox añoDeEjercicioTextBox;
+        private System.Windows.Forms.NumericUpDown IvaEjercicioTxt;
+        private System.Windows.Forms.TextBox DescripicionEjer;
+        private System.Windows.Forms.TextBox EjercicioTxt;
+        private System.Windows.Forms.TextBox AñoTxt;
         private System.Windows.Forms.DataGridView dtConfiDataGridView;
-        private System.Windows.Forms.ComboBox CambiarDeEmpresa1;
+        private System.Windows.Forms.ComboBox EmpresaEjercicioTxt;
         private System.Windows.Forms.Button BtnSalirEjerc;
+        private System.Windows.Forms.Label IdEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn AñoDeEjercicio;
+        private System.Windows.Forms.Label IdConfi;
+        private System.Windows.Forms.Label IdEnlace;
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using Comun;
 using Conexiones;
 using System;
 using System.Data;
@@ -12,9 +13,6 @@ namespace PELOSCALVO
 {
     public partial class FormMenuPrincipal : Form
     {
-        public DataSet dsCorreos = new DataSet("Dscorreos");
-        public DataTable DtCorreos = new DataTable("DtCorreos");
-        public DataTable DtCorreosCliente = new DataTable("DtCorreosCliente");
         // public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
         public byte SiOpenFatu = 0;
@@ -25,29 +23,23 @@ namespace PELOSCALVO
         int V1, PX, PV;
         public FormMenuPrincipal()
         {
-
-            this.DtCorreos.Columns.Add("Id",typeof(int));
-            this.DtCorreos.Columns.Add("NombreEmpresa",typeof(string));
-            this.DtCorreos.Columns.Add("CorreoEletronico", typeof(string));
-            this.DtCorreos.Columns.Add("Usuario", typeof(string));
-            this.DtCorreos.Columns.Add("Contraseña", typeof(string));
-            this.DtCorreos.Columns.Add("smtp", typeof(string));
-            this.DtCorreos.Columns.Add("Puerto", typeof(int));
-            this.DtCorreos.Columns.Add("Timeof", typeof(int));
-            this.dsCorreos.Tables.Add(this.DtCorreos);
-
-            this.DtCorreosCliente.Columns.Add("Id",typeof(int));
-            this.DtCorreosCliente.Columns.Add("RazonSocial", typeof(string));
-            this.DtCorreosCliente.Columns.Add("EmpresaNombre", typeof(string));
-            this.DtCorreosCliente.Columns.Add("Direcion", typeof(string));
-            this.DtCorreosCliente.Columns.Add("CorreoEletronico_cli", typeof(string));
-            this.dsCorreos.Tables.Add(this.DtCorreosCliente);
-            // fila["NombreEmpresa"] = "faf";
-            InitializeComponent();
+            InitializeComponent();         
+            ToolTip Info = new ToolTip();
+            Info.SetToolTip(BtnSql, "Configurar Conexion A Datos");
+            Info.IsBalloon = true;
+            Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            ToolTip Info2 = new ToolTip();
+            Info2.SetToolTip(BtnCalculadora, "Calculadora");
+            Info2.SetToolTip(BtnAbrirChrome, "Navegador Chrome");
+            Info2.SetToolTip(BtnArchivos, "Abrir Archivos");
+            Info2.SetToolTip(BtnCarpeteDatos, "Abrir Explorador Archivos De Datos");
+            Info2.SetToolTip(BtnCarpetasPdf, "Abrir Explorador Archivos P.D.F");
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
             this.PanelInfo_P.Width = this.PanelInfo_P.Width = 0;
+            ClassCorreosDB Col = new ClassCorreosDB();
+            Col.AdColunnas();
         }
         private int tolerance = 15;
         private const int WM_NCHITTEST = 132;
@@ -71,11 +63,11 @@ namespace PELOSCALVO
             XmlElement RAIZ = DOC.CreateElement("a");
             DOC.AppendChild(RAIZ);
             DOC.Save(ArchivoXml);
-            MessageBox.Show("Archivo Nuevo Creado"+ "\n" + ArchivoXml.ToString(), "SISTEMA GENERAL");
+            MessageBox.Show("Archivo Nuevo Creado" + "\n" + ArchivoXml.ToString(), "SISTEMA GENERAL");
         }
         private void CrearArchivos_Xml_Principal()
         {
-            if (EspacioDiscosPrincipal(ClasDatos.RutaMultidatos, 30))
+            if (EspacioDiscosPrincipal(Directory.GetCurrentDirectory(), 30))
             {
                 try
                 {
@@ -95,27 +87,8 @@ namespace PELOSCALVO
                             MessageBox.Show("Sistema Restructurado Con Exito", "SISTEMA FACTURACION", MessageBoxButtons.OK);
                         }
                     }
- 
-                    if (File.Exists(ClasDatos.RutaMultidatos))
-                    {
-                        this.dsMultidatos.ReadXml(ClasDatos.RutaMultidatos);
 
 
-                    }
-                    else
-                    {
-                        CrearArchivosXml(ClasDatos.RutaMultidatos);
-                    }
-                    if (File.Exists(ClasDatos.RutaMulti2))
-                    {
-                        this.dsMulti2.ReadXml(ClasDatos.RutaMulti2);
-
-
-                    }
-                    else
-                    {
-                        CrearArchivosXml(ClasDatos.RutaMulti2);
-                    }
                     if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml"))
                     {
                         this.dsServidor.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "Servidores.Xml");
@@ -128,17 +101,18 @@ namespace PELOSCALVO
 
                     }
 
-                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml"))
+                    if (File.Exists(ClasDatos.RutaMultidatos))
                     {
-                        this.dsCorreos.ReadXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
+                        this.dsMultidatos.ReadXml(ClasDatos.RutaMultidatos);
 
 
                     }
                     else
                     {
-                        CrearArchivosXml(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + "correos.Xml");
+                        CrearArchivosXml(ClasDatos.RutaMultidatos);
 
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -200,14 +174,24 @@ namespace PELOSCALVO
         int sw, sh;
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            this.lx = this.Location.X;
-            this.ly = this.Location.Y;
-            this.sw = this.Size.Width;
-            this.sh = this.Size.Height;
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-            this.btnMaximizar.Visible = false;
-            this.btnNormal.Visible = true;
+            if (btnMaximizar.Tag.ToString() == "MIN")
+            {
+                btnMaximizar.Tag = "MAX";
+                this.Size = new Size(this.sw, this.sh);
+                this.Location = new Point(this.lx, this.ly);
+                btnMaximizar.Image = Properties.Resources.maximize2;
+            }
+            else
+            {
+                btnMaximizar.Tag = "MIN";
+                this.lx = this.Location.X;
+                this.ly = this.Location.Y;
+                this.sw = this.Size.Width;
+                this.sh = this.Size.Height;
+                this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+                this.Location = Screen.PrimaryScreen.WorkingArea.Location;
+                btnMaximizar.Image = Properties.Resources.Normal;
+            }
 
         }
 
@@ -215,8 +199,8 @@ namespace PELOSCALVO
         {
             this.Size = new Size(this.sw, this.sh);
             this.Location = new Point(this.lx, this.ly);
-            this.btnNormal.Visible = false;
-            this.btnMaximizar.Visible = true;
+           // this.btnNormal.Visible = false;
+           // this.btnMaximizar.Visible = true;
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -289,6 +273,7 @@ namespace PELOSCALVO
         {
             try
             {
+                this.PanelInfo_P.Visible = true;
                 this.PanelInfo_P.Width = this.PanelInfo_P.Width = 0;
                 CrearArchivos_Xml_Principal();
             }
@@ -302,9 +287,17 @@ namespace PELOSCALVO
 
         private void btnListaClientes_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -315,8 +308,8 @@ namespace PELOSCALVO
             {
 
                 frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                //  frm.Dock = DockStyle.Fill;
+                this.PanelForms.Controls.Add(frm);
                 //frm.FormBorderStyle = FormBorderStyle.None;
                 frm.FormClosed += (o, args) => this.SiOpenClie = 0;
                 frm.Show();
@@ -341,9 +334,17 @@ namespace PELOSCALVO
 
         private void btnARTICULOS_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -355,8 +356,8 @@ namespace PELOSCALVO
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;
                 frm.WindowState = FormWindowState.Maximized;
-                frm.Anchor = System.Windows.Forms.AnchorStyles.None;
-                this.panelContenedorForm.Controls.Add(frm);
+                //  frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenArti = 0;
                 frm.Show();
                 frm.BringToFront();
@@ -395,6 +396,7 @@ namespace PELOSCALVO
         private void btnConfiguracion_MouseEnter(object sender, EventArgs e)
         {
             this.panelventas.Visible = false;
+            this.panelSUBventas.Visible = false;
 
         }
 
@@ -406,9 +408,17 @@ namespace PELOSCALVO
 
         private void btnCrearFactura_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -422,8 +432,8 @@ namespace PELOSCALVO
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                //  frm.Dock = DockStyle.Fill;
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -458,8 +468,8 @@ namespace PELOSCALVO
             {
                 FormComfiguracion frm = new FormComfiguracion();
                 frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                // frm.Dock = DockStyle.Fill;
+                this.PanelForms.Controls.Add(frm);
                 //frm.FormBorderStyle = FormBorderStyle.None;
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.Show();
@@ -475,8 +485,8 @@ namespace PELOSCALVO
             {
                 FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                //  frm.Dock = DockStyle.Fill;
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenUser = 0;
                 frm.Show();
                 frm.BringToFront();
@@ -488,9 +498,17 @@ namespace PELOSCALVO
 
         private void BtnCrearNotas_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -504,14 +522,15 @@ namespace PELOSCALVO
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                // frm.Dock = DockStyle.Fill;
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
-                frm.Show();
                 frm.BringToFront();
                 this.SiOpenFatu = 1;
+                frm.Show();
+      
             }
             else
             {
@@ -526,9 +545,17 @@ namespace PELOSCALVO
 
         private void BtnCrearPresupustos_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -542,8 +569,8 @@ namespace PELOSCALVO
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                // frm.Dock = DockStyle.Fill;
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -556,9 +583,17 @@ namespace PELOSCALVO
 
         private void BtnCrearNotas2_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -572,8 +607,8 @@ namespace PELOSCALVO
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
-                this.panelContenedorForm.Controls.Add(frm);
+                // frm.Dock = DockStyle.Fill;
+                this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -586,9 +621,17 @@ namespace PELOSCALVO
 
         private void BtnCrearAlbaranes_Click(object sender, EventArgs e)
         {
-            if (ClsConexionSql.SibaseDatosSql == false)
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                if (this.InfoArticulo.Text == string.Empty && this.InfoClientes.Text == string.Empty && this.InfoExtension.Text == string.Empty)
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                if (ClsConexionDb.CadenaConexion == string.Empty)
                 {
                     MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
                     return;
@@ -604,7 +647,7 @@ namespace PELOSCALVO
                 frm.TopLevel = false;
                 frm.Dock = DockStyle.Fill;
                 // this.panelContenedorForm.Controls.Add(frm);
-                this.panelContenedorForm.Parent = frm;
+                this.PanelForms.Parent = frm;
                 frm.FormClosed += (o, args) => this.SiOpenFatu = 0;
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
@@ -635,7 +678,7 @@ namespace PELOSCALVO
         {
             if (this.panelAplicaciones.Visible == false)
             {
-                this.panelContenedorForm.Tag = "SEGUIR";
+                this.PanelForms.Tag = "SEGUIR";
                 this.panelAplicaciones.Visible = true;
             }
             else
@@ -666,15 +709,36 @@ namespace PELOSCALVO
 
         private void BtnInfo_Click(object sender, EventArgs e)
         {
-            if (BtnInfo.Tag.ToString() == "NO")
+            if (ClsConexionSql.SibaseDatosSql)
             {
-                BtnInfo.Tag = "SI";
-                PanelAcesosDire.Visible = true;
+                if (ClsConexionSql.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
             }
             else
             {
-                BtnInfo.Tag = "NO";
-                PanelAcesosDire.Visible = false;
+                if (ClsConexionDb.CadenaConexion == string.Empty)
+                {
+                    MessageBox.Show("Debe Configurar Una Conexion A Archivos", "CONEXION", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+           // this.PanelAcesosDire.Width = this.PanelForms.Width;
+           // this.PanelAcesosDire.Height = this.PanelForms.Height;
+            if (this.BtnArchivos.Tag.ToString() == "SI")
+            {
+                this.PanelAcesosDire.BringToFront();
+                this.BtnArchivos.Tag = "NO";
+                this.PanelAcesosDire.Visible = true;
+
+
+            }
+            else
+            {
+                this.BtnArchivos.Tag = "SI";
+                this.PanelAcesosDire.Visible = false;
             }
 
         }
@@ -683,10 +747,13 @@ namespace PELOSCALVO
         {
             try
             {
+
                 if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
-                    if (this.PanelInfo_P.Width >= 865)
+
+                    if (this.PanelInfo_P.Width >= 864)
                     {
+                        this.PanelInfo_P.Tag = "CERRAR";
                         this.TimerCerrarPanel.Stop();
                     }
                     else
@@ -700,7 +767,7 @@ namespace PELOSCALVO
                     if (this.PanelInfo_P.Width <= 0)
                     {
                         this.TimerCerrarPanel.Stop();
-                        this.PanelInfo_P.Visible = false;
+                        this.PanelInfo_P.Tag = "ABRIR";
                     }
                     else
                     {
@@ -729,6 +796,7 @@ namespace PELOSCALVO
         {
             try
             {
+                this.panelAplicaciones.Visible = false;
                 Process.Start("https://www.google.es/");
             }
             catch (Exception)
@@ -750,12 +818,13 @@ namespace PELOSCALVO
 
         private void empresasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //PanelAcesosDire.Visible = false;
             FormEmpresas frm = new FormEmpresas();
             frm.TopLevel = false;
             // frm.Dock = DockStyle.Fill;
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelContenedorForm.Controls.Add(frm);
+            // frm.WindowState = FormWindowState.Maximized;
+            //frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PanelForms.Controls.Add(frm);
             frm.FormClosed += (o, args) => this.SiOpenArti = 0;
             frm.Show();
             frm.BringToFront();
@@ -763,19 +832,19 @@ namespace PELOSCALVO
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PanelAcesosDire.Visible = false;
             FormProveedores frm = new FormProveedores();
-            this.panelContenedorForm.Controls.Add(frm);
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
-         
+
         }
 
         private void crearEjercioNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PanelAcesosDire.Visible = false;
             FormEjercicios frm = new FormEjercicios();
-            this.panelContenedorForm.Controls.Add(frm);
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -784,13 +853,55 @@ namespace PELOSCALVO
         {
             try
             {
-                this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
-                this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
-                this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
-                this.TimerCerrarPanel.Start();
-                this.PanelInfo_P.Visible = true;
+                this.PanelInfo_P.BringToFront();
                 if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
                 {
+                    this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
+                    this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
+                    this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
+
+                }
+                this.TimerCerrarPanel.Start();
+            }
+            catch (Exception)
+            {
+
+                // throw;
+            }
+
+        }
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAlmacenes frm = new FormAlmacenes();
+            frm.TopLevel = false;
+            //frm.WindowState = FormWindowState.Maximized;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void familiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormFamiliaProductos frm = new FormFamiliaProductos();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void PanelInfo_P_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (this.PanelInfo_P.Tag.ToString() == "ABRIR")
+                {
+                    this.ContadorFactu.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal.Count.ToString();
+                    this.ContadorArticulos.Text = FormMenuPrincipal.menu2principal.articulos.DtArticulos.Count.ToString();
+                    this.ContadorClientes.Text = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count.ToString();
+                    this.PanelInfo_P.Visible = true;
+                    this.TimerCerrarPanel.Start();
                     this.PanelInfo_P.Tag = "CERRAR";
                 }
                 else
@@ -803,20 +914,109 @@ namespace PELOSCALVO
 
                 // throw;
             }
-     
+
+
         }
 
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void paisesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PanelAcesosDire.Visible = false;
-            FormAlmacenes frm = new FormAlmacenes();
-            this.panelContenedorForm.Controls.Add(frm);
+            FormPaises frm = new FormPaises();
+            frm.TopLevel = false;
+            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
 
+        private void provinciasToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FormProvincias frm = new FormProvincias();
+            frm.TopLevel = false;
+            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            // frm.WindowState = FormWindowState.Maximized;
+            frm.BringToFront();
+        }
+
+        private void AbrirObras_Click(object sender, EventArgs e)
+        {
+            FormObras frm = new FormObras();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void toolFamilia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editarDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDescuentos frm = new FormDescuentos();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void almacenesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PanelAcesosDire_MouseEnter(object sender, EventArgs e)
+        {
+            this.panelventas.Visible = false;
+            this.panelSUBventas.Visible = false;
+        }
+
+        private void toolEmpresas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void correosEletronicosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCrearCorreos frm = new FormCrearCorreos();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDatosInicio frm = new FormDatosInicio();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void FormMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (PanelForms.Controls.Count >3)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void BtnInfo_MouseEnter(object sender, EventArgs e)
+        {
+            //MessageBox.Show(PanelForms.Controls.Count.ToString());
+        }
+
         private void BtnSql_Click(object sender, EventArgs e)
         {
+
             if (this.SiOpenFatu == 0 & this.SiOpenArti == 0 & this.SiOpenClie == 0 & this.SiOpenConfi == 0)
             {
                 this.panelAplicaciones.Visible = false;
@@ -859,7 +1059,7 @@ namespace PELOSCALVO
 
         private void tmFechaHora_Tick(object sender, EventArgs e)
         {
-            if (this.panelContenedorForm.Tag.ToString() == "SEGUIR")
+            if (this.PanelForms.Tag.ToString() == "SEGUIR")
             {
                 this.lbFecha.Text = DateTime.Now.ToLongDateString();
                 this.lblHora.Text = DateTime.Now.ToString("HH:mm:ssss");

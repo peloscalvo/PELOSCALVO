@@ -27,7 +27,7 @@ namespace PELOSCALVO
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
                    // this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
-                    this.dtFamiliaProductosBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
+                    this.dtFamiliaProductosBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos;
                 }
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelFamilia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtFamiliaProductos]([Id],[Familia]]) VALUES( @Id,@Familia)";
+                consulta = "  INSERT INTO [DtFamiliaProductos]  VALUES( @Id,@Familia)";
 
             }
             else
@@ -112,7 +112,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ALMACNEN");
+                MessageBox.Show(ex.Message, "FAMILIA PRODUCTOS");
             }
             finally
             {
@@ -127,7 +127,7 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelFamilia.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtFamiliaProductos]([Id],[Familia]]) VALUES( @Id,@Familia)";
+                consulta = "  INSERT INTO [DtFamiliaProductos] VALUES( @Id,@Familia)";
 
             }
             else
@@ -154,7 +154,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ALMACNEN");
+                MessageBox.Show(ex.Message, "FAMILIA PRODUCTOS");
             }
             finally
             {
@@ -265,7 +265,7 @@ namespace PELOSCALVO
                     }
 
                 }
-
+                FamiliaTex.Text = "GENERAL";
                 ModificarOjetos_Fami();
 
             }
@@ -303,7 +303,7 @@ namespace PELOSCALVO
 
         private void BtnSalirFamilia_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(" ¿Salir Familia Productos ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Close();
             }
@@ -319,8 +319,11 @@ namespace PELOSCALVO
 
         private void BtnModificarFAmilia_Click(object sender, EventArgs e)
         {
-            this.panelFamilia.Tag = "Nuevo";
-            ModificarOjetos_Fami();
+            if (dtFamiliaProductosBindingSource.Count > 0)
+            {
+                this.panelFamilia.Tag = "Nuevo";
+                ModificarOjetos_Fami();
+            }
         }
 
         private void BtnGuardarFamillia_Click(object sender, EventArgs e)
@@ -333,52 +336,53 @@ namespace PELOSCALVO
                 Id_Familia.Text = I.ToString();
                 return;
             }
-            if (EspacioDiscosFami(ClasDatos.RutaMultidatos, 25))
-
-                BorrarErrorFami();
-            if (ValidarFami())
+            if (EspacioDiscosFami(Directory.GetCurrentDirectory(), 25))
             {
+                BorrarErrorFami();
+                if (ValidarFami())
                 {
-                    try
                     {
-                        foreach (DataGridViewRow fila in this.DtGridFamilia.Rows)
+                        try
                         {
-                            if (fila.Cells[1].ToString() == this.FamiliaTex.Text)
+                            foreach (DataGridViewRow fila in this.DtGridFamilia.Rows)
                             {
-                                if (this.DtGridFamilia.CurrentCell.RowIndex == fila.Index)
+                                if (fila.Cells[1].ToString() == this.FamiliaTex.Text)
                                 {
-                                    break;
+                                    if (this.DtGridFamilia.CurrentCell.RowIndex == fila.Index)
+                                    {
+                                        break;
+                                    }
+                                    MessageBox.Show(this.FamiliaTex.Text.ToString(), "YA EXISTE ESTA ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.FamiliaTex.Focus();
+                                    this.FamiliaTex.SelectAll();
+                                    return;
                                 }
-                                MessageBox.Show(this.FamiliaTex.Text.ToString(), "YA EXISTE ESTA ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.FamiliaTex.Focus();
-                                this.FamiliaTex.SelectAll();
-                                return;
+
                             }
-
                         }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if (ClsConexionSql.SibaseDatosSql)
-                        {
-                            GuardarFamiliaSql();
-                        }
-                        else
+                        catch (Exception ex)
                         {
 
-                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            MessageBox.Show(ex.Message);
+                        }
+                        if (MessageBox.Show(" ¿Aceptar Guardar Familia ? ", " GUARDAR FAMILIAS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            if (ClsConexionSql.SibaseDatosSql)
                             {
-                                GuardarFamiliaDb();
+                                GuardarFamiliaSql();
                             }
                             else
                             {
-                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.panelFamilia.Enabled = false;
+
+                                if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                                {
+                                    GuardarFamiliaDb();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    this.panelFamilia.Enabled = false;
+                                }
                             }
                         }
                     }
@@ -388,7 +392,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarFamilia_Click(object sender, EventArgs e)
         {
-            if (this.DtGridFamilia.RowCount >= 0)
+            if (this.dtFamiliaProductosBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -410,6 +414,11 @@ namespace PELOSCALVO
                     }
                 }
             }
+        }
+
+        private void dtFamiliaProductosBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

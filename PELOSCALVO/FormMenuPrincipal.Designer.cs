@@ -33,7 +33,7 @@ namespace PELOSCALVO
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuPrincipal));
             this.panelContenedorPrincipal = new System.Windows.Forms.Panel();
-            this.panelContenedorForm = new System.Windows.Forms.Panel();
+            this.PanelForms = new System.Windows.Forms.Panel();
             this.panelSUBventas = new System.Windows.Forms.Panel();
             this.BtnCrearAlbaranes = new System.Windows.Forms.Button();
             this.BtnCrearPresupustos = new System.Windows.Forms.Button();
@@ -50,32 +50,10 @@ namespace PELOSCALVO
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.BtnConsultas = new System.Windows.Forms.Button();
             this.PanelAcesosDire = new System.Windows.Forms.Panel();
-            this.PanelInfo_P = new System.Windows.Forms.Panel();
-            this.Panel_info2 = new System.Windows.Forms.Panel();
-            this.InfoCarpeta = new System.Windows.Forms.Label();
-            this.InfoBaseDatos = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.InfoArticulo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.InfoClientes = new System.Windows.Forms.Label();
-            this.InfoExtension = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ContadorFactu = new System.Windows.Forms.Label();
-            this.ContadorArticulos = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.RegistLbel = new System.Windows.Forms.Label();
-            this.ContadorClientes = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirBaseDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.añadirBaseDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Abrir_Correos = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirReportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarModificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,23 +71,47 @@ namespace PELOSCALVO
             this.verDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolFamilia = new System.Windows.Forms.ToolStripMenuItem();
             this.familiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AbrirAlmacenes = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.obrasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.AbrirObras = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.provinciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provinciasToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.correosEletronicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosDeInicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PanelInfo_P = new System.Windows.Forms.Panel();
+            this.Panel_info2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Info_Carpeta = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.InfoExtension = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.InfoCarpeta = new System.Windows.Forms.Label();
+            this.InfoClientes = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.InfoBaseDatos = new System.Windows.Forms.Label();
+            this.InfoArticulo = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ContadorFactu = new System.Windows.Forms.Label();
+            this.ContadorArticulos = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.RegistLbel = new System.Windows.Forms.Label();
+            this.ContadorClientes = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.Conectado = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.BtnInfo = new System.Windows.Forms.Button();
+            this.BtnArchivos = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
             this.BtnVentas = new System.Windows.Forms.Button();
             this.BtnCompras = new System.Windows.Forms.Button();
@@ -125,7 +127,7 @@ namespace PELOSCALVO
             this.btnCorreo = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BtnArchivo = new System.Windows.Forms.Button();
+            this.BtnInfo = new System.Windows.Forms.Button();
             this.PanelBarraTitulo = new System.Windows.Forms.Panel();
             this.panelAplicaciones = new System.Windows.Forms.Panel();
             this.BtnAbrirChrome = new System.Windows.Forms.Button();
@@ -136,7 +138,6 @@ namespace PELOSCALVO
             this.BtnCarpeteDatos = new System.Windows.Forms.Button();
             this.BtnCalculadora = new System.Windows.Forms.Button();
             this.Logo2 = new System.Windows.Forms.Label();
-            this.btnNormal = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.btnMaximizar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
@@ -158,17 +159,18 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InfoConectado = new System.Windows.Forms.Label();
             this.panelContenedorPrincipal.SuspendLayout();
-            this.panelContenedorForm.SuspendLayout();
+            this.PanelForms.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
             this.panelventas.SuspendLayout();
             this.PanelAcesosDire.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.PanelInfo_P.SuspendLayout();
             this.Panel_info2.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.menuStrip.SuspendLayout();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
@@ -192,7 +194,7 @@ namespace PELOSCALVO
             // panelContenedorPrincipal
             // 
             this.panelContenedorPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
-            this.panelContenedorPrincipal.Controls.Add(this.panelContenedorForm);
+            this.panelContenedorPrincipal.Controls.Add(this.PanelForms);
             this.panelContenedorPrincipal.Controls.Add(this.panel1);
             this.panelContenedorPrincipal.Controls.Add(this.panelMenu);
             this.panelContenedorPrincipal.Controls.Add(this.PanelBarraTitulo);
@@ -202,25 +204,25 @@ namespace PELOSCALVO
             this.panelContenedorPrincipal.Size = new System.Drawing.Size(1100, 600);
             this.panelContenedorPrincipal.TabIndex = 0;
             // 
-            // panelContenedorForm
+            // PanelForms
             // 
-            this.panelContenedorForm.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelContenedorForm.BackgroundImage = global::PELOSCALVO.Properties.Resources.LogoPeloscalvo;
-            this.panelContenedorForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panelContenedorForm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelContenedorForm.Controls.Add(this.panelSUBventas);
-            this.panelContenedorForm.Controls.Add(this.panelventas);
-            this.panelContenedorForm.Controls.Add(this.PanelAcesosDire);
-            this.panelContenedorForm.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panelContenedorForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedorForm.Location = new System.Drawing.Point(230, 43);
-            this.panelContenedorForm.Margin = new System.Windows.Forms.Padding(0);
-            this.panelContenedorForm.Name = "panelContenedorForm";
-            this.panelContenedorForm.Size = new System.Drawing.Size(870, 532);
-            this.panelContenedorForm.TabIndex = 6;
-            this.panelContenedorForm.Tag = "Stop";
-            this.panelContenedorForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedorForm_Paint);
-            this.panelContenedorForm.MouseEnter += new System.EventHandler(this.panelContenedorForm_MouseEnter);
+            this.PanelForms.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PanelForms.BackgroundImage = global::PELOSCALVO.Properties.Resources.LogoPeloscalvo;
+            this.PanelForms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PanelForms.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PanelForms.Controls.Add(this.panelSUBventas);
+            this.PanelForms.Controls.Add(this.panelventas);
+            this.PanelForms.Controls.Add(this.PanelAcesosDire);
+            this.PanelForms.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PanelForms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelForms.Location = new System.Drawing.Point(230, 43);
+            this.PanelForms.Margin = new System.Windows.Forms.Padding(0);
+            this.PanelForms.Name = "PanelForms";
+            this.PanelForms.Size = new System.Drawing.Size(870, 532);
+            this.PanelForms.TabIndex = 6;
+            this.PanelForms.Tag = "Stop";
+            this.PanelForms.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedorForm_Paint);
+            this.PanelForms.MouseEnter += new System.EventHandler(this.panelContenedorForm_MouseEnter);
             // 
             // panelSUBventas
             // 
@@ -470,14 +472,302 @@ namespace PELOSCALVO
             // PanelAcesosDire
             // 
             this.PanelAcesosDire.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.PanelAcesosDire.Controls.Add(this.PanelInfo_P);
             this.PanelAcesosDire.Controls.Add(this.menuStrip);
+            this.PanelAcesosDire.Controls.Add(this.PanelInfo_P);
             this.PanelAcesosDire.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelAcesosDire.Location = new System.Drawing.Point(0, 0);
             this.PanelAcesosDire.Name = "PanelAcesosDire";
             this.PanelAcesosDire.Size = new System.Drawing.Size(866, 528);
             this.PanelAcesosDire.TabIndex = 3;
             this.PanelAcesosDire.Visible = false;
+            this.PanelAcesosDire.MouseEnter += new System.EventHandler(this.PanelAcesosDire_MouseEnter);
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolArchivo,
+            this.toolEmpresas,
+            this.toolDescuentos,
+            this.toolFamilia,
+            this.proveedoresToolStripMenuItem1,
+            this.almacenesToolStripMenuItem1,
+            this.obrasToolStripMenuItem1,
+            this.provinciasToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(25, 2);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip.Size = new System.Drawing.Size(739, 24);
+            this.menuStrip.TabIndex = 46;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // toolArchivo
+            // 
+            this.toolArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verToolStripMenuItem,
+            this.abrirPdfToolStripMenuItem,
+            this.editarModificarToolStripMenuItem});
+            this.toolArchivo.Name = "toolArchivo";
+            this.toolArchivo.Size = new System.Drawing.Size(60, 20);
+            this.toolArchivo.Text = "Archivo";
+            // 
+            // verToolStripMenuItem
+            // 
+            this.verToolStripMenuItem.Name = "verToolStripMenuItem";
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.verToolStripMenuItem.Text = "&Ver";
+            // 
+            // abrirPdfToolStripMenuItem
+            // 
+            this.abrirPdfToolStripMenuItem.Name = "abrirPdfToolStripMenuItem";
+            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.abrirPdfToolStripMenuItem.Text = "&Abrir P.d.f";
+            // 
+            // editarModificarToolStripMenuItem
+            // 
+            this.editarModificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.almacenesToolStripMenuItem,
+            this.proveedoresToolStripMenuItem,
+            this.obrasToolStripMenuItem,
+            this.paisesToolStripMenuItem1,
+            this.provinciasToolStripMenuItem1,
+            this.otrosToolStripMenuItem});
+            this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
+            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
+            // 
+            // almacenesToolStripMenuItem
+            // 
+            this.almacenesToolStripMenuItem.Name = "almacenesToolStripMenuItem";
+            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.almacenesToolStripMenuItem.Text = "Almacenes";
+            // 
+            // proveedoresToolStripMenuItem
+            // 
+            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.proveedoresToolStripMenuItem.Text = "Proveedores";
+            // 
+            // obrasToolStripMenuItem
+            // 
+            this.obrasToolStripMenuItem.Name = "obrasToolStripMenuItem";
+            this.obrasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.obrasToolStripMenuItem.Text = "Obras";
+            // 
+            // paisesToolStripMenuItem1
+            // 
+            this.paisesToolStripMenuItem1.Name = "paisesToolStripMenuItem1";
+            this.paisesToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.paisesToolStripMenuItem1.Text = "Paises";
+            // 
+            // provinciasToolStripMenuItem1
+            // 
+            this.provinciasToolStripMenuItem1.Name = "provinciasToolStripMenuItem1";
+            this.provinciasToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.provinciasToolStripMenuItem1.Text = "Provincias";
+            // 
+            // otrosToolStripMenuItem
+            // 
+            this.otrosToolStripMenuItem.Name = "otrosToolStripMenuItem";
+            this.otrosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.otrosToolStripMenuItem.Text = "Otros";
+            // 
+            // toolEmpresas
+            // 
+            this.toolEmpresas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.empresasToolStripMenuItem,
+            this.crearEjercioNuevoToolStripMenuItem,
+            this.consultaEmpresasToolStripMenuItem,
+            this.consultaEjerciciosToolStripMenuItem});
+            this.toolEmpresas.Name = "toolEmpresas";
+            this.toolEmpresas.Size = new System.Drawing.Size(69, 20);
+            this.toolEmpresas.Text = "Empresas";
+            this.toolEmpresas.Click += new System.EventHandler(this.toolEmpresas_Click);
+            // 
+            // empresasToolStripMenuItem
+            // 
+            this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.empresasToolStripMenuItem.Text = "Empresas";
+            this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
+            // 
+            // crearEjercioNuevoToolStripMenuItem
+            // 
+            this.crearEjercioNuevoToolStripMenuItem.Name = "crearEjercioNuevoToolStripMenuItem";
+            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.crearEjercioNuevoToolStripMenuItem.Text = "Crear Ejercio Nuevo";
+            this.crearEjercioNuevoToolStripMenuItem.Click += new System.EventHandler(this.crearEjercioNuevoToolStripMenuItem_Click);
+            // 
+            // consultaEmpresasToolStripMenuItem
+            // 
+            this.consultaEmpresasToolStripMenuItem.Name = "consultaEmpresasToolStripMenuItem";
+            this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.consultaEmpresasToolStripMenuItem.Text = "&Consulta Empresas";
+            // 
+            // consultaEjerciciosToolStripMenuItem
+            // 
+            this.consultaEjerciciosToolStripMenuItem.Name = "consultaEjerciciosToolStripMenuItem";
+            this.consultaEjerciciosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.consultaEjerciciosToolStripMenuItem.Text = "&Consulta Ejercicios";
+            // 
+            // toolDescuentos
+            // 
+            this.toolDescuentos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarDescuentosToolStripMenuItem,
+            this.verDescuentosToolStripMenuItem});
+            this.toolDescuentos.Name = "toolDescuentos";
+            this.toolDescuentos.Size = new System.Drawing.Size(125, 20);
+            this.toolDescuentos.Text = "Descuentos Clientes";
+            // 
+            // editarDescuentosToolStripMenuItem
+            // 
+            this.editarDescuentosToolStripMenuItem.Name = "editarDescuentosToolStripMenuItem";
+            this.editarDescuentosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.editarDescuentosToolStripMenuItem.Text = "&Abrir  Descuentos";
+            this.editarDescuentosToolStripMenuItem.Click += new System.EventHandler(this.editarDescuentosToolStripMenuItem_Click);
+            // 
+            // verDescuentosToolStripMenuItem
+            // 
+            this.verDescuentosToolStripMenuItem.Name = "verDescuentosToolStripMenuItem";
+            this.verDescuentosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.verDescuentosToolStripMenuItem.Text = "Ver Descuentos";
+            // 
+            // toolFamilia
+            // 
+            this.toolFamilia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.familiasToolStripMenuItem,
+            this.toolStripMenuItem2});
+            this.toolFamilia.Name = "toolFamilia";
+            this.toolFamilia.Size = new System.Drawing.Size(114, 20);
+            this.toolFamilia.Text = "Familia Productos";
+            this.toolFamilia.Click += new System.EventHandler(this.toolFamilia_Click);
+            // 
+            // familiasToolStripMenuItem
+            // 
+            this.familiasToolStripMenuItem.Name = "familiasToolStripMenuItem";
+            this.familiasToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.familiasToolStripMenuItem.Text = "&Abrir";
+            this.familiasToolStripMenuItem.Click += new System.EventHandler(this.familiasToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(121, 22);
+            this.toolStripMenuItem2.Text = "&Consulta";
+            // 
+            // proveedoresToolStripMenuItem1
+            // 
+            this.proveedoresToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarToolStripMenuItem,
+            this.consultarToolStripMenuItem});
+            this.proveedoresToolStripMenuItem1.Name = "proveedoresToolStripMenuItem1";
+            this.proveedoresToolStripMenuItem1.Size = new System.Drawing.Size(84, 20);
+            this.proveedoresToolStripMenuItem1.Text = "&Proveedores";
+            this.proveedoresToolStripMenuItem1.Click += new System.EventHandler(this.proveedoresToolStripMenuItem1_Click);
+            // 
+            // editarToolStripMenuItem
+            // 
+            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.editarToolStripMenuItem.Text = "&Abrir";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
+            // 
+            // consultarToolStripMenuItem
+            // 
+            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem.Text = "&Consultar";
+            // 
+            // almacenesToolStripMenuItem1
+            // 
+            this.almacenesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AbrirAlmacenes,
+            this.consultarToolStripMenuItem1});
+            this.almacenesToolStripMenuItem1.Name = "almacenesToolStripMenuItem1";
+            this.almacenesToolStripMenuItem1.Size = new System.Drawing.Size(77, 20);
+            this.almacenesToolStripMenuItem1.Text = "&Almacenes";
+            this.almacenesToolStripMenuItem1.Click += new System.EventHandler(this.almacenesToolStripMenuItem1_Click);
+            // 
+            // AbrirAlmacenes
+            // 
+            this.AbrirAlmacenes.Name = "AbrirAlmacenes";
+            this.AbrirAlmacenes.Size = new System.Drawing.Size(125, 22);
+            this.AbrirAlmacenes.Text = "&Abrir";
+            this.AbrirAlmacenes.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
+            // 
+            // consultarToolStripMenuItem1
+            // 
+            this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem1.Text = "&Consultar";
+            // 
+            // obrasToolStripMenuItem1
+            // 
+            this.obrasToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AbrirObras,
+            this.consultarToolStripMenuItem2});
+            this.obrasToolStripMenuItem1.Name = "obrasToolStripMenuItem1";
+            this.obrasToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
+            this.obrasToolStripMenuItem1.Text = "&Obras";
+            // 
+            // AbrirObras
+            // 
+            this.AbrirObras.Name = "AbrirObras";
+            this.AbrirObras.Size = new System.Drawing.Size(125, 22);
+            this.AbrirObras.Text = "&Abrir";
+            this.AbrirObras.Click += new System.EventHandler(this.AbrirObras_Click);
+            // 
+            // consultarToolStripMenuItem2
+            // 
+            this.consultarToolStripMenuItem2.Name = "consultarToolStripMenuItem2";
+            this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem2.Text = "&Consultar";
+            // 
+            // provinciasToolStripMenuItem
+            // 
+            this.provinciasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.paisesToolStripMenuItem,
+            this.provinciasToolStripMenuItem2,
+            this.correosEletronicosToolStripMenuItem,
+            this.datosDeInicioToolStripMenuItem});
+            this.provinciasToolStripMenuItem.Name = "provinciasToolStripMenuItem";
+            this.provinciasToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.provinciasToolStripMenuItem.Text = "&Varios Archivos";
+            // 
+            // paisesToolStripMenuItem
+            // 
+            this.paisesToolStripMenuItem.Name = "paisesToolStripMenuItem";
+            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.paisesToolStripMenuItem.Text = "&Paises";
+            this.paisesToolStripMenuItem.Click += new System.EventHandler(this.paisesToolStripMenuItem_Click);
+            // 
+            // provinciasToolStripMenuItem2
+            // 
+            this.provinciasToolStripMenuItem2.Name = "provinciasToolStripMenuItem2";
+            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(176, 22);
+            this.provinciasToolStripMenuItem2.Text = "&Provincias";
+            this.provinciasToolStripMenuItem2.Click += new System.EventHandler(this.provinciasToolStripMenuItem2_Click);
+            // 
+            // correosEletronicosToolStripMenuItem
+            // 
+            this.correosEletronicosToolStripMenuItem.Name = "correosEletronicosToolStripMenuItem";
+            this.correosEletronicosToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.correosEletronicosToolStripMenuItem.Text = "&Correos Eletronicos";
+            this.correosEletronicosToolStripMenuItem.Click += new System.EventHandler(this.correosEletronicosToolStripMenuItem_Click);
+            // 
+            // datosDeInicioToolStripMenuItem
+            // 
+            this.datosDeInicioToolStripMenuItem.Name = "datosDeInicioToolStripMenuItem";
+            this.datosDeInicioToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.datosDeInicioToolStripMenuItem.Text = "&Datos De Inicio";
+            this.datosDeInicioToolStripMenuItem.Click += new System.EventHandler(this.datosDeInicioToolStripMenuItem_Click);
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ayudaToolStripMenuItem.Text = "Ay&uda";
             // 
             // PanelInfo_P
             // 
@@ -485,26 +775,102 @@ namespace PELOSCALVO
             this.PanelInfo_P.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PanelInfo_P.Controls.Add(this.Panel_info2);
             this.PanelInfo_P.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PanelInfo_P.Location = new System.Drawing.Point(1, 60);
+            this.PanelInfo_P.Location = new System.Drawing.Point(6, 43);
             this.PanelInfo_P.Name = "PanelInfo_P";
-            this.PanelInfo_P.Size = new System.Drawing.Size(865, 181);
+            this.PanelInfo_P.Size = new System.Drawing.Size(865, 293);
             this.PanelInfo_P.TabIndex = 2;
-            this.PanelInfo_P.Tag = "stop";
+            this.PanelInfo_P.Tag = "ABRIR";
             this.PanelInfo_P.Visible = false;
+            this.PanelInfo_P.MouseLeave += new System.EventHandler(this.PanelInfo_P_MouseLeave);
             // 
             // Panel_info2
             // 
             this.Panel_info2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.Panel_info2.Controls.Add(this.label5);
+            this.Panel_info2.Controls.Add(this.Info_Carpeta);
+            this.Panel_info2.Controls.Add(this.label4);
+            this.Panel_info2.Controls.Add(this.InfoExtension);
+            this.Panel_info2.Controls.Add(this.label3);
             this.Panel_info2.Controls.Add(this.InfoCarpeta);
+            this.Panel_info2.Controls.Add(this.InfoClientes);
+            this.Panel_info2.Controls.Add(this.label2);
             this.Panel_info2.Controls.Add(this.InfoBaseDatos);
-            this.Panel_info2.Controls.Add(this.panel6);
+            this.Panel_info2.Controls.Add(this.InfoArticulo);
+            this.Panel_info2.Controls.Add(this.label1);
             this.Panel_info2.Controls.Add(this.panel7);
             this.Panel_info2.Cursor = System.Windows.Forms.Cursors.No;
-            this.Panel_info2.Location = new System.Drawing.Point(10, 3);
+            this.Panel_info2.Location = new System.Drawing.Point(8, 8);
             this.Panel_info2.Name = "Panel_info2";
-            this.Panel_info2.Size = new System.Drawing.Size(841, 164);
+            this.Panel_info2.Size = new System.Drawing.Size(845, 273);
             this.Panel_info2.TabIndex = 3;
             this.Panel_info2.Tag = "stop";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(98, 199);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 23);
+            this.label5.TabIndex = 97;
+            this.label5.Text = "Archivo:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // Info_Carpeta
+            // 
+            this.Info_Carpeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Info_Carpeta.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Info_Carpeta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Info_Carpeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Info_Carpeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Info_Carpeta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Info_Carpeta.Location = new System.Drawing.Point(177, 226);
+            this.Info_Carpeta.Name = "Info_Carpeta";
+            this.Info_Carpeta.Size = new System.Drawing.Size(632, 23);
+            this.Info_Carpeta.TabIndex = 96;
+            this.Info_Carpeta.Tag = "stop";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(98, 224);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 23);
+            this.label4.TabIndex = 95;
+            this.label4.Text = "Carpeta:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // InfoExtension
+            // 
+            this.InfoExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoExtension.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoExtension.Location = new System.Drawing.Point(658, 159);
+            this.InfoExtension.Name = "InfoExtension";
+            this.InfoExtension.Size = new System.Drawing.Size(110, 23);
+            this.InfoExtension.TabIndex = 2;
+            this.InfoExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(554, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 23);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Extension:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // InfoCarpeta
             // 
@@ -517,48 +883,15 @@ namespace PELOSCALVO
             this.InfoCarpeta.TabIndex = 94;
             this.InfoCarpeta.Tag = "";
             // 
-            // InfoBaseDatos
+            // InfoClientes
             // 
-            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoBaseDatos.Location = new System.Drawing.Point(458, 17);
-            this.InfoBaseDatos.Name = "InfoBaseDatos";
-            this.InfoBaseDatos.Size = new System.Drawing.Size(341, 23);
-            this.InfoBaseDatos.TabIndex = 93;
-            this.InfoBaseDatos.Tag = "stop";
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.label2);
-            this.panel6.Controls.Add(this.InfoArticulo);
-            this.panel6.Controls.Add(this.label1);
-            this.panel6.Controls.Add(this.InfoClientes);
-            this.panel6.Controls.Add(this.InfoExtension);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 92);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(841, 72);
-            this.panel6.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(743, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 23);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Extension";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.InfoClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoClientes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoClientes.Location = new System.Drawing.Point(200, 160);
+            this.InfoClientes.Name = "InfoClientes";
+            this.InfoClientes.Size = new System.Drawing.Size(316, 23);
+            this.InfoClientes.TabIndex = 1;
             // 
             // label2
             // 
@@ -567,22 +900,33 @@ namespace PELOSCALVO
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(441, 17);
+            this.label2.Location = new System.Drawing.Point(29, 157);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(174, 23);
+            this.label2.Size = new System.Drawing.Size(161, 23);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Nombre Tarifa Clientes";
+            this.label2.Text = "Nombre Tarifa Clientes:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // InfoBaseDatos
+            // 
+            this.InfoBaseDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.InfoBaseDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InfoBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InfoBaseDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoBaseDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InfoBaseDatos.Location = new System.Drawing.Point(177, 201);
+            this.InfoBaseDatos.Name = "InfoBaseDatos";
+            this.InfoBaseDatos.Size = new System.Drawing.Size(632, 23);
+            this.InfoBaseDatos.TabIndex = 93;
+            this.InfoBaseDatos.Tag = "stop";
             // 
             // InfoArticulo
             // 
             this.InfoArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoArticulo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoArticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InfoArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InfoArticulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoArticulo.Location = new System.Drawing.Point(7, 43);
+            this.InfoArticulo.Location = new System.Drawing.Point(200, 126);
             this.InfoArticulo.Name = "InfoArticulo";
             this.InfoArticulo.Size = new System.Drawing.Size(341, 23);
             this.InfoArticulo.TabIndex = 0;
@@ -595,39 +939,12 @@ namespace PELOSCALVO
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(76, 17);
+            this.label1.Location = new System.Drawing.Point(18, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 23);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Nombre Tarifa de Articulos";
+            this.label1.Text = "Nombre Tarifa de Articulos:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // InfoClientes
-            // 
-            this.InfoClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoClientes.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoClientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoClientes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoClientes.Location = new System.Drawing.Point(384, 43);
-            this.InfoClientes.Name = "InfoClientes";
-            this.InfoClientes.Size = new System.Drawing.Size(316, 23);
-            this.InfoClientes.TabIndex = 1;
-            // 
-            // InfoExtension
-            // 
-            this.InfoExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InfoExtension.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.InfoExtension.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoExtension.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InfoExtension.Location = new System.Drawing.Point(724, 43);
-            this.InfoExtension.Name = "InfoExtension";
-            this.InfoExtension.Size = new System.Drawing.Size(110, 23);
-            this.InfoExtension.TabIndex = 2;
-            this.InfoExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel7
             // 
@@ -638,7 +955,7 @@ namespace PELOSCALVO
             this.panel7.Controls.Add(this.label7);
             this.panel7.Controls.Add(this.RegistLbel);
             this.panel7.Controls.Add(this.ContadorClientes);
-            this.panel7.Location = new System.Drawing.Point(1, 1);
+            this.panel7.Location = new System.Drawing.Point(27, 20);
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(396, 85);
@@ -649,7 +966,7 @@ namespace PELOSCALVO
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(4, 4);
+            this.label8.Location = new System.Drawing.Point(7, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(187, 20);
             this.label8.TabIndex = 87;
@@ -716,289 +1033,6 @@ namespace PELOSCALVO
             this.ContadorClientes.Text = "0";
             this.ContadorClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // menuStrip
-            // 
-            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolArchivo,
-            this.toolEmpresas,
-            this.toolDescuentos,
-            this.toolFamilia,
-            this.ayudaToolStripMenuItem,
-            this.proveedoresToolStripMenuItem1,
-            this.almacenesToolStripMenuItem1,
-            this.obrasToolStripMenuItem1,
-            this.provinciasToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(27, 2);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip.Size = new System.Drawing.Size(739, 24);
-            this.menuStrip.TabIndex = 46;
-            this.menuStrip.Text = "menuStrip1";
-            // 
-            // toolArchivo
-            // 
-            this.toolArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verToolStripMenuItem,
-            this.abrirBaseDatosToolStripMenuItem,
-            this.abrirPdfToolStripMenuItem,
-            this.añadirBaseDatosToolStripMenuItem,
-            this.Abrir_Correos,
-            this.imprimirReportesToolStripMenuItem,
-            this.editarModificarToolStripMenuItem});
-            this.toolArchivo.Name = "toolArchivo";
-            this.toolArchivo.Size = new System.Drawing.Size(60, 20);
-            this.toolArchivo.Text = "Archivo";
-            // 
-            // verToolStripMenuItem
-            // 
-            this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.verToolStripMenuItem.Text = "&Ver";
-            // 
-            // abrirBaseDatosToolStripMenuItem
-            // 
-            this.abrirBaseDatosToolStripMenuItem.Name = "abrirBaseDatosToolStripMenuItem";
-            this.abrirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.abrirBaseDatosToolStripMenuItem.Text = "&Abrir Base Datos";
-            // 
-            // abrirPdfToolStripMenuItem
-            // 
-            this.abrirPdfToolStripMenuItem.Name = "abrirPdfToolStripMenuItem";
-            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.abrirPdfToolStripMenuItem.Text = "&Abrir P.d.f";
-            // 
-            // añadirBaseDatosToolStripMenuItem
-            // 
-            this.añadirBaseDatosToolStripMenuItem.Name = "añadirBaseDatosToolStripMenuItem";
-            this.añadirBaseDatosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.añadirBaseDatosToolStripMenuItem.Text = "&Añadir Archivos Datos";
-            // 
-            // Abrir_Correos
-            // 
-            this.Abrir_Correos.Name = "Abrir_Correos";
-            this.Abrir_Correos.Size = new System.Drawing.Size(205, 22);
-            this.Abrir_Correos.Text = "&Abrir Correos Eletronicos";
-            // 
-            // imprimirReportesToolStripMenuItem
-            // 
-            this.imprimirReportesToolStripMenuItem.Name = "imprimirReportesToolStripMenuItem";
-            this.imprimirReportesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.imprimirReportesToolStripMenuItem.Text = "&Imprimir Reportes";
-            // 
-            // editarModificarToolStripMenuItem
-            // 
-            this.editarModificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.almacenesToolStripMenuItem,
-            this.proveedoresToolStripMenuItem,
-            this.obrasToolStripMenuItem,
-            this.paisesToolStripMenuItem1,
-            this.provinciasToolStripMenuItem1,
-            this.otrosToolStripMenuItem});
-            this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
-            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
-            // 
-            // almacenesToolStripMenuItem
-            // 
-            this.almacenesToolStripMenuItem.Name = "almacenesToolStripMenuItem";
-            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.almacenesToolStripMenuItem.Text = "Almacenes";
-            // 
-            // proveedoresToolStripMenuItem
-            // 
-            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.proveedoresToolStripMenuItem.Text = "Proveedores";
-            // 
-            // obrasToolStripMenuItem
-            // 
-            this.obrasToolStripMenuItem.Name = "obrasToolStripMenuItem";
-            this.obrasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.obrasToolStripMenuItem.Text = "Obras";
-            // 
-            // paisesToolStripMenuItem1
-            // 
-            this.paisesToolStripMenuItem1.Name = "paisesToolStripMenuItem1";
-            this.paisesToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
-            this.paisesToolStripMenuItem1.Text = "Paises";
-            // 
-            // provinciasToolStripMenuItem1
-            // 
-            this.provinciasToolStripMenuItem1.Name = "provinciasToolStripMenuItem1";
-            this.provinciasToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
-            this.provinciasToolStripMenuItem1.Text = "Provincias";
-            // 
-            // otrosToolStripMenuItem
-            // 
-            this.otrosToolStripMenuItem.Name = "otrosToolStripMenuItem";
-            this.otrosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.otrosToolStripMenuItem.Text = "Otros";
-            // 
-            // toolEmpresas
-            // 
-            this.toolEmpresas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.empresasToolStripMenuItem,
-            this.crearEjercioNuevoToolStripMenuItem,
-            this.consultaEmpresasToolStripMenuItem,
-            this.consultaEjerciciosToolStripMenuItem});
-            this.toolEmpresas.Name = "toolEmpresas";
-            this.toolEmpresas.Size = new System.Drawing.Size(69, 20);
-            this.toolEmpresas.Text = "Empresas";
-            // 
-            // empresasToolStripMenuItem
-            // 
-            this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
-            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.empresasToolStripMenuItem.Text = "Empresas";
-            this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
-            // 
-            // crearEjercioNuevoToolStripMenuItem
-            // 
-            this.crearEjercioNuevoToolStripMenuItem.Name = "crearEjercioNuevoToolStripMenuItem";
-            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.crearEjercioNuevoToolStripMenuItem.Text = "Crear Ejercio Nuevo";
-            this.crearEjercioNuevoToolStripMenuItem.Click += new System.EventHandler(this.crearEjercioNuevoToolStripMenuItem_Click);
-            // 
-            // consultaEmpresasToolStripMenuItem
-            // 
-            this.consultaEmpresasToolStripMenuItem.Name = "consultaEmpresasToolStripMenuItem";
-            this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.consultaEmpresasToolStripMenuItem.Text = "&Consulta Empresas";
-            // 
-            // consultaEjerciciosToolStripMenuItem
-            // 
-            this.consultaEjerciciosToolStripMenuItem.Name = "consultaEjerciciosToolStripMenuItem";
-            this.consultaEjerciciosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.consultaEjerciciosToolStripMenuItem.Text = "&Consulta Ejercicios";
-            // 
-            // toolDescuentos
-            // 
-            this.toolDescuentos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editarDescuentosToolStripMenuItem,
-            this.verDescuentosToolStripMenuItem});
-            this.toolDescuentos.Name = "toolDescuentos";
-            this.toolDescuentos.Size = new System.Drawing.Size(125, 20);
-            this.toolDescuentos.Text = "Descuentos Clientes";
-            // 
-            // editarDescuentosToolStripMenuItem
-            // 
-            this.editarDescuentosToolStripMenuItem.Name = "editarDescuentosToolStripMenuItem";
-            this.editarDescuentosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.editarDescuentosToolStripMenuItem.Text = "Editar Descuentos";
-            // 
-            // verDescuentosToolStripMenuItem
-            // 
-            this.verDescuentosToolStripMenuItem.Name = "verDescuentosToolStripMenuItem";
-            this.verDescuentosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.verDescuentosToolStripMenuItem.Text = "Ver Descuentos";
-            // 
-            // toolFamilia
-            // 
-            this.toolFamilia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.familiasToolStripMenuItem});
-            this.toolFamilia.Name = "toolFamilia";
-            this.toolFamilia.Size = new System.Drawing.Size(114, 20);
-            this.toolFamilia.Text = "Familia Productos";
-            // 
-            // familiasToolStripMenuItem
-            // 
-            this.familiasToolStripMenuItem.Name = "familiasToolStripMenuItem";
-            this.familiasToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.familiasToolStripMenuItem.Text = "Familias";
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.ayudaToolStripMenuItem.Text = "Ay&uda";
-            // 
-            // proveedoresToolStripMenuItem1
-            // 
-            this.proveedoresToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editarToolStripMenuItem,
-            this.consultarToolStripMenuItem});
-            this.proveedoresToolStripMenuItem1.Name = "proveedoresToolStripMenuItem1";
-            this.proveedoresToolStripMenuItem1.Size = new System.Drawing.Size(84, 20);
-            this.proveedoresToolStripMenuItem1.Text = "&Proveedores";
-            // 
-            // editarToolStripMenuItem
-            // 
-            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.editarToolStripMenuItem.Text = "&Abrir";
-            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
-            // 
-            // consultarToolStripMenuItem
-            // 
-            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.consultarToolStripMenuItem.Text = "&Consultar";
-            // 
-            // almacenesToolStripMenuItem1
-            // 
-            this.almacenesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirToolStripMenuItem,
-            this.consultarToolStripMenuItem1});
-            this.almacenesToolStripMenuItem1.Name = "almacenesToolStripMenuItem1";
-            this.almacenesToolStripMenuItem1.Size = new System.Drawing.Size(77, 20);
-            this.almacenesToolStripMenuItem1.Text = "&Almacenes";
-            // 
-            // abrirToolStripMenuItem
-            // 
-            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.abrirToolStripMenuItem.Text = "&Abrir";
-            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
-            // 
-            // consultarToolStripMenuItem1
-            // 
-            this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
-            this.consultarToolStripMenuItem1.Text = "&Consultar";
-            // 
-            // obrasToolStripMenuItem1
-            // 
-            this.obrasToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirToolStripMenuItem1,
-            this.consultarToolStripMenuItem2});
-            this.obrasToolStripMenuItem1.Name = "obrasToolStripMenuItem1";
-            this.obrasToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
-            this.obrasToolStripMenuItem1.Text = "&Obras";
-            // 
-            // abrirToolStripMenuItem1
-            // 
-            this.abrirToolStripMenuItem1.Name = "abrirToolStripMenuItem1";
-            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
-            this.abrirToolStripMenuItem1.Text = "&Abrir";
-            // 
-            // consultarToolStripMenuItem2
-            // 
-            this.consultarToolStripMenuItem2.Name = "consultarToolStripMenuItem2";
-            this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
-            this.consultarToolStripMenuItem2.Text = "&Consultar";
-            // 
-            // provinciasToolStripMenuItem
-            // 
-            this.provinciasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.paisesToolStripMenuItem,
-            this.provinciasToolStripMenuItem2});
-            this.provinciasToolStripMenuItem.Name = "provinciasToolStripMenuItem";
-            this.provinciasToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.provinciasToolStripMenuItem.Text = "&Varios Archivos";
-            // 
-            // paisesToolStripMenuItem
-            // 
-            this.paisesToolStripMenuItem.Name = "paisesToolStripMenuItem";
-            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.paisesToolStripMenuItem.Text = "&Paises";
-            // 
-            // provinciasToolStripMenuItem2
-            // 
-            this.provinciasToolStripMenuItem2.Name = "provinciasToolStripMenuItem2";
-            this.provinciasToolStripMenuItem2.Size = new System.Drawing.Size(128, 22);
-            this.provinciasToolStripMenuItem2.Text = "&Provincias";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(61)))), ((int)(((byte)(69)))));
@@ -1013,7 +1047,7 @@ namespace PELOSCALVO
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
             this.panelMenu.Controls.Add(this.pictureBox7);
-            this.panelMenu.Controls.Add(this.BtnInfo);
+            this.panelMenu.Controls.Add(this.BtnArchivos);
             this.panelMenu.Controls.Add(this.btnConfiguracion);
             this.panelMenu.Controls.Add(this.BtnVentas);
             this.panelMenu.Controls.Add(this.BtnCompras);
@@ -1029,12 +1063,23 @@ namespace PELOSCALVO
             this.panelMenu.Controls.Add(this.btnCorreo);
             this.panelMenu.Controls.Add(this.pictureBox2);
             this.panelMenu.Controls.Add(this.pictureBox1);
-            this.panelMenu.Controls.Add(this.BtnArchivo);
+            this.panelMenu.Controls.Add(this.BtnInfo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 43);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(230, 557);
             this.panelMenu.TabIndex = 2;
+            // 
+            // Conectado
+            // 
+            this.Conectado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Conectado.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
+            this.Conectado.Location = new System.Drawing.Point(8, 11);
+            this.Conectado.Name = "Conectado";
+            this.Conectado.Size = new System.Drawing.Size(22, 22);
+            this.Conectado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Conectado.TabIndex = 85;
+            this.Conectado.TabStop = false;
             // 
             // pictureBox7
             // 
@@ -1045,27 +1090,27 @@ namespace PELOSCALVO
             this.pictureBox7.TabIndex = 17;
             this.pictureBox7.TabStop = false;
             // 
-            // BtnInfo
+            // BtnArchivos
             // 
-            this.BtnInfo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BtnInfo.FlatAppearance.BorderSize = 0;
-            this.BtnInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(80)))), ((int)(((byte)(30)))));
-            this.BtnInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(115)))), ((int)(((byte)(9)))));
-            this.BtnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInfo.ForeColor = System.Drawing.Color.Silver;
-            this.BtnInfo.Image = global::PELOSCALVO.Properties.Resources.INFO;
-            this.BtnInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnInfo.Location = new System.Drawing.Point(3, 359);
-            this.BtnInfo.Name = "BtnInfo";
-            this.BtnInfo.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
-            this.BtnInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BtnInfo.Size = new System.Drawing.Size(227, 40);
-            this.BtnInfo.TabIndex = 16;
-            this.BtnInfo.Tag = "NO";
-            this.BtnInfo.Text = "Archivo";
-            this.BtnInfo.UseVisualStyleBackColor = true;
-            this.BtnInfo.Click += new System.EventHandler(this.BtnInfo_Click);
+            this.BtnArchivos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnArchivos.FlatAppearance.BorderSize = 0;
+            this.BtnArchivos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(80)))), ((int)(((byte)(30)))));
+            this.BtnArchivos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(115)))), ((int)(((byte)(9)))));
+            this.BtnArchivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnArchivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnArchivos.ForeColor = System.Drawing.Color.Silver;
+            this.BtnArchivos.Image = global::PELOSCALVO.Properties.Resources.INFO;
+            this.BtnArchivos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnArchivos.Location = new System.Drawing.Point(3, 359);
+            this.BtnArchivos.Name = "BtnArchivos";
+            this.BtnArchivos.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.BtnArchivos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.BtnArchivos.Size = new System.Drawing.Size(227, 40);
+            this.BtnArchivos.TabIndex = 16;
+            this.BtnArchivos.Tag = "SI";
+            this.BtnArchivos.Text = "Archivo";
+            this.BtnArchivos.UseVisualStyleBackColor = true;
+            this.BtnArchivos.Click += new System.EventHandler(this.BtnInfo_Click);
             // 
             // btnConfiguracion
             // 
@@ -1295,39 +1340,42 @@ namespace PELOSCALVO
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // BtnArchivo
+            // BtnInfo
             // 
-            this.BtnArchivo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BtnArchivo.FlatAppearance.BorderSize = 0;
-            this.BtnArchivo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
-            this.BtnArchivo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
-            this.BtnArchivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnArchivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnArchivo.ForeColor = System.Drawing.Color.Orange;
-            this.BtnArchivo.Image = global::PELOSCALVO.Properties.Resources.barras4;
-            this.BtnArchivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnArchivo.Location = new System.Drawing.Point(3, 80);
-            this.BtnArchivo.Name = "BtnArchivo";
-            this.BtnArchivo.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
-            this.BtnArchivo.Size = new System.Drawing.Size(227, 40);
-            this.BtnArchivo.TabIndex = 0;
-            this.BtnArchivo.Tag = "";
-            this.BtnArchivo.Text = "PANEL";
-            this.BtnArchivo.UseVisualStyleBackColor = true;
-            this.BtnArchivo.Click += new System.EventHandler(this.BtnArchivo_Click);
+            this.BtnInfo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnInfo.FlatAppearance.BorderSize = 0;
+            this.BtnInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
+            this.BtnInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
+            this.BtnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnInfo.ForeColor = System.Drawing.Color.Orange;
+            this.BtnInfo.Image = global::PELOSCALVO.Properties.Resources.barras4;
+            this.BtnInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnInfo.Location = new System.Drawing.Point(3, 80);
+            this.BtnInfo.Name = "BtnInfo";
+            this.BtnInfo.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.BtnInfo.Size = new System.Drawing.Size(227, 40);
+            this.BtnInfo.TabIndex = 0;
+            this.BtnInfo.Tag = "";
+            this.BtnInfo.Text = "PANEL";
+            this.BtnInfo.UseVisualStyleBackColor = true;
+            this.BtnInfo.Click += new System.EventHandler(this.BtnArchivo_Click);
+            this.BtnInfo.MouseEnter += new System.EventHandler(this.BtnInfo_MouseEnter);
             // 
             // PanelBarraTitulo
             // 
             this.PanelBarraTitulo.BackColor = System.Drawing.Color.Goldenrod;
             this.PanelBarraTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelBarraTitulo.Controls.Add(this.InfoConectado);
+            this.PanelBarraTitulo.Controls.Add(this.Conectado);
             this.PanelBarraTitulo.Controls.Add(this.panelAplicaciones);
             this.PanelBarraTitulo.Controls.Add(this.Logo2);
-            this.PanelBarraTitulo.Controls.Add(this.btnNormal);
             this.PanelBarraTitulo.Controls.Add(this.btnMinimizar);
             this.PanelBarraTitulo.Controls.Add(this.btnMaximizar);
             this.PanelBarraTitulo.Controls.Add(this.btnCerrar);
             this.PanelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelBarraTitulo.Location = new System.Drawing.Point(0, 0);
+            this.PanelBarraTitulo.Margin = new System.Windows.Forms.Padding(0);
             this.PanelBarraTitulo.Name = "PanelBarraTitulo";
             this.PanelBarraTitulo.Size = new System.Drawing.Size(1100, 43);
             this.PanelBarraTitulo.TabIndex = 1;
@@ -1347,7 +1395,7 @@ namespace PELOSCALVO
             this.panelAplicaciones.Controls.Add(this.BtnSql);
             this.panelAplicaciones.Controls.Add(this.BtnCarpeteDatos);
             this.panelAplicaciones.Controls.Add(this.BtnCalculadora);
-            this.panelAplicaciones.Location = new System.Drawing.Point(232, 5);
+            this.panelAplicaciones.Location = new System.Drawing.Point(256, 6);
             this.panelAplicaciones.Margin = new System.Windows.Forms.Padding(1);
             this.panelAplicaciones.Name = "panelAplicaciones";
             this.panelAplicaciones.Size = new System.Drawing.Size(679, 32);
@@ -1478,28 +1526,12 @@ namespace PELOSCALVO
             this.Logo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.Logo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logo2.ForeColor = System.Drawing.Color.White;
-            this.Logo2.Location = new System.Drawing.Point(35, 15);
+            this.Logo2.Location = new System.Drawing.Point(148, 14);
             this.Logo2.Name = "Logo2";
             this.Logo2.Size = new System.Drawing.Size(96, 16);
             this.Logo2.TabIndex = 4;
             this.Logo2.Text = "PELOSCALVO";
             this.Logo2.MouseEnter += new System.EventHandler(this.Logo2_MouseEnter);
-            // 
-            // btnNormal
-            // 
-            this.btnNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNormal.BackgroundImage = global::PELOSCALVO.Properties.Resources.Normal;
-            this.btnNormal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNormal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNormal.FlatAppearance.BorderSize = 0;
-            this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNormal.Location = new System.Drawing.Point(992, 0);
-            this.btnNormal.Name = "btnNormal";
-            this.btnNormal.Size = new System.Drawing.Size(43, 43);
-            this.btnNormal.TabIndex = 3;
-            this.btnNormal.UseVisualStyleBackColor = true;
-            this.btnNormal.Visible = false;
-            this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
             // 
             // btnMinimizar
             // 
@@ -1519,7 +1551,7 @@ namespace PELOSCALVO
             // btnMaximizar
             // 
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.BackgroundImage = global::PELOSCALVO.Properties.Resources.maximize2;
+            this.btnMaximizar.BackgroundImage = global::PELOSCALVO.Properties.Resources.Normal;
             this.btnMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.FlatAppearance.BorderSize = 0;
@@ -1528,6 +1560,7 @@ namespace PELOSCALVO
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(43, 43);
             this.btnMaximizar.TabIndex = 1;
+            this.btnMaximizar.Tag = "MIN";
             this.btnMaximizar.UseVisualStyleBackColor = true;
             this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
@@ -1654,6 +1687,15 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
+            // InfoConectado
+            // 
+            this.InfoConectado.AutoSize = true;
+            this.InfoConectado.Location = new System.Drawing.Point(36, 18);
+            this.InfoConectado.Name = "InfoConectado";
+            this.InfoConectado.Size = new System.Drawing.Size(77, 13);
+            this.InfoConectado.TabIndex = 86;
+            this.InfoConectado.Text = "Desconectado";
+            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1668,23 +1710,24 @@ namespace PELOSCALVO
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PELOSCALVO";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMenuPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FormMenuPrincipal_Load);
             this.MouseEnter += new System.EventHandler(this.FormMenuPrincipal_MouseEnter);
             this.panelContenedorPrincipal.ResumeLayout(false);
-            this.panelContenedorForm.ResumeLayout(false);
+            this.PanelForms.ResumeLayout(false);
             this.panelSUBventas.ResumeLayout(false);
             this.panelventas.ResumeLayout(false);
             this.PanelAcesosDire.ResumeLayout(false);
             this.PanelAcesosDire.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.PanelInfo_P.ResumeLayout(false);
             this.Panel_info2.ResumeLayout(false);
             this.Panel_info2.PerformLayout();
-            this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
@@ -1716,7 +1759,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.Panel panelContenedorPrincipal;
         private System.Windows.Forms.Panel PanelBarraTitulo;
         private System.Windows.Forms.Label Logo2;
-        private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Button btnMaximizar;
         private System.Windows.Forms.Button btnCerrar;
@@ -1736,7 +1778,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnListaClientes;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button BtnArchivo;
+        private System.Windows.Forms.Button BtnInfo;
         private System.Windows.Forms.Timer tmExpandirMenu;
         private System.Windows.Forms.Timer tmContraerMenu;
         private System.Windows.Forms.Timer tmFechaHora;
@@ -1763,7 +1805,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCrearNotas;
         public System.Windows.Forms.Button btnCrearFactura;
         private System.Windows.Forms.Panel panelAplicaciones;
-        public System.Windows.Forms.Panel panelContenedorForm;
+        public System.Windows.Forms.Panel PanelForms;
         private System.Windows.Forms.Button BtnCrearAlbaranes;
         private System.Windows.Forms.Button BtnCalculadora;
         private System.Windows.Forms.Button BtnCarpeteDatos;
@@ -1776,8 +1818,7 @@ namespace PELOSCALVO
         public DsCONFIGURACCION dsCONFIGURACCION;
         public System.Windows.Forms.Panel PanelInfo_P;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Button BtnInfo;
-        public System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button BtnArchivos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -1801,11 +1842,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolArchivo;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abrirBaseDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abrirPdfToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem añadirBaseDatosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Abrir_Correos;
-        private System.Windows.Forms.ToolStripMenuItem imprimirReportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarModificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem almacenesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
@@ -1835,10 +1872,18 @@ namespace PELOSCALVO
         private System.Windows.Forms.Panel PanelAcesosDire;
         private System.Windows.Forms.ToolStripMenuItem consultaEmpresasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultaEjerciciosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AbrirAlmacenes;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem AbrirObras;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem correosEletronicosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosDeInicioToolStripMenuItem;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label Info_Carpeta;
+        public System.Windows.Forms.PictureBox Conectado;
+        public System.Windows.Forms.Label InfoConectado;
     }
 }
 

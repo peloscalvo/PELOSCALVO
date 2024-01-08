@@ -1,22 +1,17 @@
 ﻿using Conexiones;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
 {
     public partial class FormAlmacenes : Form
     {
+        public static FormAlmacenes MenuB;
         public FormAlmacenes()
         {
             InitializeComponent();
+            FormAlmacenes.MenuB = this;
         }
         private void FormAlmacenes_Load(object sender, EventArgs e)
         {
@@ -44,6 +39,7 @@ namespace PELOSCALVO
             this.BtnGuardarAlmacen.Enabled = true;
             this.BtnCancelarAlmacen.Enabled = true;
             this.dataGridAlmacenes.Enabled = false;
+            this.SelecionarEmpresa2.Enabled = false;
         }
         private void RestaurarOjetos_Alm()
         {
@@ -51,6 +47,7 @@ namespace PELOSCALVO
             this.BtnGuardarAlmacen.Enabled = false;
             this.BtnCancelarAlmacen.Enabled = false;
             this.dataGridAlmacenes.Enabled = true;
+            this.SelecionarEmpresa2.Enabled = true;
         }
         private bool EspacioDiscosAlmacen(string nombreDisco, int Espacio)
         {
@@ -89,13 +86,13 @@ namespace PELOSCALVO
                 try
                 {
 
-                    string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= '@Id_almacenes'";
+                    string consulta = "Delete from  [DtAlmacenes]   WHERE Id= @Id";
                     //  ClsConexionDb.CadenaConexion = cadena;
                     ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", this.id_almacenes.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.id_almacenes.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
                             this.dtAlmacenesBindingSource.EndEdit();
@@ -124,22 +121,22 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtAlmacenes]([Id_almacenes],[Almacenes],[Enlace_Almacenes]) VALUES( @Id_almacenes,@Almacenes,@Enlace_Almacenes)";
+                consulta = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
 
             }
             else
             {
-                consulta = "UPDATE [DtAlmacenes] SET [Id_almacenes] = @Id_almacenes,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
-                " WHERE Id_almacenes = @Id_almacenes";
+                consulta = "UPDATE [DtAlmacenes] SET [Id] = @Id,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
+                " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Almacenes", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.IdEmpresaAlm.Text) ? (object)DBNull.Value : this.IdEmpresaAlm.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -167,22 +164,22 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtAlmacenes]([@Id_almacenes],[@Almacenes],[@Enlace_Almacenes])";
+                consulta = "  INSERT INTO [DtAlmacenes] VALUES ([@Id],[@Almacenes],[@Enlace_Almacenes])";
 
             }
             else
             {
-                consulta = "UPDATE [DtAlmacenes] SET [Id_almacenes] = @Id_almacenes,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
-                " WHERE Id_almacenes = @Id_almacenes";
+                consulta = "UPDATE [DtAlmacenes] SET [Id] = @Id,[Almacenes] = @Almacenes, [Enlace_Almacenes] = @Enlace_Almacenes, " +
+                " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.id_almacenes.Text) ? (object)DBNull.Value : Convert.ToInt32(this.id_almacenes.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Almacenes", string.IsNullOrEmpty(this.almacenesTextBox.Text) ? (object)DBNull.Value : this.almacenesTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.Enlace_almacen.Text) ? (object)DBNull.Value : this.Enlace_almacen.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Almacenes", string.IsNullOrEmpty(this.IdEmpresaAlm.Text) ? (object)DBNull.Value : this.IdEmpresaAlm.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
@@ -207,7 +204,7 @@ namespace PELOSCALVO
         }
         private void EliminarAlmacenSQL()
         {
-            string consulta = "Delete from  [DtAlmacenes]   WHERE Id_almacenes= '@Id_almacenes'";
+            string consulta = "Delete from  [DtAlmacenes]   WHERE Id= @Id";
             //  ClsConexionDb.CadenaConexion = cadena;
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
@@ -215,7 +212,7 @@ namespace PELOSCALVO
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_almacenes", this.id_almacenes.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.id_almacenes.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridAlmacenes.Rows.RemoveAt(this.dataGridAlmacenes.CurrentCell.RowIndex);
                         this.dtAlmacenesBindingSource.EndEdit();
@@ -267,9 +264,11 @@ namespace PELOSCALVO
                         this.dataGridAlmacenes.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.id_almacenes.Text = VALORid.ToString();
                     }
-                  
-                }
 
+                }
+                this.almacenesTextBox.Text = "Almacen Central";
+                this.almacenesTextBox.Focus();
+                this.almacenesTextBox.SelectAll();
                 ModificarOjetos_Alm();
 
             }
@@ -282,7 +281,7 @@ namespace PELOSCALVO
 
         private void BtnEliminarAlmacen_Click(object sender, EventArgs e)
         {
-            if (this.dataGridAlmacenes.RowCount >= 0)
+            if (this.dtAlmacenesBindingSource.Count > 0)
             {
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -313,12 +312,12 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (id_almacenes.Text == string.Empty & Enlace_almacen.Text == string.Empty)
+            if (this.id_almacenes.Text == string.Empty & this.IdEmpresaAlm.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (EspacioDiscosAlmacen(ClasDatos.RutaMultidatos, 25))
+            if (EspacioDiscosAlmacen(Directory.GetCurrentDirectory(), 25))
 
                 BorrarErrorAlmacen();
             if (ValidarAlmacen())
@@ -328,13 +327,13 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.dataGridAlmacenes.Rows)
                         {
-                            if (fila.Cells[1].ToString() == this.almacenesTextBox.Text)
+                            if (fila.Cells[1].Value.ToString() == this.almacenesTextBox.Text)
                             {
                                 if (this.dataGridAlmacenes.CurrentCell.RowIndex == fila.Index)
                                 {
                                     break;
                                 }
-                                MessageBox.Show(this.almacenesTextBox.Text.ToString(), "YA EXISTE ESTA ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show(this.almacenesTextBox.Text.ToString(), "YA EXISTE ESTE ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.almacenesTextBox.Focus();
                                 this.almacenesTextBox.SelectAll();
                                 return;
@@ -347,18 +346,18 @@ namespace PELOSCALVO
 
                         MessageBox.Show(ex.Message);
                     }
-                    if (MessageBox.Show(" ¿Aceptar Guardar Proveedor ? ", " GUARDAR PROVEEDOR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(" ¿Aceptar Guardar Almacen ? ", " GUARDAR ALMACENES ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         if (ClsConexionSql.SibaseDatosSql)
                         {
-                            GuardarAlmacenesDb();
+                            GuardarAlmacenesSql();
                         }
                         else
                         {
 
                             if (File.Exists(ClasDatos.RutaBaseDatosDb))
                             {
-                                GuardarAlmacenesSql();
+                                GuardarAlmacenesDb();
                             }
                             else
                             {
@@ -391,7 +390,7 @@ namespace PELOSCALVO
 
                     //  throw;
                 }
-             
+
             }
             RestaurarOjetos_Alm();
         }
@@ -404,9 +403,12 @@ namespace PELOSCALVO
 
         private void BtnSalirAlmacen_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(" ¿Salir Proveedores ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (this.BtnGuardarAlmacen.Enabled == false)
             {
-                Close();
+                if (MessageBox.Show(" ¿Salir Almacenes ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Close();
+                }
             }
         }
 
@@ -420,7 +422,14 @@ namespace PELOSCALVO
 
         private void BtnBuscarAlmacen_Click(object sender, EventArgs e)
         {
-
+            if (this.dtAlmacenesBindingSource.Count > 0)
+            {
+                ClasDatos.QUEform = "Almacen";
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Almacenes", "Almacenes");
+                frm.BringToFront();
+                frm.ShowDialog();
+            }
         }
     }
 }

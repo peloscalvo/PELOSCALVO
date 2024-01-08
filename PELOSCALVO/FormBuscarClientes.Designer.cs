@@ -49,7 +49,6 @@ namespace PELOSCALVO
             this.mOVILCLIENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cORREOCLIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lOCALIDADCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dNICLIENT2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DNICLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cODIGOPOSTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pAISCLIENTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,7 +107,6 @@ namespace PELOSCALVO
             this.mOVILCLIENDataGridViewTextBoxColumn,
             this.cORREOCLIEDataGridViewTextBoxColumn,
             this.lOCALIDADCDataGridViewTextBoxColumn,
-            this.dNICLIENT2DataGridViewTextBoxColumn,
             this.DNICLIENTE,
             this.cODIGOPOSTDataGridViewTextBoxColumn,
             this.pAISCLIENTDataGridViewTextBoxColumn,
@@ -216,7 +214,7 @@ namespace PELOSCALVO
             // 
             // Column1
             // 
-            this.Column1.DataPropertyName = "IDCLIENTE";
+            this.Column1.DataPropertyName = "Id";
             dataGridViewCellStyle1.Format = "N0";
             dataGridViewCellStyle1.NullValue = null;
             this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
@@ -279,14 +277,6 @@ namespace PELOSCALVO
             this.lOCALIDADCDataGridViewTextBoxColumn.Name = "lOCALIDADCDataGridViewTextBoxColumn";
             this.lOCALIDADCDataGridViewTextBoxColumn.ReadOnly = true;
             this.lOCALIDADCDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dNICLIENT2DataGridViewTextBoxColumn
-            // 
-            this.dNICLIENT2DataGridViewTextBoxColumn.DataPropertyName = "DNICLIENT2";
-            this.dNICLIENT2DataGridViewTextBoxColumn.HeaderText = "DNICLIENT2";
-            this.dNICLIENT2DataGridViewTextBoxColumn.Name = "dNICLIENT2DataGridViewTextBoxColumn";
-            this.dNICLIENT2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.dNICLIENT2DataGridViewTextBoxColumn.Visible = false;
             // 
             // DNICLIENTE
             // 
@@ -508,7 +498,7 @@ namespace PELOSCALVO
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "FormBuscarClientes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Buscar cliente";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormBuscarClientes_Load);
@@ -546,6 +536,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroCalleClienteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn provinciaClienteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tarifaTipoClienteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dNICLIENT2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn aPODOCLIENDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nOMBRECLIEDataGridViewTextBoxColumn;
@@ -554,7 +545,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn mOVILCLIENDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cORREOCLIEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lOCALIDADCDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dNICLIENT2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DNICLIENTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn cODIGOPOSTDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pAISCLIENTDataGridViewTextBoxColumn;

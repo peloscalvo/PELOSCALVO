@@ -30,13 +30,14 @@ namespace PELOSCALVO
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label enlace_AlmacenesLabel1;
             System.Windows.Forms.Label id_almacenesLabel;
             System.Windows.Forms.Label almacenesLabel;
             System.Windows.Forms.Label enlace_AlmacenesLabel;
+            System.Windows.Forms.Label label1;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlmacenes));
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
@@ -45,7 +46,6 @@ namespace PELOSCALVO
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelAlmacenes = new System.Windows.Forms.Panel();
-            this.Enlace_almacen = new System.Windows.Forms.Label();
             this.id_almacenes = new System.Windows.Forms.Label();
             this.BotonesAlmacenes = new System.Windows.Forms.Panel();
             this.BtnEliminarAlmacen = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@ namespace PELOSCALVO
             this.BtnNuevoAlmacen = new System.Windows.Forms.Button();
             this.BtnModificarAlmacen = new System.Windows.Forms.Button();
             this.almacenesTextBox = new System.Windows.Forms.TextBox();
+            this.IdEmpresaAlm = new System.Windows.Forms.Label();
             this.SelecionarEmpresa2 = new System.Windows.Forms.ComboBox();
             this.dataGridAlmacenes = new System.Windows.Forms.DataGridView();
             this.idalmacenesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,10 +62,10 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen = new System.Windows.Forms.Button();
             this.BtnGuardarAlmacen = new System.Windows.Forms.Button();
             this.BtnSalirAlmacen = new System.Windows.Forms.Button();
-            enlace_AlmacenesLabel1 = new System.Windows.Forms.Label();
             id_almacenesLabel = new System.Windows.Forms.Label();
             almacenesLabel = new System.Windows.Forms.Label();
             enlace_AlmacenesLabel = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
@@ -76,19 +77,10 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlmacenes)).BeginInit();
             this.SuspendLayout();
             // 
-            // enlace_AlmacenesLabel1
-            // 
-            enlace_AlmacenesLabel1.AutoSize = true;
-            enlace_AlmacenesLabel1.Location = new System.Drawing.Point(7, 72);
-            enlace_AlmacenesLabel1.Name = "enlace_AlmacenesLabel1";
-            enlace_AlmacenesLabel1.Size = new System.Drawing.Size(43, 13);
-            enlace_AlmacenesLabel1.TabIndex = 56;
-            enlace_AlmacenesLabel1.Text = "Enlace:";
-            // 
             // id_almacenesLabel
             // 
             id_almacenesLabel.AutoSize = true;
-            id_almacenesLabel.Location = new System.Drawing.Point(31, 20);
+            id_almacenesLabel.Location = new System.Drawing.Point(31, 14);
             id_almacenesLabel.Name = "id_almacenesLabel";
             id_almacenesLabel.Size = new System.Drawing.Size(19, 13);
             id_almacenesLabel.TabIndex = 54;
@@ -111,6 +103,15 @@ namespace PELOSCALVO
             enlace_AlmacenesLabel.Size = new System.Drawing.Size(51, 13);
             enlace_AlmacenesLabel.TabIndex = 60;
             enlace_AlmacenesLabel.Text = "Empresa:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(545, 351);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(19, 13);
+            label1.TabIndex = 122;
+            label1.Text = "Id:";
             // 
             // dtConfiguracionPrincipalBindingSource
             // 
@@ -139,14 +140,12 @@ namespace PELOSCALVO
             // 
             // dtAlmacenesBindingSource
             // 
-            this.dtAlmacenesBindingSource.DataMember = "DtConfiguracionPrincipal_DtAlmacenes";
+            this.dtAlmacenesBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtAlmacenes";
             this.dtAlmacenesBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // panelAlmacenes
             // 
-            this.panelAlmacenes.Controls.Add(this.Enlace_almacen);
             this.panelAlmacenes.Controls.Add(this.id_almacenes);
-            this.panelAlmacenes.Controls.Add(enlace_AlmacenesLabel1);
             this.panelAlmacenes.Controls.Add(this.BotonesAlmacenes);
             this.panelAlmacenes.Controls.Add(id_almacenesLabel);
             this.panelAlmacenes.Controls.Add(almacenesLabel);
@@ -157,24 +156,15 @@ namespace PELOSCALVO
             this.panelAlmacenes.TabIndex = 62;
             this.panelAlmacenes.Tag = "NO";
             // 
-            // Enlace_almacen
-            // 
-            this.Enlace_almacen.AutoSize = true;
-            this.Enlace_almacen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Enlace_Almacenes", true));
-            this.Enlace_almacen.Location = new System.Drawing.Point(71, 72);
-            this.Enlace_almacen.Name = "Enlace_almacen";
-            this.Enlace_almacen.Size = new System.Drawing.Size(0, 13);
-            this.Enlace_almacen.TabIndex = 59;
-            // 
             // id_almacenes
             // 
             this.id_almacenes.AutoSize = true;
-            this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id_almacenes", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "N0"));
+            this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id", true));
             this.id_almacenes.Location = new System.Drawing.Point(74, 14);
             this.id_almacenes.Name = "id_almacenes";
             this.id_almacenes.Size = new System.Drawing.Size(13, 13);
             this.id_almacenes.TabIndex = 58;
-            this.id_almacenes.Text = "0";
+            this.id_almacenes.Text = "1";
             this.id_almacenes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BotonesAlmacenes
@@ -280,6 +270,15 @@ namespace PELOSCALVO
             this.almacenesTextBox.Size = new System.Drawing.Size(374, 20);
             this.almacenesTextBox.TabIndex = 56;
             // 
+            // IdEmpresaAlm
+            // 
+            this.IdEmpresaAlm.AutoSize = true;
+            this.IdEmpresaAlm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true));
+            this.IdEmpresaAlm.Location = new System.Drawing.Point(586, 351);
+            this.IdEmpresaAlm.Name = "IdEmpresaAlm";
+            this.IdEmpresaAlm.Size = new System.Drawing.Size(0, 13);
+            this.IdEmpresaAlm.TabIndex = 59;
+            // 
             // SelecionarEmpresa2
             // 
             this.SelecionarEmpresa2.DataSource = this.dtConfiguracionPrincipalBindingSource;
@@ -316,14 +315,14 @@ namespace PELOSCALVO
             this.almacenesDataGridViewTextBoxColumn,
             this.Enlace_Almacenes});
             this.dataGridAlmacenes.DataSource = this.dtAlmacenesBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridAlmacenes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridAlmacenes.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridAlmacenes.Enabled = false;
             this.dataGridAlmacenes.Location = new System.Drawing.Point(0, 0);
@@ -337,7 +336,10 @@ namespace PELOSCALVO
             // 
             // idalmacenesDataGridViewTextBoxColumn
             // 
-            this.idalmacenesDataGridViewTextBoxColumn.DataPropertyName = "Id_almacenes";
+            this.idalmacenesDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.idalmacenesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.idalmacenesDataGridViewTextBoxColumn.FillWeight = 90.06917F;
             this.idalmacenesDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idalmacenesDataGridViewTextBoxColumn.MaxInputLength = 0;
@@ -347,9 +349,9 @@ namespace PELOSCALVO
             // almacenesDataGridViewTextBoxColumn
             // 
             this.almacenesDataGridViewTextBoxColumn.DataPropertyName = "Almacenes";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.almacenesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.almacenesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.almacenesDataGridViewTextBoxColumn.FillWeight = 306.934F;
             this.almacenesDataGridViewTextBoxColumn.HeaderText = "Almacenes";
             this.almacenesDataGridViewTextBoxColumn.MaxInputLength = 80;
@@ -434,6 +436,8 @@ namespace PELOSCALVO
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 508);
+            this.Controls.Add(label1);
+            this.Controls.Add(this.IdEmpresaAlm);
             this.Controls.Add(this.BtnSalirAlmacen);
             this.Controls.Add(this.BtnCancelarAlmacen);
             this.Controls.Add(this.BtnGuardarAlmacen);
@@ -443,6 +447,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.dataGridAlmacenes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAlmacenes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Almacenes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAlmacenes_FormClosing);
             this.Load += new System.EventHandler(this.FormAlmacenes_Load);
@@ -470,7 +475,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private System.Windows.Forms.BindingSource dtAlmacenesBindingSource;
         private System.Windows.Forms.Panel panelAlmacenes;
-        private System.Windows.Forms.Label Enlace_almacen;
+        private System.Windows.Forms.Label IdEmpresaAlm;
         private System.Windows.Forms.Label id_almacenes;
         private System.Windows.Forms.Panel BotonesAlmacenes;
         private System.Windows.Forms.Button BtnEliminarAlmacen;
@@ -479,12 +484,12 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnModificarAlmacen;
         private System.Windows.Forms.TextBox almacenesTextBox;
         private System.Windows.Forms.ComboBox SelecionarEmpresa2;
-        private System.Windows.Forms.DataGridView dataGridAlmacenes;
         private System.Windows.Forms.Button BtnCancelarAlmacen;
         public System.Windows.Forms.Button BtnGuardarAlmacen;
         private System.Windows.Forms.Button BtnSalirAlmacen;
         private System.Windows.Forms.DataGridViewTextBoxColumn idalmacenesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn almacenesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Enlace_Almacenes;
+        public System.Windows.Forms.DataGridView dataGridAlmacenes;
     }
 }

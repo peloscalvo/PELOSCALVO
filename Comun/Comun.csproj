@@ -43,9 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClasArticulos.cs" />
+    <Compile Include="ClasCodificarPass.cs" />
     <Compile Include="ClasCorreos.cs" />
+    <Compile Include="ClasDetalleGrid.cs" />
+    <Compile Include="ClassCorreosDB.cs" />
     <Compile Include="ClasTarifa.cs" />
     <Compile Include="ClasSi_Existe_Fatu.cs" />
+    <Compile Include="ClasValidarDni.cs" />
     <Compile Include="DataGrid_2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

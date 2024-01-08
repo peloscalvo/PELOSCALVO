@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DsServidor" targetNamespace="http://tempuri.org/DsServidor.xsd" xmlns:mstns="http://tempuri.org/DsServidor.xsd" xmlns="http://tempuri.org/DsServidor.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="DsServidor" targetNamespace="http://PelosCalvo" xmlns:mstns="http://PelosCalvo" xmlns="http://PelosCalvo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -12,7 +12,7 @@
   <xs:element name="DsServidor" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsServidor" msprop:Generator_UserDSName="DsServidor">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DtServidor" msprop:Generator_TableClassName="DtServidorDataTable" msprop:Generator_TableVarName="tableDtServidor" msprop:Generator_TablePropName="DtServidor" msprop:Generator_RowDeletingName="DtServidorRowDeleting" msprop:Generator_RowChangingName="DtServidorRowChanging" msprop:Generator_RowEvHandlerName="DtServidorRowChangeEventHandler" msprop:Generator_RowDeletedName="DtServidorRowDeleted" msprop:Generator_UserTableName="DtServidor" msprop:Generator_RowChangedName="DtServidorRowChanged" msprop:Generator_RowEvArgName="DtServidorRowChangeEvent" msprop:Generator_RowClassName="DtServidorRow">
+        <xs:element name="DtServidor" msprop:Generator_TableClassName="DtServidorDataTable" msprop:Generator_TableVarName="tableDtServidor" msprop:Generator_RowChangedName="DtServidorRowChanged" msprop:Generator_TablePropName="DtServidor" msprop:Generator_RowDeletingName="DtServidorRowDeleting" msprop:Generator_RowChangingName="DtServidorRowChanging" msprop:Generator_RowEvHandlerName="DtServidorRowChangeEventHandler" msprop:Generator_RowDeletedName="DtServidorRowDeleted" msprop:Generator_RowClassName="DtServidorRow" msprop:Generator_UserTableName="DtServidor" msprop:Generator_RowEvArgName="DtServidorRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Servidores" msprop:Generator_ColumnVarNameInTable="columnServidores" msprop:Generator_ColumnPropNameInRow="Servidores" msprop:Generator_ColumnPropNameInTable="ServidoresColumn" msprop:Generator_UserColumnName="Servidores" type="xs:string" minOccurs="0" />

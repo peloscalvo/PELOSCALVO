@@ -4,6 +4,10 @@
 
     partial class DsCONFIGURACCION
     {
+        partial class DtNuevaFacturaDataTable
+        {
+        }
+
         partial class DtTarifaTipoDataTable
         {
         }

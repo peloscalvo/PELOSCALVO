@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Comun;
+using Conexiones;
+using System;
 using System.ComponentModel;
-using System.Data.SqlClient;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Forms;
-using Conexiones;
 namespace PELOSCALVO
 {
     public partial class FormClientes : Form
@@ -43,10 +42,10 @@ namespace PELOSCALVO
                 this.errorProvider1.SetError(this.direccionClienteTextBox, "_ingresar Direcion (( minimo 4 Caracteres))");
             }
 
-            if (this.idClienteTextBox.Text.Length < 1)
+            if (string.IsNullOrEmpty(this.Id_Clientes.Text))
             {
                 ok = false;
-                this.errorProvider1.SetError(this.idClienteTextBox, "_ingresar Direcion (( minimo 1 Caracteres))");
+                this.errorProvider1.SetError(this.Id_Clientes, "_ingresar Falta Id (( minimo 1 Caracteres))");
             }
             if (this.provinciaClienteComboBox1.Text.Length < 3)
             {
@@ -66,7 +65,7 @@ namespace PELOSCALVO
             this.errorProvider1.SetError(this.nombreClienteTextBox, "");
             this.errorProvider1.SetError(this.direccionClienteTextBox, "");
             this.errorProvider1.SetError(this.dniClienteTextBox, "");
-            this.errorProvider1.SetError(this.idClienteTextBox, "");
+            this.errorProvider1.SetError(this.Id_Clientes, "");
             this.errorProvider1.SetError(this.provinciaClienteComboBox1, "");
             this.errorProvider1.SetError(this.paisClienteComboBox1, "");
         }
@@ -101,7 +100,7 @@ namespace PELOSCALVO
         {
             this.dtClientesDataGridView.Enabled = false;
             this.dtClientesBindingSource.EndEdit();
-            this.idClienteTextBox.Enabled = true;
+           // this.Id_Clientes.Enabled = true;
             this.panelBotonesClientes.Enabled = false;
             this.BtnGuardarCliente.Enabled = true;
             this.BtnCancelarCliente.Enabled = true;
@@ -146,7 +145,7 @@ namespace PELOSCALVO
                     ctrl.Enabled = true;
                 }
             }
-            this.idClienteTextBox.Enabled = false;
+           // this.Id_Clientes.Enabled = false;
 
         }
         private void RestaurarControlesForm()
@@ -192,7 +191,7 @@ namespace PELOSCALVO
                 }
             }
             this.panelCuenta.Enabled = true;
-            this.idClienteTextBox.Enabled = false;
+           // this.Id_Clientes.Enabled = false;
             this.BtnGuardarCliente.Enabled = false;
             this.BtnCancelarCliente.Enabled = false;
             this.panelBotonesClientes.Enabled = true;
@@ -207,45 +206,43 @@ namespace PELOSCALVO
         }
         private void GuardarClientesDb()
         {
-            string DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text + " De Clientes";
-            if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
-            {
-                DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text;
-            }
+            string DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text;
             string Consulta = "";
             if (this.panelBotonesClientes.Tag.ToString() == "Nuevo")
             {
-                Consulta = "INSERT INTO [" + DatoCliente + "] VALUES(@IDCLIENTE, @APODOCLIEN, @NOMBRECLIE, @DIRECCIONC, @TELEFONOCL, @MOVILCLIEN," +
-                 " @CORREOCLIE, @DNICLIENTE, @LOCALIDADC, @CODIGOPOST, @PAISCLIENT, @FECHAALTAC, @CALLECLIEN,@NUMEROCALL, @PROVINCIAC, @TARIFATIPO, @TIPODNI," +
-                 " @TIPOCLIENT, @DESCUENTOC, @NUMEROCUEN, @PORTES,@BANCOOFICI, @BANCOPROVI, @BANCODIREC, @BANCOLOCAL, @BANCOIBAN, @BANCOCODIG, @BANCOENTID, @BANCOOFIC2, @BANCODC, @BANCON_CUE, @BAJA)";
-
+                Consulta = "INSERT INTO [" + DatoCliente + "] ([Id], [APODOCLIEN], [NOMBRECLIE], [DIRECCIONC], [TELEFONOCL], " +
+                "[MOVILCLIEN],[CORREOCLIE], [DNICLIENTE],[LOCALIDADC], [CODIGOPOST], [PAISCLIENT], [CALLECLIEN],[NUMEROCALL]," +
+                "[PROVINCIAC], [TARIFATIPO], [TIPODNI], [TIPOCLIENT], [DESCUENTOC], [NUMEROCUEN], [PORTES],[BANCOOFICI], " +
+                "[BANCOPROVI], [BANCODIREC], [BANCOLOCAL], [BANCOIBAN],[BANCOCODIG], [BANCOENTID], [BANCOOFIC2], [BANCODC]," +
+                " [BANCON_CUE], [BAJA], [FECHAALTAC]) VALUES(@Id, @APODOCLIEN, @NOMBRECLIE, @DIRECCIONC, @TELEFONOCL, @MOVILCLIEN," +
+                 " @CORREOCLIE, @DNICLIENTE, @LOCALIDADC, @CODIGOPOST, @PAISCLIENT, @CALLECLIEN,@NUMEROCALL, @PROVINCIAC, @TARIFATIPO, @TIPODNI," +
+                 " @TIPOCLIENT, @DESCUENTOC, @NUMEROCUEN, @PORTES,@BANCOOFICI, @BANCOPROVI, @BANCODIREC, @BANCOLOCAL, @BANCOIBAN, @BANCOCODIG," +
+                 " @BANCOENTID, @BANCOOFIC2, @BANCODC, @BANCON_CUE, @BAJA, @FECHAALTAC)";
             }
             else
             {
-                Consulta = "UPDATE [DtClientes]SET[" + DatoCliente + "] = @IDCLIENTE, [APODOCLIEN] = @APODOCLIEN,[NOMBRECLIE] = @NOMBRECLIE," +
+                Consulta = "UPDATE [" + DatoCliente + "]SET [Id]= @Id, [APODOCLIEN] = @APODOCLIEN,[NOMBRECLIE] = @NOMBRECLIE," +
               " [DIRECCIONC] = @DIRECCIONC, [TELEFONOCL] = @TELEFONOCL, [MOVILCLIEN] = @MOVILCLIEN, [CORREOCLIE] = @CORREOCLIE, [DNICLIENTE] = @DNICLIENTE,[LOCALIDADC] = @LOCALIDADC," +
-              "[CODIGOPOST] = @CODIGOPOST,[PAISCLIENT] = @PAISCLIENT, [FECHAALTAC] = @FECHAALTAC, [CALLECLIEN] = @CALLECLIEN,[NUMEROCALL]= @NUMEROCALL, [PROVINCIAC] = @PROVINCIAC," +
+              "[CODIGOPOST] = @CODIGOPOST,[PAISCLIENT] = @PAISCLIENT, [CALLECLIEN] = @CALLECLIEN,[NUMEROCALL]= @NUMEROCALL, [PROVINCIAC] = @PROVINCIAC," +
               " [TARIFATIPO] = @TARIFATIPO, [TIPODNI] = @TIPODNI,[TIPOCLIENT] = @TIPOCLIENT, [DESCUENTOC] = @DESCUENTOC, [NUMEROCUEN] = @NUMEROCUEN, [PORTES] = @PORTES," +
               "[BANCOOFICI] = @BANCOOFICI,[BANCOPROVI] = @BANCOPROVI,[BANCODIREC] = @BANCODIREC,[BANCOLOCAL] = @BANCOLOCAL, [BANCOIBAN] = @BANCOIBAN, [BANCOCODIG] = @BANCOCODIG," +
-              " [BANCOENTID] = @BANCOENTID, [BANCOOFIC2] = @BANCOOFIC2, [BANCODC] = @BANCODC, [BANCON_CUE] = @BANCON_CUE,[BAJA] = @BAJA WHERE [IDCLIENTE] = @IDCLIENTE";
+              " [BANCOENTID] = @BANCOENTID, [BANCOOFIC2] = @BANCOOFIC2, [BANCODC] = @BANCODC, [BANCON_CUE] = @BANCON_CUE,[BAJA] = @BAJA, [FECHAALTAC] = @FECHAALTAC WHERE [Id] = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(Consulta);
-
             try
             {
                 if (NuevaConexion.SiConexionDb)
                 {
                     //añadir guaradar a  qui
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@IDCLIENTE", this.idClienteTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.Id_Clientes.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@APODOCLIEN", this.apodoClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NOMBRECLIE", string.IsNullOrEmpty(this.nombreClienteTextBox.Text) ? (object)DBNull.Value : this.nombreClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.direccionClienteTextBox.Text) ? (object)DBNull.Value : this.direccionClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@DNICLIENTE", string.IsNullOrEmpty(this.dniClienteTextBox.Text) ? (object)DBNull.Value : this.dniClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@LOCALIDADC", string.IsNullOrEmpty(this.localidadClienteTextBox.Text) ? (object)DBNull.Value : this.localidadClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TELEFONOCL", string.IsNullOrEmpty(this.telefonoClienteTextBox.Text) ? (object)DBNull.Value : this.telefonoClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@NUMEROCUEN", string.IsNullOrEmpty(this.NUMEROCUENTextBox.Text) ? (object)DBNull.Value : this.NUMEROCUENTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@MOVILCLIEN", string.IsNullOrEmpty(this.movilClienteTextBox.Text) ? (object)DBNull.Value : this.movilClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CORREOCLIE", string.IsNullOrEmpty(this.correoClienteTextBox.Text) ? (object)DBNull.Value : this.correoClienteTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@DNICLIENTE", string.IsNullOrEmpty(this.dniClienteTextBox.Text) ? (object)DBNull.Value : this.dniClienteTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@LOCALIDADC", string.IsNullOrEmpty(this.localidadClienteTextBox.Text) ? (object)DBNull.Value : this.localidadClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CODIGOPOST", string.IsNullOrEmpty(this.codigoPostalClienteTextBox.Text) ? (object)DBNull.Value : this.codigoPostalClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@PAISCLIENT", string.IsNullOrEmpty(this.paisClienteComboBox1.Text) ? (object)DBNull.Value : this.paisClienteComboBox1.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CALLECLIEN", string.IsNullOrEmpty(this.calleClienteTextBox.Text) ? (object)DBNull.Value : this.calleClienteTextBox.Text);
@@ -255,16 +252,17 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TIPODNI", string.IsNullOrEmpty(this.dniClienteTipoComboBox.Text) ? (object)DBNull.Value : this.dniClienteTipoComboBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TIPOCLIENT", string.IsNullOrEmpty(this.tIPOCLIENTComboBox.Text) ? (object)DBNull.Value : this.tIPOCLIENTComboBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESCUENTOC", string.IsNullOrEmpty(this.dESCUENTOCTextBox.Text) ? (object)DBNull.Value : this.dESCUENTOCTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@NUMEROCUEN", string.IsNullOrEmpty(this.NUMEROCUENTextBox.Text) ? (object)DBNull.Value : this.NUMEROCUENTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@PORTES", string.IsNullOrEmpty(this.pORTESComboBox.Text) ? (object)DBNull.Value : this.pORTESComboBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOOFICI", string.IsNullOrEmpty(this.bANCOOFICITextBox.Text) ? (object)DBNull.Value : this.bANCOOFICITextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOPROVI", string.IsNullOrEmpty(this.BancoProvincia.Text) ? (object)DBNull.Value : this.BancoProvincia.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCODIREC", string.IsNullOrEmpty(this.bANCODIRECTextBox.Text) ? (object)DBNull.Value : this.bANCODIRECTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOLOCAL", string.IsNullOrEmpty(this.bANCOLOCALTextBox.Text) ? (object)DBNull.Value : this.bANCOLOCALTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOIBAN", string.IsNullOrEmpty(this.bANCOIBANTextBox.Text) ? (object)DBNull.Value : this.bANCOIBANTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOCODIG", string.IsNullOrEmpty(this.bANCOCODIGTextBox.Text) ? (object)DBNull.Value : this.bANCOCODIGTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOENTID", string.IsNullOrEmpty(this.bANCOENTIDTextBox.Text) ? (object)DBNull.Value : this.bANCOENTIDTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOOFIC2", string.IsNullOrEmpty(this.BANCOOFIC2TextBox.Text) ? (object)DBNull.Value : this.BANCOOFIC2TextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCODC", string.IsNullOrEmpty(this.bANCODCTextBox.Text) ? (object)DBNull.Value : this.bANCODCTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOIBAN", string.IsNullOrEmpty(this.bANCOIBANTextBox.Text) ? (object)DBNull.Value : this.bANCOIBANTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCON_CUE", string.IsNullOrEmpty(this.bANCON_CUETextBox.Text) ? (object)DBNull.Value : this.bANCON_CUETextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BAJA", 0);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@FECHAALTAC", this.FechaAltaCliente.Text);
@@ -288,23 +286,28 @@ namespace PELOSCALVO
         }
         private void GuardarClientesSql()
         {
-            string DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text + " De Clientes";
+            string DatoCliente = FormMenuPrincipal.menu2principal.InfoClientes.Text;
             string Consulta = "";
             if (this.panelBotonesClientes.Tag.ToString() == "Nuevo")
             {
-                Consulta = "INSERT INTO ["+DatoCliente+"] VALUES(@IDCLIENTE, @APODOCLIEN, @NOMBRECLIE, @DIRECCIONC, @TELEFONOCL, @MOVILCLIEN," +
-                 " @CORREOCLIE, @DNICLIENTE, @LOCALIDADC, @CODIGOPOST, @PAISCLIENT, @FECHAALTAC, @CALLECLIEN,@NUMEROCALL, @PROVINCIAC, @TARIFATIPO, @TIPODNI," +
-                 " @TIPOCLIENT, @DESCUENTOC, @NUMEROCUEN, @PORTES,@BANCOOFICI, @BANCOPROVI, @BANCODIREC, @BANCOLOCAL, @BANCOIBAN, @BANCOCODIG, @BANCOENTID, @BANCOOFIC2, @BANCODC, @BANCON_CUE, @BAJA)";
+                Consulta = "INSERT INTO [" + DatoCliente + "] ([Id], [APODOCLIEN], [NOMBRECLIE], [DIRECCIONC], [TELEFONOCL], " +
+                "[MOVILCLIEN],[CORREOCLIE], [DNICLIENTE],[LOCALIDADC], [CODIGOPOST], [PAISCLIENT], [CALLECLIEN],[NUMEROCALL]," +
+                "[PROVINCIAC], [TARIFATIPO], [TIPODNI], [TIPOCLIENT], [DESCUENTOC], [NUMEROCUEN], [PORTES],[BANCOOFICI], " +
+                "[BANCOPROVI], [BANCODIREC], [BANCOLOCAL], [BANCOIBAN],[BANCOCODIG], [BANCOENTID], [BANCOOFIC2], [BANCODC]," +
+                " [BANCON_CUE], [BAJA], [FECHAALTAC]) VALUES(@IDCLIENTE, @APODOCLIEN, @NOMBRECLIE, @DIRECCIONC, @TELEFONOCL, @MOVILCLIEN," +
+                 " @CORREOCLIE, @DNICLIENTE, @LOCALIDADC, @CODIGOPOST, @PAISCLIENT, @CALLECLIEN,@NUMEROCALL, @PROVINCIAC, @TARIFATIPO, @TIPODNI," +
+                 " @TIPOCLIENT, @DESCUENTOC, @NUMEROCUEN, @PORTES,@BANCOOFICI, @BANCOPROVI, @BANCODIREC, @BANCOLOCAL, @BANCOIBAN, @BANCOCODIG," +
+                 " @BANCOENTID, @BANCOOFIC2, @BANCODC, @BANCON_CUE, @BAJA, @FECHAALTAC)";
 
             }
             else
             {
-                Consulta = "UPDATE [DtClientes]SET[" + DatoCliente + "] = @IDCLIENTE, [APODOCLIEN] = @APODOCLIEN,[NOMBRECLIE] = @NOMBRECLIE," +
+                Consulta = "UPDATE [" + DatoCliente + "] SET [Id]= @Id, [APODOCLIEN] = @APODOCLIEN,[NOMBRECLIE] = @NOMBRECLIE," +
               " [DIRECCIONC] = @DIRECCIONC, [TELEFONOCL] = @TELEFONOCL, [MOVILCLIEN] = @MOVILCLIEN, [CORREOCLIE] = @CORREOCLIE, [DNICLIENTE] = @DNICLIENTE,[LOCALIDADC] = @LOCALIDADC," +
-              "[CODIGOPOST] = @CODIGOPOST,[PAISCLIENT] = @PAISCLIENT, [FECHAALTAC] = @FECHAALTAC, [CALLECLIEN] = @CALLECLIEN,[NUMEROCALL]= @NUMEROCALL, [PROVINCIAC] = @PROVINCIAC," +
+              "[CODIGOPOST] = @CODIGOPOST,[PAISCLIENT] = @PAISCLIENT, [CALLECLIEN] = @CALLECLIEN,[NUMEROCALL]= @NUMEROCALL, [PROVINCIAC] = @PROVINCIAC," +
               " [TARIFATIPO] = @TARIFATIPO, [TIPODNI] = @TIPODNI,[TIPOCLIENT] = @TIPOCLIENT, [DESCUENTOC] = @DESCUENTOC, [NUMEROCUEN] = @NUMEROCUEN, [PORTES] = @PORTES," +
               "[BANCOOFICI] = @BANCOOFICI,[BANCOPROVI] = @BANCOPROVI,[BANCODIREC] = @BANCODIREC,[BANCOLOCAL] = @BANCOLOCAL, [BANCOIBAN] = @BANCOIBAN, [BANCOCODIG] = @BANCOCODIG," +
-              " [BANCOENTID] = @BANCOENTID, [BANCOOFIC2] = @BANCOOFIC2, [BANCODC] = @BANCODC, [BANCON_CUE] = @BANCON_CUE,[BAJA] = @BAJA WHERE [IDCLIENTE] = @IDCLIENTE";
+              " [BANCOENTID] = @BANCOENTID, [BANCOOFIC2] = @BANCOOFIC2, [BANCODC] = @BANCODC, [BANCON_CUE] = @BANCON_CUE,[BAJA] = @BAJA, [FECHAALTAC] = @FECHAALTAC WHERE [Id] = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
 
@@ -312,17 +315,15 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    //añadir guaradar a  qui
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IDCLIENTE", this.idClienteTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.Id_Clientes.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@APODOCLIEN", this.apodoClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NOMBRECLIE", string.IsNullOrEmpty(this.nombreClienteTextBox.Text) ? (object)DBNull.Value : this.nombreClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.direccionClienteTextBox.Text) ? (object)DBNull.Value : this.direccionClienteTextBox.Text); 
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@DNICLIENTE", string.IsNullOrEmpty(this.dniClienteTextBox.Text) ? (object)DBNull.Value : this.dniClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@LOCALIDADC", string.IsNullOrEmpty(this.localidadClienteTextBox.Text) ? (object)DBNull.Value : this.localidadClienteTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.direccionClienteTextBox.Text) ? (object)DBNull.Value : this.direccionClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TELEFONOCL", string.IsNullOrEmpty(this.telefonoClienteTextBox.Text) ? (object)DBNull.Value : this.telefonoClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@NUMEROCUEN", string.IsNullOrEmpty(this.NUMEROCUENTextBox.Text) ? (object)DBNull.Value : this.NUMEROCUENTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@MOVILCLIEN", string.IsNullOrEmpty(this.movilClienteTextBox.Text) ? (object)DBNull.Value : this.movilClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CORREOCLIE", string.IsNullOrEmpty(this.correoClienteTextBox.Text) ? (object)DBNull.Value : this.correoClienteTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@DNICLIENTE", string.IsNullOrEmpty(this.dniClienteTextBox.Text) ? (object)DBNull.Value : this.dniClienteTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@LOCALIDADC", string.IsNullOrEmpty(this.localidadClienteTextBox.Text) ? (object)DBNull.Value : this.localidadClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CODIGOPOST", string.IsNullOrEmpty(this.codigoPostalClienteTextBox.Text) ? (object)DBNull.Value : this.codigoPostalClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@PAISCLIENT", string.IsNullOrEmpty(this.paisClienteComboBox1.Text) ? (object)DBNull.Value : this.paisClienteComboBox1.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CALLECLIEN", string.IsNullOrEmpty(this.calleClienteTextBox.Text) ? (object)DBNull.Value : this.calleClienteTextBox.Text);
@@ -332,16 +333,17 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TIPODNI", string.IsNullOrEmpty(this.dniClienteTipoComboBox.Text) ? (object)DBNull.Value : this.dniClienteTipoComboBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TIPOCLIENT", string.IsNullOrEmpty(this.tIPOCLIENTComboBox.Text) ? (object)DBNull.Value : this.tIPOCLIENTComboBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESCUENTOC", string.IsNullOrEmpty(this.dESCUENTOCTextBox.Text) ? (object)DBNull.Value : this.dESCUENTOCTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@NUMEROCUEN", string.IsNullOrEmpty(this.NUMEROCUENTextBox.Text) ? (object)DBNull.Value : this.NUMEROCUENTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@PORTES", string.IsNullOrEmpty(this.pORTESComboBox.Text) ? (object)DBNull.Value : this.pORTESComboBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOOFICI", string.IsNullOrEmpty(this.bANCOOFICITextBox.Text) ? (object)DBNull.Value : this.bANCOOFICITextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOPROVI", string.IsNullOrEmpty(this.BancoProvincia.Text) ? (object)DBNull.Value : this.BancoProvincia.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCODIREC", string.IsNullOrEmpty(this.bANCODIRECTextBox.Text) ? (object)DBNull.Value : this.bANCODIRECTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOLOCAL", string.IsNullOrEmpty(this.bANCOLOCALTextBox.Text) ? (object)DBNull.Value : this.bANCOLOCALTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOIBAN", string.IsNullOrEmpty(this.bANCOIBANTextBox.Text) ? (object)DBNull.Value : this.bANCOIBANTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOCODIG", string.IsNullOrEmpty(this.bANCOCODIGTextBox.Text) ? (object)DBNull.Value : this.bANCOCODIGTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOENTID", string.IsNullOrEmpty(this.bANCOENTIDTextBox.Text) ? (object)DBNull.Value : this.bANCOENTIDTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOOFIC2", string.IsNullOrEmpty(this.BANCOOFIC2TextBox.Text) ? (object)DBNull.Value : this.BANCOOFIC2TextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCODC", string.IsNullOrEmpty(this.bANCODCTextBox.Text) ? (object)DBNull.Value : this.bANCODCTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOIBAN", string.IsNullOrEmpty(this.bANCOIBANTextBox.Text) ? (object)DBNull.Value : this.bANCOIBANTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCON_CUE", string.IsNullOrEmpty(this.bANCON_CUETextBox.Text) ? (object)DBNull.Value : this.bANCON_CUETextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BAJA", 0);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@FECHAALTAC", this.FechaAltaCliente.Text);
@@ -360,7 +362,7 @@ namespace PELOSCALVO
                 {
 
                 }
-                MessageBox.Show(ex.Message, "ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -388,8 +390,8 @@ namespace PELOSCALVO
                 }
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
-                    this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
-                    this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2;
+                    this.dtPaisesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
+                    // this.dtProvinciasBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
 
                 }
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
@@ -403,25 +405,9 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message.ToString());
             }
-            if (Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal))
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal))
             {
-                if (!File.Exists(ClasDatos.RutaMulti2))
-                {
 
-                    this.panelBotonesClientes.Enabled = false;
-                    MessageBox.Show("Archivo : " + ClasDatos.RutaMulti2, "Falta Archivo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-                if (!File.Exists(ClasDatos.RutaMultidatos))
-                {
-                    MessageBox.Show("Falta Archivo De Configuracion", "ARCHIVO NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-
-
-            }
-            else
-            {
                 MessageBox.Show("Debe Restructurar Sistema", "DIRECTORIO " + ClasDatos.RutaDatosPrincipal + " NO EXISTE");
                 this.panelBotonesClientes.Enabled = false;
                 return;
@@ -439,10 +425,15 @@ namespace PELOSCALVO
 
         private void BtnGuardarCliente_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(Id_Clientes.Text))
+            {
+                MessageBox.Show("Falta Id ", " ERROR APP ",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
             BORRARerrores();
             //email_bien_escrito();
 
-            if (EspacioDiscosCli(ClasDatos.RutaMultidatos, 10))
+            if (EspacioDiscosCli(Directory.GetCurrentDirectory(), 10))
             {
                 if (VALIDARcampos())
                 {
@@ -467,7 +458,7 @@ namespace PELOSCALVO
                                     return;
                                 }
                             }
-                        seguir2:
+                            seguir2:
                             if (i == this.dtClientesDataGridView.Rows.Count)
                             {
                                 break;
@@ -517,7 +508,7 @@ namespace PELOSCALVO
                 {
                     int VALORid = Convert.ToInt32(this.dtClientesDataGridView.Rows[numeroFILA - 1].Cells[0].Value) + 1;
                     this.dtClientesDataGridView.Rows[numeroFILA].Cells[0].Value = (VALORid);
-                    this.idClienteTextBox.Text = Convert.ToString(VALORid);
+                    this.Id_Clientes.Text = Convert.ToString(VALORid);
                 }
                 this.FechaAltaCliente.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
                 this.dtClientesDataGridView.Rows[numeroFILA].Selected = true;
@@ -553,7 +544,7 @@ namespace PELOSCALVO
         private void BtnCancelarCliente_Click(object sender, EventArgs e)
         {
             // this.dsClientes.DtClientes.Rows.Clear();
-            if (this.dtClientesDataGridView.RowCount >= 0)
+            if (dtClientesBindingSource.Count > 0)
             {
                 if (this.panelBotonesClientes.Tag.ToString() == "Nuevo")
                 {
@@ -567,7 +558,7 @@ namespace PELOSCALVO
 
         private void BtnBuscarCliente_Click(object sender, EventArgs e)
         {
-      
+
             if (!File.Exists(ClasDatos.RutaBaseDatosDb))
             {
                 MessageBox.Show(ClasDatos.RutaBaseDatosDb, "NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -596,23 +587,28 @@ namespace PELOSCALVO
 
         private void BtnEliminarCliente_Click(object sender, EventArgs e)
         {
-            if (this.dtClientesDataGridView.Rows.Count > 0)
+            if (this.dtClientesBindingSource.Count > 0)
             {
+                if (string.IsNullOrEmpty(Id_Clientes.Text))
+                {
+                    MessageBox.Show("Falta Id ", " ERROR APP ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (MessageBox.Show(" ¿Eliminar Clientes ? ", " ELIMINAR ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (ClsConexionSql.SibaseDatosSql)
                     {
                         try
                         {
-                            if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
+                            if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
                             {
-                                String TipoTabla ="["+ FormMenuPrincipal.menu2principal.InfoClientes.Text + " De Clientes"+"]";
-                                string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @ID";
+                                String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
+                                string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @Id";
                                 ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
                                 {
                                     if (NuevaConexion.SiConexionSql)
                                     {
-                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@ID", this.idClienteTextBox.Text);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.Id_Clientes.Text);
                                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                                         this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
                                         this.dtClientesDataGridView.Refresh();
@@ -627,30 +623,34 @@ namespace PELOSCALVO
                         catch (Exception ex)
                         {
 
-                            MessageBox.Show(ex.Message.ToString());
+                            MessageBox.Show(ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        if (FormMenuPrincipal.menu2principal.InfoArticulo.Text != string.Empty)
+                        if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
                         {
-                            String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + " De Clientes" + "]";
-                            if (FormMenuPrincipal.menu2principal.InfoExtension.Text == "DBF")
+                            try
                             {
-                                TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
-                            }
-                            string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @ID";
-                            ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-                            {
-                                if (NuevaConexion.SiConexionDb)
+                                String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
+                                string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @Id";
+                                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                                 {
-                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@ID", this.idClienteTextBox.Text);
-                                    NuevaConexion.ComandoDb.ExecuteNonQuery();
-                                    this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
-                                    this.dtClientesDataGridView.Refresh();
-                                    MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
+                                    if (NuevaConexion.SiConexionDb)
+                                    {
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@ID", this.Id_Clientes.Text);
+                                        NuevaConexion.ComandoDb.ExecuteNonQuery();
+                                        this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
+                                        this.dtClientesDataGridView.Refresh();
+                                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
 
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
 
@@ -681,11 +681,6 @@ namespace PELOSCALVO
 
         }
 
-        private void idClienteTextBox_DoubleClick(object sender, EventArgs e)
-        {
-            this.idClienteTextBox.Enabled = true;
-        }
-
         private void idClienteTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             int numeroFILA = this.dtClientesDataGridView.Rows.Count;
@@ -704,10 +699,7 @@ namespace PELOSCALVO
 
         }
 
-        private void idClienteTextBox_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void dtClientesDataGridView_Click(object sender, EventArgs e)
         {
@@ -715,7 +707,7 @@ namespace PELOSCALVO
             if (this.panelBotonesClientes.Enabled == false)
             {
 
-      
+
 
             }
         }
@@ -742,7 +734,7 @@ namespace PELOSCALVO
                 if (!email_bien_escrito())
                 {
                     MessageBox.Show("D.n.i No Valido", "INVALIDO");
-                    this.correoClienteTextBox.Focus();
+                    // this.correoClienteTextBox.Focus();
                 }
 
             }
@@ -806,7 +798,7 @@ namespace PELOSCALVO
                         return;
                     }
                 }
-            seguir2:
+                seguir2:
                 if (i == this.dtClientesDataGridView.Rows.Count)
                 {
                     break;
@@ -817,11 +809,7 @@ namespace PELOSCALVO
 
         private void dniClienteTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (this.dniClienteTextBox.Text.Length < 4)
-            {
-
-                MessageBox.Show(this.dniClienteTextBox, "_ingresar Dni (( NO CORRECTO))");
-            }
+            ClasValidarDni.ValidarDni(this.dniClienteTextBox.Text);
         }
 
         private void dESCUENTOCTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -939,6 +927,11 @@ namespace PELOSCALVO
             {
                 this.bANCOENTIDTextBox.Select(0, 0);
             }
+        }
+
+        private void dniClienteTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -201,7 +201,7 @@ namespace PELOSCALVO {
         private void InitClass() {
             this.DataSetName = "DsServidor";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DsServidor.xsd";
+            this.Namespace = "http://PelosCalvo";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDtServidor = new DtServidorDataTable();

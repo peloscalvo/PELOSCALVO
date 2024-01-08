@@ -34,14 +34,14 @@ namespace PELOSCALVO
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.DtDetallesFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Dtfacturas = new PELOSCALVO.Dtfacturas();
+            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.DtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtfacturasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFacturaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dtfacturas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtNuevaFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtfacturasBindingSource)).BeginInit();
@@ -51,21 +51,21 @@ namespace PELOSCALVO
             // DtDetallesFacturaBindingSource
             // 
             this.DtDetallesFacturaBindingSource.DataMember = "DtDetallesFactura";
-            this.DtDetallesFacturaBindingSource.DataSource = this.Dtfacturas;
+            this.DtDetallesFacturaBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // Dtfacturas
             // 
-            this.Dtfacturas.DataSetName = "Dtfacturas";
-            this.Dtfacturas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dsCONFIGURACCION.DataSetName = "Dtfacturas";
+            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // DtNuevaFacturaBindingSource
             // 
             this.DtNuevaFacturaBindingSource.DataMember = "DtNuevaFactura";
-            this.DtNuevaFacturaBindingSource.DataSource = this.Dtfacturas;
+            this.DtNuevaFacturaBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // dtfacturasBindingSource
             // 
-            this.dtfacturasBindingSource.DataSource = this.Dtfacturas;
+            this.dtfacturasBindingSource.DataSource = this.dsCONFIGURACCION;
             this.dtfacturasBindingSource.Position = 0;
             // 
             // dsCONFIGURACCION
@@ -108,7 +108,6 @@ namespace PELOSCALVO
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormReporteFactura_FormClosed);
             this.Load += new System.EventHandler(this.FormReporteFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFacturaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dtfacturas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtNuevaFacturaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtfacturasBindingSource)).EndInit();
@@ -118,7 +117,6 @@ namespace PELOSCALVO
         }
 
         #endregion
-        private Dtfacturas Dtfacturas;
         private System.Windows.Forms.BindingSource DtNuevaFacturaBindingSource;
         private System.Windows.Forms.BindingSource dtfacturasBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;

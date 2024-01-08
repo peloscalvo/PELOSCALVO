@@ -8,7 +8,7 @@ namespace ComunApp
         public static bool Buscar_Fatu_Sql(string valor,string Tabla)
         {
             bool ok = true;
-            string Consulta = "SELECT [EnlaceFactura] FROM [Dt"+Tabla+ "] where "+"Dt" + Tabla + ".EnlaceFactura=' " + valor+" '";
+            string Consulta = "SELECT [EnlaceFactura] FROM [Dt"+Tabla+ "] where "+"Dt" + Tabla + ".EnlaceFactura=@EnlaceFactura";
             ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
             if (NuevaConexion.SiConexionSql)
             {
@@ -16,8 +16,12 @@ namespace ComunApp
                 SqlDataReader r = NuevaConexion.ComandoSql.ExecuteReader();
                 if (r.HasRows)
                 {
-                    ok = true;
+                    if (r.Read())
+                    {
+                        ok = true;
+                    }
                 }
+                 
                 else
                 {
                     ok = false;
