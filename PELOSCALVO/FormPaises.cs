@@ -120,7 +120,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "PAIS");
+                MessageBox.Show(ex.Message, "PAIS",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
@@ -162,7 +162,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "PAISES");
+                MessageBox.Show(ex.Message, "PAIS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

@@ -26,13 +26,14 @@ namespace PELOSCALVO
             InitializeComponent();         
             ToolTip Info = new ToolTip();
             Info.SetToolTip(BtnSql, "Configurar Conexion A Datos");
+            Info.SetToolTip(btnSalir, "Cerrar Aplicacionn");
             Info.IsBalloon = true;
             Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             ToolTip Info2 = new ToolTip();
             Info2.SetToolTip(BtnCalculadora, "Calculadora");
             Info2.SetToolTip(BtnAbrirChrome, "Navegador Chrome");
             Info2.SetToolTip(BtnArchivos, "Abrir Archivos");
-            Info2.SetToolTip(BtnCarpeteDatos, "Abrir Explorador Archivos De Datos");
+            Info2.SetToolTip(BtnCarpeteDatos, "Abrir Explorador "+"\n"+ Directory.GetCurrentDirectory() + "\\" + "Datos" + "\\");
             Info2.SetToolTip(BtnCarpetasPdf, "Abrir Explorador Archivos P.D.F");
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);
@@ -242,11 +243,13 @@ namespace PELOSCALVO
         {
             if (this.panelMenu.Width == 230)
             {
+                InfoConectado.Visible = false;
                 this.tmContraerMenu.Start();
             }
             else if (this.panelMenu.Width == 55)
             {
                 this.tmExpandirMenu.Start();
+                InfoConectado.Visible = true;
             }
 
 
@@ -481,17 +484,7 @@ namespace PELOSCALVO
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
 
-            if (this.SiOpenUser == 0)
-            {
-                FormArticulos frm = new FormArticulos();
-                frm.TopLevel = false;
-                //  frm.Dock = DockStyle.Fill;
-                this.PanelForms.Controls.Add(frm);
-                frm.FormClosed += (o, args) => this.SiOpenUser = 0;
-                frm.Show();
-                frm.BringToFront();
-                this.SiOpenUser = 1;
-            }
+  
         }
 
 
@@ -1012,6 +1005,18 @@ namespace PELOSCALVO
         private void BtnInfo_MouseEnter(object sender, EventArgs e)
         {
             //MessageBox.Show(PanelForms.Controls.Count.ToString());
+        }
+
+        private void codigosDeBarrasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClasDatos.OkFacturar = false;
+            ClasDatos.QUEform = "QR";
+            // dtPreciosDataGridView.CurrentCell.Selected = false;
+            FormBuscarArticulos frm = new FormBuscarArticulos();
+            //m.FormClosed += (o, args) => numeroFILA = 1;
+            frm.ShowDialog();
+            frm.BringToFront();
+
         }
 
         private void BtnSql_Click(object sender, EventArgs e)

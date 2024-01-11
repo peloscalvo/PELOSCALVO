@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
+using BarcodeStandard;
+using SkiaSharp;
 
 namespace PELOSCALVO
 {
@@ -11,6 +14,11 @@ namespace PELOSCALVO
         public FormBuscarArticulos()
         {
             InitializeComponent();
+        }
+        public class OpcionCombo
+        {
+            public int Valor { get; set; }
+            public string Texto { get; set; }
         }
         private void FormBuscarArticulosEnFacturas_Load(object sender, EventArgs e)
         {
@@ -32,18 +40,36 @@ namespace PELOSCALVO
                 // this.dtArticulosBindingSource.DataSource = FormFACTURAR.menu2FACTURAR.dtArticulosBindingSource; 
 
             }
+
             if (ClasDatos.OkFacturar == false)
             {
-                this.FiltrarBajasBuscar.Visible = true;
-                this.labelfiltrarBUSCAR.Visible = true;
-                // this.dtArticulosBindingSource.DataSource = FormARTICULOS.menu2Articulos.dtArticulosBindingSource;
-
-                this.FiltrarBajasBuscar.Text = FormArticulos.menu2Articulos.FiltrarBajas.Text;
+                if (ClasDatos.QUEform == "Articulos")
+                {
+                    this.FiltrarBajasBuscar.Visible = true;
+                    this.labelfiltrarBUSCAR.Visible = true;
+                    // this.dtArticulosBindingSource.DataSource = FormARTICULOS.menu2Articulos.dtArticulosBindingSource;
+                    this.FiltrarBajasBuscar.Text = FormArticulos.menu2Articulos.FiltrarBajas.Text;
+                }
+    
             }
             // final abrir articulos
             this.ContadorDatos2.Text = string.Format("{0:N0" + "}", ((this.dtArticulosBindingSource.Count).ToString()));
             AñadirIdBuscar();
             this.BuscarArticulosText.Focus();
+            if (ClasDatos.QUEform == "QR")
+            {
+                this.Width = 1300;
+
+            }
+            int indice = 0;
+            foreach (var nombre in Enum.GetNames(typeof(BarcodeStandard.Type)))
+            {
+                ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
+                indice++;
+            }
+            ListaQr.DisplayMember = "Texto";
+            ListaQr.ValueMember = "Valor";
+            ListaQr.SelectedIndex = 0;
         }
         public void AñadirIdBuscar()
         {
@@ -183,6 +209,11 @@ namespace PELOSCALVO
         {
             if (e.RowIndex > -1)
             {
+                if (ClasDatos.QUEform == "QR")
+                {
+                    return;
+
+                }
 
                 if (this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].Value == DBNull.Value && this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].Value.ToString() == string.Empty)
                 {
@@ -326,7 +357,100 @@ namespace PELOSCALVO
 
         }
 
+        private void DataGridViewBuscarArticulos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                try
+                {
+                    //ListView list = new ListView();
+                    ListViewItem lvi = new ListViewItem();
+                    ListCodigos.Items.Add(lvi);
+                    if (!string.IsNullOrEmpty(DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
+                    {
+                        ListCodigos.Items.Add(DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
+                    }
+                    if (!string.IsNullOrEmpty(DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
+                    {
+                        lvi.SubItems.Add(DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
 
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message, "LLENAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        public static Bitmap convertirTextoImagen(string texto, int ancho, Color color)
+        {
+            //creamos el objeto imagen Bitmap
+            Bitmap objBitmap = new Bitmap(1, 1);
+            int Width = 0;
+            int Height = 0;
+            //formateamos la fuente (tipo de letra, tamaño)
+            System.Drawing.Font objFont = new System.Drawing.Font("Arial", 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+
+            //creamos un objeto Graphics a partir del Bitmap
+            Graphics objGraphics = Graphics.FromImage(objBitmap);
+
+            //establecemos el tamaño según la longitud del texto
+            Width = ancho;
+            Height = (int)objGraphics.MeasureString(texto, objFont).Height + 5;
+            objBitmap = new Bitmap(objBitmap, new Size(Width, Height));
+
+            objGraphics = Graphics.FromImage(objBitmap);
+
+            objGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            objGraphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            objGraphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            objGraphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
+            StringFormat drawFormat = new StringFormat();
+            objGraphics.Clear(color);
+
+            drawFormat.Alignment = StringAlignment.Center;
+            objGraphics.DrawString(texto, objFont, new SolidBrush(Color.Black), new RectangleF(0, (objBitmap.Height / 2) - (objBitmap.Height - 10), objBitmap.Width, objBitmap.Height), drawFormat);
+            objGraphics.Flush();
+
+
+            return objBitmap;
+        }
+        private void BtnCrearQr_Click(object sender, EventArgs e)
+        {
+            if(!String.IsNullOrEmpty(TituloText.Text))
+            {
+                MessageBox.Show("Campo De Titulo vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TituloText.Focus();
+                return;
+            }
+            try
+            {
+                SKImage imagenCodigo;
+                int indice = (ListaQr.SelectedItem as OpcionCombo).Valor;
+                BarcodeStandard.Type tipoCodigo = (BarcodeStandard.Type)indice;
+                Barcode codigo = new Barcode();
+                codigo.IncludeLabel = true;
+                // codigo.LabelFont = LabelPositions.BOTTOMCENTER;
+                //codigo.ForeColor = Color.FromArgb(1,11,1)
+                imagenCodigo = codigo.Encode(tipoCodigo, TituloText.Text.Trim(), SKColors.Black, SKColors.White, 300, 100);
+                Bitmap imagenTitulo = convertirTextoImagen(TituloText.Text.Trim(), 300, Color.White);
+                int alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
+                Bitmap imagenNueva = new Bitmap(300, alto_imagen_nuevo);
+                Graphics dibujar = Graphics.FromImage(imagenNueva);
+                SKBitmap dibujar2 = SKBitmap.FromImage(imagenCodigo);
+                dibujar.DrawImage(imagenTitulo, new Point(0, 0));
+                // dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                //pictureBox1.BackgroundImage = imagenCodigo;
+                PitureQr.BackgroundImage = imagenNueva;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
 

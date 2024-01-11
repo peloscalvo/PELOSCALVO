@@ -55,12 +55,7 @@ namespace PELOSCALVO
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarModificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.obrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paisesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.provinciasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.otrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.codigosDeBarrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolEmpresas = new System.Windows.Forms.ToolStripMenuItem();
             this.empresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearEjercioNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +104,8 @@ namespace PELOSCALVO
             this.ContadorClientes = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.InfoConectado = new System.Windows.Forms.Label();
+            this.Conectado = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.BtnArchivos = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
@@ -128,8 +125,6 @@ namespace PELOSCALVO
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnInfo = new System.Windows.Forms.Button();
             this.PanelBarraTitulo = new System.Windows.Forms.Panel();
-            this.InfoConectado = new System.Windows.Forms.Label();
-            this.Conectado = new System.Windows.Forms.PictureBox();
             this.panelAplicaciones = new System.Windows.Forms.Panel();
             this.BtnAbrirChrome = new System.Windows.Forms.Button();
             this.BtnCarpetasPdf = new System.Windows.Forms.Button();
@@ -170,6 +165,7 @@ namespace PELOSCALVO
             this.Panel_info2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
@@ -180,7 +176,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelBarraTitulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).BeginInit();
             this.panelAplicaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).BeginInit();
@@ -527,51 +522,17 @@ namespace PELOSCALVO
             // editarModificarToolStripMenuItem
             // 
             this.editarModificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.almacenesToolStripMenuItem,
-            this.proveedoresToolStripMenuItem,
-            this.obrasToolStripMenuItem,
-            this.paisesToolStripMenuItem1,
-            this.provinciasToolStripMenuItem1,
-            this.otrosToolStripMenuItem});
+            this.codigosDeBarrasToolStripMenuItem});
             this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
             this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
             // 
-            // almacenesToolStripMenuItem
+            // codigosDeBarrasToolStripMenuItem
             // 
-            this.almacenesToolStripMenuItem.Name = "almacenesToolStripMenuItem";
-            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.almacenesToolStripMenuItem.Text = "Almacenes";
-            // 
-            // proveedoresToolStripMenuItem
-            // 
-            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.proveedoresToolStripMenuItem.Text = "Proveedores";
-            // 
-            // obrasToolStripMenuItem
-            // 
-            this.obrasToolStripMenuItem.Name = "obrasToolStripMenuItem";
-            this.obrasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.obrasToolStripMenuItem.Text = "Obras";
-            // 
-            // paisesToolStripMenuItem1
-            // 
-            this.paisesToolStripMenuItem1.Name = "paisesToolStripMenuItem1";
-            this.paisesToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
-            this.paisesToolStripMenuItem1.Text = "Paises";
-            // 
-            // provinciasToolStripMenuItem1
-            // 
-            this.provinciasToolStripMenuItem1.Name = "provinciasToolStripMenuItem1";
-            this.provinciasToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
-            this.provinciasToolStripMenuItem1.Text = "Provincias";
-            // 
-            // otrosToolStripMenuItem
-            // 
-            this.otrosToolStripMenuItem.Name = "otrosToolStripMenuItem";
-            this.otrosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.otrosToolStripMenuItem.Text = "Otros";
+            this.codigosDeBarrasToolStripMenuItem.Name = "codigosDeBarrasToolStripMenuItem";
+            this.codigosDeBarrasToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.codigosDeBarrasToolStripMenuItem.Text = "&Codigos De Barras";
+            this.codigosDeBarrasToolStripMenuItem.Click += new System.EventHandler(this.codigosDeBarrasToolStripMenuItem_Click);
             // 
             // toolEmpresas
             // 
@@ -1072,6 +1033,27 @@ namespace PELOSCALVO
             this.panelMenu.Size = new System.Drawing.Size(230, 557);
             this.panelMenu.TabIndex = 2;
             // 
+            // InfoConectado
+            // 
+            this.InfoConectado.AutoSize = true;
+            this.InfoConectado.BackColor = System.Drawing.Color.Goldenrod;
+            this.InfoConectado.Location = new System.Drawing.Point(35, 15);
+            this.InfoConectado.Name = "InfoConectado";
+            this.InfoConectado.Size = new System.Drawing.Size(77, 13);
+            this.InfoConectado.TabIndex = 86;
+            this.InfoConectado.Text = "Desconectado";
+            // 
+            // Conectado
+            // 
+            this.Conectado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Conectado.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
+            this.Conectado.Location = new System.Drawing.Point(7, 8);
+            this.Conectado.Name = "Conectado";
+            this.Conectado.Size = new System.Drawing.Size(22, 22);
+            this.Conectado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Conectado.TabIndex = 85;
+            this.Conectado.TabStop = false;
+            // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -1372,27 +1354,6 @@ namespace PELOSCALVO
             this.PanelBarraTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseMove);
             this.PanelBarraTitulo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseUp);
             // 
-            // InfoConectado
-            // 
-            this.InfoConectado.AutoSize = true;
-            this.InfoConectado.BackColor = System.Drawing.Color.Goldenrod;
-            this.InfoConectado.Location = new System.Drawing.Point(35, 15);
-            this.InfoConectado.Name = "InfoConectado";
-            this.InfoConectado.Size = new System.Drawing.Size(77, 13);
-            this.InfoConectado.TabIndex = 86;
-            this.InfoConectado.Text = "Desconectado";
-            // 
-            // Conectado
-            // 
-            this.Conectado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Conectado.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
-            this.Conectado.Location = new System.Drawing.Point(7, 8);
-            this.Conectado.Name = "Conectado";
-            this.Conectado.Size = new System.Drawing.Size(22, 22);
-            this.Conectado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Conectado.TabIndex = 85;
-            this.Conectado.TabStop = false;
-            // 
             // panelAplicaciones
             // 
             this.panelAplicaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
@@ -1536,7 +1497,7 @@ namespace PELOSCALVO
             this.Logo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.Logo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logo2.ForeColor = System.Drawing.Color.White;
-            this.Logo2.Location = new System.Drawing.Point(148, 14);
+            this.Logo2.Location = new System.Drawing.Point(5, 8);
             this.Logo2.Name = "Logo2";
             this.Logo2.Size = new System.Drawing.Size(96, 16);
             this.Logo2.TabIndex = 4;
@@ -1729,6 +1690,7 @@ namespace PELOSCALVO
             this.panel7.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
@@ -1740,7 +1702,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelBarraTitulo.ResumeLayout(false);
             this.PanelBarraTitulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).EndInit();
             this.panelAplicaciones.ResumeLayout(false);
             this.panelAplicaciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
@@ -1846,12 +1807,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abrirPdfToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarModificarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem almacenesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem obrasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem paisesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem otrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolEmpresas;
         private System.Windows.Forms.ToolStripMenuItem empresasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearEjercioNuevoToolStripMenuItem;
@@ -1886,6 +1841,7 @@ namespace PELOSCALVO
         public System.Windows.Forms.Label Info_Carpeta;
         public System.Windows.Forms.PictureBox Conectado;
         public System.Windows.Forms.Label InfoConectado;
+        private System.Windows.Forms.ToolStripMenuItem codigosDeBarrasToolStripMenuItem;
     }
 }
 

@@ -55,9 +55,16 @@ namespace PELOSCALVO
             this.BtnCancelarBArticulo = new System.Windows.Forms.Button();
             this.FiltrarBajasBuscar = new System.Windows.Forms.ComboBox();
             this.labelfiltrarBUSCAR = new System.Windows.Forms.Label();
+            this.ListCodigos = new System.Windows.Forms.ListView();
+            this.BtnCodifiCar = new System.Windows.Forms.Button();
+            this.ListaQr = new System.Windows.Forms.ComboBox();
+            this.BtnCrearQr = new System.Windows.Forms.Button();
+            this.TituloText = new System.Windows.Forms.TextBox();
+            this.PitureQr = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitureQr)).BeginInit();
             this.SuspendLayout();
             // 
             // TIPObuscarArticulos
@@ -90,9 +97,8 @@ namespace PELOSCALVO
             this.DataGridViewBuscarArticulos.AllowUserToAddRows = false;
             this.DataGridViewBuscarArticulos.AllowUserToDeleteRows = false;
             this.DataGridViewBuscarArticulos.AllowUserToResizeRows = false;
-            this.DataGridViewBuscarArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DataGridViewBuscarArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.DataGridViewBuscarArticulos.AutoGenerateColumns = false;
             this.DataGridViewBuscarArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.DataGridViewBuscarArticulos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -116,14 +122,15 @@ namespace PELOSCALVO
             this.fechaDataGridViewTextBoxColumn,
             this.IdFILA});
             this.DataGridViewBuscarArticulos.DataSource = this.dtArticulosBindingSource;
-            this.DataGridViewBuscarArticulos.Location = new System.Drawing.Point(12, 52);
+            this.DataGridViewBuscarArticulos.Location = new System.Drawing.Point(12, 48);
             this.DataGridViewBuscarArticulos.Name = "DataGridViewBuscarArticulos";
             this.DataGridViewBuscarArticulos.ReadOnly = true;
             this.DataGridViewBuscarArticulos.RowHeadersVisible = false;
             this.DataGridViewBuscarArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewBuscarArticulos.Size = new System.Drawing.Size(802, 318);
+            this.DataGridViewBuscarArticulos.Size = new System.Drawing.Size(766, 318);
             this.DataGridViewBuscarArticulos.TabIndex = 6;
             this.DataGridViewBuscarArticulos.TabStop = false;
+            this.DataGridViewBuscarArticulos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewBuscarArticulos_CellClick);
             this.DataGridViewBuscarArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewBuscarArticulos_CellDoubleClick);
             // 
             // referenciaDataGridViewTextBoxColumn
@@ -218,10 +225,10 @@ namespace PELOSCALVO
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(435, 376);
+            this.label1.Location = new System.Drawing.Point(9, 378);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 10;
@@ -229,10 +236,10 @@ namespace PELOSCALVO
             // 
             // ContadorDatos2
             // 
-            this.ContadorDatos2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContadorDatos2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ContadorDatos2.AutoSize = true;
             this.ContadorDatos2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContadorDatos2.Location = new System.Drawing.Point(545, 376);
+            this.ContadorDatos2.Location = new System.Drawing.Point(126, 378);
             this.ContadorDatos2.Name = "ContadorDatos2";
             this.ContadorDatos2.Size = new System.Drawing.Size(19, 20);
             this.ContadorDatos2.TabIndex = 9;
@@ -241,7 +248,7 @@ namespace PELOSCALVO
             // 
             // BtnCancelarBArticulo
             // 
-            this.BtnCancelarBArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelarBArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnCancelarBArticulo.BackColor = System.Drawing.Color.Transparent;
             this.BtnCancelarBArticulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelarBArticulo.FlatAppearance.BorderSize = 0;
@@ -251,10 +258,11 @@ namespace PELOSCALVO
             this.BtnCancelarBArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarBArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
             this.BtnCancelarBArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarBArticulo.Location = new System.Drawing.Point(725, 376);
+            this.BtnCancelarBArticulo.Location = new System.Drawing.Point(668, 404);
             this.BtnCancelarBArticulo.Name = "BtnCancelarBArticulo";
             this.BtnCancelarBArticulo.Size = new System.Drawing.Size(89, 42);
             this.BtnCancelarBArticulo.TabIndex = 34;
+            this.BtnCancelarBArticulo.Tag = "SI";
             this.BtnCancelarBArticulo.Text = "Cancelar";
             this.BtnCancelarBArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelarBArticulo.UseVisualStyleBackColor = false;
@@ -270,7 +278,7 @@ namespace PELOSCALVO
             "Articulos De Alta",
             "Articulos De Baja",
             "Todos"});
-            this.FiltrarBajasBuscar.Location = new System.Drawing.Point(72, 386);
+            this.FiltrarBajasBuscar.Location = new System.Drawing.Point(69, 422);
             this.FiltrarBajasBuscar.Name = "FiltrarBajasBuscar";
             this.FiltrarBajasBuscar.Size = new System.Drawing.Size(188, 24);
             this.FiltrarBajasBuscar.Sorted = true;
@@ -283,7 +291,7 @@ namespace PELOSCALVO
             // labelfiltrarBUSCAR
             // 
             this.labelfiltrarBUSCAR.AutoSize = true;
-            this.labelfiltrarBUSCAR.Location = new System.Drawing.Point(12, 391);
+            this.labelfiltrarBUSCAR.Location = new System.Drawing.Point(9, 427);
             this.labelfiltrarBUSCAR.Name = "labelfiltrarBUSCAR";
             this.labelfiltrarBUSCAR.Size = new System.Drawing.Size(35, 13);
             this.labelfiltrarBUSCAR.TabIndex = 40;
@@ -291,12 +299,87 @@ namespace PELOSCALVO
             this.labelfiltrarBUSCAR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelfiltrarBUSCAR.Visible = false;
             // 
+            // ListCodigos
+            // 
+            this.ListCodigos.HideSelection = false;
+            this.ListCodigos.Location = new System.Drawing.Point(810, 101);
+            this.ListCodigos.Name = "ListCodigos";
+            this.ListCodigos.Size = new System.Drawing.Size(411, 176);
+            this.ListCodigos.TabIndex = 41;
+            this.ListCodigos.UseCompatibleStateImageBehavior = false;
+            // 
+            // BtnCodifiCar
+            // 
+            this.BtnCodifiCar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnCodifiCar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCodifiCar.FlatAppearance.BorderSize = 0;
+            this.BtnCodifiCar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnCodifiCar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnCodifiCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCodifiCar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCodifiCar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCodifiCar.Location = new System.Drawing.Point(1154, 412);
+            this.BtnCodifiCar.Name = "BtnCodifiCar";
+            this.BtnCodifiCar.Size = new System.Drawing.Size(89, 42);
+            this.BtnCodifiCar.TabIndex = 73;
+            this.BtnCodifiCar.Text = "&Aceptar";
+            this.BtnCodifiCar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCodifiCar.UseVisualStyleBackColor = false;
+            // 
+            // ListaQr
+            // 
+            this.ListaQr.FormattingEnabled = true;
+            this.ListaQr.Location = new System.Drawing.Point(810, 48);
+            this.ListaQr.Name = "ListaQr";
+            this.ListaQr.Size = new System.Drawing.Size(361, 21);
+            this.ListaQr.TabIndex = 74;
+            // 
+            // BtnCrearQr
+            // 
+            this.BtnCrearQr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnCrearQr.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCrearQr.FlatAppearance.BorderSize = 0;
+            this.BtnCrearQr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnCrearQr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnCrearQr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCrearQr.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCrearQr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCrearQr.Location = new System.Drawing.Point(1013, 412);
+            this.BtnCrearQr.Name = "BtnCrearQr";
+            this.BtnCrearQr.Size = new System.Drawing.Size(89, 42);
+            this.BtnCrearQr.TabIndex = 75;
+            this.BtnCrearQr.Text = "&Crear";
+            this.BtnCrearQr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCrearQr.UseVisualStyleBackColor = false;
+            this.BtnCrearQr.Click += new System.EventHandler(this.BtnCrearQr_Click);
+            // 
+            // TituloText
+            // 
+            this.TituloText.Location = new System.Drawing.Point(810, 75);
+            this.TituloText.Name = "TituloText";
+            this.TituloText.Size = new System.Drawing.Size(312, 20);
+            this.TituloText.TabIndex = 76;
+            // 
+            // PitureQr
+            // 
+            this.PitureQr.Location = new System.Drawing.Point(810, 294);
+            this.PitureQr.Name = "PitureQr";
+            this.PitureQr.Size = new System.Drawing.Size(411, 104);
+            this.PitureQr.TabIndex = 77;
+            this.PitureQr.TabStop = false;
+            // 
             // FormBuscarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 430);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(1284, 467);
+            this.Controls.Add(this.PitureQr);
+            this.Controls.Add(this.TituloText);
+            this.Controls.Add(this.BtnCrearQr);
+            this.Controls.Add(this.ListaQr);
+            this.Controls.Add(this.BtnCodifiCar);
+            this.Controls.Add(this.ListCodigos);
             this.Controls.Add(this.labelfiltrarBUSCAR);
             this.Controls.Add(this.FiltrarBajasBuscar);
             this.Controls.Add(this.BtnCancelarBArticulo);
@@ -316,6 +399,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PitureQr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +424,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn familiaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFILA;
+        private System.Windows.Forms.ListView ListCodigos;
+        public System.Windows.Forms.Button BtnCodifiCar;
+        private System.Windows.Forms.ComboBox ListaQr;
+        public System.Windows.Forms.Button BtnCrearQr;
+        private System.Windows.Forms.TextBox TituloText;
+        private System.Windows.Forms.PictureBox PitureQr;
     }
 }
