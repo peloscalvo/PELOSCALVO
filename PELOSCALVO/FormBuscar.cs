@@ -10,6 +10,8 @@ namespace PELOSCALVO
         public static string ColumnaB = "";
         public static int Fila = 0;
         DataView verViev = default;
+        DataView firstView = new DataView(FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias);
+        BindingSource Bd = new BindingSource();
         public FormBuscar()
         {
             InitializeComponent();
@@ -20,21 +22,24 @@ namespace PELOSCALVO
         {
             try
             {
-               
+
                 if (FormMenuPrincipal.menu2principal.dsMulti2 != null)
                 {
 
                     if (ClasDatos.QUEform == "Paises")
                     {
+                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises.DefaultView;
                         // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
                     }
                     if (ClasDatos.QUEform == "Provincias")
                     {
+                        this.Bd.DataSource = FormProvincias.MenuB.dataGridProvincias.DataSource;
+
+                        // firstView.Table = new BindingSource(FormFacturar.menu2FACTURAR.dtArticulosBindingSource.DataSource);
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias.DefaultView;
                         // BindingBuscarSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtPaises;
-                        this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
+                       // this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias;
                         // this.DataGridBuscar.DataSource =FormProvincias.MenuB.dataGridProvincias.DataSource;
                         // this.verViev.RowFilter = "[fff]" + " LIKE '%" + this.BuscarArticulosText.Text + "%'"; 
                         //this.DataGridBuscar.Columns[3].Visible = false;
@@ -51,6 +56,7 @@ namespace PELOSCALVO
                         this.verViev = FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos.DefaultView;
                         this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos;
                     }
+
                 }
                 if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
                 {
@@ -64,6 +70,7 @@ namespace PELOSCALVO
                         this.verViev = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores.DefaultView;
                         this.DataGridBuscar.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores;
                     }
+
                 }
                 this.verViev.RowFilter = "";
                 this.Buscador2.Focus();
@@ -92,7 +99,7 @@ namespace PELOSCALVO
         {
             try
             {
-        
+
                 this.DataGridBuscar.AutoGenerateColumns = false;
                 this.Text = Nombrefila;
                 Fila = IdFila;
@@ -114,21 +121,24 @@ namespace PELOSCALVO
             // this.BindingBuscarSource.DataSource = Formulirio;
             try
             {
+                if (ClasDatos.QUEform == "Provincias")
+                {
+                    this.Bd.Filter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
+                }
                 //this.DataGridBuscar.Columns[Fila].HeaderText = Columna;
                 if (this.TipoBuscar2.SelectedIndex == 0)
                 {
-                    this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
-
+                  //  this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
                 }
 
                 if (this.TipoBuscar2.SelectedIndex == 1)//referencia
                 {
 
 
-                    this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
+                   // this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
 
                 }
-                this.DataGridBuscar.DataSource = this.verViev;
+                this.DataGridBuscar.DataSource = Bd;
             }
             catch (Exception ex)
             {
@@ -137,7 +147,7 @@ namespace PELOSCALVO
             }
 
             //this.DataGridBuscar.DataSource = this.BindingBuscarSource;
-            this.ContadorBus.Text = string.Format("{0:N0" + "}", ((this.DataGridBuscar.Rows.Count).ToString()));
+            this.ContadorBus.Text = string.Format("{0:N0" + "}", (this.DataGridBuscar.Rows.Count).ToString());
         }
 
         private void DataGridBuscar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

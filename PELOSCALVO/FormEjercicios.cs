@@ -126,13 +126,13 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
-                consulta = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                consulta = "INSERT INTO [DtConfi] ([IdEnlace], [EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES(@IdEnlace @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [IdEnlace]=[@IdEnlace] [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
                    " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE IdEnlace = @IdEnlace";
             }
@@ -142,6 +142,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(this.IdEnlace.Text) ? (object)DBNull.Value : this.IdEnlace.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : this.IdEmpresa.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.DescripicionEjer.Text) ? (object)DBNull.Value : this.DescripicionEjer.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.IvaEjercicioTxt.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IvaEjercicioTxt.Text));
@@ -203,13 +204,13 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
-                consulta = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                consulta = "INSERT INTO [DtConfi] ([IdEnlace], [EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES(@IdEnlace @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [IdEnlace]=[@IdEnlace] [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
                    " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE IdEnlace = @IdEnlace";
             }
@@ -219,6 +220,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(this.IdEnlace.Text) ? (object)DBNull.Value : this.IdEnlace.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : this.IdEmpresa.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.DescripicionEjer.Text) ? (object)DBNull.Value : this.DescripicionEjer.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.IvaEjercicioTxt.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IvaEjercicioTxt.Text));
@@ -368,12 +370,62 @@ namespace PELOSCALVO
                     MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                     return;
                 }
-                SqlDataReader reader;
+                // SqlDataReader reader;
+
+                if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
+                {
+                  string  consulta = "Select max(IdEnlace) from [DtConfi]";
+                    if (ClsConexionSql.SibaseDatosSql)
+                    {
+                        ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+                        if (NuevaConexion.SiConexionSql)
+                        {
+                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                if (reader.Read())
+                                {
+                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                    {
+                                        this.IdEnlace.Text =Convert.ToInt32(reader[0].ToString()+1).ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }else
+                    {
+                        ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                        if (NuevaConexion.SiConexionDb)
+                        {
+                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                if (reader.Read())
+                                {
+                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                    {
+                                        this.IdEnlace.Text = Convert.ToInt32(reader[0].ToString() + 1).ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+   
+
+                }
                 Random r = new Random();
                 int VALORid = r.Next(500, 1000000);
                 int numeroFILA = this.dtConfiDataGridView.Rows.Count;
-                string DtConfi = "";
-                int I = 0;
                 this.dtConfiDataGridView.Sort(this.dtConfiDataGridView.Columns[0], ListSortDirection.Ascending);
                 this.dtConfiguracionPrincipalDtConfiBindingSource.AddNew();
                 if (this.dtConfiDataGridView.CurrentCell.RowIndex == 0)
@@ -468,7 +520,7 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.IdConfi.Text))
+            if (string.IsNullOrEmpty(this.IdConfi.Text) & string.IsNullOrEmpty(this.IdEnlace.Text))
             {
                 MessageBox.Show("Falta Id", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Media;
@@ -213,6 +214,7 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 25))
             {
+                int Id_Confi = 0;
                 String ConsultaDescuetos = "";
                 string consulta = "";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
@@ -291,12 +293,36 @@ namespace PELOSCALVO
                             }
                             string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
                             string Ejercicio = "EJERCICIO   " + String.Format("{0:yyyy}", DateTime.Now);
-                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([IdEnlace],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
                                   "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                                      "  @AñoDeEjercicio)";
+
+                            consulta = "Select max(IdEnlace) from [DtConfi]";
+                            NuevaConexion = new ClsConexionSql(consulta);
+                            if (NuevaConexion.SiConexionSql)
+                            {
+                               SqlDataReader  reader = NuevaConexion.ComandoSql.ExecuteReader();
+                                if (reader.HasRows)
+                                {
+                                    if (reader.Read())
+                                    {
+                                        if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                        {
+                                            Id_Confi = Convert.ToInt32(reader[0].ToString() + 1);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    }
+                                }
+
+                            }
                             NuevaConexion = new ClsConexionSql(ConsultaEjercios);////Guarda Ejercicio a empresa
                             if (NuevaConexion.SiConexionSql)
                             {
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(Id_Confi.ToString()) ? (object)DBNull.Value :Id_Confi);
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", Basica);
                                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", 21);
@@ -383,7 +409,7 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 20))
             {
-                String Id_Confi="1111111111";
+                int Id_Confi = 0;
                 string Almacenes = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
                 string consulta = "";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
@@ -441,7 +467,7 @@ namespace PELOSCALVO
                             string ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
                             string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
                             string Ejercicio = "EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
-                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                            String ConsultaEjercios = "INSERT INTO [DtConfi] ([IdEnlace],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
                                   "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                                      "  @AñoDeEjercicio)";
 
@@ -474,10 +500,32 @@ namespace PELOSCALVO
 
                                 }
                             }
-
-                            NuevaConexion = new ClsConexionDb(ConsultaEjercios);////Guarda Ejercicio a empresa
+                            consulta = "Select max(IdEnlace) from [DtConfi]";
+                            NuevaConexion = new ClsConexionDb(consulta);
                             if (NuevaConexion.SiConexionDb)
                             {
+                                OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+                                if (reader.HasRows)
+                                {
+                                    if (reader.Read())
+                                    {
+                                        if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                        {
+                                            Id_Confi = Convert.ToInt32(reader[0].ToString() + 1);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    }
+                                }
+
+                            }
+                            NuevaConexion = new ClsConexionDb(ConsultaEjercios);//
+                            if (NuevaConexion.SiConexionDb)
+                            {
+                                NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(Id_Confi.ToString()) ? (object)DBNull.Value : Id_Confi);
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", Basica);
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", 21);
@@ -486,29 +534,9 @@ namespace PELOSCALVO
                                 NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", String.Format("{0:yyyy}", DateTime.Now));
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
                                 NuevaConexion.ComandoDb.Parameters.Clear();
-                                consulta = "Select max(IdEnlace) from [DtConfi]";
-                                NuevaConexion = new ClsConexionDb(consulta);
-                                if (NuevaConexion.SiConexionDb)
-                                {
-                                    OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-                                    if (reader.HasRows)
-                                    {
-                                        if (reader.Read())
-                                        {
-                                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                                            {
-                                              Id_Confi = reader[0].ToString();
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                                return;
-                                            }
-                                        }
-                                    }
-                                }
+
                                 FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica, 21, Ejercicio, this.idEmpresa.Text, 1,
-                                    String.Format("{0:yyyy}", DateTime.Now),Id_Confi);
+                                    String.Format("{0:yyyy}", DateTime.Now), Id_Confi);
                             }
 
                             NuevaConexion = new ClsConexionDb(Almacenes);////Guarda almacen
@@ -531,7 +559,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "EMPRESAS CREAR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "EMPRESAS CREAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {

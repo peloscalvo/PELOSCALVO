@@ -430,7 +430,7 @@ namespace PELOSCALVO
                 " [CifEmpresa] [varchar](20) NULL,[ImagenEmpresa] [image] NULL) " +
 
                 "IF NOT  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfi]') AND type in (N'U')) " +
-                "CREATE TABLE[DtConfi]([IdEnlace][int]IDENTITY(1,1) primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
+                "CREATE TABLE[DtConfi]([IdEnlace][int]int primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
                "[EmpresaENLACE] [int] NOT NULL,[IdConexionConfi] INT NULL, [AñoDeEjercicio] [varchar](60) NULL," +
                 " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 

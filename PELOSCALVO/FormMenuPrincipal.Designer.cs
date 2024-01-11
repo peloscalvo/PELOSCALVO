@@ -109,7 +109,6 @@ namespace PELOSCALVO
             this.ContadorClientes = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.Conectado = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.BtnArchivos = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
@@ -129,6 +128,8 @@ namespace PELOSCALVO
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnInfo = new System.Windows.Forms.Button();
             this.PanelBarraTitulo = new System.Windows.Forms.Panel();
+            this.InfoConectado = new System.Windows.Forms.Label();
+            this.Conectado = new System.Windows.Forms.PictureBox();
             this.panelAplicaciones = new System.Windows.Forms.Panel();
             this.BtnAbrirChrome = new System.Windows.Forms.Button();
             this.BtnCarpetasPdf = new System.Windows.Forms.Button();
@@ -159,7 +160,6 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.InfoConectado = new System.Windows.Forms.Label();
             this.panelContenedorPrincipal.SuspendLayout();
             this.PanelForms.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
@@ -170,7 +170,6 @@ namespace PELOSCALVO
             this.Panel_info2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
@@ -181,6 +180,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelBarraTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).BeginInit();
             this.panelAplicaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).BeginInit();
@@ -1046,6 +1046,8 @@ namespace PELOSCALVO
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.panelMenu.Controls.Add(this.InfoConectado);
+            this.panelMenu.Controls.Add(this.Conectado);
             this.panelMenu.Controls.Add(this.pictureBox7);
             this.panelMenu.Controls.Add(this.BtnArchivos);
             this.panelMenu.Controls.Add(this.btnConfiguracion);
@@ -1069,17 +1071,6 @@ namespace PELOSCALVO
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(230, 557);
             this.panelMenu.TabIndex = 2;
-            // 
-            // Conectado
-            // 
-            this.Conectado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Conectado.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
-            this.Conectado.Location = new System.Drawing.Point(8, 11);
-            this.Conectado.Name = "Conectado";
-            this.Conectado.Size = new System.Drawing.Size(22, 22);
-            this.Conectado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Conectado.TabIndex = 85;
-            this.Conectado.TabStop = false;
             // 
             // pictureBox7
             // 
@@ -1366,8 +1357,6 @@ namespace PELOSCALVO
             // 
             this.PanelBarraTitulo.BackColor = System.Drawing.Color.Goldenrod;
             this.PanelBarraTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelBarraTitulo.Controls.Add(this.InfoConectado);
-            this.PanelBarraTitulo.Controls.Add(this.Conectado);
             this.PanelBarraTitulo.Controls.Add(this.panelAplicaciones);
             this.PanelBarraTitulo.Controls.Add(this.Logo2);
             this.PanelBarraTitulo.Controls.Add(this.btnMinimizar);
@@ -1382,6 +1371,27 @@ namespace PELOSCALVO
             this.PanelBarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseDown);
             this.PanelBarraTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseMove);
             this.PanelBarraTitulo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseUp);
+            // 
+            // InfoConectado
+            // 
+            this.InfoConectado.AutoSize = true;
+            this.InfoConectado.BackColor = System.Drawing.Color.Goldenrod;
+            this.InfoConectado.Location = new System.Drawing.Point(35, 15);
+            this.InfoConectado.Name = "InfoConectado";
+            this.InfoConectado.Size = new System.Drawing.Size(77, 13);
+            this.InfoConectado.TabIndex = 86;
+            this.InfoConectado.Text = "Desconectado";
+            // 
+            // Conectado
+            // 
+            this.Conectado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Conectado.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
+            this.Conectado.Location = new System.Drawing.Point(7, 8);
+            this.Conectado.Name = "Conectado";
+            this.Conectado.Size = new System.Drawing.Size(22, 22);
+            this.Conectado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Conectado.TabIndex = 85;
+            this.Conectado.TabStop = false;
             // 
             // panelAplicaciones
             // 
@@ -1687,15 +1697,6 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
-            // InfoConectado
-            // 
-            this.InfoConectado.AutoSize = true;
-            this.InfoConectado.Location = new System.Drawing.Point(36, 18);
-            this.InfoConectado.Name = "InfoConectado";
-            this.InfoConectado.Size = new System.Drawing.Size(77, 13);
-            this.InfoConectado.TabIndex = 86;
-            this.InfoConectado.Text = "Desconectado";
-            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1727,7 +1728,7 @@ namespace PELOSCALVO
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).EndInit();
+            this.panelMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
@@ -1739,6 +1740,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelBarraTitulo.ResumeLayout(false);
             this.PanelBarraTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Conectado)).EndInit();
             this.panelAplicaciones.ResumeLayout(false);
             this.panelAplicaciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();

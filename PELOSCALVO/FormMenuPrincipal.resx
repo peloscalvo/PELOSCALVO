@@ -118,18 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="BtnFacturar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAJ5JREFUOE9jAIEvk9xtvkx08wNzyAEfZ/ozfZnoehCIt36Z5KYCFSYNADXqAA34
-        DcTfgbjxy2QPLqgU8QCosfvLBNf/YDzR9T7J3voy2Z0HqPEx3BCIQaR5C2hrCIoBEEOI99bbxXGgAN2J
-        YQjEIOK8BXSyGlDxT6yGgDAhb1FkAMVeoCgQKY5GoGLyExLQFvKT8seZAZRlJvKzMwMDAPtx90ji9Gyq
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>265, 70</value>
-  </metadata>
   <data name="btnConfiguracion.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -200,6 +188,21 @@
         X5RAybHE/YFSiuDfEfWmX71btACDSQya1KvZE715MCP8tzCMv9QDWmXbDoVzAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="BtnFacturar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAJ5JREFUOE9jAIEvk9xtvkx08wNzyAEfZ/ozfZnoehCIt36Z5KYCFSYNADXqAA34
+        DcTfgbjxy2QPLqgU8QCosfvLBNf/YDzR9T7J3voy2Z0HqPEx3BCIQaR5C2hrCIoBEEOI99bbxXGgAN2J
+        YQjEIOK8BXSyGlDxT6yGgDAhb1FkAMVeoCgQKY5GoGLyExLQFvKT8seZAZRlJvKzMwMDAPtx90ji9Gyq
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>265, 70</value>
+  </metadata>
+  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>265, 70</value>
+  </metadata>
   <data name="BtnAbrirChrome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO

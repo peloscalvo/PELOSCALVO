@@ -29,7 +29,7 @@ namespace PELOSCALVO
             if (FormMenuPrincipal.menu2principal.dsClientes != null)
             {
                 this.dtClientesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsClientes;
-                this.view2 = FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView;
+                this.view2 = FormMenuPrincipal.menu2principal.dsClientes.DtClientes.DefaultView;
             }
 
             AñadirId();
