@@ -37,6 +37,7 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarArticulos));
             this.TIPObuscarArticulos = new System.Windows.Forms.ComboBox();
             this.BuscarArticulosText = new System.Windows.Forms.TextBox();
@@ -52,15 +53,17 @@ namespace PELOSCALVO
             this.articulos = new PELOSCALVO.Articulos();
             this.label1 = new System.Windows.Forms.Label();
             this.ContadorDatos2 = new System.Windows.Forms.Label();
-            this.BtnCancelarBArticulo = new System.Windows.Forms.Button();
             this.FiltrarBajasBuscar = new System.Windows.Forms.ComboBox();
             this.labelfiltrarBUSCAR = new System.Windows.Forms.Label();
             this.ListCodigos = new System.Windows.Forms.ListView();
-            this.BtnCodifiCar = new System.Windows.Forms.Button();
             this.ListaQr = new System.Windows.Forms.ComboBox();
             this.BtnCrearQr = new System.Windows.Forms.Button();
             this.TituloText = new System.Windows.Forms.TextBox();
             this.PitureQr = new System.Windows.Forms.PictureBox();
+            this.BtnCodifiCar = new System.Windows.Forms.Button();
+            this.BtnCancelarBArticulo = new System.Windows.Forms.Button();
+            this.Id_Codigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Texto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
@@ -246,28 +249,6 @@ namespace PELOSCALVO
             this.ContadorDatos2.Text = "0";
             this.ContadorDatos2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // BtnCancelarBArticulo
-            // 
-            this.BtnCancelarBArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnCancelarBArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.BtnCancelarBArticulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelarBArticulo.FlatAppearance.BorderSize = 0;
-            this.BtnCancelarBArticulo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnCancelarBArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnCancelarBArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancelarBArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarBArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
-            this.BtnCancelarBArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelarBArticulo.Location = new System.Drawing.Point(668, 404);
-            this.BtnCancelarBArticulo.Name = "BtnCancelarBArticulo";
-            this.BtnCancelarBArticulo.Size = new System.Drawing.Size(89, 42);
-            this.BtnCancelarBArticulo.TabIndex = 34;
-            this.BtnCancelarBArticulo.Tag = "SI";
-            this.BtnCancelarBArticulo.Text = "Cancelar";
-            this.BtnCancelarBArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnCancelarBArticulo.UseVisualStyleBackColor = false;
-            this.BtnCancelarBArticulo.Click += new System.EventHandler(this.BtnCancelarBArticulo_Click);
-            // 
             // FiltrarBajasBuscar
             // 
             this.FiltrarBajasBuscar.DisplayMember = "Articulos De Alta";
@@ -301,31 +282,23 @@ namespace PELOSCALVO
             // 
             // ListCodigos
             // 
+            this.ListCodigos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Id_Codigo,
+            this.Texto});
+            this.ListCodigos.FullRowSelect = true;
+            this.ListCodigos.GridLines = true;
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            this.ListCodigos.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1});
             this.ListCodigos.HideSelection = false;
             this.ListCodigos.Location = new System.Drawing.Point(810, 101);
             this.ListCodigos.Name = "ListCodigos";
             this.ListCodigos.Size = new System.Drawing.Size(411, 176);
             this.ListCodigos.TabIndex = 41;
             this.ListCodigos.UseCompatibleStateImageBehavior = false;
-            // 
-            // BtnCodifiCar
-            // 
-            this.BtnCodifiCar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnCodifiCar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnCodifiCar.FlatAppearance.BorderSize = 0;
-            this.BtnCodifiCar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnCodifiCar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnCodifiCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCodifiCar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
-            this.BtnCodifiCar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCodifiCar.Location = new System.Drawing.Point(1154, 412);
-            this.BtnCodifiCar.Name = "BtnCodifiCar";
-            this.BtnCodifiCar.Size = new System.Drawing.Size(89, 42);
-            this.BtnCodifiCar.TabIndex = 73;
-            this.BtnCodifiCar.Text = "&Aceptar";
-            this.BtnCodifiCar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnCodifiCar.UseVisualStyleBackColor = false;
+            this.ListCodigos.View = System.Windows.Forms.View.Details;
+            this.ListCodigos.Click += new System.EventHandler(this.ListCodigos_Click);
             // 
             // ListaQr
             // 
@@ -368,6 +341,57 @@ namespace PELOSCALVO
             this.PitureQr.Size = new System.Drawing.Size(411, 104);
             this.PitureQr.TabIndex = 77;
             this.PitureQr.TabStop = false;
+            // 
+            // BtnCodifiCar
+            // 
+            this.BtnCodifiCar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnCodifiCar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCodifiCar.FlatAppearance.BorderSize = 0;
+            this.BtnCodifiCar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnCodifiCar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnCodifiCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCodifiCar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCodifiCar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCodifiCar.Location = new System.Drawing.Point(1154, 412);
+            this.BtnCodifiCar.Name = "BtnCodifiCar";
+            this.BtnCodifiCar.Size = new System.Drawing.Size(89, 42);
+            this.BtnCodifiCar.TabIndex = 73;
+            this.BtnCodifiCar.Text = "&Aceptar";
+            this.BtnCodifiCar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCodifiCar.UseVisualStyleBackColor = false;
+            // 
+            // BtnCancelarBArticulo
+            // 
+            this.BtnCancelarBArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnCancelarBArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCancelarBArticulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCancelarBArticulo.FlatAppearance.BorderSize = 0;
+            this.BtnCancelarBArticulo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
+            this.BtnCancelarBArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.BtnCancelarBArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelarBArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelarBArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarBArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCancelarBArticulo.Location = new System.Drawing.Point(668, 404);
+            this.BtnCancelarBArticulo.Name = "BtnCancelarBArticulo";
+            this.BtnCancelarBArticulo.Size = new System.Drawing.Size(89, 42);
+            this.BtnCancelarBArticulo.TabIndex = 34;
+            this.BtnCancelarBArticulo.Tag = "SI";
+            this.BtnCancelarBArticulo.Text = "Cancelar";
+            this.BtnCancelarBArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancelarBArticulo.UseVisualStyleBackColor = false;
+            this.BtnCancelarBArticulo.Click += new System.EventHandler(this.BtnCancelarBArticulo_Click);
+            // 
+            // Id_Codigo
+            // 
+            this.Id_Codigo.Text = "Id";
+            this.Id_Codigo.Width = 98;
+            // 
+            // Texto
+            // 
+            this.Texto.Text = "Texto";
+            this.Texto.Width = 335;
             // 
             // FormBuscarArticulos
             // 
@@ -430,5 +454,7 @@ namespace PELOSCALVO
         public System.Windows.Forms.Button BtnCrearQr;
         private System.Windows.Forms.TextBox TituloText;
         private System.Windows.Forms.PictureBox PitureQr;
+        private System.Windows.Forms.ColumnHeader Id_Codigo;
+        private System.Windows.Forms.ColumnHeader Texto;
     }
 }

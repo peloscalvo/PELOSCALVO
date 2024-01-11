@@ -73,6 +73,16 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Archivo {
+            get {
+                object obj = ResourceManager.GetObject("Archivo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap barras4 {
             get {
                 object obj = ResourceManager.GetObject("barras4", resourceCulture);

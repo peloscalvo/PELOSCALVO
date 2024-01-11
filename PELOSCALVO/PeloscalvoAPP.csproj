@@ -678,6 +678,7 @@
     <None Include="Resources\INFO.png" />
     <None Include="Resources\CIRCULO VERDE1 .png" />
     <None Include="Resources\CIRCULO ROJO1.png" />
+    <None Include="Resources\Archivo.png" />
     <Content Include="Resources\LogoPeloscalvo.ico" />
     <None Include="Resources\LogoPeloscalvo.png" />
     <None Include="Resources\lupa pequeña.png" />

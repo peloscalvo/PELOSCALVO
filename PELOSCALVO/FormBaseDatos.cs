@@ -303,6 +303,7 @@ namespace PELOSCALVO
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
                     FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
                     FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Servidor";
+                    FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.LawnGreen;
                 }
             }
             else
@@ -316,6 +317,7 @@ namespace PELOSCALVO
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
                     FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
                     FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Db Local";
+                    FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.LawnGreen;
                 }
             }
         }
@@ -1525,6 +1527,7 @@ namespace PELOSCALVO
                 this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
                 FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO1;
                 FormMenuPrincipal.menu2principal.InfoConectado.Text = "Desconectado";
+                FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.Goldenrod;
                 this.CheckAtivarServidor.Checked = false;
                 this.CheckActivarDb.Checked = false;
                 ClassCorreosDB.dsCorreos.Clear();

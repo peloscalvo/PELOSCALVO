@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BarcodeStandard;
+using SkiaSharp;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using BarcodeStandard;
-using SkiaSharp;
 
 namespace PELOSCALVO
 {
@@ -50,7 +50,7 @@ namespace PELOSCALVO
                     // this.dtArticulosBindingSource.DataSource = FormARTICULOS.menu2Articulos.dtArticulosBindingSource;
                     this.FiltrarBajasBuscar.Text = FormArticulos.menu2Articulos.FiltrarBajas.Text;
                 }
-    
+
             }
             // final abrir articulos
             this.ContadorDatos2.Text = string.Format("{0:N0" + "}", ((this.dtArticulosBindingSource.Count).ToString()));
@@ -61,15 +61,19 @@ namespace PELOSCALVO
                 this.Width = 1300;
 
             }
+            else
+            {
+                this.Width = 803;
+            }
             int indice = 0;
             foreach (var nombre in Enum.GetNames(typeof(BarcodeStandard.Type)))
             {
-                ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
+                this.ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
                 indice++;
             }
-            ListaQr.DisplayMember = "Texto";
-            ListaQr.ValueMember = "Valor";
-            ListaQr.SelectedIndex = 0;
+            this.ListaQr.DisplayMember = "Texto";
+            this.ListaQr.ValueMember = "Valor";
+            this.ListaQr.SelectedIndex = 0;
         }
         public void AñadirIdBuscar()
         {
@@ -97,7 +101,7 @@ namespace PELOSCALVO
                     this.articulos.DtArticulos.DefaultView.Sort = Comcepto;
 
                     if (this.FiltrarBajasBuscar.SelectedIndex == 2)
-                    {      
+                    {
                         this.verViev.RowFilter = Referencia + " LIKE '%" + this.BuscarArticulosText.Text + "%'" + "OR" + Comcepto + " LIKE '%" + this.BuscarArticulosText.Text + "%'" + "OR" + FAmilia + " LIKE '%" + this.BuscarArticulosText.Text + "%'";
                     }
                     else
@@ -123,7 +127,7 @@ namespace PELOSCALVO
                         fieldName = string.Concat("[", this.articulos.DtArticulos.Columns[NumeroValidar].ColumnName, "]");
                         this.articulos.DtArticulos.DefaultView.Sort = fieldName;
 
-                        this.verViev.RowFilter = fieldName + " LIKE '%" + this.BuscarArticulosText.Text + "%'" + "and " + "[baja]" + "=" + this.SiBaja;         
+                        this.verViev.RowFilter = fieldName + " LIKE '%" + this.BuscarArticulosText.Text + "%'" + "and " + "[baja]" + "=" + this.SiBaja;
                     }
                     if (this.TIPObuscarArticulos.SelectedIndex == 3)//familia
                     {
@@ -134,7 +138,7 @@ namespace PELOSCALVO
                         // BuscarArticulosText.Text = TIPObuscarArticulos.Text;
                     }
 
-                  
+
                 }
             }
             this.DataGridViewBuscarArticulos.DataSource = this.verViev;
@@ -242,8 +246,8 @@ namespace PELOSCALVO
                             {
                                 FormFacturar.menu2FACTURAR.dtDetallesFacturaBindingSource.AddNew();
                             }
-                           // MessageBox.Show(FormFACTURAR.menu2FACTURAR.dtDetallesFacturaBindingSource.Count.ToString());
-                 
+                            // MessageBox.Show(FormFACTURAR.menu2FACTURAR.dtDetallesFacturaBindingSource.Count.ToString());
+
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[0].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();//referencia
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[3].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();//descripcion
                             if (FormFacturar.menu2FACTURAR.CheckDescuentos.Checked == false)
@@ -290,7 +294,7 @@ namespace PELOSCALVO
                             {
                                 FormFacturar.menu2FACTURAR.dtDetallesFactura2BindingSource.AddNew();
                             }
-         
+
 
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView2.Rows[ClasDatos.ValorBuscado].Cells[0].Value = this.DataGridViewBuscarArticulos.Rows[ClasDatos.ValorBuscado].Cells[0].FormattedValue.ToString();//REFERENCIA
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView2.Rows[ClasDatos.ValorBuscado].Cells[3].Value = this.DataGridViewBuscarArticulos.Rows[ClasDatos.ValorBuscado].Cells[1].FormattedValue.ToString();//DESCRIPCION
@@ -363,18 +367,18 @@ namespace PELOSCALVO
             {
                 try
                 {
-                    //ListView list = new ListView();
                     ListViewItem lvi = new ListViewItem();
-                    ListCodigos.Items.Add(lvi);
-                    if (!string.IsNullOrEmpty(DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
+                    if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
                     {
-                        ListCodigos.Items.Add(DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
-                    }
-                    if (!string.IsNullOrEmpty(DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
-                    {
-                        lvi.SubItems.Add(DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                        lvi = this.ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
+                        if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
+                        {
+                            lvi.SubItems.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+
+                        }
 
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -419,23 +423,23 @@ namespace PELOSCALVO
         }
         private void BtnCrearQr_Click(object sender, EventArgs e)
         {
-            if(!String.IsNullOrEmpty(TituloText.Text))
+            if (String.IsNullOrEmpty(this.TituloText.Text))
             {
                 MessageBox.Show("Campo De Titulo vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                TituloText.Focus();
+                this.TituloText.Focus();
                 return;
             }
             try
             {
                 SKImage imagenCodigo;
-                int indice = (ListaQr.SelectedItem as OpcionCombo).Valor;
+                int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
                 BarcodeStandard.Type tipoCodigo = (BarcodeStandard.Type)indice;
                 Barcode codigo = new Barcode();
                 codigo.IncludeLabel = true;
                 // codigo.LabelFont = LabelPositions.BOTTOMCENTER;
                 //codigo.ForeColor = Color.FromArgb(1,11,1)
-                imagenCodigo = codigo.Encode(tipoCodigo, TituloText.Text.Trim(), SKColors.Black, SKColors.White, 300, 100);
-                Bitmap imagenTitulo = convertirTextoImagen(TituloText.Text.Trim(), 300, Color.White);
+                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), SKColors.Black, SKColors.White, 300, 100);
+                Bitmap imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), 300, Color.White);
                 int alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
                 Bitmap imagenNueva = new Bitmap(300, alto_imagen_nuevo);
                 Graphics dibujar = Graphics.FromImage(imagenNueva);
@@ -443,12 +447,21 @@ namespace PELOSCALVO
                 dibujar.DrawImage(imagenTitulo, new Point(0, 0));
                 // dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
                 //pictureBox1.BackgroundImage = imagenCodigo;
-                PitureQr.BackgroundImage = imagenNueva;
+                this.PitureQr.BackgroundImage = imagenNueva;
+
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ListCodigos_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(this.ListCodigos.SelectedItems.ToString()))
+            {
+               // TituloText.Text = this.ListCodigos.Items.Columns[1].Text;
             }
         }
     }

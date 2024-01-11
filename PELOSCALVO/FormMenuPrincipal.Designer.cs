@@ -33,6 +33,32 @@ namespace PELOSCALVO
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuPrincipal));
             this.panelContenedorPrincipal = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.InfoConectado = new System.Windows.Forms.Label();
+            this.PanelBarraTitulo = new System.Windows.Forms.Panel();
+            this.panelAplicaciones = new System.Windows.Forms.Panel();
+            this.lbFecha = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.Logo2 = new System.Windows.Forms.Label();
+            this.tmExpandirMenu = new System.Windows.Forms.Timer(this.components);
+            this.tmContraerMenu = new System.Windows.Forms.Timer(this.components);
+            this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
+            this.notasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.notas2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.albaranesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.presupuestosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dsMultidatos = new PELOSCALVO.DsMultidatos();
+            this.dsClientes = new PELOSCALVO.DsClientes();
+            this.articulos = new PELOSCALVO.Articulos();
+            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
+            this.TimerCerrarPanel = new System.Windows.Forms.Timer(this.components);
+            this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsServidor = new PELOSCALVO.DsServidor();
+            this.dsMulti2 = new PELOSCALVO.DsMulti2();
+            this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelForms = new System.Windows.Forms.Panel();
             this.panelSUBventas = new System.Windows.Forms.Panel();
             this.BtnCrearAlbaranes = new System.Windows.Forms.Button();
@@ -102,9 +128,6 @@ namespace PELOSCALVO
             this.label7 = new System.Windows.Forms.Label();
             this.RegistLbel = new System.Windows.Forms.Label();
             this.ContadorClientes = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panelMenu = new System.Windows.Forms.Panel();
-            this.InfoConectado = new System.Windows.Forms.Label();
             this.Conectado = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.BtnArchivos = new System.Windows.Forms.Button();
@@ -124,38 +147,25 @@ namespace PELOSCALVO
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnInfo = new System.Windows.Forms.Button();
-            this.PanelBarraTitulo = new System.Windows.Forms.Panel();
-            this.panelAplicaciones = new System.Windows.Forms.Panel();
             this.BtnAbrirChrome = new System.Windows.Forms.Button();
             this.BtnCarpetasPdf = new System.Windows.Forms.Button();
-            this.lbFecha = new System.Windows.Forms.Label();
-            this.lblHora = new System.Windows.Forms.Label();
             this.BtnSql = new System.Windows.Forms.Button();
             this.BtnCarpeteDatos = new System.Windows.Forms.Button();
             this.BtnCalculadora = new System.Windows.Forms.Button();
-            this.Logo2 = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.btnMaximizar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.tmExpandirMenu = new System.Windows.Forms.Timer(this.components);
-            this.tmContraerMenu = new System.Windows.Forms.Timer(this.components);
-            this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
-            this.notasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.notas2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.albaranesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.presupuestosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dsMultidatos = new PELOSCALVO.DsMultidatos();
-            this.dsClientes = new PELOSCALVO.DsClientes();
-            this.articulos = new PELOSCALVO.Articulos();
-            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
-            this.TimerCerrarPanel = new System.Windows.Forms.Timer(this.components);
-            this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsServidor = new PELOSCALVO.DsServidor();
-            this.dsMulti2 = new PELOSCALVO.DsMulti2();
-            this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedorPrincipal.SuspendLayout();
+            this.panelMenu.SuspendLayout();
+            this.PanelBarraTitulo.SuspendLayout();
+            this.panelAplicaciones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsServidor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             this.PanelForms.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
             this.panelventas.SuspendLayout();
@@ -164,7 +174,6 @@ namespace PELOSCALVO
             this.PanelInfo_P.SuspendLayout();
             this.Panel_info2.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Conectado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).BeginInit();
@@ -175,15 +184,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.PanelBarraTitulo.SuspendLayout();
-            this.panelAplicaciones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsServidor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenedorPrincipal
@@ -198,6 +198,240 @@ namespace PELOSCALVO
             this.panelContenedorPrincipal.Name = "panelContenedorPrincipal";
             this.panelContenedorPrincipal.Size = new System.Drawing.Size(1100, 600);
             this.panelContenedorPrincipal.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(61)))), ((int)(((byte)(69)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(230, 575);
+            this.panel1.MaximumSize = new System.Drawing.Size(870, 75);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(870, 25);
+            this.panel1.TabIndex = 5;
+            // 
+            // panelMenu
+            // 
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.panelMenu.Controls.Add(this.InfoConectado);
+            this.panelMenu.Controls.Add(this.Conectado);
+            this.panelMenu.Controls.Add(this.pictureBox7);
+            this.panelMenu.Controls.Add(this.BtnArchivos);
+            this.panelMenu.Controls.Add(this.btnConfiguracion);
+            this.panelMenu.Controls.Add(this.BtnVentas);
+            this.panelMenu.Controls.Add(this.BtnCompras);
+            this.panelMenu.Controls.Add(this.btnListaClientes);
+            this.panelMenu.Controls.Add(this.btnARTICULOS);
+            this.panelMenu.Controls.Add(this.btnSalir);
+            this.panelMenu.Controls.Add(this.btnMenu);
+            this.panelMenu.Controls.Add(this.pictureBox5);
+            this.panelMenu.Controls.Add(this.btnUsuarios);
+            this.panelMenu.Controls.Add(this.pictureBox6);
+            this.panelMenu.Controls.Add(this.pictureBox3);
+            this.panelMenu.Controls.Add(this.pictureBox4);
+            this.panelMenu.Controls.Add(this.btnCorreo);
+            this.panelMenu.Controls.Add(this.pictureBox2);
+            this.panelMenu.Controls.Add(this.pictureBox1);
+            this.panelMenu.Controls.Add(this.BtnInfo);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelMenu.Location = new System.Drawing.Point(0, 43);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(230, 557);
+            this.panelMenu.TabIndex = 2;
+            // 
+            // InfoConectado
+            // 
+            this.InfoConectado.AutoSize = true;
+            this.InfoConectado.BackColor = System.Drawing.Color.Goldenrod;
+            this.InfoConectado.Location = new System.Drawing.Point(35, 15);
+            this.InfoConectado.Name = "InfoConectado";
+            this.InfoConectado.Size = new System.Drawing.Size(77, 13);
+            this.InfoConectado.TabIndex = 86;
+            this.InfoConectado.Text = "Desconectado";
+            // 
+            // PanelBarraTitulo
+            // 
+            this.PanelBarraTitulo.BackColor = System.Drawing.Color.Goldenrod;
+            this.PanelBarraTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelBarraTitulo.Controls.Add(this.panelAplicaciones);
+            this.PanelBarraTitulo.Controls.Add(this.Logo2);
+            this.PanelBarraTitulo.Controls.Add(this.btnMinimizar);
+            this.PanelBarraTitulo.Controls.Add(this.btnMaximizar);
+            this.PanelBarraTitulo.Controls.Add(this.btnCerrar);
+            this.PanelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelBarraTitulo.Location = new System.Drawing.Point(0, 0);
+            this.PanelBarraTitulo.Margin = new System.Windows.Forms.Padding(0);
+            this.PanelBarraTitulo.Name = "PanelBarraTitulo";
+            this.PanelBarraTitulo.Size = new System.Drawing.Size(1100, 43);
+            this.PanelBarraTitulo.TabIndex = 1;
+            this.PanelBarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseDown);
+            this.PanelBarraTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseMove);
+            this.PanelBarraTitulo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseUp);
+            // 
+            // panelAplicaciones
+            // 
+            this.panelAplicaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
+            this.panelAplicaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelAplicaciones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelAplicaciones.Controls.Add(this.BtnAbrirChrome);
+            this.panelAplicaciones.Controls.Add(this.BtnCarpetasPdf);
+            this.panelAplicaciones.Controls.Add(this.lbFecha);
+            this.panelAplicaciones.Controls.Add(this.lblHora);
+            this.panelAplicaciones.Controls.Add(this.BtnSql);
+            this.panelAplicaciones.Controls.Add(this.BtnCarpeteDatos);
+            this.panelAplicaciones.Controls.Add(this.BtnCalculadora);
+            this.panelAplicaciones.Location = new System.Drawing.Point(256, 6);
+            this.panelAplicaciones.Margin = new System.Windows.Forms.Padding(1);
+            this.panelAplicaciones.Name = "panelAplicaciones";
+            this.panelAplicaciones.Size = new System.Drawing.Size(679, 32);
+            this.panelAplicaciones.TabIndex = 6;
+            this.panelAplicaciones.Tag = "stop";
+            this.panelAplicaciones.Visible = false;
+            // 
+            // lbFecha
+            // 
+            this.lbFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbFecha.AutoSize = true;
+            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFecha.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbFecha.Location = new System.Drawing.Point(455, 6);
+            this.lbFecha.Name = "lbFecha";
+            this.lbFecha.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.lbFecha.Size = new System.Drawing.Size(187, 16);
+            this.lbFecha.TabIndex = 4;
+            this.lbFecha.Text = "Lunes, 26 de septiembre 2018";
+            // 
+            // lblHora
+            // 
+            this.lblHora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblHora.Location = new System.Drawing.Point(355, 5);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(71, 20);
+            this.lblHora.TabIndex = 1;
+            this.lblHora.Text = "09:33:00";
+            // 
+            // Logo2
+            // 
+            this.Logo2.AutoSize = true;
+            this.Logo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.Logo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Logo2.ForeColor = System.Drawing.Color.White;
+            this.Logo2.Location = new System.Drawing.Point(5, 8);
+            this.Logo2.Name = "Logo2";
+            this.Logo2.Size = new System.Drawing.Size(96, 16);
+            this.Logo2.TabIndex = 4;
+            this.Logo2.Text = "PELOSCALVO";
+            this.Logo2.MouseEnter += new System.EventHandler(this.Logo2_MouseEnter);
+            // 
+            // tmExpandirMenu
+            // 
+            this.tmExpandirMenu.Interval = 15;
+            this.tmExpandirMenu.Tick += new System.EventHandler(this.tmExpandirMenu_Tick);
+            // 
+            // tmContraerMenu
+            // 
+            this.tmContraerMenu.Interval = 15;
+            this.tmContraerMenu.Tick += new System.EventHandler(this.tmContraerMenu_Tick);
+            // 
+            // tmFechaHora
+            // 
+            this.tmFechaHora.Enabled = true;
+            this.tmFechaHora.Tick += new System.EventHandler(this.tmFechaHora_Tick);
+            // 
+            // notasToolStripMenuItem1
+            // 
+            this.notasToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.notasToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.notasToolStripMenuItem1.Name = "notasToolStripMenuItem1";
+            this.notasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.notasToolStripMenuItem1.Text = "Notas";
+            // 
+            // notas2ToolStripMenuItem1
+            // 
+            this.notas2ToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.notas2ToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.notas2ToolStripMenuItem1.Name = "notas2ToolStripMenuItem1";
+            this.notas2ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.notas2ToolStripMenuItem1.Text = "Notas 2";
+            // 
+            // albaranesToolStripMenuItem
+            // 
+            this.albaranesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.albaranesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.albaranesToolStripMenuItem.Name = "albaranesToolStripMenuItem";
+            this.albaranesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.albaranesToolStripMenuItem.Text = "Albaranes";
+            // 
+            // presupuestosToolStripMenuItem1
+            // 
+            this.presupuestosToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.presupuestosToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.presupuestosToolStripMenuItem1.Name = "presupuestosToolStripMenuItem1";
+            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.presupuestosToolStripMenuItem1.Text = "Presupuestos";
+            // 
+            // facturasToolStripMenuItem
+            // 
+            this.facturasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
+            this.facturasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
+            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.facturasToolStripMenuItem.Text = "Facturas";
+            // 
+            // dsMultidatos
+            // 
+            this.dsMultidatos.DataSetName = "DsMultidatos";
+            this.dsMultidatos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dsClientes
+            // 
+            this.dsClientes.DataSetName = "DsClientes";
+            this.dsClientes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // articulos
+            // 
+            this.articulos.DataSetName = "Articulos";
+            this.articulos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dsCONFIGURACCION
+            // 
+            this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
+            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // TimerCerrarPanel
+            // 
+            this.TimerCerrarPanel.Interval = 40;
+            this.TimerCerrarPanel.Tag = "ABRIR";
+            this.TimerCerrarPanel.Tick += new System.EventHandler(this.TimerCerrarPanel_Tick);
+            // 
+            // dtConfiguracionPrincipalBindingSource
+            // 
+            this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
+            this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
+            // 
+            // dsServidor
+            // 
+            this.dsServidor.DataSetName = "DsServidor";
+            this.dsServidor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dsMulti2
+            // 
+            this.dsMulti2.DataSetName = "DsMulti2";
+            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // índiceToolStripMenuItem
+            // 
+            this.índiceToolStripMenuItem.Name = "índiceToolStripMenuItem";
+            this.índiceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.índiceToolStripMenuItem.Text = "Índic&e";
+            // 
+            // buscarToolStripMenuItem
+            // 
+            this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
+            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
             // PanelForms
             // 
@@ -994,55 +1228,6 @@ namespace PELOSCALVO
             this.ContadorClientes.Text = "0";
             this.ContadorClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(61)))), ((int)(((byte)(69)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(230, 575);
-            this.panel1.MaximumSize = new System.Drawing.Size(870, 75);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 25);
-            this.panel1.TabIndex = 5;
-            // 
-            // panelMenu
-            // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.panelMenu.Controls.Add(this.InfoConectado);
-            this.panelMenu.Controls.Add(this.Conectado);
-            this.panelMenu.Controls.Add(this.pictureBox7);
-            this.panelMenu.Controls.Add(this.BtnArchivos);
-            this.panelMenu.Controls.Add(this.btnConfiguracion);
-            this.panelMenu.Controls.Add(this.BtnVentas);
-            this.panelMenu.Controls.Add(this.BtnCompras);
-            this.panelMenu.Controls.Add(this.btnListaClientes);
-            this.panelMenu.Controls.Add(this.btnARTICULOS);
-            this.panelMenu.Controls.Add(this.btnSalir);
-            this.panelMenu.Controls.Add(this.btnMenu);
-            this.panelMenu.Controls.Add(this.pictureBox5);
-            this.panelMenu.Controls.Add(this.btnUsuarios);
-            this.panelMenu.Controls.Add(this.pictureBox6);
-            this.panelMenu.Controls.Add(this.pictureBox3);
-            this.panelMenu.Controls.Add(this.pictureBox4);
-            this.panelMenu.Controls.Add(this.btnCorreo);
-            this.panelMenu.Controls.Add(this.pictureBox2);
-            this.panelMenu.Controls.Add(this.pictureBox1);
-            this.panelMenu.Controls.Add(this.BtnInfo);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 43);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(230, 557);
-            this.panelMenu.TabIndex = 2;
-            // 
-            // InfoConectado
-            // 
-            this.InfoConectado.AutoSize = true;
-            this.InfoConectado.BackColor = System.Drawing.Color.Goldenrod;
-            this.InfoConectado.Location = new System.Drawing.Point(35, 15);
-            this.InfoConectado.Name = "InfoConectado";
-            this.InfoConectado.Size = new System.Drawing.Size(77, 13);
-            this.InfoConectado.TabIndex = 86;
-            this.InfoConectado.Text = "Desconectado";
-            // 
             // Conectado
             // 
             this.Conectado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1072,7 +1257,7 @@ namespace PELOSCALVO
             this.BtnArchivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnArchivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnArchivos.ForeColor = System.Drawing.Color.Silver;
-            this.BtnArchivos.Image = global::PELOSCALVO.Properties.Resources.INFO;
+            this.BtnArchivos.Image = global::PELOSCALVO.Properties.Resources.Archivo;
             this.BtnArchivos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnArchivos.Location = new System.Drawing.Point(3, 359);
             this.BtnArchivos.Name = "BtnArchivos";
@@ -1335,45 +1520,6 @@ namespace PELOSCALVO
             this.BtnInfo.Click += new System.EventHandler(this.BtnArchivo_Click);
             this.BtnInfo.MouseEnter += new System.EventHandler(this.BtnInfo_MouseEnter);
             // 
-            // PanelBarraTitulo
-            // 
-            this.PanelBarraTitulo.BackColor = System.Drawing.Color.Goldenrod;
-            this.PanelBarraTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelBarraTitulo.Controls.Add(this.panelAplicaciones);
-            this.PanelBarraTitulo.Controls.Add(this.Logo2);
-            this.PanelBarraTitulo.Controls.Add(this.btnMinimizar);
-            this.PanelBarraTitulo.Controls.Add(this.btnMaximizar);
-            this.PanelBarraTitulo.Controls.Add(this.btnCerrar);
-            this.PanelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelBarraTitulo.Location = new System.Drawing.Point(0, 0);
-            this.PanelBarraTitulo.Margin = new System.Windows.Forms.Padding(0);
-            this.PanelBarraTitulo.Name = "PanelBarraTitulo";
-            this.PanelBarraTitulo.Size = new System.Drawing.Size(1100, 43);
-            this.PanelBarraTitulo.TabIndex = 1;
-            this.PanelBarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseDown);
-            this.PanelBarraTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseMove);
-            this.PanelBarraTitulo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelBarraTitulo_MouseUp);
-            // 
-            // panelAplicaciones
-            // 
-            this.panelAplicaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
-            this.panelAplicaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panelAplicaciones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelAplicaciones.Controls.Add(this.BtnAbrirChrome);
-            this.panelAplicaciones.Controls.Add(this.BtnCarpetasPdf);
-            this.panelAplicaciones.Controls.Add(this.lbFecha);
-            this.panelAplicaciones.Controls.Add(this.lblHora);
-            this.panelAplicaciones.Controls.Add(this.BtnSql);
-            this.panelAplicaciones.Controls.Add(this.BtnCarpeteDatos);
-            this.panelAplicaciones.Controls.Add(this.BtnCalculadora);
-            this.panelAplicaciones.Location = new System.Drawing.Point(256, 6);
-            this.panelAplicaciones.Margin = new System.Windows.Forms.Padding(1);
-            this.panelAplicaciones.Name = "panelAplicaciones";
-            this.panelAplicaciones.Size = new System.Drawing.Size(679, 32);
-            this.panelAplicaciones.TabIndex = 6;
-            this.panelAplicaciones.Tag = "stop";
-            this.panelAplicaciones.Visible = false;
-            // 
             // BtnAbrirChrome
             // 
             this.BtnAbrirChrome.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1410,31 +1556,6 @@ namespace PELOSCALVO
             this.BtnCarpetasPdf.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCarpetasPdf.UseVisualStyleBackColor = true;
             this.BtnCarpetasPdf.Click += new System.EventHandler(this.BtnCarpetasPdf_Click);
-            // 
-            // lbFecha
-            // 
-            this.lbFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbFecha.AutoSize = true;
-            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFecha.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbFecha.Location = new System.Drawing.Point(455, 6);
-            this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.lbFecha.Size = new System.Drawing.Size(187, 16);
-            this.lbFecha.TabIndex = 4;
-            this.lbFecha.Text = "Lunes, 26 de septiembre 2018";
-            // 
-            // lblHora
-            // 
-            this.lblHora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblHora.Location = new System.Drawing.Point(355, 5);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(71, 20);
-            this.lblHora.TabIndex = 1;
-            this.lblHora.Text = "09:33:00";
             // 
             // BtnSql
             // 
@@ -1491,19 +1612,6 @@ namespace PELOSCALVO
             this.BtnCalculadora.UseVisualStyleBackColor = true;
             this.BtnCalculadora.Click += new System.EventHandler(this.BtnCalculadora_Click_1);
             // 
-            // Logo2
-            // 
-            this.Logo2.AutoSize = true;
-            this.Logo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.Logo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logo2.ForeColor = System.Drawing.Color.White;
-            this.Logo2.Location = new System.Drawing.Point(5, 8);
-            this.Logo2.Name = "Logo2";
-            this.Logo2.Size = new System.Drawing.Size(96, 16);
-            this.Logo2.TabIndex = 4;
-            this.Logo2.Text = "PELOSCALVO";
-            this.Logo2.MouseEnter += new System.EventHandler(this.Logo2_MouseEnter);
-            // 
             // btnMinimizar
             // 
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1550,114 +1658,6 @@ namespace PELOSCALVO
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // tmExpandirMenu
-            // 
-            this.tmExpandirMenu.Interval = 15;
-            this.tmExpandirMenu.Tick += new System.EventHandler(this.tmExpandirMenu_Tick);
-            // 
-            // tmContraerMenu
-            // 
-            this.tmContraerMenu.Interval = 15;
-            this.tmContraerMenu.Tick += new System.EventHandler(this.tmContraerMenu_Tick);
-            // 
-            // tmFechaHora
-            // 
-            this.tmFechaHora.Enabled = true;
-            this.tmFechaHora.Tick += new System.EventHandler(this.tmFechaHora_Tick);
-            // 
-            // notasToolStripMenuItem1
-            // 
-            this.notasToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.notasToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.notasToolStripMenuItem1.Name = "notasToolStripMenuItem1";
-            this.notasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.notasToolStripMenuItem1.Text = "Notas";
-            // 
-            // notas2ToolStripMenuItem1
-            // 
-            this.notas2ToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.notas2ToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.notas2ToolStripMenuItem1.Name = "notas2ToolStripMenuItem1";
-            this.notas2ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.notas2ToolStripMenuItem1.Text = "Notas 2";
-            // 
-            // albaranesToolStripMenuItem
-            // 
-            this.albaranesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.albaranesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.albaranesToolStripMenuItem.Name = "albaranesToolStripMenuItem";
-            this.albaranesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.albaranesToolStripMenuItem.Text = "Albaranes";
-            // 
-            // presupuestosToolStripMenuItem1
-            // 
-            this.presupuestosToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.presupuestosToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.presupuestosToolStripMenuItem1.Name = "presupuestosToolStripMenuItem1";
-            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.presupuestosToolStripMenuItem1.Text = "Presupuestos";
-            // 
-            // facturasToolStripMenuItem
-            // 
-            this.facturasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(39)))));
-            this.facturasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
-            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.facturasToolStripMenuItem.Text = "Facturas";
-            // 
-            // dsMultidatos
-            // 
-            this.dsMultidatos.DataSetName = "DsMultidatos";
-            this.dsMultidatos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dsClientes
-            // 
-            this.dsClientes.DataSetName = "DsClientes";
-            this.dsClientes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // articulos
-            // 
-            this.articulos.DataSetName = "Articulos";
-            this.articulos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dsCONFIGURACCION
-            // 
-            this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
-            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // TimerCerrarPanel
-            // 
-            this.TimerCerrarPanel.Interval = 40;
-            this.TimerCerrarPanel.Tag = "ABRIR";
-            this.TimerCerrarPanel.Tick += new System.EventHandler(this.TimerCerrarPanel_Tick);
-            // 
-            // dtConfiguracionPrincipalBindingSource
-            // 
-            this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
-            this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
-            // 
-            // dsServidor
-            // 
-            this.dsServidor.DataSetName = "DsServidor";
-            this.dsServidor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dsMulti2
-            // 
-            this.dsMulti2.DataSetName = "DsMulti2";
-            this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // índiceToolStripMenuItem
-            // 
-            this.índiceToolStripMenuItem.Name = "índiceToolStripMenuItem";
-            this.índiceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.índiceToolStripMenuItem.Text = "Índic&e";
-            // 
-            // buscarToolStripMenuItem
-            // 
-            this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.buscarToolStripMenuItem.Text = "&Buscar";
-            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1676,6 +1676,19 @@ namespace PELOSCALVO
             this.Load += new System.EventHandler(this.FormMenuPrincipal_Load);
             this.MouseEnter += new System.EventHandler(this.FormMenuPrincipal_MouseEnter);
             this.panelContenedorPrincipal.ResumeLayout(false);
+            this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
+            this.PanelBarraTitulo.ResumeLayout(false);
+            this.PanelBarraTitulo.PerformLayout();
+            this.panelAplicaciones.ResumeLayout(false);
+            this.panelAplicaciones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsServidor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             this.PanelForms.ResumeLayout(false);
             this.panelSUBventas.ResumeLayout(false);
             this.panelventas.ResumeLayout(false);
@@ -1688,8 +1701,6 @@ namespace PELOSCALVO
             this.Panel_info2.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panelMenu.ResumeLayout(false);
-            this.panelMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Conectado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).EndInit();
@@ -1700,17 +1711,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.PanelBarraTitulo.ResumeLayout(false);
-            this.PanelBarraTitulo.PerformLayout();
-            this.panelAplicaciones.ResumeLayout(false);
-            this.panelAplicaciones.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsServidor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             this.ResumeLayout(false);
 
         }

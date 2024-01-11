@@ -19,13 +19,14 @@ namespace PELOSCALVO
         public byte SiOpenArti = 0;
         public byte SiOpenClie = 0;
         public byte SiOpenConfi = 0;
-        byte SiOpenUser = 0;
+       // byte SiOpenUser = 0;
         int V1, PX, PV;
         public FormMenuPrincipal()
         {
             InitializeComponent();         
             ToolTip Info = new ToolTip();
             Info.SetToolTip(BtnSql, "Configurar Conexion A Datos");
+            Info.SetToolTip(btnSalir, "Cerrar Aplicacionn");
             Info.SetToolTip(btnSalir, "Cerrar Aplicacionn");
             Info.IsBalloon = true;
             Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -211,7 +212,7 @@ namespace PELOSCALVO
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            if (this.SiOpenFatu == 0 & this.SiOpenArti == 0 & this.SiOpenClie == 0 & this.SiOpenConfi == 0)
+            if (PanelForms.Controls.Count <= 3)
             {
                 if (MessageBox.Show("Cerrar Toda La Aplicacion", "CERRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -224,13 +225,13 @@ namespace PELOSCALVO
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            if (this.SiOpenFatu == 0 & this.SiOpenArti == 0 & this.SiOpenClie == 0 & this.SiOpenConfi == 0)
+            if (PanelForms.Controls.Count <= 3)
             {
                 if (MessageBox.Show("Cerrar Toda La Aplicacion", "CERRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
-                    //  Application.Exit();
-                    Close();
+                    Application.Exit();
+                   // Close();
                     //  Hide();
 
                 }
