@@ -2,7 +2,6 @@
 using Comun;
 using Conexiones;
 using System;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -19,23 +18,23 @@ namespace PELOSCALVO
         public byte SiOpenArti = 0;
         public byte SiOpenClie = 0;
         public byte SiOpenConfi = 0;
-       // byte SiOpenUser = 0;
+        // byte SiOpenUser = 0;
         int V1, PX, PV;
         public FormMenuPrincipal()
         {
-            InitializeComponent();         
+            InitializeComponent();
             ToolTip Info = new ToolTip();
-            Info.SetToolTip(BtnSql, "Configurar Conexion A Datos");
-            Info.SetToolTip(btnSalir, "Cerrar Aplicacionn");
-            Info.SetToolTip(btnSalir, "Cerrar Aplicacionn");
+            Info.SetToolTip(this.BtnSql, "Configurar Conexion A Datos");
+            Info.SetToolTip(this.btnSalir, "Cerrar Aplicacionn");
+            Info.SetToolTip(this.btnSalir, "Cerrar Aplicacionn");
             Info.IsBalloon = true;
             Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             ToolTip Info2 = new ToolTip();
-            Info2.SetToolTip(BtnCalculadora, "Calculadora");
-            Info2.SetToolTip(BtnAbrirChrome, "Navegador Chrome");
-            Info2.SetToolTip(BtnArchivos, "Abrir Archivos");
-            Info2.SetToolTip(BtnCarpeteDatos, "Abrir Explorador "+"\n"+ Directory.GetCurrentDirectory() + "\\" + "Datos" + "\\");
-            Info2.SetToolTip(BtnCarpetasPdf, "Abrir Explorador Archivos P.D.F");
+            Info2.SetToolTip(this.BtnCalculadora, "Calculadora");
+            Info2.SetToolTip(this.BtnAbrirChrome, "Navegador Chrome");
+            Info2.SetToolTip(this.BtnArchivos, "Abrir Archivos");
+            Info2.SetToolTip(this.BtnCarpeteDatos, "Abrir Explorador " + "\n" + Directory.GetCurrentDirectory() + "\\" + "Datos" + "\\");
+            Info2.SetToolTip(this.BtnCarpetasPdf, "Abrir Explorador Archivos P.D.F");
             FormMenuPrincipal.menu2principal = this;
             SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
@@ -176,23 +175,23 @@ namespace PELOSCALVO
         int sw, sh;
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            if (btnMaximizar.Tag.ToString() == "MIN")
+            if (this.btnMaximizar.Tag.ToString() == "MIN")
             {
-                btnMaximizar.Tag = "MAX";
+                this.btnMaximizar.Tag = "MAX";
                 this.Size = new Size(this.sw, this.sh);
                 this.Location = new Point(this.lx, this.ly);
-                btnMaximizar.Image = Properties.Resources.maximize2;
+                this.btnMaximizar.Image = Properties.Resources.maximize2;
             }
             else
             {
-                btnMaximizar.Tag = "MIN";
+                this.btnMaximizar.Tag = "MIN";
                 this.lx = this.Location.X;
                 this.ly = this.Location.Y;
                 this.sw = this.Size.Width;
                 this.sh = this.Size.Height;
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-                btnMaximizar.Image = Properties.Resources.Normal;
+                this.btnMaximizar.Image = Properties.Resources.Normal;
             }
 
         }
@@ -201,8 +200,8 @@ namespace PELOSCALVO
         {
             this.Size = new Size(this.sw, this.sh);
             this.Location = new Point(this.lx, this.ly);
-           // this.btnNormal.Visible = false;
-           // this.btnMaximizar.Visible = true;
+            // this.btnNormal.Visible = false;
+            // this.btnMaximizar.Visible = true;
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -212,7 +211,7 @@ namespace PELOSCALVO
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            if (PanelForms.Controls.Count <= 3)
+            if (this.PanelForms.Controls.Count <= 3)
             {
                 if (MessageBox.Show("Cerrar Toda La Aplicacion", "CERRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -225,13 +224,13 @@ namespace PELOSCALVO
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            if (PanelForms.Controls.Count <= 3)
+            if (this.PanelForms.Controls.Count <= 3)
             {
                 if (MessageBox.Show("Cerrar Toda La Aplicacion", "CERRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     Application.Exit();
-                   // Close();
+                    // Close();
                     //  Hide();
 
                 }
@@ -244,13 +243,13 @@ namespace PELOSCALVO
         {
             if (this.panelMenu.Width == 230)
             {
-                InfoConectado.Visible = false;
+                this.InfoConectado.Visible = false;
                 this.tmContraerMenu.Start();
             }
             else if (this.panelMenu.Width == 55)
             {
                 this.tmExpandirMenu.Start();
-                InfoConectado.Visible = true;
+
             }
 
 
@@ -259,10 +258,14 @@ namespace PELOSCALVO
         private void tmExpandirMenu_Tick(object sender, EventArgs e)
         {
             if (this.panelMenu.Width >= 230)
+            {
                 this.tmExpandirMenu.Stop();
+                this.InfoConectado.Visible = true;
+            }
             else
+            {
                 this.panelMenu.Width = this.panelMenu.Width + 5;
-
+            }
         }
 
         private void tmContraerMenu_Tick(object sender, EventArgs e)
@@ -485,7 +488,7 @@ namespace PELOSCALVO
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
 
-  
+
         }
 
 
@@ -524,7 +527,7 @@ namespace PELOSCALVO
                 frm.BringToFront();
                 this.SiOpenFatu = 1;
                 frm.Show();
-      
+
             }
             else
             {
@@ -719,8 +722,8 @@ namespace PELOSCALVO
                     return;
                 }
             }
-           // this.PanelAcesosDire.Width = this.PanelForms.Width;
-           // this.PanelAcesosDire.Height = this.PanelForms.Height;
+            // this.PanelAcesosDire.Width = this.PanelForms.Width;
+            // this.PanelAcesosDire.Height = this.PanelForms.Height;
             if (this.BtnArchivos.Tag.ToString() == "SI")
             {
                 this.PanelAcesosDire.BringToFront();
@@ -997,7 +1000,7 @@ namespace PELOSCALVO
 
         private void FormMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (PanelForms.Controls.Count >3)
+            if (this.PanelForms.Controls.Count > 3)
             {
                 e.Cancel = true;
             }

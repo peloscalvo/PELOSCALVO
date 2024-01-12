@@ -56,14 +56,14 @@ namespace PELOSCALVO
             this.FiltrarBajasBuscar = new System.Windows.Forms.ComboBox();
             this.labelfiltrarBUSCAR = new System.Windows.Forms.Label();
             this.ListCodigos = new System.Windows.Forms.ListView();
+            this.Id_Codigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Texto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListaQr = new System.Windows.Forms.ComboBox();
             this.BtnCrearQr = new System.Windows.Forms.Button();
             this.TituloText = new System.Windows.Forms.TextBox();
             this.PitureQr = new System.Windows.Forms.PictureBox();
             this.BtnCodifiCar = new System.Windows.Forms.Button();
             this.BtnCancelarBArticulo = new System.Windows.Forms.Button();
-            this.Id_Codigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Texto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
@@ -266,7 +266,6 @@ namespace PELOSCALVO
             this.FiltrarBajasBuscar.TabIndex = 39;
             this.FiltrarBajasBuscar.Tag = "";
             this.FiltrarBajasBuscar.ValueMember = "Articulos De Alta";
-            this.FiltrarBajasBuscar.Visible = false;
             this.FiltrarBajasBuscar.SelectedIndexChanged += new System.EventHandler(this.FiltrarBajasBuscar_SelectedIndexChanged);
             // 
             // labelfiltrarBUSCAR
@@ -299,6 +298,16 @@ namespace PELOSCALVO
             this.ListCodigos.UseCompatibleStateImageBehavior = false;
             this.ListCodigos.View = System.Windows.Forms.View.Details;
             this.ListCodigos.Click += new System.EventHandler(this.ListCodigos_Click);
+            // 
+            // Id_Codigo
+            // 
+            this.Id_Codigo.Text = "Id";
+            this.Id_Codigo.Width = 98;
+            // 
+            // Texto
+            // 
+            this.Texto.Text = "Texto";
+            this.Texto.Width = 335;
             // 
             // ListaQr
             // 
@@ -336,6 +345,7 @@ namespace PELOSCALVO
             // 
             // PitureQr
             // 
+            this.PitureQr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PitureQr.Location = new System.Drawing.Point(810, 294);
             this.PitureQr.Name = "PitureQr";
             this.PitureQr.Size = new System.Drawing.Size(411, 104);
@@ -382,16 +392,6 @@ namespace PELOSCALVO
             this.BtnCancelarBArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelarBArticulo.UseVisualStyleBackColor = false;
             this.BtnCancelarBArticulo.Click += new System.EventHandler(this.BtnCancelarBArticulo_Click);
-            // 
-            // Id_Codigo
-            // 
-            this.Id_Codigo.Text = "Id";
-            this.Id_Codigo.Width = 98;
-            // 
-            // Texto
-            // 
-            this.Texto.Text = "Texto";
-            this.Texto.Width = 335;
             // 
             // FormBuscarArticulos
             // 

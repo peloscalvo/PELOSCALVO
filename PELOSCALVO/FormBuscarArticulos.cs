@@ -3,8 +3,9 @@ using SkiaSharp;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
-
+using MainSoftLib.BarCode;
 namespace PELOSCALVO
 {
     public partial class FormBuscarArticulos : Form
@@ -389,40 +390,34 @@ namespace PELOSCALVO
         }
         public static Bitmap convertirTextoImagen(string texto, int ancho, Color color)
         {
-            //creamos el objeto imagen Bitmap
             Bitmap objBitmap = new Bitmap(1, 1);
             int Width = 0;
             int Height = 0;
-            //formateamos la fuente (tipo de letra, tamaño)
             System.Drawing.Font objFont = new System.Drawing.Font("Arial", 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-
-            //creamos un objeto Graphics a partir del Bitmap
             Graphics objGraphics = Graphics.FromImage(objBitmap);
-
-            //establecemos el tamaño según la longitud del texto
             Width = ancho;
             Height = (int)objGraphics.MeasureString(texto, objFont).Height + 5;
             objBitmap = new Bitmap(objBitmap, new Size(Width, Height));
-
             objGraphics = Graphics.FromImage(objBitmap);
-
             objGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             objGraphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             objGraphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             objGraphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-
             StringFormat drawFormat = new StringFormat();
             objGraphics.Clear(color);
-
             drawFormat.Alignment = StringAlignment.Center;
             objGraphics.DrawString(texto, objFont, new SolidBrush(Color.Black), new RectangleF(0, (objBitmap.Height / 2) - (objBitmap.Height - 10), objBitmap.Width, objBitmap.Height), drawFormat);
             objGraphics.Flush();
-
-
             return objBitmap;
         }
         private void BtnCrearQr_Click(object sender, EventArgs e)
         {
+            if (ListaQr.SelectedIndex <=0)
+            {
+                MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.ListaQr.Focus();
+                return;
+            }
             if (String.IsNullOrEmpty(this.TituloText.Text))
             {
                 MessageBox.Show("Campo De Titulo vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -431,6 +426,9 @@ namespace PELOSCALVO
             }
             try
             {
+                MainSoftLib.BarCode.BarCodeReader red = new BarCodeReader();
+      
+                Image nueva;
                 SKImage imagenCodigo;
                 int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
                 BarcodeStandard.Type tipoCodigo = (BarcodeStandard.Type)indice;
@@ -438,6 +436,8 @@ namespace PELOSCALVO
                 codigo.IncludeLabel = true;
                 // codigo.LabelFont = LabelPositions.BOTTOMCENTER;
                 //codigo.ForeColor = Color.FromArgb(1,11,1)
+ 
+              // nueva = codigo.EncodedImage.Encode(SKEncodedImageFormat.Jpeg,100)
                 imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), SKColors.Black, SKColors.White, 300, 100);
                 Bitmap imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), 300, Color.White);
                 int alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
@@ -447,8 +447,13 @@ namespace PELOSCALVO
                 dibujar.DrawImage(imagenTitulo, new Point(0, 0));
                 // dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
                 //pictureBox1.BackgroundImage = imagenCodigo;
+                imagenCodigo.Encode(SKEncodedImageFormat.Jpeg, 4);
+               // imagenCodigo.EncodedData.ToString();
+                imagenNueva.Save("vv", ImageFormat.Png);
+                codigo.GenerateBarcode(TituloText.Text);
                 this.PitureQr.BackgroundImage = imagenNueva;
-
+                codigo.SaveImage("mi imagen", BarcodeStandard.SaveTypes.Jpg);
+                
             }
             catch (Exception ex)
             {
@@ -461,7 +466,7 @@ namespace PELOSCALVO
         {
             if (!String.IsNullOrEmpty(this.ListCodigos.SelectedItems.ToString()))
             {
-               // TituloText.Text = this.ListCodigos.Items.Columns[1].Text;
+                // TituloText.Text = this.ListCodigos.Items.Columns[1].Text;
             }
         }
     }

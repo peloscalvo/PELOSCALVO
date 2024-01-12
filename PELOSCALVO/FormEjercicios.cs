@@ -127,12 +127,12 @@ namespace PELOSCALVO
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
                 consulta = "INSERT INTO [DtConfi] ([IdEnlace], [EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES(@IdEnlace @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                   "[AñoDeEjercicio]) VALUES(@IdEnlace,@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [IdEnlace]=[@IdEnlace] [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [IdEnlace]=[@IdEnlace] ,[EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
                    " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE IdEnlace = @IdEnlace";
             }
@@ -205,12 +205,12 @@ namespace PELOSCALVO
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
                 consulta = "INSERT INTO [DtConfi] ([IdEnlace], [EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES(@IdEnlace @EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                   "[AñoDeEjercicio]) VALUES(@IdEnlace ,@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [IdEnlace]=[@IdEnlace] [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [IdEnlace]=[@IdEnlace] ,[EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
                    " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE IdEnlace = @IdEnlace";
             }
@@ -364,6 +364,7 @@ namespace PELOSCALVO
         {
             try
             {
+                int Id_Enlace;
                 this.BtnNuevoEjercicio.Tag = "Nuevo";
                 if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
                 {
@@ -372,57 +373,8 @@ namespace PELOSCALVO
                 }
                 // SqlDataReader reader;
 
-                if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-                {
-                  string  consulta = "Select max(IdEnlace) from [DtConfi]";
-                    if (ClsConexionSql.SibaseDatosSql)
-                    {
-                        ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-                        if (NuevaConexion.SiConexionSql)
-                        {
-                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-                            if (reader.HasRows)
-                            {
-                                if (reader.Read())
-                                {
-                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                                    {
-                                        this.IdEnlace.Text =Convert.ToInt32(reader[0].ToString()+1).ToString();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }else
-                    {
-                        ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-                        if (NuevaConexion.SiConexionDb)
-                        {
-                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-                            if (reader.HasRows)
-                            {
-                                if (reader.Read())
-                                {
-                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                                    {
-                                        this.IdEnlace.Text = Convert.ToInt32(reader[0].ToString() + 1).ToString();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }
-   
 
-                }
+   
                 Random r = new Random();
                 int VALORid = r.Next(500, 1000000);
                 int numeroFILA = this.dtConfiDataGridView.Rows.Count;
@@ -465,6 +417,52 @@ namespace PELOSCALVO
                     this.AñoTxt.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
                 this.DescripicionEjer.Text = "Mi Configurarcion Nueva " + this.AñoTxt.Text;
+                string consulta = "Select max(IdEnlace) from [DtConfi]";
+                if (ClsConexionSql.SibaseDatosSql)
+                {
+                    ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+                    if (NuevaConexion.SiConexionSql)
+                    {
+                        SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                            {
+                                
+                                Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                IdEnlace.Text = Convert.ToString( Id_Enlace + 1);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                    if (NuevaConexion.SiConexionDb)
+                    {
+                        OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                            {
+                                Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    }
+                }
                 SiEjercicio();
                 ModificarOjetos_Ej();
             }
@@ -520,9 +518,14 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.IdConfi.Text) & string.IsNullOrEmpty(this.IdEnlace.Text))
+            if (string.IsNullOrEmpty(this.IdConfi.Text))
             {
-                MessageBox.Show("Falta Id", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falta Id Empresa", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(this.IdEnlace.Text))
+            {
+                MessageBox.Show("Falta Id Reguistro", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
