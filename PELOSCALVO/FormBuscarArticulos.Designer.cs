@@ -311,6 +311,7 @@ namespace PELOSCALVO
             // 
             // ListaQr
             // 
+            this.ListaQr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListaQr.FormattingEnabled = true;
             this.ListaQr.Location = new System.Drawing.Point(810, 48);
             this.ListaQr.Name = "ListaQr";

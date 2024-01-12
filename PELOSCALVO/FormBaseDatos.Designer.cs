@@ -51,9 +51,6 @@ namespace PELOSCALVO
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.ErrorVer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TabArchivos = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.BtnLeerSql = new System.Windows.Forms.Button();
-            this.BtnLeer = new System.Windows.Forms.Button();
             this.Info_Res = new System.Windows.Forms.Label();
             this.BtnRestablecer = new System.Windows.Forms.Button();
             this.BtnCrearTbCliente = new System.Windows.Forms.Button();
@@ -298,9 +295,6 @@ namespace PELOSCALVO
             // TabArchivos
             // 
             this.TabArchivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TabArchivos.Controls.Add(this.button1);
-            this.TabArchivos.Controls.Add(this.BtnLeerSql);
-            this.TabArchivos.Controls.Add(this.BtnLeer);
             this.TabArchivos.Controls.Add(this.Info_Res);
             this.TabArchivos.Controls.Add(this.BtnRestablecer);
             this.TabArchivos.Controls.Add(this.BtnCrearTbCliente);
@@ -326,36 +320,6 @@ namespace PELOSCALVO
             this.TabArchivos.Text = "CONFIGURAR ARCHIVOS";
             this.TabArchivos.Click += new System.EventHandler(this.TabArchivos_Click);
             this.TabArchivos.MouseEnter += new System.EventHandler(this.TabArchivos_MouseEnter);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(670, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 102;
-            this.button1.Text = "&Leer sql";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // BtnLeerSql
-            // 
-            this.BtnLeerSql.Location = new System.Drawing.Point(670, 107);
-            this.BtnLeerSql.Name = "BtnLeerSql";
-            this.BtnLeerSql.Size = new System.Drawing.Size(75, 23);
-            this.BtnLeerSql.TabIndex = 101;
-            this.BtnLeerSql.Text = "&Leer sql";
-            this.BtnLeerSql.UseVisualStyleBackColor = true;
-            this.BtnLeerSql.Click += new System.EventHandler(this.BtnLeerSql_Click);
-            // 
-            // BtnLeer
-            // 
-            this.BtnLeer.Location = new System.Drawing.Point(751, 136);
-            this.BtnLeer.Name = "BtnLeer";
-            this.BtnLeer.Size = new System.Drawing.Size(75, 23);
-            this.BtnLeer.TabIndex = 100;
-            this.BtnLeer.Text = "&Leer";
-            this.BtnLeer.UseVisualStyleBackColor = true;
-            this.BtnLeer.Click += new System.EventHandler(this.BtnLeer_Click);
             // 
             // Info_Res
             // 
@@ -909,11 +873,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCrearTbCliente;
         private System.Windows.Forms.Button BtnRestablecer;
         private System.Windows.Forms.Label Info_Res;
-        private System.Windows.Forms.Button BtnLeer;
-        private System.Windows.Forms.Button BtnLeerSql;
         private System.Windows.Forms.TabPage TabLista;
         private System.Windows.Forms.ListBox ListaTablas;
         private System.Windows.Forms.Button BtnActualizar_Servidor;
-        private System.Windows.Forms.Button button1;
     }
 }

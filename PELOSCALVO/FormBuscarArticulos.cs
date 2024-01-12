@@ -60,7 +60,7 @@ namespace PELOSCALVO
             if (ClasDatos.QUEform == "QR")
             {
                 this.Width = 1300;
-
+                FiltrarBajasBuscar.SelectedIndex = 2;
             }
             else
             {
@@ -204,7 +204,10 @@ namespace PELOSCALVO
             this.BuscarArticulosText.Text = Valor33;
             if (ClasDatos.OkFacturar == false)
             {
-                FormArticulos.menu2Articulos.FiltrarBajas.Text = this.FiltrarBajasBuscar.Text;
+                if (ClasDatos.QUEform == "Articulos")
+                {
+                    FormArticulos.menu2Articulos.FiltrarBajas.Text = this.FiltrarBajasBuscar.Text;
+                }
             }
             this.ContadorDatos2.Text = string.Format("{0:N0" + "}", ((this.DataGridViewBuscarArticulos.Rows.Count).ToString()));
 
@@ -364,29 +367,33 @@ namespace PELOSCALVO
 
         private void DataGridViewBuscarArticulos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (ClasDatos.QUEform == "QR")
             {
-                try
+                if (e.RowIndex >= 0)
                 {
-                    ListViewItem lvi = new ListViewItem();
-                    if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
+                    try
                     {
-                        lvi = this.ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
-                        if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
+                        ListViewItem lvi = new ListViewItem();
+                        if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
                         {
-                            lvi.SubItems.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                            lvi = this.ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
+                            if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
+                            {
+                                lvi.SubItems.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+
+                            }
 
                         }
 
                     }
+                    catch (Exception ex)
+                    {
 
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message, "LLENAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "LLENAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+        
         }
         public static Bitmap convertirTextoImagen(string texto, int ancho, Color color)
         {
@@ -449,10 +456,34 @@ namespace PELOSCALVO
                 //pictureBox1.BackgroundImage = imagenCodigo;
                 imagenCodigo.Encode(SKEncodedImageFormat.Jpeg, 4);
                // imagenCodigo.EncodedData.ToString();
-                imagenNueva.Save("vv", ImageFormat.Png);
+               // imagenNueva.Save("vv", ImageFormat.Png);
                 codigo.GenerateBarcode(TituloText.Text);
+                //  Image imagen_codigo = PitureQr.BackgroundImage.Clone() as Image;
+               // this.PitureQr.BackgroundImage = imagenCodigo.ToRasterImage(imagenCodigo,true)
                 this.PitureQr.BackgroundImage = imagenNueva;
-                codigo.SaveImage("mi imagen", BarcodeStandard.SaveTypes.Jpg);
+                SaveFileDialog ventana_dialogo = new SaveFileDialog();
+                ventana_dialogo.FileName = string.Format("{0}.Jpg", TituloText.Text.Trim());
+                ventana_dialogo.Filter = "Imagen|*.png";
+
+               // this.PitureQr.BackgroundImage = Image.FromHbitmap(imagenCodigo);
+                var A = imagenCodigo;
+               // this.PitureQr.BackgroundImage = A;
+                if (ventana_dialogo.ShowDialog() == DialogResult.OK)
+                {
+                    var type = SaveTypes.Unspecified;
+                    switch (ventana_dialogo.FilterIndex)
+                    {
+                        case 1: /* JPG */  type = SaveTypes.Jpg; break;
+                        case 2: /* PNG */  type = SaveTypes.Png; break;
+                        case 3: /* WEBP*/  type = SaveTypes.Webp; break;
+                    }//switch
+
+                    codigo.SaveImage(ventana_dialogo.FileName, type);
+                    this.PitureQr.BackgroundImage = Image.FromFile(ventana_dialogo.FileName);
+                    // imagenCodigo.Save(, ImageFormat.Png);
+                    MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            
                 
             }
             catch (Exception ex)

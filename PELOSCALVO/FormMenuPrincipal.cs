@@ -26,7 +26,7 @@ namespace PELOSCALVO
             ToolTip Info = new ToolTip();
             Info.SetToolTip(this.BtnSql, "Configurar Conexion A Datos");
             Info.SetToolTip(this.btnSalir, "Cerrar Aplicacionn");
-            Info.SetToolTip(this.btnSalir, "Cerrar Aplicacionn");
+            Info.SetToolTip(this.btnCerrar, "Cerrar Aplicacionn");
             Info.IsBalloon = true;
             Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             ToolTip Info2 = new ToolTip();

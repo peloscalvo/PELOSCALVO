@@ -1558,55 +1558,6 @@ namespace PELOSCALVO
         {
 
         }
-
-        private void BtnLeer_Click(object sender, EventArgs e)
-        {
-            if (VALIDARcampos_Archivos())
-            {
-                ObtenerTablasBb();
-            }
-        }
-
-        private void BtnLeerSql_Click(object sender, EventArgs e)
-        {
-            if (ClsConexionSql.CadenaConexion != string.Empty)
-            {
-                // ObtenerTablasSql();
-                string consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
-               " not like 'Dt%'and O.COLUMN_NAME= 'APODOCLIEN'  order by ORDINAL_POSITION";
-                consulta = "SELECT  [name] FROM [PAIS].[sys].[tables]";
-                //  ClsConexionSql.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
-                ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-
-                if (NuevaConexion.SiConexionSql)
-                {
-                    try
-                    {
-                        SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            this.SerieArticulosText.Items.Add(reader[0]).ToString();
-                            this.SerieClientesText2.Items.Add(reader[0]).ToString();
-                            this.ListaTablas.Items.Add(reader[0]).ToString();
-
-                        }
-
-
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message.ToString());
-                    }
-                }
-
-                if (NuevaConexion.CerrarConexionSql)
-                {
-
-                }
-                NuevaConexion.ComandoSql.Parameters.Clear();
-            }
-        }
         public List<string> ObtenerInstanciasSql()
         {
             string Cadena2 = "master";
@@ -1653,14 +1604,6 @@ namespace PELOSCALVO
             ObtenerInstanciasSql();
 
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (ClsConexionSql.CadenaConexion != string.Empty)
-            {
-                ObtenerTablasSql();
-            }
         }
 
         private void Servidor_Validating(object sender, System.ComponentModel.CancelEventArgs e)
