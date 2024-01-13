@@ -1,11 +1,10 @@
 ﻿using BarcodeStandard;
+using MainSoftLib.BarCode;
 using SkiaSharp;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Windows.Forms;
-using MainSoftLib.BarCode;
 namespace PELOSCALVO
 {
     public partial class FormBuscarArticulos : Form
@@ -60,11 +59,13 @@ namespace PELOSCALVO
             if (ClasDatos.QUEform == "QR")
             {
                 this.Width = 1300;
-                FiltrarBajasBuscar.SelectedIndex = 2;
+                this.FiltrarBajasBuscar.SelectedIndex = 2;
+                this.MinimumSize = new Size(1300, 506);
             }
             else
             {
                 this.Width = 803;
+                this.MinimumSize = new Size(803, 506);
             }
             int indice = 0;
             foreach (var nombre in Enum.GetNames(typeof(BarcodeStandard.Type)))
@@ -215,12 +216,33 @@ namespace PELOSCALVO
 
         private void DataGridViewBuscarArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1)
+            if (e.RowIndex >= 0)
             {
                 if (ClasDatos.QUEform == "QR")
                 {
-                    return;
 
+                    try
+                    {
+                        ListViewItem lvi = new ListViewItem();
+                        if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
+                        {
+                            lvi = this.ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
+                            if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
+                            {
+                                lvi.SubItems.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+
+                            }
+
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message, "LLENAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    return;
                 }
 
                 if (this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].Value == DBNull.Value && this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].Value.ToString() == string.Empty)
@@ -367,33 +389,8 @@ namespace PELOSCALVO
 
         private void DataGridViewBuscarArticulos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (ClasDatos.QUEform == "QR")
-            {
-                if (e.RowIndex >= 0)
-                {
-                    try
-                    {
-                        ListViewItem lvi = new ListViewItem();
-                        if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
-                        {
-                            lvi = this.ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
-                            if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
-                            {
-                                lvi.SubItems.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
 
-                            }
 
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message, "LLENAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        
         }
         public static Bitmap convertirTextoImagen(string texto, int ancho, Color color)
         {
@@ -419,7 +416,7 @@ namespace PELOSCALVO
         }
         private void BtnCrearQr_Click(object sender, EventArgs e)
         {
-            if (ListaQr.SelectedIndex <=0)
+            if (this.ListaQr.SelectedIndex <= 0)
             {
                 MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.ListaQr.Focus();
@@ -434,18 +431,20 @@ namespace PELOSCALVO
             try
             {
                 MainSoftLib.BarCode.BarCodeReader red = new BarCodeReader();
-      
+
                 Image nueva;
                 SKImage imagenCodigo;
                 int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
                 BarcodeStandard.Type tipoCodigo = (BarcodeStandard.Type)indice;
                 Barcode codigo = new Barcode();
                 codigo.IncludeLabel = true;
-                // codigo.LabelFont = LabelPositions.BOTTOMCENTER;
+
+                // c            BarcodeStandard.Barcode.DoEncode(tipoCodigo, this.TituloText.Text.Trim())
                 //codigo.ForeColor = Color.FromArgb(1,11,1)
- 
-              // nueva = codigo.EncodedImage.Encode(SKEncodedImageFormat.Jpeg,100)
+                ;
+                // nueva = codigo.EncodedImage.Encode(SKEncodedImageFormat.Jpeg,100)
                 imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), SKColors.Black, SKColors.White, 300, 100);
+                codigo.Alignment = AlignmentPositions.Right;
                 Bitmap imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), 300, Color.White);
                 int alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
                 Bitmap imagenNueva = new Bitmap(300, alto_imagen_nuevo);
@@ -454,37 +453,38 @@ namespace PELOSCALVO
                 dibujar.DrawImage(imagenTitulo, new Point(0, 0));
                 // dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
                 //pictureBox1.BackgroundImage = imagenCodigo;
-                imagenCodigo.Encode(SKEncodedImageFormat.Jpeg, 4);
-               // imagenCodigo.EncodedData.ToString();
-               // imagenNueva.Save("vv", ImageFormat.Png);
-                codigo.GenerateBarcode(TituloText.Text);
+
+                // imagenCodigo.EncodedData.ToString();
+                // imagenNueva.Save("vv", ImageFormat.Png);
+                codigo.GenerateBarcode(this.TituloText.Text);
                 //  Image imagen_codigo = PitureQr.BackgroundImage.Clone() as Image;
-               // this.PitureQr.BackgroundImage = imagenCodigo.ToRasterImage(imagenCodigo,true)
+                // this.PitureQr.BackgroundImage = imagenCodigo.ToRasterImage(imagenCodigo,true)
                 this.PitureQr.BackgroundImage = imagenNueva;
                 SaveFileDialog ventana_dialogo = new SaveFileDialog();
-                ventana_dialogo.FileName = string.Format("{0}.Jpg", TituloText.Text.Trim());
-                ventana_dialogo.Filter = "Imagen|*.png";
+                ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim());
+                ventana_dialogo.Filter = "Archivo De Imagenes|*.jpg;*.jpeg;*.png;*.gif;*.tif;...|All files (*.*)|*.*";
 
-               // this.PitureQr.BackgroundImage = Image.FromHbitmap(imagenCodigo);
-                var A = imagenCodigo;
-               // this.PitureQr.BackgroundImage = A;
+                // this.PitureQr.BackgroundImage =
+                // var A = imagenCodigo;
+                // this.PitureQr.BackgroundImage = A;
                 if (ventana_dialogo.ShowDialog() == DialogResult.OK)
                 {
+
                     var type = SaveTypes.Unspecified;
                     switch (ventana_dialogo.FilterIndex)
                     {
-                        case 1: /* JPG */  type = SaveTypes.Jpg; break;
-                        case 2: /* PNG */  type = SaveTypes.Png; break;
-                        case 3: /* WEBP*/  type = SaveTypes.Webp; break;
+                        case 1: /* JPG */  type = SaveTypes.Jpg; imagenCodigo.Encode(SKEncodedImageFormat.Jpeg, 100); break;
+                        case 2: /* PNG */  type = SaveTypes.Png; imagenCodigo.Encode(SKEncodedImageFormat.Png, 4); break;
+                        case 3: /* WEBP*/  type = SaveTypes.Webp; imagenCodigo.Encode(SKEncodedImageFormat.Webp, 4); break;
                     }//switch
-
+                    imagenCodigo.Encode(SKEncodedImageFormat.Jpeg, 4);
                     codigo.SaveImage(ventana_dialogo.FileName, type);
                     this.PitureQr.BackgroundImage = Image.FromFile(ventana_dialogo.FileName);
                     // imagenCodigo.Save(, ImageFormat.Png);
                     MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            
-                
+
+
             }
             catch (Exception ex)
             {
@@ -498,6 +498,21 @@ namespace PELOSCALVO
             if (!String.IsNullOrEmpty(this.ListCodigos.SelectedItems.ToString()))
             {
                 // TituloText.Text = this.ListCodigos.Items.Columns[1].Text;
+            }
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int I = Convert.ToInt32(ListCodigos.SelectedItems);
+                // ListCodigos.Items[I].SubItems.Clear();
+                ListCodigos.SelectedIndices.Clear();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
             }
         }
     }

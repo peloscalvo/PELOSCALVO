@@ -311,7 +311,8 @@ namespace PELOSCALVO
                                     {
                                         if (!string.IsNullOrEmpty((reader[0]).ToString()))
                                         {
-                                            Id_Confi = Convert.ToInt32(reader[0].ToString() + 1);
+                                            Id_Confi = Convert.ToInt32(reader[0].ToString());
+                                            Id_Confi++;
                                         }
                                         else
                                         {
@@ -526,7 +527,9 @@ namespace PELOSCALVO
                                 {
                                     if (!string.IsNullOrEmpty((reader[0]).ToString()))
                                     {
-                                        Id_Confi = Convert.ToInt32(reader[0].ToString() + 1);
+
+                                        Id_Confi = Convert.ToInt32(reader[0].ToString());
+                                        Id_Confi++;
                                     }
                                     else
                                     {

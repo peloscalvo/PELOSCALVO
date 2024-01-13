@@ -151,32 +151,6 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.AñoTxt.Text) ? (object)DBNull.Value : this.AñoTxt.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-
-                    if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-                    {
-                        consulta = "Select max(IdEnlace) from [DtConfi]";
-                        NuevaConexion = new ClsConexionDb(consulta);
-                        if (NuevaConexion.SiConexionDb)
-                        {
-                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-                            if (reader.HasRows)
-                            {
-                                if (reader.Read())
-                                {
-                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                                    {
-                                        this.IdEnlace.Text = reader[0].ToString();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-
-                    }
                     this.dtConfiguracionPrincipalBindingSource.EndEdit();
                     this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
                     this.dtConfiDataGridView.EndEdit();
@@ -235,27 +209,8 @@ namespace PELOSCALVO
                     Validate();
                     MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetos_Ej();
-
-                    if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-                    {
-                        consulta = "Select max(IdEnlace) from [DtConfi]";
-                        NuevaConexion = new ClsConexionSql(consulta);
-                        if (NuevaConexion.SiConexionSql)
-                        {
-                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-                            if (reader.HasRows)
-                            {
-                                if (reader.Read())
-                                {
-                                    if (!string.IsNullOrEmpty((reader["IdEnlace"]).ToString()))
-                                    {
-                                        this.IdEnlace.Text = Convert.ToInt32(reader["IdEnlace"].ToString() + 1).ToString();
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
+     
             }
             catch (Exception ex)
             {

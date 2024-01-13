@@ -64,6 +64,7 @@ namespace PELOSCALVO
             this.PitureQr = new System.Windows.Forms.PictureBox();
             this.BtnCodifiCar = new System.Windows.Forms.Button();
             this.BtnCancelarBArticulo = new System.Windows.Forms.Button();
+            this.BtnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
@@ -394,11 +395,22 @@ namespace PELOSCALVO
             this.BtnCancelarBArticulo.UseVisualStyleBackColor = false;
             this.BtnCancelarBArticulo.Click += new System.EventHandler(this.BtnCancelarBArticulo_Click);
             // 
+            // BtnLimpiar
+            // 
+            this.BtnLimpiar.Location = new System.Drawing.Point(1227, 101);
+            this.BtnLimpiar.Name = "BtnLimpiar";
+            this.BtnLimpiar.Size = new System.Drawing.Size(52, 23);
+            this.BtnLimpiar.TabIndex = 78;
+            this.BtnLimpiar.Text = "Limpiar";
+            this.BtnLimpiar.UseVisualStyleBackColor = true;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
+            // 
             // FormBuscarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 467);
+            this.Controls.Add(this.BtnLimpiar);
             this.Controls.Add(this.PitureQr);
             this.Controls.Add(this.TituloText);
             this.Controls.Add(this.BtnCrearQr);
@@ -457,5 +469,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.PictureBox PitureQr;
         private System.Windows.Forms.ColumnHeader Id_Codigo;
         private System.Windows.Forms.ColumnHeader Texto;
+        private System.Windows.Forms.Button BtnLimpiar;
     }
 }
