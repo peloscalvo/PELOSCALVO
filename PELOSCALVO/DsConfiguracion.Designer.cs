@@ -1348,7 +1348,7 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiguracionPrincipalRow AddDtConfiguracionPrincipalRow(
-                        string EmpresaConfi, 
+                        int EmpresaConfi, 
                         int IdEmpresa, 
                         string NombreEmpresa, 
                         string DireccionEmpresa, 
@@ -1428,7 +1428,7 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnEmpresaConfi = new global::System.Data.DataColumn("EmpresaConfi", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEmpresaConfi = new global::System.Data.DataColumn("EmpresaConfi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaConfi);
                 this.columnIdEmpresa = new global::System.Data.DataColumn("IdEmpresa", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdEmpresa);
@@ -2526,10 +2526,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EmpresaConfi {
+            public int EmpresaConfi {
                 get {
                     try {
-                        return ((string)(this[this.tableDtConfiguracionPrincipal.EmpresaConfiColumn]));
+                        return ((int)(this[this.tableDtConfiguracionPrincipal.EmpresaConfiColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EmpresaConfi\' de la tabla \'DtConfiguracionPrincipal\' es D" +

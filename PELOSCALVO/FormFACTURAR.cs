@@ -430,7 +430,7 @@ namespace PELOSCALVO
             {
                 try
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : this.EnlaceFactu.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value :Convert.ToInt32( this.EnlaceFactu.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.NumeroFactura.Text) ? (object)DBNull.Value : Convert.ToInt32(this.NumeroFactura.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.apodoTextBox.Text) ? (object)DBNull.Value : this.apodoTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.nombreTextBox.Text) ? (object)DBNull.Value : this.nombreTextBox.Text);
@@ -452,7 +452,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : this.Id_Empresa.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value :Convert.ToInt32( this.Id_Empresa.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
                     if (this.cobradaFacturaCheckBox.Checked)
                     {
@@ -480,7 +480,7 @@ namespace PELOSCALVO
                         {
                             if (ConexionDetalleEliminar.SiConexionDb)
                             {
-                                ConexionDetalleEliminar.ComandoDb.Parameters.AddWithValue("@EnlaceFactu", this.EnlaceFactu.Text);
+                                ConexionDetalleEliminar.ComandoDb.Parameters.AddWithValue("@EnlaceFactu", Convert.ToInt32(EnlaceFactu.Text));
                                 ConexionDetalleEliminar.ComandoDb.ExecuteNonQuery();
                                 if (ConexionDetalleEliminar.CerrarConexionDB)
                                 {
@@ -514,7 +514,7 @@ namespace PELOSCALVO
                                 NuevaConexionDetalle.ComandoDb.Parameters.AddWithValue("@DescuentoDetalle", string.IsNullOrEmpty(FilaGri.Cells[5].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[5].Value.ToString()) * 100);
                                 NuevaConexionDetalle.ComandoDb.Parameters.AddWithValue("@IvaDetalle", string.IsNullOrEmpty(FilaGri.Cells[6].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[6].Value.ToString()));
                                 NuevaConexionDetalle.ComandoDb.Parameters.AddWithValue("@ImporteDetalle", string.IsNullOrEmpty(FilaGri.Cells[7].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[7].Value.ToString()));
-                                NuevaConexionDetalle.ComandoDb.Parameters.AddWithValue("@EnlaceDetalle", string.IsNullOrEmpty(FilaGri.Cells[8].Value.ToString()) ? (object)DBNull.Value : FilaGri.Cells[8].Value.ToString());
+                                NuevaConexionDetalle.ComandoDb.Parameters.AddWithValue("@EnlaceDetalle", string.IsNullOrEmpty(EnlaceFactu.Text) ? (object)DBNull.Value :Convert.ToInt32( EnlaceFactu.Text));
                                 NuevaConexionDetalle.ComandoDb.ExecuteNonQuery();
                                 NuevaConexionDetalle.ComandoDb.Parameters.Clear();
                             }
@@ -536,7 +536,7 @@ namespace PELOSCALVO
                                 ClsConexionDb ConexionDetalleEliminar2 = new ClsConexionDb(ConsultaEliminar2);
                                 if (ConexionDetalleEliminar2.SiConexionDb)
                                 {
-                                    ConexionDetalleEliminar2.ComandoDb.Parameters.AddWithValue("@EnlaceFactu", this.EnlaceFactu.Text);
+                                    ConexionDetalleEliminar2.ComandoDb.Parameters.AddWithValue("@EnlaceFactu", Convert.ToInt32(EnlaceFactu.Text));
                                     ConexionDetalleEliminar2.ComandoDb.ExecuteNonQuery();
 
                                     if (ConexionDetalleEliminar2.CerrarConexionDB)
@@ -565,7 +565,7 @@ namespace PELOSCALVO
                                 NuevaConexionDetalle2.ComandoDb.Parameters.AddWithValue("@PrecioDetalle", string.IsNullOrEmpty(FilaGri.Cells[4].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[4].Value.ToString()));
                                 NuevaConexionDetalle2.ComandoDb.Parameters.AddWithValue("@DescuentoDetalle", string.IsNullOrEmpty(FilaGri.Cells[5].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[5].Value.ToString()) * 100);
                                 NuevaConexionDetalle2.ComandoDb.Parameters.AddWithValue("@ImporteDetalle", string.IsNullOrEmpty(FilaGri.Cells[6].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[6].Value.ToString()));
-                                NuevaConexionDetalle2.ComandoDb.Parameters.AddWithValue("@EnlaceDetalle", string.IsNullOrEmpty(FilaGri.Cells[7].Value.ToString()) ? (object)DBNull.Value : FilaGri.Cells[7].Value.ToString());
+                                NuevaConexionDetalle2.ComandoDb.Parameters.AddWithValue("@EnlaceDetalle", string.IsNullOrEmpty(EnlaceFactu.Text) ? (object)DBNull.Value : Convert.ToInt32(EnlaceFactu.Text));
                                 NuevaConexionDetalle2.ComandoDb.ExecuteNonQuery();
                                 NuevaConexionDetalle2.ComandoDb.Parameters.Clear();
 
@@ -681,7 +681,7 @@ namespace PELOSCALVO
 
             if (NuevaConexion.SiConexionSql)
             {
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : this.EnlaceFactu.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : Convert.ToInt32(EnlaceFactu.Text));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.NumeroFactura.Text) ? (object)DBNull.Value : Convert.ToInt32(this.NumeroFactura.Text));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.apodoTextBox.Text) ? (object)DBNull.Value : this.apodoTextBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.nombreTextBox.Text) ? (object)DBNull.Value : this.nombreTextBox.Text);
@@ -703,7 +703,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : this.Id_Empresa.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
 
 
@@ -747,7 +747,7 @@ namespace PELOSCALVO
                         {
                             try
                             {
-                                ConexionDetalleEliminar.ComandoSql.Parameters.AddWithValue("@EnlaceFactu", this.EnlaceFactu.Text);
+                                ConexionDetalleEliminar.ComandoSql.Parameters.AddWithValue("@EnlaceFactu", Convert.ToInt32(EnlaceFactu.Text));
                                 ConexionDetalleEliminar.ComandoSql.ExecuteNonQuery();
                             }
                             catch (Exception ex)
@@ -788,7 +788,7 @@ namespace PELOSCALVO
                                 NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@DescuentoDetalle", string.IsNullOrEmpty(FilaGri.Cells[5].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[5].Value.ToString()));
                                 NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@IvaDetalle", string.IsNullOrEmpty(FilaGri.Cells[6].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[6].Value.ToString()));
                                 NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@ImporteDetalle", string.IsNullOrEmpty(FilaGri.Cells[7].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[7].Value.ToString()));
-                                NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@EnlaceDetalle", string.IsNullOrEmpty(FilaGri.Cells[8].Value.ToString()) ? (object)DBNull.Value : FilaGri.Cells[8].Value.ToString());
+                                NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@EnlaceDetalle", string.IsNullOrEmpty(EnlaceFactu.Text) ? (object)DBNull.Value : Convert.ToInt32(EnlaceFactu.Text));
                                 NuevaConexionDetalle.ComandoSql.ExecuteNonQuery();
                                 NuevaConexionDetalle.ComandoSql.Parameters.Clear();
                                 i++;
@@ -823,7 +823,7 @@ namespace PELOSCALVO
                             {
                                 try
                                 {
-                                    ConexionDetalleEliminar2.ComandoSql.Parameters.AddWithValue("@EnlaceFactu", this.EnlaceFactu.Text);
+                                    ConexionDetalleEliminar2.ComandoSql.Parameters.AddWithValue("@EnlaceFactu", Convert.ToInt32(EnlaceFactu.Text));
                                     ConexionDetalleEliminar2.ComandoSql.ExecuteNonQuery();
                                 }
                                 catch (Exception ex)
@@ -859,7 +859,7 @@ namespace PELOSCALVO
                                 NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@DescuentoDetalle", string.IsNullOrEmpty(FilaGri.Cells[5].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[5].Value.ToString()));
                                 NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@PrecioDetalle", string.IsNullOrEmpty(FilaGri.Cells[4].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[4].Value.ToString()));
                                 NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@ImporteDetalle", string.IsNullOrEmpty(FilaGri.Cells[6].Value.ToString()) ? (object)DBNull.Value : Convert.ToDouble(FilaGri.Cells[6].Value.ToString()));
-                                NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@EnlaceDetalle", string.IsNullOrEmpty(FilaGri.Cells[7].Value.ToString()) ? (object)DBNull.Value : FilaGri.Cells[7].Value.ToString());
+                                NuevaConexionDetalle.ComandoSql.Parameters.AddWithValue("@EnlaceDetalle", string.IsNullOrEmpty(EnlaceFactu.Text) ? (object)DBNull.Value : Convert.ToInt32(EnlaceFactu.Text));
                                 NuevaConexionDetalle.ComandoSql.ExecuteNonQuery();
                                 NuevaConexionDetalle.ComandoSql.Parameters.Clear();
                                 i++;
@@ -963,7 +963,7 @@ namespace PELOSCALVO
                     Salto_Atras:
                     Random r = new Random();
                     VALOR_MAS = r.Next(5, 10000);
-                    this.EnlaceFactu.Text = this.Id_Empresa.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
+                  //  this.EnlaceFactu.Text = this.Id_Empresa.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
                     this.FechaFactura.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
                     this.dtNuevaFacturaDataGridView.Rows[this.dtNuevaFacturaDataGridView.Rows.Count - 1].Selected = true;
                     // this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
@@ -997,11 +997,70 @@ namespace PELOSCALVO
                     }
                     ModificarOjetosFatu();
                     BORRARerrores();
-
+                    Int32 Id_Enlace = 0;
                     this.apodoTextBox.Focus();
                     // this.numeroFacturaTextBox.Enabled = false;
+                    string consulta = "Select max(EnlaceFactura) from [DtNuevaFactura]";
                     this.panelBotones.Tag = "Nuevo";
+                    if (ClsConexionSql.SibaseDatosSql)
+                    {
+                        ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+                        if (NuevaConexion.SiConexionSql)
+                        {
+                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                {
+
+                                    Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                    EnlaceFactu.Text = Convert.ToString(Id_Enlace + 1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                        if (NuevaConexion.SiConexionDb)
+                        {
+                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                {
+                                    Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                    EnlaceFactu.Text = Convert.ToString(Id_Enlace + 1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                  
                 }
+
+
             }
             catch (Exception ex)
             {
@@ -2733,7 +2792,7 @@ namespace PELOSCALVO
                         {
                             try
                             {
-                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceFactura", this.EnlaceFactu.Text);
+                                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceFactura", Convert.ToInt32(EnlaceFactu.Text));
                                 NuevaConexion.ComandoSql.ExecuteNonQuery();
                                 this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
                                 this.dtNuevaFacturaBindingSource.EndEdit();
@@ -2764,7 +2823,7 @@ namespace PELOSCALVO
                             {
                                 try
                                 {
-                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", this.EnlaceFactu.Text);
+                                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", Convert.ToInt32(EnlaceFactu.Text));
                                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                                     this.dtNuevaFacturaDataGridView.Rows.RemoveAt(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex);
                                     this.dtNuevaFacturaBindingSource.EndEdit();

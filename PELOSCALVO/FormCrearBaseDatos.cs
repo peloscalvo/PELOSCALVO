@@ -423,19 +423,19 @@ namespace PELOSCALVO
 
 
                 string ConsultaEmpresas = "IF not EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfiguracionPrincipal]') AND type in (N'U'))" +
-              "CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] int primary key Not NULL, [EmpresaConfi][varchar](60) NULL, [NombreEmpresa] [varchar](60) NULL," +
+              "CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] [int] primary key Not NULL, [EmpresaConfi][varchar](60) NULL, [NombreEmpresa] [varchar](60) NULL," +
                "[DireccionEmpresa] [varchar](60) NULL,[LocalidadEmpresa] [varchar](50) NULL,[CodigoPostalEmpresa] [varchar](25) NULL,[ProvinciaEmpresa] [varchar](30) NULL," +
                "[TelefonoEmpresa] [varchar](20) NULL,[CorreoEmpresa] [varchar](30) NULL,[WepEmpresa] [varchar](40) NULL,[RegimenIvaEmpresa] [varchar](30) NULL," +
                " [PaisEmpresa] [varchar](40) NULL,[SerieDeFacturacionEmpresa] [varchar](10) NULL,[Telefono2Empresa] [varchar](25) NULL,[MovilEmpresa] [varchar](25) NULL," +
                 " [CifEmpresa] [varchar](20) NULL,[ImagenEmpresa] [image] NULL) " +
 
                 "IF NOT  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfi]') AND type in (N'U')) " +
-                "CREATE TABLE[DtConfi]([IdEnlace][int]int primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
-               "[EmpresaENLACE] [int] NOT NULL,[IdConexionConfi] INT NULL, [AñoDeEjercicio] [varchar](60) NULL," +
+                "CREATE TABLE[DtConfi]([IdEnlace][int] primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
+               "[EmpresaENLACE] [int] NOT NULL,[IdConexionConfi] [int] NULL, [AñoDeEjercicio] [varchar](60) NULL," +
                 " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 
                 string ConsultaTablas = "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProveedores]') AND type in (N'U'))" +
-                      "   CREATE TABLE [DtProveedores]( [Id_Proveedores]int not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [int] Not NULL, " +
+                      "   CREATE TABLE [DtProveedores]( [Id_Proveedores][int] not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [int] Not NULL, " +
                       " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                       "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +
@@ -514,18 +514,18 @@ namespace PELOSCALVO
                             {
                                 VALORid = r.Next(500, 90000);
                                 ConsultaFacturacion = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaFactu + "]') AND type in (N'U')) " +
-                                "CREATE TABLE [" + TablaFactu + "]([EnlaceFactura] [varchar](250) primary key Not NULL, [NumeroFactura] int NOT NULL,[Apodo] [varchar](50) NULL,[Nombre] [varchar](60) NULL," +
+                                "CREATE TABLE [" + TablaFactu + "]([EnlaceFactura] [int] primary key Not NULL, [NumeroFactura] int NOT NULL,[Apodo] [varchar](50) NULL,[Nombre] [varchar](60) NULL," +
                                 "[Direccion] [varchar](50) NULL,[Calle] [varchar](30) NULL,[NumeroCalle] [varchar](20) NULL,[Dni] [Varchar](16) NULL,[Localidad] [varchar](50) NULL," +
                                 "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[FechaFactura] [date] NULL," +
                                 "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
                                 "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
-                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [varchar](250) NULL,[EnlaceDtconfi][int] NOT NULL," +
+                                "[EjercicioTipo] [varchar](50) NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [int] NULL,[EnlaceDtconfi][int] NOT NULL," +
                                 "CONSTRAINT F_" + TablaFactu + VALORid.ToString() +" FOREIGN KEY(EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                                 "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +
                                "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle][varchar](50) NULL,[CantidadDetalle] [numeric](13, 3) NULL,[DescripccionDetalle] [varchar](60) NULL," +
                                "[DescuentoDetalle] [numeric](19, 3) NULL,[PrecioDetalle] [numeric](19, 3) NULL,[IvaDetalle] [numeric](10, 3) NULL,[ImporteDetalle] [numeric](19, 3) NULL," +
-                               "[EnlaceDetalle] [varchar](250) not NULL, CONSTRAINT FK_" + i + TablaFactu + VALORid + " FOREIGN KEY(EnlaceDetalle)REFERENCES " + TablaFactu + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE" + ")";
+                               "[EnlaceDetalle] [int] not NULL, CONSTRAINT FK_" + i + TablaFactu + VALORid + " FOREIGN KEY(EnlaceDetalle)REFERENCES " + TablaFactu + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE" + ")";
 
 
                                 using (SqlCommand comando3 = new SqlCommand(ConsultaFacturacion, NuevaConexion))

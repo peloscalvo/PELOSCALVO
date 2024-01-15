@@ -102,14 +102,11 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BarcodeStandard, Version=3.0.3.0, Culture=neutral, PublicKeyToken=5f09bda868cc39e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\BarcodeLib.3.0.3\lib\netstandard2.0\BarcodeStandard.dll</HintPath>
+    <Reference Include="BarcodeLib">
+      <HintPath>..\..\..\Users\Victor Pais\Desktop\BarcodeLib.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="MainSoftLib.BarCode, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MainSoftLib.BarCode.1.4.3\lib\net47\MainSoftLib.BarCode.dll</HintPath>
     </Reference>
     <Reference Include="MainSoftLib.Pdf, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MainSoftLib.Pdf.1.4.3\lib\net47\MainSoftLib.Pdf.dll</HintPath>

@@ -754,9 +754,9 @@ namespace PELOSCALVO {
                         string EmpresaTipo, 
                         string EjercicioTipo, 
                         string SerieTipo, 
-                        string EnlaceFactura, 
-                        string EmpresaEnlace, 
-                        string EnlaceDtconfi) {
+                        int EnlaceFactura, 
+                        short EmpresaEnlace, 
+                        int EnlaceDtconfi) {
                 DtNuevaFacturaRow rowDtNuevaFacturaRow = ((DtNuevaFacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NumeroFactura,
@@ -892,14 +892,17 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnEjercicioTipo);
                 this.columnSerieTipo = new global::System.Data.DataColumn("SerieTipo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSerieTipo);
-                this.columnEnlaceFactura = new global::System.Data.DataColumn("EnlaceFactura", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEnlaceFactura = new global::System.Data.DataColumn("EnlaceFactura", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceFactura);
-                this.columnEmpresaEnlace = new global::System.Data.DataColumn("EmpresaEnlace", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEmpresaEnlace = new global::System.Data.DataColumn("EmpresaEnlace", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaEnlace);
-                this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceDtconfi);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnEnlaceFactura}, false));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnApodo}, false));
+                this.columnApodo.Unique = true;
                 this.columnEnlaceFactura.Unique = true;
             }
             
@@ -1247,7 +1250,7 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnIvaDetalle);
                 this.columnImporteDetalle = new global::System.Data.DataColumn("ImporteDetalle", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImporteDetalle);
-                this.columnEnlaceDetalle = new global::System.Data.DataColumn("EnlaceDetalle", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEnlaceDetalle = new global::System.Data.DataColumn("EnlaceDetalle", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceDetalle);
             }
             
@@ -1581,7 +1584,7 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnPrecioDetalle);
                 this.columnImporteDetalle = new global::System.Data.DataColumn("ImporteDetalle", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImporteDetalle);
-                this.columnEnlaceDetalle = new global::System.Data.DataColumn("EnlaceDetalle", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEnlaceDetalle = new global::System.Data.DataColumn("EnlaceDetalle", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceDetalle);
             }
             
@@ -2125,10 +2128,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EnlaceFactura {
+            public int EnlaceFactura {
                 get {
                     try {
-                        return ((string)(this[this.tableDtNuevaFactura.EnlaceFacturaColumn]));
+                        return ((int)(this[this.tableDtNuevaFactura.EnlaceFacturaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceFactura\' de la tabla \'DtNuevaFactura\' es DBNull.", e);
@@ -2141,10 +2144,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EmpresaEnlace {
+            public short EmpresaEnlace {
                 get {
                     try {
-                        return ((string)(this[this.tableDtNuevaFactura.EmpresaEnlaceColumn]));
+                        return ((short)(this[this.tableDtNuevaFactura.EmpresaEnlaceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EmpresaEnlace\' de la tabla \'DtNuevaFactura\' es DBNull.", e);
@@ -2157,10 +2160,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EnlaceDtconfi {
+            public int EnlaceDtconfi {
                 get {
                     try {
-                        return ((string)(this[this.tableDtNuevaFactura.EnlaceDtconfiColumn]));
+                        return ((int)(this[this.tableDtNuevaFactura.EnlaceDtconfiColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceDtconfi\' de la tabla \'DtNuevaFactura\' es DBNull.", e);
@@ -2664,10 +2667,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EnlaceDetalle {
+            public int EnlaceDetalle {
                 get {
                     try {
-                        return ((string)(this[this.tableDtDetallesFactura.EnlaceDetalleColumn]));
+                        return ((int)(this[this.tableDtDetallesFactura.EnlaceDetalleColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceDetalle\' de la tabla \'DtDetallesFactura\' es DBNull." +
@@ -2905,10 +2908,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EnlaceDetalle {
+            public int EnlaceDetalle {
                 get {
                     try {
-                        return ((string)(this[this.tableDtDetallesFactura2.EnlaceDetalleColumn]));
+                        return ((int)(this[this.tableDtDetallesFactura2.EnlaceDetalleColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceDetalle\' de la tabla \'DtDetallesFactura2\' es DBNull" +

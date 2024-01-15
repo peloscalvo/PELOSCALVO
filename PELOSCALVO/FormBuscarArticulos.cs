@@ -1,10 +1,11 @@
-﻿using BarcodeStandard;
-using MainSoftLib.BarCode;
-using SkiaSharp;
+﻿//using BarcodeStandard;
+//using SkiaSharp;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using iTextSharp.text.pdf.qrcode;
+using BarcodeLib;
 namespace PELOSCALVO
 {
     public partial class FormBuscarArticulos : Form
@@ -68,7 +69,7 @@ namespace PELOSCALVO
                 this.MinimumSize = new Size(803, 506);
             }
             int indice = 0;
-            foreach (var nombre in Enum.GetNames(typeof(BarcodeStandard.Type)))
+            foreach (var nombre in Enum.GetNames(typeof(BarcodeLib.TYPE)))
             {
                 this.ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
                 indice++;
@@ -430,60 +431,22 @@ namespace PELOSCALVO
             }
             try
             {
-                MainSoftLib.BarCode.BarCodeReader red = new BarCodeReader();
-
-                Image nueva;
-                SKImage imagenCodigo;
+                Image imagenCodigo;
                 int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
-                BarcodeStandard.Type tipoCodigo = (BarcodeStandard.Type)indice;
+                BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
                 Barcode codigo = new Barcode();
                 codigo.IncludeLabel = true;
-
-                // c            BarcodeStandard.Barcode.DoEncode(tipoCodigo, this.TituloText.Text.Trim())
-                //codigo.ForeColor = Color.FromArgb(1,11,1)
-                ;
-                // nueva = codigo.EncodedImage.Encode(SKEncodedImageFormat.Jpeg,100)
-                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), SKColors.Black, SKColors.White, 300, 100);
-                codigo.Alignment = AlignmentPositions.Right;
+                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, 300, 100);
+                codigo.Alignment = AlignmentPositions.CENTER;
                 Bitmap imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), 300, Color.White);
                 int alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
                 Bitmap imagenNueva = new Bitmap(300, alto_imagen_nuevo);
                 Graphics dibujar = Graphics.FromImage(imagenNueva);
-                SKBitmap dibujar2 = SKBitmap.FromImage(imagenCodigo);
                 dibujar.DrawImage(imagenTitulo, new Point(0, 0));
-                // dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
-                //pictureBox1.BackgroundImage = imagenCodigo;
+                dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                this.PitureQr.BackgroundImage = imagenCodigo;
 
-                // imagenCodigo.EncodedData.ToString();
-                // imagenNueva.Save("vv", ImageFormat.Png);
-                codigo.GenerateBarcode(this.TituloText.Text);
-                //  Image imagen_codigo = PitureQr.BackgroundImage.Clone() as Image;
-                // this.PitureQr.BackgroundImage = imagenCodigo.ToRasterImage(imagenCodigo,true)
-                this.PitureQr.BackgroundImage = imagenNueva;
-                SaveFileDialog ventana_dialogo = new SaveFileDialog();
-                ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim());
-                ventana_dialogo.Filter = "Archivo De Imagenes|*.jpg;*.jpeg;*.png;*.gif;*.tif;...|All files (*.*)|*.*";
-
-                // this.PitureQr.BackgroundImage =
-                // var A = imagenCodigo;
-                // this.PitureQr.BackgroundImage = A;
-                if (ventana_dialogo.ShowDialog() == DialogResult.OK)
-                {
-
-                    var type = SaveTypes.Unspecified;
-                    switch (ventana_dialogo.FilterIndex)
-                    {
-                        case 1: /* JPG */  type = SaveTypes.Jpg; imagenCodigo.Encode(SKEncodedImageFormat.Jpeg, 100); break;
-                        case 2: /* PNG */  type = SaveTypes.Png; imagenCodigo.Encode(SKEncodedImageFormat.Png, 4); break;
-                        case 3: /* WEBP*/  type = SaveTypes.Webp; imagenCodigo.Encode(SKEncodedImageFormat.Webp, 4); break;
-                    }//switch
-                    imagenCodigo.Encode(SKEncodedImageFormat.Jpeg, 4);
-                    codigo.SaveImage(ventana_dialogo.FileName, type);
-                    this.PitureQr.BackgroundImage = Image.FromFile(ventana_dialogo.FileName);
-                    // imagenCodigo.Save(, ImageFormat.Png);
-                    MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
+                   // MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
@@ -495,9 +458,18 @@ namespace PELOSCALVO
 
         private void ListCodigos_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(this.ListCodigos.SelectedItems.ToString()))
+            try
             {
-                // TituloText.Text = this.ListCodigos.Items.Columns[1].Text;
+                int I = ListCodigos.FocusedItem.Index;
+                if (!String.IsNullOrEmpty(this.ListCodigos.SelectedItems.ToString()))
+                {
+                    TituloText.Text = this.ListCodigos.Items[I].SubItems.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
             }
         }
 
@@ -505,9 +477,73 @@ namespace PELOSCALVO
         {
             try
             {
-                int I = Convert.ToInt32(ListCodigos.SelectedItems);
+
                 // ListCodigos.Items[I].SubItems.Clear();
                 ListCodigos.SelectedIndices.Clear();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        private void BtnCodifiCar_Click(object sender, EventArgs e)
+        {
+            if (this.ListaQr.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.ListaQr.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(this.TituloText.Text))
+            {
+                MessageBox.Show("Campo De Titulo vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.TituloText.Focus();
+                return;
+            }
+            try
+            {
+                Image imagenCodigo;
+                Bitmap imagenTitulo;
+                Bitmap imagenNueva;
+                int alto_imagen_nuevo = 0;
+                Graphics dibujar;
+                int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+                BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
+                Barcode codigo = new Barcode();
+                codigo.IncludeLabel = true;
+      
+                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, 300, 100);
+                codigo.Alignment = AlignmentPositions.CENTER;
+                 imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), 300, Color.White);
+                 alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
+                imagenNueva = new Bitmap(300, alto_imagen_nuevo);
+                 dibujar = Graphics.FromImage(imagenNueva);
+                dibujar.DrawImage(imagenTitulo, new Point(0, 0));
+                dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                this.PitureQr.BackgroundImage = imagenNueva;
+                SaveFileDialog ventana_dialogo = new SaveFileDialog();
+                ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim());
+                ventana_dialogo.Filter = "Archivo De Imagenes|*.jpg;*.jpeg;*.png;*.gif;*.tif;...|All files (*.*)|*.*";
+                this.PitureQr.BackgroundImage = imagenCodigo;
+                if (ventana_dialogo.ShowDialog() == DialogResult.OK)
+                {
+
+                    var type = SaveTypes.UNSPECIFIED;
+                    switch (ventana_dialogo.FilterIndex)
+                    {
+                        case 1: /* JPG */  type = SaveTypes.JPG; break;
+                        case 2: /* PNG */  type = SaveTypes.PNG; break;
+                        case 3: /* GIF*/  type = SaveTypes.GIF; break;
+                    }//switch
+                    codigo.SaveImage(ventana_dialogo.FileName, type);
+                    //  this.PitureQr.BackgroundImage = Image.FromFile(ventana_dialogo.FileName);
+                    // PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Png)
+                    MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+
             }
             catch (Exception ex)
             {

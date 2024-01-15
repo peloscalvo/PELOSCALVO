@@ -465,19 +465,19 @@ namespace PELOSCALVO
                             valor = r.Next(10, 10000);
                             if (i != 3)
                             {
-                                ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER not null,[Apodo] varchar ,[Nombre] varchar," +
+                                ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] INTEGER primary key , [NumeroFactura] INTEGER not null,[Apodo] varchar ,[Nombre] varchar," +
                              "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
                               "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
                              "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
                              "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-                            "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar not null,[EnlaceDtconfi] INTEGER not null," +
+                            "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] INTEGER not null,[EnlaceDtconfi] INTEGER not null," +
                             "CONSTRAINT F_DtConfi" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )";
                             }
 
 
                             ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
                                    ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
-                                   ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar not null" +
+                                   ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] INTEGER not null" +
                                    ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
                             using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
                             {

@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:DtAlmacenes" ZOrder="7" X="240" Y="18" Height="105" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
     <Shape ID="DesignTable:DtConfi" ZOrder="6" X="245" Y="239" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
-    <Shape ID="DesignTable:DtConfiguracionPrincipal" ZOrder="9" X="11" Y="8" Height="255" Width="212" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="251" />
+    <Shape ID="DesignTable:DtConfiguracionPrincipal" ZOrder="9" X="11" Y="8" Height="524" Width="212" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="520" />
     <Shape ID="DesignTable:DtTarifaTipo" ZOrder="8" X="239" Y="458" Height="106" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:DtProveedores" ZOrder="1" X="258" Y="136" Height="105" Width="152" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
   </Shapes>
@@ -41,15 +41,15 @@
       <RoutePoints>
         <Point>
           <X>206</X>
-          <Y>263</Y>
+          <Y>532</Y>
         </Point>
         <Point>
           <X>206</X>
-          <Y>475</Y>
+          <Y>540</Y>
         </Point>
         <Point>
           <X>239</X>
-          <Y>475</Y>
+          <Y>540</Y>
         </Point>
       </RoutePoints>
     </Connector>

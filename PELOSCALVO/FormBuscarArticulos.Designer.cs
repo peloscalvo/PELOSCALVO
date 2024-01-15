@@ -37,7 +37,6 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarArticulos));
             this.TIPObuscarArticulos = new System.Windows.Forms.ComboBox();
             this.BuscarArticulosText = new System.Windows.Forms.TextBox();
@@ -287,10 +286,6 @@ namespace PELOSCALVO
             this.Texto});
             this.ListCodigos.FullRowSelect = true;
             this.ListCodigos.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
-            this.ListCodigos.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
             this.ListCodigos.HideSelection = false;
             this.ListCodigos.Location = new System.Drawing.Point(810, 101);
             this.ListCodigos.Name = "ListCodigos";
@@ -369,9 +364,10 @@ namespace PELOSCALVO
             this.BtnCodifiCar.Name = "BtnCodifiCar";
             this.BtnCodifiCar.Size = new System.Drawing.Size(89, 42);
             this.BtnCodifiCar.TabIndex = 73;
-            this.BtnCodifiCar.Text = "&Aceptar";
+            this.BtnCodifiCar.Text = "&Guardar";
             this.BtnCodifiCar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCodifiCar.UseVisualStyleBackColor = false;
+            this.BtnCodifiCar.Click += new System.EventHandler(this.BtnCodifiCar_Click);
             // 
             // BtnCancelarBArticulo
             // 
