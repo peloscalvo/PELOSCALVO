@@ -336,6 +336,8 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnId;
             
+            private global::System.Data.DataColumn columnCodigoBarras;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtInicioMultiDataTable() {
@@ -459,6 +461,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CodigoBarrasColumn {
+                get {
+                    return this.columnCodigoBarras;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -494,7 +504,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtInicioMultiRow AddDtInicioMultiRow(string EmpresaInicio, string EjercicioInicio, string SerieInicio, string NombreArchivoDatos, string RutaArchivoDatos, string SerieProvinciaInicio, string SeriePaisInicio, string ArchivoArticulos, string TipoExtensionArticulos, string ArchivoClientes, int Id) {
+            public DtInicioMultiRow AddDtInicioMultiRow(string EmpresaInicio, string EjercicioInicio, string SerieInicio, string NombreArchivoDatos, string RutaArchivoDatos, string SerieProvinciaInicio, string SeriePaisInicio, string ArchivoArticulos, string TipoExtensionArticulos, string ArchivoClientes, int Id, string CodigoBarras) {
                 DtInicioMultiRow rowDtInicioMultiRow = ((DtInicioMultiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         EmpresaInicio,
@@ -507,7 +517,8 @@ namespace PELOSCALVO {
                         ArchivoArticulos,
                         TipoExtensionArticulos,
                         ArchivoClientes,
-                        Id};
+                        Id,
+                        CodigoBarras};
                 rowDtInicioMultiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtInicioMultiRow);
                 return rowDtInicioMultiRow;
@@ -541,6 +552,7 @@ namespace PELOSCALVO {
                 this.columnTipoExtensionArticulos = base.Columns["TipoExtensionArticulos"];
                 this.columnArchivoClientes = base.Columns["ArchivoClientes"];
                 this.columnId = base.Columns["Id"];
+                this.columnCodigoBarras = base.Columns["CodigoBarras"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -568,6 +580,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnArchivoClientes);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
+                this.columnCodigoBarras = new global::System.Data.DataColumn("CodigoBarras", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodigoBarras);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1152,6 +1166,22 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CodigoBarras {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtInicioMulti.CodigoBarrasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CodigoBarras\' de la tabla \'DtInicioMulti\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtInicioMulti.CodigoBarrasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsEmpresaInicioNull() {
                 return this.IsNull(this.tableDtInicioMulti.EmpresaInicioColumn);
             }
@@ -1280,6 +1310,18 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIdNull() {
                 this[this.tableDtInicioMulti.IdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCodigoBarrasNull() {
+                return this.IsNull(this.tableDtInicioMulti.CodigoBarrasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCodigoBarrasNull() {
+                this[this.tableDtInicioMulti.CodigoBarrasColumn] = global::System.Convert.DBNull;
             }
         }
         

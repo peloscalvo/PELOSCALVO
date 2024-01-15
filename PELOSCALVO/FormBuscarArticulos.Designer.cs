@@ -58,15 +58,23 @@ namespace PELOSCALVO
             this.Id_Codigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Texto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListaQr = new System.Windows.Forms.ComboBox();
+            this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.BtnCrearQr = new System.Windows.Forms.Button();
             this.TituloText = new System.Windows.Forms.TextBox();
             this.PitureQr = new System.Windows.Forms.PictureBox();
             this.BtnCodifiCar = new System.Windows.Forms.Button();
             this.BtnCancelarBArticulo = new System.Windows.Forms.Button();
             this.BtnLimpiar = new System.Windows.Forms.Button();
+            this.Anchotext = new System.Windows.Forms.TextBox();
+            this.AltoText = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitureQr)).BeginInit();
             this.SuspendLayout();
             // 
@@ -307,12 +315,23 @@ namespace PELOSCALVO
             // 
             // ListaQr
             // 
+            this.ListaQr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "CodigoBarras", true));
             this.ListaQr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListaQr.FormattingEnabled = true;
             this.ListaQr.Location = new System.Drawing.Point(810, 48);
             this.ListaQr.Name = "ListaQr";
             this.ListaQr.Size = new System.Drawing.Size(361, 21);
             this.ListaQr.TabIndex = 74;
+            // 
+            // dtInicioMultiBindingSource
+            // 
+            this.dtInicioMultiBindingSource.DataMember = "DtInicioMulti";
+            this.dtInicioMultiBindingSource.DataSource = this.dsMultidatos;
+            // 
+            // dsMultidatos
+            // 
+            this.dsMultidatos.DataSetName = "DsMultidatos";
+            this.dsMultidatos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // BtnCrearQr
             // 
@@ -324,7 +343,7 @@ namespace PELOSCALVO
             this.BtnCrearQr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearQr.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCrearQr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrearQr.Location = new System.Drawing.Point(1013, 412);
+            this.BtnCrearQr.Location = new System.Drawing.Point(1013, 419);
             this.BtnCrearQr.Name = "BtnCrearQr";
             this.BtnCrearQr.Size = new System.Drawing.Size(89, 42);
             this.BtnCrearQr.TabIndex = 75;
@@ -343,7 +362,7 @@ namespace PELOSCALVO
             // PitureQr
             // 
             this.PitureQr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PitureQr.Location = new System.Drawing.Point(810, 294);
+            this.PitureQr.Location = new System.Drawing.Point(810, 309);
             this.PitureQr.Name = "PitureQr";
             this.PitureQr.Size = new System.Drawing.Size(411, 104);
             this.PitureQr.TabIndex = 77;
@@ -360,7 +379,7 @@ namespace PELOSCALVO
             this.BtnCodifiCar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             this.BtnCodifiCar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCodifiCar.Location = new System.Drawing.Point(1154, 412);
+            this.BtnCodifiCar.Location = new System.Drawing.Point(1154, 419);
             this.BtnCodifiCar.Name = "BtnCodifiCar";
             this.BtnCodifiCar.Size = new System.Drawing.Size(89, 42);
             this.BtnCodifiCar.TabIndex = 73;
@@ -401,11 +420,53 @@ namespace PELOSCALVO
             this.BtnLimpiar.UseVisualStyleBackColor = true;
             this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
+            // Anchotext
+            // 
+            this.Anchotext.Location = new System.Drawing.Point(903, 283);
+            this.Anchotext.Name = "Anchotext";
+            this.Anchotext.Size = new System.Drawing.Size(91, 20);
+            this.Anchotext.TabIndex = 79;
+            this.Anchotext.Text = "300";
+            this.Anchotext.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Anchotext.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Anchotext_KeyPress);
+            // 
+            // AltoText
+            // 
+            this.AltoText.Location = new System.Drawing.Point(1080, 283);
+            this.AltoText.Name = "AltoText";
+            this.AltoText.Size = new System.Drawing.Size(91, 20);
+            this.AltoText.TabIndex = 80;
+            this.AltoText.Text = "120";
+            this.AltoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AltoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AltoText_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(856, 286);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 81;
+            this.label2.Text = "Ancho:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1024, 286);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 82;
+            this.label3.Text = "Ancho:";
+            // 
             // FormBuscarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 467);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.AltoText);
+            this.Controls.Add(this.Anchotext);
             this.Controls.Add(this.BtnLimpiar);
             this.Controls.Add(this.PitureQr);
             this.Controls.Add(this.TituloText);
@@ -432,6 +493,8 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PitureQr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -466,5 +529,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.ColumnHeader Id_Codigo;
         private System.Windows.Forms.ColumnHeader Texto;
         private System.Windows.Forms.Button BtnLimpiar;
+        private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
+        private DsMultidatos dsMultidatos;
+        private System.Windows.Forms.TextBox Anchotext;
+        private System.Windows.Forms.TextBox AltoText;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -39,6 +39,7 @@ namespace PELOSCALVO
             System.Windows.Forms.Label pais_FactLabel;
             System.Windows.Forms.Label provinciaLabel;
             System.Windows.Forms.Label label10;
+            System.Windows.Forms.Label label1;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDatosInicio));
@@ -51,6 +52,7 @@ namespace PELOSCALVO
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PanelDatosInicio = new System.Windows.Forms.Panel();
+            this.CodigoBarras = new System.Windows.Forms.ComboBox();
             this.Id_Inicio = new System.Windows.Forms.Label();
             this.EmpresaInicio = new System.Windows.Forms.ComboBox();
             this.ArchivoClienteTxt = new System.Windows.Forms.ComboBox();
@@ -68,8 +70,6 @@ namespace PELOSCALVO
             this.BtnCancelarInicio = new System.Windows.Forms.Button();
             this.BtnSalir_Inico = new System.Windows.Forms.Button();
             this.PanelBotones_Inicio = new System.Windows.Forms.Panel();
-            this.BtnBuscarInicio = new System.Windows.Forms.Button();
-            this.BtnNuevoInicio = new System.Windows.Forms.Button();
             this.BtnModificarInicio = new System.Windows.Forms.Button();
             this.BtnGuardarInico = new System.Windows.Forms.Button();
             archivoClientesLabel = new System.Windows.Forms.Label();
@@ -81,6 +81,7 @@ namespace PELOSCALVO
             pais_FactLabel = new System.Windows.Forms.Label();
             provinciaLabel = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorInico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
@@ -125,7 +126,7 @@ namespace PELOSCALVO
             // tipoExtensionArticulosLabel
             // 
             tipoExtensionArticulosLabel.AutoSize = true;
-            tipoExtensionArticulosLabel.Location = new System.Drawing.Point(37, 237);
+            tipoExtensionArticulosLabel.Location = new System.Drawing.Point(417, 170);
             tipoExtensionArticulosLabel.Name = "tipoExtensionArticulosLabel";
             tipoExtensionArticulosLabel.Size = new System.Drawing.Size(56, 13);
             tipoExtensionArticulosLabel.TabIndex = 41;
@@ -161,7 +162,7 @@ namespace PELOSCALVO
             // provinciaLabel
             // 
             provinciaLabel.AutoSize = true;
-            provinciaLabel.Location = new System.Drawing.Point(39, 103);
+            provinciaLabel.Location = new System.Drawing.Point(399, 134);
             provinciaLabel.Name = "provinciaLabel";
             provinciaLabel.Size = new System.Drawing.Size(54, 13);
             provinciaLabel.TabIndex = 36;
@@ -175,6 +176,15 @@ namespace PELOSCALVO
             label10.Size = new System.Drawing.Size(19, 13);
             label10.TabIndex = 78;
             label10.Text = "Id:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(511, 18);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(76, 13);
+            label1.TabIndex = 80;
+            label1.Text = "Codigo Barras:";
             // 
             // ErrorInico
             // 
@@ -218,6 +228,8 @@ namespace PELOSCALVO
             // 
             // PanelDatosInicio
             // 
+            this.PanelDatosInicio.Controls.Add(label1);
+            this.PanelDatosInicio.Controls.Add(this.CodigoBarras);
             this.PanelDatosInicio.Controls.Add(this.Id_Inicio);
             this.PanelDatosInicio.Controls.Add(this.EmpresaInicio);
             this.PanelDatosInicio.Controls.Add(label10);
@@ -239,8 +251,19 @@ namespace PELOSCALVO
             this.PanelDatosInicio.Enabled = false;
             this.PanelDatosInicio.Location = new System.Drawing.Point(23, 70);
             this.PanelDatosInicio.Name = "PanelDatosInicio";
-            this.PanelDatosInicio.Size = new System.Drawing.Size(565, 273);
+            this.PanelDatosInicio.Size = new System.Drawing.Size(879, 273);
             this.PanelDatosInicio.TabIndex = 45;
+            // 
+            // CodigoBarras
+            // 
+            this.CodigoBarras.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CodigoBarras.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "CodigoBarras", true));
+            this.CodigoBarras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CodigoBarras.FormattingEnabled = true;
+            this.CodigoBarras.Location = new System.Drawing.Point(593, 13);
+            this.CodigoBarras.Name = "CodigoBarras";
+            this.CodigoBarras.Size = new System.Drawing.Size(268, 21);
+            this.CodigoBarras.TabIndex = 81;
             // 
             // Id_Inicio
             // 
@@ -262,7 +285,7 @@ namespace PELOSCALVO
             this.EmpresaInicio.FormattingEnabled = true;
             this.EmpresaInicio.Location = new System.Drawing.Point(103, 13);
             this.EmpresaInicio.Name = "EmpresaInicio";
-            this.EmpresaInicio.Size = new System.Drawing.Size(312, 21);
+            this.EmpresaInicio.Size = new System.Drawing.Size(384, 21);
             this.EmpresaInicio.TabIndex = 7;
             // 
             // ArchivoClienteTxt
@@ -291,7 +314,7 @@ namespace PELOSCALVO
             "G"});
             this.SerieInicio.Location = new System.Drawing.Point(103, 73);
             this.SerieInicio.Name = "SerieInicio";
-            this.SerieInicio.Size = new System.Drawing.Size(200, 21);
+            this.SerieInicio.Size = new System.Drawing.Size(121, 21);
             this.SerieInicio.TabIndex = 26;
             // 
             // ExtensionTipoInicio
@@ -302,7 +325,7 @@ namespace PELOSCALVO
             this.ExtensionTipoInicio.Items.AddRange(new object[] {
             "mdb",
             "accdb"});
-            this.ExtensionTipoInicio.Location = new System.Drawing.Point(103, 234);
+            this.ExtensionTipoInicio.Location = new System.Drawing.Point(483, 167);
             this.ExtensionTipoInicio.Name = "ExtensionTipoInicio";
             this.ExtensionTipoInicio.Size = new System.Drawing.Size(121, 21);
             this.ExtensionTipoInicio.TabIndex = 42;
@@ -342,7 +365,7 @@ namespace PELOSCALVO
             this.ProvinciaInicio.DisplayMember = "Provincias";
             this.ProvinciaInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProvinciaInicio.FormattingEnabled = true;
-            this.ProvinciaInicio.Location = new System.Drawing.Point(103, 100);
+            this.ProvinciaInicio.Location = new System.Drawing.Point(463, 131);
             this.ProvinciaInicio.Name = "ProvinciaInicio";
             this.ProvinciaInicio.Size = new System.Drawing.Size(268, 21);
             this.ProvinciaInicio.TabIndex = 37;
@@ -469,54 +492,12 @@ namespace PELOSCALVO
             // 
             this.PanelBotones_Inicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PanelBotones_Inicio.BackColor = System.Drawing.Color.Transparent;
-            this.PanelBotones_Inicio.Controls.Add(this.BtnBuscarInicio);
-            this.PanelBotones_Inicio.Controls.Add(this.BtnNuevoInicio);
             this.PanelBotones_Inicio.Controls.Add(this.BtnModificarInicio);
-            this.PanelBotones_Inicio.Location = new System.Drawing.Point(23, 362);
+            this.PanelBotones_Inicio.Location = new System.Drawing.Point(22, 362);
             this.PanelBotones_Inicio.Name = "PanelBotones_Inicio";
-            this.PanelBotones_Inicio.Size = new System.Drawing.Size(396, 63);
+            this.PanelBotones_Inicio.Size = new System.Drawing.Size(94, 63);
             this.PanelBotones_Inicio.TabIndex = 54;
             this.PanelBotones_Inicio.Tag = "NO";
-            // 
-            // BtnBuscarInicio
-            // 
-            this.BtnBuscarInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnBuscarInicio.BackColor = System.Drawing.Color.Transparent;
-            this.BtnBuscarInicio.FlatAppearance.BorderSize = 0;
-            this.BtnBuscarInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnBuscarInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnBuscarInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscarInicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarInicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
-            this.BtnBuscarInicio.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnBuscarInicio.Location = new System.Drawing.Point(161, 3);
-            this.BtnBuscarInicio.Name = "BtnBuscarInicio";
-            this.BtnBuscarInicio.Size = new System.Drawing.Size(77, 63);
-            this.BtnBuscarInicio.TabIndex = 8;
-            this.BtnBuscarInicio.Text = "Buscar";
-            this.BtnBuscarInicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnBuscarInicio.UseVisualStyleBackColor = false;
-            // 
-            // BtnNuevoInicio
-            // 
-            this.BtnNuevoInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNuevoInicio.BackColor = System.Drawing.Color.Transparent;
-            this.BtnNuevoInicio.FlatAppearance.BorderSize = 0;
-            this.BtnNuevoInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RosyBrown;
-            this.BtnNuevoInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.BtnNuevoInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNuevoInicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoInicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
-            this.BtnNuevoInicio.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnNuevoInicio.Location = new System.Drawing.Point(7, 3);
-            this.BtnNuevoInicio.Name = "BtnNuevoInicio";
-            this.BtnNuevoInicio.Size = new System.Drawing.Size(77, 63);
-            this.BtnNuevoInicio.TabIndex = 6;
-            this.BtnNuevoInicio.Tag = "stop";
-            this.BtnNuevoInicio.Text = "Nuevo";
-            this.BtnNuevoInicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnNuevoInicio.UseVisualStyleBackColor = false;
-            this.BtnNuevoInicio.Click += new System.EventHandler(this.BtnNuevoInicio_Click);
             // 
             // BtnModificarInicio
             // 
@@ -529,11 +510,11 @@ namespace PELOSCALVO
             this.BtnModificarInicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnModificarInicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
             this.BtnModificarInicio.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnModificarInicio.Location = new System.Drawing.Point(78, 3);
+            this.BtnModificarInicio.Location = new System.Drawing.Point(14, 0);
             this.BtnModificarInicio.Name = "BtnModificarInicio";
             this.BtnModificarInicio.Size = new System.Drawing.Size(77, 63);
             this.BtnModificarInicio.TabIndex = 7;
-            this.BtnModificarInicio.Text = "Modificar";
+            this.BtnModificarInicio.Text = "&Editar";
             this.BtnModificarInicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnModificarInicio.UseVisualStyleBackColor = false;
             this.BtnModificarInicio.Click += new System.EventHandler(this.BtnModificarInicio_Click);
@@ -616,13 +597,12 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.Panel PanelBotones_Inicio;
-        private System.Windows.Forms.Button BtnBuscarInicio;
-        private System.Windows.Forms.Button BtnNuevoInicio;
         private System.Windows.Forms.Button BtnModificarInicio;
         private System.Windows.Forms.Button BtnCancelarInicio;
         private System.Windows.Forms.Button BtnSalir_Inico;
         public System.Windows.Forms.Button BtnGuardarInico;
         private System.Windows.Forms.Label Id_Inicio;
         private System.Windows.Forms.BindingSource dtConfiBindingSource;
+        private System.Windows.Forms.ComboBox CodigoBarras;
     }
 }

@@ -28,11 +28,11 @@ namespace PELOSCALVO
                 this.dtArticulosBindingSource.DataSource = FormMenuPrincipal.menu2principal.articulos.DtArticulos;
                 this.verViev = FormMenuPrincipal.menu2principal.articulos.DtArticulos.DefaultView;
             }
-            else
+            if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
             {
-                MessageBox.Show("Faltan datos", "ARCHIVO ARTICULOS VACIO");
-                return;
+                this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti;
             }
+
             if (ClasDatos.OkFacturar == true)
             {
                 this.FiltrarBajasBuscar.Text = "Articulos De Alta";
@@ -257,12 +257,12 @@ namespace PELOSCALVO
                 {
                     try
                     {
-                        int FilaDescuentosBuscar = FormFacturar.menu2FACTURAR.tarifaTipoComboBox.SelectedIndex * 2 + 5;
+                        int FilaDescuentosBuscar = FormFacturar.menu2FACTURAR.TipoTarifaFactu.SelectedIndex * 2 + 5;
                         if (FilaDescuentosBuscar > 6)
                         {
                             // FilaDescuentosBuscar=FilaDescuentosBuscar+2;
                         }
-                        if (FormFacturar.menu2FACTURAR.tarifaTipoComboBox.SelectedIndex > 6)
+                        if (FormFacturar.menu2FACTURAR.TipoTarifaFactu.SelectedIndex > 6)
                         {
                             FilaDescuentosBuscar = 6;
                         }
@@ -429,16 +429,30 @@ namespace PELOSCALVO
                 this.TituloText.Focus();
                 return;
             }
+            if (String.IsNullOrEmpty(this.Anchotext.Text))
+            {
+                MessageBox.Show("Campo De Ancho vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Anchotext.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(this.AltoText.Text))
+            {
+                MessageBox.Show("Campo De Alto vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.AltoText.Focus();
+                return;
+            }
             try
             {
+                int Ancho = Convert.ToInt32(Anchotext.Text);
+                int Alto = Convert.ToInt32(AltoText.Text);
                 Image imagenCodigo;
                 int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
                 BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
                 Barcode codigo = new Barcode();
                 codigo.IncludeLabel = true;
-                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, 300, 100);
+                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
                 codigo.Alignment = AlignmentPositions.CENTER;
-                Bitmap imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), 300, Color.White);
+                Bitmap imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
                 int alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
                 Bitmap imagenNueva = new Bitmap(300, alto_imagen_nuevo);
                 Graphics dibujar = Graphics.FromImage(imagenNueva);
@@ -502,8 +516,23 @@ namespace PELOSCALVO
                 this.TituloText.Focus();
                 return;
             }
+            if (String.IsNullOrEmpty(this.Anchotext.Text))
+            {
+                MessageBox.Show("Campo De Ancho vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Anchotext.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(this.AltoText.Text))
+            {
+                MessageBox.Show("Campo De Alto vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.AltoText.Focus();
+                return;
+            }
             try
             {
+
+                int Ancho = Convert.ToInt32(Anchotext.Text);
+                int Alto = Convert.ToInt32(AltoText.Text);
                 Image imagenCodigo;
                 Bitmap imagenTitulo;
                 Bitmap imagenNueva;
@@ -514,9 +543,9 @@ namespace PELOSCALVO
                 Barcode codigo = new Barcode();
                 codigo.IncludeLabel = true;
       
-                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, 300, 100);
+                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
                 codigo.Alignment = AlignmentPositions.CENTER;
-                 imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), 300, Color.White);
+                 imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
                  alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
                 imagenNueva = new Bitmap(300, alto_imagen_nuevo);
                  dibujar = Graphics.FromImage(imagenNueva);
@@ -525,7 +554,7 @@ namespace PELOSCALVO
                 this.PitureQr.BackgroundImage = imagenNueva;
                 SaveFileDialog ventana_dialogo = new SaveFileDialog();
                 ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim());
-                ventana_dialogo.Filter = "Archivo De Imagenes|*.jpg;*.jpeg;*.png;*.gif;*.tif;...|All files (*.*)|*.*";
+                ventana_dialogo.Filter = "Archivo De Imagenes|*.jpg;*.jpeg;...|Archivo De Imagenes|*.png;...|Archivo De Imagenes|*.gif;...All files (*.*)|*.*";
                 this.PitureQr.BackgroundImage = imagenCodigo;
                 if (ventana_dialogo.ShowDialog() == DialogResult.OK)
                 {
@@ -549,6 +578,38 @@ namespace PELOSCALVO
             {
 
                 throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        private void Anchotext_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void AltoText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

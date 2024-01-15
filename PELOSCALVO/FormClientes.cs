@@ -248,12 +248,12 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CALLECLIEN", string.IsNullOrEmpty(this.calleClienteTextBox.Text) ? (object)DBNull.Value : this.calleClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NUMEROCALL", string.IsNullOrEmpty(this.numeroCalleClienteTextBox.Text) ? (object)DBNull.Value : this.numeroCalleClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@PROVINCIAC", string.IsNullOrEmpty(this.provinciaClienteComboBox1.Text) ? (object)DBNull.Value : this.provinciaClienteComboBox1.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TARIFATIPO", string.IsNullOrEmpty(this.tarifaTipoClienteComboBox.Text) ? (object)DBNull.Value : this.tarifaTipoClienteComboBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TIPODNI", string.IsNullOrEmpty(this.dniClienteTipoComboBox.Text) ? (object)DBNull.Value : this.dniClienteTipoComboBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TIPOCLIENT", string.IsNullOrEmpty(this.tIPOCLIENTComboBox.Text) ? (object)DBNull.Value : this.tIPOCLIENTComboBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESCUENTOC", string.IsNullOrEmpty(this.dESCUENTOCTextBox.Text) ? (object)DBNull.Value : this.dESCUENTOCTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TARIFATIPO", string.IsNullOrEmpty(this.TipoTarifa.Text) ? (object)DBNull.Value : this.TipoTarifa.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TIPODNI", string.IsNullOrEmpty(this.TipoDocumento.Text) ? (object)DBNull.Value : this.TipoDocumento.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TIPOCLIENT", string.IsNullOrEmpty(this.TipoCliente.Text) ? (object)DBNull.Value : this.TipoCliente.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESCUENTOC", string.IsNullOrEmpty(this.DescuentoCliente.Text) ? (object)DBNull.Value : this.DescuentoCliente.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NUMEROCUEN", string.IsNullOrEmpty(this.NUMEROCUENTextBox.Text) ? (object)DBNull.Value : this.NUMEROCUENTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@PORTES", string.IsNullOrEmpty(this.pORTESComboBox.Text) ? (object)DBNull.Value : this.pORTESComboBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@PORTES", string.IsNullOrEmpty(this.PortesTxt.Text) ? (object)DBNull.Value : this.PortesTxt.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOOFICI", string.IsNullOrEmpty(this.bANCOOFICITextBox.Text) ? (object)DBNull.Value : this.bANCOOFICITextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCOPROVI", string.IsNullOrEmpty(this.BancoProvincia.Text) ? (object)DBNull.Value : this.BancoProvincia.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@BANCODIREC", string.IsNullOrEmpty(this.bANCODIRECTextBox.Text) ? (object)DBNull.Value : this.bANCODIRECTextBox.Text);
@@ -329,12 +329,12 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CALLECLIEN", string.IsNullOrEmpty(this.calleClienteTextBox.Text) ? (object)DBNull.Value : this.calleClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NUMEROCALL", string.IsNullOrEmpty(this.numeroCalleClienteTextBox.Text) ? (object)DBNull.Value : this.numeroCalleClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@PROVINCIAC", string.IsNullOrEmpty(this.provinciaClienteComboBox1.Text) ? (object)DBNull.Value : this.provinciaClienteComboBox1.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TARIFATIPO", string.IsNullOrEmpty(this.tarifaTipoClienteComboBox.Text) ? (object)DBNull.Value : this.tarifaTipoClienteComboBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TIPODNI", string.IsNullOrEmpty(this.dniClienteTipoComboBox.Text) ? (object)DBNull.Value : this.dniClienteTipoComboBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TIPOCLIENT", string.IsNullOrEmpty(this.tIPOCLIENTComboBox.Text) ? (object)DBNull.Value : this.tIPOCLIENTComboBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESCUENTOC", string.IsNullOrEmpty(this.dESCUENTOCTextBox.Text) ? (object)DBNull.Value : this.dESCUENTOCTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TARIFATIPO", string.IsNullOrEmpty(this.TipoTarifa.Text) ? (object)DBNull.Value : this.TipoTarifa.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TIPODNI", string.IsNullOrEmpty(this.TipoDocumento.Text) ? (object)DBNull.Value : this.TipoDocumento.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TIPOCLIENT", string.IsNullOrEmpty(this.TipoCliente.Text) ? (object)DBNull.Value : this.TipoCliente.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESCUENTOC", string.IsNullOrEmpty(this.DescuentoCliente.Text) ? (object)DBNull.Value : this.DescuentoCliente.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NUMEROCUEN", string.IsNullOrEmpty(this.NUMEROCUENTextBox.Text) ? (object)DBNull.Value : this.NUMEROCUENTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@PORTES", string.IsNullOrEmpty(this.pORTESComboBox.Text) ? (object)DBNull.Value : this.pORTESComboBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@PORTES", string.IsNullOrEmpty(this.PortesTxt.Text) ? (object)DBNull.Value : this.PortesTxt.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOOFICI", string.IsNullOrEmpty(this.bANCOOFICITextBox.Text) ? (object)DBNull.Value : this.bANCOOFICITextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCOPROVI", string.IsNullOrEmpty(this.BancoProvincia.Text) ? (object)DBNull.Value : this.BancoProvincia.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@BANCODIREC", string.IsNullOrEmpty(this.bANCODIRECTextBox.Text) ? (object)DBNull.Value : this.bANCODIRECTextBox.Text);
@@ -531,6 +531,8 @@ namespace PELOSCALVO
                         this.paisClienteComboBox1.Text = "España";
                     }
                 }
+                TipoDocumento.Text = "DNI";
+                TipoTarifa.Text = "Pvp1";
                 ModificarControlesForm();
                 BORRARerrores();
             }
@@ -831,9 +833,9 @@ namespace PELOSCALVO
 
         private void dESCUENTOCTextBox_Leave(object sender, EventArgs e)
         {
-            if (this.dESCUENTOCTextBox.Text != string.Empty)
+            if (this.DescuentoCliente.Text != string.Empty)
             {
-                double Ganancia = Convert.ToDouble(this.dESCUENTOCTextBox.Text);
+                double Ganancia = Convert.ToDouble(this.DescuentoCliente.Text);
                 // this.dESCUENTOCTextBox.Text = Convert.ToString(Ganancia / 100);
             }
         }

@@ -73,6 +73,11 @@ namespace PELOSCALVO
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsClientes = new PELOSCALVO.DsClientes();
             this.dtClientesDataGridView = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aPODOCLIENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOMBRECLIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dIRECCIONCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fECHAALTACDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -94,18 +99,21 @@ namespace PELOSCALVO
             this.dniClienteTextBox = new System.Windows.Forms.TextBox();
             this.localidadClienteTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2Clientes = new System.Windows.Forms.TabPage();
-            this.dESCUENTOCTextBox = new System.Windows.Forms.TextBox();
+            this.DescuentoCliente = new System.Windows.Forms.TextBox();
             this.FechaAltaCliente = new System.Windows.Forms.DateTimePicker();
-            this.pORTESComboBox = new System.Windows.Forms.ComboBox();
-            this.tIPOCLIENTComboBox = new System.Windows.Forms.ComboBox();
+            this.PortesTxt = new System.Windows.Forms.ComboBox();
+            this.TipoCliente = new System.Windows.Forms.ComboBox();
             this.paisClienteComboBox1 = new System.Windows.Forms.ComboBox();
             this.dtPaisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.provinciaClienteComboBox1 = new System.Windows.Forms.ComboBox();
             this.dtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dniClienteTipoComboBox = new System.Windows.Forms.ComboBox();
+            this.TipoDocumento = new System.Windows.Forms.ComboBox();
             this.numeroCalleClienteTextBox = new System.Windows.Forms.TextBox();
-            this.tarifaTipoClienteComboBox = new System.Windows.Forms.ComboBox();
+            this.TipoTarifa = new System.Windows.Forms.ComboBox();
+            this.dtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.codigoPostalClienteTextBox = new System.Windows.Forms.TextBox();
             this.tabDatos2 = new System.Windows.Forms.TabPage();
             this.BancoProvincia = new System.Windows.Forms.ComboBox();
@@ -134,14 +142,8 @@ namespace PELOSCALVO
             this.BtnBuscarCliente = new System.Windows.Forms.Button();
             this.BtnSalirCliente = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.label4 = new System.Windows.Forms.Label();
             this.ContadorDatosClientes = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aPODOCLIENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nOMBRECLIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dIRECCIONCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fECHAALTACDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             idClienteLabel = new System.Windows.Forms.Label();
             apodoClienteLabel = new System.Windows.Forms.Label();
             nombreClienteLabel = new System.Windows.Forms.Label();
@@ -188,13 +190,15 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProvinciasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             this.tabDatos2.SuspendLayout();
             this.panelCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtInicioMultiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             this.panelBotonesClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             this.SuspendLayout();
             // 
             // idClienteLabel
@@ -290,7 +294,7 @@ namespace PELOSCALVO
             // fechaAltaClienteLabel
             // 
             fechaAltaClienteLabel.AutoSize = true;
-            fechaAltaClienteLabel.Location = new System.Drawing.Point(331, 71);
+            fechaAltaClienteLabel.Location = new System.Drawing.Point(427, 78);
             fechaAltaClienteLabel.Name = "fechaAltaClienteLabel";
             fechaAltaClienteLabel.Size = new System.Drawing.Size(96, 13);
             fechaAltaClienteLabel.TabIndex = 32;
@@ -308,7 +312,7 @@ namespace PELOSCALVO
             // tarifaTipoClienteLabel
             // 
             tarifaTipoClienteLabel.AutoSize = true;
-            tarifaTipoClienteLabel.Location = new System.Drawing.Point(409, 44);
+            tarifaTipoClienteLabel.Location = new System.Drawing.Point(462, 42);
             tarifaTipoClienteLabel.Name = "tarifaTipoClienteLabel";
             tarifaTipoClienteLabel.Size = new System.Drawing.Size(61, 13);
             tarifaTipoClienteLabel.TabIndex = 40;
@@ -317,7 +321,7 @@ namespace PELOSCALVO
             // dniClienteTipoLabel
             // 
             dniClienteTipoLabel.AutoSize = true;
-            dniClienteTipoLabel.Location = new System.Drawing.Point(364, 19);
+            dniClienteTipoLabel.Location = new System.Drawing.Point(417, 17);
             dniClienteTipoLabel.Name = "dniClienteTipoLabel";
             dniClienteTipoLabel.Size = new System.Drawing.Size(106, 13);
             dniClienteTipoLabel.TabIndex = 42;
@@ -470,7 +474,7 @@ namespace PELOSCALVO
             // tIPOCLIENTLabel
             // 
             tIPOCLIENTLabel.AutoSize = true;
-            tIPOCLIENTLabel.Location = new System.Drawing.Point(701, 88);
+            tIPOCLIENTLabel.Location = new System.Drawing.Point(773, 44);
             tIPOCLIENTLabel.Name = "tIPOCLIENTLabel";
             tIPOCLIENTLabel.Size = new System.Drawing.Size(66, 13);
             tIPOCLIENTLabel.TabIndex = 48;
@@ -479,7 +483,7 @@ namespace PELOSCALVO
             // pORTESLabel
             // 
             pORTESLabel.AutoSize = true;
-            pORTESLabel.Location = new System.Drawing.Point(727, 40);
+            pORTESLabel.Location = new System.Drawing.Point(799, 17);
             pORTESLabel.Name = "pORTESLabel";
             pORTESLabel.Size = new System.Drawing.Size(40, 13);
             pORTESLabel.TabIndex = 49;
@@ -497,7 +501,7 @@ namespace PELOSCALVO
             // Label2
             // 
             Label2.AutoSize = true;
-            Label2.Location = new System.Drawing.Point(302, 119);
+            Label2.Location = new System.Drawing.Point(461, 114);
             Label2.Name = "Label2";
             Label2.Size = new System.Drawing.Size(62, 13);
             Label2.TabIndex = 66;
@@ -563,6 +567,45 @@ namespace PELOSCALVO
             this.dtClientesDataGridView.Size = new System.Drawing.Size(1118, 245);
             this.dtClientesDataGridView.TabIndex = 1;
             this.dtClientesDataGridView.Click += new System.EventHandler(this.dtClientesDataGridView_Click);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Id.HeaderText = "Numero";
+            this.Id.Name = "Id";
+            // 
+            // aPODOCLIENDataGridViewTextBoxColumn
+            // 
+            this.aPODOCLIENDataGridViewTextBoxColumn.DataPropertyName = "APODOCLIEN";
+            this.aPODOCLIENDataGridViewTextBoxColumn.FillWeight = 260F;
+            this.aPODOCLIENDataGridViewTextBoxColumn.HeaderText = "Razon Social";
+            this.aPODOCLIENDataGridViewTextBoxColumn.Name = "aPODOCLIENDataGridViewTextBoxColumn";
+            // 
+            // nOMBRECLIEDataGridViewTextBoxColumn
+            // 
+            this.nOMBRECLIEDataGridViewTextBoxColumn.DataPropertyName = "NOMBRECLIE";
+            this.nOMBRECLIEDataGridViewTextBoxColumn.FillWeight = 300F;
+            this.nOMBRECLIEDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nOMBRECLIEDataGridViewTextBoxColumn.Name = "nOMBRECLIEDataGridViewTextBoxColumn";
+            // 
+            // dIRECCIONCDataGridViewTextBoxColumn
+            // 
+            this.dIRECCIONCDataGridViewTextBoxColumn.DataPropertyName = "DIRECCIONC";
+            this.dIRECCIONCDataGridViewTextBoxColumn.FillWeight = 250F;
+            this.dIRECCIONCDataGridViewTextBoxColumn.HeaderText = "Direccion";
+            this.dIRECCIONCDataGridViewTextBoxColumn.Name = "dIRECCIONCDataGridViewTextBoxColumn";
+            // 
+            // fECHAALTACDataGridViewTextBoxColumn
+            // 
+            this.fECHAALTACDataGridViewTextBoxColumn.DataPropertyName = "FECHAALTAC";
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.fECHAALTACDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.fECHAALTACDataGridViewTextBoxColumn.HeaderText = "Fecha";
+            this.fECHAALTACDataGridViewTextBoxColumn.Name = "fECHAALTACDataGridViewTextBoxColumn";
             // 
             // panel1
             // 
@@ -834,22 +877,22 @@ namespace PELOSCALVO
             // 
             this.tabPage2Clientes.AutoScroll = true;
             this.tabPage2Clientes.Controls.Add(Label2);
-            this.tabPage2Clientes.Controls.Add(this.dESCUENTOCTextBox);
+            this.tabPage2Clientes.Controls.Add(this.DescuentoCliente);
             this.tabPage2Clientes.Controls.Add(this.FechaAltaCliente);
             this.tabPage2Clientes.Controls.Add(pORTESLabel);
-            this.tabPage2Clientes.Controls.Add(this.pORTESComboBox);
+            this.tabPage2Clientes.Controls.Add(this.PortesTxt);
             this.tabPage2Clientes.Controls.Add(tIPOCLIENTLabel);
-            this.tabPage2Clientes.Controls.Add(this.tIPOCLIENTComboBox);
+            this.tabPage2Clientes.Controls.Add(this.TipoCliente);
             this.tabPage2Clientes.Controls.Add(paisClienteLabel1);
             this.tabPage2Clientes.Controls.Add(this.paisClienteComboBox1);
             this.tabPage2Clientes.Controls.Add(provinciaClienteLabel1);
             this.tabPage2Clientes.Controls.Add(this.provinciaClienteComboBox1);
             this.tabPage2Clientes.Controls.Add(dniClienteTipoLabel);
-            this.tabPage2Clientes.Controls.Add(this.dniClienteTipoComboBox);
+            this.tabPage2Clientes.Controls.Add(this.TipoDocumento);
             this.tabPage2Clientes.Controls.Add(numeroCalleClienteLabel);
             this.tabPage2Clientes.Controls.Add(this.numeroCalleClienteTextBox);
             this.tabPage2Clientes.Controls.Add(tarifaTipoClienteLabel);
-            this.tabPage2Clientes.Controls.Add(this.tarifaTipoClienteComboBox);
+            this.tabPage2Clientes.Controls.Add(this.TipoTarifa);
             this.tabPage2Clientes.Controls.Add(codigoPostalClienteLabel);
             this.tabPage2Clientes.Controls.Add(this.codigoPostalClienteTextBox);
             this.tabPage2Clientes.Controls.Add(fechaAltaClienteLabel);
@@ -862,59 +905,59 @@ namespace PELOSCALVO
             this.tabPage2Clientes.UseVisualStyleBackColor = true;
             this.tabPage2Clientes.Click += new System.EventHandler(this.tabPage2Clientes_Click);
             // 
-            // dESCUENTOCTextBox
+            // DescuentoCliente
             // 
-            this.dESCUENTOCTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "DESCUENTOC", true));
-            this.dESCUENTOCTextBox.Location = new System.Drawing.Point(370, 116);
-            this.dESCUENTOCTextBox.Name = "dESCUENTOCTextBox";
-            this.dESCUENTOCTextBox.ReadOnly = true;
-            this.dESCUENTOCTextBox.Size = new System.Drawing.Size(95, 20);
-            this.dESCUENTOCTextBox.TabIndex = 67;
-            this.dESCUENTOCTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dESCUENTOCTextBox_KeyPress);
-            this.dESCUENTOCTextBox.Leave += new System.EventHandler(this.dESCUENTOCTextBox_Leave);
+            this.DescuentoCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "DESCUENTOC", true));
+            this.DescuentoCliente.Location = new System.Drawing.Point(529, 111);
+            this.DescuentoCliente.Name = "DescuentoCliente";
+            this.DescuentoCliente.ReadOnly = true;
+            this.DescuentoCliente.Size = new System.Drawing.Size(95, 20);
+            this.DescuentoCliente.TabIndex = 67;
+            this.DescuentoCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dESCUENTOCTextBox_KeyPress);
+            this.DescuentoCliente.Leave += new System.EventHandler(this.dESCUENTOCTextBox_Leave);
             // 
             // FechaAltaCliente
             // 
             this.FechaAltaCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "FECHAALTAC", true));
             this.FechaAltaCliente.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtClientesBindingSource, "FECHAALTAC", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.FechaAltaCliente.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaAltaCliente.Location = new System.Drawing.Point(433, 67);
+            this.FechaAltaCliente.Location = new System.Drawing.Point(529, 74);
             this.FechaAltaCliente.Name = "FechaAltaCliente";
             this.FechaAltaCliente.Size = new System.Drawing.Size(200, 20);
             this.FechaAltaCliente.TabIndex = 66;
             this.FechaAltaCliente.Value = new System.DateTime(2022, 8, 4, 16, 12, 35, 0);
             // 
-            // pORTESComboBox
+            // PortesTxt
             // 
-            this.pORTESComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "PORTES", true));
-            this.pORTESComboBox.FormattingEnabled = true;
-            this.pORTESComboBox.Items.AddRange(new object[] {
+            this.PortesTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "PORTES", true));
+            this.PortesTxt.FormattingEnabled = true;
+            this.PortesTxt.Items.AddRange(new object[] {
             "Portes Sus Medios",
             "Portes Pagados",
             "Portes Devidos",
             "Otros Portes"});
-            this.pORTESComboBox.Location = new System.Drawing.Point(773, 37);
-            this.pORTESComboBox.Name = "pORTESComboBox";
-            this.pORTESComboBox.Size = new System.Drawing.Size(165, 21);
-            this.pORTESComboBox.TabIndex = 50;
-            this.pORTESComboBox.Tag = "Portes Pagados";
-            this.pORTESComboBox.Text = "Portes Sus Medios";
+            this.PortesTxt.Location = new System.Drawing.Point(845, 14);
+            this.PortesTxt.Name = "PortesTxt";
+            this.PortesTxt.Size = new System.Drawing.Size(165, 21);
+            this.PortesTxt.TabIndex = 50;
+            this.PortesTxt.Tag = "Portes Pagados";
+            this.PortesTxt.Text = "Portes Sus Medios";
             // 
-            // tIPOCLIENTComboBox
+            // TipoCliente
             // 
-            this.tIPOCLIENTComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TIPOCLIENT", true));
-            this.tIPOCLIENTComboBox.FormattingEnabled = true;
-            this.tIPOCLIENTComboBox.Items.AddRange(new object[] {
+            this.TipoCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TIPOCLIENT", true));
+            this.TipoCliente.FormattingEnabled = true;
+            this.TipoCliente.Items.AddRange(new object[] {
             "Particular",
             "Empresa Autonomo",
             "Empresa Sociedad",
             "Albañil Contratista",
             "Otros"});
-            this.tIPOCLIENTComboBox.Location = new System.Drawing.Point(773, 85);
-            this.tIPOCLIENTComboBox.Name = "tIPOCLIENTComboBox";
-            this.tIPOCLIENTComboBox.Size = new System.Drawing.Size(165, 21);
-            this.tIPOCLIENTComboBox.TabIndex = 49;
-            this.tIPOCLIENTComboBox.Text = "Particular";
+            this.TipoCliente.Location = new System.Drawing.Point(845, 41);
+            this.TipoCliente.Name = "TipoCliente";
+            this.TipoCliente.Size = new System.Drawing.Size(165, 21);
+            this.TipoCliente.TabIndex = 49;
+            this.TipoCliente.Text = "Particular";
             // 
             // paisClienteComboBox1
             // 
@@ -953,24 +996,24 @@ namespace PELOSCALVO
             this.dtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
             this.dtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
             // 
-            // dniClienteTipoComboBox
+            // TipoDocumento
             // 
-            this.dniClienteTipoComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            this.TipoDocumento.AutoCompleteCustomSource.AddRange(new string[] {
             "1.  D.N.I",
             "2. C.I.F",
             "3. PAPEL"});
-            this.dniClienteTipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TIPODNI", true));
-            this.dniClienteTipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dniClienteTipoComboBox.FormattingEnabled = true;
-            this.dniClienteTipoComboBox.Items.AddRange(new object[] {
+            this.TipoDocumento.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TIPODNI", true));
+            this.TipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TipoDocumento.FormattingEnabled = true;
+            this.TipoDocumento.Items.AddRange(new object[] {
             "DNI",
             "CIF",
             "PAPEL2"});
-            this.dniClienteTipoComboBox.Location = new System.Drawing.Point(476, 16);
-            this.dniClienteTipoComboBox.Name = "dniClienteTipoComboBox";
-            this.dniClienteTipoComboBox.Size = new System.Drawing.Size(179, 21);
-            this.dniClienteTipoComboBox.TabIndex = 13;
-            this.dniClienteTipoComboBox.Tag = "";
+            this.TipoDocumento.Location = new System.Drawing.Point(529, 14);
+            this.TipoDocumento.Name = "TipoDocumento";
+            this.TipoDocumento.Size = new System.Drawing.Size(179, 21);
+            this.TipoDocumento.TabIndex = 13;
+            this.TipoDocumento.Tag = "";
             // 
             // numeroCalleClienteTextBox
             // 
@@ -982,27 +1025,32 @@ namespace PELOSCALVO
             this.numeroCalleClienteTextBox.TabIndex = 9;
             this.numeroCalleClienteTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // tarifaTipoClienteComboBox
+            // TipoTarifa
             // 
-            this.tarifaTipoClienteComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TARIFATIPO", true));
-            this.tarifaTipoClienteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tarifaTipoClienteComboBox.FormattingEnabled = true;
-            this.tarifaTipoClienteComboBox.Items.AddRange(new object[] {
-            "Pvp1",
-            "Pvp2",
-            "Casty",
-            "Suarez",
-            "Benito",
-            "Valente",
-            "Casty%",
-            "Suarez%",
-            "Valente%",
-            "Plus",
-            "Pvp Iva"});
-            this.tarifaTipoClienteComboBox.Location = new System.Drawing.Point(476, 40);
-            this.tarifaTipoClienteComboBox.Name = "tarifaTipoClienteComboBox";
-            this.tarifaTipoClienteComboBox.Size = new System.Drawing.Size(179, 21);
-            this.tarifaTipoClienteComboBox.TabIndex = 14;
+            this.TipoTarifa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TARIFATIPO", true));
+            this.TipoTarifa.DataSource = this.dtTarifaTipoBindingSource;
+            this.TipoTarifa.DisplayMember = "TarifaTipo";
+            this.TipoTarifa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TipoTarifa.FormattingEnabled = true;
+            this.TipoTarifa.Location = new System.Drawing.Point(529, 38);
+            this.TipoTarifa.Name = "TipoTarifa";
+            this.TipoTarifa.Size = new System.Drawing.Size(201, 21);
+            this.TipoTarifa.TabIndex = 14;
+            // 
+            // dtTarifaTipoBindingSource
+            // 
+            this.dtTarifaTipoBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtTarifaTipo";
+            this.dtTarifaTipoBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            // 
+            // dtConfiguracionPrincipalBindingSource
+            // 
+            this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
+            this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
+            // 
+            // dsCONFIGURACCION
+            // 
+            this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
+            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // codigoPostalClienteTextBox
             // 
@@ -1383,11 +1431,6 @@ namespace PELOSCALVO
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.errorProvider1.ContainerControl = this;
             // 
-            // dsCONFIGURACCION
-            // 
-            this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
-            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1410,45 +1453,6 @@ namespace PELOSCALVO
             this.ContadorDatosClientes.TabIndex = 39;
             this.ContadorDatosClientes.Text = "0";
             this.ContadorDatosClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Id.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Id.HeaderText = "Numero";
-            this.Id.Name = "Id";
-            // 
-            // aPODOCLIENDataGridViewTextBoxColumn
-            // 
-            this.aPODOCLIENDataGridViewTextBoxColumn.DataPropertyName = "APODOCLIEN";
-            this.aPODOCLIENDataGridViewTextBoxColumn.FillWeight = 260F;
-            this.aPODOCLIENDataGridViewTextBoxColumn.HeaderText = "Razon Social";
-            this.aPODOCLIENDataGridViewTextBoxColumn.Name = "aPODOCLIENDataGridViewTextBoxColumn";
-            // 
-            // nOMBRECLIEDataGridViewTextBoxColumn
-            // 
-            this.nOMBRECLIEDataGridViewTextBoxColumn.DataPropertyName = "NOMBRECLIE";
-            this.nOMBRECLIEDataGridViewTextBoxColumn.FillWeight = 300F;
-            this.nOMBRECLIEDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nOMBRECLIEDataGridViewTextBoxColumn.Name = "nOMBRECLIEDataGridViewTextBoxColumn";
-            // 
-            // dIRECCIONCDataGridViewTextBoxColumn
-            // 
-            this.dIRECCIONCDataGridViewTextBoxColumn.DataPropertyName = "DIRECCIONC";
-            this.dIRECCIONCDataGridViewTextBoxColumn.FillWeight = 250F;
-            this.dIRECCIONCDataGridViewTextBoxColumn.HeaderText = "Direccion";
-            this.dIRECCIONCDataGridViewTextBoxColumn.Name = "dIRECCIONCDataGridViewTextBoxColumn";
-            // 
-            // fECHAALTACDataGridViewTextBoxColumn
-            // 
-            this.fECHAALTACDataGridViewTextBoxColumn.DataPropertyName = "FECHAALTAC";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.fECHAALTACDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.fECHAALTACDataGridViewTextBoxColumn.HeaderText = "Fecha";
-            this.fECHAALTACDataGridViewTextBoxColumn.Name = "fECHAALTACDataGridViewTextBoxColumn";
             // 
             // FormClientes
             // 
@@ -1486,6 +1490,9 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProvinciasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             this.tabDatos2.ResumeLayout(false);
             this.tabDatos2.PerformLayout();
             this.panelCuenta.ResumeLayout(false);
@@ -1494,7 +1501,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).EndInit();
             this.panelBotonesClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1516,9 +1522,9 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox correoClienteTextBox;
         private System.Windows.Forms.TextBox dniClienteTextBox;
         private System.Windows.Forms.TextBox localidadClienteTextBox;
-        private System.Windows.Forms.ComboBox dniClienteTipoComboBox;
+        private System.Windows.Forms.ComboBox TipoDocumento;
         private System.Windows.Forms.TextBox numeroCalleClienteTextBox;
-        private System.Windows.Forms.ComboBox tarifaTipoClienteComboBox;
+        private System.Windows.Forms.ComboBox TipoTarifa;
         private System.Windows.Forms.TextBox codigoPostalClienteTextBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox apodoClienteTextBox;
@@ -1548,8 +1554,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label ContadorDatosClientes;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
-        private System.Windows.Forms.ComboBox pORTESComboBox;
-        private System.Windows.Forms.ComboBox tIPOCLIENTComboBox;
+        private System.Windows.Forms.ComboBox PortesTxt;
+        private System.Windows.Forms.ComboBox TipoCliente;
         private System.Windows.Forms.TabPage tabDatos2;
         private System.Windows.Forms.TextBox NUMEROCUENTextBox;
         private System.Windows.Forms.TextBox bANCON_CUETextBox;
@@ -1563,7 +1569,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox bANCOOFICITextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDCLIENTEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DateTimePicker FechaAltaCliente;
-        private System.Windows.Forms.TextBox dESCUENTOCTextBox;
+        private System.Windows.Forms.TextBox DescuentoCliente;
         private System.Windows.Forms.ComboBox BancoProvincia;
         private System.Windows.Forms.BindingSource dtProvinciasBindingSource;
         private DsMulti2 dsMulti2;
@@ -1575,5 +1581,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn nOMBRECLIEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dIRECCIONCDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fECHAALTACDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource dtTarifaTipoBindingSource;
+        public System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
     }
 }

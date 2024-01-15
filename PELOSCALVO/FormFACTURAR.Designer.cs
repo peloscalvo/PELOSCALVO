@@ -156,7 +156,7 @@ namespace PELOSCALVO
             this.NumDescuento = new System.Windows.Forms.NumericUpDown();
             this.NumPrecio = new System.Windows.Forms.NumericUpDown();
             this.imagenEmpresaPicture2 = new System.Windows.Forms.PictureBox();
-            this.tarifaTipoComboBox = new System.Windows.Forms.ComboBox();
+            this.TipoTarifaFactu = new System.Windows.Forms.ComboBox();
             this.dtConfiDtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtArticulosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.articulos = new PELOSCALVO.Articulos();
@@ -1323,7 +1323,7 @@ namespace PELOSCALVO
             this.tabPage3Factura.Controls.Add(this.imagenEmpresaPicture2);
             this.tabPage3Factura.Controls.Add(idTarifaLabel);
             this.tabPage3Factura.Controls.Add(tarifaTipoLabel1);
-            this.tabPage3Factura.Controls.Add(this.tarifaTipoComboBox);
+            this.tabPage3Factura.Controls.Add(this.TipoTarifaFactu);
             this.tabPage3Factura.Location = new System.Drawing.Point(4, 22);
             this.tabPage3Factura.Name = "tabPage3Factura";
             this.tabPage3Factura.Padding = new System.Windows.Forms.Padding(3);
@@ -1460,17 +1460,17 @@ namespace PELOSCALVO
             this.imagenEmpresaPicture2.TabIndex = 68;
             this.imagenEmpresaPicture2.TabStop = false;
             // 
-            // tarifaTipoComboBox
+            // TipoTarifaFactu
             // 
-            this.tarifaTipoComboBox.DataSource = this.dtConfiDtTarifaTipoBindingSource;
-            this.tarifaTipoComboBox.DisplayMember = "TarifaTipo";
-            this.tarifaTipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tarifaTipoComboBox.FormattingEnabled = true;
-            this.tarifaTipoComboBox.Location = new System.Drawing.Point(71, 52);
-            this.tarifaTipoComboBox.Name = "tarifaTipoComboBox";
-            this.tarifaTipoComboBox.Size = new System.Drawing.Size(246, 21);
-            this.tarifaTipoComboBox.TabIndex = 9;
-            this.tarifaTipoComboBox.SelectedIndexChanged += new System.EventHandler(this.TarifaTipoComboBox_SelectedIndexChanged);
+            this.TipoTarifaFactu.DataSource = this.dtConfiDtTarifaTipoBindingSource;
+            this.TipoTarifaFactu.DisplayMember = "TarifaTipo";
+            this.TipoTarifaFactu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TipoTarifaFactu.FormattingEnabled = true;
+            this.TipoTarifaFactu.Location = new System.Drawing.Point(71, 52);
+            this.TipoTarifaFactu.Name = "TipoTarifaFactu";
+            this.TipoTarifaFactu.Size = new System.Drawing.Size(246, 21);
+            this.TipoTarifaFactu.TabIndex = 9;
+            this.TipoTarifaFactu.SelectedIndexChanged += new System.EventHandler(this.TarifaTipoComboBox_SelectedIndexChanged);
             // 
             // dtConfiDtTarifaTipoBindingSource
             // 
@@ -2046,7 +2046,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.NumericUpDown NumTotales;
         private System.Windows.Forms.NumericUpDown Numimporte;
         public System.Windows.Forms.RadioButton CheckDescuentos;
-        public System.Windows.Forms.ComboBox tarifaTipoComboBox;
+        public System.Windows.Forms.ComboBox TipoTarifaFactu;
         public System.Windows.Forms.NumericUpDown NumPrecio;
         public System.Windows.Forms.NumericUpDown NumDescuento;
         private System.Windows.Forms.BindingSource dtObrasBindingSource;
