@@ -1057,6 +1057,9 @@ namespace PELOSCALVO
             ClasDatos.OkFacturar = false;
             ClasDatos.QUEform = "QR";
             FormBuscarArticulos frm = new FormBuscarArticulos();
+            this.InfoConectado.Visible = false;
+            this.panelMenu.Width = this.panelMenu.Width = 55;
+            this.panel1.Height = this.panel1.Height = 0;
             frm.TopLevel = false;
             this.PanelForms.Controls.Add(frm);
             frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;

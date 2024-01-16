@@ -504,7 +504,7 @@ namespace PELOSCALVO
 
                 try
                 {
-                    ListCodigos.Items.Clear();
+                    this.ListCodigos.Items.Clear();
                 }
                 catch (Exception ex)
                 {
@@ -557,23 +557,25 @@ namespace PELOSCALVO
                     BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
                     Barcode codigo = new Barcode();
                     codigo.IncludeLabel = true;
-                    int I = this.ListCodigos.FocusedItem.Index;
-                    Bitmap BTM = new Bitmap(0,0);
+                    int I;
+                    Bitmap BTM = new Bitmap(0, 0);
                     foreach (ListViewItem item2 in this.ListCodigos.Items)
                     {
+                        I = item2.Index;
+                       
                         imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
                         codigo.Alignment = AlignmentPositions.CENTER;
                         imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
                         alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
                         imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
-                       // imagenNueva = BTM(Ancho, alto_imagen_nuevo);
+                        // imagenNueva = BTM(Ancho, alto_imagen_nuevo);
                         dibujar = Graphics.FromImage(imagenNueva);
                         dibujar.DrawImage(imagenTitulo, new Point(0, 0));
                         dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
-                       // MessageBox.Show(this.ListCodigos.Items[I].SubItems[1].Text);
-                        imagenCodigo = codigo.Encode(tipoCodigo, this.ListCodigos.Items[I].SubItems[1].Text, Color.Black, Color.White, Ancho, Alto);
+                        // MessageBox.Show(this.ListCodigos.Items[I].SubItems[1].Text);
+                        imagenCodigo = codigo.Encode(tipoCodigo, item2.SubItems[I].Text, Color.Black, Color.White, Ancho, Alto);
                         codigo.Alignment = AlignmentPositions.CENTER;
-                        imagenTitulo = convertirTextoImagen(this.ListCodigos.Items[I].SubItems[1].Text, Ancho, Color.White);
+                        imagenTitulo = convertirTextoImagen(item2.SubItems[I].Text, Ancho, Color.White);
                         alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
                         imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
                         dibujar = Graphics.FromImage(imagenNueva);
@@ -582,40 +584,43 @@ namespace PELOSCALVO
                         // dibujar.Clear();
                     }
                     this.PitureQr.Image = imagenCodigo;
-                    SaveFileDialog ventana_dialogo = new SaveFileDialog();
-                    ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim());
-                    ventana_dialogo.Filter = "Image Files(*.JPG;*.PNG;*.GIF)|*.JPG;*.PNG;*.GIF|All files (*.*)|*.*";
+
+
                     if (this.FormatoText.SelectedIndex == 4)
                     {
-                        // codigo.SaveImage(ventana_dialogo.FileName, SaveTypes.BMP);
 
                         PrintDocument PD = new PrintDocument();
                         PD.PrintPage += new PrintPageEventHandler(PrintBarras_PrintPage);
                         PD.Print();
+           
                     }
-
-                    if (ventana_dialogo.ShowDialog() == DialogResult.OK)
+                    else
                     {
-                        if (this.FormatoText.SelectedIndex == 0)
-                        {
+                        SaveFileDialog ventana_dialogo = new SaveFileDialog();
+                        ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim());
+                        ventana_dialogo.Filter = "Image Files(*.JPG;*.PNG;*.GIF)|*.JPG;*.PNG;*.GIF|All files (*.*)|*.*";
 
-                            this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Jpeg);
-                        }
-                        if (this.FormatoText.SelectedIndex == 1)
+                        if (ventana_dialogo.ShowDialog() == DialogResult.OK)
                         {
-                            this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Png);
-                        }
-                        if (this.FormatoText.SelectedIndex == 2)
-                        {
-                            this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Gif);
-                        }
-                        if (this.FormatoText.SelectedIndex == 3)
-                        {
-                            this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Bmp);
+                            if (this.FormatoText.SelectedIndex == 0)
+                            {
+                                this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Jpeg);
+
+                            }
+                            if (this.FormatoText.SelectedIndex == 1)
+                            {
+                                this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Png);
+                            }
+                            if (this.FormatoText.SelectedIndex == 2)
+                            {
+                                this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Gif);
+                            }
+                            if (this.FormatoText.SelectedIndex == 3)
+                            {
+                                this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Bmp);
+                            }
                         }
 
-                        //  this.PitureQr.BackgroundImage = Image.FromFile(ventana_dialogo.FileName);
-                        // PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Png)
                         MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
@@ -690,7 +695,7 @@ namespace PELOSCALVO
 
             // item2.SubItems.
             e.Graphics.DrawString("fafd", Arial10, Brushes.Black, 32, 11);
-            e.Graphics.DrawImage(PitureQr.Image, e.PageBounds);
+            e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
 
 
         }
