@@ -1,12 +1,12 @@
 ﻿//using BarcodeStandard;
 //using SkiaSharp;
+using BarcodeLib;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
-using iTextSharp.text.pdf.qrcode;
-using BarcodeLib;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
+using System.Windows.Forms;
 
 namespace PELOSCALVO
 {
@@ -86,7 +86,7 @@ namespace PELOSCALVO
             this.ListaQr.DisplayMember = "Texto";
             this.ListaQr.ValueMember = "Valor";
             this.ListaQr.SelectedIndex = 0;
-            FormatoText.Text = "JPG";
+            this.FormatoText.Text = "JPG";
         }
         public void AñadirIdBuscar()
         {
@@ -453,8 +453,8 @@ namespace PELOSCALVO
             }
             try
             {
-                int Ancho = Convert.ToInt32(Anchotext.Text);
-                int Alto = Convert.ToInt32(AltoText.Text);
+                int Ancho = Convert.ToInt32(this.Anchotext.Text);
+                int Alto = Convert.ToInt32(this.AltoText.Text);
                 Image imagenCodigo;
                 int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
                 BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
@@ -470,7 +470,7 @@ namespace PELOSCALVO
                 dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
                 this.PitureQr.Image = imagenCodigo;
 
-                   // MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
@@ -484,32 +484,33 @@ namespace PELOSCALVO
         {
             try
             {
-                int I = ListCodigos.FocusedItem.Index;
-                if (!String.IsNullOrEmpty(this.ListCodigos.Items[I].SubItems[I].Text))
+                int I = this.ListCodigos.FocusedItem.Index;
+                if (!String.IsNullOrEmpty(this.ListCodigos.Items[I].SubItems[1].Text))
                 {
-                    TituloText.Text = this.ListCodigos.Items[I].SubItems[I].Text;
+                    this.TituloText.Text = this.ListCodigos.Items[I].SubItems[1].Text;
                 }
             }
             catch (Exception ex)
             {
 
-                throw new Exception(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
-            try
+            if (MessageBox.Show(" Limpiar Listado ? ", " BORRAR TODO EL LISTADO ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
 
-                // ListCodigos.Items[I].SubItems.Clear();
-                int I = ListCodigos.FocusedItem.Index;
-                ListCodigos.Items.RemoveAt(I);
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                    ListCodigos.Items.Clear();
+                }
+                catch (Exception ex)
+                {
 
-                throw new Exception(ex.Message.ToString());
+                    MessageBox.Show(ex.Message, "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -539,85 +540,92 @@ namespace PELOSCALVO
                 this.AltoText.Focus();
                 return;
             }
-            try
+            if (MessageBox.Show(" Aceptar Guardar  ", " GUARDAR CODIGO BARRAS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
 
-                int Ancho = Convert.ToInt32(Anchotext.Text);
-                int Alto = Convert.ToInt32(AltoText.Text);
-                Image imagenCodigo;
-                Bitmap imagenTitulo;
-                Bitmap imagenNueva;
-                int alto_imagen_nuevo = 0;
-                Graphics dibujar;
-                int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
-                BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
-                Barcode codigo = new Barcode();
-                codigo.IncludeLabel = true;
-      
-                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
-                codigo.Alignment = AlignmentPositions.CENTER;
-                 imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
-                 alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
-                imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
-                 dibujar = Graphics.FromImage(imagenNueva);
-                dibujar.DrawImage(imagenTitulo, new Point(0, 0));
-                dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
-                foreach (ListViewItem item2 in ListCodigos.Items)
+                try
                 {
-                    imagenCodigo = codigo.Encode(tipoCodigo, item2.SubItems.ToString().Trim(), Color.Black, Color.White, Ancho, Alto);
-                    codigo.Alignment = AlignmentPositions.CENTER;
-                    imagenTitulo = convertirTextoImagen(item2.SubItems.ToString().Trim(), Ancho, Color.White);
-                    alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
-                    imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
-                    dibujar = Graphics.FromImage(imagenNueva);
-                    dibujar.DrawImage(imagenTitulo, new Point(0, 0));
-                    dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
 
-                }
-                this.PitureQr.Image = imagenCodigo;
-                SaveFileDialog ventana_dialogo = new SaveFileDialog();
-                ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim()+FormatoText.Text);
-                ventana_dialogo.Filter = "Image Files(*.JPG;*.PNG;*.GIF)|*.JPG;*.PNG;*.GIF|All files (*.*)|*.*";
- 
-   
-                if (ventana_dialogo.ShowDialog() == DialogResult.OK)
-                {
-                    if (FormatoText.SelectedIndex == 0)
+                    int Ancho = Convert.ToInt32(this.Anchotext.Text);
+                    int Alto = Convert.ToInt32(this.AltoText.Text);
+                    Image imagenCodigo = null;
+                    Bitmap imagenTitulo;
+                    Bitmap imagenNueva;
+                    int alto_imagen_nuevo = 0;
+                    Graphics dibujar;
+                    int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+                    BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
+                    Barcode codigo = new Barcode();
+                    codigo.IncludeLabel = true;
+                    int I = this.ListCodigos.FocusedItem.Index;
+                    Bitmap BTM = new Bitmap(0,0);
+                    foreach (ListViewItem item2 in this.ListCodigos.Items)
                     {
-
-                        codigo.SaveImage(ventana_dialogo.FileName, SaveTypes.JPG);
+                        imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
+                        codigo.Alignment = AlignmentPositions.CENTER;
+                        imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
+                        alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
+                        imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
+                       // imagenNueva = BTM(Ancho, alto_imagen_nuevo);
+                        dibujar = Graphics.FromImage(imagenNueva);
+                        dibujar.DrawImage(imagenTitulo, new Point(0, 0));
+                        dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                       // MessageBox.Show(this.ListCodigos.Items[I].SubItems[1].Text);
+                        imagenCodigo = codigo.Encode(tipoCodigo, this.ListCodigos.Items[I].SubItems[1].Text, Color.Black, Color.White, Ancho, Alto);
+                        codigo.Alignment = AlignmentPositions.CENTER;
+                        imagenTitulo = convertirTextoImagen(this.ListCodigos.Items[I].SubItems[1].Text, Ancho, Color.White);
+                        alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
+                        imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
+                        dibujar = Graphics.FromImage(imagenNueva);
+                        dibujar.DrawImage(imagenTitulo, new Point(0, 0));
+                        dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                        // dibujar.Clear();
                     }
-                    if (FormatoText.SelectedIndex == 1)
-                    {
-                        codigo.SaveImage(ventana_dialogo.FileName, SaveTypes.PNG);
-                    }
-                    if (FormatoText.SelectedIndex == 2)
-                    {
-                        codigo.SaveImage(ventana_dialogo.FileName, SaveTypes.GIF);
-                    }
-                    if (FormatoText.SelectedIndex == 3)
-                    {
-                        codigo.SaveImage(ventana_dialogo.FileName, SaveTypes.BMP);
-                    }
-                    if (FormatoText.SelectedIndex == 4)
+                    this.PitureQr.Image = imagenCodigo;
+                    SaveFileDialog ventana_dialogo = new SaveFileDialog();
+                    ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim());
+                    ventana_dialogo.Filter = "Image Files(*.JPG;*.PNG;*.GIF)|*.JPG;*.PNG;*.GIF|All files (*.*)|*.*";
+                    if (this.FormatoText.SelectedIndex == 4)
                     {
                         // codigo.SaveImage(ventana_dialogo.FileName, SaveTypes.BMP);
-             
+
                         PrintDocument PD = new PrintDocument();
-                        PD.PrintPage += new PrintPageEventHandler (PrintBarras_PrintPage);
+                        PD.PrintPage += new PrintPageEventHandler(PrintBarras_PrintPage);
                         PD.Print();
                     }
-                    //  this.PitureQr.BackgroundImage = Image.FromFile(ventana_dialogo.FileName);
-                    // PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Png)
-                    MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (ventana_dialogo.ShowDialog() == DialogResult.OK)
+                    {
+                        if (this.FormatoText.SelectedIndex == 0)
+                        {
+
+                            this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Jpeg);
+                        }
+                        if (this.FormatoText.SelectedIndex == 1)
+                        {
+                            this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Png);
+                        }
+                        if (this.FormatoText.SelectedIndex == 2)
+                        {
+                            this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Gif);
+                        }
+                        if (this.FormatoText.SelectedIndex == 3)
+                        {
+                            this.PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Bmp);
+                        }
+
+                        //  this.PitureQr.BackgroundImage = Image.FromFile(ventana_dialogo.FileName);
+                        // PitureQr.Image.Save(ventana_dialogo.FileName, ImageFormat.Png)
+                        MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
                 }
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //throw new Exception(ex.Message.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //throw new Exception(ex.Message.ToString());
+                }
             }
         }
 
@@ -656,10 +664,10 @@ namespace PELOSCALVO
         private void BtnVerCodigo_Click(object sender, EventArgs e)
         {
             FormCodigoBarrras frm = new FormCodigoBarrras();
-            FormCodigoBarrras.MenuB.PanelCodigoBarra.Image = PitureQr.Image;
+            FormCodigoBarrras.MenuB.PanelCodigoBarra.Image = this.PitureQr.Image;
             frm.ShowDialog();
             frm.BringToFront();
-          
+
         }
 
         private void PrintBarras_PrintPage(object sender, PrintPageEventArgs e)
@@ -679,14 +687,60 @@ namespace PELOSCALVO
             Single XposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo                                  
             Single YposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo 
             Single yPos = Arial24.GetHeight(e.Graphics); // la posición superior
-        
-               // item2.SubItems.
-                e.Graphics.DrawString("fafd", Arial10, Brushes.Black, 32, 11);
+
+            // item2.SubItems.
+            e.Graphics.DrawString("fafd", Arial10, Brushes.Black, 32, 11);
+            e.Graphics.DrawImage(PitureQr.Image, e.PageBounds);
 
 
-      
+        }
+        private void MenuListaClick(object sender, ToolStripItemClickedEventArgs e)
+        {
+            try
+            {
+                string NombreItem = e.ClickedItem.Name.ToString();
+                if (NombreItem.Contains("DuplicarLinea"))
+                {
+                    NombreItem = NombreItem.Replace("DuplicarLinea", "");
+
+                }
+                if (NombreItem.Contains("Lineablanco"))
+                {
+                    NombreItem = NombreItem.Replace("Lineablanco", "");
+
+                }
+                if (NombreItem.Contains("EliminarLinea"))
+                {
+                    NombreItem = NombreItem.Replace("EliminarLinea", "");
+                    int I = this.ListCodigos.FocusedItem.Index;
+                    this.ListCodigos.Items.RemoveAt(I);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void ListCodigos_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+                int posicion = this.ListCodigos.HitTest(e.X, e.Y).Item.Index;
+                if (posicion > -1)
+                {
+                    menu.Items.Add("Duplicar Linea").Name = "DuplicarLinea" + posicion;
+                    menu.Items.Add("Eliminar Linea").Name = "EliminarLinea" + posicion;
+                }
+                menu.Show(this.ListCodigos, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(MenuListaClick);
+            }
         }
     }
 }
+
 
 

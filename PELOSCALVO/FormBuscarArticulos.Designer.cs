@@ -30,13 +30,13 @@ namespace PELOSCALVO
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarArticulos));
             this.TIPObuscarArticulos = new System.Windows.Forms.ComboBox();
             this.BuscarArticulosText = new System.Windows.Forms.TextBox();
@@ -119,14 +119,14 @@ namespace PELOSCALVO
             this.DataGridViewBuscarArticulos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DataGridViewBuscarArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DataGridViewBuscarArticulos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewBuscarArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewBuscarArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridViewBuscarArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewBuscarArticulos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.referenciaDataGridViewTextBoxColumn,
@@ -151,8 +151,8 @@ namespace PELOSCALVO
             // referenciaDataGridViewTextBoxColumn
             // 
             this.referenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.referenciaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.referenciaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.referenciaDataGridViewTextBoxColumn.FillWeight = 150F;
             this.referenciaDataGridViewTextBoxColumn.HeaderText = "Referencia";
             this.referenciaDataGridViewTextBoxColumn.Name = "referenciaDataGridViewTextBoxColumn";
@@ -162,8 +162,8 @@ namespace PELOSCALVO
             // descripcciDataGridViewTextBoxColumn
             // 
             this.descripcciDataGridViewTextBoxColumn.DataPropertyName = "Descripcci";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.descripcciDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.descripcciDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.descripcciDataGridViewTextBoxColumn.FillWeight = 300F;
             this.descripcciDataGridViewTextBoxColumn.HeaderText = "Descripccion";
             this.descripcciDataGridViewTextBoxColumn.Name = "descripcciDataGridViewTextBoxColumn";
@@ -173,10 +173,10 @@ namespace PELOSCALVO
             // pvp1DataGridViewTextBoxColumn
             // 
             this.pvp1DataGridViewTextBoxColumn.DataPropertyName = "Pvp1";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle11.Format = "C2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.pvp1DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.pvp1DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.pvp1DataGridViewTextBoxColumn.FillWeight = 80F;
             this.pvp1DataGridViewTextBoxColumn.HeaderText = "Pvp1";
             this.pvp1DataGridViewTextBoxColumn.Name = "pvp1DataGridViewTextBoxColumn";
@@ -193,8 +193,8 @@ namespace PELOSCALVO
             // familiaDataGridViewTextBoxColumn
             // 
             this.familiaDataGridViewTextBoxColumn.DataPropertyName = "Familia";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.familiaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.familiaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.familiaDataGridViewTextBoxColumn.FillWeight = 140F;
             this.familiaDataGridViewTextBoxColumn.HeaderText = "Familia";
             this.familiaDataGridViewTextBoxColumn.Name = "familiaDataGridViewTextBoxColumn";
@@ -204,10 +204,10 @@ namespace PELOSCALVO
             // fechaDataGridViewTextBoxColumn
             // 
             this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle13.Format = "d";
-            dataGridViewCellStyle13.NullValue = null;
-            this.fechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.fechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.fechaDataGridViewTextBoxColumn.FillWeight = 85F;
             this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
             this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
@@ -217,13 +217,13 @@ namespace PELOSCALVO
             // IdFILA
             // 
             this.IdFILA.DataPropertyName = "IdFILA";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle14.Format = "N0";
-            dataGridViewCellStyle14.NullValue = null;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Maroon;
-            this.IdFILA.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle7.Format = "N0";
+            dataGridViewCellStyle7.NullValue = null;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Maroon;
+            this.IdFILA.DefaultCellStyle = dataGridViewCellStyle7;
             this.IdFILA.HeaderText = "I.D";
             this.IdFILA.Name = "IdFILA";
             this.IdFILA.ReadOnly = true;
@@ -306,6 +306,7 @@ namespace PELOSCALVO
             this.ListCodigos.UseCompatibleStateImageBehavior = false;
             this.ListCodigos.View = System.Windows.Forms.View.Details;
             this.ListCodigos.Click += new System.EventHandler(this.ListCodigos_Click);
+            this.ListCodigos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListCodigos_MouseClick);
             // 
             // Id_Codigo
             // 
