@@ -372,51 +372,59 @@ namespace PELOSCALVO
                     this.AñoTxt.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
                 this.DescripicionEjer.Text = "Mi Configurarcion Nueva " + this.AñoTxt.Text;
-                string consulta = "Select max(IdEnlace) from [DtConfi]";
-                if (ClsConexionSql.SibaseDatosSql)
+                if (dtConfiguracionPrincipalDtConfiBindingSource.Count > 1)
                 {
-                    ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-                    if (NuevaConexion.SiConexionSql)
+                    string consulta = "Select max(IdEnlace) from [DtConfi]";
+                    if (ClsConexionSql.SibaseDatosSql)
                     {
-                        SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-
-                        if (reader.Read())
+                        ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+                        if (NuevaConexion.SiConexionSql)
                         {
-                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+
+                            if (reader.Read())
                             {
-                                
-                                Id_Enlace = Convert.ToInt32(reader[0].ToString());
-                                IdEnlace.Text = Convert.ToString( Id_Enlace + 1);
+                                if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                {
+
+                                    Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                    IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
+                                }
+                                else
+                                {
+
+                                    MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             }
-                            else
+                        }
+                    }
+                    else
+                    {
+                        ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                        if (NuevaConexion.SiConexionDb)
+                        {
+                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+
+                            if (reader.Read())
                             {
-                                MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                {
+                                    Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                    IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             }
                         }
                     }
                 }
                 else
                 {
-                    ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-                    if (NuevaConexion.SiConexionDb)
-                    {
-                        OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                            {
-                                Id_Enlace = Convert.ToInt32(reader[0].ToString());
-                                IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        }
-                    }
+                    IdEnlace.Text = "1";
                 }
                 SiEjercicio();
                 ModificarOjetos_Ej();

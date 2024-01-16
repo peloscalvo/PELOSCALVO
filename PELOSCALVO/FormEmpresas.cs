@@ -214,7 +214,7 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 25))
             {
-                int Id_Confi = 0;
+                int Id_Confi = 1;
                 String ConsultaDescuetos = "";
                 string consulta = "";
                 string Almacenes = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
@@ -302,30 +302,7 @@ namespace PELOSCALVO
                                       "[AñoDeEjercicio]) VALUES(@IdEnlace,@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                                          "  @AñoDeEjercicio)";
 
-                                consulta = "Select max(IdEnlace) from [DtConfi]";
-                                NuevaConexion = new ClsConexionSql(consulta);
-                                if (NuevaConexion.SiConexionSql)
-                                {
-                                    SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-                                    if (reader.Read())
-                                    {
-                                        if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                                        {
-                                            Id_Confi = Convert.ToInt32(reader[0].ToString());
-                                            Id_Confi++;
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Falta Id Conexion", "ERROR CONFI 2", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
+              
                                 NuevaConexion = new ClsConexionSql(Almacenes);////Guarda almacen
                                 if (NuevaConexion.SiConexionSql)
                                 {
@@ -336,20 +313,47 @@ namespace PELOSCALVO
                                     NuevaConexion.ComandoSql.Parameters.Clear();
                                     FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.Rows.Add(1, "Almacen Central", Convert.ToInt32(this.idEmpresa.Text));
                                 }
-                                NuevaConexion = new ClsConexionSql(ConsultaEjercios);////Guarda Ejercicio a empresa
-                                if (NuevaConexion.SiConexionSql)
+                                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Count > 0)
                                 {
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(Id_Confi.ToString()) ? (object)DBNull.Value : Id_Confi);
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", Basica);
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", 21);
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", Ejercicio);
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdConexionConfi", 1);
-                                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", String.Format("{0:yyyy}", DateTime.Now));
-                                    NuevaConexion.ComandoSql.ExecuteNonQuery();
-                                    NuevaConexion.ComandoSql.Parameters.Clear();
-                                    FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica, 21, Ejercicio, this.idEmpresa.Text, 1,
-                                      String.Format("{0:yyyy}", DateTime.Now));
+                                    consulta = "Select max(IdEnlace) from [DtConfi]";
+                                    NuevaConexion = new ClsConexionSql(consulta);
+                                    if (NuevaConexion.SiConexionSql)
+                                    {
+                                        SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+                                        if (reader.Read())
+                                        {
+                                            if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                            {
+                                                Id_Confi = Convert.ToInt32(reader[0].ToString());
+                                                Id_Confi++;
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Falta Id Conexion", "ERROR CONFI 2", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    }
+                                    NuevaConexion = new ClsConexionSql(ConsultaEjercios);////Guarda Ejercicio a empresa
+                                    if (NuevaConexion.SiConexionSql)
+                                    {
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(Id_Confi.ToString()) ? (object)DBNull.Value : Id_Confi);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", Basica);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", 21);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjerciciosDeAño", Ejercicio);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdConexionConfi", 1);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@AñoDeEjercicio", String.Format("{0:yyyy}", DateTime.Now));
+                                        NuevaConexion.ComandoSql.ExecuteNonQuery();
+                                        NuevaConexion.ComandoSql.Parameters.Clear();
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Rows.Add(Basica, 21, Ejercicio, this.idEmpresa.Text, 1,
+                                          String.Format("{0:yyyy}", DateTime.Now));
+                                    }
                                 }
                             }
                             this.dtConfiguracionPrincipalBindingSource.EndEdit();
@@ -427,7 +431,7 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 20))
             {
-                int Id_Confi = 0;
+                int Id_Confi = 1;
                 string Almacenes = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
                 string consulta = "";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
@@ -518,32 +522,7 @@ namespace PELOSCALVO
 
                                 }
                             }
-                            consulta = "Select max(IdEnlace) from [DtConfi]";
-                            NuevaConexion = new ClsConexionDb(consulta);
-                            if (NuevaConexion.SiConexionDb)
-                            {
-                                OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-                                if (reader.Read())
-                                {
-                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                                    {
 
-                                        Id_Confi = Convert.ToInt32(reader[0].ToString());
-                                        Id_Confi++;
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI 2", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-
-                            }
                             NuevaConexion = new ClsConexionDb(Almacenes);////Guarda almacen
                             if (NuevaConexion.SiConexionDb)
                             {
@@ -553,6 +532,35 @@ namespace PELOSCALVO
                                 NuevaConexion.ComandoDb.ExecuteNonQuery();
                                 NuevaConexion.ComandoDb.Parameters.Clear();
                                 FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.Rows.Add(1, "Almacen Central", Convert.ToInt32(this.idEmpresa.Text));
+                            }
+                            if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Count > 0)
+                            {
+                                consulta = "Select max(IdEnlace) from [DtConfi]";
+                                NuevaConexion = new ClsConexionDb(consulta);
+                                if (NuevaConexion.SiConexionDb)
+                                {
+                                    OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+                                    if (reader.Read())
+                                    {
+                                        if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                        {
+
+                                            Id_Confi = Convert.ToInt32(reader[0].ToString());
+                                            Id_Confi++;
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Falta Id Conexion", "ERROR CONFI 2", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                           // return;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                       // return;
+                                    }
+
+                                }
                             }
                             NuevaConexion = new ClsConexionDb(ConsultaEjercios);//
                             if (NuevaConexion.SiConexionDb)

@@ -916,6 +916,7 @@ namespace PELOSCALVO
         {
             int VALORid = 1;
             int VALOR_MAS = 1;
+            this.panelBotones.Tag = "Nuevo";
             this.tabControl1Factura.SelectedIndex = 0;
             if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
             {
@@ -1000,64 +1001,68 @@ namespace PELOSCALVO
                     Int32 Id_Enlace = 0;
                     this.apodoTextBox.Focus();
                     // this.numeroFacturaTextBox.Enabled = false;
-                    string consulta = "Select max(EnlaceFactura) from [DtNuevaFactura]";
-                    this.panelBotones.Tag = "Nuevo";
-                    if (ClsConexionSql.SibaseDatosSql)
+                    if (dtNuevaFacturaBindingSource.Count > 1)
                     {
-                        ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-                        if (NuevaConexion.SiConexionSql)
+                        string consulta = "Select max(EnlaceFactura) from [Dt" + ClasDatos.NombreFactura + "]";                  
+                        if (ClsConexionSql.SibaseDatosSql)
                         {
-                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-
-                            if (reader.Read())
+                            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+                            if (NuevaConexion.SiConexionSql)
                             {
-                                if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+                                if (reader.Read())
                                 {
+                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                    {
 
-                                    Id_Enlace = Convert.ToInt32(reader[0].ToString());
-                                    this.EnlaceFactu.Text = Convert.ToString(Id_Enlace + 1);
+                                        Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                        this.EnlaceFactu.Text = Convert.ToString(Id_Enlace + 1);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Falta Id Conexion", "ERROR FACTU 2", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                                 }
-                                else
-                                {
-                                    MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
-                        if (NuevaConexion.SiConexionDb)
-                        {
-                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-
-                            if (reader.Read())
+                            ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                            if (NuevaConexion.SiConexionDb)
                             {
-                                if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+
+                                if (reader.Read())
                                 {
-                                    Id_Enlace = Convert.ToInt32(reader[0].ToString());
-                                    this.EnlaceFactu.Text = Convert.ToString(Id_Enlace + 1);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                    {
+                                        Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                        this.EnlaceFactu.Text = Convert.ToString(Id_Enlace + 1);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Falta Id Conexion", "ERROR 2 FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                                 }
                             }
+                            else
+                            {
+                                MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
 
+                    }else
+                    {
+                        this.EnlaceFactu.Text = "1";
+                    }
                 }
 
 
@@ -3118,6 +3123,8 @@ namespace PELOSCALVO
 
             }
         }
+
+    
     }
 }
 
