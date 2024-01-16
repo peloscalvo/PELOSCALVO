@@ -938,9 +938,9 @@ namespace PELOSCALVO
                 this.dtNuevaFacturaDataGridView.Sort(this.dtNuevaFacturaDataGridView.Columns[0], ListSortDirection.Ascending);
                 int numeroFILA = this.dtNuevaFacturaDataGridView.Rows.Count;
                 this.dtNuevaFacturaBindingSource.AddNew();
-                if (dtNuevaFacturaBindingSource.Count >= 0)
+                if (dtNuevaFacturaBindingSource.Count > 0)
                 {
-                    if (dtNuevaFacturaBindingSource.Count == 0)
+                    if (dtNuevaFacturaBindingSource.Count == 1)
                     {
                         this.dtNuevaFacturaDataGridView.Rows[0].Cells[0].Value = "1";
                     }
@@ -975,7 +975,7 @@ namespace PELOSCALVO
                         // return;
                     }
 
-                    this.dtNuevaFacturaBindingSource.EndEdit();
+                  //  this.dtNuevaFacturaBindingSource.EndEdit();
 
                     if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
                     {

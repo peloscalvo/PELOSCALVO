@@ -468,7 +468,7 @@ namespace PELOSCALVO
                 Graphics dibujar = Graphics.FromImage(imagenNueva);
                 dibujar.DrawImage(imagenTitulo, new Point(0, 0));
                 dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
-                this.PitureQr.BackgroundImage = imagenCodigo;
+                this.PitureQr.Image = imagenCodigo;
 
                    // MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -574,11 +574,11 @@ namespace PELOSCALVO
                     dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
 
                 }
-                this.PitureQr.BackgroundImage = imagenNueva;
+                this.PitureQr.Image = imagenCodigo;
                 SaveFileDialog ventana_dialogo = new SaveFileDialog();
                 ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim()+FormatoText.Text);
                 ventana_dialogo.Filter = "Image Files(*.JPG;*.PNG;*.GIF)|*.JPG;*.PNG;*.GIF|All files (*.*)|*.*";
-                this.PitureQr.BackgroundImage = imagenCodigo;
+ 
    
                 if (ventana_dialogo.ShowDialog() == DialogResult.OK)
                 {
@@ -616,8 +616,8 @@ namespace PELOSCALVO
             }
             catch (Exception ex)
             {
-
-                throw new Exception(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //throw new Exception(ex.Message.ToString());
             }
         }
 
@@ -656,9 +656,10 @@ namespace PELOSCALVO
         private void BtnVerCodigo_Click(object sender, EventArgs e)
         {
             FormCodigoBarrras frm = new FormCodigoBarrras();
+            FormCodigoBarrras.MenuB.PanelCodigoBarra.Image = PitureQr.Image;
             frm.ShowDialog();
             frm.BringToFront();
-            FormCodigoBarrras.MenuB.PanelCodigoBarra.BackgroundImage = PitureQr.Image;
+          
         }
 
         private void PrintBarras_PrintPage(object sender, PrintPageEventArgs e)
