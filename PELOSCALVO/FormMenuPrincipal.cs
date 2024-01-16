@@ -1056,10 +1056,13 @@ namespace PELOSCALVO
         {
             ClasDatos.OkFacturar = false;
             ClasDatos.QUEform = "QR";
-            // dtPreciosDataGridView.CurrentCell.Selected = false;
             FormBuscarArticulos frm = new FormBuscarArticulos();
-            //m.FormClosed += (o, args) => numeroFILA = 1;
-            frm.ShowDialog();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
+            frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
+            frm.FormClosed += (o, args) => this.InfoConectado.Visible = true;
+            frm.Show();
             frm.BringToFront();
 
         }

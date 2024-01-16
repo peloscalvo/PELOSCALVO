@@ -30,13 +30,13 @@ namespace PELOSCALVO
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarArticulos));
             this.TIPObuscarArticulos = new System.Windows.Forms.ComboBox();
             this.BuscarArticulosText = new System.Windows.Forms.TextBox();
@@ -62,14 +62,18 @@ namespace PELOSCALVO
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.BtnCrearQr = new System.Windows.Forms.Button();
             this.TituloText = new System.Windows.Forms.TextBox();
-            this.PitureQr = new System.Windows.Forms.PictureBox();
-            this.BtnCodifiCar = new System.Windows.Forms.Button();
-            this.BtnCancelarBArticulo = new System.Windows.Forms.Button();
             this.BtnLimpiar = new System.Windows.Forms.Button();
             this.Anchotext = new System.Windows.Forms.TextBox();
             this.AltoText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.PitureQr = new System.Windows.Forms.PictureBox();
+            this.BtnCodifiCar = new System.Windows.Forms.Button();
+            this.BtnCancelarBArticulo = new System.Windows.Forms.Button();
+            this.BtnVerCodigo = new System.Windows.Forms.Button();
+            this.FormatoText = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.PrintBarras = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
@@ -115,14 +119,14 @@ namespace PELOSCALVO
             this.DataGridViewBuscarArticulos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DataGridViewBuscarArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DataGridViewBuscarArticulos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewBuscarArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewBuscarArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.DataGridViewBuscarArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewBuscarArticulos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.referenciaDataGridViewTextBoxColumn,
@@ -147,8 +151,8 @@ namespace PELOSCALVO
             // referenciaDataGridViewTextBoxColumn
             // 
             this.referenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.referenciaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.referenciaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.referenciaDataGridViewTextBoxColumn.FillWeight = 150F;
             this.referenciaDataGridViewTextBoxColumn.HeaderText = "Referencia";
             this.referenciaDataGridViewTextBoxColumn.Name = "referenciaDataGridViewTextBoxColumn";
@@ -158,8 +162,8 @@ namespace PELOSCALVO
             // descripcciDataGridViewTextBoxColumn
             // 
             this.descripcciDataGridViewTextBoxColumn.DataPropertyName = "Descripcci";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.descripcciDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.descripcciDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.descripcciDataGridViewTextBoxColumn.FillWeight = 300F;
             this.descripcciDataGridViewTextBoxColumn.HeaderText = "Descripccion";
             this.descripcciDataGridViewTextBoxColumn.Name = "descripcciDataGridViewTextBoxColumn";
@@ -169,10 +173,10 @@ namespace PELOSCALVO
             // pvp1DataGridViewTextBoxColumn
             // 
             this.pvp1DataGridViewTextBoxColumn.DataPropertyName = "Pvp1";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.pvp1DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle11.Format = "C2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.pvp1DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.pvp1DataGridViewTextBoxColumn.FillWeight = 80F;
             this.pvp1DataGridViewTextBoxColumn.HeaderText = "Pvp1";
             this.pvp1DataGridViewTextBoxColumn.Name = "pvp1DataGridViewTextBoxColumn";
@@ -189,8 +193,8 @@ namespace PELOSCALVO
             // familiaDataGridViewTextBoxColumn
             // 
             this.familiaDataGridViewTextBoxColumn.DataPropertyName = "Familia";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.familiaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.familiaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.familiaDataGridViewTextBoxColumn.FillWeight = 140F;
             this.familiaDataGridViewTextBoxColumn.HeaderText = "Familia";
             this.familiaDataGridViewTextBoxColumn.Name = "familiaDataGridViewTextBoxColumn";
@@ -200,10 +204,10 @@ namespace PELOSCALVO
             // fechaDataGridViewTextBoxColumn
             // 
             this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.fechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle13.Format = "d";
+            dataGridViewCellStyle13.NullValue = null;
+            this.fechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
             this.fechaDataGridViewTextBoxColumn.FillWeight = 85F;
             this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
             this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
@@ -213,13 +217,13 @@ namespace PELOSCALVO
             // IdFILA
             // 
             this.IdFILA.DataPropertyName = "IdFILA";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle7.Format = "N0";
-            dataGridViewCellStyle7.NullValue = null;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Maroon;
-            this.IdFILA.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle14.Format = "N0";
+            dataGridViewCellStyle14.NullValue = null;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Maroon;
+            this.IdFILA.DefaultCellStyle = dataGridViewCellStyle14;
             this.IdFILA.HeaderText = "I.D";
             this.IdFILA.Name = "IdFILA";
             this.IdFILA.ReadOnly = true;
@@ -295,7 +299,7 @@ namespace PELOSCALVO
             this.ListCodigos.FullRowSelect = true;
             this.ListCodigos.GridLines = true;
             this.ListCodigos.HideSelection = false;
-            this.ListCodigos.Location = new System.Drawing.Point(810, 101);
+            this.ListCodigos.Location = new System.Drawing.Point(810, 64);
             this.ListCodigos.Name = "ListCodigos";
             this.ListCodigos.Size = new System.Drawing.Size(411, 176);
             this.ListCodigos.TabIndex = 41;
@@ -318,7 +322,7 @@ namespace PELOSCALVO
             this.ListaQr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "CodigoBarras", true));
             this.ListaQr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListaQr.FormattingEnabled = true;
-            this.ListaQr.Location = new System.Drawing.Point(810, 48);
+            this.ListaQr.Location = new System.Drawing.Point(810, 11);
             this.ListaQr.Name = "ListaQr";
             this.ListaQr.Size = new System.Drawing.Size(361, 21);
             this.ListaQr.TabIndex = 74;
@@ -354,17 +358,66 @@ namespace PELOSCALVO
             // 
             // TituloText
             // 
-            this.TituloText.Location = new System.Drawing.Point(810, 75);
+            this.TituloText.Location = new System.Drawing.Point(810, 38);
             this.TituloText.Name = "TituloText";
             this.TituloText.Size = new System.Drawing.Size(312, 20);
             this.TituloText.TabIndex = 76;
             // 
+            // BtnLimpiar
+            // 
+            this.BtnLimpiar.Location = new System.Drawing.Point(1227, 64);
+            this.BtnLimpiar.Name = "BtnLimpiar";
+            this.BtnLimpiar.Size = new System.Drawing.Size(52, 23);
+            this.BtnLimpiar.TabIndex = 78;
+            this.BtnLimpiar.Text = "Limpiar";
+            this.BtnLimpiar.UseVisualStyleBackColor = true;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
+            // 
+            // Anchotext
+            // 
+            this.Anchotext.Location = new System.Drawing.Point(854, 246);
+            this.Anchotext.Name = "Anchotext";
+            this.Anchotext.Size = new System.Drawing.Size(91, 20);
+            this.Anchotext.TabIndex = 79;
+            this.Anchotext.Text = "300";
+            this.Anchotext.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Anchotext.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Anchotext_KeyPress);
+            // 
+            // AltoText
+            // 
+            this.AltoText.Location = new System.Drawing.Point(1031, 246);
+            this.AltoText.Name = "AltoText";
+            this.AltoText.Size = new System.Drawing.Size(91, 20);
+            this.AltoText.TabIndex = 80;
+            this.AltoText.Text = "120";
+            this.AltoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AltoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AltoText_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(807, 249);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 81;
+            this.label2.Text = "Ancho:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(975, 249);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 82;
+            this.label3.Text = "Ancho:";
+            // 
             // PitureQr
             // 
             this.PitureQr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PitureQr.Location = new System.Drawing.Point(810, 309);
+            this.PitureQr.Location = new System.Drawing.Point(810, 272);
             this.PitureQr.Name = "PitureQr";
-            this.PitureQr.Size = new System.Drawing.Size(411, 104);
+            this.PitureQr.Size = new System.Drawing.Size(411, 141);
+            this.PitureQr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PitureQr.TabIndex = 77;
             this.PitureQr.TabStop = false;
             // 
@@ -410,59 +463,53 @@ namespace PELOSCALVO
             this.BtnCancelarBArticulo.UseVisualStyleBackColor = false;
             this.BtnCancelarBArticulo.Click += new System.EventHandler(this.BtnCancelarBArticulo_Click);
             // 
-            // BtnLimpiar
+            // BtnVerCodigo
             // 
-            this.BtnLimpiar.Location = new System.Drawing.Point(1227, 101);
-            this.BtnLimpiar.Name = "BtnLimpiar";
-            this.BtnLimpiar.Size = new System.Drawing.Size(52, 23);
-            this.BtnLimpiar.TabIndex = 78;
-            this.BtnLimpiar.Text = "Limpiar";
-            this.BtnLimpiar.UseVisualStyleBackColor = true;
-            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
+            this.BtnVerCodigo.Location = new System.Drawing.Point(1227, 272);
+            this.BtnVerCodigo.Name = "BtnVerCodigo";
+            this.BtnVerCodigo.Size = new System.Drawing.Size(52, 23);
+            this.BtnVerCodigo.TabIndex = 83;
+            this.BtnVerCodigo.Text = "Ver";
+            this.BtnVerCodigo.UseVisualStyleBackColor = true;
+            this.BtnVerCodigo.Click += new System.EventHandler(this.BtnVerCodigo_Click);
             // 
-            // Anchotext
+            // FormatoText
             // 
-            this.Anchotext.Location = new System.Drawing.Point(903, 283);
-            this.Anchotext.Name = "Anchotext";
-            this.Anchotext.Size = new System.Drawing.Size(91, 20);
-            this.Anchotext.TabIndex = 79;
-            this.Anchotext.Text = "300";
-            this.Anchotext.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Anchotext.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Anchotext_KeyPress);
+            this.FormatoText.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FormatoText.FormattingEnabled = true;
+            this.FormatoText.Items.AddRange(new object[] {
+            "JPG",
+            "PNG",
+            "GIF",
+            "BMP",
+            "PDF"});
+            this.FormatoText.Location = new System.Drawing.Point(886, 427);
+            this.FormatoText.Name = "FormatoText";
+            this.FormatoText.Size = new System.Drawing.Size(121, 21);
+            this.FormatoText.TabIndex = 84;
             // 
-            // AltoText
+            // label4
             // 
-            this.AltoText.Location = new System.Drawing.Point(1080, 283);
-            this.AltoText.Name = "AltoText";
-            this.AltoText.Size = new System.Drawing.Size(91, 20);
-            this.AltoText.TabIndex = 80;
-            this.AltoText.Text = "120";
-            this.AltoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AltoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AltoText_KeyPress);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(825, 430);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.TabIndex = 85;
+            this.label4.Text = "Formato";
             // 
-            // label2
+            // PrintBarras
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(856, 286);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 81;
-            this.label2.Text = "Ancho:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1024, 286);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 82;
-            this.label3.Text = "Ancho:";
+            this.PrintBarras.DocumentName = "docum";
+            this.PrintBarras.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintBarras_PrintPage);
             // 
             // FormBuscarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 467);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.FormatoText);
+            this.Controls.Add(this.BtnVerCodigo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.AltoText);
@@ -535,5 +582,9 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox AltoText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BtnVerCodigo;
+        private System.Windows.Forms.ComboBox FormatoText;
+        private System.Windows.Forms.Label label4;
+        private System.Drawing.Printing.PrintDocument PrintBarras;
     }
 }

@@ -32,13 +32,20 @@ namespace PELOSCALVO
                 {
                     this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti;
                 }
-
+                if(dtInicioMultiBindingSource.Count < 1)
+                {
+                    dtConfiBindingSource.AddNew();
+                }
                 foreach (var nombre in Enum.GetNames(typeof(BarcodeLib.TYPE)))
                 {
                     this.CodigoBarras.Items.Add(nombre);
 
                 }
-
+                if (!string.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["CodigoBarras"].ToString()))
+                {
+                   // this.CodigoBarras.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["CodigoBarras"].ToString();
+                    this.CodigoBarras.Text = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Rows[0]["CodigoBarras"].ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -363,6 +370,11 @@ namespace PELOSCALVO
                     {
                         try
                         {
+                       
+                            if (!string.IsNullOrEmpty(CodigoBarras.Text))
+                            {
+                             FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["CodigoBarras"] =CodigoBarras.Text;
+                            }
                             FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
                             MessageBox.Show("Se guardo Con Exito", "GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             RestaurarOjetosInico();
