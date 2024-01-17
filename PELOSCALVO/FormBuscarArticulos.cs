@@ -2,6 +2,7 @@
 //using SkiaSharp;
 using BarcodeLib;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -22,6 +23,14 @@ namespace PELOSCALVO
         {
             public int Valor { get; set; }
             public string Texto { get; set; }
+        }
+        public  class Opcionimagen
+        {
+            public  Image Valor { get; set; }
+        }
+        public static class listas
+        {
+            public static List<Opcionimagen> lista = new List<Opcionimagen>();
         }
         private void FormBuscarArticulosEnFacturas_Load(object sender, EventArgs e)
         {
@@ -545,7 +554,7 @@ namespace PELOSCALVO
 
                 try
                 {
-
+                    FormBuscarArticulos.listas.lista.Clear();
                     int Ancho = Convert.ToInt32(this.Anchotext.Text);
                     int Alto = Convert.ToInt32(this.AltoText.Text);
                     Image imagenCodigo = null;
@@ -558,7 +567,7 @@ namespace PELOSCALVO
                     Barcode codigo = new Barcode();
                     codigo.IncludeLabel = true;
                     int I;
-                    Bitmap BTM = new Bitmap(0, 0);
+                    //Bitmap BTM = new Bitmap(0, 0);
                     foreach (ListViewItem item2 in this.ListCodigos.Items)
                     {
                         I = item2.Index;
@@ -573,17 +582,23 @@ namespace PELOSCALVO
                         dibujar.DrawImage(imagenTitulo, new Point(0, 0));
                         dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
                         // MessageBox.Show(this.ListCodigos.Items[I].SubItems[1].Text);
-                        imagenCodigo = codigo.Encode(tipoCodigo, item2.SubItems[I].Text, Color.Black, Color.White, Ancho, Alto);
+                        imagenCodigo = codigo.Encode(tipoCodigo, item2.SubItems[1].Text, Color.Black, Color.White, Ancho, Alto);
                         codigo.Alignment = AlignmentPositions.CENTER;
-                        imagenTitulo = convertirTextoImagen(item2.SubItems[I].Text, Ancho, Color.White);
+                        imagenTitulo = convertirTextoImagen(item2.SubItems[1].Text, Ancho, Color.White);
                         alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
                         imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
                         dibujar = Graphics.FromImage(imagenNueva);
                         dibujar.DrawImage(imagenTitulo, new Point(0, 0));
                         dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
                         // dibujar.Clear();
-                    }
-                    this.PitureQr.Image = imagenCodigo;
+                        if (this.FormatoText.SelectedIndex == 4)
+                        {
+                            Opcionimagen ImagenPdf = new Opcionimagen();
+                            ImagenPdf.Valor = imagenCodigo;
+                            FormBuscarArticulos.listas.lista.Add(ImagenPdf);
+                        }
+                        }
+                        this.PitureQr.Image = imagenCodigo;
 
 
                     if (this.FormatoText.SelectedIndex == 4)
@@ -591,13 +606,14 @@ namespace PELOSCALVO
 
                         PrintDocument PD = new PrintDocument();
                         PD.PrintPage += new PrintPageEventHandler(PrintBarras_PrintPage);
+                        PD.DocumentName= string.Format("{0}", this.TituloText.Text.Trim());
                         PD.Print();
            
                     }
                     else
                     {
                         SaveFileDialog ventana_dialogo = new SaveFileDialog();
-                        ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim());
+                        ventana_dialogo.FileName = string.Format("{0}", this.TituloText.Text.Trim())+"."+FormatoText.Text;
                         ventana_dialogo.Filter = "Image Files(*.JPG;*.PNG;*.GIF)|*.JPG;*.PNG;*.GIF|All files (*.*)|*.*";
 
                         if (ventana_dialogo.ShowDialog() == DialogResult.OK)
@@ -621,10 +637,10 @@ namespace PELOSCALVO
                             }
                         }
 
-                        MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     
                     }
 
-
+                    MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -677,6 +693,7 @@ namespace PELOSCALVO
 
         private void PrintBarras_PrintPage(object sender, PrintPageEventArgs e)
         {
+            int BB = 4;
             Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
             Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
             Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
@@ -694,8 +711,22 @@ namespace PELOSCALVO
             Single yPos = Arial24.GetHeight(e.Graphics); // la posición superior
 
             // item2.SubItems.
-            e.Graphics.DrawString("fafd", Arial10, Brushes.Black, 32, 11);
-            e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
+            try
+            {
+               // e.Graphics.DrawString("fafd", Arial10, Brushes.Black, 32, 11);
+                foreach (var item in FormBuscarArticulos.listas.lista)
+                {
+                    e.Graphics.DrawString("---------------------------", Arial10, Brushes.Black, new Point(BB, BB));
+                    e.Graphics.DrawImage(item.Valor, new Point(0, BB));
+                    BB = BB + item.Valor.Height+14;
+                }
+                // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }

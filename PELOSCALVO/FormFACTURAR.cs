@@ -1129,7 +1129,7 @@ namespace PELOSCALVO
                         else
                         {
                             //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+                           // this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
                         }
                     }
                     if (ClsConexionSql.SibaseDatosSql)
