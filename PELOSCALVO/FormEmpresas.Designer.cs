@@ -60,9 +60,9 @@ namespace PELOSCALVO
             this.cifEmpresaTextBox = new System.Windows.Forms.TextBox();
             this.telefono2EmpresaTextBox = new System.Windows.Forms.TextBox();
             this.movilEmpresaTextBox = new System.Windows.Forms.TextBox();
-            this.nombreEmpresaText = new System.Windows.Forms.TextBox();
-            this.direccionEmpresaTextBox = new System.Windows.Forms.TextBox();
-            this.localidadEmpresaTextBox = new System.Windows.Forms.TextBox();
+            this.EmpresaTxt = new System.Windows.Forms.TextBox();
+            this.DirecionEmpresa = new System.Windows.Forms.TextBox();
+            this.LocalidadEmpresa = new System.Windows.Forms.TextBox();
             this.codigoPostalEmpresaTextBox = new System.Windows.Forms.TextBox();
             this.telefonoEmpresaTextBox = new System.Windows.Forms.TextBox();
             this.correoEmpresaTextBox = new System.Windows.Forms.TextBox();
@@ -70,8 +70,8 @@ namespace PELOSCALVO
             this.EmpresaRazonTxt = new System.Windows.Forms.TextBox();
             this.idEmpresa = new System.Windows.Forms.TextBox();
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
-            this.regimenIvaEmpresaComboBox = new System.Windows.Forms.ComboBox();
-            this.serieDeFacturacionEmpresaComboBox = new System.Windows.Forms.ComboBox();
+            this.RegimenIva = new System.Windows.Forms.ComboBox();
+            this.SerieEmpresa = new System.Windows.Forms.ComboBox();
             this.panelEmpresas = new System.Windows.Forms.Panel();
             this.BtnImprimirEmpresa = new System.Windows.Forms.Button();
             this.BtnEliminarEmpresa = new System.Windows.Forms.Button();
@@ -227,7 +227,7 @@ namespace PELOSCALVO
             // correoEmpresaLabel
             // 
             correoEmpresaLabel.AutoSize = true;
-            correoEmpresaLabel.Location = new System.Drawing.Point(415, 286);
+            correoEmpresaLabel.Location = new System.Drawing.Point(390, 283);
             correoEmpresaLabel.Name = "correoEmpresaLabel";
             correoEmpresaLabel.Size = new System.Drawing.Size(41, 13);
             correoEmpresaLabel.TabIndex = 95;
@@ -236,7 +236,7 @@ namespace PELOSCALVO
             // wepEmpresaLabel
             // 
             wepEmpresaLabel.AutoSize = true;
-            wepEmpresaLabel.Location = new System.Drawing.Point(668, 283);
+            wepEmpresaLabel.Location = new System.Drawing.Point(712, 283);
             wepEmpresaLabel.Name = "wepEmpresaLabel";
             wepEmpresaLabel.Size = new System.Drawing.Size(33, 13);
             wepEmpresaLabel.TabIndex = 97;
@@ -334,7 +334,7 @@ namespace PELOSCALVO
             this.cifEmpresaTextBox.Location = new System.Drawing.Point(462, 309);
             this.cifEmpresaTextBox.Name = "cifEmpresaTextBox";
             this.cifEmpresaTextBox.ReadOnly = true;
-            this.cifEmpresaTextBox.Size = new System.Drawing.Size(136, 20);
+            this.cifEmpresaTextBox.Size = new System.Drawing.Size(157, 20);
             this.cifEmpresaTextBox.TabIndex = 113;
             // 
             // telefono2EmpresaTextBox
@@ -357,35 +357,35 @@ namespace PELOSCALVO
             this.movilEmpresaTextBox.Size = new System.Drawing.Size(136, 20);
             this.movilEmpresaTextBox.TabIndex = 110;
             // 
-            // nombreEmpresaText
+            // EmpresaTxt
             // 
-            this.nombreEmpresaText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresa", true));
-            this.nombreEmpresaText.Location = new System.Drawing.Point(92, 309);
-            this.nombreEmpresaText.MaxLength = 50;
-            this.nombreEmpresaText.Name = "nombreEmpresaText";
-            this.nombreEmpresaText.ReadOnly = true;
-            this.nombreEmpresaText.Size = new System.Drawing.Size(290, 20);
-            this.nombreEmpresaText.TabIndex = 86;
+            this.EmpresaTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "NombreEmpresa", true));
+            this.EmpresaTxt.Location = new System.Drawing.Point(92, 309);
+            this.EmpresaTxt.MaxLength = 50;
+            this.EmpresaTxt.Name = "EmpresaTxt";
+            this.EmpresaTxt.ReadOnly = true;
+            this.EmpresaTxt.Size = new System.Drawing.Size(290, 20);
+            this.EmpresaTxt.TabIndex = 86;
             // 
-            // direccionEmpresaTextBox
+            // DirecionEmpresa
             // 
-            this.direccionEmpresaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "DireccionEmpresa", true));
-            this.direccionEmpresaTextBox.Location = new System.Drawing.Point(92, 338);
-            this.direccionEmpresaTextBox.MaxLength = 40;
-            this.direccionEmpresaTextBox.Name = "direccionEmpresaTextBox";
-            this.direccionEmpresaTextBox.ReadOnly = true;
-            this.direccionEmpresaTextBox.Size = new System.Drawing.Size(257, 20);
-            this.direccionEmpresaTextBox.TabIndex = 88;
+            this.DirecionEmpresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "DireccionEmpresa", true));
+            this.DirecionEmpresa.Location = new System.Drawing.Point(92, 338);
+            this.DirecionEmpresa.MaxLength = 40;
+            this.DirecionEmpresa.Name = "DirecionEmpresa";
+            this.DirecionEmpresa.ReadOnly = true;
+            this.DirecionEmpresa.Size = new System.Drawing.Size(257, 20);
+            this.DirecionEmpresa.TabIndex = 88;
             // 
-            // localidadEmpresaTextBox
+            // LocalidadEmpresa
             // 
-            this.localidadEmpresaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "LocalidadEmpresa", true));
-            this.localidadEmpresaTextBox.Location = new System.Drawing.Point(92, 364);
-            this.localidadEmpresaTextBox.MaxLength = 25;
-            this.localidadEmpresaTextBox.Name = "localidadEmpresaTextBox";
-            this.localidadEmpresaTextBox.ReadOnly = true;
-            this.localidadEmpresaTextBox.Size = new System.Drawing.Size(211, 20);
-            this.localidadEmpresaTextBox.TabIndex = 90;
+            this.LocalidadEmpresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "LocalidadEmpresa", true));
+            this.LocalidadEmpresa.Location = new System.Drawing.Point(92, 364);
+            this.LocalidadEmpresa.MaxLength = 25;
+            this.LocalidadEmpresa.Name = "LocalidadEmpresa";
+            this.LocalidadEmpresa.ReadOnly = true;
+            this.LocalidadEmpresa.Size = new System.Drawing.Size(211, 20);
+            this.LocalidadEmpresa.TabIndex = 90;
             // 
             // codigoPostalEmpresaTextBox
             // 
@@ -393,7 +393,7 @@ namespace PELOSCALVO
             this.codigoPostalEmpresaTextBox.Location = new System.Drawing.Point(462, 335);
             this.codigoPostalEmpresaTextBox.Name = "codigoPostalEmpresaTextBox";
             this.codigoPostalEmpresaTextBox.ReadOnly = true;
-            this.codigoPostalEmpresaTextBox.Size = new System.Drawing.Size(121, 20);
+            this.codigoPostalEmpresaTextBox.Size = new System.Drawing.Size(174, 20);
             this.codigoPostalEmpresaTextBox.TabIndex = 92;
             // 
             // telefonoEmpresaTextBox
@@ -409,16 +409,16 @@ namespace PELOSCALVO
             // correoEmpresaTextBox
             // 
             this.correoEmpresaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "CorreoEmpresa", true));
-            this.correoEmpresaTextBox.Location = new System.Drawing.Point(462, 283);
+            this.correoEmpresaTextBox.Location = new System.Drawing.Point(437, 280);
             this.correoEmpresaTextBox.Name = "correoEmpresaTextBox";
             this.correoEmpresaTextBox.ReadOnly = true;
-            this.correoEmpresaTextBox.Size = new System.Drawing.Size(174, 20);
+            this.correoEmpresaTextBox.Size = new System.Drawing.Size(257, 20);
             this.correoEmpresaTextBox.TabIndex = 96;
             // 
             // wepEmpresaTextBox
             // 
             this.wepEmpresaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "WepEmpresa", true));
-            this.wepEmpresaTextBox.Location = new System.Drawing.Point(712, 280);
+            this.wepEmpresaTextBox.Location = new System.Drawing.Point(756, 280);
             this.wepEmpresaTextBox.MaxLength = 35;
             this.wepEmpresaTextBox.Name = "wepEmpresaTextBox";
             this.wepEmpresaTextBox.ReadOnly = true;
@@ -455,28 +455,28 @@ namespace PELOSCALVO
             this.dsMulti2.DataSetName = "DsMulti2";
             this.dsMulti2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // regimenIvaEmpresaComboBox
+            // RegimenIva
             // 
-            this.regimenIvaEmpresaComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.regimenIvaEmpresaComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.regimenIvaEmpresaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.regimenIvaEmpresaComboBox.Enabled = false;
-            this.regimenIvaEmpresaComboBox.FormattingEnabled = true;
-            this.regimenIvaEmpresaComboBox.Items.AddRange(new object[] {
+            this.RegimenIva.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.RegimenIva.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.RegimenIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RegimenIva.Enabled = false;
+            this.RegimenIva.FormattingEnabled = true;
+            this.RegimenIva.Items.AddRange(new object[] {
             "Normal",
             "Recargo",
             "Exento"});
-            this.regimenIvaEmpresaComboBox.Location = new System.Drawing.Point(854, 327);
-            this.regimenIvaEmpresaComboBox.Name = "regimenIvaEmpresaComboBox";
-            this.regimenIvaEmpresaComboBox.Size = new System.Drawing.Size(121, 21);
-            this.regimenIvaEmpresaComboBox.TabIndex = 102;
+            this.RegimenIva.Location = new System.Drawing.Point(854, 327);
+            this.RegimenIva.Name = "RegimenIva";
+            this.RegimenIva.Size = new System.Drawing.Size(121, 21);
+            this.RegimenIva.TabIndex = 102;
             // 
-            // serieDeFacturacionEmpresaComboBox
+            // SerieEmpresa
             // 
-            this.serieDeFacturacionEmpresaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.serieDeFacturacionEmpresaComboBox.Enabled = false;
-            this.serieDeFacturacionEmpresaComboBox.FormattingEnabled = true;
-            this.serieDeFacturacionEmpresaComboBox.Items.AddRange(new object[] {
+            this.SerieEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SerieEmpresa.Enabled = false;
+            this.SerieEmpresa.FormattingEnabled = true;
+            this.SerieEmpresa.Items.AddRange(new object[] {
             "A",
             "B",
             "C",
@@ -487,10 +487,10 @@ namespace PELOSCALVO
             "H",
             "I",
             "R"});
-            this.serieDeFacturacionEmpresaComboBox.Location = new System.Drawing.Point(878, 356);
-            this.serieDeFacturacionEmpresaComboBox.Name = "serieDeFacturacionEmpresaComboBox";
-            this.serieDeFacturacionEmpresaComboBox.Size = new System.Drawing.Size(97, 21);
-            this.serieDeFacturacionEmpresaComboBox.TabIndex = 106;
+            this.SerieEmpresa.Location = new System.Drawing.Point(878, 356);
+            this.SerieEmpresa.Name = "SerieEmpresa";
+            this.SerieEmpresa.Size = new System.Drawing.Size(97, 21);
+            this.SerieEmpresa.TabIndex = 106;
             // 
             // panelEmpresas
             // 
@@ -818,9 +818,9 @@ namespace PELOSCALVO
             this.Controls.Add(this.cifEmpresaTextBox);
             this.Controls.Add(this.telefono2EmpresaTextBox);
             this.Controls.Add(this.movilEmpresaTextBox);
-            this.Controls.Add(this.nombreEmpresaText);
-            this.Controls.Add(this.direccionEmpresaTextBox);
-            this.Controls.Add(this.localidadEmpresaTextBox);
+            this.Controls.Add(this.EmpresaTxt);
+            this.Controls.Add(this.DirecionEmpresa);
+            this.Controls.Add(this.LocalidadEmpresa);
             this.Controls.Add(this.codigoPostalEmpresaTextBox);
             this.Controls.Add(this.telefonoEmpresaTextBox);
             this.Controls.Add(this.correoEmpresaTextBox);
@@ -830,9 +830,9 @@ namespace PELOSCALVO
             this.Controls.Add(telefono2EmpresaLabel);
             this.Controls.Add(movilEmpresaLabel);
             this.Controls.Add(regimenIvaEmpresaLabel1);
-            this.Controls.Add(this.regimenIvaEmpresaComboBox);
+            this.Controls.Add(this.RegimenIva);
             this.Controls.Add(serieDeFacturacionEmpresaLabel);
-            this.Controls.Add(this.serieDeFacturacionEmpresaComboBox);
+            this.Controls.Add(this.SerieEmpresa);
             this.Controls.Add(nombreEmpresaLabel);
             this.Controls.Add(direccionEmpresaLabel);
             this.Controls.Add(localidadEmpresaLabel);
@@ -880,17 +880,17 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox cifEmpresaTextBox;
         private System.Windows.Forms.TextBox telefono2EmpresaTextBox;
         private System.Windows.Forms.TextBox movilEmpresaTextBox;
-        private System.Windows.Forms.TextBox nombreEmpresaText;
-        private System.Windows.Forms.TextBox direccionEmpresaTextBox;
-        private System.Windows.Forms.TextBox localidadEmpresaTextBox;
+        private System.Windows.Forms.TextBox EmpresaTxt;
+        private System.Windows.Forms.TextBox DirecionEmpresa;
+        private System.Windows.Forms.TextBox LocalidadEmpresa;
         private System.Windows.Forms.TextBox codigoPostalEmpresaTextBox;
         private System.Windows.Forms.TextBox telefonoEmpresaTextBox;
         private System.Windows.Forms.TextBox correoEmpresaTextBox;
         private System.Windows.Forms.TextBox wepEmpresaTextBox;
         private System.Windows.Forms.TextBox EmpresaRazonTxt;
         private System.Windows.Forms.TextBox idEmpresa;
-        private System.Windows.Forms.ComboBox regimenIvaEmpresaComboBox;
-        private System.Windows.Forms.ComboBox serieDeFacturacionEmpresaComboBox;
+        private System.Windows.Forms.ComboBox RegimenIva;
+        private System.Windows.Forms.ComboBox SerieEmpresa;
         private System.Windows.Forms.Button BtnCancelarEmpresas;
         public System.Windows.Forms.Button BtnGuardarEmpresas;
         private System.Windows.Forms.Panel panelEmpresas;

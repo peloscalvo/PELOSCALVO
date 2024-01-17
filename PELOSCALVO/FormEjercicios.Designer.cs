@@ -338,7 +338,7 @@ namespace PELOSCALVO
             // 
             // DescripicionEjer
             // 
-            this.DescripicionEjer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "ConfiguraccionBasica", true, System.Windows.Forms.DataSourceUpdateMode.Never));
+            this.DescripicionEjer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "ConfiguraccionBasica", true));
             this.DescripicionEjer.Location = new System.Drawing.Point(83, 345);
             this.DescripicionEjer.MaxLength = 50;
             this.DescripicionEjer.Name = "DescripicionEjer";
@@ -348,7 +348,7 @@ namespace PELOSCALVO
             // 
             // EjercicioTxt
             // 
-            this.EjercicioTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EjerciciosDeAño", true, System.Windows.Forms.DataSourceUpdateMode.Never));
+            this.EjercicioTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalDtConfiBindingSource, "EjerciciosDeAño", true));
             this.EjercicioTxt.Location = new System.Drawing.Point(83, 371);
             this.EjercicioTxt.MaxLength = 50;
             this.EjercicioTxt.Name = "EjercicioTxt";

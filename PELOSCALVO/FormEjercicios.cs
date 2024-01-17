@@ -10,6 +10,9 @@ namespace PELOSCALVO
 {
     public partial class FormEjercicios : Form
     {
+        string Ejercicio;
+        string Año;
+        string Descripcion;
         public FormEjercicios()
         {
             InitializeComponent();
@@ -120,6 +123,8 @@ namespace PELOSCALVO
             this.BtnCancelarEjercicio.Enabled = true;
             this.EmpresaEjercicioTxt.Enabled = false;
             this.panel1Ejercicio.Enabled = false;
+            // EmpresaEjercicioTxt.CausesValidation = false;
+
         }
         private void GuardarEjercicioBb()
         {
@@ -210,7 +215,7 @@ namespace PELOSCALVO
                     MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetos_Ej();
                 }
-     
+
             }
             catch (Exception ex)
             {
@@ -329,7 +334,7 @@ namespace PELOSCALVO
                 // SqlDataReader reader;
 
 
-   
+
                 Random r = new Random();
                 int VALORid = r.Next(500, 1000000);
                 int numeroFILA = this.dtConfiDataGridView.Rows.Count;
@@ -372,7 +377,7 @@ namespace PELOSCALVO
                     this.AñoTxt.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
                 this.DescripicionEjer.Text = "Mi Configurarcion Nueva " + this.AñoTxt.Text;
-                if (dtConfiguracionPrincipalDtConfiBindingSource.Count > 1)
+                if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 1)
                 {
                     string consulta = "Select max(IdEnlace) from [DtConfi]";
                     if (ClsConexionSql.SibaseDatosSql)
@@ -388,7 +393,7 @@ namespace PELOSCALVO
                                 {
 
                                     Id_Enlace = Convert.ToInt32(reader[0].ToString());
-                                    IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
+                                    this.IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
                                 }
                                 else
                                 {
@@ -411,7 +416,7 @@ namespace PELOSCALVO
                                 if (!string.IsNullOrEmpty((reader[0]).ToString()))
                                 {
                                     Id_Enlace = Convert.ToInt32(reader[0].ToString());
-                                    IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
+                                    this.IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
                                 }
                                 else
                                 {
@@ -424,7 +429,7 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    IdEnlace.Text = "1";
+                    this.IdEnlace.Text = "1";
                 }
                 SiEjercicio();
                 ModificarOjetos_Ej();
@@ -441,6 +446,18 @@ namespace PELOSCALVO
             this.BtnNuevoEjercicio.Tag = "Actualizar";
             if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count >= 1)
             {
+                if (!string.IsNullOrEmpty(this.EjercicioTxt.Text))
+                {
+                    this.Ejercicio = this.EjercicioTxt.Text;
+                }
+                if (!string.IsNullOrEmpty(this.AñoTxt.Text))
+                {
+                    this.Año = this.AñoTxt.Text;
+                }
+                if (!string.IsNullOrEmpty(this.DescripicionEjer.Text))
+                {
+                    this.Descripcion = this.DescripicionEjer.Text;
+                }
                 ModificarOjetos_Ej();
             }
             else
@@ -459,6 +476,33 @@ namespace PELOSCALVO
                     if (this.dtConfiDataGridView.RowCount > 0)
                     {
                         this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(this.Ejercicio))
+                    {
+                        this.EjercicioTxt.Text = this.Ejercicio;
+                    }
+                    else
+                    {
+                        this.EjercicioTxt.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Año))
+                    {
+                        this.AñoTxt.Text = this.Año;
+                    }
+                    else
+                    {
+                        this.AñoTxt.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Descripcion))
+                    {
+                        this.DescripicionEjer.Text = this.Descripcion;
+                    }
+                    else
+                    {
+                        this.DescripicionEjer.Text = "";
                     }
                 }
 

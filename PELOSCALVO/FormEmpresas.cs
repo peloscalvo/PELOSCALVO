@@ -12,6 +12,19 @@ namespace PELOSCALVO
 {
     public partial class FormEmpresas : Form
     {
+        string Empresa;
+        string RazonSocial;
+        string Direcion;
+        string Localidad;
+        string Telefono;
+        string Telefono2;
+        string Correo;
+        string Cif;
+        string CodigoPostal;
+        string Movil;
+        string Web;
+        string Iva;
+        string Serie;
         public FormEmpresas()
         {
             InitializeComponent();
@@ -73,15 +86,15 @@ namespace PELOSCALVO
                 ok = false;
                 this.errorProvider1Confi.SetError(this.EmpresaRazonTxt, "_ingresar Nonbre empresa valido (( minimo 4 Caracteres))");
             }
-            if (this.nombreEmpresaText.Text.Length < 4)
+            if (this.EmpresaTxt.Text.Length < 4)
             {
                 ok = false;
-                this.errorProvider1Confi.SetError(this.nombreEmpresaText, "_ingresar Razon Social valido (( minimo 4 Caracteres))");
+                this.errorProvider1Confi.SetError(this.EmpresaTxt, "_ingresar Razon Social valido (( minimo 4 Caracteres))");
             }
-            if (this.direccionEmpresaTextBox.Text.Length < 4)
+            if (this.DirecionEmpresa.Text.Length < 4)
             {
                 ok = false;
-                this.errorProvider1Confi.SetError(this.direccionEmpresaTextBox, "_ingresar Direccion valido (( minimo 4 Caracteres))");
+                this.errorProvider1Confi.SetError(this.DirecionEmpresa, "_ingresar Direccion valido (( minimo 4 Caracteres))");
             }
 
             return ok;
@@ -90,8 +103,8 @@ namespace PELOSCALVO
         {
             this.errorProvider1Confi.SetError(this.idEmpresa, "");
             this.errorProvider1Confi.SetError(this.EmpresaRazonTxt, "");
-            this.errorProvider1Confi.SetError(this.nombreEmpresaText, "");
-            this.errorProvider1Confi.SetError(this.direccionEmpresaTextBox, "");
+            this.errorProvider1Confi.SetError(this.EmpresaTxt, "");
+            this.errorProvider1Confi.SetError(this.DirecionEmpresa, "");
         }
         private bool EspacioDiscosConfi(string nombreDisco, int Espacio)
         {
@@ -114,12 +127,12 @@ namespace PELOSCALVO
             this.empresaConfiComboBox.Enabled = false;
             this.Paistxt.Enabled = true;
             this.ProvinciaTxt.Enabled = true;
-            this.regimenIvaEmpresaComboBox.Enabled = true;
-            this.serieDeFacturacionEmpresaComboBox.Enabled = true;
+            this.RegimenIva.Enabled = true;
+            this.SerieEmpresa.Enabled = true;
             this.EmpresaRazonTxt.ReadOnly = false;
-            this.nombreEmpresaText.ReadOnly = false;
-            this.direccionEmpresaTextBox.ReadOnly = false;
-            this.localidadEmpresaTextBox.ReadOnly = false;
+            this.EmpresaTxt.ReadOnly = false;
+            this.DirecionEmpresa.ReadOnly = false;
+            this.LocalidadEmpresa.ReadOnly = false;
             this.codigoPostalEmpresaTextBox.ReadOnly = false;
             this.telefonoEmpresaTextBox.ReadOnly = false;
             this.correoEmpresaTextBox.ReadOnly = false;
@@ -192,7 +205,7 @@ namespace PELOSCALVO
                     }
 
                 }
-                this.nombreEmpresaText.Text = "Nombre Tu Empresa";
+                this.EmpresaTxt.Text = "Nombre Tu Empresa";
                 ModficarOjetos_E();
             }
             catch (Exception ex)
@@ -207,6 +220,54 @@ namespace PELOSCALVO
             if (this.dtConfiguracionPrincipalBindingSource.Count > 0)
             {
                 this.BtnNuevaEmpresa.Tag = "Modificar";
+                if (!string.IsNullOrEmpty(this.EmpresaRazonTxt.Text))
+                {
+                    this.RazonSocial = this.EmpresaRazonTxt.Text;
+                }
+                if (!string.IsNullOrEmpty(this.EmpresaTxt.Text))
+                {
+                    this.Empresa = this.EmpresaTxt.Text;
+                }
+                if (!string.IsNullOrEmpty(this.DirecionEmpresa.Text))
+                {
+                    this.Direcion = this.DirecionEmpresa.Text;
+                }
+                if (!string.IsNullOrEmpty(this.LocalidadEmpresa.Text))
+                {
+                    this.Localidad = this.LocalidadEmpresa.Text;
+                }
+                if (!string.IsNullOrEmpty(this.telefonoEmpresaTextBox.Text))
+                {
+                    this.Telefono = this.telefonoEmpresaTextBox.Text;
+                }
+                if (!string.IsNullOrEmpty(this.telefono2EmpresaTextBox.Text))
+                {
+                    this.Telefono2 = this.telefono2EmpresaTextBox.Text;
+                }
+
+                if (!string.IsNullOrEmpty(this.wepEmpresaTextBox.Text))
+                {
+                    this.Web = this.wepEmpresaTextBox.Text;
+                }
+                if (!string.IsNullOrEmpty(this.cifEmpresaTextBox.Text))
+                {
+                    this.Cif = this.cifEmpresaTextBox.Text;
+                }
+                if (!string.IsNullOrEmpty(this.codigoPostalEmpresaTextBox.Text))
+                {
+                    this.CodigoPostal = this.codigoPostalEmpresaTextBox.Text;
+                }
+
+                if (!string.IsNullOrEmpty(this.RegimenIva.Text))
+                {
+                    this.Iva = this.RegimenIva.Text;
+                }
+                if (!string.IsNullOrEmpty(this.SerieEmpresa.Text))
+                {
+                    this.Serie = this.SerieEmpresa.Text;
+                }
+
+
                 ModficarOjetos_E();
             }
         }
@@ -249,17 +310,17 @@ namespace PELOSCALVO
 
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaConfi", string.IsNullOrEmpty(this.EmpresaRazonTxt.Text) ? (object)DBNull.Value : this.EmpresaRazonTxt.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEmpresa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.nombreEmpresaText.Text) ? (object)DBNull.Value : this.nombreEmpresaText.Text);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@DireccionEmpresa", string.IsNullOrEmpty(this.direccionEmpresaTextBox.Text) ? (object)DBNull.Value : this.direccionEmpresaTextBox.Text);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@LocalidadEmpresa", string.IsNullOrEmpty(this.localidadEmpresaTextBox.Text) ? (object)DBNull.Value : this.localidadEmpresaTextBox.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.EmpresaTxt.Text) ? (object)DBNull.Value : this.EmpresaTxt.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@DireccionEmpresa", string.IsNullOrEmpty(this.DirecionEmpresa.Text) ? (object)DBNull.Value : this.DirecionEmpresa.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@LocalidadEmpresa", string.IsNullOrEmpty(this.LocalidadEmpresa.Text) ? (object)DBNull.Value : this.LocalidadEmpresa.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@CodigoPostalEmpresa", string.IsNullOrEmpty(this.codigoPostalEmpresaTextBox.Text) ? (object)DBNull.Value : this.codigoPostalEmpresaTextBox.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@ProvinciaEmpresa", string.IsNullOrEmpty(this.ProvinciaTxt.Text) ? (object)DBNull.Value : this.ProvinciaTxt.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@TelefonoEmpresa", string.IsNullOrEmpty(this.telefonoEmpresaTextBox.Text) ? (object)DBNull.Value : this.telefonoEmpresaTextBox.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@CorreoEmpresa", string.IsNullOrEmpty(this.correoEmpresaTextBox.Text) ? (object)DBNull.Value : this.correoEmpresaTextBox.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@WepEmpresa", string.IsNullOrEmpty(this.wepEmpresaTextBox.Text) ? (object)DBNull.Value : this.wepEmpresaTextBox.Text);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@RegimenIvaEmpresa", string.IsNullOrEmpty(this.regimenIvaEmpresaComboBox.Text) ? (object)DBNull.Value : this.regimenIvaEmpresaComboBox.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@RegimenIvaEmpresa", string.IsNullOrEmpty(this.RegimenIva.Text) ? (object)DBNull.Value : this.RegimenIva.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PaisEmpresa", string.IsNullOrEmpty(this.Paistxt.Text) ? (object)DBNull.Value : this.Paistxt.Text);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieDeFacturacionEmpresa", string.IsNullOrEmpty(this.serieDeFacturacionEmpresaComboBox.Text) ? (object)DBNull.Value : this.serieDeFacturacionEmpresaComboBox.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieDeFacturacionEmpresa", string.IsNullOrEmpty(this.SerieEmpresa.Text) ? (object)DBNull.Value : this.SerieEmpresa.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Telefono2Empresa", string.IsNullOrEmpty(this.telefono2EmpresaTextBox.Text) ? (object)DBNull.Value : this.telefono2EmpresaTextBox.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@MovilEmpresa", string.IsNullOrEmpty(this.movilEmpresaTextBox.Text) ? (object)DBNull.Value : this.movilEmpresaTextBox.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@CifEmpresa", string.IsNullOrEmpty(this.cifEmpresaTextBox.Text) ? (object)DBNull.Value : this.cifEmpresaTextBox.Text);
@@ -393,12 +454,12 @@ namespace PELOSCALVO
             this.empresaConfiComboBox.Enabled = true;
             this.Paistxt.Enabled = false;
             this.ProvinciaTxt.Enabled = false;
-            this.regimenIvaEmpresaComboBox.Enabled = false;
-            this.serieDeFacturacionEmpresaComboBox.Enabled = false;
+            this.RegimenIva.Enabled = false;
+            this.SerieEmpresa.Enabled = false;
             this.EmpresaRazonTxt.ReadOnly = true;
-            this.nombreEmpresaText.ReadOnly = true;
-            this.direccionEmpresaTextBox.ReadOnly = true;
-            this.localidadEmpresaTextBox.ReadOnly = true;
+            this.EmpresaTxt.ReadOnly = true;
+            this.DirecionEmpresa.ReadOnly = true;
+            this.LocalidadEmpresa.ReadOnly = true;
             this.codigoPostalEmpresaTextBox.ReadOnly = true;
             this.telefonoEmpresaTextBox.ReadOnly = true;
             this.correoEmpresaTextBox.ReadOnly = true;
@@ -464,17 +525,17 @@ namespace PELOSCALVO
 
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaConfi", string.IsNullOrEmpty(this.EmpresaRazonTxt.Text) ? (object)DBNull.Value : this.EmpresaRazonTxt.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEmpresa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.nombreEmpresaText.Text) ? (object)DBNull.Value : this.nombreEmpresaText.Text);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DireccionEmpresa", string.IsNullOrEmpty(this.direccionEmpresaTextBox.Text) ? (object)DBNull.Value : this.direccionEmpresaTextBox.Text);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@LocalidadEmpresa", string.IsNullOrEmpty(this.localidadEmpresaTextBox.Text) ? (object)DBNull.Value : this.localidadEmpresaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@NombreEmpresa", string.IsNullOrEmpty(this.EmpresaTxt.Text) ? (object)DBNull.Value : this.EmpresaTxt.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DireccionEmpresa", string.IsNullOrEmpty(this.DirecionEmpresa.Text) ? (object)DBNull.Value : this.DirecionEmpresa.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@LocalidadEmpresa", string.IsNullOrEmpty(this.LocalidadEmpresa.Text) ? (object)DBNull.Value : this.LocalidadEmpresa.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@CodigoPostalEmpresa", string.IsNullOrEmpty(this.codigoPostalEmpresaTextBox.Text) ? (object)DBNull.Value : this.codigoPostalEmpresaTextBox.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@ProvinciaEmpresa", string.IsNullOrEmpty(this.ProvinciaTxt.Text) ? (object)DBNull.Value : this.ProvinciaTxt.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@TelefonoEmpresa", string.IsNullOrEmpty(this.telefonoEmpresaTextBox.Text) ? (object)DBNull.Value : this.telefonoEmpresaTextBox.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@CorreoEmpresa", string.IsNullOrEmpty(this.correoEmpresaTextBox.Text) ? (object)DBNull.Value : this.correoEmpresaTextBox.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@WepEmpresa", string.IsNullOrEmpty(this.wepEmpresaTextBox.Text) ? (object)DBNull.Value : this.wepEmpresaTextBox.Text);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@RegimenIvaEmpresa", string.IsNullOrEmpty(this.regimenIvaEmpresaComboBox.Text) ? (object)DBNull.Value : this.regimenIvaEmpresaComboBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@RegimenIvaEmpresa", string.IsNullOrEmpty(this.RegimenIva.Text) ? (object)DBNull.Value : this.RegimenIva.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PaisEmpresa", string.IsNullOrEmpty(this.Paistxt.Text) ? (object)DBNull.Value : this.Paistxt.Text);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieDeFacturacionEmpresa", string.IsNullOrEmpty(this.serieDeFacturacionEmpresaComboBox.Text) ? (object)DBNull.Value : this.serieDeFacturacionEmpresaComboBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieDeFacturacionEmpresa", string.IsNullOrEmpty(this.SerieEmpresa.Text) ? (object)DBNull.Value : this.SerieEmpresa.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@Telefono2Empresa", string.IsNullOrEmpty(this.telefono2EmpresaTextBox.Text) ? (object)DBNull.Value : this.telefono2EmpresaTextBox.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@MovilEmpresa", string.IsNullOrEmpty(this.movilEmpresaTextBox.Text) ? (object)DBNull.Value : this.movilEmpresaTextBox.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@CifEmpresa", string.IsNullOrEmpty(this.cifEmpresaTextBox.Text) ? (object)DBNull.Value : this.cifEmpresaTextBox.Text);
@@ -681,6 +742,100 @@ namespace PELOSCALVO
                     {
                         this.dtConfiguracionPrincipalDataGridView.Rows.RemoveAt(this.dtConfiguracionPrincipalDataGridView.CurrentCell.RowIndex);
                     }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(this.RazonSocial))
+                    {
+                        this.EmpresaRazonTxt.Text = this.RazonSocial;
+                    }
+                    else
+                    {
+                        this.EmpresaRazonTxt.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Empresa))
+                    {
+                        this.EmpresaTxt.Text = this.Empresa;
+                    }
+                    else
+                    {
+                        this.EmpresaTxt.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Direcion))
+                    {
+                        this.DirecionEmpresa.Text = this.Direcion;
+                    }
+                    else
+                    {
+                        this.DirecionEmpresa.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Localidad))
+                    {
+                        this.LocalidadEmpresa.Text = this.Localidad;
+                    }
+                    else
+                    {
+                        this.LocalidadEmpresa.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Telefono))
+                    {
+                        this.telefonoEmpresaTextBox.Text = this.Telefono;
+                    }
+                    else
+                    {
+                        this.telefonoEmpresaTextBox.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Telefono2))
+                    {
+                        this.telefono2EmpresaTextBox.Text = this.Telefono2;
+                    }
+                    else
+                    {
+                        this.telefono2EmpresaTextBox.Text = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(this.Web))
+                    {
+                        this.wepEmpresaTextBox.Text = this.Web;
+                    }
+                    else
+                    {
+                        this.wepEmpresaTextBox.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Cif))
+                    {
+                        this.cifEmpresaTextBox.Text = this.Cif;
+                    }
+                    else
+                    {
+                        this.cifEmpresaTextBox.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.CodigoPostal))
+                    {
+                        this.codigoPostalEmpresaTextBox.Text = this.CodigoPostal;
+                    }
+                    else
+                    {
+                        this.codigoPostalEmpresaTextBox.Text = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(this.Iva))
+                    {
+                        this.RegimenIva.Text = this.Iva;
+                    }
+                    else
+                    {
+                        this.RegimenIva.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Serie))
+                    {
+                        this.SerieEmpresa.Text = this.Serie;
+                    }
+                    else
+                    {
+                        this.SerieEmpresa.Text = "";
+                    }
+
                 }
 
             }

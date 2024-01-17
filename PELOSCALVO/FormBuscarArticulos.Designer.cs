@@ -296,6 +296,7 @@ namespace PELOSCALVO
             this.ListCodigos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Id_Codigo,
             this.Texto});
+            this.ListCodigos.Enabled = false;
             this.ListCodigos.FullRowSelect = true;
             this.ListCodigos.GridLines = true;
             this.ListCodigos.HideSelection = false;
@@ -372,6 +373,7 @@ namespace PELOSCALVO
             this.BtnLimpiar.TabIndex = 78;
             this.BtnLimpiar.Text = "Limpiar";
             this.BtnLimpiar.UseVisualStyleBackColor = true;
+            this.BtnLimpiar.Visible = false;
             this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // Anchotext
@@ -488,6 +490,7 @@ namespace PELOSCALVO
             this.FormatoText.Name = "FormatoText";
             this.FormatoText.Size = new System.Drawing.Size(121, 21);
             this.FormatoText.TabIndex = 84;
+            this.FormatoText.SelectedIndexChanged += new System.EventHandler(this.FormatoText_SelectedIndexChanged);
             // 
             // label4
             // 
