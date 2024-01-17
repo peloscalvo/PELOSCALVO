@@ -16,11 +16,11 @@ namespace PELOSCALVO
             InitializeComponent();
 
             ToolTip InfoEliminar = new ToolTip();
-            InfoEliminar.SetToolTip(BtnEliminarTabla, "Recuerda Que Si Eliminas No Se Podra Revertir");
+            InfoEliminar.SetToolTip(this.BtnEliminarTabla, "Recuerda Que Si Eliminas No Se Podra Revertir");
             InfoEliminar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             InfoEliminar.IsBalloon = true;
             ToolTip InfoSalir = new ToolTip();
-            InfoSalir.SetToolTip(BtnSalirT, "Salir De Crea Tablas");
+            InfoSalir.SetToolTip(this.BtnSalirT, "Salir De Crea Tablas");
             InfoSalir.IsBalloon = true;
             InfoSalir.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
@@ -159,7 +159,7 @@ namespace PELOSCALVO
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
 
 
-                    string ConsultaCliente = " CREATE TABLE [" + ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+                    string ConsultaCliente = " CREATE TABLE [" + this.ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
                 "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
                 "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
                 "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
@@ -470,7 +470,7 @@ namespace PELOSCALVO
                               "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
                              "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
                              "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-                            "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] INTEGER not null,[EnlaceDtconfi] INTEGER not null," +
+                            "[EjercicioTipo] INTEGER not null,[SerieTipo] varchar, [EmpresaEnlace] INTEGER not null,[EnlaceDtconfi] INTEGER not null," +
                             "CONSTRAINT F_DtConfi" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )";
                             }
 
@@ -508,7 +508,7 @@ namespace PELOSCALVO
                                     catch (Exception ex)
                                     {
 
-                                        MessageBox.Show(ex.Message, "ERROR EN TABLA "+ Tabladetalle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show(ex.Message, "ERROR EN TABLA " + Tabladetalle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
 
@@ -539,7 +539,8 @@ namespace PELOSCALVO
                         Extension = Path.GetExtension(BuscarArchivo.FileName.ToString());
                     }
 
-                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase))
+
+                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase) & Extension.ToString().Equals(".mdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
                         this.BaseDatosTxt1.Text = BuscarArchivo.FileName.ToString();
@@ -666,7 +667,7 @@ namespace PELOSCALVO
                     Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
                 }
 
-                string ConsultaCliente = " CREATE TABLE [" + ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+                string ConsultaCliente = " CREATE TABLE [" + this.ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
                    "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
                    "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
                    "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
@@ -865,7 +866,7 @@ namespace PELOSCALVO
                     using (OleDbCommand comando = new OleDbCommand(consulta, NuevaConexion))
                     {
                         NuevaConexion.Open();
-                     comando.ExecuteNonQuery();
+                        comando.ExecuteNonQuery();
 
                         MessageBox.Show("Copiaron Los Datos A Tabla Correctamente" + "\n" + this.TablaCopiarTxt.Text, "COPIA TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1008,10 +1009,10 @@ namespace PELOSCALVO
             if (this.TablaBorrarTxt.Text == "DtConfiguracionPrincipal" && this.TablaBorrarTxt.Text == "DtConfi")
             {
                 MessageBox.Show("Si Borra Esta Tabla Perdera Datos Facturacion Asociados a Esta", "LIMPIAR", MessageBoxButtons.OK);
-          
+
             }
 
-            if (MessageBox.Show("Desea Borrar Datos a Tabla" + "\\" + TablaBorrarTxt.Text, "BORRAR DATOS", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Desea Borrar Datos a Tabla" + "\\" + this.TablaBorrarTxt.Text, "BORRAR DATOS", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
 
 
@@ -1069,13 +1070,13 @@ namespace PELOSCALVO
                 // TablanuevaTxt.Focus();
                 return;
             }
-            if (TablaBorrarTxt.Text.Contains("Dt"))
+            if (this.TablaBorrarTxt.Text.Contains("Dt"))
             {
                 MessageBox.Show("Esta Tabla No Se Puede Borrar ", "ELIMINAR", MessageBoxButtons.OK);
                 return;
             }
             MessageBox.Show("Recuerda Que Si Continua No Podra Revertir Datos ", "ELIMINAR", MessageBoxButtons.OK);
-            if (MessageBox.Show("Desea Eliminar Tabla" + "\\" + TablaBorrarTxt.Text, "ELIMINAR TABLA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Desea Eliminar Tabla" + "\\" + this.TablaBorrarTxt.Text, "ELIMINAR TABLA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
 
 

@@ -19,7 +19,7 @@ namespace PELOSCALVO
         public byte SiOpenClie = 0;
         public byte SiOpenConfi = 0;
         // byte SiOpenUser = 0;
-        int V1, PX, PV;
+        int V1, PX, PV;  
         public FormMenuPrincipal()
         {
             InitializeComponent();
@@ -1057,15 +1057,15 @@ namespace PELOSCALVO
             ClasDatos.OkFacturar = false;
             ClasDatos.QUEform = "QR";
             FormBuscarArticulos frm = new FormBuscarArticulos();
-            this.InfoConectado.Visible = false;
-            this.panelMenu.Width = this.panelMenu.Width = 55;
-            this.panel1.Height = this.panel1.Height = 0;
-            frm.TopLevel = false;
-            this.PanelForms.Controls.Add(frm);
-            frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
-            frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
-            frm.FormClosed += (o, args) => this.InfoConectado.Visible = true;
-            frm.Show();
+          //  this.InfoConectado.Visible = false;
+           // this.panelMenu.Width = this.panelMenu.Width = 55;
+           // this.panel1.Height = this.panel1.Height = 0;
+          //  frm.TopLevel = false;
+          //  this.PanelForms.Controls.Add(frm);
+           // frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
+           // frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
+          //  frm.FormClosed += (o, args) => this.InfoConectado.Visible = true;
+            frm.ShowDialog();
             frm.BringToFront();
 
         }

@@ -61,9 +61,9 @@ namespace PELOSCALVO
             Single xPos = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo          
             Single yPos = prFont.GetHeight(e.Graphics); // la posición superior
             e.Graphics.FillRectangle(Brushes.Transparent, new System.Drawing.Rectangle(100, 150, 600, 600));
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.nombreTextBox.Text, prFont, Brushes.Black, xPos, yPos);
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.direccionTextBox.Text, prFont, Brushes.Black, xPos, yPos + yPos);
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.apodoTextBox.Text, prFont, Brushes.Black, xPos, yPos);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.NombreClienteFatu.Text, prFont, Brushes.Black, xPos, yPos);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text, prFont, Brushes.Black, xPos, yPos + yPos);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.RazonSocialFatu.Text, prFont, Brushes.Black, xPos, yPos);
             e.Graphics.DrawString("Colegio de Técnicos Automotrices de Beijing", titleFont, brush, new System.Drawing.Point(20, 10));
             e.Graphics.DrawString("Número de activo:", fntTxt, brush, new System.Drawing.Point(20, 31));
             e.Graphics.DrawString("123456789123465", fntTxt, brush, new System.Drawing.Point(80, 31));
@@ -86,11 +86,11 @@ namespace PELOSCALVO
             PrintDocument pd = new PrintDocument();
             if (ClasDatos.OkFacturar == true)
             {
-                if (FormFacturar.menu2FACTURAR.apodoTextBox.Text != string.Empty)
+                if (FormFacturar.menu2FACTURAR.RazonSocialFatu.Text != string.Empty)
                 {
-                    ContraseñaPdf = FormFacturar.menu2FACTURAR.apodoTextBox.Text;
+                    ContraseñaPdf = FormFacturar.menu2FACTURAR.RazonSocialFatu.Text;
                 }
-                NombreArchivo = FormFacturar.menu2FACTURAR.nombreTextBox.Text + " (" + FormFacturar.menu2FACTURAR.apodoTextBox.Text + ") " + FormFacturar.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
+                NombreArchivo = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text + " (" + FormFacturar.menu2FACTURAR.RazonSocialFatu.Text + ") " + FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
                 if (MultiFormatoImprimir.SelectedIndex == 0)
                 {
                     pd.PrintPage += new PrintPageEventHandler(printNotaFull_PrintPage);
@@ -419,13 +419,13 @@ namespace PELOSCALVO
             // Bitmap logo1 = PELOSCALVO.Properties.Resources.logo;
             string Empresadire = FormFacturar.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["DireccionEmpresa"].ToString();
             // Bitmap aa   = con(FormFACTURAR.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["ImagenEmpresa"].ToString());
-            if (FormFacturar.menu2FACTURAR.apodoTextBox.Text != string.Empty)
+            if (FormFacturar.menu2FACTURAR.RazonSocialFatu.Text != string.Empty)
             {
-                ApodoImpr = FormFacturar.menu2FACTURAR.apodoTextBox.Text;
+                ApodoImpr = FormFacturar.menu2FACTURAR.RazonSocialFatu.Text;
             }
-            if (FormFacturar.menu2FACTURAR.nombreTextBox.Text != string.Empty)
+            if (FormFacturar.menu2FACTURAR.NombreClienteFatu.Text != string.Empty)
             {
-                nombreCliente = FormFacturar.menu2FACTURAR.nombreTextBox.Text;
+                nombreCliente = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text;
             }
             Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
             Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
@@ -469,7 +469,7 @@ namespace PELOSCALVO
             saltoAbajo1 = saltoAbajo1 + 13;
             e.Graphics.DrawString("Numero:" + FormFacturar.menu2FACTURAR.NumeroFactura.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
             //e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 740,112 + saltoAbajo1,formato);
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.direccionTextBox.Text, BookAntiqua, Brushes.Black, margenIzqu - 70, 135 + saltoAbajo1);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text, BookAntiqua, Brushes.Black, margenIzqu - 70, 135 + saltoAbajo1);
             // saltoAbajo1 = saltoAbajo1 + saltoAbajo1;
             int saltoref = 220;
             int iab = 0;
@@ -511,7 +511,7 @@ namespace PELOSCALVO
             e.Graphics.DrawString("Iva", ArialNegrita10, Brushes.Black, 588, 1110);
             e.Graphics.DrawString("Total", ArialNegrita10, Brushes.Black, 588, 1130);
             e.HasMorePages = false;
-            String NombreArchivo = FormFacturar.menu2FACTURAR.nombreTextBox.Text + " " + FormFacturar.menu2FACTURAR.direccionTextBox.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
+            String NombreArchivo = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text + " " + FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
         }
 
         private void printNota2Full_PrintPage(object sender, PrintPageEventArgs e)

@@ -111,9 +111,9 @@ namespace PELOSCALVO
             this.cobradaFacturaCheckBox = new System.Windows.Forms.CheckBox();
             this.fechaCobroText = new System.Windows.Forms.MaskedTextBox();
             this.NumeroFactura = new System.Windows.Forms.TextBox();
-            this.apodoTextBox = new System.Windows.Forms.TextBox();
-            this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.direccionTextBox = new System.Windows.Forms.TextBox();
+            this.RazonSocialFatu = new System.Windows.Forms.TextBox();
+            this.NombreClienteFatu = new System.Windows.Forms.TextBox();
+            this.DirecionClienteFatu = new System.Windows.Forms.TextBox();
             this.calleTextBox = new System.Windows.Forms.TextBox();
             this.numeroCalleTextBox = new System.Windows.Forms.TextBox();
             this.dniTextBox = new System.Windows.Forms.TextBox();
@@ -702,11 +702,11 @@ namespace PELOSCALVO
             this.tabPage1Factura.Controls.Add(numeroFacturaLabel);
             this.tabPage1Factura.Controls.Add(this.NumeroFactura);
             this.tabPage1Factura.Controls.Add(apodoLabel);
-            this.tabPage1Factura.Controls.Add(this.apodoTextBox);
+            this.tabPage1Factura.Controls.Add(this.RazonSocialFatu);
             this.tabPage1Factura.Controls.Add(nombreLabel);
-            this.tabPage1Factura.Controls.Add(this.nombreTextBox);
+            this.tabPage1Factura.Controls.Add(this.NombreClienteFatu);
             this.tabPage1Factura.Controls.Add(direccionLabel);
-            this.tabPage1Factura.Controls.Add(this.direccionTextBox);
+            this.tabPage1Factura.Controls.Add(this.DirecionClienteFatu);
             this.tabPage1Factura.Controls.Add(calleLabel);
             this.tabPage1Factura.Controls.Add(this.calleTextBox);
             this.tabPage1Factura.Controls.Add(numeroCalleLabel);
@@ -889,36 +889,36 @@ namespace PELOSCALVO
             this.NumeroFactura.Size = new System.Drawing.Size(203, 20);
             this.NumeroFactura.TabIndex = 1;
             // 
-            // apodoTextBox
+            // RazonSocialFatu
             // 
-            this.apodoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.apodoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Apodo", true));
-            this.apodoTextBox.Enabled = false;
-            this.apodoTextBox.Location = new System.Drawing.Point(94, 67);
-            this.apodoTextBox.MaxLength = 34;
-            this.apodoTextBox.Name = "apodoTextBox";
-            this.apodoTextBox.Size = new System.Drawing.Size(253, 20);
-            this.apodoTextBox.TabIndex = 3;
+            this.RazonSocialFatu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.RazonSocialFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Apodo", true));
+            this.RazonSocialFatu.Enabled = false;
+            this.RazonSocialFatu.Location = new System.Drawing.Point(94, 67);
+            this.RazonSocialFatu.MaxLength = 34;
+            this.RazonSocialFatu.Name = "RazonSocialFatu";
+            this.RazonSocialFatu.Size = new System.Drawing.Size(253, 20);
+            this.RazonSocialFatu.TabIndex = 3;
             // 
-            // nombreTextBox
+            // NombreClienteFatu
             // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Nombre", true));
-            this.nombreTextBox.Enabled = false;
-            this.nombreTextBox.Location = new System.Drawing.Point(94, 99);
-            this.nombreTextBox.MaxLength = 50;
-            this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(333, 20);
-            this.nombreTextBox.TabIndex = 5;
+            this.NombreClienteFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Nombre", true));
+            this.NombreClienteFatu.Enabled = false;
+            this.NombreClienteFatu.Location = new System.Drawing.Point(94, 99);
+            this.NombreClienteFatu.MaxLength = 50;
+            this.NombreClienteFatu.Name = "NombreClienteFatu";
+            this.NombreClienteFatu.Size = new System.Drawing.Size(333, 20);
+            this.NombreClienteFatu.TabIndex = 5;
             // 
-            // direccionTextBox
+            // DirecionClienteFatu
             // 
-            this.direccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Direccion", true));
-            this.direccionTextBox.Enabled = false;
-            this.direccionTextBox.Location = new System.Drawing.Point(94, 125);
-            this.direccionTextBox.MaxLength = 45;
-            this.direccionTextBox.Name = "direccionTextBox";
-            this.direccionTextBox.Size = new System.Drawing.Size(313, 20);
-            this.direccionTextBox.TabIndex = 7;
+            this.DirecionClienteFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Direccion", true));
+            this.DirecionClienteFatu.Enabled = false;
+            this.DirecionClienteFatu.Location = new System.Drawing.Point(94, 125);
+            this.DirecionClienteFatu.MaxLength = 45;
+            this.DirecionClienteFatu.Name = "DirecionClienteFatu";
+            this.DirecionClienteFatu.Size = new System.Drawing.Size(313, 20);
+            this.DirecionClienteFatu.TabIndex = 7;
             // 
             // calleTextBox
             // 
@@ -2017,11 +2017,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label TipoNota;
         private System.Windows.Forms.Button BtnBuscarClientesFact;
         public System.Windows.Forms.TabPage tabPage1Factura;
-        public System.Windows.Forms.TextBox nombreTextBox;
-        public System.Windows.Forms.TextBox direccionTextBox;
+        public System.Windows.Forms.TextBox NombreClienteFatu;
+        public System.Windows.Forms.TextBox DirecionClienteFatu;
         public System.Windows.Forms.TextBox calleTextBox;
         public System.Windows.Forms.TextBox numeroCalleTextBox;
-        public System.Windows.Forms.TextBox apodoTextBox;
+        public System.Windows.Forms.TextBox RazonSocialFatu;
         public System.Windows.Forms.TextBox localidadTextBox;
         public System.Windows.Forms.ComboBox provinciaComboBox;
         public System.Windows.Forms.BindingSource dtDetallesFactura2BindingSource;

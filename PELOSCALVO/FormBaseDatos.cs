@@ -1361,7 +1361,7 @@ namespace PELOSCALVO
                         Extension = Path.GetExtension(BuscarArchivo.FileName.ToString());
                     }
 
-                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase))
+                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase) & Extension.ToString().Equals(".mdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
                         this.NombreArchivoDatos.Text = BuscarArchivo.FileName.ToString();

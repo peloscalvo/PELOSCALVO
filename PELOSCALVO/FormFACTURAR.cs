@@ -19,6 +19,20 @@ namespace PELOSCALVO
         public static FormFacturar menu2FACTURAR;
         string SoloNumerosText = "";
         string a = "1";
+         string RazonSocial;
+         string Nombre;
+         string Direcion;
+         string Calle;
+        string NumeroCalle;
+        string Dni;
+        string Poblacion;
+        string Localidad;
+        string Provincia;
+        string Pais;
+        string CodigoPostal;
+        string Obra;
+        string Almacen;
+        string Proveedor;
         public FormFacturar()
         {
             InitializeComponent();
@@ -318,20 +332,20 @@ namespace PELOSCALVO
         private bool VALIDARcampos()
         {
             bool ok = true;
-            if (this.apodoTextBox.Text.Length < 4)
+            if (this.RazonSocialFatu.Text.Length < 4)
             {
                 ok = false;
-                this.errorProvider1.SetError(this.apodoTextBox, "_ingresar Razon Social (( minimo 4 Caracteres))");
+                this.errorProvider1.SetError(this.RazonSocialFatu, "_ingresar Razon Social (( minimo 4 Caracteres))");
             }
-            if (this.nombreTextBox.Text.Length < 4)
+            if (this.NombreClienteFatu.Text.Length < 4)
             {
                 ok = false;
-                this.errorProvider1.SetError(this.nombreTextBox, "_ingresar NOMBRE (( minimo 4 Caracteres))");
+                this.errorProvider1.SetError(this.NombreClienteFatu, "_ingresar NOMBRE (( minimo 4 Caracteres))");
             }
-            if (this.direccionTextBox.Text.Length < 4)
+            if (this.DirecionClienteFatu.Text.Length < 4)
             {
                 ok = false;
-                this.errorProvider1.SetError(this.direccionTextBox, "_ingresar Direcion (( minimo 4 Caracteres))");
+                this.errorProvider1.SetError(this.DirecionClienteFatu, "_ingresar Direcion (( minimo 4 Caracteres))");
             }
             if (this.dniTextBox.Text.Length < 4)
             {
@@ -348,9 +362,9 @@ namespace PELOSCALVO
         }
         private void BORRARerrores()
         {
-            this.errorProvider1.SetError(this.apodoTextBox, "");
-            this.errorProvider1.SetError(this.nombreTextBox, "");
-            this.errorProvider1.SetError(this.direccionTextBox, "");
+            this.errorProvider1.SetError(this.RazonSocialFatu, "");
+            this.errorProvider1.SetError(this.NombreClienteFatu, "");
+            this.errorProvider1.SetError(this.DirecionClienteFatu, "");
             this.errorProvider1.SetError(this.dniTextBox, "");
             this.errorProvider1.SetError(this.NumeroFactura, "");
             this.errorProvider1.SetError(this.AlmacenTxt, "");
@@ -363,6 +377,7 @@ namespace PELOSCALVO
             int Id_valor = r.Next(3, 99999);
             string Consulta = "";
             int EnlaceDtconfi = 0;
+            Int32 Id_Ejercicio = 0;
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
             try
             {
@@ -381,8 +396,13 @@ namespace PELOSCALVO
                     MessageBox.Show("No Se Puede Continuar", "ERROR FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+         
+                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString()))
+                {
+                    Id_Ejercicio = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString());
+                }
             }
-            catch (OleDbException ex)
+            catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "NO GUARDO NADA FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -432,9 +452,9 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : Convert.ToInt32(this.EnlaceFactu.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.NumeroFactura.Text) ? (object)DBNull.Value : Convert.ToInt32(this.NumeroFactura.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.apodoTextBox.Text) ? (object)DBNull.Value : this.apodoTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.nombreTextBox.Text) ? (object)DBNull.Value : this.nombreTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(this.direccionTextBox.Text) ? (object)DBNull.Value : this.direccionTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.RazonSocialFatu.Text) ? (object)DBNull.Value : this.RazonSocialFatu.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.NombreClienteFatu.Text) ? (object)DBNull.Value : this.NombreClienteFatu.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(this.DirecionClienteFatu.Text) ? (object)DBNull.Value : this.DirecionClienteFatu.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Calle", string.IsNullOrEmpty(this.calleTextBox.Text) ? (object)DBNull.Value : this.calleTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NumeroCalle", string.IsNullOrEmpty(this.numeroCalleTextBox.Text) ? (object)DBNull.Value : this.numeroCalleTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Dni", string.IsNullOrEmpty(this.dniTextBox.Text) ? (object)DBNull.Value : this.dniTextBox.Text);
@@ -450,7 +470,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Pais_Fact", string.IsNullOrEmpty(this.pais_FactComboBox.Text) ? (object)DBNull.Value : this.pais_FactComboBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoNOTA", string.IsNullOrEmpty(this.TipoNota.Text) ? (object)DBNull.Value : this.TipoNota.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(Id_Ejercicio.ToString()) ? (object)DBNull.Value : Convert.ToInt32(Id_Ejercicio));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
@@ -625,6 +645,7 @@ namespace PELOSCALVO
             string VALIDAR_Dtdetalle2 = "";
             string Consulta = "";
             int EnlaceDtconfi = 0;
+            Int32 Id_Ejercicio = 0;
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex + 1;
             if (Id > this.dtConfiBindingSource.Count - 1)
             {
@@ -640,6 +661,10 @@ namespace PELOSCALVO
                 this.panelBotones.Enabled = false;
                 MessageBox.Show("No Se Puede Continuar", "ERROR FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+            if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString()))
+            {
+                Id_Ejercicio = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString());
             }
             string ConsultaEliminar = "DELETE FROM [DtDetalles_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]= '@EnlaceFactu'";
             string ConsultaEliminar2 = "DELETE FROM [DtDetalles2_" + ClasDatos.NombreFactura + "] WHERE [EnlaceDetalle]='@EnlaceFactu'";
@@ -683,9 +708,9 @@ namespace PELOSCALVO
             {
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceFactura", string.IsNullOrEmpty(this.EnlaceFactu.Text) ? (object)DBNull.Value : Convert.ToInt32(this.EnlaceFactu.Text));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@NumeroFactura", string.IsNullOrEmpty(this.NumeroFactura.Text) ? (object)DBNull.Value : Convert.ToInt32(this.NumeroFactura.Text));
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.apodoTextBox.Text) ? (object)DBNull.Value : this.apodoTextBox.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.nombreTextBox.Text) ? (object)DBNull.Value : this.nombreTextBox.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(this.direccionTextBox.Text) ? (object)DBNull.Value : this.direccionTextBox.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Apodo", string.IsNullOrEmpty(this.RazonSocialFatu.Text) ? (object)DBNull.Value : this.RazonSocialFatu.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(this.NombreClienteFatu.Text) ? (object)DBNull.Value : this.NombreClienteFatu.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(this.DirecionClienteFatu.Text) ? (object)DBNull.Value : this.DirecionClienteFatu.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Calle", string.IsNullOrEmpty(this.calleTextBox.Text) ? (object)DBNull.Value : this.calleTextBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@NumeroCalle", string.IsNullOrEmpty(this.numeroCalleTextBox.Text) ? (object)DBNull.Value : this.numeroCalleTextBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Dni", string.IsNullOrEmpty(this.dniTextBox.Text) ? (object)DBNull.Value : this.dniTextBox.Text);
@@ -701,7 +726,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Pais_Fact", string.IsNullOrEmpty(this.pais_FactComboBox.Text) ? (object)DBNull.Value : this.pais_FactComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoNOTA", string.IsNullOrEmpty(this.TipoNota.Text) ? (object)DBNull.Value : this.TipoNota.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text) ? (object)DBNull.Value : this.ejerciciosDeAñoComboBox.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(Id_Ejercicio.ToString()) ? (object)DBNull.Value : Id_Ejercicio);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
@@ -890,7 +915,7 @@ namespace PELOSCALVO
                     {
                         /// GuardarRestaurarStockDb();
                     }
-                    GuardarStockSql(this.dtDetallesFacturaDataGridView);
+                   // GuardarStockSql(this.dtDetallesFacturaDataGridView);
                 }
             }
 
@@ -999,7 +1024,7 @@ namespace PELOSCALVO
                     ModificarOjetosFatu();
                     BORRARerrores();
                     Int32 Id_Enlace = 0;
-                    this.apodoTextBox.Focus();
+                    this.RazonSocialFatu.Focus();
                     // this.numeroFacturaTextBox.Enabled = false;
                     if (dtNuevaFacturaBindingSource.Count > 1)
                     {
@@ -1259,6 +1284,7 @@ namespace PELOSCALVO
                     }
                     else
                     {
+                        RestaurarDatosFatu();
                         LlenarGrid(this.dtDetallesFacturaDataGridView, 1);
                         if (ClasDatos.NombreFactura == "Nota2")
                         {
@@ -1287,14 +1313,176 @@ namespace PELOSCALVO
                 Close();
             }
         }
-
-        private void BtnModificarFactura_Click(object sender, EventArgs e)
+        private void RestaurarDatosFatu()
         {
-            if (this.dtNuevaFacturaDataGridView.Rows.Count > 0)
+            if (!string.IsNullOrEmpty(RazonSocial))
+            {
+                RazonSocialFatu.Text = RazonSocial;
+            }
+            else
+            {
+                RazonSocialFatu.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Nombre))
+            {
+                NombreClienteFatu.Text = Nombre;
+            }
+            else
+            {
+                NombreClienteFatu.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Direcion))
+            {
+                DirecionClienteFatu.Text = Direcion;
+            }
+            else
+            {
+                DirecionClienteFatu.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Calle))
+            {
+                calleTextBox.Text = Calle;
+            }
+            else
+            {
+                calleTextBox.Text = "";
+            }            
+            if (!string.IsNullOrEmpty(NumeroCalle))
+            {
+                numeroCalleTextBox.Text = NumeroCalle;
+            }
+            else
+            {
+                numeroCalleTextBox.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Dni))
+            {
+                dniTextBox.Text = Dni;
+            }
+            else
+            {
+                dniTextBox.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Localidad))
+            {
+                localidadTextBox.Text = Localidad;
+            }
+            else
+            {
+                localidadTextBox.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Provincia))
+            {
+                provinciaComboBox.Text = Provincia;
+            }
+            else
+            {
+                provinciaComboBox.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Pais))
+            {
+                pais_FactComboBox.Text = Pais;
+            }
+            else
+            {
+                pais_FactComboBox.Text = "";
+            }
+            if (!string.IsNullOrEmpty(CodigoPostal))
+            {
+                codigoPostalTextBox.Text = CodigoPostal;
+            }
+            else
+            {
+                codigoPostalTextBox.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Obra))
+            {
+                obrasComboBox.Text = Obra;
+            }
+            else
+            {
+                obrasComboBox.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Almacen))
+            {
+                AlmacenTxt.Text = Almacen;
+            }
+            else
+            {
+                AlmacenTxt.Text = "";
+            }
+            if (!string.IsNullOrEmpty(Proveedor))
+            {
+                proveedoresComboBox.Text = Proveedor;
+            }
+            else
+            {
+                proveedoresComboBox.Text = "";
+            }
+        }
+        private void CargarDatosFatu()
+        {
+            if (!string.IsNullOrEmpty(RazonSocialFatu.Text))
+            {
+                RazonSocial = RazonSocialFatu.Text;
+            }
+            if (!string.IsNullOrEmpty(NombreClienteFatu.Text))
+            {
+                Nombre = NombreClienteFatu.Text;
+            }
+            if (!string.IsNullOrEmpty(DirecionClienteFatu.Text))
+            {
+                Direcion = DirecionClienteFatu.Text;
+            }
+            if (!string.IsNullOrEmpty(calleTextBox.Text))
+            {
+                Calle = calleTextBox.Text;
+            }
+            if (!string.IsNullOrEmpty(numeroCalleTextBox.Text))
+            {
+                NumeroCalle = numeroCalleTextBox.Text;
+            }
+            if (!string.IsNullOrEmpty(dniTextBox.Text))
+            {
+                Dni = dniTextBox.Text;
+            }
+  
+            if (!string.IsNullOrEmpty(localidadTextBox.Text))
+            {
+                Localidad = localidadTextBox.Text;
+            }
+            if (!string.IsNullOrEmpty(provinciaComboBox.Text))
+            {
+                Provincia = provinciaComboBox.Text;
+            }
+            if (!string.IsNullOrEmpty(pais_FactComboBox.Text))
+            {
+                Pais = pais_FactComboBox.Text;
+            }
+            if (!string.IsNullOrEmpty(codigoPostalTextBox.Text))
+            {
+                CodigoPostal = codigoPostalTextBox.Text;
+            }
+            if (!string.IsNullOrEmpty(obrasComboBox.Text))
+            {
+                Obra = obrasComboBox.Text;
+            }
+            if (!string.IsNullOrEmpty(AlmacenTxt.Text))
+            {
+                Almacen = AlmacenTxt.Text;
+            }
+            if (!string.IsNullOrEmpty(proveedoresComboBox.Text))
+            {
+                Proveedor = proveedoresComboBox.Text;
+            }
+        } 
+    private void BtnModificarFactura_Click(object sender, EventArgs e)
+        {
+            if (dtNuevaFacturaBindingSource.Count > 0)
             {
                 this.tabControl1Factura.SelectedIndex = 0;
                 ModificarOjetosFatu();
-                this.apodoTextBox.Focus();
+                this.RazonSocialFatu.Focus();
                 this.NumeroFactura.Enabled = false;
                 this.panelBotones.Tag = "Modificar";
                 ExtraerGrid(this.dtDetallesFacturaDataGridView, 1);
@@ -1302,6 +1490,7 @@ namespace PELOSCALVO
                 {
                     ExtraerGrid(this.dtDetallesFacturaDataGridView2, 2);
                 }
+                CargarDatosFatu();
             }
         }
 
@@ -1314,12 +1503,12 @@ namespace PELOSCALVO
                 this.dtDetallesFactura2BindingSource.Clear();
                 this.dsFacturas.Clear();
                 int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
-                Int32 Id_Ejercicio = 0;
-                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
+                string Id_Ejercicio ="";
+                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString()))
                 {
-                    Id_Ejercicio = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
+                    Id_Ejercicio = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString();
                 }
-                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + Convert.ToInt32(this.Id_Empresa.Text) + "'" + "and" +
+                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.Id_Empresa.Text + "'" + "and" +
                    "[EjercicioTipo] = '" + Id_Ejercicio + "'";
                 string consultaDetalle = "SELECT * from [DtDetalles_" + ClasDatos.NombreFactura + "]";
                 string consultaDetalle2 = "SELECT * from [DtDetalles2_" + ClasDatos.NombreFactura + "]";
@@ -1845,12 +2034,12 @@ namespace PELOSCALVO
                         this.dsFacturas.Clear();
                         // dtNuevaFacturaBindingSource.Clear();
                         int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
-                        Int32 Id_Ejercicio = 0;
-                        if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
+                        string Id_Ejercicio="";
+                        if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString()))
                         {
-                            Id_Ejercicio = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
+                            Id_Ejercicio = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString();
                         }
-                        string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + Convert.ToInt32(this.Id_Empresa.Text) + "'" + "and" +
+                        string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.Id_Empresa.Text + "'" + "and" +
                            "[EjercicioTipo] = '" + Id_Ejercicio + "'";
                         string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
                         string consultaDetalle2 = "SELECT * from DtDetalles2_" + ClasDatos.NombreFactura;
