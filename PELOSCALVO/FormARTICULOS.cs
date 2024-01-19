@@ -102,7 +102,7 @@ namespace PELOSCALVO
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show(ex.Message.ToString(),"ERROR AL GUARDAR",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
 
             }
@@ -449,13 +449,26 @@ namespace PELOSCALVO
             {
                 if (this.BtnGuardarArticulo.Enabled == false)
                 {
-                    ClasDatos.OkFacturar = false;
-                    ClasDatos.QUEform = "Articulos";
-                    // dtPreciosDataGridView.CurrentCell.Selected = false;
-                    FormBuscarArticulos frm = new FormBuscarArticulos();
-                    //m.FormClosed += (o, args) => numeroFILA = 1;
-                    frm.ShowDialog();
-                    frm.BringToFront();
+                    try
+                    {
+                        if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
+                        {
+                            FormBuscarArticulos.MenuB.Close();
+                        }
+                        ClasDatos.OkFacturar = false;
+                        ClasDatos.QUEform = "Articulos";
+                        // dtPreciosDataGridView.CurrentCell.Selected = false;
+                        FormBuscarArticulos frm = new FormBuscarArticulos();
+                        //m.FormClosed += (o, args) => numeroFILA = 1;
+                        frm.ShowDialog();
+                        frm.BringToFront();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                 }
             }
@@ -464,7 +477,7 @@ namespace PELOSCALVO
         {
             if (this.BtnGuardarArticulo.Enabled == false)
             {
-                if (MessageBox.Show(" ¿Salir Articulos ? ", " ARTICULOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Salir Articulos  ", " ARTICULOS ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Close();
                 }

@@ -129,7 +129,7 @@ namespace PELOSCALVO
 
                         // FormClientes.menu2CLIENTES2.dtClientesDataGridView.Rows[ClasDatos.ValorBuscado].Selected = true;
                         // FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell = dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[0];
-                        FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[0];
+                        FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell = FormClientes.menu2CLIENTES2.dtClientesDataGridView.Rows[ClasDatos.ValorBuscado].Cells[0];
                         FormClientes.menu2CLIENTES2.dtClientesDataGridView.CurrentCell.Selected = true;
                     }
                 }

@@ -25,6 +25,8 @@ namespace PELOSCALVO
         string Web;
         string Iva;
         string Serie;
+        string Pais;
+        string Provincia;
         public FormEmpresas()
         {
             InitializeComponent();
@@ -266,8 +268,22 @@ namespace PELOSCALVO
                 {
                     this.Serie = this.SerieEmpresa.Text;
                 }
-
-
+                if (!string.IsNullOrEmpty(this.correoEmpresaTextBox.Text))
+                {
+                    Correo = this.correoEmpresaTextBox.Text;
+                }
+                if (!string.IsNullOrEmpty(this.movilEmpresaTextBox.Text))
+                {
+                    this.Movil = this.movilEmpresaTextBox.Text;
+                }
+                if (!string.IsNullOrEmpty(this.Paistxt.Text))
+                {
+                    Pais = this.Paistxt.Text;
+                }
+                if (!string.IsNullOrEmpty(this.ProvinciaTxt.Text))
+                {
+                    this.Provincia = this.ProvinciaTxt.Text;
+                }
                 ModficarOjetos_E();
             }
         }
@@ -594,7 +610,7 @@ namespace PELOSCALVO
                                 NuevaConexion.ComandoDb.Parameters.Clear();
                                 FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes.Rows.Add(1, "Almacen Central", Convert.ToInt32(this.idEmpresa.Text));
                             }
-                            if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Count > 0)
+                            if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.Count >= 1)
                             {
                                 consulta = "Select max(IdEnlace) from [DtConfi]";
                                 NuevaConexion = new ClsConexionDb(consulta);
@@ -611,13 +627,13 @@ namespace PELOSCALVO
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Falta Id Conexion", "ERROR CONFI 2", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("Falta Id Conexion", "ERROR CONFI 2", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                            // return;
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                        // return;
                                     }
 
@@ -835,7 +851,38 @@ namespace PELOSCALVO
                     {
                         this.SerieEmpresa.Text = "";
                     }
-
+                    if (!string.IsNullOrEmpty(this.Correo))
+                    {
+                        correoEmpresaTextBox.Text = this.Correo;
+                    }
+                    else
+                    {
+                        this.correoEmpresaTextBox.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Movil))
+                    {
+                        this.movilEmpresaTextBox.Text = this.Movil;
+                    }
+                    else
+                    {
+                        this.movilEmpresaTextBox.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Pais))
+                    {
+                        Paistxt.Text = this.Pais;
+                    }
+                    else
+                    {
+                        this.Paistxt.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Provincia))
+                    {
+                        this.ProvinciaTxt.Text = this.Provincia;
+                    }
+                    else
+                    {
+                        this.ProvinciaTxt.Text = "";
+                    }
                 }
 
             }

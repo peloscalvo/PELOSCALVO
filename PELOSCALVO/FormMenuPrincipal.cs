@@ -14,10 +14,7 @@ namespace PELOSCALVO
     {
         // public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
-        public byte SiOpenFatu = 0;
-        public byte SiOpenArti = 0;
-        public byte SiOpenClie = 0;
-        public byte SiOpenConfi = 0;
+        public byte SiOpenFatu = 0, SiOpenArti = 0,SiOpenClie = 0, SiOpenConfi = 0, SiOpenBuscArti=0;
         // byte SiOpenUser = 0;
         int V1, PX, PV;  
         public FormMenuPrincipal()
@@ -1054,20 +1051,24 @@ namespace PELOSCALVO
 
         private void codigosDeBarrasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ClasDatos.OkFacturar = false;
-            ClasDatos.QUEform = "QR";
             FormBuscarArticulos frm = new FormBuscarArticulos();
-          //  this.InfoConectado.Visible = false;
-           // this.panelMenu.Width = this.panelMenu.Width = 55;
-           // this.panel1.Height = this.panel1.Height = 0;
-          //  frm.TopLevel = false;
-          //  this.PanelForms.Controls.Add(frm);
-           // frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
-           // frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
-          //  frm.FormClosed += (o, args) => this.InfoConectado.Visible = true;
-            frm.ShowDialog();
-            frm.BringToFront();
-
+            if (SiOpenBuscArti == 0)
+            {
+                ClasDatos.OkFacturar = false;
+                ClasDatos.QUEform = "QR";
+                this.InfoConectado.Visible = false;
+                this.panelMenu.Width = this.panelMenu.Width = 55;
+                this.panel1.Height = this.panel1.Height = 0;
+                frm.TopLevel = false;
+                this.PanelForms.Controls.Add(frm);
+                frm.FormClosed += (o, args) => SiOpenBuscArti = 0;
+                frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
+                frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
+                frm.FormClosed += (o, args) => this.InfoConectado.Visible = true;
+                frm.Show();
+                frm.BringToFront();
+                SiOpenBuscArti = 1;
+            }
         }
 
         private void BtnSql_Click(object sender, EventArgs e)

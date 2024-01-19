@@ -377,7 +377,7 @@ namespace PELOSCALVO
             int Id_valor = r.Next(3, 99999);
             string Consulta = "";
             int EnlaceDtconfi = 0;
-            Int32 Id_Ejercicio = 0;
+           // Int32 Id_Ejercicio = 0;
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
             try
             {
@@ -397,9 +397,9 @@ namespace PELOSCALVO
                     return;
                 }
          
-                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString()))
+                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
                 {
-                    Id_Ejercicio = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString());
+                  //  Id_Ejercicio = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
                 }
             }
             catch (Exception ex)
@@ -470,7 +470,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Pais_Fact", string.IsNullOrEmpty(this.pais_FactComboBox.Text) ? (object)DBNull.Value : this.pais_FactComboBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoNOTA", string.IsNullOrEmpty(this.TipoNota.Text) ? (object)DBNull.Value : this.TipoNota.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(Id_Ejercicio.ToString()) ? (object)DBNull.Value : Convert.ToInt32(Id_Ejercicio));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(EnlaceDtconfi.ToString()) ? (object)DBNull.Value : EnlaceDtconfi);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
@@ -603,6 +603,19 @@ namespace PELOSCALVO
                     this.dtNuevaFacturaBindingSource.EndEdit();
                     this.dtDetallesFactura2BindingSource.EndEdit();
                     Validate();
+                    if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
+                    {
+                        int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
+                        if (this.cobradaFacturaCheckBox.Checked == true)
+                        {
+                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                        }
+                        else
+                        {
+                            //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
+                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+                        }
+                    }
                     MessageBox.Show("Guardado Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaraurarOjetosFatu();
 
@@ -930,7 +943,20 @@ namespace PELOSCALVO
                 this.dtDetallesFacturaBindingSource.EndEdit();
                 this.dtNuevaFacturaBindingSource.EndEdit();
                 this.dtDetallesFactura2BindingSource.EndEdit();
-                Validate();
+                Validate(); 
+                if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
+                {
+                    int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
+                    if (this.cobradaFacturaCheckBox.Checked == true)
+                    {
+                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                    }
+                    else
+                    {
+                        //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
+                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+                    }
+                }
                 MessageBox.Show("Guardado Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RestaraurarOjetosFatu();
             }
@@ -965,7 +991,7 @@ namespace PELOSCALVO
                 this.dtNuevaFacturaBindingSource.AddNew();
                 if (dtNuevaFacturaBindingSource.Count > 0)
                 {
-                    if (dtNuevaFacturaBindingSource.Count == 1)
+                    if (dtNuevaFacturaBindingSource.Count <= 1)
                     {
                         this.dtNuevaFacturaDataGridView.Rows[0].Cells[0].Value = "1";
                     }
@@ -1144,19 +1170,7 @@ namespace PELOSCALVO
                 if (MessageBox.Show(" ¿Aceptar Guardar ? ", " GUARDAR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
-                    if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
-                    {
-                        int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
-                        if (this.cobradaFacturaCheckBox.Checked == true)
-                        {
-                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
-                        }
-                        else
-                        {
-                            //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                           // this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
-                        }
-                    }
+       
                     if (ClsConexionSql.SibaseDatosSql)
                     {
                         GuardarFactuSql();
@@ -1176,6 +1190,7 @@ namespace PELOSCALVO
                                 }
                                 GuardarStockDb(this.dtDetallesFacturaDataGridView);
                             }
+
                         }
                         else
                         {
@@ -2035,9 +2050,9 @@ namespace PELOSCALVO
                         // dtNuevaFacturaBindingSource.Clear();
                         int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
                         string Id_Ejercicio="";
-                        if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString()))
+                        if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
                         {
-                            Id_Ejercicio = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString();
+                            Id_Ejercicio = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString();
                         }
                         string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.Id_Empresa.Text + "'" + "and" +
                            "[EjercicioTipo] = '" + Id_Ejercicio + "'";
@@ -2218,7 +2233,10 @@ namespace PELOSCALVO
                             int numeroFILA = this.dtNuevaFacturaDataGridView.Rows.Count;
                             if (numeroFILA > 0)
                             {
-
+                                if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
+                                {
+                                    FormBuscarArticulos.MenuB.Close();
+                                }
                                 ClasDatos.OkFacturar = true;
                                 ClasDatos.Datos1Datos2 = "Nota1";
                                 // dtNuevaFacturaDataGridView.CurrentCell.Selected = false;
@@ -2608,6 +2626,10 @@ namespace PELOSCALVO
                     {
                         if (this.BtnGuardarFactura.Enabled == true)
                         {
+                            if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
+                            {
+                                FormBuscarArticulos.MenuB.Close();
+                            }
                             ClasDatos.OkFacturar = true;
                             ClasDatos.Datos1Datos2 = "Nota2";
                             this.dtNuevaFacturaDataGridView.CurrentCell.Selected = false;

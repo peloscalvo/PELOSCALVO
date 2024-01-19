@@ -752,7 +752,7 @@ namespace PELOSCALVO {
                         string TipoNOTA, 
                         string Obra_factu, 
                         string EmpresaTipo, 
-                        string EjercicioTipo, 
+                        int EjercicioTipo, 
                         string SerieTipo, 
                         int EnlaceFactura, 
                         short EmpresaEnlace, 
@@ -888,7 +888,7 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnObra_factu);
                 this.columnEmpresaTipo = new global::System.Data.DataColumn("EmpresaTipo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaTipo);
-                this.columnEjercicioTipo = new global::System.Data.DataColumn("EjercicioTipo", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEjercicioTipo = new global::System.Data.DataColumn("EjercicioTipo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEjercicioTipo);
                 this.columnSerieTipo = new global::System.Data.DataColumn("SerieTipo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSerieTipo);
@@ -2096,10 +2096,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EjercicioTipo {
+            public int EjercicioTipo {
                 get {
                     try {
-                        return ((string)(this[this.tableDtNuevaFactura.EjercicioTipoColumn]));
+                        return ((int)(this[this.tableDtNuevaFactura.EjercicioTipoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EjercicioTipo\' de la tabla \'DtNuevaFactura\' es DBNull.", e);

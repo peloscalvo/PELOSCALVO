@@ -15,9 +15,11 @@ namespace PELOSCALVO
     {
         Boolean SiBaja = false;
         DataView verViev = default;
+        public static FormBuscarArticulos MenuB;
         public FormBuscarArticulos()
         {
             InitializeComponent();
+            MenuB = this;
         }
         public class OpcionCombo
         {
@@ -617,8 +619,10 @@ namespace PELOSCALVO
 
                         PrintDocument PD = new PrintDocument();
                         PD.PrintPage += new PrintPageEventHandler(PrintBarras_PrintPage);
-                        PD.DocumentName = string.Format("{0}", this.TituloText.Text.Trim());
-                        PD.Print();
+                        PD.DocumentName = string.Format("{0}", "codigos Barras App");
+                    //  int Fila= FormBuscarArticulos.listas.lista.Count
+                        //PD.PrinterSettings.FromPage = Fila/2;
+                       // PD.Print();
 
                     }
                     else
@@ -704,7 +708,7 @@ namespace PELOSCALVO
 
         private void PrintBarras_PrintPage(object sender, PrintPageEventArgs e)
         {
-            int BB = 20;
+            int BB = 25;
             Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
             Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
             Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
@@ -724,7 +728,7 @@ namespace PELOSCALVO
             // item2.SubItems.
             try
             {
-                 e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos+30, 6);
+                 e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos+40, 6);
                 foreach (var item in FormBuscarArticulos.listas.lista)
                 {
                    // e.Graphics.DrawString("---------------------------", Arial10, Brushes.Black, new Point(BB, BB));
