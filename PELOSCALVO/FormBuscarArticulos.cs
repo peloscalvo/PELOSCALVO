@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using ZXing;
 
 namespace PELOSCALVO
 {
@@ -74,6 +75,7 @@ namespace PELOSCALVO
             {
                 this.Width = 1300;
                 this.FiltrarBajasBuscar.SelectedIndex = 2;
+                this.ListOpcion.SelectedIndex = 0;
                 this.MinimumSize = new Size(1300, 506);
             }
             else
@@ -83,6 +85,12 @@ namespace PELOSCALVO
             }
             int indice = 0;
             foreach (var nombre in Enum.GetNames(typeof(BarcodeLib.TYPE)))
+            {
+                this.ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
+                indice++;
+            }
+            indice = 0;
+            foreach (var nombre in Enum.GetNames(typeof(ZXing.BarcodeFormat)))
             {
                 this.ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
                 indice++;
@@ -245,7 +253,7 @@ namespace PELOSCALVO
 
                     try
                     {
-                        if (ListCodigos.Enabled == true)
+                        if (this.ListCodigos.Enabled == true)
                         {
 
 
@@ -261,7 +269,13 @@ namespace PELOSCALVO
 
                             }
                         }
-
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
+                            {
+                                this.TituloText.Text = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString();
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -443,11 +457,23 @@ namespace PELOSCALVO
         }
         private void BtnCrearQr_Click(object sender, EventArgs e)
         {
-            if (this.ListaQr.SelectedIndex <= 0)
+            if (this.ListOpcion.SelectedIndex == 0)
             {
-                MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.ListaQr.Focus();
-                return;
+                if (this.ListaQr.SelectedIndex <= 0)
+                {
+                    MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.ListaQr.Focus();
+                    return;
+                }
+            }
+            else
+            {
+                if (this.ListaQr2.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.ListaQr.Focus();
+                    return;
+                }
             }
             if (String.IsNullOrEmpty(this.TituloText.Text))
             {
@@ -471,20 +497,34 @@ namespace PELOSCALVO
             {
                 int Ancho = Convert.ToInt32(this.Anchotext.Text);
                 int Alto = Convert.ToInt32(this.AltoText.Text);
-                Image imagenCodigo;
-                int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
-                BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
-                Barcode codigo = new Barcode();
-                codigo.IncludeLabel = true;
-                imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
-                codigo.Alignment = AlignmentPositions.CENTER;
-                Bitmap imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
-                int alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
-                Bitmap imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
-                Graphics dibujar = Graphics.FromImage(imagenNueva);
-                dibujar.DrawImage(imagenTitulo, new Point(0, 0));
-                dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
-                this.PitureQr.Image = imagenCodigo;
+                if (this.ListOpcion.SelectedIndex == 0)
+                {
+                    Image imagenCodigo;
+                    int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+                    BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
+                    Barcode codigo = new Barcode();
+                    codigo.IncludeLabel = true;
+                    imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
+                    codigo.Alignment = AlignmentPositions.CENTER;
+                    Bitmap imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
+                    int alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
+                    Bitmap imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
+                    Graphics dibujar = Graphics.FromImage(imagenNueva);
+                    dibujar.DrawImage(imagenTitulo, new Point(0, 0));
+                    dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                    this.PitureQr.Image = imagenCodigo;
+
+                }
+                else
+                {
+                    FormBuscarArticulos.listas.lista.Clear();
+                    BarcodeWriter br = new BarcodeWriter();
+                    int indice2 = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+                    BarcodeFormat FormatoBr = (BarcodeFormat)indice2;
+                    br.Format = FormatoBr;
+                    Bitmap bm = new Bitmap(br.Write(this.TituloText.Text), Ancho, Alto);
+                    this.PitureQr.Image = bm;
+                }
 
                 // MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -532,11 +572,24 @@ namespace PELOSCALVO
 
         private void BtnCodifiCar_Click(object sender, EventArgs e)
         {
-            if (this.ListaQr.SelectedIndex <= 0)
+            if (this.ListOpcion.SelectedIndex == 0)
             {
-                MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.ListaQr.Focus();
-                return;
+                if (this.ListaQr.SelectedIndex <= 0)
+                {
+                    MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.ListaQr.Focus();
+                    return;
+                }
+            }
+            else
+            {
+                if (this.ListaQr2.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.ListaQr.Focus();
+                    return;
+                }
+
             }
             if (this.FormatoText.SelectedIndex != 4)
             {
@@ -567,24 +620,26 @@ namespace PELOSCALVO
                     FormBuscarArticulos.listas.lista.Clear();
                     int Ancho = Convert.ToInt32(this.Anchotext.Text);
                     int Alto = Convert.ToInt32(this.AltoText.Text);
-                    Image imagenCodigo = null;
-                    Bitmap imagenTitulo;
-                    Bitmap imagenNueva;
-                    int alto_imagen_nuevo = 0;
-                    Graphics dibujar;
-                    int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
-                    BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
-                    Barcode codigo = new Barcode();
-                    codigo.IncludeLabel = true;
-                    int I;
-                    //Bitmap BTM = new Bitmap(0, 0);
-         
-                    if (this.FormatoText.SelectedIndex == 4)
+                    if (this.ListOpcion.SelectedIndex == 0)
                     {
-                        foreach (ListViewItem item2 in this.ListCodigos.Items)
+                        Image imagenCodigo = null;
+                        Bitmap imagenTitulo;
+                        Bitmap imagenNueva;
+                        int alto_imagen_nuevo = 0;
+                        Graphics dibujar;
+                        int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+                        BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
+                        Barcode codigo = new Barcode();
+                        codigo.IncludeLabel = true;
+                        int I;
+                        //Bitmap BTM = new Bitmap(0, 0);
+
+                        if (this.FormatoText.SelectedIndex == 4)
                         {
-                            // I = item2.Index;
-              
+                            foreach (ListViewItem item2 in this.ListCodigos.Items)
+                            {
+                                // I = item2.Index;
+
                                 imagenCodigo = codigo.Encode(tipoCodigo, item2.SubItems[1].Text, Color.Black, Color.White, Ancho, Alto);
                                 codigo.Alignment = AlignmentPositions.CENTER;
                                 imagenTitulo = convertirTextoImagen(item2.SubItems[1].Text, Ancho, Color.White);
@@ -596,22 +651,53 @@ namespace PELOSCALVO
                                 Opcionimagen ImagenPdf = new Opcionimagen();
                                 ImagenPdf.Valor = imagenCodigo;
                                 FormBuscarArticulos.listas.lista.Add(ImagenPdf);
-  
+
+                            }
                         }
+                        else
+                        {
+                            imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
+                            codigo.Alignment = AlignmentPositions.CENTER;
+                            imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
+                            alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
+                            imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
+                            // imagenNueva = BTM(Ancho, alto_imagen_nuevo);
+                            dibujar = Graphics.FromImage(imagenNueva);
+                            dibujar.DrawImage(imagenTitulo, new Point(0, 0));
+                            dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                        }
+                        this.PitureQr.Image = imagenCodigo;
                     }
                     else
                     {
-                        imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
-                        codigo.Alignment = AlignmentPositions.CENTER;
-                        imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
-                        alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
-                        imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
-                        // imagenNueva = BTM(Ancho, alto_imagen_nuevo);
-                        dibujar = Graphics.FromImage(imagenNueva);
-                        dibujar.DrawImage(imagenTitulo, new Point(0, 0));
-                        dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                        Bitmap bm = null;
+                        int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+                        BarcodeWriter br = new BarcodeWriter();
+                        BarcodeFormat FormatoBr = (BarcodeFormat)indice;
+                        br.Format = FormatoBr;
+                        if (this.FormatoText.SelectedIndex == 4)
+                        {
+
+                            //br.Format = FormatoBr;
+                            foreach (ListViewItem item2 in this.ListCodigos.Items)
+                            {
+                                bm = new Bitmap(br.Write(item2.SubItems[1].Text), Ancho, Alto);
+                                Opcionimagen ImagenPdf = new Opcionimagen();
+                                ImagenPdf.Valor = bm;
+                                FormBuscarArticulos.listas.lista.Add(ImagenPdf);
+                            }
+                            this.PitureQr.Image = bm;
+                        }
+                        else
+                        {
+
+                            bm = new Bitmap(br.Write(this.TituloText.Text), Ancho, Alto);
+                            this.PitureQr.Image = bm;
+
+                        }
+
                     }
-                    this.PitureQr.Image = imagenCodigo;
+
 
 
                     if (this.FormatoText.SelectedIndex == 4)
@@ -620,9 +706,9 @@ namespace PELOSCALVO
                         PrintDocument PD = new PrintDocument();
                         PD.PrintPage += new PrintPageEventHandler(PrintBarras_PrintPage);
                         PD.DocumentName = string.Format("{0}", "codigos Barras App");
-                    //  int Fila= FormBuscarArticulos.listas.lista.Count
+                        //  int Fila= FormBuscarArticulos.listas.lista.Count
                         //PD.PrinterSettings.FromPage = Fila/2;
-                       // PD.Print();
+                        // PD.Print();
 
                     }
                     else
@@ -728,12 +814,13 @@ namespace PELOSCALVO
             // item2.SubItems.
             try
             {
-                 e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos+40, 6);
+                e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos + 40, 6);
                 foreach (var item in FormBuscarArticulos.listas.lista)
                 {
-                   // e.Graphics.DrawString("---------------------------", Arial10, Brushes.Black, new Point(BB, BB));
+                    // e.Graphics.DrawString("---------------------------", Arial10, Brushes.Black, new Point(BB, BB));
                     e.Graphics.DrawImage(item.Valor, new Point(0, BB));
                     BB = BB + item.Valor.Height + 14;
+                    e.HasMorePages = e.PageBounds.Bottom > BB;
                 }
                 // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
             }
@@ -795,17 +882,68 @@ namespace PELOSCALVO
         {
             if (this.FormatoText.SelectedIndex == 4)
             {
-                ListCodigos.Enabled = true;
-                BtnLimpiar.Visible = true;
-                TituloText.Visible = false;
+                this.ListCodigos.Enabled = true;
+                this.BtnLimpiar.Visible = true;
+                this.TituloText.Visible = false;
             }
             else
             {
-                ListCodigos.Enabled = false; 
-                BtnLimpiar.Visible = false;
-                TituloText.Visible = true;
+                this.ListCodigos.Enabled = false;
+                this.BtnLimpiar.Visible = false;
+                this.TituloText.Visible = true;
             }
 
+        }
+
+        private void BtnPrueba_Click(object sender, EventArgs e)
+        {
+            if (this.ListaQr2.SelectedIndex < 0)
+            {
+                MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.ListaQr.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(this.TituloText.Text))
+            {
+                MessageBox.Show("Campo De Titulo vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.TituloText.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(this.Anchotext.Text))
+            {
+                MessageBox.Show("Campo De Ancho vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Anchotext.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(this.AltoText.Text))
+            {
+                MessageBox.Show("Campo De Alto vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.AltoText.Focus();
+                return;
+            }
+            FormBuscarArticulos.listas.lista.Clear();
+            int Ancho = Convert.ToInt32(this.Anchotext.Text);
+            int Alto = Convert.ToInt32(this.AltoText.Text);
+            BarcodeWriter br = new BarcodeWriter();
+            int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+            BarcodeFormat FormatoBr = (BarcodeFormat)indice;
+            br.Format = FormatoBr;
+            Bitmap bm = new Bitmap(br.Write(this.TituloText.Text), Ancho, Alto);
+            this.PitureQr.Image = bm;
+        }
+
+        private void ListOpcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.ListOpcion.SelectedIndex == 0)
+            {
+                this.ListaQr.Visible = true;
+                this.ListaQr2.Visible = false;
+            }
+            else
+            {
+                this.ListaQr2.Visible = true;
+                this.ListaQr.Visible = false;
+            }
         }
     }
 }

@@ -74,6 +74,9 @@ namespace PELOSCALVO
             this.FormatoText = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.PrintBarras = new System.Drawing.Printing.PrintDocument();
+            this.BtnPrueba = new System.Windows.Forms.Button();
+            this.ListaQr2 = new System.Windows.Forms.ComboBox();
+            this.ListOpcion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
@@ -408,11 +411,11 @@ namespace PELOSCALVO
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(975, 249);
+            this.label3.Location = new System.Drawing.Point(984, 249);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 82;
-            this.label3.Text = "Ancho:";
+            this.label3.Text = "Alto:";
             // 
             // PitureQr
             // 
@@ -506,11 +509,49 @@ namespace PELOSCALVO
             this.PrintBarras.DocumentName = "docum";
             this.PrintBarras.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintBarras_PrintPage);
             // 
+            // BtnPrueba
+            // 
+            this.BtnPrueba.Location = new System.Drawing.Point(1227, 301);
+            this.BtnPrueba.Name = "BtnPrueba";
+            this.BtnPrueba.Size = new System.Drawing.Size(52, 23);
+            this.BtnPrueba.TabIndex = 86;
+            this.BtnPrueba.TabStop = false;
+            this.BtnPrueba.Text = "Guardar";
+            this.BtnPrueba.UseVisualStyleBackColor = true;
+            this.BtnPrueba.Click += new System.EventHandler(this.BtnPrueba_Click);
+            // 
+            // ListaQr2
+            // 
+            this.ListaQr2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtInicioMultiBindingSource, "CodigoBarras", true));
+            this.ListaQr2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ListaQr2.FormattingEnabled = true;
+            this.ListaQr2.Location = new System.Drawing.Point(810, 12);
+            this.ListaQr2.Name = "ListaQr2";
+            this.ListaQr2.Size = new System.Drawing.Size(361, 21);
+            this.ListaQr2.TabIndex = 87;
+            this.ListaQr2.Visible = false;
+            // 
+            // ListOpcion
+            // 
+            this.ListOpcion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ListOpcion.FormattingEnabled = true;
+            this.ListOpcion.Items.AddRange(new object[] {
+            "Codigo Barras",
+            "Codigo Qr"});
+            this.ListOpcion.Location = new System.Drawing.Point(1177, 12);
+            this.ListOpcion.Name = "ListOpcion";
+            this.ListOpcion.Size = new System.Drawing.Size(95, 21);
+            this.ListOpcion.TabIndex = 89;
+            this.ListOpcion.SelectedIndexChanged += new System.EventHandler(this.ListOpcion_SelectedIndexChanged);
+            // 
             // FormBuscarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 467);
+            this.Controls.Add(this.ListaQr2);
+            this.Controls.Add(this.ListOpcion);
+            this.Controls.Add(this.BtnPrueba);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.FormatoText);
             this.Controls.Add(this.BtnVerCodigo);
@@ -590,5 +631,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.ComboBox FormatoText;
         private System.Windows.Forms.Label label4;
         private System.Drawing.Printing.PrintDocument PrintBarras;
+        private System.Windows.Forms.Button BtnPrueba;
+        private System.Windows.Forms.ComboBox ListaQr2;
+        private System.Windows.Forms.ComboBox ListOpcion;
     }
 }
