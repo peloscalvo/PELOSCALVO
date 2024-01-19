@@ -529,7 +529,6 @@ namespace PELOSCALVO
             this.ListaQr2.Name = "ListaQr2";
             this.ListaQr2.Size = new System.Drawing.Size(361, 21);
             this.ListaQr2.TabIndex = 87;
-            this.ListaQr2.Visible = false;
             // 
             // ListOpcion
             // 

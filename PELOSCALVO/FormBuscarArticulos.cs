@@ -943,13 +943,13 @@ namespace PELOSCALVO
         {
             if (this.ListOpcion.SelectedIndex == 0)
             {
-                this.ListaQr.Visible = true;
-                this.ListaQr2.Visible = false;
+                this.ListaQr.BringToFront();
+               // this.ListaQr2.Visible = false;
             }
             else
             {
-                this.ListaQr2.Visible = true;
-                this.ListaQr.Visible = false;
+                this.ListaQr2.BringToFront();
+                //this.ListaQr.
             }
         }
     }

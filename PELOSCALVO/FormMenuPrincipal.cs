@@ -1062,6 +1062,7 @@ namespace PELOSCALVO
                 frm.TopLevel = false;
                 this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => SiOpenBuscArti = 0;
+
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
                 frm.FormClosed += (o, args) => this.InfoConectado.Visible = true;

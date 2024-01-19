@@ -755,7 +755,7 @@ namespace PELOSCALVO {
                         int EjercicioTipo, 
                         string SerieTipo, 
                         int EnlaceFactura, 
-                        short EmpresaEnlace, 
+                        int EmpresaEnlace, 
                         int EnlaceDtconfi) {
                 DtNuevaFacturaRow rowDtNuevaFacturaRow = ((DtNuevaFacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -894,7 +894,7 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnSerieTipo);
                 this.columnEnlaceFactura = new global::System.Data.DataColumn("EnlaceFactura", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceFactura);
-                this.columnEmpresaEnlace = new global::System.Data.DataColumn("EmpresaEnlace", typeof(short), null, global::System.Data.MappingType.Element);
+                this.columnEmpresaEnlace = new global::System.Data.DataColumn("EmpresaEnlace", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaEnlace);
                 this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceDtconfi);
@@ -2144,10 +2144,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public short EmpresaEnlace {
+            public int EmpresaEnlace {
                 get {
                     try {
-                        return ((short)(this[this.tableDtNuevaFactura.EmpresaEnlaceColumn]));
+                        return ((int)(this[this.tableDtNuevaFactura.EmpresaEnlaceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EmpresaEnlace\' de la tabla \'DtNuevaFactura\' es DBNull.", e);

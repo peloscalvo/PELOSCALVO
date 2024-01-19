@@ -376,7 +376,7 @@ namespace PELOSCALVO
             Random r = new Random();
             int Id_valor = r.Next(3, 99999);
             string Consulta = "";
-            int EnlaceDtconfi = 0;
+            Int32 EnlaceDtconfi = 0;
            // Int32 Id_Ejercicio = 0;
             int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
             try
@@ -994,6 +994,7 @@ namespace PELOSCALVO
                     if (dtNuevaFacturaBindingSource.Count <= 1)
                     {
                         this.dtNuevaFacturaDataGridView.Rows[0].Cells[0].Value = "1";
+                        this.NumeroFactura.Text = "1";
                     }
                     if (numeroFILA > 0)
                     {
@@ -1012,19 +1013,14 @@ namespace PELOSCALVO
 
                         }
                     }
-                    Salto_Atras:
+                   // Salto_Atras:
                     Random r = new Random();
                     VALOR_MAS = r.Next(5, 10000);
                     //  this.EnlaceFactu.Text = this.Id_Empresa.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
                     this.FechaFactura.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
                     this.dtNuevaFacturaDataGridView.Rows[this.dtNuevaFacturaDataGridView.Rows.Count - 1].Selected = true;
                     // this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
-                    if (!ClasSi_Existe_Fatu.Buscar_Fatu_Sql(this.EnlaceFactu.Text, ClasDatos.NombreFactura))
-                    {
-                        this.EnlaceFactu.Text = "";
-                        goto Salto_Atras;
-                        // return;
-                    }
+      
 
                   //  this.dtNuevaFacturaBindingSource.EndEdit();
 
@@ -1072,15 +1068,16 @@ namespace PELOSCALVO
                                     else
                                     {
                                         MessageBox.Show("Falta Id Conexion", "ERROR FACTU 2", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
+                                       // return;
                                     }
                                 }
+                                else
+                                {
+                                    MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    // return;
+                                }
                             }
-                            else
-                            {
-                                MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                    
                         }
                         else
                         {
@@ -1099,20 +1096,28 @@ namespace PELOSCALVO
                                     else
                                     {
                                         MessageBox.Show("Falta Id Conexion", "ERROR 2 FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
+                                        //return;
                                     }
                                 }
+                                else
+                                {
+                                    MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    // return;
+                                }
                             }
-                            else
-                            {
-                                MessageBox.Show("Falta Id Conexion", "ERROR FACTU", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                      
                         }
-
-                    }else
+                        if (!ClasSi_Existe_Fatu.Buscar_Fatu_Sql(this.EnlaceFactu.Text, ClasDatos.NombreFactura))
+                        {
+                            // this.EnlaceFactu.Text = "";
+                            //  goto Salto_Atras;
+                            // return;
+                        }
+                    }
+                    else
                     {
                         this.EnlaceFactu.Text = "1";
+
                     }
                 }
 
@@ -2049,10 +2054,15 @@ namespace PELOSCALVO
                         this.dsFacturas.Clear();
                         // dtNuevaFacturaBindingSource.Clear();
                         int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
-                        string Id_Ejercicio="";
+                        int Id_Ejercicio=0;
                         if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
                         {
-                            Id_Ejercicio = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString();
+                            Id_Ejercicio =Convert.ToInt16( FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("No Se Encuentran Datos De Id");
+                            return;
                         }
                         string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.Id_Empresa.Text + "'" + "and" +
                            "[EjercicioTipo] = '" + Id_Ejercicio + "'";
@@ -3004,16 +3014,24 @@ namespace PELOSCALVO
 
         private void dtDetallesFacturaDataGridView_Validated(object sender, EventArgs e)
         {
-            if (this.dtDetallesFacturaBindingSource.Count > 0)
+            try
             {
-                if (this.dtDetallesFacturaDataGridView.CurrentCell.ColumnIndex == 2 || this.dtDetallesFacturaDataGridView.CurrentCell.ColumnIndex == 4)
+                if (this.dtDetallesFacturaBindingSource.Count >= 0)
                 {
-                    int i = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex;
-                    if (this.dtDetallesFacturaDataGridView.Rows[i].Cells[4].Value.ToString() == "0" || this.dtDetallesFacturaDataGridView.Rows[i].Cells[2].Value.ToString() == "0")
+                    if (this.dtDetallesFacturaDataGridView.CurrentCell.ColumnIndex == 2 || this.dtDetallesFacturaDataGridView.CurrentCell.ColumnIndex == 4)
                     {
-                        this.dtDetallesFacturaDataGridView.Rows[i].Cells[7].Value = DBNull.Value;
+                        int i = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex;
+                        if (this.dtDetallesFacturaDataGridView.Rows[i].Cells[4].Value.ToString() == "0" || this.dtDetallesFacturaDataGridView.Rows[i].Cells[2].Value.ToString() == "0")
+                        {
+                            this.dtDetallesFacturaDataGridView.Rows[i].Cells[7].Value = DBNull.Value;
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+
+               // throw;
             }
 
         }
@@ -3097,17 +3115,30 @@ namespace PELOSCALVO
 
         private void dtDetallesFacturaDataGridView2_Validated(object sender, EventArgs e)
         {
-            if (this.dtDetallesFacturaDataGridView2.CurrentCell.RowIndex >= 0)
+            try
             {
-
-                if (this.dtDetallesFacturaDataGridView2.CurrentCell.ColumnIndex == 2 || this.dtDetallesFacturaDataGridView2.CurrentCell.ColumnIndex == 4)
+                if (dtDetallesFacturaDataGridView2.RowCount >= 0)
                 {
-                    int i = this.dtDetallesFacturaDataGridView2.CurrentCell.RowIndex;
-                    if (this.dtDetallesFacturaDataGridView2.Rows[i].Cells[4].Value.ToString() == "0" || this.dtDetallesFacturaDataGridView2.Rows[i].Cells[2].Value.ToString() == "0")
+
+
+                    if (this.dtDetallesFacturaDataGridView2.CurrentCell.RowIndex >= 0)
                     {
-                        this.dtDetallesFacturaDataGridView2.Rows[i].Cells[6].Value = DBNull.Value;
+
+                        if (this.dtDetallesFacturaDataGridView2.CurrentCell.ColumnIndex == 2 || this.dtDetallesFacturaDataGridView2.CurrentCell.ColumnIndex == 4)
+                        {
+                            int i = this.dtDetallesFacturaDataGridView2.CurrentCell.RowIndex;
+                            if (this.dtDetallesFacturaDataGridView2.Rows[i].Cells[4].Value.ToString() == "0" || this.dtDetallesFacturaDataGridView2.Rows[i].Cells[2].Value.ToString() == "0")
+                            {
+                                this.dtDetallesFacturaDataGridView2.Rows[i].Cells[6].Value = DBNull.Value;
+                            }
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+
+                // throw;
             }
         }
         private void MenuDatagriClick(object sender, ToolStripItemClickedEventArgs e)

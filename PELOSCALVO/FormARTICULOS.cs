@@ -454,6 +454,7 @@ namespace PELOSCALVO
                         if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
                         {
                             FormBuscarArticulos.MenuB.Close();
+                            FormBuscarArticulos.MenuB.Dispose();
                         }
                         ClasDatos.OkFacturar = false;
                         ClasDatos.QUEform = "Articulos";
