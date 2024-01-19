@@ -422,7 +422,7 @@ namespace PELOSCALVO
             this.PitureQr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PitureQr.Location = new System.Drawing.Point(810, 272);
             this.PitureQr.Name = "PitureQr";
-            this.PitureQr.Size = new System.Drawing.Size(411, 141);
+            this.PitureQr.Size = new System.Drawing.Size(411, 126);
             this.PitureQr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PitureQr.TabIndex = 77;
             this.PitureQr.TabStop = false;
@@ -437,13 +437,13 @@ namespace PELOSCALVO
             this.BtnCodifiCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCodifiCar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
-            this.BtnCodifiCar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCodifiCar.Location = new System.Drawing.Point(1154, 419);
+            this.BtnCodifiCar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnCodifiCar.Location = new System.Drawing.Point(1177, 402);
             this.BtnCodifiCar.Name = "BtnCodifiCar";
-            this.BtnCodifiCar.Size = new System.Drawing.Size(89, 42);
+            this.BtnCodifiCar.Size = new System.Drawing.Size(77, 63);
             this.BtnCodifiCar.TabIndex = 73;
             this.BtnCodifiCar.Text = "&Guardar";
-            this.BtnCodifiCar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCodifiCar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnCodifiCar.UseVisualStyleBackColor = false;
             this.BtnCodifiCar.Click += new System.EventHandler(this.BtnCodifiCar_Click);
             // 

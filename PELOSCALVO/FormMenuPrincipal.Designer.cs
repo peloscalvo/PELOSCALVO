@@ -1156,7 +1156,7 @@ namespace PELOSCALVO
             this.btnListaClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListaClientes.ForeColor = System.Drawing.Color.Silver;
-            this.btnListaClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnListaClientes.Image")));
+            this.btnListaClientes.Image = global::PELOSCALVO.Properties.Resources.Clientes3;
             this.btnListaClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnListaClientes.Location = new System.Drawing.Point(3, 126);
             this.btnListaClientes.Name = "btnListaClientes";

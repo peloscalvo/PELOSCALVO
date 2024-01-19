@@ -103,7 +103,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BarcodeLib">
-      <HintPath>..\..\..\Users\Victor Pais\Desktop\BarcodeLib.dll</HintPath>
+      <HintPath>..\packages\Varias Dlls\BarcodeLib.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
@@ -660,7 +660,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Pdf.png" />
-    <None Include="Resources\iconmonstr-arrow-35-24.png" />
+    <None Include="Resources\FlechaD.png" />
     <None Include="Resources\iconmonstr-undo-4-24.png" />
     <None Include="Resources\iconmonstr-magnifier-4-16.png" />
     <None Include="Resources\PDF32.png" />
@@ -674,12 +674,10 @@
     <Content Include="logonuevo.ico" />
     <None Include="Resources\barras4.png" />
     <None Include="Resources\Apagar.png" />
-    <None Include="Resources\Clientes3.png" />
-    <None Include="Resources\Calculadora.png" />
+    <None Include="Resources\Clientes.png" />
     <None Include="Resources\CarpetaDatos.png" />
     <None Include="Resources\CarpetaDatos1.png" />
     <None Include="Resources\BaseDatos.png" />
-    <None Include="Resources\Calculadora1.png" />
     <None Include="Resources\Calculadora2.png" />
     <None Include="Resources\Carpeta1.png" />
     <None Include="Resources\Carpeta11.png" />
@@ -688,6 +686,8 @@
     <None Include="Resources\CIRCULO VERDE1 .png" />
     <None Include="Resources\CIRCULO ROJO1.png" />
     <None Include="Resources\Archivo.png" />
+    <Content Include="Resources\Clientes2.png" />
+    <Content Include="Resources\Close.png" />
     <Content Include="Resources\LogoPeloscalvo.ico" />
     <None Include="Resources\LogoPeloscalvo.png" />
     <None Include="Resources\lupa pequeña.png" />
@@ -700,9 +700,9 @@
     <None Include="Resources\iconmonstr-magnifier-4-32.png" />
     <None Include="Resources\iconmonstr-pen-8-32.png" />
     <None Include="Resources\iconmonstr-file-14-32.png" />
-    <None Include="Resources\iconmonstr-x-mark-8-24.png" />
-    <None Include="Resources\iconmonstr-check-mark-9-24.png" />
-    <None Include="Resources\iconmonstr-cube-18-32.png" />
+    <None Include="Resources\Cerrar.png" />
+    <None Include="Resources\Aceptar.png" />
+    <None Include="Resources\Articulos.png" />
     <None Include="Resources\iconmonstr-coin-6-32.png" />
     <None Include="Resources\iconmonstr-shopping-bag-17-32.png" />
     <None Include="Resources\flecha.png" />

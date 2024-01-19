@@ -820,7 +820,7 @@ namespace PELOSCALVO
                     // e.Graphics.DrawString("---------------------------", Arial10, Brushes.Black, new Point(BB, BB));
                     e.Graphics.DrawImage(item.Valor, new Point(0, BB));
                     BB = BB + item.Valor.Height + 14;
-                    e.HasMorePages = e.PageBounds.Bottom > BB;
+                    e.HasMorePages = BB > e.PageBounds.Bottom;
                 }
                 // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
             }
@@ -880,17 +880,24 @@ namespace PELOSCALVO
 
         private void FormatoText_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.FormatoText.SelectedIndex == 4)
+            if (this.FormatoText.SelectedIndex == 0)
+            { 
+
+            }
+                if (this.FormatoText.SelectedIndex == 4)
             {
                 this.ListCodigos.Enabled = true;
                 this.BtnLimpiar.Visible = true;
                 this.TituloText.Visible = false;
+                this.BtnCodifiCar.Image = PELOSCALVO.Properties.Resources.Pdf;
+
             }
             else
             {
                 this.ListCodigos.Enabled = false;
                 this.BtnLimpiar.Visible = false;
                 this.TituloText.Visible = true;
+                this.BtnCodifiCar.Image = PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             }
 
         }
