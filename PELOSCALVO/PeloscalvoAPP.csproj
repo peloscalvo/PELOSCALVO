@@ -212,6 +212,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsConfiguracion.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DsFacturas.cs">
+      <DependentUpon>DsFacturas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DsFacturas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

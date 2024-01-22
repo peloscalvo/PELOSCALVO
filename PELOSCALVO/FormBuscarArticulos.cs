@@ -839,7 +839,10 @@ namespace PELOSCALVO
             Single XposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo                                  
             Single YposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo 
             Single yPos = Arial24.GetHeight(e.Graphics); // la posición superior
-
+            if (e.HasMorePages == false)
+            {
+                e.HasMorePages = true;
+            }
             // item2.SubItems.
             try
             {
@@ -852,7 +855,7 @@ namespace PELOSCALVO
 
                     // e.HasMorePages = false;
                 }
-                e.HasMorePages = BB <= e.PageBounds.Bottom;
+                e.HasMorePages = BB <= e.PageBounds.Bottom ;
                 // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
             }
             catch (Exception ex)

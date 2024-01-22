@@ -48,7 +48,7 @@ namespace PELOSCALVO
             System.Windows.Forms.Label label55;
             System.Windows.Forms.Label ttlabel;
             System.Windows.Forms.Label fechaCobroLabel;
-            System.Windows.Forms.Label tipoInpuestoIVALabel1;
+            System.Windows.Forms.Label Label77;
             System.Windows.Forms.Label pais_FactLabel;
             System.Windows.Forms.Label idTarifaLabel;
             System.Windows.Forms.Label tarifaTipoLabel1;
@@ -178,7 +178,7 @@ namespace PELOSCALVO
             this.direccionDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CobradaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaFacturaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoInpuestoIVANumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.IvaFactuTxt = new System.Windows.Forms.NumericUpDown();
             this.subTotal = new System.Windows.Forms.Label();
             this.baseIva = new System.Windows.Forms.Label();
             this.TotalFactura1 = new System.Windows.Forms.Label();
@@ -205,7 +205,7 @@ namespace PELOSCALVO
             label55 = new System.Windows.Forms.Label();
             ttlabel = new System.Windows.Forms.Label();
             fechaCobroLabel = new System.Windows.Forms.Label();
-            tipoInpuestoIVALabel1 = new System.Windows.Forms.Label();
+            Label77 = new System.Windows.Forms.Label();
             pais_FactLabel = new System.Windows.Forms.Label();
             idTarifaLabel = new System.Windows.Forms.Label();
             tarifaTipoLabel1 = new System.Windows.Forms.Label();
@@ -257,7 +257,7 @@ namespace PELOSCALVO
             this.panelBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNuevaFacturaDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IvaFactuTxt)).BeginInit();
             this.panelTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsClientes)).BeginInit();
@@ -434,17 +434,17 @@ namespace PELOSCALVO
             fechaCobroLabel.TabIndex = 26;
             fechaCobroLabel.Text = "Fecha Cobro:";
             // 
-            // tipoInpuestoIVALabel1
+            // Label77
             // 
-            tipoInpuestoIVALabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            tipoInpuestoIVALabel1.AutoSize = true;
-            tipoInpuestoIVALabel1.Location = new System.Drawing.Point(864, 548);
-            tipoInpuestoIVALabel1.Name = "tipoInpuestoIVALabel1";
-            tipoInpuestoIVALabel1.Size = new System.Drawing.Size(49, 13);
-            tipoInpuestoIVALabel1.TabIndex = 44;
-            tipoInpuestoIVALabel1.Text = "Tipo Iva:";
-            tipoInpuestoIVALabel1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            tipoInpuestoIVALabel1.MouseEnter += new System.EventHandler(this.tipoInpuestoIVALabel1_MouseEnter);
+            Label77.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            Label77.AutoSize = true;
+            Label77.Location = new System.Drawing.Point(864, 548);
+            Label77.Name = "Label77";
+            Label77.Size = new System.Drawing.Size(49, 13);
+            Label77.TabIndex = 44;
+            Label77.Text = "Tipo Iva:";
+            Label77.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            Label77.MouseEnter += new System.EventHandler(this.tipoInpuestoIVALabel1_MouseEnter);
             // 
             // pais_FactLabel
             // 
@@ -1800,15 +1800,15 @@ namespace PELOSCALVO
             this.fechaFacturaDataGridViewTextBoxColumn2.Name = "fechaFacturaDataGridViewTextBoxColumn2";
             this.fechaFacturaDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // tipoInpuestoIVANumericUpDown
+            // IvaFactuTxt
             // 
-            this.tipoInpuestoIVANumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tipoInpuestoIVANumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtConfiguracionPrincipalDtConfiBindingSource, "TipoInpuestoIVA", true));
-            this.tipoInpuestoIVANumericUpDown.Location = new System.Drawing.Point(919, 547);
-            this.tipoInpuestoIVANumericUpDown.Name = "tipoInpuestoIVANumericUpDown";
-            this.tipoInpuestoIVANumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.tipoInpuestoIVANumericUpDown.TabIndex = 45;
-            this.tipoInpuestoIVANumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.IvaFactuTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.IvaFactuTxt.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtConfiguracionPrincipalDtConfiBindingSource, "TipoInpuestoIVA", true));
+            this.IvaFactuTxt.Location = new System.Drawing.Point(919, 547);
+            this.IvaFactuTxt.Name = "IvaFactuTxt";
+            this.IvaFactuTxt.Size = new System.Drawing.Size(120, 20);
+            this.IvaFactuTxt.TabIndex = 45;
+            this.IvaFactuTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // subTotal
             // 
@@ -1912,8 +1912,8 @@ namespace PELOSCALVO
             this.Controls.Add(this.panelTotales);
             this.Controls.Add(this.TipoNota);
             this.Controls.Add(this.TotalFactura1);
-            this.Controls.Add(tipoInpuestoIVALabel1);
-            this.Controls.Add(this.tipoInpuestoIVANumericUpDown);
+            this.Controls.Add(Label77);
+            this.Controls.Add(this.IvaFactuTxt);
             this.Controls.Add(ttlabel);
             this.Controls.Add(this.dtNuevaFacturaDataGridView);
             this.Controls.Add(this.BtnCancelarfactura);
@@ -1970,7 +1970,7 @@ namespace PELOSCALVO
             this.panelBotones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNuevaFacturaDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoInpuestoIVANumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IvaFactuTxt)).EndInit();
             this.panelTotales.ResumeLayout(false);
             this.panelTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).EndInit();
@@ -2001,7 +2001,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.ComboBox SerieText;
         private System.Windows.Forms.CheckBox cobradaFacturaCheckBox;
         private System.Windows.Forms.MaskedTextBox fechaCobroText;
-        private System.Windows.Forms.NumericUpDown tipoInpuestoIVANumericUpDown;
+        private System.Windows.Forms.NumericUpDown IvaFactuTxt;
         public System.Windows.Forms.DataGridView dtDetallesFacturaDataGridView;
         private System.Windows.Forms.TabControl tabControl1Factura;
         private System.Windows.Forms.BindingSource dtTarifaTipoBindingSource;
