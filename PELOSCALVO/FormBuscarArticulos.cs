@@ -824,6 +824,7 @@ namespace PELOSCALVO
         private void PrintBarras_PrintPage(object sender, PrintPageEventArgs e)
         {
             int BB = 25;
+            bool Si = false;
             Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
             Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
             Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
@@ -839,11 +840,11 @@ namespace PELOSCALVO
             Single XposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo                                  
             Single YposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo 
             Single yPos = Arial24.GetHeight(e.Graphics); // la posición superior
-            if (e.HasMorePages == false)
+
+            if (Si == false)
             {
                 e.HasMorePages = true;
             }
-            // item2.SubItems.
             try
             {
                 e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos + 40, 6);
@@ -853,9 +854,11 @@ namespace PELOSCALVO
                     e.Graphics.DrawImage(item.Valor, new Point(0, BB));
                     BB = BB + item.Valor.Height + 14;
 
-                    // e.HasMorePages = false;
+                    
                 }
-                e.HasMorePages = BB <= e.PageBounds.Bottom ;
+                Si = true;
+                e.HasMorePages = BB >= e.PageBounds.Bottom ;
+                e.HasMorePages = false;
                 // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
             }
             catch (Exception ex)
