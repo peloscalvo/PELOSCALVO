@@ -27,6 +27,11 @@ namespace PELOSCALVO
             public int Valor { get; set; }
             public string Texto { get; set; }
         }
+        public class OpcionCombo2
+        {
+            public int Valor { get; set; }
+            public string Texto { get; set; }
+        }
         public class Opcionimagen
         {
             public Image Valor { get; set; }
@@ -89,10 +94,15 @@ namespace PELOSCALVO
                 this.ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
                 indice++;
             }
-            indice = 0;
             foreach (var nombre in Enum.GetNames(typeof(ZXing.BarcodeFormat)))
             {
                 this.ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
+                indice++;
+            }
+            indice = 0;
+            foreach (var nombre in Enum.GetNames(typeof(ZXing.BarcodeFormat)))
+            {
+                this.ListaQr2.Items.Add(new OpcionCombo2() { Valor = indice, Texto = nombre }.Texto);
                 indice++;
             }
             if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
@@ -457,6 +467,8 @@ namespace PELOSCALVO
         }
         private void BtnCrearQr_Click(object sender, EventArgs e)
         {
+            this.PitureQr.Image = null;
+
             if (this.ListOpcion.SelectedIndex == 0)
             {
                 if (this.ListaQr.SelectedIndex <= 0)
@@ -495,6 +507,7 @@ namespace PELOSCALVO
             }
             try
             {
+                int Nvi = 2;
                 int Ancho = Convert.ToInt32(this.Anchotext.Text);
                 int Alto = Convert.ToInt32(this.AltoText.Text);
                 if (this.ListOpcion.SelectedIndex == 0)
@@ -517,13 +530,29 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    FormBuscarArticulos.listas.lista.Clear();
                     BarcodeWriter br = new BarcodeWriter();
-                    int indice2 = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
-                    BarcodeFormat FormatoBr = (BarcodeFormat)indice2;
+                    int indice2 = this.ListaQr2.SelectedIndex+1;
+             
+                    if (indice2 > 2)
+                    {
+                        foreach (string item in this.ListaQr2.Items)
+                        {
+                            if (item.ToString() == this.ListaQr2.SelectedItem.ToString())
+                            {
+                                break;
+                            }
+                            Nvi = Nvi * 2;
+                           // MessageBox.Show(Nvi.ToString());
+                        }
+                        indice2= Nvi/2;
+                        //indice2=  indice2- ((this.ListaQr2.SelectedIndex+1)*20);
+                    }
+                    BarcodeFormat FormatoBr = (ZXing.BarcodeFormat)indice2;
+                  //  MessageBox.Show(FormatoBr.ToString());
                     br.Format = FormatoBr;
                     Bitmap bm = new Bitmap(br.Write(this.TituloText.Text), Ancho, Alto);
                     this.PitureQr.Image = bm;
+
                 }
 
                 // MessageBox.Show("Codigo generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -631,7 +660,7 @@ namespace PELOSCALVO
                         BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
                         Barcode codigo = new Barcode();
                         codigo.IncludeLabel = true;
-                        int I;
+                        // int I;
                         //Bitmap BTM = new Bitmap(0, 0);
 
                         if (this.FormatoText.SelectedIndex == 4)
@@ -671,7 +700,7 @@ namespace PELOSCALVO
                     else
                     {
                         Bitmap bm = null;
-                        int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+                        int indice = (this.ListaQr2.SelectedItem as OpcionCombo2).Valor;
                         BarcodeWriter br = new BarcodeWriter();
                         BarcodeFormat FormatoBr = (BarcodeFormat)indice;
                         br.Format = FormatoBr;
@@ -708,7 +737,7 @@ namespace PELOSCALVO
                         PD.DocumentName = string.Format("{0}", "codigos Barras App");
                         //  int Fila= FormBuscarArticulos.listas.lista.Count
                         //PD.PrinterSettings.FromPage = Fila/2;
-                        // PD.Print();
+                        PD.Print();
 
                     }
                     else
@@ -820,8 +849,10 @@ namespace PELOSCALVO
                     // e.Graphics.DrawString("---------------------------", Arial10, Brushes.Black, new Point(BB, BB));
                     e.Graphics.DrawImage(item.Valor, new Point(0, BB));
                     BB = BB + item.Valor.Height + 14;
-                    e.HasMorePages = BB > e.PageBounds.Bottom;
+
+                    // e.HasMorePages = false;
                 }
+                e.HasMorePages = BB <= e.PageBounds.Bottom;
                 // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
             }
             catch (Exception ex)
@@ -881,10 +912,10 @@ namespace PELOSCALVO
         private void FormatoText_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.FormatoText.SelectedIndex == 0)
-            { 
+            {
 
             }
-                if (this.FormatoText.SelectedIndex == 4)
+            if (this.FormatoText.SelectedIndex == 4)
             {
                 this.ListCodigos.Enabled = true;
                 this.BtnLimpiar.Visible = true;
@@ -944,7 +975,7 @@ namespace PELOSCALVO
             if (this.ListOpcion.SelectedIndex == 0)
             {
                 this.ListaQr.BringToFront();
-               // this.ListaQr2.Visible = false;
+                // this.ListaQr2.Visible = false;
             }
             else
             {

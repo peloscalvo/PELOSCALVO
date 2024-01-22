@@ -751,7 +751,7 @@ namespace PELOSCALVO {
                         double TotalFactura2, 
                         string TipoNOTA, 
                         string Obra_factu, 
-                        string EmpresaTipo, 
+                        short EmpresaTipo, 
                         int EjercicioTipo, 
                         string SerieTipo, 
                         int EnlaceFactura, 
@@ -886,7 +886,7 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnTipoNOTA);
                 this.columnObra_factu = new global::System.Data.DataColumn("Obra_factu", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObra_factu);
-                this.columnEmpresaTipo = new global::System.Data.DataColumn("EmpresaTipo", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEmpresaTipo = new global::System.Data.DataColumn("EmpresaTipo", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresaTipo);
                 this.columnEjercicioTipo = new global::System.Data.DataColumn("EjercicioTipo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEjercicioTipo);
@@ -2080,10 +2080,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EmpresaTipo {
+            public short EmpresaTipo {
                 get {
                     try {
-                        return ((string)(this[this.tableDtNuevaFactura.EmpresaTipoColumn]));
+                        return ((short)(this[this.tableDtNuevaFactura.EmpresaTipoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EmpresaTipo\' de la tabla \'DtNuevaFactura\' es DBNull.", e);

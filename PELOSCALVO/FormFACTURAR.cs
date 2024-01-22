@@ -1523,13 +1523,13 @@ namespace PELOSCALVO
                 this.dtDetallesFactura2BindingSource.Clear();
                 this.dsFacturas.Clear();
                 int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
-                string Id_Ejercicio ="";
+                Int32 Id_Ejercicio=1;
                 if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString()))
                 {
-                    Id_Ejercicio = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString();
+                    Id_Ejercicio =Convert.ToInt32( FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["EjercicioTipo"].ToString());
                 }
-                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.Id_Empresa.Text + "'" + "and" +
-                   "[EjercicioTipo] = '" + Id_Ejercicio + "'";
+                string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = " +Convert.ToInt32( this.Id_Empresa.Text) + "and" +
+                   "[EjercicioTipo] = " + Id_Ejercicio ;
                 string consultaDetalle = "SELECT * from [DtDetalles_" + ClasDatos.NombreFactura + "]";
                 string consultaDetalle2 = "SELECT * from [DtDetalles2_" + ClasDatos.NombreFactura + "]";
                 ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -2054,18 +2054,18 @@ namespace PELOSCALVO
                         this.dsFacturas.Clear();
                         // dtNuevaFacturaBindingSource.Clear();
                         int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
-                        int Id_Ejercicio=0;
+                        Int32 Id_Ejercicio=0;
                         if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString()))
                         {
-                            Id_Ejercicio =Convert.ToInt16( FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
+                            Id_Ejercicio =Convert.ToInt32( FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfi"].Rows[Id]["IdEnlace"].ToString());
                         }
                         else
                         {
                             MessageBox.Show("No Se Encuentran Datos De Id");
                             return;
                         }
-                        string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = '" + this.Id_Empresa.Text + "'" + "and" +
-                           "[EjercicioTipo] = '" + Id_Ejercicio + "'";
+                        string consulta = "select * FROM [Dt" + ClasDatos.NombreFactura + "]" + " where  [EmpresaEnlace] = " +Convert.ToInt32( this.Id_Empresa.Text) + "and" +
+                           "[EjercicioTipo] = " + Id_Ejercicio ;
                         string consultaDetalle = "SELECT * from DtDetalles_" + ClasDatos.NombreFactura;
                         string consultaDetalle2 = "SELECT * from DtDetalles2_" + ClasDatos.NombreFactura;
                         NuevaConexion = new ClsConexionDb(consulta);
@@ -2232,7 +2232,7 @@ namespace PELOSCALVO
                 {
                     if (e.ColumnIndex == 1)
                     {
-                        if (this.dtArticulosBindingSource.Count < 0)
+                        if (this.dtArticulosBindingSource.Count <= 0)
                         {
                             MessageBox.Show(" Archivo ARTICULOS No Existe O  VACIO ", " FALTA O VACIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
@@ -2245,6 +2245,8 @@ namespace PELOSCALVO
                             {
                                 if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
                                 {
+                                    MessageBox.Show("Debe Cerrar Formulario ((CODIGO BARRAS)) ", " FORMILARIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    return;
                                     FormBuscarArticulos.MenuB.Close();
                                 }
                                 ClasDatos.OkFacturar = true;

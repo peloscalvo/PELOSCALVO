@@ -445,7 +445,7 @@ namespace PELOSCALVO
 
         private void BtnBuscarArticulo_Click(object sender, EventArgs e)
         {
-            if (this.dtPreciosDataGridView.RowCount >= 0)
+            if (dtArticulosBindingSource.Count > 0)
             {
                 if (this.BtnGuardarArticulo.Enabled == false)
                 {
