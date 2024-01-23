@@ -89,15 +89,15 @@ namespace PELOSCALVO
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1Clientes = new System.Windows.Forms.TabPage();
             this.Id_Clientes = new System.Windows.Forms.Label();
-            this.apodoClienteTextBox = new System.Windows.Forms.TextBox();
-            this.nombreClienteTextBox = new System.Windows.Forms.TextBox();
-            this.direccionClienteTextBox = new System.Windows.Forms.TextBox();
-            this.calleClienteTextBox = new System.Windows.Forms.TextBox();
-            this.telefonoClienteTextBox = new System.Windows.Forms.TextBox();
-            this.movilClienteTextBox = new System.Windows.Forms.TextBox();
-            this.correoClienteTextBox = new System.Windows.Forms.TextBox();
+            this.ApodoClienteTex = new System.Windows.Forms.TextBox();
+            this.NombreCliente = new System.Windows.Forms.TextBox();
+            this.DirecionCliente = new System.Windows.Forms.TextBox();
+            this.CalleClienteTextBox = new System.Windows.Forms.TextBox();
+            this.TelefonoClienteTextBox = new System.Windows.Forms.TextBox();
+            this.MovilClienteText = new System.Windows.Forms.TextBox();
+            this.CorreoClienteText = new System.Windows.Forms.TextBox();
             this.dniClienteTextBox = new System.Windows.Forms.TextBox();
-            this.localidadClienteTextBox = new System.Windows.Forms.TextBox();
+            this.LocalidadClienteTxt = new System.Windows.Forms.TextBox();
             this.tabPage2Clientes = new System.Windows.Forms.TabPage();
             this.DescuentoCliente = new System.Windows.Forms.TextBox();
             this.FechaAltaCliente = new System.Windows.Forms.DateTimePicker();
@@ -735,24 +735,24 @@ namespace PELOSCALVO
             this.tabPage1Clientes.AutoScroll = true;
             this.tabPage1Clientes.Controls.Add(this.Id_Clientes);
             this.tabPage1Clientes.Controls.Add(apodoClienteLabel1);
-            this.tabPage1Clientes.Controls.Add(this.apodoClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.ApodoClienteTex);
             this.tabPage1Clientes.Controls.Add(nombreClienteLabel1);
-            this.tabPage1Clientes.Controls.Add(this.nombreClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.NombreCliente);
             this.tabPage1Clientes.Controls.Add(direccionClienteLabel1);
-            this.tabPage1Clientes.Controls.Add(this.direccionClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.DirecionCliente);
             this.tabPage1Clientes.Controls.Add(calleClienteLabel);
-            this.tabPage1Clientes.Controls.Add(this.calleClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.CalleClienteTextBox);
             this.tabPage1Clientes.Controls.Add(idClienteLabel);
-            this.tabPage1Clientes.Controls.Add(this.telefonoClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.TelefonoClienteTextBox);
             this.tabPage1Clientes.Controls.Add(telefonoClienteLabel);
             this.tabPage1Clientes.Controls.Add(movilClienteLabel);
-            this.tabPage1Clientes.Controls.Add(this.movilClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.MovilClienteText);
             this.tabPage1Clientes.Controls.Add(correoClienteLabel);
-            this.tabPage1Clientes.Controls.Add(this.correoClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.CorreoClienteText);
             this.tabPage1Clientes.Controls.Add(dniClienteLabel);
             this.tabPage1Clientes.Controls.Add(this.dniClienteTextBox);
             this.tabPage1Clientes.Controls.Add(localidadClienteLabel);
-            this.tabPage1Clientes.Controls.Add(this.localidadClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.LocalidadClienteTxt);
             this.tabPage1Clientes.Location = new System.Drawing.Point(4, 22);
             this.tabPage1Clientes.Name = "tabPage1Clientes";
             this.tabPage1Clientes.Padding = new System.Windows.Forms.Padding(3);
@@ -771,82 +771,82 @@ namespace PELOSCALVO
             this.Id_Clientes.TabIndex = 42;
             this.Id_Clientes.Text = "0";
             // 
-            // apodoClienteTextBox
+            // ApodoClienteTex
             // 
-            this.apodoClienteTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.apodoClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "APODOCLIEN", true));
-            this.apodoClienteTextBox.Enabled = false;
-            this.apodoClienteTextBox.Location = new System.Drawing.Point(88, 56);
-            this.apodoClienteTextBox.MaxLength = 70;
-            this.apodoClienteTextBox.Name = "apodoClienteTextBox";
-            this.apodoClienteTextBox.Size = new System.Drawing.Size(250, 20);
-            this.apodoClienteTextBox.TabIndex = 1;
-            this.apodoClienteTextBox.Click += new System.EventHandler(this.apodoClienteTextBox_Click);
-            this.apodoClienteTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.apodoClienteTextBox_KeyPress);
+            this.ApodoClienteTex.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.ApodoClienteTex.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "APODOCLIEN", true));
+            this.ApodoClienteTex.Enabled = false;
+            this.ApodoClienteTex.Location = new System.Drawing.Point(88, 56);
+            this.ApodoClienteTex.MaxLength = 70;
+            this.ApodoClienteTex.Name = "ApodoClienteTex";
+            this.ApodoClienteTex.Size = new System.Drawing.Size(250, 20);
+            this.ApodoClienteTex.TabIndex = 1;
+            this.ApodoClienteTex.Click += new System.EventHandler(this.apodoClienteTextBox_Click);
+            this.ApodoClienteTex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.apodoClienteTextBox_KeyPress);
             // 
-            // nombreClienteTextBox
+            // NombreCliente
             // 
-            this.nombreClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "NOMBRECLIE", true));
-            this.nombreClienteTextBox.Enabled = false;
-            this.nombreClienteTextBox.Location = new System.Drawing.Point(88, 82);
-            this.nombreClienteTextBox.MaxLength = 120;
-            this.nombreClienteTextBox.Name = "nombreClienteTextBox";
-            this.nombreClienteTextBox.Size = new System.Drawing.Size(338, 20);
-            this.nombreClienteTextBox.TabIndex = 2;
-            this.nombreClienteTextBox.Click += new System.EventHandler(this.nombreClienteTextBox_Click);
+            this.NombreCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "NOMBRECLIE", true));
+            this.NombreCliente.Enabled = false;
+            this.NombreCliente.Location = new System.Drawing.Point(88, 82);
+            this.NombreCliente.MaxLength = 120;
+            this.NombreCliente.Name = "NombreCliente";
+            this.NombreCliente.Size = new System.Drawing.Size(338, 20);
+            this.NombreCliente.TabIndex = 2;
+            this.NombreCliente.Click += new System.EventHandler(this.nombreClienteTextBox_Click);
             // 
-            // direccionClienteTextBox
+            // DirecionCliente
             // 
-            this.direccionClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "DIRECCIONC", true));
-            this.direccionClienteTextBox.Enabled = false;
-            this.direccionClienteTextBox.Location = new System.Drawing.Point(88, 108);
-            this.direccionClienteTextBox.MaxLength = 100;
-            this.direccionClienteTextBox.Name = "direccionClienteTextBox";
-            this.direccionClienteTextBox.Size = new System.Drawing.Size(292, 20);
-            this.direccionClienteTextBox.TabIndex = 3;
-            this.direccionClienteTextBox.Click += new System.EventHandler(this.direccionClienteTextBox_Click);
-            this.direccionClienteTextBox.Leave += new System.EventHandler(this.direccionClienteTextBox_Leave);
+            this.DirecionCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "DIRECCIONC", true));
+            this.DirecionCliente.Enabled = false;
+            this.DirecionCliente.Location = new System.Drawing.Point(88, 108);
+            this.DirecionCliente.MaxLength = 100;
+            this.DirecionCliente.Name = "DirecionCliente";
+            this.DirecionCliente.Size = new System.Drawing.Size(292, 20);
+            this.DirecionCliente.TabIndex = 3;
+            this.DirecionCliente.Click += new System.EventHandler(this.direccionClienteTextBox_Click);
+            this.DirecionCliente.Leave += new System.EventHandler(this.direccionClienteTextBox_Leave);
             // 
-            // calleClienteTextBox
+            // CalleClienteTextBox
             // 
-            this.calleClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "CALLECLIEN", true));
-            this.calleClienteTextBox.Enabled = false;
-            this.calleClienteTextBox.Location = new System.Drawing.Point(513, 56);
-            this.calleClienteTextBox.MaxLength = 30;
-            this.calleClienteTextBox.Name = "calleClienteTextBox";
-            this.calleClienteTextBox.Size = new System.Drawing.Size(121, 20);
-            this.calleClienteTextBox.TabIndex = 5;
+            this.CalleClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "CALLECLIEN", true));
+            this.CalleClienteTextBox.Enabled = false;
+            this.CalleClienteTextBox.Location = new System.Drawing.Point(513, 56);
+            this.CalleClienteTextBox.MaxLength = 30;
+            this.CalleClienteTextBox.Name = "CalleClienteTextBox";
+            this.CalleClienteTextBox.Size = new System.Drawing.Size(121, 20);
+            this.CalleClienteTextBox.TabIndex = 5;
             // 
-            // telefonoClienteTextBox
+            // TelefonoClienteTextBox
             // 
-            this.telefonoClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TELEFONOCL", true));
-            this.telefonoClienteTextBox.Enabled = false;
-            this.telefonoClienteTextBox.Location = new System.Drawing.Point(513, 83);
-            this.telefonoClienteTextBox.MaxLength = 14;
-            this.telefonoClienteTextBox.Name = "telefonoClienteTextBox";
-            this.telefonoClienteTextBox.Size = new System.Drawing.Size(137, 20);
-            this.telefonoClienteTextBox.TabIndex = 8;
+            this.TelefonoClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TELEFONOCL", true));
+            this.TelefonoClienteTextBox.Enabled = false;
+            this.TelefonoClienteTextBox.Location = new System.Drawing.Point(513, 83);
+            this.TelefonoClienteTextBox.MaxLength = 14;
+            this.TelefonoClienteTextBox.Name = "TelefonoClienteTextBox";
+            this.TelefonoClienteTextBox.Size = new System.Drawing.Size(137, 20);
+            this.TelefonoClienteTextBox.TabIndex = 8;
             // 
-            // movilClienteTextBox
+            // MovilClienteText
             // 
-            this.movilClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "MOVILCLIEN", true));
-            this.movilClienteTextBox.Enabled = false;
-            this.movilClienteTextBox.Location = new System.Drawing.Point(513, 111);
-            this.movilClienteTextBox.MaxLength = 14;
-            this.movilClienteTextBox.Name = "movilClienteTextBox";
-            this.movilClienteTextBox.Size = new System.Drawing.Size(137, 20);
-            this.movilClienteTextBox.TabIndex = 7;
+            this.MovilClienteText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "MOVILCLIEN", true));
+            this.MovilClienteText.Enabled = false;
+            this.MovilClienteText.Location = new System.Drawing.Point(513, 111);
+            this.MovilClienteText.MaxLength = 14;
+            this.MovilClienteText.Name = "MovilClienteText";
+            this.MovilClienteText.Size = new System.Drawing.Size(137, 20);
+            this.MovilClienteText.TabIndex = 7;
             // 
-            // correoClienteTextBox
+            // CorreoClienteText
             // 
-            this.correoClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "CORREOCLIE", true));
-            this.correoClienteTextBox.Enabled = false;
-            this.correoClienteTextBox.Location = new System.Drawing.Point(513, 138);
-            this.correoClienteTextBox.MaxLength = 25;
-            this.correoClienteTextBox.Name = "correoClienteTextBox";
-            this.correoClienteTextBox.Size = new System.Drawing.Size(190, 20);
-            this.correoClienteTextBox.TabIndex = 6;
-            this.correoClienteTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.correoClienteTextBox_Validating);
+            this.CorreoClienteText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "CORREOCLIE", true));
+            this.CorreoClienteText.Enabled = false;
+            this.CorreoClienteText.Location = new System.Drawing.Point(513, 138);
+            this.CorreoClienteText.MaxLength = 25;
+            this.CorreoClienteText.Name = "CorreoClienteText";
+            this.CorreoClienteText.Size = new System.Drawing.Size(190, 20);
+            this.CorreoClienteText.TabIndex = 6;
+            this.CorreoClienteText.Validating += new System.ComponentModel.CancelEventHandler(this.correoClienteTextBox_Validating);
             // 
             // dniClienteTextBox
             // 
@@ -863,15 +863,15 @@ namespace PELOSCALVO
             this.dniClienteTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dniClienteTextBox_KeyPress);
             this.dniClienteTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dniClienteTextBox_Validating);
             // 
-            // localidadClienteTextBox
+            // LocalidadClienteTxt
             // 
-            this.localidadClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "LOCALIDADC", true));
-            this.localidadClienteTextBox.Enabled = false;
-            this.localidadClienteTextBox.Location = new System.Drawing.Point(513, 27);
-            this.localidadClienteTextBox.MaxLength = 35;
-            this.localidadClienteTextBox.Name = "localidadClienteTextBox";
-            this.localidadClienteTextBox.Size = new System.Drawing.Size(214, 20);
-            this.localidadClienteTextBox.TabIndex = 4;
+            this.LocalidadClienteTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "LOCALIDADC", true));
+            this.LocalidadClienteTxt.Enabled = false;
+            this.LocalidadClienteTxt.Location = new System.Drawing.Point(513, 27);
+            this.LocalidadClienteTxt.MaxLength = 35;
+            this.LocalidadClienteTxt.Name = "LocalidadClienteTxt";
+            this.LocalidadClienteTxt.Size = new System.Drawing.Size(214, 20);
+            this.LocalidadClienteTxt.TabIndex = 4;
             // 
             // tabPage2Clientes
             // 
@@ -1514,22 +1514,22 @@ namespace PELOSCALVO
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1Clientes;
         private System.Windows.Forms.TabPage tabPage2Clientes;
-        private System.Windows.Forms.TextBox calleClienteTextBox;
-        private System.Windows.Forms.TextBox telefonoClienteTextBox;
+        private System.Windows.Forms.TextBox CalleClienteTextBox;
+        private System.Windows.Forms.TextBox TelefonoClienteTextBox;
         private System.Windows.Forms.ComboBox apodoClienteComboBox;
         private System.Windows.Forms.ComboBox direccionClienteComboBox;
-        private System.Windows.Forms.TextBox movilClienteTextBox;
-        private System.Windows.Forms.TextBox correoClienteTextBox;
+        private System.Windows.Forms.TextBox MovilClienteText;
+        private System.Windows.Forms.TextBox CorreoClienteText;
         private System.Windows.Forms.TextBox dniClienteTextBox;
-        private System.Windows.Forms.TextBox localidadClienteTextBox;
+        private System.Windows.Forms.TextBox LocalidadClienteTxt;
         private System.Windows.Forms.ComboBox TipoDocumento;
         private System.Windows.Forms.TextBox numeroCalleClienteTextBox;
         private System.Windows.Forms.ComboBox TipoTarifa;
         private System.Windows.Forms.TextBox codigoPostalClienteTextBox;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox apodoClienteTextBox;
-        private System.Windows.Forms.TextBox nombreClienteTextBox;
-        private System.Windows.Forms.TextBox direccionClienteTextBox;
+        private System.Windows.Forms.TextBox ApodoClienteTex;
+        private System.Windows.Forms.TextBox NombreCliente;
+        private System.Windows.Forms.TextBox DirecionCliente;
         private System.Windows.Forms.Button BtnCancelarCliente;
         private System.Windows.Forms.Button BtnNuevoCliente;
         private System.Windows.Forms.Button BtnModificarCliente;

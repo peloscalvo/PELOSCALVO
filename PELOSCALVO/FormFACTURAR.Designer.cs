@@ -98,7 +98,7 @@ namespace PELOSCALVO
             this.BtnBuscarPais = new System.Windows.Forms.Button();
             this.BtnBuscarProvi = new System.Windows.Forms.Button();
             this.EnlaceFactu = new System.Windows.Forms.Label();
-            this.proveedoresComboBox = new System.Windows.Forms.ComboBox();
+            this.ProveedorTxt = new System.Windows.Forms.ComboBox();
             this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.obrasComboBox = new System.Windows.Forms.ComboBox();
@@ -106,7 +106,7 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.FechaFactura = new System.Windows.Forms.DateTimePicker();
             this.BtnBuscarClientesFact = new System.Windows.Forms.Button();
-            this.pais_FactComboBox = new System.Windows.Forms.ComboBox();
+            this.PaisFatuTxt = new System.Windows.Forms.ComboBox();
             this.dtPaisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cobradaFacturaCheckBox = new System.Windows.Forms.CheckBox();
             this.fechaCobroText = new System.Windows.Forms.MaskedTextBox();
@@ -114,13 +114,13 @@ namespace PELOSCALVO
             this.RazonSocialFatu = new System.Windows.Forms.TextBox();
             this.NombreClienteFatu = new System.Windows.Forms.TextBox();
             this.DirecionClienteFatu = new System.Windows.Forms.TextBox();
-            this.calleTextBox = new System.Windows.Forms.TextBox();
-            this.numeroCalleTextBox = new System.Windows.Forms.TextBox();
-            this.dniTextBox = new System.Windows.Forms.TextBox();
-            this.localidadTextBox = new System.Windows.Forms.TextBox();
-            this.provinciaComboBox = new System.Windows.Forms.ComboBox();
+            this.CalleTex = new System.Windows.Forms.TextBox();
+            this.NumeroCalleTxt = new System.Windows.Forms.TextBox();
+            this.DniTextBox = new System.Windows.Forms.TextBox();
+            this.LocalidadTxt = new System.Windows.Forms.TextBox();
+            this.ProvinciaTxt = new System.Windows.Forms.ComboBox();
             this.fKDtPaisesDtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.codigoPostalTextBox = new System.Windows.Forms.TextBox();
+            this.CodigoPostalTxt = new System.Windows.Forms.TextBox();
             this.AlmacenTxt = new System.Windows.Forms.ComboBox();
             this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -688,14 +688,14 @@ namespace PELOSCALVO
             this.tabPage1Factura.Controls.Add(Label11);
             this.tabPage1Factura.Controls.Add(this.EnlaceFactu);
             this.tabPage1Factura.Controls.Add(proveedoresLabel);
-            this.tabPage1Factura.Controls.Add(this.proveedoresComboBox);
+            this.tabPage1Factura.Controls.Add(this.ProveedorTxt);
             this.tabPage1Factura.Controls.Add(obrasLabel);
             this.tabPage1Factura.Controls.Add(this.obrasComboBox);
             this.tabPage1Factura.Controls.Add(fechaFacturaLabel);
             this.tabPage1Factura.Controls.Add(this.FechaFactura);
             this.tabPage1Factura.Controls.Add(this.BtnBuscarClientesFact);
             this.tabPage1Factura.Controls.Add(pais_FactLabel);
-            this.tabPage1Factura.Controls.Add(this.pais_FactComboBox);
+            this.tabPage1Factura.Controls.Add(this.PaisFatuTxt);
             this.tabPage1Factura.Controls.Add(this.cobradaFacturaCheckBox);
             this.tabPage1Factura.Controls.Add(fechaCobroLabel);
             this.tabPage1Factura.Controls.Add(this.fechaCobroText);
@@ -708,17 +708,17 @@ namespace PELOSCALVO
             this.tabPage1Factura.Controls.Add(direccionLabel);
             this.tabPage1Factura.Controls.Add(this.DirecionClienteFatu);
             this.tabPage1Factura.Controls.Add(calleLabel);
-            this.tabPage1Factura.Controls.Add(this.calleTextBox);
+            this.tabPage1Factura.Controls.Add(this.CalleTex);
             this.tabPage1Factura.Controls.Add(numeroCalleLabel);
-            this.tabPage1Factura.Controls.Add(this.numeroCalleTextBox);
+            this.tabPage1Factura.Controls.Add(this.NumeroCalleTxt);
             this.tabPage1Factura.Controls.Add(dniLabel);
-            this.tabPage1Factura.Controls.Add(this.dniTextBox);
+            this.tabPage1Factura.Controls.Add(this.DniTextBox);
             this.tabPage1Factura.Controls.Add(localidadLabel);
-            this.tabPage1Factura.Controls.Add(this.localidadTextBox);
+            this.tabPage1Factura.Controls.Add(this.LocalidadTxt);
             this.tabPage1Factura.Controls.Add(provinciaLabel);
-            this.tabPage1Factura.Controls.Add(this.provinciaComboBox);
+            this.tabPage1Factura.Controls.Add(this.ProvinciaTxt);
             this.tabPage1Factura.Controls.Add(codigoPostalLabel);
-            this.tabPage1Factura.Controls.Add(this.codigoPostalTextBox);
+            this.tabPage1Factura.Controls.Add(this.CodigoPostalTxt);
             this.tabPage1Factura.Controls.Add(nonbreAlmacenLabel);
             this.tabPage1Factura.Controls.Add(this.AlmacenTxt);
             this.tabPage1Factura.Location = new System.Drawing.Point(4, 22);
@@ -761,17 +761,17 @@ namespace PELOSCALVO
             this.EnlaceFactu.Size = new System.Drawing.Size(0, 13);
             this.EnlaceFactu.TabIndex = 73;
             // 
-            // proveedoresComboBox
+            // ProveedorTxt
             // 
-            this.proveedoresComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtProveedoresBindingSource, "Proveedores", true));
-            this.proveedoresComboBox.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
-            this.proveedoresComboBox.DisplayMember = "Proveedores";
-            this.proveedoresComboBox.FormattingEnabled = true;
-            this.proveedoresComboBox.Location = new System.Drawing.Point(514, 177);
-            this.proveedoresComboBox.MaxLength = 60;
-            this.proveedoresComboBox.Name = "proveedoresComboBox";
-            this.proveedoresComboBox.Size = new System.Drawing.Size(257, 21);
-            this.proveedoresComboBox.TabIndex = 72;
+            this.ProveedorTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtProveedoresBindingSource, "Proveedores", true));
+            this.ProveedorTxt.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
+            this.ProveedorTxt.DisplayMember = "Proveedores";
+            this.ProveedorTxt.FormattingEnabled = true;
+            this.ProveedorTxt.Location = new System.Drawing.Point(514, 177);
+            this.ProveedorTxt.MaxLength = 60;
+            this.ProveedorTxt.Name = "ProveedorTxt";
+            this.ProveedorTxt.Size = new System.Drawing.Size(257, 21);
+            this.ProveedorTxt.TabIndex = 72;
             // 
             // dtProveedoresBindingSource
             // 
@@ -833,19 +833,19 @@ namespace PELOSCALVO
             this.BtnBuscarClientesFact.UseVisualStyleBackColor = true;
             this.BtnBuscarClientesFact.Click += new System.EventHandler(this.BtnBuscarClientesFact_Click);
             // 
-            // pais_FactComboBox
+            // PaisFatuTxt
             // 
-            this.pais_FactComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Pais_Fact", true));
-            this.pais_FactComboBox.DataSource = this.dtPaisesBindingSource;
-            this.pais_FactComboBox.DisplayMember = "Paises";
-            this.pais_FactComboBox.Enabled = false;
-            this.pais_FactComboBox.FormattingEnabled = true;
-            this.pais_FactComboBox.Location = new System.Drawing.Point(514, 150);
-            this.pais_FactComboBox.MaxLength = 60;
-            this.pais_FactComboBox.Name = "pais_FactComboBox";
-            this.pais_FactComboBox.Size = new System.Drawing.Size(257, 21);
-            this.pais_FactComboBox.TabIndex = 28;
-            this.pais_FactComboBox.Click += new System.EventHandler(this.Pais_FactComboBox_Click);
+            this.PaisFatuTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Pais_Fact", true));
+            this.PaisFatuTxt.DataSource = this.dtPaisesBindingSource;
+            this.PaisFatuTxt.DisplayMember = "Paises";
+            this.PaisFatuTxt.Enabled = false;
+            this.PaisFatuTxt.FormattingEnabled = true;
+            this.PaisFatuTxt.Location = new System.Drawing.Point(514, 150);
+            this.PaisFatuTxt.MaxLength = 60;
+            this.PaisFatuTxt.Name = "PaisFatuTxt";
+            this.PaisFatuTxt.Size = new System.Drawing.Size(257, 21);
+            this.PaisFatuTxt.TabIndex = 28;
+            this.PaisFatuTxt.Click += new System.EventHandler(this.Pais_FactComboBox_Click);
             // 
             // dtPaisesBindingSource
             // 
@@ -920,75 +920,75 @@ namespace PELOSCALVO
             this.DirecionClienteFatu.Size = new System.Drawing.Size(313, 20);
             this.DirecionClienteFatu.TabIndex = 7;
             // 
-            // calleTextBox
+            // CalleTex
             // 
-            this.calleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Calle", true));
-            this.calleTextBox.Enabled = false;
-            this.calleTextBox.Location = new System.Drawing.Point(94, 151);
-            this.calleTextBox.MaxLength = 24;
-            this.calleTextBox.Name = "calleTextBox";
-            this.calleTextBox.Size = new System.Drawing.Size(121, 20);
-            this.calleTextBox.TabIndex = 9;
+            this.CalleTex.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Calle", true));
+            this.CalleTex.Enabled = false;
+            this.CalleTex.Location = new System.Drawing.Point(94, 151);
+            this.CalleTex.MaxLength = 24;
+            this.CalleTex.Name = "CalleTex";
+            this.CalleTex.Size = new System.Drawing.Size(121, 20);
+            this.CalleTex.TabIndex = 9;
             // 
-            // numeroCalleTextBox
+            // NumeroCalleTxt
             // 
-            this.numeroCalleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NumeroCalle", true));
-            this.numeroCalleTextBox.Enabled = false;
-            this.numeroCalleTextBox.Location = new System.Drawing.Point(94, 180);
-            this.numeroCalleTextBox.MaxLength = 5;
-            this.numeroCalleTextBox.Name = "numeroCalleTextBox";
-            this.numeroCalleTextBox.Size = new System.Drawing.Size(121, 20);
-            this.numeroCalleTextBox.TabIndex = 11;
+            this.NumeroCalleTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NumeroCalle", true));
+            this.NumeroCalleTxt.Enabled = false;
+            this.NumeroCalleTxt.Location = new System.Drawing.Point(94, 180);
+            this.NumeroCalleTxt.MaxLength = 5;
+            this.NumeroCalleTxt.Name = "NumeroCalleTxt";
+            this.NumeroCalleTxt.Size = new System.Drawing.Size(121, 20);
+            this.NumeroCalleTxt.TabIndex = 11;
             // 
-            // dniTextBox
+            // DniTextBox
             // 
-            this.dniTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Dni", true));
-            this.dniTextBox.Enabled = false;
-            this.dniTextBox.Location = new System.Drawing.Point(423, 37);
-            this.dniTextBox.MaxLength = 14;
-            this.dniTextBox.Name = "dniTextBox";
-            this.dniTextBox.Size = new System.Drawing.Size(233, 20);
-            this.dniTextBox.TabIndex = 13;
-            this.dniTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dniTextBox_Validating);
+            this.DniTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Dni", true));
+            this.DniTextBox.Enabled = false;
+            this.DniTextBox.Location = new System.Drawing.Point(423, 37);
+            this.DniTextBox.MaxLength = 14;
+            this.DniTextBox.Name = "DniTextBox";
+            this.DniTextBox.Size = new System.Drawing.Size(233, 20);
+            this.DniTextBox.TabIndex = 13;
+            this.DniTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dniTextBox_Validating);
             // 
-            // localidadTextBox
+            // LocalidadTxt
             // 
-            this.localidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Localidad", true));
-            this.localidadTextBox.Enabled = false;
-            this.localidadTextBox.Location = new System.Drawing.Point(514, 96);
-            this.localidadTextBox.MaxLength = 25;
-            this.localidadTextBox.Name = "localidadTextBox";
-            this.localidadTextBox.Size = new System.Drawing.Size(257, 20);
-            this.localidadTextBox.TabIndex = 15;
+            this.LocalidadTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Localidad", true));
+            this.LocalidadTxt.Enabled = false;
+            this.LocalidadTxt.Location = new System.Drawing.Point(514, 96);
+            this.LocalidadTxt.MaxLength = 25;
+            this.LocalidadTxt.Name = "LocalidadTxt";
+            this.LocalidadTxt.Size = new System.Drawing.Size(257, 20);
+            this.LocalidadTxt.TabIndex = 15;
             // 
-            // provinciaComboBox
+            // ProvinciaTxt
             // 
-            this.provinciaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Provincia", true));
-            this.provinciaComboBox.DataSource = this.fKDtPaisesDtProvinciasBindingSource;
-            this.provinciaComboBox.DisplayMember = "Provincias";
-            this.provinciaComboBox.Enabled = false;
-            this.provinciaComboBox.FormattingEnabled = true;
-            this.provinciaComboBox.Location = new System.Drawing.Point(514, 122);
-            this.provinciaComboBox.MaxLength = 60;
-            this.provinciaComboBox.Name = "provinciaComboBox";
-            this.provinciaComboBox.Size = new System.Drawing.Size(257, 21);
-            this.provinciaComboBox.TabIndex = 17;
-            this.provinciaComboBox.Click += new System.EventHandler(this.ProvinciaComboBox_Click);
+            this.ProvinciaTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Provincia", true));
+            this.ProvinciaTxt.DataSource = this.fKDtPaisesDtProvinciasBindingSource;
+            this.ProvinciaTxt.DisplayMember = "Provincias";
+            this.ProvinciaTxt.Enabled = false;
+            this.ProvinciaTxt.FormattingEnabled = true;
+            this.ProvinciaTxt.Location = new System.Drawing.Point(514, 122);
+            this.ProvinciaTxt.MaxLength = 60;
+            this.ProvinciaTxt.Name = "ProvinciaTxt";
+            this.ProvinciaTxt.Size = new System.Drawing.Size(257, 21);
+            this.ProvinciaTxt.TabIndex = 17;
+            this.ProvinciaTxt.Click += new System.EventHandler(this.ProvinciaComboBox_Click);
             // 
             // fKDtPaisesDtProvinciasBindingSource
             // 
             this.fKDtPaisesDtProvinciasBindingSource.DataMember = "FK_DtPaises_DtProvincias";
             this.fKDtPaisesDtProvinciasBindingSource.DataSource = this.dtPaisesBindingSource;
             // 
-            // codigoPostalTextBox
+            // CodigoPostalTxt
             // 
-            this.codigoPostalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "CodigoPostal", true));
-            this.codigoPostalTextBox.Enabled = false;
-            this.codigoPostalTextBox.Location = new System.Drawing.Point(764, 37);
-            this.codigoPostalTextBox.MaxLength = 30;
-            this.codigoPostalTextBox.Name = "codigoPostalTextBox";
-            this.codigoPostalTextBox.Size = new System.Drawing.Size(121, 20);
-            this.codigoPostalTextBox.TabIndex = 19;
+            this.CodigoPostalTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "CodigoPostal", true));
+            this.CodigoPostalTxt.Enabled = false;
+            this.CodigoPostalTxt.Location = new System.Drawing.Point(764, 37);
+            this.CodigoPostalTxt.MaxLength = 30;
+            this.CodigoPostalTxt.Name = "CodigoPostalTxt";
+            this.CodigoPostalTxt.Size = new System.Drawing.Size(121, 20);
+            this.CodigoPostalTxt.TabIndex = 19;
             // 
             // AlmacenTxt
             // 
@@ -2019,21 +2019,21 @@ namespace PELOSCALVO
         public System.Windows.Forms.TabPage tabPage1Factura;
         public System.Windows.Forms.TextBox NombreClienteFatu;
         public System.Windows.Forms.TextBox DirecionClienteFatu;
-        public System.Windows.Forms.TextBox calleTextBox;
-        public System.Windows.Forms.TextBox numeroCalleTextBox;
+        public System.Windows.Forms.TextBox CalleTex;
+        public System.Windows.Forms.TextBox NumeroCalleTxt;
         public System.Windows.Forms.TextBox RazonSocialFatu;
-        public System.Windows.Forms.TextBox localidadTextBox;
-        public System.Windows.Forms.ComboBox provinciaComboBox;
+        public System.Windows.Forms.TextBox LocalidadTxt;
+        public System.Windows.Forms.ComboBox ProvinciaTxt;
         public System.Windows.Forms.BindingSource dtDetallesFactura2BindingSource;
         public System.Windows.Forms.TextBox NumeroFactura;
-        public System.Windows.Forms.ComboBox pais_FactComboBox;
+        public System.Windows.Forms.ComboBox PaisFatuTxt;
         public DsCONFIGURACCION dsCONFIGURACCION;
         public System.Windows.Forms.Label subTotal;
         public System.Windows.Forms.Label baseIva;
         public System.Windows.Forms.Label TotalFactura1;
         public System.Windows.Forms.Label TotalFactura2;
-        public System.Windows.Forms.TextBox dniTextBox;
-        public System.Windows.Forms.TextBox codigoPostalTextBox;
+        public System.Windows.Forms.TextBox DniTextBox;
+        public System.Windows.Forms.TextBox CodigoPostalTxt;
         private DsMultidatos dsMultidatos;
         public System.Windows.Forms.PictureBox imagenEmpresaPicture2;
         public System.Windows.Forms.BindingSource dtArticulosBindingSource;
@@ -2052,7 +2052,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtObrasBindingSource;
         private DsMulti2 dsMulti2;
         public System.Windows.Forms.ComboBox obrasComboBox;
-        private System.Windows.Forms.ComboBox proveedoresComboBox;
+        private System.Windows.Forms.ComboBox ProveedorTxt;
         private System.Windows.Forms.BindingSource dtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtAlmacenesBindingSource;

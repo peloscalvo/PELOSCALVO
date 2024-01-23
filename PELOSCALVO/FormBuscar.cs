@@ -165,11 +165,11 @@ namespace PELOSCALVO
                         {
                             if (ClasDatos.QUEform == "Paises")
                             {
-                                FormFacturar.menu2FACTURAR.pais_FactComboBox.Text = this.DataGridBuscar.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                                FormFacturar.menu2FACTURAR.PaisFatuTxt.Text = this.DataGridBuscar.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
                             }
                             if (ClasDatos.QUEform == "Provincias")
                             {
-                                FormFacturar.menu2FACTURAR.provinciaComboBox.Text = this.DataGridBuscar.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                                FormFacturar.menu2FACTURAR.ProvinciaTxt.Text = this.DataGridBuscar.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
                             }
                         }
                         else

@@ -27,11 +27,6 @@ namespace PELOSCALVO
             public int Valor { get; set; }
             public string Texto { get; set; }
         }
-        public class OpcionCombo2
-        {
-            public int Valor { get; set; }
-            public string Texto { get; set; }
-        }
         public class Opcionimagen
         {
             public Image Valor { get; set; }
@@ -99,11 +94,9 @@ namespace PELOSCALVO
                 this.ListaQr.Items.Add(new OpcionCombo() { Valor = indice, Texto = nombre });
                 indice++;
             }
-            indice = 0;
             foreach (var nombre in Enum.GetNames(typeof(ZXing.BarcodeFormat)))
             {
-                this.ListaQr2.Items.Add(new OpcionCombo2() { Valor = indice, Texto = nombre }.Texto);
-                indice++;
+                this.ListaQr2.Items.Add(nombre);
             }
             if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
             {
@@ -531,8 +524,7 @@ namespace PELOSCALVO
                 else
                 {
                     BarcodeWriter br = new BarcodeWriter();
-                    int indice2 = this.ListaQr2.SelectedIndex+1;
-             
+                    int indice2 = this.ListaQr2.SelectedIndex+1;           
                     if (indice2 > 2)
                     {
                         foreach (string item in this.ListaQr2.Items)
@@ -542,13 +534,10 @@ namespace PELOSCALVO
                                 break;
                             }
                             Nvi = Nvi * 2;
-                           // MessageBox.Show(Nvi.ToString());
                         }
                         indice2= Nvi/2;
-                        //indice2=  indice2- ((this.ListaQr2.SelectedIndex+1)*20);
                     }
                     BarcodeFormat FormatoBr = (ZXing.BarcodeFormat)indice2;
-                  //  MessageBox.Show(FormatoBr.ToString());
                     br.Format = FormatoBr;
                     Bitmap bm = new Bitmap(br.Write(this.TituloText.Text), Ancho, Alto);
                     this.PitureQr.Image = bm;
@@ -700,9 +689,23 @@ namespace PELOSCALVO
                     else
                     {
                         Bitmap bm = null;
-                        int indice = (this.ListaQr2.SelectedItem as OpcionCombo2).Valor;
+                        int indice2 = this.ListaQr2.SelectedIndex + 1;
+                        int Nvi = 2;
+                        if (indice2 > 2)
+                        {
+                            foreach (string item in this.ListaQr2.Items)
+                            {
+                                if (item.ToString() == this.ListaQr2.SelectedItem.ToString())
+                                {
+                                    break;
+                                }
+                                Nvi = Nvi * 2;
+                            }
+                            indice2 = Nvi / 2;
+                        }
+                        // int indice = (this.ListaQr2.SelectedItem as OpcionCombo2).Valor;
                         BarcodeWriter br = new BarcodeWriter();
-                        BarcodeFormat FormatoBr = (BarcodeFormat)indice;
+                        BarcodeFormat FormatoBr = (BarcodeFormat)indice2;
                         br.Format = FormatoBr;
                         if (this.FormatoText.SelectedIndex == 4)
                         {
@@ -937,43 +940,6 @@ namespace PELOSCALVO
                 this.BtnCodifiCar.Image = PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
             }
 
-        }
-
-        private void BtnPrueba_Click(object sender, EventArgs e)
-        {
-            if (this.ListaQr2.SelectedIndex < 0)
-            {
-                MessageBox.Show("Selecione Un Formato valido", "FORMATO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.ListaQr.Focus();
-                return;
-            }
-            if (String.IsNullOrEmpty(this.TituloText.Text))
-            {
-                MessageBox.Show("Campo De Titulo vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.TituloText.Focus();
-                return;
-            }
-            if (String.IsNullOrEmpty(this.Anchotext.Text))
-            {
-                MessageBox.Show("Campo De Ancho vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Anchotext.Focus();
-                return;
-            }
-            if (String.IsNullOrEmpty(this.AltoText.Text))
-            {
-                MessageBox.Show("Campo De Alto vacio", "CAMPO VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.AltoText.Focus();
-                return;
-            }
-            FormBuscarArticulos.listas.lista.Clear();
-            int Ancho = Convert.ToInt32(this.Anchotext.Text);
-            int Alto = Convert.ToInt32(this.AltoText.Text);
-            BarcodeWriter br = new BarcodeWriter();
-            int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
-            BarcodeFormat FormatoBr = (BarcodeFormat)indice;
-            br.Format = FormatoBr;
-            Bitmap bm = new Bitmap(br.Write(this.TituloText.Text), Ancho, Alto);
-            this.PitureQr.Image = bm;
         }
 
         private void ListOpcion_SelectedIndexChanged(object sender, EventArgs e)

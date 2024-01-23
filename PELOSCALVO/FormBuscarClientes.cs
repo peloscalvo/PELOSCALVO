@@ -153,19 +153,19 @@ namespace PELOSCALVO
 
                         FormFacturar.menu2FACTURAR.NombreClienteFatu.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[2].FormattedValue.ToString();
                         FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[3].FormattedValue.ToString();
-                        FormFacturar.menu2FACTURAR.localidadTextBox.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[8].FormattedValue.ToString();
-                        FormFacturar.menu2FACTURAR.calleTextBox.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[13].FormattedValue.ToString();
+                        FormFacturar.menu2FACTURAR.LocalidadTxt.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[8].FormattedValue.ToString();
+                        FormFacturar.menu2FACTURAR.CalleTex.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[13].FormattedValue.ToString();
                         // FormFACTURAR.menu2FACTURAR.direccionTextBox.Text = dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[3].FormattedValue.ToString();
-                        FormFacturar.menu2FACTURAR.provinciaComboBox.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[15].FormattedValue.ToString();
-                        FormFacturar.menu2FACTURAR.numeroCalleTextBox.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[14].FormattedValue.ToString();
-                        FormFacturar.menu2FACTURAR.dniTextBox.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[7].FormattedValue.ToString();
-                        FormFacturar.menu2FACTURAR.pais_FactComboBox.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[11].FormattedValue.ToString();
+                        FormFacturar.menu2FACTURAR.ProvinciaTxt.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[15].FormattedValue.ToString();
+                        FormFacturar.menu2FACTURAR.NumeroCalleTxt.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[14].FormattedValue.ToString();
+                        FormFacturar.menu2FACTURAR.DniTextBox.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[7].FormattedValue.ToString();
+                        FormFacturar.menu2FACTURAR.PaisFatuTxt.Text = this.dtClientes2DataGridView.Rows[ClasDatos.ValorBuscado].Cells[11].FormattedValue.ToString();
                         FormFacturar.menu2FACTURAR.RazonSocialFatu.Select();
                         FormFacturar.menu2FACTURAR.NombreClienteFatu.Select();
                         FormFacturar.menu2FACTURAR.DirecionClienteFatu.Select();
-                        FormFacturar.menu2FACTURAR.localidadTextBox.Select();
-                        FormFacturar.menu2FACTURAR.provinciaComboBox.Select();
-                        FormFacturar.menu2FACTURAR.calleTextBox.Select();
+                        FormFacturar.menu2FACTURAR.LocalidadTxt.Select();
+                        FormFacturar.menu2FACTURAR.ProvinciaTxt.Select();
+                        FormFacturar.menu2FACTURAR.CalleTex.Select();
                         FormFacturar.menu2FACTURAR.NombreClienteFatu.Focus();
                     }
                 }

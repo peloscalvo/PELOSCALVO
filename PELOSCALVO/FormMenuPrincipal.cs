@@ -14,9 +14,9 @@ namespace PELOSCALVO
     {
         // public BindingSource CorreosBindisource = new BindingSource();
         public static FormMenuPrincipal menu2principal;
-        public byte SiOpenFatu = 0, SiOpenArti = 0,SiOpenClie = 0, SiOpenConfi = 0, SiOpenBuscArti=0;
+        public byte SiOpenFatu = 0, SiOpenArti = 0, SiOpenClie = 0, SiOpenConfi = 0, SiOpenBuscArti = 0;
         // byte SiOpenUser = 0;
-        int V1, PX, PV;  
+        int V1, PX, PV;
         public FormMenuPrincipal()
         {
             InitializeComponent();
@@ -434,7 +434,7 @@ namespace PELOSCALVO
             this.InfoConectado.Visible = false;
             if (this.SiOpenFatu == 0)
             {
-    
+
                 this.panelMenu.Width = this.panelMenu.Width = 55;
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
@@ -518,6 +518,7 @@ namespace PELOSCALVO
             {
                 ClasDatos.RutaFactura = ClasDatos.RutaDatosPrincipal + " FN1";
                 ClasDatos.NombreFactura = "Nota";
+               // ClasDatos.QUEform = "FATU";
                 FormFacturar frm = new FormFacturar();
                 this.InfoConectado.Visible = false;
                 this.panelMenu.Width = this.panelMenu.Width = 55;
@@ -1027,6 +1028,11 @@ namespace PELOSCALVO
             frm.BringToFront();
         }
 
+        private void PanelAcesosDire_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormDatosInicio frm = new FormDatosInicio();
@@ -1051,8 +1057,9 @@ namespace PELOSCALVO
 
         private void codigosDeBarrasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             FormBuscarArticulos frm = new FormBuscarArticulos();
-            if (SiOpenBuscArti == 0)
+            if (this.SiOpenBuscArti == 0 && this.SiOpenFatu == 0)
             {
                 ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "QR";
@@ -1061,14 +1068,14 @@ namespace PELOSCALVO
                 this.panel1.Height = this.panel1.Height = 0;
                 frm.TopLevel = false;
                 this.PanelForms.Controls.Add(frm);
-                frm.FormClosed += (o, args) => SiOpenBuscArti = 0;
+                frm.FormClosed += (o, args) => this.SiOpenBuscArti = 0;
 
                 frm.FormClosed += (o, args) => this.panel1.Height = this.panel1.Height = 25;
                 frm.FormClosed += (o, args) => this.panelMenu.Width = this.panelMenu.Width = 230;
                 frm.FormClosed += (o, args) => this.InfoConectado.Visible = true;
                 frm.Show();
                 frm.BringToFront();
-                SiOpenBuscArti = 1;
+                this.SiOpenBuscArti = 1;
             }
         }
 

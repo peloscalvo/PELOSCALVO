@@ -26,20 +26,20 @@ namespace PELOSCALVO
         private bool VALIDARcampos()
         {
             bool ok = true;
-            if (this.apodoClienteTextBox.Text.Length < 4)
+            if (this.ApodoClienteTex.Text.Length < 4)
             {
                 ok = false;
-                this.errorProvider1.SetError(this.apodoClienteTextBox, "_ingresar Razon Social (( minimo 4 Caracteres))");
+                this.errorProvider1.SetError(this.ApodoClienteTex, "_ingresar Razon Social (( minimo 4 Caracteres))");
             }
-            if (this.nombreClienteTextBox.Text.Length < 4)
+            if (this.NombreCliente.Text.Length < 4)
             {
                 ok = false;
-                this.errorProvider1.SetError(this.nombreClienteTextBox, "_ingresar NOMBRE (( minimo 4 Caracteres))");
+                this.errorProvider1.SetError(this.NombreCliente, "_ingresar NOMBRE (( minimo 4 Caracteres))");
             }
-            if (this.direccionClienteTextBox.Text.Length < 4)
+            if (this.DirecionCliente.Text.Length < 4)
             {
                 ok = false;
-                this.errorProvider1.SetError(this.direccionClienteTextBox, "_ingresar Direcion (( minimo 4 Caracteres))");
+                this.errorProvider1.SetError(this.DirecionCliente, "_ingresar Direcion (( minimo 4 Caracteres))");
             }
 
             if (string.IsNullOrEmpty(this.Id_Clientes.Text))
@@ -61,9 +61,9 @@ namespace PELOSCALVO
         }
         private void BORRARerrores()
         {
-            this.errorProvider1.SetError(this.apodoClienteTextBox, "");
-            this.errorProvider1.SetError(this.nombreClienteTextBox, "");
-            this.errorProvider1.SetError(this.direccionClienteTextBox, "");
+            this.errorProvider1.SetError(this.ApodoClienteTex, "");
+            this.errorProvider1.SetError(this.NombreCliente, "");
+            this.errorProvider1.SetError(this.DirecionCliente, "");
             this.errorProvider1.SetError(this.dniClienteTextBox, "");
             this.errorProvider1.SetError(this.Id_Clientes, "");
             this.errorProvider1.SetError(this.provinciaClienteComboBox1, "");
@@ -73,9 +73,9 @@ namespace PELOSCALVO
         public Boolean email_bien_escrito()
         {
             String expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(this.correoClienteTextBox.Text, expresion))
+            if (Regex.IsMatch(this.CorreoClienteText.Text, expresion))
             {
-                if (Regex.Replace(this.correoClienteTextBox.Text, expresion, String.Empty).Length == 0)
+                if (Regex.Replace(this.CorreoClienteText.Text, expresion, String.Empty).Length == 0)
                 {
                     return true;
                 }
@@ -235,17 +235,17 @@ namespace PELOSCALVO
                 {
                     //añadir guaradar a  qui
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.Id_Clientes.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@APODOCLIEN", this.apodoClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@NOMBRECLIE", string.IsNullOrEmpty(this.nombreClienteTextBox.Text) ? (object)DBNull.Value : this.nombreClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.direccionClienteTextBox.Text) ? (object)DBNull.Value : this.direccionClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TELEFONOCL", string.IsNullOrEmpty(this.telefonoClienteTextBox.Text) ? (object)DBNull.Value : this.telefonoClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@MOVILCLIEN", string.IsNullOrEmpty(this.movilClienteTextBox.Text) ? (object)DBNull.Value : this.movilClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@CORREOCLIE", string.IsNullOrEmpty(this.correoClienteTextBox.Text) ? (object)DBNull.Value : this.correoClienteTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@APODOCLIEN", this.ApodoClienteTex.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@NOMBRECLIE", string.IsNullOrEmpty(this.NombreCliente.Text) ? (object)DBNull.Value : this.NombreCliente.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.DirecionCliente.Text) ? (object)DBNull.Value : this.DirecionCliente.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TELEFONOCL", string.IsNullOrEmpty(this.TelefonoClienteTextBox.Text) ? (object)DBNull.Value : this.TelefonoClienteTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@MOVILCLIEN", string.IsNullOrEmpty(this.MovilClienteText.Text) ? (object)DBNull.Value : this.MovilClienteText.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@CORREOCLIE", string.IsNullOrEmpty(this.CorreoClienteText.Text) ? (object)DBNull.Value : this.CorreoClienteText.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@DNICLIENTE", string.IsNullOrEmpty(this.dniClienteTextBox.Text) ? (object)DBNull.Value : this.dniClienteTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@LOCALIDADC", string.IsNullOrEmpty(this.localidadClienteTextBox.Text) ? (object)DBNull.Value : this.localidadClienteTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@LOCALIDADC", string.IsNullOrEmpty(this.LocalidadClienteTxt.Text) ? (object)DBNull.Value : this.LocalidadClienteTxt.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@CODIGOPOST", string.IsNullOrEmpty(this.codigoPostalClienteTextBox.Text) ? (object)DBNull.Value : this.codigoPostalClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@PAISCLIENT", string.IsNullOrEmpty(this.paisClienteComboBox1.Text) ? (object)DBNull.Value : this.paisClienteComboBox1.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@CALLECLIEN", string.IsNullOrEmpty(this.calleClienteTextBox.Text) ? (object)DBNull.Value : this.calleClienteTextBox.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@CALLECLIEN", string.IsNullOrEmpty(this.CalleClienteTextBox.Text) ? (object)DBNull.Value : this.CalleClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@NUMEROCALL", string.IsNullOrEmpty(this.numeroCalleClienteTextBox.Text) ? (object)DBNull.Value : this.numeroCalleClienteTextBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@PROVINCIAC", string.IsNullOrEmpty(this.provinciaClienteComboBox1.Text) ? (object)DBNull.Value : this.provinciaClienteComboBox1.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TARIFATIPO", string.IsNullOrEmpty(this.TipoTarifa.Text) ? (object)DBNull.Value : this.TipoTarifa.Text);
@@ -316,17 +316,17 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionSql)
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", this.Id_Clientes.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@APODOCLIEN", this.apodoClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@NOMBRECLIE", string.IsNullOrEmpty(this.nombreClienteTextBox.Text) ? (object)DBNull.Value : this.nombreClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.direccionClienteTextBox.Text) ? (object)DBNull.Value : this.direccionClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TELEFONOCL", string.IsNullOrEmpty(this.telefonoClienteTextBox.Text) ? (object)DBNull.Value : this.telefonoClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@MOVILCLIEN", string.IsNullOrEmpty(this.movilClienteTextBox.Text) ? (object)DBNull.Value : this.movilClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@CORREOCLIE", string.IsNullOrEmpty(this.correoClienteTextBox.Text) ? (object)DBNull.Value : this.correoClienteTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@APODOCLIEN", this.ApodoClienteTex.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@NOMBRECLIE", string.IsNullOrEmpty(this.NombreCliente.Text) ? (object)DBNull.Value : this.NombreCliente.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@DIRECCIONC", string.IsNullOrEmpty(this.DirecionCliente.Text) ? (object)DBNull.Value : this.DirecionCliente.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TELEFONOCL", string.IsNullOrEmpty(this.TelefonoClienteTextBox.Text) ? (object)DBNull.Value : this.TelefonoClienteTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@MOVILCLIEN", string.IsNullOrEmpty(this.MovilClienteText.Text) ? (object)DBNull.Value : this.MovilClienteText.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@CORREOCLIE", string.IsNullOrEmpty(this.CorreoClienteText.Text) ? (object)DBNull.Value : this.CorreoClienteText.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@DNICLIENTE", string.IsNullOrEmpty(this.dniClienteTextBox.Text) ? (object)DBNull.Value : this.dniClienteTextBox.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@LOCALIDADC", string.IsNullOrEmpty(this.localidadClienteTextBox.Text) ? (object)DBNull.Value : this.localidadClienteTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@LOCALIDADC", string.IsNullOrEmpty(this.LocalidadClienteTxt.Text) ? (object)DBNull.Value : this.LocalidadClienteTxt.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@CODIGOPOST", string.IsNullOrEmpty(this.codigoPostalClienteTextBox.Text) ? (object)DBNull.Value : this.codigoPostalClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@PAISCLIENT", string.IsNullOrEmpty(this.paisClienteComboBox1.Text) ? (object)DBNull.Value : this.paisClienteComboBox1.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@CALLECLIEN", string.IsNullOrEmpty(this.calleClienteTextBox.Text) ? (object)DBNull.Value : this.calleClienteTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@CALLECLIEN", string.IsNullOrEmpty(this.CalleClienteTextBox.Text) ? (object)DBNull.Value : this.CalleClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@NUMEROCALL", string.IsNullOrEmpty(this.numeroCalleClienteTextBox.Text) ? (object)DBNull.Value : this.numeroCalleClienteTextBox.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@PROVINCIAC", string.IsNullOrEmpty(this.provinciaClienteComboBox1.Text) ? (object)DBNull.Value : this.provinciaClienteComboBox1.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TARIFATIPO", string.IsNullOrEmpty(this.TipoTarifa.Text) ? (object)DBNull.Value : this.TipoTarifa.Text);
@@ -449,12 +449,12 @@ namespace PELOSCALVO
                             }
                             if (fila.Cells[1].Value != null)
                             {
-                                if (fila.Cells[1].Value.ToString() == this.apodoClienteTextBox.Text)
+                                if (fila.Cells[1].Value.ToString() == this.ApodoClienteTex.Text)
                                 {
-                                    this.apodoClienteTextBox.ReadOnly = false;
-                                    this.apodoClienteTextBox.SelectAll();
-                                    this.apodoClienteTextBox.Select(4, 4);
-                                    MessageBox.Show(this.apodoClienteTextBox.Text, "Este Cliente Ya Existe", MessageBoxButtons.OK);
+                                    this.ApodoClienteTex.ReadOnly = false;
+                                    this.ApodoClienteTex.SelectAll();
+                                    this.ApodoClienteTex.Select(4, 4);
+                                    MessageBox.Show(this.ApodoClienteTex.Text, "Este Cliente Ya Existe", MessageBoxButtons.OK);
                                     return;
                                 }
                             }
@@ -716,7 +716,7 @@ namespace PELOSCALVO
 
         private void nombreClienteTextBox_Click(object sender, EventArgs e)
         {
-            this.errorProvider1.SetError(this.nombreClienteTextBox, "");
+            this.errorProvider1.SetError(this.NombreCliente, "");
         }
 
         private void apodoClienteTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -731,7 +731,7 @@ namespace PELOSCALVO
 
         private void correoClienteTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.correoClienteTextBox.Text))
+            if (!string.IsNullOrEmpty(this.CorreoClienteText.Text))
             {
                 if (!email_bien_escrito())
                 {
@@ -746,12 +746,12 @@ namespace PELOSCALVO
 
         private void apodoClienteTextBox_Click(object sender, EventArgs e)
         {
-            this.errorProvider1.SetError(this.apodoClienteTextBox, "");
+            this.errorProvider1.SetError(this.ApodoClienteTex, "");
         }
 
         private void direccionClienteTextBox_Click(object sender, EventArgs e)
         {
-            this.errorProvider1.SetError(this.direccionClienteTextBox, "");
+            this.errorProvider1.SetError(this.DirecionCliente, "");
         }
 
         private void dniClienteTextBox_Click(object sender, EventArgs e)
@@ -791,12 +791,12 @@ namespace PELOSCALVO
                 }
                 if (fila.Cells[2].Value != null)
                 {
-                    if (fila.Cells[2].Value.ToString() == this.nombreClienteTextBox.Text)
+                    if (fila.Cells[2].Value.ToString() == this.NombreCliente.Text)
                     {
-                        this.nombreClienteTextBox.ReadOnly = false;
-                        this.nombreClienteTextBox.SelectAll();
-                        this.nombreClienteTextBox.Select(4, 4);
-                        MessageBox.Show(this.nombreClienteTextBox.Text, "Este Cliente Ya Existe", MessageBoxButtons.OK);
+                        this.NombreCliente.ReadOnly = false;
+                        this.NombreCliente.SelectAll();
+                        this.NombreCliente.Select(4, 4);
+                        MessageBox.Show(this.NombreCliente.Text, "Este Cliente Ya Existe", MessageBoxButtons.OK);
                         return;
                     }
                 }
