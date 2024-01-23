@@ -1542,6 +1542,7 @@ namespace PELOSCALVO
                         this.dsFacturas.Clear();
                         SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                         AdactaPelos.Fill(this.dsFacturas.DtNuevaFactura);
+                        FiltrarFactura();
                         AdactaPelos = new SqlDataAdapter(consultaDetalle, ClsConexionSql.CadenaConexion);
                         AdactaPelos.Fill(this.dsFacturas.DtDetallesFactura);
 
@@ -1569,7 +1570,7 @@ namespace PELOSCALVO
         }
         private void FormFACTURAR_Load(object sender, EventArgs e)
         {
-            this.SerieText.Text = "A";
+         
             this.TipoNota.Text = ClasDatos.NombreFactura;
             this.Text = ClasDatos.NombreFactura;
             // ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.NombreFactura + FormMenuPrincipal.menu2principal.InfoExtension.Text;
@@ -1700,7 +1701,7 @@ namespace PELOSCALVO
                 this.SerieText.Text = "A";
             }
 
-            FiltrarFactura();
+           // FiltrarFactura();
             if (ClsConexionSql.SibaseDatosSql)
             {
                 ActualizarFacturaSql();
@@ -3343,11 +3344,17 @@ namespace PELOSCALVO
         {
             if (this.fKDtPaisesDtProvinciasBindingSource.Count > 0)
             {
+                int Id2 = PaisFatuTxt.SelectedIndex;
+                int IdPais = 1;
+                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsMulti2.Tables["DtPaises"].Rows[Id2]["Id"].ToString()))
+                {
+                    IdPais = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsMulti2.Tables["DtPaises"].Rows[Id2]["Id"].ToString());
+                }
                 ClasDatos.OkFacturar = true;
                 ClasDatos.QUEform = "Provincias";
                 AñadirIdPaisFactu();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Provincias", "Provincias");
+                frm.CargarDatos(1, " Provincias", "Provincias","Paises",IdPais);
                 frm.BringToFront();
                 frm.ShowDialog();
 
@@ -3358,11 +3365,17 @@ namespace PELOSCALVO
         {
             if (this.dtPaisesBindingSource.Count > 0)
             {
+                int Id2 = PaisFatuTxt.SelectedIndex;
+                int IdPais = 1;
+                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsMulti2.Tables["DtPaises"].Rows[Id2]["Id"].ToString()))
+                {
+                    IdPais = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsMulti2.Tables["DtPaises"].Rows[Id2]["Id"].ToString());
+                }
                 ClasDatos.OkFacturar = true;
                 ClasDatos.QUEform = "Paises";
                 AñadirIdPaisFactu();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Paises", "Paises");
+                frm.CargarDatos(1, " Paises", "Paises","Paises",IdPais);
                 frm.BringToFront();
                 frm.ShowDialog();
 

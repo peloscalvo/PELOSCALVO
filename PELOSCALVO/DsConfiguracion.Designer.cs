@@ -784,6 +784,8 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnIdEnlace;
             
+            private global::System.Data.DataColumn columnIdFila;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiDataTable() {
@@ -875,6 +877,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdFilaColumn {
+                get {
+                    return this.columnIdFila;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -910,7 +920,7 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, int IdEnlace) {
+            public DtConfiRow AddDtConfiRow(string ConfiguraccionBasica, int TipoInpuestoIVA, string EjerciciosDeAño, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi, int IdConexionConfi, string AñoDeEjercicio, int IdEnlace, string IdFila) {
                 DtConfiRow rowDtConfiRow = ((DtConfiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfiguraccionBasica,
@@ -919,7 +929,8 @@ namespace PELOSCALVO {
                         null,
                         IdConexionConfi,
                         AñoDeEjercicio,
-                        IdEnlace};
+                        IdEnlace,
+                        IdFila};
                 if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi != null)) {
                     columnValuesArray[3] = parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtConfi[1];
                 }
@@ -952,6 +963,7 @@ namespace PELOSCALVO {
                 this.columnIdConexionConfi = base.Columns["IdConexionConfi"];
                 this.columnAñoDeEjercicio = base.Columns["AñoDeEjercicio"];
                 this.columnIdEnlace = base.Columns["IdEnlace"];
+                this.columnIdFila = base.Columns["IdFila"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -971,6 +983,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnAñoDeEjercicio);
                 this.columnIdEnlace = new global::System.Data.DataColumn("IdEnlace", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdEnlace);
+                this.columnIdFila = new global::System.Data.DataColumn("IdFila", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdFila);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdEnlace}, false));
                 this.columnIdEnlace.Unique = true;
@@ -2416,6 +2430,22 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string IdFila {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtConfi.IdFilaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdFila\' de la tabla \'DtConfi\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtConfi.IdFilaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiguracionPrincipalRow DtConfiguracionPrincipalRow {
                 get {
                     return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtConfi"])));
@@ -2507,6 +2537,18 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIdEnlaceNull() {
                 this[this.tableDtConfi.IdEnlaceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIdFilaNull() {
+                return this.IsNull(this.tableDtConfi.IdFilaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIdFilaNull() {
+                this[this.tableDtConfi.IdFilaColumn] = global::System.Convert.DBNull;
             }
         }
         

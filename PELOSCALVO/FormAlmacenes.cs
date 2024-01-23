@@ -438,7 +438,7 @@ namespace PELOSCALVO
                 ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "Almacen";
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Almacenes", "Almacenes");
+                frm.CargarDatos(1, " Almacenes", "Almacenes", "Enlace_Almacenes",Convert.ToInt32(IdEmpresaAlm.Text));
                 frm.BringToFront();
                 frm.ShowDialog();
             }

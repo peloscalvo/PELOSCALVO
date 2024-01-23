@@ -62,6 +62,16 @@ namespace PELOSCALVO
             }
             return ok;
         }
+        public void AñadirIdEjercicio()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
+
+        }
         private bool ValidarBasica()
         {
             bool ok = true;
@@ -644,6 +654,21 @@ namespace PELOSCALVO
             if (MessageBox.Show(" ¿Salir Ejercicios ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Close();
+            }
+        }
+
+        private void BtnBuscarEjercicio_Click(object sender, EventArgs e)
+        {
+            if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 0)
+            {
+
+                ClasDatos.OkFacturar = false;
+                ClasDatos.QUEform = "Ejercicio";
+                AñadirIdEjercicio();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(5, "Ejercicios ", "EjerciciosDeAño", "IdEnlace", Convert.ToInt32(this.IdEmpresa.Text));
+                frm.BringToFront();
+                frm.ShowDialog();
             }
         }
     }

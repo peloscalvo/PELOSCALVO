@@ -441,7 +441,7 @@ namespace PELOSCALVO
                 ClasDatos.QUEform = "Familia";
                 AñadirIdFamilias();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Familia", "Familia");
+                frm.CargarDatos(1, " Familia", "Familia","fami",0);
                 frm.BringToFront();
                 frm.ShowDialog();
 

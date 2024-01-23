@@ -50,7 +50,7 @@ namespace PELOSCALVO
         public void AñadirIdProveedor()
         {
             int ii = 0;
-            foreach (var fila in FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes)
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores)
             {
                 fila["IdFila"] = ii.ToString();
                 ii++;
@@ -454,11 +454,17 @@ namespace PELOSCALVO
         {
             if (DtProveedoresBindingSource.Count > 0)
             {
+                int Id2 = EmpresaSelect.SelectedIndex;
+                int IdEmpresa3 = 1;
+                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtPaises"].Rows[Id2]["Id"].ToString()))
+                {
+                    IdEmpresa3 = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtPaises"].Rows[Id2]["Id"].ToString());
+                }
                 ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "Proveedores";
                 AñadirIdProveedor();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Proveedores", "Proveedores");
+                frm.CargarDatos(1, " Proveedores", "Proveedores", "Enlace_Proveedores",IdEmpresa3);
                 frm.BringToFront();
                 frm.ShowDialog();
             }

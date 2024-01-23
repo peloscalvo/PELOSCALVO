@@ -284,6 +284,7 @@ namespace PELOSCALVO
             this.BtnBuscarEjercicio.Text = "Buscar";
             this.BtnBuscarEjercicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnBuscarEjercicio.UseVisualStyleBackColor = false;
+            this.BtnBuscarEjercicio.Click += new System.EventHandler(this.BtnBuscarEjercicio_Click);
             // 
             // BtnNuevoEjercicio
             // 

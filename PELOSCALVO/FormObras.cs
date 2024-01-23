@@ -441,7 +441,7 @@ namespace PELOSCALVO
                 ClasDatos.QUEform = "Obras";
                 AñadirIdObras();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Obras", "Obras");
+                frm.CargarDatos(1, " Obras", "Obras","Obr",1);
                 frm.BringToFront();
                 frm.ShowDialog();
             }
