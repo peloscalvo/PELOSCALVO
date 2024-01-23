@@ -794,6 +794,13 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtNuevaFacturaRow FindByEnlaceFactura(int EnlaceFactura) {
+                return ((DtNuevaFacturaRow)(this.Rows.Find(new object[] {
+                            EnlaceFactura})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 DtNuevaFacturaDataTable cln = ((DtNuevaFacturaDataTable)(base.Clone()));
                 cln.InitVars();
@@ -899,10 +906,9 @@ namespace PELOSCALVO {
                 this.columnEnlaceDtconfi = new global::System.Data.DataColumn("EnlaceDtconfi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceDtconfi);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnEnlaceFactura}, false));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
-                                this.columnApodo}, false));
-                this.columnApodo.Unique = true;
+                                this.columnEnlaceFactura}, true));
+                this.columnNumeroFactura.AllowDBNull = false;
+                this.columnEnlaceFactura.AllowDBNull = false;
                 this.columnEnlaceFactura.Unique = true;
             }
             
@@ -1730,12 +1736,7 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int NumeroFactura {
                 get {
-                    try {
-                        return ((int)(this[this.tableDtNuevaFactura.NumeroFacturaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumeroFactura\' de la tabla \'DtNuevaFactura\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableDtNuevaFactura.NumeroFacturaColumn]));
                 }
                 set {
                     this[this.tableDtNuevaFactura.NumeroFacturaColumn] = value;
@@ -2130,12 +2131,7 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int EnlaceFactura {
                 get {
-                    try {
-                        return ((int)(this[this.tableDtNuevaFactura.EnlaceFacturaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EnlaceFactura\' de la tabla \'DtNuevaFactura\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableDtNuevaFactura.EnlaceFacturaColumn]));
                 }
                 set {
                     this[this.tableDtNuevaFactura.EnlaceFacturaColumn] = value;
@@ -2172,18 +2168,6 @@ namespace PELOSCALVO {
                 set {
                     this[this.tableDtNuevaFactura.EnlaceDtconfiColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNumeroFacturaNull() {
-                return this.IsNull(this.tableDtNuevaFactura.NumeroFacturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNumeroFacturaNull() {
-                this[this.tableDtNuevaFactura.NumeroFacturaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2472,18 +2456,6 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSerieTipoNull() {
                 this[this.tableDtNuevaFactura.SerieTipoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsEnlaceFacturaNull() {
-                return this.IsNull(this.tableDtNuevaFactura.EnlaceFacturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetEnlaceFacturaNull() {
-                this[this.tableDtNuevaFactura.EnlaceFacturaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

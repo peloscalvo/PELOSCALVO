@@ -322,7 +322,7 @@ namespace PELOSCALVO
             }
             else
             {
-                if (FormClientes.menu2CLIENTES2.WindowState == FormWindowState.Maximized)
+                if (FormClientes.menu2CLIENTES2.WindowState == FormWindowState.Minimized)
                 {
                     FormClientes.menu2CLIENTES2.WindowState = FormWindowState.Maximized;
                     FormClientes.menu2CLIENTES2.BringToFront();
@@ -356,10 +356,15 @@ namespace PELOSCALVO
             }
             if (this.SiOpenArti == 0)
             {
+                if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
+                {
+                    FormBuscarArticulos.MenuB.Close();
+                    FormBuscarArticulos.MenuB.Dispose();
+                }
                 FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;
-                frm.WindowState = FormWindowState.Maximized;
+              //  frm.WindowState = FormWindowState.Maximized;
                 //  frm.Anchor = System.Windows.Forms.AnchorStyles.None;
                 this.PanelForms.Controls.Add(frm);
                 frm.FormClosed += (o, args) => this.SiOpenArti = 0;
@@ -370,7 +375,7 @@ namespace PELOSCALVO
             else
             {
 
-                if (FormArticulos.menu2Articulos.WindowState == FormWindowState.Maximized)
+                if (FormArticulos.menu2Articulos.WindowState == FormWindowState.Minimized)
                 {
                     FormArticulos.menu2Articulos.WindowState = FormWindowState.Maximized;
                     FormArticulos.menu2Articulos.BringToFront();
@@ -450,7 +455,7 @@ namespace PELOSCALVO
             }
             else
             {
-                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Maximized)
+                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Minimized)
                 {
                     FormFacturar.menu2FACTURAR.WindowState = FormWindowState.Maximized;
                     FormFacturar.menu2FACTURAR.BringToFront();
@@ -537,7 +542,7 @@ namespace PELOSCALVO
             }
             else
             {
-                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Maximized)
+                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Minimized)
                 {
                     FormFacturar.menu2FACTURAR.WindowState = FormWindowState.Maximized;
                     FormFacturar.menu2FACTURAR.BringToFront();
@@ -586,7 +591,7 @@ namespace PELOSCALVO
             }
             else
             {
-                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Maximized)
+                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Minimized)
                 {
                     FormFacturar.menu2FACTURAR.WindowState = FormWindowState.Maximized;
                     FormFacturar.menu2FACTURAR.BringToFront();
@@ -635,7 +640,7 @@ namespace PELOSCALVO
             }
             else
             {
-                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Maximized)
+                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Minimized)
                 {
                     FormFacturar.menu2FACTURAR.WindowState = FormWindowState.Maximized;
                     FormFacturar.menu2FACTURAR.BringToFront();
@@ -685,7 +690,7 @@ namespace PELOSCALVO
             }
             else
             {
-                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Maximized)
+                if (FormFacturar.menu2FACTURAR.WindowState == FormWindowState.Minimized)
                 {
                     FormFacturar.menu2FACTURAR.WindowState = FormWindowState.Maximized;
                     FormFacturar.menu2FACTURAR.BringToFront();
@@ -1059,7 +1064,7 @@ namespace PELOSCALVO
         {
 
             FormBuscarArticulos frm = new FormBuscarArticulos();
-            if (this.SiOpenBuscArti == 0 && this.SiOpenFatu == 0)
+            if (this.SiOpenBuscArti == 0 && this.SiOpenFatu == 0 && this.SiOpenArti == 0 )
             {
                 ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "QR";

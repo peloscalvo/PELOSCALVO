@@ -68,9 +68,9 @@ namespace PELOSCALVO
                     }
                 }
                 FiltrarDatos();
-                //this.verViev.RowFilter = "";
-                this.Buscador2.Focus();
+                //this.verViev.RowFilter = "";             
                 this.ContadorBus.Text = string.Format("{0:N0" + "}", (Convert.ToInt32(this.DataGridBuscar.Rows.Count).ToString()));
+                this.Buscador2.Focus();
             }
             catch (Exception ex)
             {
@@ -78,16 +78,6 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Buscador2.Focus();
-
-        }
-        public void AñadirIdBuscar()
-        {
-            int ii = 0;
-            foreach (DataGridViewRow fila in this.DataGridBuscar.Rows)
-            {
-                // fila.Cells["IdFila"].Value = ii.ToString();
-                ii++;
-            }
 
         }
 

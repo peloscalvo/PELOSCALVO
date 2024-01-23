@@ -2056,9 +2056,8 @@ namespace PELOSCALVO
                     OleDbDataAdapter AdactaPelos = null;
                     try
                     {
-                        this.dtDetallesFacturaBindingSource.Clear();
-                        this.dtDetallesFactura2BindingSource.Clear();
-                        this.dsFacturas.Clear();
+            
+                
                         // dtNuevaFacturaBindingSource.Clear();
                         int Id = this.ejerciciosDeAñoComboBox.SelectedIndex;
                         Int32 Id_Ejercicio=1;
@@ -2080,6 +2079,10 @@ namespace PELOSCALVO
 
                         if (NuevaConexion.SiConexionDb)
                         {
+                          //  this.dtNuevaFacturaBindingSource.Filter = "( [SerieTipo]   = '" NO "'" + ")";
+                            this.dsFacturas.Clear();
+                            this.dtDetallesFacturaBindingSource.Clear();
+                            this.dtDetallesFactura2BindingSource.Clear();
                             FiltrarFactura();
                             AdactaPelos.Fill(this.dsFacturas.DtNuevaFactura);
                             // this.InfoTxt2.Text = this.dtNuevaFacturaBindingSource.Count.ToString();
@@ -2249,7 +2252,7 @@ namespace PELOSCALVO
                                 {
                                     MessageBox.Show("Debe Cerrar Formulario ((CODIGO BARRAS)) ", " FORMILARIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     return;
-                                    FormBuscarArticulos.MenuB.Close();
+                                   // FormBuscarArticulos.MenuB.Close();
                                 }
                                 ClasDatos.OkFacturar = true;
                                 ClasDatos.Datos1Datos2 = "Nota1";
