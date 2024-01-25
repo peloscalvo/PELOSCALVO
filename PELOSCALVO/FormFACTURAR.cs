@@ -487,6 +487,7 @@ namespace PELOSCALVO
                     }
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(EnlaceDtconfi.ToString()) ? (object)DBNull.Value : EnlaceDtconfi);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
+                    this.dtNuevaFacturaBindingSource.EndEdit();
                     if (NuevaConexion.CerrarConexionDB)
                     {
 
@@ -601,7 +602,6 @@ namespace PELOSCALVO
                         }
                     }
                     this.dtDetallesFacturaBindingSource.EndEdit();
-                    this.dtNuevaFacturaBindingSource.EndEdit();
                     this.dtDetallesFactura2BindingSource.EndEdit();
                     Validate();
                     if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
@@ -1136,17 +1136,17 @@ namespace PELOSCALVO
 
         private void BtnGuardarFactura_Click(object sender, EventArgs e)
         {
-            if (this.Id_Empresa.Text == string.Empty & this.EmpresaPrincipal.Text == string.Empty)
+            if (string.IsNullOrEmpty(this.Id_Empresa.Text) | string.IsNullOrEmpty(this.EmpresaPrincipal.Text))
             {
                 MessageBox.Show("Falta  Empresa", "EMPRESA");
                 return;
             }
-            if (this.ejerciciosDeAñoComboBox.Text == string.Empty)
+            if (string.IsNullOrEmpty(this.ejerciciosDeAñoComboBox.Text))
             {
                 MessageBox.Show("Debe Crear Ejercicio De Esta Empresa", "Falta Ejercicio");
                 return;
             }
-            if (this.SerieText.Text == string.Empty)
+            if (string.IsNullOrEmpty(this.SerieText.Text))
             {
                 MessageBox.Show("No Existe Ninguna Serie", "NO EXISTE SERIE");
                 return;
@@ -1765,58 +1765,65 @@ namespace PELOSCALVO
                             ConexionStock.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
                             // ConexionStock.ComandoDb.Parameters.AddWithValue("@Stock", FilaStock);
                             reader = ConexionStock.ComandoDb.ExecuteReader();
-
                             if (reader.HasRows)
                             {
-
-                                if (ConexionModificar.SiConexionDb)
+                                if (reader.HasRows)
                                 {
-                                    //reader = ConexionStock.ComandoDb.ExecuteReader();
 
-                                    if (!string.IsNullOrEmpty(Fila.Cantidad))
+                                    if (ConexionModificar.SiConexionDb)
                                     {
-                                        if (reader.Read())
+                                        //reader = ConexionStock.ComandoDb.ExecuteReader();
+
+                                        if (!string.IsNullOrEmpty(Fila.Cantidad))
                                         {
-                                            Stock = Convert.ToInt32(reader["Stock"].ToString()) + Convert.ToInt32(Fila.Cantidad);
-                                            ConexionModificar.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Referencia) ? (object)DBNull.Value : Fila.Referencia);
-                                            ConexionModificar.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
-                                            ConexionModificar.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                                            ConexionModificar.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
-                                            ConexionModificar.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
-                                            ConexionModificar.ComandoDb.ExecuteNonQuery();
-                                            ConexionModificar.ComandoDb.Parameters.Clear();
+                                            if (reader.HasRows)
+                                            {
+                                                if (reader.Read())
+                                                {
+                                                    Stock = Convert.ToInt32(reader["Stock"].ToString()) + Convert.ToInt32(Fila.Cantidad);
+                                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Referencia) ? (object)DBNull.Value : Fila.Referencia);
+                                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
+                                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
+                                                    ConexionModificar.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
+                                                    ConexionModificar.ComandoDb.ExecuteNonQuery();
+                                                    ConexionModificar.ComandoDb.Parameters.Clear();
+                                                    reader.Close();
+                                                }
+                                            }
                                         }
                                     }
-
+                                    reader.Close();
                                 }
-                            }
-                            else
-                            {
-
-                                if (ConexionNueva.SiConexionDb)
+                                else
                                 {
-                                    Stock = Convert.ToInt32(Fila.Cantidad);
-                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Referencia) ? (object)DBNull.Value : Fila.Referencia);
-                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
-                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
-                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
-                                    ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
-                                    ConexionNueva.ComandoDb.ExecuteNonQuery();
-                                    ConexionNueva.ComandoDb.Parameters.Clear();
 
+                                    if (ConexionNueva.SiConexionDb)
+                                    {
+                                        Stock = Convert.ToInt32(Fila.Cantidad);
+                                        ConexionNueva.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Fila.Referencia) ? (object)DBNull.Value : Fila.Referencia);
+                                        ConexionNueva.ComandoDb.Parameters.AddWithValue("@Stock", Stock);
+                                        ConexionNueva.ComandoDb.Parameters.AddWithValue("@Enlace", string.IsNullOrEmpty(Enlace) ? (object)DBNull.Value : Enlace);
+                                        ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Empresa", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
+                                        ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
+                                        ConexionNueva.ComandoDb.ExecuteNonQuery();
+                                        ConexionNueva.ComandoDb.Parameters.Clear();
 
+                                    }
                                 }
+
                             }
+
                         }
-                        reader.Close();
-                        ConexionStock.ComandoDb.Parameters.Clear();
+
+                        //ConexionStock.ComandoDb.Parameters.Clear();
                     }
                 }
 
             }
             catch (Exception ex)
             {
-                reader.Close();
+               // reader.Close();
                 MessageBox.Show(ex.Message.ToString(), "ERROR RESTAURAR STOCK", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ConexionStock.ComandoDb.Parameters.Clear();

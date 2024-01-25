@@ -384,6 +384,11 @@ namespace PELOSCALVO
 
             try
             {
+                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
+                {
+                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
+                    this.dtTarifaTipoBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo;
+                }
                 if (FormMenuPrincipal.menu2principal.dsClientes != null)
                 {
                     this.dtClientesBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsClientes;
@@ -533,6 +538,8 @@ namespace PELOSCALVO
                 }
                 TipoDocumento.Text = "DNI";
                 TipoTarifa.Text = "Pvp1";
+                PortesTxt.Text = "Portes Pagados";
+                TipoCliente.Text = "Particular";
                 ModificarControlesForm();
                 BORRARerrores();
             }

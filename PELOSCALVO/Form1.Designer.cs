@@ -29,6 +29,11 @@ namespace PELOSCALVO
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            "User",
+            "valor"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Pass");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +50,13 @@ namespace PELOSCALVO
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.USER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Passs = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Ccc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -56,10 +67,10 @@ namespace PELOSCALVO
             this.toolCopiaSeguridad,
             this.ayudaToolStripMenuItem});
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.menuStrip.Location = new System.Drawing.Point(628, 0);
+            this.menuStrip.Location = new System.Drawing.Point(642, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip.Size = new System.Drawing.Size(126, 504);
+            this.menuStrip.Size = new System.Drawing.Size(112, 504);
             this.menuStrip.TabIndex = 46;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -73,7 +84,7 @@ namespace PELOSCALVO
             this.crearBaseDatosSqlLocalToolStripMenuItem,
             this.imprimirReportesToolStripMenuItem});
             this.toolArchivo.Name = "toolArchivo";
-            this.toolArchivo.Size = new System.Drawing.Size(113, 19);
+            this.toolArchivo.Size = new System.Drawing.Size(99, 19);
             this.toolArchivo.Text = "Archivo";
             // 
             // verToolStripMenuItem
@@ -118,7 +129,7 @@ namespace PELOSCALVO
             this.crearCopiaSeguridadToolStripMenuItem,
             this.restaurarCopiaToolStripMenuItem});
             this.toolCopiaSeguridad.Name = "toolCopiaSeguridad";
-            this.toolCopiaSeguridad.Size = new System.Drawing.Size(113, 19);
+            this.toolCopiaSeguridad.Size = new System.Drawing.Size(99, 19);
             this.toolCopiaSeguridad.Text = "Copia Seguridad";
             // 
             // crearCopiaSeguridadToolStripMenuItem
@@ -127,7 +138,7 @@ namespace PELOSCALVO
             this.crearCopiaSimpleToolStripMenuItem,
             this.crearCopiaCompletaToolStripMenuItem1});
             this.crearCopiaSeguridadToolStripMenuItem.Name = "crearCopiaSeguridadToolStripMenuItem";
-            this.crearCopiaSeguridadToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.crearCopiaSeguridadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.crearCopiaSeguridadToolStripMenuItem.Text = "Crear copia";
             // 
             // crearCopiaSimpleToolStripMenuItem
@@ -145,7 +156,7 @@ namespace PELOSCALVO
             // restaurarCopiaToolStripMenuItem
             // 
             this.restaurarCopiaToolStripMenuItem.Name = "restaurarCopiaToolStripMenuItem";
-            this.restaurarCopiaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.restaurarCopiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.restaurarCopiaToolStripMenuItem.Text = "Restaurar Copia";
             // 
             // ayudaToolStripMenuItem
@@ -154,7 +165,7 @@ namespace PELOSCALVO
             this.índiceToolStripMenuItem,
             this.buscarToolStripMenuItem});
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(113, 19);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(99, 19);
             this.ayudaToolStripMenuItem.Text = "Ay&uda";
             // 
             // índiceToolStripMenuItem
@@ -169,16 +180,69 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
+            // listView1
+            // 
+            this.listView1.CheckBoxes = true;
+            this.listView1.HideSelection = false;
+            listViewItem1.StateImageIndex = 0;
+            listViewItem2.StateImageIndex = 0;
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2});
+            this.listView1.Location = new System.Drawing.Point(39, 12);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(158, 130);
+            this.listView1.TabIndex = 47;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.USER,
+            this.Passs,
+            this.Ccc});
+            this.dataGridView1.Location = new System.Drawing.Point(69, 178);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(612, 231);
+            this.dataGridView1.TabIndex = 48;
+            // 
+            // USER
+            // 
+            this.USER.FillWeight = 200F;
+            this.USER.HeaderText = "user";
+            this.USER.Name = "USER";
+            this.USER.Width = 200;
+            // 
+            // Passs
+            // 
+            this.Passs.HeaderText = "Pass";
+            this.Passs.Name = "Passs";
+            this.Passs.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Passs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Ccc
+            // 
+            this.Ccc.HeaderText = "cccc";
+            this.Ccc.Name = "Ccc";
+            this.Ccc.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ccc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 504);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +266,10 @@ namespace PELOSCALVO
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem índiceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USER;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Passs;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Ccc;
     }
 }

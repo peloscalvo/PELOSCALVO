@@ -60,8 +60,8 @@ namespace PELOSCALVO
             System.Windows.Forms.Label bANCOOFIC2Label;
             System.Windows.Forms.Label bANCODCLabel;
             System.Windows.Forms.Label bANCON_CUELabel;
-            System.Windows.Forms.Label tIPOCLIENTLabel;
-            System.Windows.Forms.Label pORTESLabel;
+            System.Windows.Forms.Label Label67;
+            System.Windows.Forms.Label Label66;
             System.Windows.Forms.Label nUMEROCUENLabel;
             System.Windows.Forms.Label Label2;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -174,8 +174,8 @@ namespace PELOSCALVO
             bANCOOFIC2Label = new System.Windows.Forms.Label();
             bANCODCLabel = new System.Windows.Forms.Label();
             bANCON_CUELabel = new System.Windows.Forms.Label();
-            tIPOCLIENTLabel = new System.Windows.Forms.Label();
-            pORTESLabel = new System.Windows.Forms.Label();
+            Label67 = new System.Windows.Forms.Label();
+            Label66 = new System.Windows.Forms.Label();
             nUMEROCUENLabel = new System.Windows.Forms.Label();
             Label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).BeginInit();
@@ -240,7 +240,7 @@ namespace PELOSCALVO
             // telefonoClienteLabel
             // 
             telefonoClienteLabel.AutoSize = true;
-            telefonoClienteLabel.Location = new System.Drawing.Point(456, 86);
+            telefonoClienteLabel.Location = new System.Drawing.Point(456, 111);
             telefonoClienteLabel.Name = "telefonoClienteLabel";
             telefonoClienteLabel.Size = new System.Drawing.Size(52, 13);
             telefonoClienteLabel.TabIndex = 8;
@@ -249,7 +249,7 @@ namespace PELOSCALVO
             // movilClienteLabel
             // 
             movilClienteLabel.AutoSize = true;
-            movilClienteLabel.Location = new System.Drawing.Point(473, 114);
+            movilClienteLabel.Location = new System.Drawing.Point(473, 139);
             movilClienteLabel.Name = "movilClienteLabel";
             movilClienteLabel.Size = new System.Drawing.Size(35, 13);
             movilClienteLabel.TabIndex = 10;
@@ -258,7 +258,7 @@ namespace PELOSCALVO
             // correoClienteLabel
             // 
             correoClienteLabel.AutoSize = true;
-            correoClienteLabel.Location = new System.Drawing.Point(417, 141);
+            correoClienteLabel.Location = new System.Drawing.Point(417, 166);
             correoClienteLabel.Name = "correoClienteLabel";
             correoClienteLabel.Size = new System.Drawing.Size(91, 13);
             correoClienteLabel.TabIndex = 12;
@@ -303,7 +303,7 @@ namespace PELOSCALVO
             // numeroCalleClienteLabel
             // 
             numeroCalleClienteLabel.AutoSize = true;
-            numeroCalleClienteLabel.Location = new System.Drawing.Point(10, 97);
+            numeroCalleClienteLabel.Location = new System.Drawing.Point(434, 82);
             numeroCalleClienteLabel.Name = "numeroCalleClienteLabel";
             numeroCalleClienteLabel.Size = new System.Drawing.Size(73, 13);
             numeroCalleClienteLabel.TabIndex = 36;
@@ -312,11 +312,11 @@ namespace PELOSCALVO
             // tarifaTipoClienteLabel
             // 
             tarifaTipoClienteLabel.AutoSize = true;
-            tarifaTipoClienteLabel.Location = new System.Drawing.Point(462, 42);
+            tarifaTipoClienteLabel.Location = new System.Drawing.Point(486, 44);
             tarifaTipoClienteLabel.Name = "tarifaTipoClienteLabel";
-            tarifaTipoClienteLabel.Size = new System.Drawing.Size(61, 13);
+            tarifaTipoClienteLabel.Size = new System.Drawing.Size(37, 13);
             tarifaTipoClienteLabel.TabIndex = 40;
-            tarifaTipoClienteLabel.Text = "Tarifa Tipo:";
+            tarifaTipoClienteLabel.Text = "Tarifa:";
             // 
             // dniClienteTipoLabel
             // 
@@ -471,23 +471,23 @@ namespace PELOSCALVO
             bANCON_CUELabel.TabIndex = 18;
             bANCON_CUELabel.Text = "BANCO";
             // 
-            // tIPOCLIENTLabel
+            // Label67
             // 
-            tIPOCLIENTLabel.AutoSize = true;
-            tIPOCLIENTLabel.Location = new System.Drawing.Point(773, 44);
-            tIPOCLIENTLabel.Name = "tIPOCLIENTLabel";
-            tIPOCLIENTLabel.Size = new System.Drawing.Size(66, 13);
-            tIPOCLIENTLabel.TabIndex = 48;
-            tIPOCLIENTLabel.Text = "Tipo Cliente:";
+            Label67.AutoSize = true;
+            Label67.Location = new System.Drawing.Point(773, 44);
+            Label67.Name = "Label67";
+            Label67.Size = new System.Drawing.Size(66, 13);
+            Label67.TabIndex = 48;
+            Label67.Text = "Tipo Cliente:";
             // 
-            // pORTESLabel
+            // Label66
             // 
-            pORTESLabel.AutoSize = true;
-            pORTESLabel.Location = new System.Drawing.Point(799, 17);
-            pORTESLabel.Name = "pORTESLabel";
-            pORTESLabel.Size = new System.Drawing.Size(40, 13);
-            pORTESLabel.TabIndex = 49;
-            pORTESLabel.Text = "Portes:";
+            Label66.AutoSize = true;
+            Label66.Location = new System.Drawing.Point(799, 17);
+            Label66.Name = "Label66";
+            Label66.Size = new System.Drawing.Size(40, 13);
+            Label66.TabIndex = 49;
+            Label66.Text = "Portes:";
             // 
             // nUMEROCUENLabel
             // 
@@ -554,6 +554,7 @@ namespace PELOSCALVO
             this.dtClientesDataGridView.Location = new System.Drawing.Point(0, 0);
             this.dtClientesDataGridView.MultiSelect = false;
             this.dtClientesDataGridView.Name = "dtClientesDataGridView";
+            this.dtClientesDataGridView.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -576,6 +577,7 @@ namespace PELOSCALVO
             this.Id.DefaultCellStyle = dataGridViewCellStyle2;
             this.Id.HeaderText = "Numero";
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             // 
             // aPODOCLIENDataGridViewTextBoxColumn
             // 
@@ -583,6 +585,7 @@ namespace PELOSCALVO
             this.aPODOCLIENDataGridViewTextBoxColumn.FillWeight = 260F;
             this.aPODOCLIENDataGridViewTextBoxColumn.HeaderText = "Razon Social";
             this.aPODOCLIENDataGridViewTextBoxColumn.Name = "aPODOCLIENDataGridViewTextBoxColumn";
+            this.aPODOCLIENDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nOMBRECLIEDataGridViewTextBoxColumn
             // 
@@ -590,6 +593,7 @@ namespace PELOSCALVO
             this.nOMBRECLIEDataGridViewTextBoxColumn.FillWeight = 300F;
             this.nOMBRECLIEDataGridViewTextBoxColumn.HeaderText = "Nombre";
             this.nOMBRECLIEDataGridViewTextBoxColumn.Name = "nOMBRECLIEDataGridViewTextBoxColumn";
+            this.nOMBRECLIEDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dIRECCIONCDataGridViewTextBoxColumn
             // 
@@ -597,6 +601,7 @@ namespace PELOSCALVO
             this.dIRECCIONCDataGridViewTextBoxColumn.FillWeight = 250F;
             this.dIRECCIONCDataGridViewTextBoxColumn.HeaderText = "Direccion";
             this.dIRECCIONCDataGridViewTextBoxColumn.Name = "dIRECCIONCDataGridViewTextBoxColumn";
+            this.dIRECCIONCDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fECHAALTACDataGridViewTextBoxColumn
             // 
@@ -606,6 +611,7 @@ namespace PELOSCALVO
             this.fECHAALTACDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.fECHAALTACDataGridViewTextBoxColumn.HeaderText = "Fecha";
             this.fECHAALTACDataGridViewTextBoxColumn.Name = "fECHAALTACDataGridViewTextBoxColumn";
+            this.fECHAALTACDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // panel1
             // 
@@ -741,7 +747,9 @@ namespace PELOSCALVO
             this.tabPage1Clientes.Controls.Add(direccionClienteLabel1);
             this.tabPage1Clientes.Controls.Add(this.DirecionCliente);
             this.tabPage1Clientes.Controls.Add(calleClienteLabel);
+            this.tabPage1Clientes.Controls.Add(numeroCalleClienteLabel);
             this.tabPage1Clientes.Controls.Add(this.CalleClienteTextBox);
+            this.tabPage1Clientes.Controls.Add(this.numeroCalleClienteTextBox);
             this.tabPage1Clientes.Controls.Add(idClienteLabel);
             this.tabPage1Clientes.Controls.Add(this.TelefonoClienteTextBox);
             this.tabPage1Clientes.Controls.Add(telefonoClienteLabel);
@@ -821,7 +829,7 @@ namespace PELOSCALVO
             // 
             this.TelefonoClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TELEFONOCL", true));
             this.TelefonoClienteTextBox.Enabled = false;
-            this.TelefonoClienteTextBox.Location = new System.Drawing.Point(513, 83);
+            this.TelefonoClienteTextBox.Location = new System.Drawing.Point(513, 108);
             this.TelefonoClienteTextBox.MaxLength = 14;
             this.TelefonoClienteTextBox.Name = "TelefonoClienteTextBox";
             this.TelefonoClienteTextBox.Size = new System.Drawing.Size(137, 20);
@@ -831,7 +839,7 @@ namespace PELOSCALVO
             // 
             this.MovilClienteText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "MOVILCLIEN", true));
             this.MovilClienteText.Enabled = false;
-            this.MovilClienteText.Location = new System.Drawing.Point(513, 111);
+            this.MovilClienteText.Location = new System.Drawing.Point(513, 136);
             this.MovilClienteText.MaxLength = 14;
             this.MovilClienteText.Name = "MovilClienteText";
             this.MovilClienteText.Size = new System.Drawing.Size(137, 20);
@@ -841,7 +849,7 @@ namespace PELOSCALVO
             // 
             this.CorreoClienteText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "CORREOCLIE", true));
             this.CorreoClienteText.Enabled = false;
-            this.CorreoClienteText.Location = new System.Drawing.Point(513, 138);
+            this.CorreoClienteText.Location = new System.Drawing.Point(513, 163);
             this.CorreoClienteText.MaxLength = 25;
             this.CorreoClienteText.Name = "CorreoClienteText";
             this.CorreoClienteText.Size = new System.Drawing.Size(190, 20);
@@ -879,9 +887,9 @@ namespace PELOSCALVO
             this.tabPage2Clientes.Controls.Add(Label2);
             this.tabPage2Clientes.Controls.Add(this.DescuentoCliente);
             this.tabPage2Clientes.Controls.Add(this.FechaAltaCliente);
-            this.tabPage2Clientes.Controls.Add(pORTESLabel);
+            this.tabPage2Clientes.Controls.Add(Label66);
             this.tabPage2Clientes.Controls.Add(this.PortesTxt);
-            this.tabPage2Clientes.Controls.Add(tIPOCLIENTLabel);
+            this.tabPage2Clientes.Controls.Add(Label67);
             this.tabPage2Clientes.Controls.Add(this.TipoCliente);
             this.tabPage2Clientes.Controls.Add(paisClienteLabel1);
             this.tabPage2Clientes.Controls.Add(this.paisClienteComboBox1);
@@ -889,8 +897,6 @@ namespace PELOSCALVO
             this.tabPage2Clientes.Controls.Add(this.provinciaClienteComboBox1);
             this.tabPage2Clientes.Controls.Add(dniClienteTipoLabel);
             this.tabPage2Clientes.Controls.Add(this.TipoDocumento);
-            this.tabPage2Clientes.Controls.Add(numeroCalleClienteLabel);
-            this.tabPage2Clientes.Controls.Add(this.numeroCalleClienteTextBox);
             this.tabPage2Clientes.Controls.Add(tarifaTipoClienteLabel);
             this.tabPage2Clientes.Controls.Add(this.TipoTarifa);
             this.tabPage2Clientes.Controls.Add(codigoPostalClienteLabel);
@@ -1018,7 +1024,7 @@ namespace PELOSCALVO
             // numeroCalleClienteTextBox
             // 
             this.numeroCalleClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "NUMEROCALL", true));
-            this.numeroCalleClienteTextBox.Location = new System.Drawing.Point(89, 97);
+            this.numeroCalleClienteTextBox.Location = new System.Drawing.Point(513, 82);
             this.numeroCalleClienteTextBox.MaxLength = 4;
             this.numeroCalleClienteTextBox.Name = "numeroCalleClienteTextBox";
             this.numeroCalleClienteTextBox.Size = new System.Drawing.Size(73, 20);
