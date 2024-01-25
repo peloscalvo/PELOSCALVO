@@ -71,7 +71,6 @@ namespace PELOSCALVO
             this.BtnGuardarDatosArchivos = new System.Windows.Forms.Button();
             this.TipoExtension_b = new System.Windows.Forms.ComboBox();
             this.TabServidor = new System.Windows.Forms.TabPage();
-            this.BtnActualizar_Servidor = new System.Windows.Forms.Button();
             this.BtnGuardarServidores = new System.Windows.Forms.Button();
             this.Servidor = new System.Windows.Forms.ComboBox();
             this.InfoProcesoText2 = new System.Windows.Forms.Label();
@@ -569,7 +568,6 @@ namespace PELOSCALVO
             // TabServidor
             // 
             this.TabServidor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TabServidor.Controls.Add(this.BtnActualizar_Servidor);
             this.TabServidor.Controls.Add(this.BtnGuardarServidores);
             this.TabServidor.Controls.Add(this.Servidor);
             this.TabServidor.Controls.Add(this.InfoProcesoText2);
@@ -590,16 +588,6 @@ namespace PELOSCALVO
             this.TabServidor.Size = new System.Drawing.Size(841, 315);
             this.TabServidor.TabIndex = 1;
             this.TabServidor.Text = "SERVIDOR";
-            // 
-            // BtnActualizar_Servidor
-            // 
-            this.BtnActualizar_Servidor.Location = new System.Drawing.Point(457, 73);
-            this.BtnActualizar_Servidor.Name = "BtnActualizar_Servidor";
-            this.BtnActualizar_Servidor.Size = new System.Drawing.Size(75, 23);
-            this.BtnActualizar_Servidor.TabIndex = 85;
-            this.BtnActualizar_Servidor.Text = "Actualizar";
-            this.BtnActualizar_Servidor.UseVisualStyleBackColor = true;
-            this.BtnActualizar_Servidor.Click += new System.EventHandler(this.BtnActualizar_Servidor_Click);
             // 
             // BtnGuardarServidores
             // 
@@ -875,6 +863,5 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label Info_Res;
         private System.Windows.Forms.TabPage TabLista;
         private System.Windows.Forms.ListBox ListaTablas;
-        private System.Windows.Forms.Button BtnActualizar_Servidor;
     }
 }

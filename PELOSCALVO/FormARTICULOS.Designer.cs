@@ -63,6 +63,7 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label oemLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArticulos));
             this.dtPreciosDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,6 +143,9 @@ namespace PELOSCALVO
             this.FiltrarBajas = new System.Windows.Forms.ComboBox();
             this.FiltrarFamiliaArt = new System.Windows.Forms.ComboBox();
             this.CheckFamiliaArt = new System.Windows.Forms.RadioButton();
+            this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
+            this.tableAdapterManager = new PELOSCALVO.ArticulosTableAdapters.TableAdapterManager();
+            this.OemText = new System.Windows.Forms.TextBox();
             Pvp2Label = new System.Windows.Forms.Label();
             PlusLabel = new System.Windows.Forms.Label();
             familiaLabel = new System.Windows.Forms.Label();
@@ -163,6 +167,7 @@ namespace PELOSCALVO
             TipoInpuestoIVALabel1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            oemLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtPreciosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
@@ -263,7 +268,7 @@ namespace PELOSCALVO
             // 
             ReferenciaLabel.AutoSize = true;
             ReferenciaLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            ReferenciaLabel.Location = new System.Drawing.Point(19, 43);
+            ReferenciaLabel.Location = new System.Drawing.Point(19, 51);
             ReferenciaLabel.Name = "ReferenciaLabel";
             ReferenciaLabel.Size = new System.Drawing.Size(62, 13);
             ReferenciaLabel.TabIndex = 18;
@@ -273,7 +278,7 @@ namespace PELOSCALVO
             // 
             DescripccionLabel.AutoSize = true;
             DescripccionLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            DescripccionLabel.Location = new System.Drawing.Point(19, 69);
+            DescripccionLabel.Location = new System.Drawing.Point(19, 103);
             DescripccionLabel.Name = "DescripccionLabel";
             DescripccionLabel.Size = new System.Drawing.Size(72, 13);
             DescripccionLabel.TabIndex = 20;
@@ -283,7 +288,7 @@ namespace PELOSCALVO
             // 
             CosteLabel.AutoSize = true;
             CosteLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            CosteLabel.Location = new System.Drawing.Point(19, 95);
+            CosteLabel.Location = new System.Drawing.Point(19, 129);
             CosteLabel.Name = "CosteLabel";
             CosteLabel.Size = new System.Drawing.Size(37, 13);
             CosteLabel.TabIndex = 22;
@@ -293,7 +298,7 @@ namespace PELOSCALVO
             // 
             GananciaLabel.AutoSize = true;
             GananciaLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            GananciaLabel.Location = new System.Drawing.Point(19, 121);
+            GananciaLabel.Location = new System.Drawing.Point(19, 155);
             GananciaLabel.Name = "GananciaLabel";
             GananciaLabel.Size = new System.Drawing.Size(56, 13);
             GananciaLabel.TabIndex = 24;
@@ -303,7 +308,7 @@ namespace PELOSCALVO
             // 
             Pvp1Label.AutoSize = true;
             Pvp1Label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Pvp1Label.Location = new System.Drawing.Point(19, 147);
+            Pvp1Label.Location = new System.Drawing.Point(19, 181);
             Pvp1Label.Name = "Pvp1Label";
             Pvp1Label.Size = new System.Drawing.Size(35, 13);
             Pvp1Label.TabIndex = 26;
@@ -312,7 +317,7 @@ namespace PELOSCALVO
             // FechaRgLabel
             // 
             FechaRgLabel.AutoSize = true;
-            FechaRgLabel.Location = new System.Drawing.Point(614, 21);
+            FechaRgLabel.Location = new System.Drawing.Point(749, 127);
             FechaRgLabel.Name = "FechaRgLabel";
             FechaRgLabel.Size = new System.Drawing.Size(40, 13);
             FechaRgLabel.TabIndex = 50;
@@ -341,7 +346,7 @@ namespace PELOSCALVO
             Buscarlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             Buscarlabel.AutoSize = true;
             Buscarlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            Buscarlabel.Location = new System.Drawing.Point(492, 96);
+            Buscarlabel.Location = new System.Drawing.Point(481, 14);
             Buscarlabel.Name = "Buscarlabel";
             Buscarlabel.Size = new System.Drawing.Size(74, 16);
             Buscarlabel.TabIndex = 61;
@@ -361,7 +366,7 @@ namespace PELOSCALVO
             // pvpIvaLabel1
             // 
             pvpIvaLabel1.AutoSize = true;
-            pvpIvaLabel1.Location = new System.Drawing.Point(262, 152);
+            pvpIvaLabel1.Location = new System.Drawing.Point(262, 186);
             pvpIvaLabel1.Name = "pvpIvaLabel1";
             pvpIvaLabel1.Size = new System.Drawing.Size(47, 13);
             pvpIvaLabel1.TabIndex = 62;
@@ -638,6 +643,8 @@ namespace PELOSCALVO
             // tabPage1Articulo
             // 
             this.tabPage1Articulo.AutoScroll = true;
+            this.tabPage1Articulo.Controls.Add(oemLabel);
+            this.tabPage1Articulo.Controls.Add(this.OemText);
             this.tabPage1Articulo.Controls.Add(this.idArticulo);
             this.tabPage1Articulo.Controls.Add(this.BajaCheckBox);
             this.tabPage1Articulo.Controls.Add(this.FechaAlta);
@@ -687,7 +694,7 @@ namespace PELOSCALVO
             this.BajaCheckBox.Enabled = false;
             this.BajaCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BajaCheckBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BajaCheckBox.Location = new System.Drawing.Point(737, 150);
+            this.BajaCheckBox.Location = new System.Drawing.Point(784, 147);
             this.BajaCheckBox.Name = "BajaCheckBox";
             this.BajaCheckBox.Size = new System.Drawing.Size(211, 50);
             this.BajaCheckBox.TabIndex = 66;
@@ -698,7 +705,7 @@ namespace PELOSCALVO
             // 
             this.FechaAlta.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtArticulosBindingSource, "Fecha", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.FechaAlta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaAlta.Location = new System.Drawing.Point(660, 15);
+            this.FechaAlta.Location = new System.Drawing.Point(795, 121);
             this.FechaAlta.Name = "FechaAlta";
             this.FechaAlta.Size = new System.Drawing.Size(200, 20);
             this.FechaAlta.TabIndex = 65;
@@ -708,7 +715,7 @@ namespace PELOSCALVO
             // 
             this.Pvp1Text.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Pvp1Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "00,0 €", "C3"));
-            this.Pvp1Text.Location = new System.Drawing.Point(101, 146);
+            this.Pvp1Text.Location = new System.Drawing.Point(101, 180);
             this.Pvp1Text.Name = "Pvp1Text";
             this.Pvp1Text.Size = new System.Drawing.Size(152, 23);
             this.Pvp1Text.TabIndex = 64;
@@ -720,7 +727,7 @@ namespace PELOSCALVO
             this.PvpIvaLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.PvpIvaLabel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PvpIvaLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "PvpIva", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0,00 €", "C3"));
-            this.PvpIvaLabel2.Location = new System.Drawing.Point(327, 147);
+            this.PvpIvaLabel2.Location = new System.Drawing.Point(327, 181);
             this.PvpIvaLabel2.Name = "PvpIvaLabel2";
             this.PvpIvaLabel2.Size = new System.Drawing.Size(135, 23);
             this.PvpIvaLabel2.TabIndex = 63;
@@ -736,7 +743,7 @@ namespace PELOSCALVO
             this.ReferenciaBuscarArt.DataSource = this.dtArticulosBindingSource;
             this.ReferenciaBuscarArt.DisplayMember = "Referencia";
             this.ReferenciaBuscarArt.FormattingEnabled = true;
-            this.ReferenciaBuscarArt.Location = new System.Drawing.Point(580, 95);
+            this.ReferenciaBuscarArt.Location = new System.Drawing.Point(569, 13);
             this.ReferenciaBuscarArt.Name = "ReferenciaBuscarArt";
             this.ReferenciaBuscarArt.Size = new System.Drawing.Size(332, 21);
             this.ReferenciaBuscarArt.TabIndex = 60;
@@ -750,7 +757,7 @@ namespace PELOSCALVO
             this.DescripcionBuscarArt.DataSource = this.dtArticulosBindingSource;
             this.DescripcionBuscarArt.DisplayMember = "Descripcci";
             this.DescripcionBuscarArt.FormattingEnabled = true;
-            this.DescripcionBuscarArt.Location = new System.Drawing.Point(580, 120);
+            this.DescripcionBuscarArt.Location = new System.Drawing.Point(569, 38);
             this.DescripcionBuscarArt.Name = "DescripcionBuscarArt";
             this.DescripcionBuscarArt.Size = new System.Drawing.Size(427, 21);
             this.DescripcionBuscarArt.TabIndex = 58;
@@ -761,7 +768,7 @@ namespace PELOSCALVO
             this.ReferenciaTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.ReferenciaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Referencia", true));
             this.ReferenciaTextBox.Enabled = false;
-            this.ReferenciaTextBox.Location = new System.Drawing.Point(101, 40);
+            this.ReferenciaTextBox.Location = new System.Drawing.Point(101, 48);
             this.ReferenciaTextBox.MaxLength = 40;
             this.ReferenciaTextBox.Name = "ReferenciaTextBox";
             this.ReferenciaTextBox.Size = new System.Drawing.Size(333, 20);
@@ -771,7 +778,7 @@ namespace PELOSCALVO
             // 
             this.DescripccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Descripcci", true));
             this.DescripccionTextBox.Enabled = false;
-            this.DescripccionTextBox.Location = new System.Drawing.Point(101, 66);
+            this.DescripccionTextBox.Location = new System.Drawing.Point(101, 100);
             this.DescripccionTextBox.Name = "DescripccionTextBox";
             this.DescripccionTextBox.Size = new System.Drawing.Size(411, 20);
             this.DescripccionTextBox.TabIndex = 21;
@@ -781,7 +788,7 @@ namespace PELOSCALVO
             // 
             this.CosteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Coste", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C3"));
             this.CosteTextBox.Enabled = false;
-            this.CosteTextBox.Location = new System.Drawing.Point(101, 92);
+            this.CosteTextBox.Location = new System.Drawing.Point(101, 126);
             this.CosteTextBox.Name = "CosteTextBox";
             this.CosteTextBox.Size = new System.Drawing.Size(121, 20);
             this.CosteTextBox.TabIndex = 23;
@@ -794,7 +801,7 @@ namespace PELOSCALVO
             // 
             this.GananciaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Ganancia", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.GananciaTextBox.Enabled = false;
-            this.GananciaTextBox.Location = new System.Drawing.Point(101, 118);
+            this.GananciaTextBox.Location = new System.Drawing.Point(101, 152);
             this.GananciaTextBox.MaxLength = 3;
             this.GananciaTextBox.Name = "GananciaTextBox";
             this.GananciaTextBox.Size = new System.Drawing.Size(121, 20);
@@ -1478,6 +1485,33 @@ namespace PELOSCALVO
             this.CheckFamiliaArt.UseVisualStyleBackColor = true;
             this.CheckFamiliaArt.Click += new System.EventHandler(this.CheckFamiliaArt_Click);
             // 
+            // dtArticulosTableAdapter
+            // 
+            this.dtArticulosTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.DtArticulosTableAdapter = this.dtArticulosTableAdapter;
+            this.tableAdapterManager.UpdateOrder = PELOSCALVO.ArticulosTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // oemLabel
+            // 
+            oemLabel.AutoSize = true;
+            oemLabel.Location = new System.Drawing.Point(19, 77);
+            oemLabel.Name = "oemLabel";
+            oemLabel.Size = new System.Drawing.Size(32, 13);
+            oemLabel.TabIndex = 67;
+            oemLabel.Text = "Oem:";
+            // 
+            // OemText
+            // 
+            this.OemText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Oem", true));
+            this.OemText.Location = new System.Drawing.Point(101, 74);
+            this.OemText.Name = "OemText";
+            this.OemText.Size = new System.Drawing.Size(333, 20);
+            this.OemText.TabIndex = 68;
+            // 
             // FormArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1609,5 +1643,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn Familia;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFILA;
         private DsMulti2 dsMulti2;
+        private System.Windows.Forms.TextBox OemText;
+        private ArticulosTableAdapters.DtArticulosTableAdapter dtArticulosTableAdapter;
+        private ArticulosTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

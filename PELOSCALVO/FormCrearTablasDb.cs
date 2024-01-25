@@ -151,7 +151,7 @@ namespace PELOSCALVO
                     Random r = new Random();
                     int valor = r.Next(10, 900000);
 
-                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ([Id] INTEGER  primary key , [Referencia] varchar," +
+                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ([Id] INTEGER  primary key , [Referencia] varchar, [Oem] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
@@ -467,7 +467,7 @@ namespace PELOSCALVO
                             {
                                 ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] INTEGER primary key , [NumeroFactura] INTEGER not null,[Apodo] varchar ,[Nombre] varchar," +
                              "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
-                              "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
+                              "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[Marca] varchar,[FechaFactura] varchar," +
                              "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
                              "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
                             "[EjercicioTipo] INTEGER not null,[SerieTipo] varchar, [EmpresaEnlace] INTEGER not null,[EnlaceDtconfi] INTEGER not null," +
@@ -540,7 +540,7 @@ namespace PELOSCALVO
                     }
 
 
-                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase) & Extension.ToString().Equals(".mdb".ToString(), StringComparison.OrdinalIgnoreCase))
+                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase) | Extension.ToString().Equals(".mdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
                         this.BaseDatosTxt1.Text = BuscarArchivo.FileName.ToString();
@@ -611,7 +611,7 @@ namespace PELOSCALVO
                 if (MessageBox.Show("\n" + " Crear Tabla  " + this.ArticulosTxt.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
 
-                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ( [Id] INTEGER  primary key , [Referencia] varchar, [Oem] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDes] DECIMAL ,[Valente] MONEY" +

@@ -61,7 +61,7 @@ namespace PELOSCALVO
             }
             try
             {
-                if (FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Count < 4)
+                if (FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Count < 1)
                 {
                     FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(Local)");
                     FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(".");
@@ -1361,7 +1361,7 @@ namespace PELOSCALVO
                         Extension = Path.GetExtension(BuscarArchivo.FileName.ToString());
                     }
 
-                    if (Extension.ToLower().ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase) & Extension.ToLower().ToString().Equals(".mdb".ToString(), StringComparison.OrdinalIgnoreCase))
+                    if (Extension.ToLower().ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase) | Extension.ToLower().ToString().Equals(".mdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
                         this.NombreArchivoDatos.Text = BuscarArchivo.FileName.ToString();
@@ -1415,7 +1415,7 @@ namespace PELOSCALVO
                 {
 
                     string TablaArticulos = this.SerieArticulosText.Text;
-                    string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                    string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar, [Oem] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
                         ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
@@ -1598,12 +1598,6 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
             return tableNames;
-        }
-        private void BtnActualizar_Servidor_Click(object sender, EventArgs e)
-        {
-            ObtenerInstanciasSql();
-
-
         }
 
         private void Servidor_Validating(object sender, System.ComponentModel.CancelEventArgs e)

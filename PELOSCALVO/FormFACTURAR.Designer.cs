@@ -99,7 +99,6 @@ namespace PELOSCALVO
             this.BtnBuscarProvi = new System.Windows.Forms.Button();
             this.EnlaceFactu = new System.Windows.Forms.Label();
             this.ProveedorTxt = new System.Windows.Forms.ComboBox();
-            this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.obrasComboBox = new System.Windows.Forms.ComboBox();
             this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -123,6 +122,7 @@ namespace PELOSCALVO
             this.CodigoPostalTxt = new System.Windows.Forms.TextBox();
             this.AlmacenTxt = new System.Windows.Forms.ComboBox();
             this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1Factura = new System.Windows.Forms.TabControl();
             this.tabPage2Factura = new System.Windows.Forms.TabPage();
@@ -228,13 +228,13 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiBindingSource)).BeginInit();
             this.tabPage1Factura.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).BeginInit();
             this.tabControl1Factura.SuspendLayout();
             this.tabPage2Factura.SuspendLayout();
@@ -763,7 +763,7 @@ namespace PELOSCALVO
             // 
             // ProveedorTxt
             // 
-            this.ProveedorTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtProveedoresBindingSource, "Proveedores", true));
+            this.ProveedorTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Marca", true));
             this.ProveedorTxt.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
             this.ProveedorTxt.DisplayMember = "Proveedores";
             this.ProveedorTxt.FormattingEnabled = true;
@@ -772,11 +772,6 @@ namespace PELOSCALVO
             this.ProveedorTxt.Name = "ProveedorTxt";
             this.ProveedorTxt.Size = new System.Drawing.Size(257, 21);
             this.ProveedorTxt.TabIndex = 72;
-            // 
-            // dtProveedoresBindingSource
-            // 
-            this.dtProveedoresBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtProveedores";
-            this.dtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // dtConfiguracionPrincipalDtProveedoresBindingSource
             // 
@@ -1008,6 +1003,11 @@ namespace PELOSCALVO
             // 
             this.dtAlmacenesBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtAlmacenes";
             this.dtAlmacenesBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            // 
+            // dtProveedoresBindingSource
+            // 
+            this.dtProveedoresBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtProveedores";
+            this.dtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
             // dtConfiguracionPrincipalDtAlmacenesBindingSource
             // 
@@ -1939,13 +1939,13 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiBindingSource)).EndInit();
             this.tabPage1Factura.ResumeLayout(false);
             this.tabPage1Factura.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtProveedoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtObrasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPaisesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKDtPaisesDtProvinciasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).EndInit();
             this.tabControl1Factura.ResumeLayout(false);
             this.tabPage2Factura.ResumeLayout(false);

@@ -401,7 +401,7 @@ namespace PELOSCALVO
                 string TablaArticulos = this.SerieArticulosTabla.Text;
                 string TablaClientes = this.SerieClientesTabla.Text;
                 string ConsutaArticulos = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaArticulos + "]') AND type in (N'U'))" +
-                "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] primary key NOT NULL, [Referencia] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
+                "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] primary key NOT NULL, [Referencia] [varchar](50)NULL, [Oem] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
                 "[Ganancia] [numeric](19, 3) NULL,[Pvp1] [numeric](19, 3) NULL,[PvpIva] [numeric](19, 3) NULL,[Pvp2Desc] [numeric](19, 3) NULL,[Pvp2] [numeric](19, 3) NULL," +
                 "[CastyDesc] [numeric](19, 3) NULL,[Casty] [numeric](19, 3) NULL,[SuarezDesc] [numeric](19, 3) NULL,[Suarez] [numeric](19, 3) NULL,[BenitoDesc] [numeric](19, 3) NULL," +
                 "[Benito] [numeric](19, 3) NULL,[ValenteDes] [numeric](19, 3) NULL,[Valente] [numeric](19, 3) NULL,[PlusDesc] [numeric](19, 3) NULL,[Plus] [numeric](19, 3) NULL," +
@@ -516,7 +516,7 @@ namespace PELOSCALVO
                                 ConsultaFacturacion = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaFactu + "]') AND type in (N'U')) " +
                                 "CREATE TABLE [" + TablaFactu + "]([EnlaceFactura] [int] primary key Not NULL, [NumeroFactura] int NOT NULL,[Apodo] [varchar](50) NULL,[Nombre] [varchar](60) NULL," +
                                 "[Direccion] [varchar](50) NULL,[Calle] [varchar](30) NULL,[NumeroCalle] [varchar](20) NULL,[Dni] [Varchar](16) NULL,[Localidad] [varchar](50) NULL," +
-                                "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[FechaFactura] [date] NULL," +
+                                "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[Marca] [varchar](50) NULL,[FechaFactura] [date] NULL," +
                                 "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
                                 "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
                                 "[EjercicioTipo] [int]Not NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [int] NULL,[EnlaceDtconfi][int] NOT NULL," +

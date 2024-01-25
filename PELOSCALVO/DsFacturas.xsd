@@ -43,6 +43,7 @@
               <xs:element name="EnlaceFactura" msprop:Generator_ColumnVarNameInTable="columnEnlaceFactura" msprop:Generator_ColumnPropNameInRow="EnlaceFactura" msprop:Generator_ColumnPropNameInTable="EnlaceFacturaColumn" msprop:Generator_UserColumnName="EnlaceFactura" type="xs:int" />
               <xs:element name="EmpresaEnlace" msprop:Generator_ColumnVarNameInTable="columnEmpresaEnlace" msprop:Generator_ColumnPropNameInRow="EmpresaEnlace" msprop:Generator_ColumnPropNameInTable="EmpresaEnlaceColumn" msprop:Generator_UserColumnName="EmpresaEnlace" type="xs:int" minOccurs="0" />
               <xs:element name="EnlaceDtconfi" msprop:Generator_ColumnVarNameInTable="columnEnlaceDtconfi" msprop:Generator_ColumnPropNameInRow="EnlaceDtconfi" msprop:Generator_ColumnPropNameInTable="EnlaceDtconfiColumn" msprop:Generator_UserColumnName="EnlaceDtconfi" type="xs:int" minOccurs="0" />
+              <xs:element name="Marca" msprop:Generator_ColumnVarNameInTable="columnMarca" msprop:Generator_ColumnPropNameInRow="Marca" msprop:Generator_ColumnPropNameInTable="MarcaColumn" msprop:Generator_UserColumnName="Marca" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

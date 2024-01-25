@@ -90,6 +90,7 @@ namespace PELOSCALVO
             this.TIPObuscarArticulos.Items.AddRange(new object[] {
             "Todos",
             "Referencia",
+            "Referncia(OEM)Fabricante",
             "Descripccion",
             "Familia"});
             this.TIPObuscarArticulos.Location = new System.Drawing.Point(12, 12);

@@ -1113,14 +1113,14 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
             {
-                consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA," +
+                consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA,@Oem, @DESCRIPCCI, @COSTE, @GANANCIA," +
                " @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES," +
                " @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
 
             }
             else
             {
-                consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
+                consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA,Oem=@Oem, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
               ",GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY" +
               ",SUAREZDESC = @SUAREZDESC, SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES," +
               "VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO," +
@@ -1137,6 +1137,7 @@ namespace PELOSCALVO
                     {
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", this.idArticulo.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@REFERENCIA", this.ReferenciaTextBox.Text);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@Oem", string.IsNullOrEmpty(this.OemText.Text) ? (object)DBNull.Value : this.OemText.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESCRIPCCI", this.DescripccionTextBox.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@COSTE", this.CosteTextBox.Text.Replace("€", ""));
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@GANANCIA", string.IsNullOrEmpty(this.GananciaTextBox.Text) ? (object)DBNull.Value : this.Ganancia / 100);
@@ -1195,14 +1196,14 @@ namespace PELOSCALVO
             string Consulta = "";
             if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
             {
-                Consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA, @DESCRIPCCI, @COSTE, @GANANCIA," +
+                Consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA,@Oem, @DESCRIPCCI, @COSTE, @GANANCIA," +
                " @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES," +
                " @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
 
             }
             else
             {
-                Consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
+                Consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA,Oem=@Oem, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
               ",GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY" +
               ",SUAREZDESC = @SUAREZDESC, SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES," +
               "VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO," +
@@ -1218,6 +1219,7 @@ namespace PELOSCALVO
                     {
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.idArticulo.Text));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@REFERENCIA", this.ReferenciaTextBox.Text.ToString());
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Oem", string.IsNullOrEmpty(this.OemText.Text) ? (object)DBNull.Value : this.OemText.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESCRIPCCI", this.DescripccionTextBox.Text.ToString());
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@COSTE", Convert.ToDouble(this.CosteTextBox.Text.Replace("€", "")));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@GANANCIA", string.IsNullOrEmpty(this.GananciaTextBox.Text) ? (object)DBNull.Value : this.Ganancia / 100);

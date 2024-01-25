@@ -124,6 +124,7 @@ namespace PELOSCALVO
         {
 
             string Referencia = string.Concat("[", this.articulos.DtArticulos.Columns[1].ColumnName, "]");
+            string Oem = string.Concat("[", this.articulos.DtArticulos.Columns["Oem"].ColumnName, "]");
             string Comcepto = string.Concat("[", this.articulos.DtArticulos.Columns[2].ColumnName, "]");
             string FAmilia = string.Concat("[", this.articulos.DtArticulos.Columns[20].ColumnName, "]");
             string baja = string.Concat("[", this.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
@@ -156,7 +157,15 @@ namespace PELOSCALVO
 
                         this.DataGridViewBuscarArticulos.DataSource = this.verViev;
                     }
-                    if (this.TIPObuscarArticulos.SelectedIndex == 2)//descripcion
+                    if (this.TIPObuscarArticulos.SelectedIndex == 2)//oem fabrica
+                    {
+                      //  NumeroValidar = 2;
+                      //  fieldName = string.Concat("[", this.articulos.DtArticulos.Columns[NumeroValidar].ColumnName, "]");
+                        this.articulos.DtArticulos.DefaultView.Sort = Oem;
+
+                        this.verViev.RowFilter = Oem + " LIKE '%" + this.BuscarArticulosText.Text + "%'" + "and " + "[baja]" + "=" + this.SiBaja;
+                    }
+                    if (this.TIPObuscarArticulos.SelectedIndex == 3)//descripcion
                     {
                         NumeroValidar = 2;
                         fieldName = string.Concat("[", this.articulos.DtArticulos.Columns[NumeroValidar].ColumnName, "]");
@@ -164,7 +173,7 @@ namespace PELOSCALVO
 
                         this.verViev.RowFilter = fieldName + " LIKE '%" + this.BuscarArticulosText.Text + "%'" + "and " + "[baja]" + "=" + this.SiBaja;
                     }
-                    if (this.TIPObuscarArticulos.SelectedIndex == 3)//familia
+                    if (this.TIPObuscarArticulos.SelectedIndex == 4)//familia
                     {
                         NumeroValidar = 20;
                         fieldName = string.Concat("[", this.articulos.DtArticulos.Columns[NumeroValidar].ColumnName, "]");
@@ -738,8 +747,10 @@ namespace PELOSCALVO
                         PrintDocument PD = new PrintDocument();
                         PD.PrintPage += new PrintPageEventHandler(PrintBarras_PrintPage);
                         PD.DocumentName = string.Format("{0}", "codigos Barras App");
-                        //  int Fila= FormBuscarArticulos.listas.lista.Count
-                        //PD.PrinterSettings.FromPage = Fila/2;
+                        int Filas = FormBuscarArticulos.listas.lista.Count;
+                        int AltoPage = Alto * Filas;
+                        int Hojas = (AltoPage / 1118) + 1;
+                        PD.PrinterSettings.PrintRange = (PrintRange)Hojas;
                         PD.Print();
 
                     }
@@ -846,7 +857,7 @@ namespace PELOSCALVO
 
             if (Si == false)
             {
-                e.HasMorePages = true;
+              //  e.HasMorePages = true;
             }
             try
             {
@@ -861,7 +872,7 @@ namespace PELOSCALVO
                 }
                 Si = true;
                 e.HasMorePages = BB >= e.PageBounds.Bottom ;
-                e.HasMorePages = false;
+               // e.HasMorePages = false;
                 // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
             }
             catch (Exception ex)
