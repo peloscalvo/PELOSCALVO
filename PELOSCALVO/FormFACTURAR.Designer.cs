@@ -159,7 +159,7 @@ namespace PELOSCALVO
             this.TipoTarifaFactu = new System.Windows.Forms.ComboBox();
             this.dtConfiDtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtArticulosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.articulos = new PELOSCALVO.Articulos();
+            this.articulos = new PELOSCALVO.DsArticulos();
             this.panelBotones = new System.Windows.Forms.Panel();
             this.BtnSalirFactura = new System.Windows.Forms.Button();
             this.BtnImprimirFactura = new System.Windows.Forms.Button();
@@ -2039,7 +2039,7 @@ namespace PELOSCALVO
         public System.Windows.Forms.BindingSource dtArticulosBindingSource;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private System.Windows.Forms.BindingSource dtPaisesBindingSource;
-        public Articulos articulos;
+        public DsArticulos articulos;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.DateTimePicker FechaFactura;
         private System.Windows.Forms.Label IdDescuento;

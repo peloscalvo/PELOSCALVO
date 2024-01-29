@@ -147,7 +147,7 @@ namespace PELOSCALVO
             this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
             this.dsClientes = new PELOSCALVO.DsClientes();
-            this.articulos = new PELOSCALVO.Articulos();
+            this.articulos = new PELOSCALVO.DsArticulos();
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.TimerCerrarPanel = new System.Windows.Forms.Timer(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -1778,7 +1778,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnSql;
         private System.Windows.Forms.Button BtnCarpetasPdf;
         public DsClientes dsClientes;
-        public Articulos articulos;
+        public DsArticulos articulos;
         public DsCONFIGURACCION dsCONFIGURACCION;
         public System.Windows.Forms.Panel PanelInfo_P;
         private System.Windows.Forms.PictureBox pictureBox7;

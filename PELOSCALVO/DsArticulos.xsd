@@ -1,54 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="Articulos" targetNamespace="http://PelosCalvo/Articulos.xsd" xmlns:mstns="http://PelosCalvo/Articulos.xsd" xmlns="http://PelosCalvo/Articulos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="DsArticulos" targetNamespace="http://PelosCalvo/Articulos.xsd" xmlns:mstns="http://PelosCalvo/Articulos.xsd" xmlns="http://PelosCalvo/Articulos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ArticulosConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="ArticulosConnectionString (Settings)" PropertyReference="ApplicationSettings.PELOSCALVO.Properties.Settings.GlobalReference.Default.ArticulosConnectionString" Provider="System.Data.OleDb" />
         </Connections>
-        <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DtArticulosTableAdapter" GeneratorDataComponentClassName="DtArticulosTableAdapter" Name="DtArticulos" UserDataComponentName="DtArticulosTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ArticulosConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill" />
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Id" DataSetColumn="Id" />
-              <Mapping SourceColumn="Referencia" DataSetColumn="Referencia" />
-              <Mapping SourceColumn="Coste" DataSetColumn="Coste" />
-              <Mapping SourceColumn="Ganancia" DataSetColumn="Ganancia" />
-              <Mapping SourceColumn="Pvp1" DataSetColumn="Pvp1" />
-              <Mapping SourceColumn="PvpIva" DataSetColumn="PvpIva" />
-              <Mapping SourceColumn="Pvp2Desc" DataSetColumn="Pvp2Desc" />
-              <Mapping SourceColumn="Pvp2" DataSetColumn="Pvp2" />
-              <Mapping SourceColumn="CastyDesc" DataSetColumn="CastyDesc" />
-              <Mapping SourceColumn="Casty" DataSetColumn="Casty" />
-              <Mapping SourceColumn="SuarezDesc" DataSetColumn="SuarezDesc" />
-              <Mapping SourceColumn="Suarez" DataSetColumn="Suarez" />
-              <Mapping SourceColumn="BenitoDesc" DataSetColumn="BenitoDesc" />
-              <Mapping SourceColumn="Benito" DataSetColumn="Benito" />
-              <Mapping SourceColumn="Valente" DataSetColumn="Valente" />
-              <Mapping SourceColumn="Stock" DataSetColumn="Stock" />
-              <Mapping SourceColumn="UnidadPale" DataSetColumn="UnidadPale" />
-              <Mapping SourceColumn="MinimosSto" DataSetColumn="MinimosSto" />
-              <Mapping SourceColumn="Descripcci" DataSetColumn="Descripcci" />
-              <Mapping SourceColumn="Familia" DataSetColumn="Familia" />
-              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
-              <Mapping SourceColumn="Plus" DataSetColumn="Plus" />
-              <Mapping SourceColumn="PlusDesc" DataSetColumn="PlusDesc" />
-              <Mapping SourceColumn="ValenteDes" DataSetColumn="ValenteDes" />
-              <Mapping SourceColumn="Baja" DataSetColumn="Baja" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-        </Tables>
+        <Tables />
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="Articulos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Articulos" msprop:Generator_UserDSName="Articulos">
+  <xs:element name="DsArticulos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsArticulos" msprop:Generator_UserDSName="DsArticulos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DtArticulos" msprop:Generator_TableClassName="DtArticulosDataTable" msprop:Generator_TableVarName="tableDtArticulos" msprop:Generator_TablePropName="DtArticulos" msprop:Generator_RowDeletingName="DtArticulosRowDeleting" msprop:Generator_RowChangingName="DtArticulosRowChanging" msprop:Generator_RowEvHandlerName="DtArticulosRowChangeEventHandler" msprop:Generator_RowDeletedName="DtArticulosRowDeleted" msprop:Generator_UserTableName="DtArticulos" msprop:Generator_RowChangedName="DtArticulosRowChanged" msprop:Generator_RowEvArgName="DtArticulosRowChangeEvent" msprop:Generator_RowClassName="DtArticulosRow">
+        <xs:element name="DtArticulos" msprop:Generator_TableClassName="DtArticulosDataTable" msprop:Generator_TableVarName="tableDtArticulos" msprop:Generator_RowChangedName="DtArticulosRowChanged" msprop:Generator_TablePropName="DtArticulos" msprop:Generator_RowDeletingName="DtArticulosRowDeleting" msprop:Generator_RowChangingName="DtArticulosRowChanging" msprop:Generator_RowEvHandlerName="DtArticulosRowChangeEventHandler" msprop:Generator_RowDeletedName="DtArticulosRowDeleted" msprop:Generator_RowClassName="DtArticulosRow" msprop:Generator_UserTableName="DtArticulos" msprop:Generator_RowEvArgName="DtArticulosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" msprop:Generator_UserColumnName="Referencia" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcci" msdata:Caption="Descripccion" msprop:Generator_ColumnVarNameInTable="columnDescripcci" msprop:Generator_ColumnPropNameInRow="Descripcci" msprop:Generator_ColumnPropNameInTable="DescripcciColumn" msprop:Generator_UserColumnName="Descripcci" type="xs:string" minOccurs="0" />
+              <xs:element name="Coste" msprop:Generator_ColumnVarNameInTable="columnCoste" msprop:Generator_ColumnPropNameInRow="Coste" msprop:Generator_ColumnPropNameInTable="CosteColumn" msprop:Generator_UserColumnName="Coste" type="xs:double" minOccurs="0" />
+              <xs:element name="Ganancia" msprop:Generator_ColumnVarNameInTable="columnGanancia" msprop:Generator_ColumnPropNameInRow="Ganancia" msprop:Generator_ColumnPropNameInTable="GananciaColumn" msprop:Generator_UserColumnName="Ganancia" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Pvp1" msprop:Generator_ColumnVarNameInTable="columnPvp1" msprop:Generator_ColumnPropNameInRow="Pvp1" msprop:Generator_ColumnPropNameInTable="Pvp1Column" msprop:Generator_UserColumnName="Pvp1" type="xs:double" minOccurs="0" />
+              <xs:element name="PvpIva" msprop:Generator_ColumnVarNameInTable="columnPvpIva" msprop:Generator_ColumnPropNameInRow="PvpIva" msprop:Generator_ColumnPropNameInTable="PvpIvaColumn" msprop:Generator_UserColumnName="PvpIva" type="xs:double" minOccurs="0" />
+              <xs:element name="Pvp2Desc" msprop:Generator_ColumnVarNameInTable="columnPvp2Desc" msprop:Generator_ColumnPropNameInRow="Pvp2Desc" msprop:Generator_ColumnPropNameInTable="Pvp2DescColumn" msprop:Generator_UserColumnName="Pvp2Desc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Pvp2" msprop:Generator_ColumnVarNameInTable="columnPvp2" msprop:Generator_ColumnPropNameInRow="Pvp2" msprop:Generator_ColumnPropNameInTable="Pvp2Column" msprop:Generator_UserColumnName="Pvp2" type="xs:double" minOccurs="0" />
+              <xs:element name="CastyDesc" msprop:Generator_ColumnVarNameInTable="columnCastyDesc" msprop:Generator_ColumnPropNameInRow="CastyDesc" msprop:Generator_ColumnPropNameInTable="CastyDescColumn" msprop:Generator_UserColumnName="CastyDesc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Casty" msprop:Generator_ColumnVarNameInTable="columnCasty" msprop:Generator_ColumnPropNameInRow="Casty" msprop:Generator_ColumnPropNameInTable="CastyColumn" msprop:Generator_UserColumnName="Casty" type="xs:double" minOccurs="0" />
+              <xs:element name="SuarezDesc" msprop:Generator_ColumnVarNameInTable="columnSuarezDesc" msprop:Generator_ColumnPropNameInRow="SuarezDesc" msprop:Generator_ColumnPropNameInTable="SuarezDescColumn" msprop:Generator_UserColumnName="SuarezDesc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Suarez" msprop:Generator_ColumnVarNameInTable="columnSuarez" msprop:Generator_ColumnPropNameInRow="Suarez" msprop:Generator_ColumnPropNameInTable="SuarezColumn" msprop:Generator_UserColumnName="Suarez" type="xs:double" minOccurs="0" />
+              <xs:element name="BenitoDesc" msprop:Generator_ColumnVarNameInTable="columnBenitoDesc" msprop:Generator_ColumnPropNameInRow="BenitoDesc" msprop:Generator_ColumnPropNameInTable="BenitoDescColumn" msprop:Generator_UserColumnName="BenitoDesc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Benito" msprop:Generator_ColumnVarNameInTable="columnBenito" msprop:Generator_ColumnPropNameInRow="Benito" msprop:Generator_ColumnPropNameInTable="BenitoColumn" msprop:Generator_UserColumnName="Benito" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ValenteDes" msprop:Generator_ColumnVarNameInTable="columnValenteDes" msprop:Generator_ColumnPropNameInRow="ValenteDes" msprop:Generator_ColumnPropNameInTable="ValenteDesColumn" msprop:Generator_UserColumnName="ValenteDes" type="xs:double" minOccurs="0" />
+              <xs:element name="Valente" msprop:Generator_ColumnVarNameInTable="columnValente" msprop:Generator_ColumnPropNameInRow="Valente" msprop:Generator_ColumnPropNameInTable="ValenteColumn" msprop:Generator_UserColumnName="Valente" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PlusDesc" msprop:Generator_ColumnVarNameInTable="columnPlusDesc" msprop:Generator_ColumnPropNameInRow="PlusDesc" msprop:Generator_ColumnPropNameInTable="PlusDescColumn" msprop:Generator_UserColumnName="PlusDesc" type="xs:double" minOccurs="0" />
+              <xs:element name="Plus" msprop:Generator_ColumnVarNameInTable="columnPlus" msprop:Generator_ColumnPropNameInRow="Plus" msprop:Generator_ColumnPropNameInTable="PlusColumn" msprop:Generator_UserColumnName="Plus" type="xs:double" minOccurs="0" />
+              <xs:element name="Stock" msprop:Generator_ColumnVarNameInTable="columnStock" msprop:Generator_ColumnPropNameInRow="Stock" msprop:Generator_ColumnPropNameInTable="StockColumn" msprop:Generator_UserColumnName="Stock" type="xs:double" minOccurs="0" />
+              <xs:element name="Familia" msprop:Generator_ColumnVarNameInTable="columnFamilia" msprop:Generator_ColumnPropNameInRow="Familia" msprop:Generator_ColumnPropNameInTable="FamiliaColumn" msprop:Generator_UserColumnName="Familia" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="UnidadPale" msdata:Caption="Unidad Palet" msprop:Generator_ColumnVarNameInTable="columnUnidadPale" msprop:Generator_ColumnPropNameInRow="UnidadPale" msprop:Generator_ColumnPropNameInTable="UnidadPaleColumn" msprop:Generator_UserColumnName="UnidadPale" type="xs:double" minOccurs="0" />
+              <xs:element name="MinimosSto" msprop:Generator_ColumnVarNameInTable="columnMinimosSto" msprop:Generator_ColumnPropNameInRow="MinimosSto" msprop:Generator_ColumnPropNameInTable="MinimosStoColumn" msprop:Generator_UserColumnName="MinimosSto" type="xs:double" minOccurs="0" />
+              <xs:element name="Baja" msprop:Generator_ColumnVarNameInTable="columnBaja" msprop:Generator_ColumnPropNameInRow="Baja" msprop:Generator_ColumnPropNameInTable="BajaColumn" msprop:Generator_UserColumnName="Baja" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Fatu" msprop:Generator_ColumnVarNameInTable="columnFatu" msprop:Generator_ColumnPropNameInRow="Fatu" msprop:Generator_ColumnPropNameInTable="FatuColumn" msprop:Generator_UserColumnName="Fatu" type="xs:string" minOccurs="0" />
+              <xs:element name="IdFILA" msprop:Generator_ColumnVarNameInTable="columnIdFILA" msprop:Generator_ColumnPropNameInRow="IdFILA" msprop:Generator_ColumnPropNameInTable="IdFILAColumn" msprop:Generator_UserColumnName="IdFILA" type="xs:int" minOccurs="0" />
+              <xs:element name="Oem" msprop:Generator_ColumnVarNameInTable="columnOem" msprop:Generator_ColumnPropNameInRow="Oem" msprop:Generator_ColumnPropNameInTable="OemColumn" msprop:Generator_UserColumnName="Oem" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtArticulos2" msprop:Generator_TableClassName="DtArticulos2DataTable" msprop:Generator_TableVarName="tableDtArticulos2" msprop:Generator_TablePropName="DtArticulos2" msprop:Generator_RowDeletingName="DtArticulos2RowDeleting" msprop:Generator_RowChangingName="DtArticulos2RowChanging" msprop:Generator_RowEvHandlerName="DtArticulos2RowChangeEventHandler" msprop:Generator_RowDeletedName="DtArticulos2RowDeleted" msprop:Generator_UserTableName="DtArticulos2" msprop:Generator_RowChangedName="DtArticulos2RowChanged" msprop:Generator_RowEvArgName="DtArticulos2RowChangeEvent" msprop:Generator_RowClassName="DtArticulos2Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -92,6 +98,10 @@
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DtArticulos" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="DtArticulos2_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DtArticulos2" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
   </xs:element>

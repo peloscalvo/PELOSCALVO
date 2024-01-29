@@ -49,7 +49,7 @@ namespace PELOSCALVO
             this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdFILA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtArticulosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.articulos = new PELOSCALVO.Articulos();
+            this.articulos = new PELOSCALVO.DsArticulos();
             this.label1 = new System.Windows.Forms.Label();
             this.ContadorDatos2 = new System.Windows.Forms.Label();
             this.FiltrarBajasBuscar = new System.Windows.Forms.ComboBox();
@@ -588,7 +588,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label ContadorDatos2;
         private System.Windows.Forms.Button BtnCancelarBArticulo;
-        private Articulos articulos;
+        private DsArticulos articulos;
         public System.Windows.Forms.BindingSource dtArticulosBindingSource;
         private System.Windows.Forms.ComboBox FiltrarBajasBuscar;
         private System.Windows.Forms.Label labelfiltrarBUSCAR;

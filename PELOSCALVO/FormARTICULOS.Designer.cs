@@ -80,7 +80,7 @@ namespace PELOSCALVO
             this.Familia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdFILA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtArticulosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.articulos = new PELOSCALVO.Articulos();
+            this.articulos = new PELOSCALVO.DsArticulos();
             this.tabControl1Articulo = new System.Windows.Forms.TabControl();
             this.tabPage1Articulo = new System.Windows.Forms.TabPage();
             this.OemText = new System.Windows.Forms.TextBox();
@@ -144,8 +144,6 @@ namespace PELOSCALVO
             this.FiltrarBajas = new System.Windows.Forms.ComboBox();
             this.FiltrarFamiliaArt = new System.Windows.Forms.ComboBox();
             this.CheckFamiliaArt = new System.Windows.Forms.RadioButton();
-            this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
-            this.tableAdapterManager = new PELOSCALVO.ArticulosTableAdapters.TableAdapterManager();
             Pvp2Label = new System.Windows.Forms.Label();
             PlusLabel = new System.Windows.Forms.Label();
             familiaLabel = new System.Windows.Forms.Label();
@@ -1502,17 +1500,6 @@ namespace PELOSCALVO
             this.CheckFamiliaArt.UseVisualStyleBackColor = true;
             this.CheckFamiliaArt.Click += new System.EventHandler(this.CheckFamiliaArt_Click);
             // 
-            // dtArticulosTableAdapter
-            // 
-            this.dtArticulosTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-           // this.tableAdapterManager.DtArticulosTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = PELOSCALVO.ArticulosTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // FormArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1624,7 +1611,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtFamiliaProductosBindingSource;
         private System.Windows.Forms.CheckBox BajaCheckBox;
         public System.Windows.Forms.BindingSource dtArticulosBindingSource;
-        public Articulos articulos;
+        public DsArticulos articulos;
         public System.Windows.Forms.ComboBox FiltrarBajas;
         private System.Windows.Forms.ComboBox FiltrarFamiliaArt;
         private System.Windows.Forms.RadioButton CheckFamiliaArt;
@@ -1645,7 +1632,5 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFILA;
         private DsMulti2 dsMulti2;
         private System.Windows.Forms.TextBox OemText;
-        private ArticulosTableAdapters.DtArticulosTableAdapter dtArticulosTableAdapter;
-        private ArticulosTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }
