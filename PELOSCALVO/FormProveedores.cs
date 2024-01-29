@@ -114,9 +114,9 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-                    Validate();
                     this.dataGridProveedores.EndEdit();
                     this.DtProveedoresBindingSource.EndEdit();
+                    Validate();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();
                 }
@@ -157,9 +157,9 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
-                    Validate();
                     this.DtProveedoresBindingSource.EndEdit();
                     this.dataGridProveedores.EndEdit();
+                    Validate();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();
                 }
@@ -189,7 +189,7 @@ namespace PELOSCALVO
                         if (NuevaConexion.SiConexionDb)
                         {
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", this.Enlace_Proveedor.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Enlace_Proveedor.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                             this.DtProveedoresBindingSource.EndEdit();
@@ -231,7 +231,7 @@ namespace PELOSCALVO
                     if (NuevaConexion.SiConexionSql)
                     {
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", this.Enlace_Proveedor.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Enlace_Proveedor.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         this.DtProveedoresBindingSource.EndEdit();

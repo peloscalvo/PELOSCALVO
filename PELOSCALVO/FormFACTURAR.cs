@@ -51,7 +51,7 @@ namespace PELOSCALVO
         public void AñadirIdFATU()
         {
             int ii = 0;
-            foreach (var fila in dsFacturas.DtNuevaFactura)
+            foreach (var fila in this.dsFacturas.DtNuevaFactura)
             {
                 fila["IdFila"] = ii.ToString();
                 ii++;
@@ -615,18 +615,16 @@ namespace PELOSCALVO
                     this.dtDetallesFacturaBindingSource.EndEdit();
                     this.dtDetallesFactura2BindingSource.EndEdit();
                     Validate();
-                    if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
+                    int FILAcelda = dtNuevaFacturaBindingSource.Count - 1;
+                    if (this.cobradaFacturaCheckBox.Checked == true)
                     {
-                        int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
-                        if (this.cobradaFacturaCheckBox.Checked == true)
-                        {
-                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
-                        }
-                        else
-                        {
-                            //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
-                        }
+                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                    }
+                    else
+                    {
+                        //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
+                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+
                     }
                     MessageBox.Show("Guardado Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaraurarOjetosFatu();
@@ -957,18 +955,16 @@ namespace PELOSCALVO
                 this.dtNuevaFacturaBindingSource.EndEdit();
                 this.dtDetallesFactura2BindingSource.EndEdit();
                 Validate();
-                if (!string.IsNullOrEmpty(this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex.ToString()))
+                int FILAcelda = dtNuevaFacturaBindingSource.Count - 1;
+                if (this.cobradaFacturaCheckBox.Checked == true)
                 {
-                    int FILAcelda = this.dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
-                    if (this.cobradaFacturaCheckBox.Checked == true)
-                    {
-                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
-                    }
-                    else
-                    {
-                        //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
-                    }
+                    this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                }
+                else
+                {
+                    //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
+                    this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+
                 }
                 MessageBox.Show("Guardado Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RestaraurarOjetosFatu();
@@ -1059,7 +1055,7 @@ namespace PELOSCALVO
                     ModificarOjetosFatu();
                     BORRARerrores();
                     Int32 Id_Enlace = 0;
-                    this.RazonSocialFatu.Focus();
+  
                     // this.numeroFacturaTextBox.Enabled = false;
                     if (this.dtNuevaFacturaBindingSource.Count > 1)
                     {
@@ -1133,7 +1129,7 @@ namespace PELOSCALVO
 
                     }
                 }
-
+                this.RazonSocialFatu.Focus();
 
             }
             catch (Exception ex)
@@ -1188,11 +1184,12 @@ namespace PELOSCALVO
                 if (MessageBox.Show(" ¿Aceptar Guardar ? ", " GUARDAR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
-
                     if (ClsConexionSql.SibaseDatosSql)
                     {
                         GuardarFactuSql();
 
+
+        
                     }
                     else
                     {
@@ -1200,6 +1197,7 @@ namespace PELOSCALVO
                         if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
                             GuardarFactuDB();
+
                             if (ClasDatos.NombreFactura != "Presupuesto")
                             {
                                 if (this.panelBotones.Tag.ToString() == "Modificar")
@@ -1464,7 +1462,7 @@ namespace PELOSCALVO
             {
                 this.FechaFactura.Text = "";
             }
-            cobradaFacturaCheckBox.Checked = Cobrado;
+            this.cobradaFacturaCheckBox.Checked = this.Cobrado;
         }
         private void CargarDatosFatu()
         {
@@ -1525,7 +1523,7 @@ namespace PELOSCALVO
             {
                 this.Fecha = this.FechaFactura.Text;
             }
-            Cobrado = cobradaFacturaCheckBox.Checked;
+            this.Cobrado = this.cobradaFacturaCheckBox.Checked;
         }
         private void BtnModificarFactura_Click(object sender, EventArgs e)
         {
@@ -1835,6 +1833,7 @@ namespace PELOSCALVO
                                         ConexionNueva.ComandoDb.Parameters.Clear();
 
                                     }
+                                    reader.Close();
                                 }
 
                             }
@@ -1848,7 +1847,7 @@ namespace PELOSCALVO
             }
             catch (Exception ex)
             {
-               // reader.Close();
+                // reader.Close();
                 MessageBox.Show(ex.Message.ToString(), "ERROR RESTAURAR STOCK", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ConexionStock.ComandoDb.Parameters.Clear();
@@ -1972,18 +1971,9 @@ namespace PELOSCALVO
         private void GuardarStockDb(DataGridView Datagri4)
         {
             int Id_Almacen = 0;
-            int FilaALMACEN = Convert.ToInt32(this.AlmacenTxt.SelectedIndex);
-            if (FilaALMACEN > this.dtAlmacenesBindingSource.Count - 1)
-            {
-                MessageBox.Show("Falta Id De Almacen", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtAlmacenes"].Rows[FilaALMACEN]["Id"].ToString() != string.Empty)
-            {
-                Id_Almacen = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtAlmacenes"].Rows[FilaALMACEN]["Id"].ToString());
-            }
+
             string Enlace = this.Id_Empresa.Text + "/" + this.AlmacenTxt.Text;
-            string consulta = "SELECT [Referencia],[Stock],[Enlace] from [DtMovimientos]" + "Where  Referencia= @Referencia  and  Enlace= @Enlace ";
+            string consulta = "SELECT [Referencia],[Stock],[Enlace] from [DtMovimientos]" + " Where  Referencia= @Referencia  and  Enlace= @Enlace ";
             string Nueva = "INSERT INTO  [DtMovimientos] (Referencia,Stock,Enlace,Id_Empresa,Id_Almacen) VALUES(@Referencia,@Stock,@Enlace,@Id_Empresa,@Id_Almacen)";
             string Modificar = "UPDATE[DtMovimientos] SET[Referencia] = @Referencia,[Stock] = @Stock ,[Enlace] = @Enlace" +
                ",[Id_Empresa] = @Id_Empresa,[Id_Almacen] = @Id_Almacen WHERE  Referencia= @Referencia  and  Enlace= @Enlace ";
@@ -1995,6 +1985,16 @@ namespace PELOSCALVO
             ClsConexionDb ConexionModificar = new ClsConexionDb(Modificar);
             try
             {
+                int FilaALMACEN = Convert.ToInt32(this.AlmacenTxt.SelectedIndex);
+                if (FilaALMACEN > this.dtAlmacenesBindingSource.Count - 1)
+                {
+                    MessageBox.Show("Falta Id De Almacen", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtAlmacenes"].Rows[FilaALMACEN]["Id"].ToString() != string.Empty)
+                {
+                    Id_Almacen = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtAlmacenes"].Rows[FilaALMACEN]["Id"].ToString());
+                }
                 if (ConexionStock.SiConexionDb)
                 {
                     foreach (DataGridViewRow Fila in Datagri4.Rows)
@@ -2034,6 +2034,7 @@ namespace PELOSCALVO
                                             ConexionModificar.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
                                             ConexionModificar.ComandoDb.ExecuteNonQuery();
                                             ConexionModificar.ComandoDb.Parameters.Clear();
+                                            reader.Close();
                                         }
                                     }
 
@@ -2053,13 +2054,14 @@ namespace PELOSCALVO
                                     ConexionNueva.ComandoDb.Parameters.AddWithValue("@Id_Almacen", Id_Almacen);
                                     ConexionNueva.ComandoDb.ExecuteNonQuery();
                                     ConexionNueva.ComandoDb.Parameters.Clear();
+                                    reader.Close();
 
 
                                 }
                             }
                         }
 
-                        reader.Close();
+                       // reader.Close();
                         ConexionStock.ComandoDb.Parameters.Clear();
                     }
                 }
@@ -2067,7 +2069,7 @@ namespace PELOSCALVO
             }
             catch (Exception ex)
             {
-                reader.Close();
+                // reader.Close();
                 MessageBox.Show(ex.Message.ToString(), "ERROR STOCK", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ConexionStock.ComandoDb.Parameters.Clear();
@@ -2277,7 +2279,7 @@ namespace PELOSCALVO
                     {
                         if (this.dtArticulosBindingSource.Count <= 0)
                         {
-                            MessageBox.Show(" Archivo ARTICULOS No Existe O  VACIO ", " FALTA O VACIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(" Archivo  VACIO ", " FALTA O VACIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
                         else
@@ -2507,7 +2509,7 @@ namespace PELOSCALVO
 
         private void BtnBuscarFactura_Click(object sender, EventArgs e)
         {
-            if (dtNuevaFacturaBindingSource.Count > 0)
+            if (this.dtNuevaFacturaBindingSource.Count > 0)
             {
 
                 ClasDatos.OkFacturar = true;
@@ -2649,12 +2651,12 @@ namespace PELOSCALVO
                 return;
             }
 
-                ClasDatos.OkFacturar = true;
-                ClasDatos.QUEform = "Facturar";
-                FormImprimirTodo frm = new FormImprimirTodo();
-                //frm.FormClosed += (o, args) => this.a = "1";
-                frm.ShowDialog();
-                frm.BringToFront();
+            ClasDatos.OkFacturar = true;
+            ClasDatos.QUEform = "Facturar";
+            FormImprimirTodo frm = new FormImprimirTodo();
+            //frm.FormClosed += (o, args) => this.a = "1";
+            frm.ShowDialog();
+            frm.BringToFront();
         }
 
         private void FormFACTURAR_FormClosing(object sender, FormClosingEventArgs e)
@@ -2857,7 +2859,7 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count < 0)
+            if (FormMenuPrincipal.menu2principal.dsClientes.DtClientes.Count <= 0)
             {
 
                 MessageBox.Show("No Hay Clientes", " ARCHIVO NO EXISTE O VACIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -3401,7 +3403,7 @@ namespace PELOSCALVO
                 ClasDatos.QUEform = "Provincias";
                 AñadirIdPaisFactu();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Provincias", "Provincias", "Paises", IdPais);
+                frm.CargarDatos(1, " Provincias", "Provincias", "IdEnlace", IdPais);
                 frm.BringToFront();
                 frm.ShowDialog();
 

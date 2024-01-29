@@ -629,9 +629,9 @@ namespace PELOSCALVO
                             {
                                 item.ValenteDes = Convert.ToDouble(reader["Desc6"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["Valente"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Pvp6"]).ToString()))
                             {
-                                item.Valente = Convert.ToDouble(reader["Valente"]);
+                                item.Valente = Convert.ToDouble(reader["Pvp6"]);
                             }
                             if (!string.IsNullOrEmpty((reader["DescPlus"]).ToString()))
                             {
