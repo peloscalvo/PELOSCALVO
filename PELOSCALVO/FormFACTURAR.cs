@@ -48,6 +48,16 @@ namespace PELOSCALVO
             Info.SetToolTip(this.BtnBuscarFactura, "Buscar Factura");
             // Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
+        public void AñadirIdFATU()
+        {
+            int ii = 0;
+            foreach (var fila in dsFacturas.DtNuevaFactura)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
+
+        }
         private void CalcularImportes(DataGridView DatagriCalcular)
         {
             double cantidad = 0;
@@ -2497,7 +2507,18 @@ namespace PELOSCALVO
 
         private void BtnBuscarFactura_Click(object sender, EventArgs e)
         {
+            if (dtNuevaFacturaBindingSource.Count > 0)
+            {
 
+                ClasDatos.OkFacturar = true;
+                ClasDatos.QUEform = "FACTURA";
+                AñadirIdFATU();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(1, " Apodo", "Apodo", "Apodo", 1);
+                frm.BringToFront();
+                frm.ShowDialog();
+
+            }
         }
 
         private void DtDetallesFacturaDataGridView_MouseEnter(object sender, EventArgs e)

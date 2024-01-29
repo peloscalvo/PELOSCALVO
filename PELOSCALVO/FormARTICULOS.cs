@@ -102,7 +102,7 @@ namespace PELOSCALVO
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString(),"ERROR AL GUARDAR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message.ToString(), "ERROR AL GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -119,27 +119,53 @@ namespace PELOSCALVO
             try
             {
                 int Fila = this.EmpresaArticulos.SelectedIndex;
+                int Fila2 = 0;
                 if (this.dtConfiguracionPrincipalBindingSource.Count > 0)
                 {
+                    foreach (string item in this.TipoTarifa.Items)
+                    {
+                        if (!string.IsNullOrEmpty(item.ToString()))
+                        {
+                            if (Fila2 == 1)
+                            {
+                                LabDes3.Text = item.ToString();
+                            }
+                            if (Fila2 == 2)
+                            {
+                                LabDesc4.Text = item.ToString();
+                            }
+                            if (Fila2 == 3)
+                            {
+                                LabDes5.Text = item.ToString();
+                            }
+                            if (Fila2 == 4)
+                            {
+                                LabDes6.Text = item.ToString();
+                            }
+   
+                        }
+                        Fila2++;
+                    }
+                    return;
                     if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.CastyLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString();
+                        this.LabDes3.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString();
+                        // this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString();
                     }
                     if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.SuarezLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString();
+                        this.LabDesc4.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString();
+                        //  this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString();
                     }
                     if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.BenitoLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString();
+                        this.LabDes5.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString();
+                        // this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString();
                     }
                     if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString() != string.Empty)
                     {
-                        this.ValenteLab.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
-                        this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
+                        this.LabDes6.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
+                        // this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
                     }
                 }
             }
@@ -239,11 +265,11 @@ namespace PELOSCALVO
             this.pvp1 = (this.Coste + (this.Coste * this.Ganancia / 100));
             this.Pvp1Text.Text = string.Format("{0:C3" + "}", this.pvp1);
             this.PvpIvaLabel2.Text = string.Format("{0:C3" + "}", this.pvp1 + (this.pvp1 * this.iva / 100));
-            this.Pvp2Label2.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.Pvp2Desc / 100)));
-            this.CastyLabel2.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.CastiDesc / 100)));
-            this.SuarezLabel2.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.SuarezDesc / 100)));
-            this.BenitoLabel2.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.BenitoDesc / 100)));
-            this.ValenteLabel2.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.ValenteDesc / 100)));
+            this.Pvp2Text.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.Pvp2Desc / 100)));
+            this.Pvp3Txt.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.CastiDesc / 100)));
+            this.Pvp4Txt.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.SuarezDesc / 100)));
+            this.Pvp5Txt.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.BenitoDesc / 100)));
+            this.Pvp6Txt.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.ValenteDesc / 100)));
             this.PlusLabel2.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.PlusDesc / 100)));
             Validate();
         }
@@ -445,7 +471,7 @@ namespace PELOSCALVO
 
         private void BtnBuscarArticulo_Click(object sender, EventArgs e)
         {
-            if (dtArticulosBindingSource.Count > 0)
+            if (this.dtArticulosBindingSource.Count > 0)
             {
                 if (this.BtnGuardarArticulo.Enabled == false)
                 {
@@ -601,7 +627,7 @@ namespace PELOSCALVO
         private void EmpresaArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (this.tarifaTipoArticulos.Items.Count >= 6)
+            if (this.TipoTarifa.Items.Count >= 6)
             {
 
                 //LlenarDescuentos();
@@ -766,7 +792,7 @@ namespace PELOSCALVO
             {
                 e.Handled = false;
             }
-            else if ((e.KeyChar == ',') && (!this.PlusDescTextBox.Text.Contains(",")))
+            else if ((e.KeyChar == ',') && (!this.PlusDescTxt.Text.Contains(",")))
             {
                 e.Handled = true;
             }
@@ -842,7 +868,7 @@ namespace PELOSCALVO
         }
         private void CastyDescTextBox_Enter(object sender, EventArgs e)
         {
-            this.CastyDescTextBox.Text = this.CastyDescTextBox.Text.Replace("%", "");
+            this.Desc3Txt.Text = this.Desc3Txt.Text.Replace("%", "");
 
         }
         private void SuarezDescTextBox_Validated(object sender, EventArgs e)
@@ -881,27 +907,27 @@ namespace PELOSCALVO
 
         private void SuarezDescTextBox_Enter(object sender, EventArgs e)
         {
-            this.SuarezDescTextBox.Text = this.SuarezDescTextBox.Text.Replace("%", "");
+            this.Desc4Txt.Text = this.Desc4Txt.Text.Replace("%", "");
         }
 
         private void BenitoDescTextBox_Enter(object sender, EventArgs e)
         {
-            this.BenitoDescTextBox.Text = this.BenitoDescTextBox.Text.Replace("%", "");
+            this.Desc5Text.Text = this.Desc5Text.Text.Replace("%", "");
         }
 
         private void ValenteDescTextBox_Enter(object sender, EventArgs e)
         {
-            this.ValenteDescTextBox.Text = this.ValenteDescTextBox.Text.Replace("%", "");
+            this.Desc6Txt.Text = this.Desc6Txt.Text.Replace("%", "");
         }
 
         private void Pvp2DescTextBox_Enter(object sender, EventArgs e)
         {
-            this.Pvp2DescTextBox.Text = this.Pvp2DescTextBox.Text.Replace("%", "");
+            this.Desc2Text.Text = this.Desc2Text.Text.Replace("%", "");
         }
 
         private void PlusDescTextBox_Enter(object sender, EventArgs e)
         {
-            this.PlusDescTextBox.Text = this.PlusDescTextBox.Text.Replace("%", "");
+            this.PlusDescTxt.Text = this.PlusDescTxt.Text.Replace("%", "");
         }
 
         private void CastyDescTextBox_Validated(object sender, EventArgs e)
@@ -962,14 +988,14 @@ namespace PELOSCALVO
                     this.DescripccionTextBox.Text = this.dtPreciosDataGridView.Rows[fila].Cells[2].FormattedValue.ToString();
                     this.CosteTextBox.Text = this.dtPreciosDataGridView.Rows[fila].Cells[3].FormattedValue.ToString();
                     this.Pvp1Text.Text = this.dtPreciosDataGridView.Rows[fila].Cells[4].FormattedValue.ToString();
-                    this.Pvp2Label2.Text = this.dtPreciosDataGridView.Rows[fila].Cells[5].FormattedValue.ToString();
-                    this.CastyLabel2.Text = this.dtPreciosDataGridView.Rows[fila].Cells[6].FormattedValue.ToString();
-                    this.SuarezLabel2.Text = this.dtPreciosDataGridView.Rows[fila].Cells[7].FormattedValue.ToString();
-                    this.BenitoLabel2.Text = this.dtPreciosDataGridView.Rows[fila].Cells[8].FormattedValue.ToString();
-                    this.ValenteLabel2.Text = this.dtPreciosDataGridView.Rows[fila].Cells[9].FormattedValue.ToString();
+                    this.Pvp2Text.Text = this.dtPreciosDataGridView.Rows[fila].Cells[5].FormattedValue.ToString();
+                    this.Pvp3Txt.Text = this.dtPreciosDataGridView.Rows[fila].Cells[6].FormattedValue.ToString();
+                    this.Pvp4Txt.Text = this.dtPreciosDataGridView.Rows[fila].Cells[7].FormattedValue.ToString();
+                    this.Pvp5Txt.Text = this.dtPreciosDataGridView.Rows[fila].Cells[8].FormattedValue.ToString();
+                    this.Pvp6Txt.Text = this.dtPreciosDataGridView.Rows[fila].Cells[9].FormattedValue.ToString();
                     this.PlusLabel2.Text = this.dtPreciosDataGridView.Rows[fila].Cells[10].FormattedValue.ToString();
                     this.familiaComboBox.Text = ClasArticulos.ListaArticulos.lista[fila].Familia.ToString();
-                    this.CastyDescTextBox.Text = ClasArticulos.ListaArticulos.lista[fila].CastyDesc.ToString();
+                    this.Desc3Txt.Text = ClasArticulos.ListaArticulos.lista[fila].CastyDesc.ToString();
                 }
             }
             catch (Exception)
@@ -1143,17 +1169,17 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@GANANCIA", string.IsNullOrEmpty(this.GananciaTextBox.Text) ? (object)DBNull.Value : this.Ganancia / 100);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP1", string.IsNullOrEmpty(this.Pvp1Text.Text) ? (object)DBNull.Value : this.Pvp1Text.Text.Replace("€", ""));
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVPIVA", string.IsNullOrEmpty(this.PvpIvaLabel2.Text) ? (object)DBNull.Value : this.PvpIvaLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP2DESC", string.IsNullOrEmpty(this.Pvp2DescTextBox.Text) ? (object)DBNull.Value : this.Pvp2Desc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP2", string.IsNullOrEmpty(this.Pvp2Label2.Text) ? (object)DBNull.Value : this.Pvp2Label2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CASTYDESC", string.IsNullOrEmpty(this.CastyDescTextBox.Text) ? (object)DBNull.Value : this.CastiDesc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CASTY", string.IsNullOrEmpty(this.CastyLabel2.Text) ? (object)DBNull.Value : this.CastyLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SUAREZDESC", string.IsNullOrEmpty(this.SuarezDescTextBox.Text) ? (object)DBNull.Value : this.SuarezDesc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SUAREZ", string.IsNullOrEmpty(this.SuarezLabel2.Text) ? (object)DBNull.Value : this.SuarezLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@BENITODESC", string.IsNullOrEmpty(this.BenitoDescTextBox.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@BENITO", string.IsNullOrEmpty(this.BenitoLabel2.Text) ? (object)DBNull.Value : this.BenitoLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTEDES", string.IsNullOrEmpty(this.ValenteDescTextBox.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTE", string.IsNullOrEmpty(this.ValenteLabel2.Text) ? (object)DBNull.Value : this.ValenteLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PLUSDESC", string.IsNullOrEmpty(this.PlusDescTextBox.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP2DESC", string.IsNullOrEmpty(this.Desc2Text.Text) ? (object)DBNull.Value : this.Pvp2Desc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP2", string.IsNullOrEmpty(this.Pvp2Text.Text) ? (object)DBNull.Value : this.Pvp2Text.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CASTYDESC", string.IsNullOrEmpty(this.Desc3Txt.Text) ? (object)DBNull.Value : this.CastiDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CASTY", string.IsNullOrEmpty(this.Pvp3Txt.Text) ? (object)DBNull.Value : this.Pvp3Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SUAREZDESC", string.IsNullOrEmpty(this.Desc4Txt.Text) ? (object)DBNull.Value : this.SuarezDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SUAREZ", string.IsNullOrEmpty(this.Pvp4Txt.Text) ? (object)DBNull.Value : this.Pvp4Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@BENITODESC", string.IsNullOrEmpty(this.Desc5Text.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@BENITO", string.IsNullOrEmpty(this.Pvp5Txt.Text) ? (object)DBNull.Value : this.Pvp5Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTEDES", string.IsNullOrEmpty(this.Desc6Txt.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTE", string.IsNullOrEmpty(this.Pvp6Txt.Text) ? (object)DBNull.Value : this.Pvp6Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PLUSDESC", string.IsNullOrEmpty(this.PlusDescTxt.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PLUS", string.IsNullOrEmpty(this.PlusLabel2.Text) ? (object)DBNull.Value : this.PlusLabel2.Text.Replace("€", ""));
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@UNIDADPALE", string.IsNullOrEmpty(this.UnidadPaletTextBox.Text) ? (object)DBNull.Value : this.UnidadPaletTextBox.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@MINIMOSSTO", string.IsNullOrEmpty(this.MinimosStockTextBox.Text) ? (object)DBNull.Value : this.MinimosStockTextBox.Text);
@@ -1225,17 +1251,17 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@GANANCIA", string.IsNullOrEmpty(this.GananciaTextBox.Text) ? (object)DBNull.Value : this.Ganancia / 100);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP1", string.IsNullOrEmpty(this.Pvp1Text.Text) ? (object)DBNull.Value : this.Pvp1Text.Text.Replace("€", ""));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVPIVA", string.IsNullOrEmpty(this.PvpIvaLabel2.Text) ? (object)DBNull.Value : this.PvpIvaLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP2DESC", string.IsNullOrEmpty(this.Pvp2DescTextBox.Text) ? (object)DBNull.Value : this.Pvp2Desc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP2", string.IsNullOrEmpty(this.Pvp2Label2.Text) ? (object)DBNull.Value : this.Pvp2Label2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@CASTYDESC", string.IsNullOrEmpty(this.CastyDescTextBox.Text) ? (object)DBNull.Value : this.CastiDesc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@CASTY", string.IsNullOrEmpty(this.CastyLabel2.Text) ? (object)DBNull.Value : this.CastyLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@SUAREZDESC", string.IsNullOrEmpty(this.SuarezDescTextBox.Text) ? (object)DBNull.Value : this.SuarezDesc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@SUAREZ", string.IsNullOrEmpty(this.SuarezLabel2.Text) ? (object)DBNull.Value : this.SuarezLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@BENITODESC", string.IsNullOrEmpty(this.BenitoDescTextBox.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@BENITO", string.IsNullOrEmpty(this.BenitoLabel2.Text) ? (object)DBNull.Value : this.BenitoLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTEDES", string.IsNullOrEmpty(this.ValenteDescTextBox.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTE", string.IsNullOrEmpty(this.ValenteLabel2.Text) ? (object)DBNull.Value : this.ValenteLabel2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PLUSDESC", string.IsNullOrEmpty(this.PlusDescTextBox.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP2DESC", string.IsNullOrEmpty(this.Desc2Text.Text) ? (object)DBNull.Value : this.Pvp2Desc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP2", string.IsNullOrEmpty(this.Pvp2Text.Text) ? (object)DBNull.Value : this.Pvp2Text.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@CASTYDESC", string.IsNullOrEmpty(this.Desc3Txt.Text) ? (object)DBNull.Value : this.CastiDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@CASTY", string.IsNullOrEmpty(this.Pvp3Txt.Text) ? (object)DBNull.Value : this.Pvp3Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@SUAREZDESC", string.IsNullOrEmpty(this.Desc4Txt.Text) ? (object)DBNull.Value : this.SuarezDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@SUAREZ", string.IsNullOrEmpty(this.Pvp4Txt.Text) ? (object)DBNull.Value : this.Pvp4Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@BENITODESC", string.IsNullOrEmpty(this.Desc5Text.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@BENITO", string.IsNullOrEmpty(this.Pvp5Txt.Text) ? (object)DBNull.Value : this.Pvp5Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTEDES", string.IsNullOrEmpty(this.Desc6Txt.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTE", string.IsNullOrEmpty(this.Pvp6Txt.Text) ? (object)DBNull.Value : this.Pvp6Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PLUSDESC", string.IsNullOrEmpty(this.PlusDescTxt.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PLUS", string.IsNullOrEmpty(this.PlusLabel2.Text) ? (object)DBNull.Value : this.PlusLabel2.Text.Replace("€", ""));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@UNIDADPALE", string.IsNullOrEmpty(this.UnidadPaletTextBox.Text) ? (object)DBNull.Value : this.UnidadPaletTextBox.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@MINIMOSSTO", string.IsNullOrEmpty(this.MinimosStockTextBox.Text) ? (object)DBNull.Value : this.MinimosStockTextBox.Text);
@@ -1324,10 +1350,10 @@ namespace PELOSCALVO
 
         private void CastyDescTextBox_Leave(object sender, EventArgs e)
         {
-            if (this.CastyDescTextBox.Text != string.Empty)
+            if (this.Desc3Txt.Text != string.Empty)
             {
-                this.CastiDesc = Convert.ToDouble(this.CastyDescTextBox.Text);
-                this.CastyDescTextBox.Text = Convert.ToString(this.CastiDesc / 100);
+                this.CastiDesc = Convert.ToDouble(this.Desc3Txt.Text);
+                this.Desc3Txt.Text = Convert.ToString(this.CastiDesc / 100);
             }
 
         }
@@ -1336,38 +1362,38 @@ namespace PELOSCALVO
         {
             if (this.GananciaTextBox.Text != string.Empty)
             {
-                this.SuarezDesc = Convert.ToDouble(this.SuarezDescTextBox.Text);
-                this.SuarezDescTextBox.Text = Convert.ToString(this.SuarezDesc / 100);
+                this.SuarezDesc = Convert.ToDouble(this.Desc4Txt.Text);
+                this.Desc4Txt.Text = Convert.ToString(this.SuarezDesc / 100);
             }
 
         }
 
         private void BenitoDescTextBox_Leave(object sender, EventArgs e)
         {
-            if (this.BenitoDescTextBox.Text != string.Empty)
+            if (this.Desc5Text.Text != string.Empty)
             {
-                this.BenitoDesc = Convert.ToDouble(this.BenitoDescTextBox.Text);
-                this.BenitoDescTextBox.Text = Convert.ToString(this.BenitoDesc / 100);
+                this.BenitoDesc = Convert.ToDouble(this.Desc5Text.Text);
+                this.Desc5Text.Text = Convert.ToString(this.BenitoDesc / 100);
             }
 
         }
 
         private void ValenteDescTextBox_Leave(object sender, EventArgs e)
         {
-            if (this.ValenteDescTextBox.Text != string.Empty)
+            if (this.Desc6Txt.Text != string.Empty)
             {
-                this.ValenteDesc = Convert.ToDouble(this.ValenteDescTextBox.Text);
-                this.ValenteDescTextBox.Text = Convert.ToString(this.ValenteDesc / 100);
+                this.ValenteDesc = Convert.ToDouble(this.Desc6Txt.Text);
+                this.Desc6Txt.Text = Convert.ToString(this.ValenteDesc / 100);
             }
 
         }
 
         private void Pvp2DescTextBox_Leave(object sender, EventArgs e)
         {
-            if (this.Pvp2DescTextBox.Text != string.Empty)
+            if (this.Desc2Text.Text != string.Empty)
             {
-                this.Pvp2Desc = Convert.ToDouble(this.Pvp2DescTextBox.Text);
-                this.Pvp2DescTextBox.Text = Convert.ToString(this.Pvp2Desc / 100);
+                this.Pvp2Desc = Convert.ToDouble(this.Desc2Text.Text);
+                this.Desc2Text.Text = Convert.ToString(this.Pvp2Desc / 100);
             }
 
 
@@ -1375,7 +1401,7 @@ namespace PELOSCALVO
 
         private void PlusDescTextBox_MouseLeave(object sender, EventArgs e)
         {
-            if (this.PlusDescTextBox.Text != string.Empty)
+            if (this.PlusDescTxt.Text != string.Empty)
             {
                 //PlusDesc = Convert.ToDouble(PlusDescTextBox.Text);
                 //PlusDescTextBox.Text = Convert.ToString(PlusDesc / 100);
@@ -1414,10 +1440,10 @@ namespace PELOSCALVO
 
         private void PlusDescTextBox_Leave(object sender, EventArgs e)
         {
-            if (this.PlusDescTextBox.Text != string.Empty)
+            if (this.PlusDescTxt.Text != string.Empty)
             {
-                this.PlusDesc = Convert.ToDouble(this.PlusDescTextBox.Text);
-                this.PlusDescTextBox.Text = Convert.ToString(this.PlusDesc / 100);
+                this.PlusDesc = Convert.ToDouble(this.PlusDescTxt.Text);
+                this.PlusDescTxt.Text = Convert.ToString(this.PlusDesc / 100);
             }
         }
 

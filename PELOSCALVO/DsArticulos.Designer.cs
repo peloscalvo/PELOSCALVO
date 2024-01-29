@@ -328,25 +328,25 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnPvpIva;
             
-            private global::System.Data.DataColumn columnPvp2Desc;
+            private global::System.Data.DataColumn columnDesc2;
             
             private global::System.Data.DataColumn columnPvp2;
             
-            private global::System.Data.DataColumn columnCastyDesc;
+            private global::System.Data.DataColumn columnDesc3;
             
-            private global::System.Data.DataColumn columnCasty;
+            private global::System.Data.DataColumn columnPvp3;
             
-            private global::System.Data.DataColumn columnSuarezDesc;
+            private global::System.Data.DataColumn columnDesc4;
             
-            private global::System.Data.DataColumn columnSuarez;
+            private global::System.Data.DataColumn columnPvp4;
             
-            private global::System.Data.DataColumn columnBenitoDesc;
+            private global::System.Data.DataColumn columnDesc5;
             
-            private global::System.Data.DataColumn columnBenito;
+            private global::System.Data.DataColumn columnPvp5;
             
-            private global::System.Data.DataColumn columnValenteDes;
+            private global::System.Data.DataColumn columnDesc6;
             
-            private global::System.Data.DataColumn columnValente;
+            private global::System.Data.DataColumn columnPvp6;
             
             private global::System.Data.DataColumn columnPlusDesc;
             
@@ -461,9 +461,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Pvp2DescColumn {
+            public global::System.Data.DataColumn Desc2Column {
                 get {
-                    return this.columnPvp2Desc;
+                    return this.columnDesc2;
                 }
             }
             
@@ -477,65 +477,65 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CastyDescColumn {
+            public global::System.Data.DataColumn Desc3Column {
                 get {
-                    return this.columnCastyDesc;
+                    return this.columnDesc3;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CastyColumn {
+            public global::System.Data.DataColumn Pvp3Column {
                 get {
-                    return this.columnCasty;
+                    return this.columnPvp3;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SuarezDescColumn {
+            public global::System.Data.DataColumn Desc4Column {
                 get {
-                    return this.columnSuarezDesc;
+                    return this.columnDesc4;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SuarezColumn {
+            public global::System.Data.DataColumn Pvp4Column {
                 get {
-                    return this.columnSuarez;
+                    return this.columnPvp4;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BenitoDescColumn {
+            public global::System.Data.DataColumn Desc5Column {
                 get {
-                    return this.columnBenitoDesc;
+                    return this.columnDesc5;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BenitoColumn {
+            public global::System.Data.DataColumn Pvp5Column {
                 get {
-                    return this.columnBenito;
+                    return this.columnPvp5;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ValenteDesColumn {
+            public global::System.Data.DataColumn Desc6Column {
                 get {
-                    return this.columnValenteDes;
+                    return this.columnDesc6;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ValenteColumn {
+            public global::System.Data.DataColumn Pvp6Column {
                 get {
-                    return this.columnValente;
+                    return this.columnPvp6;
                 }
             }
             
@@ -672,16 +672,16 @@ namespace PELOSCALVO {
                         decimal Ganancia, 
                         double Pvp1, 
                         double PvpIva, 
-                        decimal Pvp2Desc, 
+                        decimal Desc2, 
                         double Pvp2, 
-                        decimal CastyDesc, 
-                        double Casty, 
-                        decimal SuarezDesc, 
-                        double Suarez, 
-                        decimal BenitoDesc, 
-                        decimal Benito, 
-                        double ValenteDes, 
-                        decimal Valente, 
+                        decimal Desc3, 
+                        double Pvp3, 
+                        decimal Desc4, 
+                        double Pvp4, 
+                        decimal Desc5, 
+                        decimal Pvp5, 
+                        double Desc6, 
+                        decimal Pvp6, 
                         double PlusDesc, 
                         double Plus, 
                         double Stock, 
@@ -702,16 +702,16 @@ namespace PELOSCALVO {
                         Ganancia,
                         Pvp1,
                         PvpIva,
-                        Pvp2Desc,
+                        Desc2,
                         Pvp2,
-                        CastyDesc,
-                        Casty,
-                        SuarezDesc,
-                        Suarez,
-                        BenitoDesc,
-                        Benito,
-                        ValenteDes,
-                        Valente,
+                        Desc3,
+                        Pvp3,
+                        Desc4,
+                        Pvp4,
+                        Desc5,
+                        Pvp5,
+                        Desc6,
+                        Pvp6,
                         PlusDesc,
                         Plus,
                         Stock,
@@ -759,16 +759,16 @@ namespace PELOSCALVO {
                 this.columnGanancia = base.Columns["Ganancia"];
                 this.columnPvp1 = base.Columns["Pvp1"];
                 this.columnPvpIva = base.Columns["PvpIva"];
-                this.columnPvp2Desc = base.Columns["Pvp2Desc"];
+                this.columnDesc2 = base.Columns["Desc2"];
                 this.columnPvp2 = base.Columns["Pvp2"];
-                this.columnCastyDesc = base.Columns["CastyDesc"];
-                this.columnCasty = base.Columns["Casty"];
-                this.columnSuarezDesc = base.Columns["SuarezDesc"];
-                this.columnSuarez = base.Columns["Suarez"];
-                this.columnBenitoDesc = base.Columns["BenitoDesc"];
-                this.columnBenito = base.Columns["Benito"];
-                this.columnValenteDes = base.Columns["ValenteDes"];
-                this.columnValente = base.Columns["Valente"];
+                this.columnDesc3 = base.Columns["Desc3"];
+                this.columnPvp3 = base.Columns["Pvp3"];
+                this.columnDesc4 = base.Columns["Desc4"];
+                this.columnPvp4 = base.Columns["Pvp4"];
+                this.columnDesc5 = base.Columns["Desc5"];
+                this.columnPvp5 = base.Columns["Pvp5"];
+                this.columnDesc6 = base.Columns["Desc6"];
+                this.columnPvp6 = base.Columns["Pvp6"];
                 this.columnPlusDesc = base.Columns["PlusDesc"];
                 this.columnPlus = base.Columns["Plus"];
                 this.columnStock = base.Columns["Stock"];
@@ -799,26 +799,26 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnPvp1);
                 this.columnPvpIva = new global::System.Data.DataColumn("PvpIva", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPvpIva);
-                this.columnPvp2Desc = new global::System.Data.DataColumn("Pvp2Desc", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPvp2Desc);
+                this.columnDesc2 = new global::System.Data.DataColumn("Desc2", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesc2);
                 this.columnPvp2 = new global::System.Data.DataColumn("Pvp2", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPvp2);
-                this.columnCastyDesc = new global::System.Data.DataColumn("CastyDesc", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCastyDesc);
-                this.columnCasty = new global::System.Data.DataColumn("Casty", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCasty);
-                this.columnSuarezDesc = new global::System.Data.DataColumn("SuarezDesc", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSuarezDesc);
-                this.columnSuarez = new global::System.Data.DataColumn("Suarez", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSuarez);
-                this.columnBenitoDesc = new global::System.Data.DataColumn("BenitoDesc", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBenitoDesc);
-                this.columnBenito = new global::System.Data.DataColumn("Benito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBenito);
-                this.columnValenteDes = new global::System.Data.DataColumn("ValenteDes", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnValenteDes);
-                this.columnValente = new global::System.Data.DataColumn("Valente", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnValente);
+                this.columnDesc3 = new global::System.Data.DataColumn("Desc3", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesc3);
+                this.columnPvp3 = new global::System.Data.DataColumn("Pvp3", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPvp3);
+                this.columnDesc4 = new global::System.Data.DataColumn("Desc4", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesc4);
+                this.columnPvp4 = new global::System.Data.DataColumn("Pvp4", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPvp4);
+                this.columnDesc5 = new global::System.Data.DataColumn("Desc5", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesc5);
+                this.columnPvp5 = new global::System.Data.DataColumn("Pvp5", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPvp5);
+                this.columnDesc6 = new global::System.Data.DataColumn("Desc6", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesc6);
+                this.columnPvp6 = new global::System.Data.DataColumn("Pvp6", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPvp6);
                 this.columnPlusDesc = new global::System.Data.DataColumn("PlusDesc", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPlusDesc);
                 this.columnPlus = new global::System.Data.DataColumn("Plus", typeof(double), null, global::System.Data.MappingType.Element);
@@ -1764,17 +1764,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal Pvp2Desc {
+            public decimal Desc2 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDtArticulos.Pvp2DescColumn]));
+                        return ((decimal)(this[this.tableDtArticulos.Desc2Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Pvp2Desc\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Desc2\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.Pvp2DescColumn] = value;
+                    this[this.tableDtArticulos.Desc2Column] = value;
                 }
             }
             
@@ -1796,129 +1796,129 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal CastyDesc {
+            public decimal Desc3 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDtArticulos.CastyDescColumn]));
+                        return ((decimal)(this[this.tableDtArticulos.Desc3Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CastyDesc\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Desc3\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.CastyDescColumn] = value;
+                    this[this.tableDtArticulos.Desc3Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double Casty {
+            public double Pvp3 {
                 get {
                     try {
-                        return ((double)(this[this.tableDtArticulos.CastyColumn]));
+                        return ((double)(this[this.tableDtArticulos.Pvp3Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Casty\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Pvp3\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.CastyColumn] = value;
+                    this[this.tableDtArticulos.Pvp3Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal SuarezDesc {
+            public decimal Desc4 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDtArticulos.SuarezDescColumn]));
+                        return ((decimal)(this[this.tableDtArticulos.Desc4Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SuarezDesc\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Desc4\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.SuarezDescColumn] = value;
+                    this[this.tableDtArticulos.Desc4Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double Suarez {
+            public double Pvp4 {
                 get {
                     try {
-                        return ((double)(this[this.tableDtArticulos.SuarezColumn]));
+                        return ((double)(this[this.tableDtArticulos.Pvp4Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Suarez\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Pvp4\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.SuarezColumn] = value;
+                    this[this.tableDtArticulos.Pvp4Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal BenitoDesc {
+            public decimal Desc5 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDtArticulos.BenitoDescColumn]));
+                        return ((decimal)(this[this.tableDtArticulos.Desc5Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'BenitoDesc\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Desc5\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.BenitoDescColumn] = value;
+                    this[this.tableDtArticulos.Desc5Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal Benito {
+            public decimal Pvp5 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDtArticulos.BenitoColumn]));
+                        return ((decimal)(this[this.tableDtArticulos.Pvp5Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Benito\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Pvp5\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.BenitoColumn] = value;
+                    this[this.tableDtArticulos.Pvp5Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double ValenteDes {
+            public double Desc6 {
                 get {
                     try {
-                        return ((double)(this[this.tableDtArticulos.ValenteDesColumn]));
+                        return ((double)(this[this.tableDtArticulos.Desc6Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ValenteDes\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Desc6\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.ValenteDesColumn] = value;
+                    this[this.tableDtArticulos.Desc6Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal Valente {
+            public decimal Pvp6 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDtArticulos.ValenteColumn]));
+                        return ((decimal)(this[this.tableDtArticulos.Pvp6Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Valente\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Pvp6\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.ValenteColumn] = value;
+                    this[this.tableDtArticulos.Pvp6Column] = value;
                 }
             }
             
@@ -2172,14 +2172,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPvp2DescNull() {
-                return this.IsNull(this.tableDtArticulos.Pvp2DescColumn);
+            public bool IsDesc2Null() {
+                return this.IsNull(this.tableDtArticulos.Desc2Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPvp2DescNull() {
-                this[this.tableDtArticulos.Pvp2DescColumn] = global::System.Convert.DBNull;
+            public void SetDesc2Null() {
+                this[this.tableDtArticulos.Desc2Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2196,98 +2196,98 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCastyDescNull() {
-                return this.IsNull(this.tableDtArticulos.CastyDescColumn);
+            public bool IsDesc3Null() {
+                return this.IsNull(this.tableDtArticulos.Desc3Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCastyDescNull() {
-                this[this.tableDtArticulos.CastyDescColumn] = global::System.Convert.DBNull;
+            public void SetDesc3Null() {
+                this[this.tableDtArticulos.Desc3Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCastyNull() {
-                return this.IsNull(this.tableDtArticulos.CastyColumn);
+            public bool IsPvp3Null() {
+                return this.IsNull(this.tableDtArticulos.Pvp3Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCastyNull() {
-                this[this.tableDtArticulos.CastyColumn] = global::System.Convert.DBNull;
+            public void SetPvp3Null() {
+                this[this.tableDtArticulos.Pvp3Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSuarezDescNull() {
-                return this.IsNull(this.tableDtArticulos.SuarezDescColumn);
+            public bool IsDesc4Null() {
+                return this.IsNull(this.tableDtArticulos.Desc4Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSuarezDescNull() {
-                this[this.tableDtArticulos.SuarezDescColumn] = global::System.Convert.DBNull;
+            public void SetDesc4Null() {
+                this[this.tableDtArticulos.Desc4Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSuarezNull() {
-                return this.IsNull(this.tableDtArticulos.SuarezColumn);
+            public bool IsPvp4Null() {
+                return this.IsNull(this.tableDtArticulos.Pvp4Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSuarezNull() {
-                this[this.tableDtArticulos.SuarezColumn] = global::System.Convert.DBNull;
+            public void SetPvp4Null() {
+                this[this.tableDtArticulos.Pvp4Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBenitoDescNull() {
-                return this.IsNull(this.tableDtArticulos.BenitoDescColumn);
+            public bool IsDesc5Null() {
+                return this.IsNull(this.tableDtArticulos.Desc5Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBenitoDescNull() {
-                this[this.tableDtArticulos.BenitoDescColumn] = global::System.Convert.DBNull;
+            public void SetDesc5Null() {
+                this[this.tableDtArticulos.Desc5Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBenitoNull() {
-                return this.IsNull(this.tableDtArticulos.BenitoColumn);
+            public bool IsPvp5Null() {
+                return this.IsNull(this.tableDtArticulos.Pvp5Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBenitoNull() {
-                this[this.tableDtArticulos.BenitoColumn] = global::System.Convert.DBNull;
+            public void SetPvp5Null() {
+                this[this.tableDtArticulos.Pvp5Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsValenteDesNull() {
-                return this.IsNull(this.tableDtArticulos.ValenteDesColumn);
+            public bool IsDesc6Null() {
+                return this.IsNull(this.tableDtArticulos.Desc6Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetValenteDesNull() {
-                this[this.tableDtArticulos.ValenteDesColumn] = global::System.Convert.DBNull;
+            public void SetDesc6Null() {
+                this[this.tableDtArticulos.Desc6Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsValenteNull() {
-                return this.IsNull(this.tableDtArticulos.ValenteColumn);
+            public bool IsPvp6Null() {
+                return this.IsNull(this.tableDtArticulos.Pvp6Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetValenteNull() {
-                this[this.tableDtArticulos.ValenteColumn] = global::System.Convert.DBNull;
+            public void SetPvp6Null() {
+                this[this.tableDtArticulos.Pvp6Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

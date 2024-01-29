@@ -436,6 +436,8 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnMarca;
             
+            private global::System.Data.DataColumn columnIdFila;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtNuevaFacturaDataTable() {
@@ -703,6 +705,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdFilaColumn {
+                get {
+                    return this.columnIdFila;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -767,7 +777,8 @@ namespace PELOSCALVO {
                         int EnlaceFactura, 
                         int EmpresaEnlace, 
                         int EnlaceDtconfi, 
-                        string Marca) {
+                        string Marca, 
+                        string IdFila) {
                 DtNuevaFacturaRow rowDtNuevaFacturaRow = ((DtNuevaFacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NumeroFactura,
@@ -798,7 +809,8 @@ namespace PELOSCALVO {
                         EnlaceFactura,
                         EmpresaEnlace,
                         EnlaceDtconfi,
-                        Marca};
+                        Marca,
+                        IdFila};
                 rowDtNuevaFacturaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtNuevaFacturaRow);
                 return rowDtNuevaFacturaRow;
@@ -857,6 +869,7 @@ namespace PELOSCALVO {
                 this.columnEmpresaEnlace = base.Columns["EmpresaEnlace"];
                 this.columnEnlaceDtconfi = base.Columns["EnlaceDtconfi"];
                 this.columnMarca = base.Columns["Marca"];
+                this.columnIdFila = base.Columns["IdFila"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -920,6 +933,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnEnlaceDtconfi);
                 this.columnMarca = new global::System.Data.DataColumn("Marca", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMarca);
+                this.columnIdFila = new global::System.Data.DataColumn("IdFila", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdFila);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnEnlaceFactura}, true));
                 this.columnNumeroFactura.AllowDBNull = false;
@@ -2203,6 +2218,22 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string IdFila {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtNuevaFactura.IdFilaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdFila\' de la tabla \'DtNuevaFactura\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtNuevaFactura.IdFilaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsApodoNull() {
                 return this.IsNull(this.tableDtNuevaFactura.ApodoColumn);
             }
@@ -2523,6 +2554,18 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetMarcaNull() {
                 this[this.tableDtNuevaFactura.MarcaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIdFilaNull() {
+                return this.IsNull(this.tableDtNuevaFactura.IdFilaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIdFilaNull() {
+                this[this.tableDtNuevaFactura.IdFilaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

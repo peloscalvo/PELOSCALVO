@@ -402,9 +402,9 @@ namespace PELOSCALVO
                 string TablaClientes = this.SerieClientesTabla.Text;
                 string ConsutaArticulos = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaArticulos + "]') AND type in (N'U'))" +
                 "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] primary key NOT NULL, [Referencia] [varchar](50)NULL, [Oem] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
-                "[Ganancia] [numeric](19, 3) NULL,[Pvp1] [numeric](19, 3) NULL,[PvpIva] [numeric](19, 3) NULL,[Pvp2Desc] [numeric](19, 3) NULL,[Pvp2] [numeric](19, 3) NULL," +
-                "[CastyDesc] [numeric](19, 3) NULL,[Casty] [numeric](19, 3) NULL,[SuarezDesc] [numeric](19, 3) NULL,[Suarez] [numeric](19, 3) NULL,[BenitoDesc] [numeric](19, 3) NULL," +
-                "[Benito] [numeric](19, 3) NULL,[ValenteDes] [numeric](19, 3) NULL,[Valente] [numeric](19, 3) NULL,[PlusDesc] [numeric](19, 3) NULL,[Plus] [numeric](19, 3) NULL," +
+                "[Ganancia] [numeric](19, 3) NULL,[Pvp1] [numeric](19, 3) NULL,[PvpIva] [numeric](19, 3) NULL,[Desc2] [numeric](19, 3) NULL,[Pvp2] [numeric](19, 3) NULL," +
+                "[Desc3] [numeric](19, 3) NULL,[Pvp3] [numeric](19, 3) NULL,[Desc4] [numeric](19, 3) NULL,[Pvp4] [numeric](19, 3) NULL,[Desc5] [numeric](19, 3) NULL," +
+                "[Pvp5] [numeric](19, 3) NULL,[Desc6] [numeric](19, 3) NULL,[Pvp6] [numeric](19, 3) NULL,[PlusDesc] [numeric](19, 3) NULL,[Plus] [numeric](19, 3) NULL," +
                 "[UnidadPale] [numeric](19, 3) NULL,[MinimosSto] [numeric](19, 3) NULL,[Stock] [numeric](19, 3) NULL,[Familia] [varchar](50) NULL,[Fecha] [date] NULL," +
                 "[BAJA] [bit]DEFAULT 0 NOT NULL, [Fatu] [bit]DEFAULT 0 NOT NULL)";
                 /////consulta  CLIENTES           CLIENTES   /////////////////

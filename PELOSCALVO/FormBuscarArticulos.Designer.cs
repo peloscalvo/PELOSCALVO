@@ -233,7 +233,7 @@ namespace PELOSCALVO
             // 
             // dtArticulosBindingSource
             // 
-            this.dtArticulosBindingSource.DataMember = "DtArticulos";
+            this.dtArticulosBindingSource.DataMember = "DtArticulos2";
             this.dtArticulosBindingSource.DataSource = this.articulos;
             // 
             // articulos

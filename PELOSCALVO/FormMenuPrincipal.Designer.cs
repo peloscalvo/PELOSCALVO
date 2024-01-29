@@ -511,13 +511,13 @@ namespace PELOSCALVO
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.verToolStripMenuItem.Text = "&Ver";
             // 
             // abrirPdfToolStripMenuItem
             // 
             this.abrirPdfToolStripMenuItem.Name = "abrirPdfToolStripMenuItem";
-            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.abrirPdfToolStripMenuItem.Text = "&Abrir P.d.f";
             // 
             // editarModificarToolStripMenuItem
@@ -525,13 +525,13 @@ namespace PELOSCALVO
             this.editarModificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.codigosDeBarrasToolStripMenuItem});
             this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
-            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
             // 
             // codigosDeBarrasToolStripMenuItem
             // 
             this.codigosDeBarrasToolStripMenuItem.Name = "codigosDeBarrasToolStripMenuItem";
-            this.codigosDeBarrasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.codigosDeBarrasToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.codigosDeBarrasToolStripMenuItem.Text = "&Codigos De Barras";
             this.codigosDeBarrasToolStripMenuItem.Click += new System.EventHandler(this.codigosDeBarrasToolStripMenuItem_Click);
             // 

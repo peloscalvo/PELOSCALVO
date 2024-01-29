@@ -1479,7 +1479,7 @@ namespace PELOSCALVO
             // 
             // dtArticulosBindingSource
             // 
-            this.dtArticulosBindingSource.DataMember = "DtArticulos";
+            this.dtArticulosBindingSource.DataMember = "DtArticulos2";
             this.dtArticulosBindingSource.DataSource = this.articulos;
             // 
             // articulos
@@ -2067,7 +2067,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn direccionDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn CobradaFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaFacturaDataGridViewTextBoxColumn2;
-        private DsFacturas dsFacturas;
         private DsClientes dsClientes;
         private System.Windows.Forms.Label Id_Empresa;
         private System.Windows.Forms.Button BtnBuscarProvi;
@@ -2087,5 +2086,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn precioDetalleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoDetalleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        public DsFacturas dsFacturas;
     }
 }

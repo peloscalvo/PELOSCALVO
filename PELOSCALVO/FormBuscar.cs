@@ -66,6 +66,18 @@ namespace PELOSCALVO
                         this.verViev = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi.DefaultView;
                         this.DataGridBuscar.DataSource = this.verViev;
                     }
+
+                }
+                if (ClasDatos.OkFacturar == true)
+                {
+                    if (FormFacturar.menu2FACTURAR.dsFacturas.DtNuevaFactura != null)
+                    {
+                        if (ClasDatos.QUEform == "FACTURA")
+                        {
+                            this.verViev = FormFacturar.menu2FACTURAR.dsFacturas.DtNuevaFactura.DefaultView;
+                            this.DataGridBuscar.DataSource = this.verViev;
+                        }
+                    }
                 }
                 FiltrarDatos();
                 //this.verViev.RowFilter = "";             
@@ -155,6 +167,10 @@ namespace PELOSCALVO
                     {
                         if (ClasDatos.OkFacturar == true)
                         {
+                            if (ClasDatos.QUEform == "FACTURA")
+                            {
+                                FormFacturar.menu2FACTURAR.dtNuevaFacturaDataGridView.CurrentCell = FormFacturar.menu2FACTURAR.dtNuevaFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[0];
+                            }
                             if (ClasDatos.QUEform == "Paises")
                             {
                                 FormFacturar.menu2FACTURAR.PaisFatuTxt.Text = this.DataGridBuscar.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
