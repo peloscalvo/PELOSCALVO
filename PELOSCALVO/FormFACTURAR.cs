@@ -18,7 +18,6 @@ namespace PELOSCALVO
     {
         public static FormFacturar menu2FACTURAR;
         string SoloNumerosText = "";
-        string a = "1";
         string RazonSocial;
         string Nombre;
         string Direcion;
@@ -33,6 +32,8 @@ namespace PELOSCALVO
         string Obra;
         string Almacen;
         string Proveedor;
+        string Fecha;
+        bool Cobrado;
         public FormFacturar()
         {
             InitializeComponent();
@@ -1445,6 +1446,15 @@ namespace PELOSCALVO
             {
                 this.ProveedorTxt.Text = "";
             }
+            if (!string.IsNullOrEmpty(this.Fecha))
+            {
+                this.FechaFactura.Text = this.Fecha;
+            }
+            else
+            {
+                this.FechaFactura.Text = "";
+            }
+            cobradaFacturaCheckBox.Checked = Cobrado;
         }
         private void CargarDatosFatu()
         {
@@ -1501,6 +1511,11 @@ namespace PELOSCALVO
             {
                 this.Proveedor = this.ProveedorTxt.Text;
             }
+            if (!string.IsNullOrEmpty(this.FechaFactura.Text.ToString()))
+            {
+                this.Fecha = this.FechaFactura.Text;
+            }
+            Cobrado = cobradaFacturaCheckBox.Checked;
         }
         private void BtnModificarFactura_Click(object sender, EventArgs e)
         {
@@ -2613,17 +2628,12 @@ namespace PELOSCALVO
                 return;
             }
 
-            if (this.a == "1")
-            {
-                this.a = "2";
                 ClasDatos.OkFacturar = true;
                 ClasDatos.QUEform = "Facturar";
                 FormImprimirTodo frm = new FormImprimirTodo();
-                frm.FormClosed += (o, args) => this.a = "1";
+                //frm.FormClosed += (o, args) => this.a = "1";
                 frm.ShowDialog();
                 frm.BringToFront();
-
-            }
         }
 
         private void FormFACTURAR_FormClosing(object sender, FormClosingEventArgs e)

@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
+//using System.Windows.Controls;
 using System.Windows.Forms;
 using ZXing;
 
@@ -657,7 +658,7 @@ namespace PELOSCALVO
                         int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
                         BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
                         Barcode codigo = new Barcode();
-                        codigo.IncludeLabel = true;
+
                         // int I;
                         //Bitmap BTM = new Bitmap(0, 0);
 
@@ -669,12 +670,13 @@ namespace PELOSCALVO
 
                                 imagenCodigo = codigo.Encode(tipoCodigo, item2.SubItems[1].Text, Color.Black, Color.White, Ancho, Alto);
                                 codigo.Alignment = AlignmentPositions.CENTER;
-                                imagenTitulo = convertirTextoImagen(item2.SubItems[1].Text, Ancho, Color.White);
-                                alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
-                                imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
-                                dibujar = Graphics.FromImage(imagenNueva);
-                                dibujar.DrawImage(imagenTitulo, new Point(0, 0));
-                                dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                                codigo.IncludeLabel = true;
+                                // imagenTitulo = convertirTextoImagen(item2.SubItems[1].Text, Ancho, Color.White);
+                                // alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
+                                // imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
+                                // dibujar = Graphics.FromImage(imagenNueva);
+                                //  dibujar.DrawImage(imagenTitulo, new Point(0, 0));
+                                //  dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
                                 Opcionimagen ImagenPdf = new Opcionimagen();
                                 ImagenPdf.Valor = imagenCodigo;
                                 FormBuscarArticulos.listas.lista.Add(ImagenPdf);
@@ -685,13 +687,18 @@ namespace PELOSCALVO
                         {
                             imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
                             codigo.Alignment = AlignmentPositions.CENTER;
-                            imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
-                            alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
-                            imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
+    
+                            codigo.IncludeLabel = true;
+                           
+
+                            codigo.LabelPosition = LabelPositions.BOTTOMCENTER;
+                            // imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
+                            // alto_imagen_nuevo = imagenCodigo.Height + imagenTitulo.Height;
+                            //  imagenNueva = new Bitmap(Ancho, alto_imagen_nuevo);
                             // imagenNueva = BTM(Ancho, alto_imagen_nuevo);
-                            dibujar = Graphics.FromImage(imagenNueva);
-                            dibujar.DrawImage(imagenTitulo, new Point(0, 0));
-                            dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
+                            //  dibujar = Graphics.FromImage(imagenNueva);
+                            //  dibujar.DrawImage(imagenTitulo, new Point(0, 0));
+                            //  dibujar.DrawImage(imagenCodigo, new Point(0, imagenTitulo.Height));
                         }
                         this.PitureQr.Image = imagenCodigo;
                     }

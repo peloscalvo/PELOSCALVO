@@ -183,7 +183,7 @@ namespace PELOSCALVO
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
                     this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
-                    this.dtFamiliaProductosBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
+                    this.dtFamiliaProductosBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos;
                 }
             }
             catch (Exception ex)

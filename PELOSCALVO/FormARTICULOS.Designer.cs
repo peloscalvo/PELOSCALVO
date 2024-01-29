@@ -51,6 +51,7 @@ namespace PELOSCALVO
             System.Windows.Forms.Label TipoInpuestoIVALabel1;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label oemLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -63,7 +64,6 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Label oemLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArticulos));
             this.dtPreciosDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +83,7 @@ namespace PELOSCALVO
             this.articulos = new PELOSCALVO.Articulos();
             this.tabControl1Articulo = new System.Windows.Forms.TabControl();
             this.tabPage1Articulo = new System.Windows.Forms.TabPage();
+            this.OemText = new System.Windows.Forms.TextBox();
             this.idArticulo = new System.Windows.Forms.Label();
             this.BajaCheckBox = new System.Windows.Forms.CheckBox();
             this.FechaAlta = new System.Windows.Forms.DateTimePicker();
@@ -145,7 +146,6 @@ namespace PELOSCALVO
             this.CheckFamiliaArt = new System.Windows.Forms.RadioButton();
             this.dtArticulosTableAdapter = new PELOSCALVO.ArticulosTableAdapters.DtArticulosTableAdapter();
             this.tableAdapterManager = new PELOSCALVO.ArticulosTableAdapters.TableAdapterManager();
-            this.OemText = new System.Windows.Forms.TextBox();
             Pvp2Label = new System.Windows.Forms.Label();
             PlusLabel = new System.Windows.Forms.Label();
             familiaLabel = new System.Windows.Forms.Label();
@@ -401,6 +401,15 @@ namespace PELOSCALVO
             label1.TabIndex = 61;
             label1.Text = "Descuentos";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // oemLabel
+            // 
+            oemLabel.AutoSize = true;
+            oemLabel.Location = new System.Drawing.Point(19, 77);
+            oemLabel.Name = "oemLabel";
+            oemLabel.Size = new System.Drawing.Size(32, 13);
+            oemLabel.TabIndex = 67;
+            oemLabel.Text = "Oem:";
             // 
             // dtPreciosDataGridView
             // 
@@ -673,6 +682,14 @@ namespace PELOSCALVO
             this.tabPage1Articulo.Text = "General";
             this.tabPage1Articulo.UseVisualStyleBackColor = true;
             // 
+            // OemText
+            // 
+            this.OemText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Oem", true));
+            this.OemText.Location = new System.Drawing.Point(101, 74);
+            this.OemText.Name = "OemText";
+            this.OemText.Size = new System.Drawing.Size(333, 20);
+            this.OemText.TabIndex = 68;
+            // 
             // idArticulo
             // 
             this.idArticulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -917,7 +934,7 @@ namespace PELOSCALVO
             // 
             // ValenteDescTextBox
             // 
-            this.ValenteDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "ValenteDes", true));
+            this.ValenteDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "ValenteDes", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.ValenteDescTextBox.Location = new System.Drawing.Point(2, 89);
             this.ValenteDescTextBox.MaxLength = 3;
             this.ValenteDescTextBox.Name = "ValenteDescTextBox";
@@ -1492,25 +1509,9 @@ namespace PELOSCALVO
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.DtArticulosTableAdapter = this.dtArticulosTableAdapter;
+            this.tableAdapterManager.Connection = null;
+           // this.tableAdapterManager.DtArticulosTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = PELOSCALVO.ArticulosTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // oemLabel
-            // 
-            oemLabel.AutoSize = true;
-            oemLabel.Location = new System.Drawing.Point(19, 77);
-            oemLabel.Name = "oemLabel";
-            oemLabel.Size = new System.Drawing.Size(32, 13);
-            oemLabel.TabIndex = 67;
-            oemLabel.Text = "Oem:";
-            // 
-            // OemText
-            // 
-            this.OemText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Oem", true));
-            this.OemText.Location = new System.Drawing.Point(101, 74);
-            this.OemText.Name = "OemText";
-            this.OemText.Size = new System.Drawing.Size(333, 20);
-            this.OemText.TabIndex = 68;
             // 
             // FormArticulos
             // 

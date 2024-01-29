@@ -90,6 +90,8 @@ namespace PELOSCALVO
             // 
             // dtClientes2DataGridView
             // 
+            this.dtClientes2DataGridView.AllowUserToAddRows = false;
+            this.dtClientes2DataGridView.AllowUserToDeleteRows = false;
             this.dtClientes2DataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
