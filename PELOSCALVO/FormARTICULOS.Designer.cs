@@ -817,7 +817,7 @@ namespace PELOSCALVO
             // 
             // PlusDescTxt
             // 
-            this.PlusDescTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "PlusDesc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
+            this.PlusDescTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "DescPlus", true));
             this.PlusDescTxt.Location = new System.Drawing.Point(4, 157);
             this.PlusDescTxt.MaxLength = 3;
             this.PlusDescTxt.Name = "PlusDescTxt";

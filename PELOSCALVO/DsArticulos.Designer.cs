@@ -348,7 +348,7 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnPvp6;
             
-            private global::System.Data.DataColumn columnPlusDesc;
+            private global::System.Data.DataColumn columnDescPlus;
             
             private global::System.Data.DataColumn columnPlus;
             
@@ -541,9 +541,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PlusDescColumn {
+            public global::System.Data.DataColumn DescPlusColumn {
                 get {
-                    return this.columnPlusDesc;
+                    return this.columnDescPlus;
                 }
             }
             
@@ -682,7 +682,7 @@ namespace PELOSCALVO {
                         decimal Pvp5, 
                         double Desc6, 
                         decimal Pvp6, 
-                        double PlusDesc, 
+                        double DescPlus, 
                         double Plus, 
                         double Stock, 
                         string Familia, 
@@ -712,7 +712,7 @@ namespace PELOSCALVO {
                         Pvp5,
                         Desc6,
                         Pvp6,
-                        PlusDesc,
+                        DescPlus,
                         Plus,
                         Stock,
                         Familia,
@@ -769,7 +769,7 @@ namespace PELOSCALVO {
                 this.columnPvp5 = base.Columns["Pvp5"];
                 this.columnDesc6 = base.Columns["Desc6"];
                 this.columnPvp6 = base.Columns["Pvp6"];
-                this.columnPlusDesc = base.Columns["PlusDesc"];
+                this.columnDescPlus = base.Columns["DescPlus"];
                 this.columnPlus = base.Columns["Plus"];
                 this.columnStock = base.Columns["Stock"];
                 this.columnFamilia = base.Columns["Familia"];
@@ -819,8 +819,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnDesc6);
                 this.columnPvp6 = new global::System.Data.DataColumn("Pvp6", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPvp6);
-                this.columnPlusDesc = new global::System.Data.DataColumn("PlusDesc", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPlusDesc);
+                this.columnDescPlus = new global::System.Data.DataColumn("DescPlus", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescPlus);
                 this.columnPlus = new global::System.Data.DataColumn("Plus", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPlus);
                 this.columnStock = new global::System.Data.DataColumn("Stock", typeof(double), null, global::System.Data.MappingType.Element);
@@ -1924,17 +1924,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double PlusDesc {
+            public double DescPlus {
                 get {
                     try {
-                        return ((double)(this[this.tableDtArticulos.PlusDescColumn]));
+                        return ((double)(this[this.tableDtArticulos.DescPlusColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PlusDesc\' de la tabla \'DtArticulos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DescPlus\' de la tabla \'DtArticulos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtArticulos.PlusDescColumn] = value;
+                    this[this.tableDtArticulos.DescPlusColumn] = value;
                 }
             }
             
@@ -2292,14 +2292,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPlusDescNull() {
-                return this.IsNull(this.tableDtArticulos.PlusDescColumn);
+            public bool IsDescPlusNull() {
+                return this.IsNull(this.tableDtArticulos.DescPlusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPlusDescNull() {
-                this[this.tableDtArticulos.PlusDescColumn] = global::System.Convert.DBNull;
+            public void SetDescPlusNull() {
+                this[this.tableDtArticulos.DescPlusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

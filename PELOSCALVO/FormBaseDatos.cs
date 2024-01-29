@@ -589,53 +589,53 @@ namespace PELOSCALVO
                             {
                                 item.PvpIva = Convert.ToDouble(reader["PvpIva"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["Pvp2Desc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc2"]).ToString()))
                             {
-                                item.Pvp2Desc = Convert.ToDouble(reader["Pvp2Desc"]);
+                                item.Pvp2Desc = Convert.ToDouble(reader["Desc2"]);
                             }
                             if (!string.IsNullOrEmpty((reader["Pvp2"]).ToString()))
                             {
                                 item.Pvp2 = Convert.ToDouble(reader["Pvp2"]);
                             }
 
-                            if (!string.IsNullOrEmpty((reader["CastyDesc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc3"]).ToString()))
                             {
-                                item.CastyDesc = Convert.ToDouble(reader["CastyDesc"]);
+                                item.CastyDesc = Convert.ToDouble(reader["Desc3"]);
                             }
 
-                            if (!string.IsNullOrEmpty((reader["Casty"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Pvp3"]).ToString()))
                             {
-                                item.Casty = Convert.ToDouble(reader["Casty"]);
+                                item.Casty = Convert.ToDouble(reader["Pvp3"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["SuarezDesc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc4"]).ToString()))
                             {
-                                item.SuarezDesc = Convert.ToDouble(reader["SuarezDesc"]);
+                                item.SuarezDesc = Convert.ToDouble(reader["Desc4"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["Suarez"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Pvp4"]).ToString()))
                             {
-                                item.Suarez = Convert.ToDouble(reader["Suarez"]);
+                                item.Suarez = Convert.ToDouble(reader["Pvp4"]);
                             }
 
-                            if (!string.IsNullOrEmpty((reader["BenitoDesc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc5"]).ToString()))
                             {
-                                item.BenitoDesc = Convert.ToDouble(reader["BenitoDesc"]);
+                                item.BenitoDesc = Convert.ToDouble(reader["Desc5"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["Benito"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Pvp5"]).ToString()))
                             {
 
-                                item.Benito = Convert.ToDouble(reader["Benito"]);
+                                item.Benito = Convert.ToDouble(reader["Pvp5"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["ValenteDes"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc6"]).ToString()))
                             {
-                                item.ValenteDes = Convert.ToDouble(reader["ValenteDes"]);
+                                item.ValenteDes = Convert.ToDouble(reader["Desc6"]);
                             }
                             if (!string.IsNullOrEmpty((reader["Valente"]).ToString()))
                             {
                                 item.Valente = Convert.ToDouble(reader["Valente"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["PlusDesc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["DescPlus"]).ToString()))
                             {
-                                item.PlusDesc = Convert.ToDouble(reader["PlusDesc"]);
+                                item.PlusDesc = Convert.ToDouble(reader["DescPlus"]);
                             }
                             if (!string.IsNullOrEmpty((reader["Plus"]).ToString()))
                             {
