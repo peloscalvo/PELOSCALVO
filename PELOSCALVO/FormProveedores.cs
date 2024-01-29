@@ -85,11 +85,12 @@ namespace PELOSCALVO
         }
         private void RestaurarOjetosProv()
         {
+            this.dataGridProveedores.Enabled = true;
             this.NombreProveedor.ReadOnly = true;
             this.PanelBotones_pro.Enabled = true;
             this.BtnCancelarProve.Enabled = false;
             this.BtnGuardarProve.Enabled = false;
-            this.dataGridProveedores.Enabled = true;
+
         }
         private void GuardarProveedoresDb()
         {
@@ -181,7 +182,7 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores WHERE Id= @Id and Enlace_Proveedores= @Enlace_Proveedores";
+                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores and Enlace_Proveedores= @Enlace_Proveedores";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
@@ -223,7 +224,7 @@ namespace PELOSCALVO
         private void EliminarProveedorSql()
         {
 
-            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores and Enlace_Proveedores= @Enlace_Proveedores";
+            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores and Enlace_Proveedores= @Enlace_Proveedores";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {

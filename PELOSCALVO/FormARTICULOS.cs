@@ -120,11 +120,11 @@ namespace PELOSCALVO
             {
                 int Fila = this.EmpresaArticulos.SelectedIndex;
                 int Fila2 = 0;
-                if (this.dtConfiguracionPrincipalBindingSource.Count > 0)
+                if (this.dtConfiDtTarifaTipoBindingSource.Count > 0)
                 {
-                    foreach (string item in this.TipoTarifa.Items)
+                    foreach (DataRowView item in this.TipoTarifa.Items)
                     {
-                        if (!string.IsNullOrEmpty(item.ToString()))
+                        if (!string.IsNullOrEmpty(item.Row.Table.ToString()))
                         {
                             if (Fila2 == 1)
                             {
@@ -169,9 +169,9 @@ namespace PELOSCALVO
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message.ToString());
                 ////  throw; se deve editar aqui
 
             }

@@ -817,7 +817,7 @@ namespace PELOSCALVO
             // 
             // PlusDescTxt
             // 
-            this.PlusDescTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "DescPlus", true));
+            this.PlusDescTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "DescPlus", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.PlusDescTxt.Location = new System.Drawing.Point(4, 157);
             this.PlusDescTxt.MaxLength = 3;
             this.PlusDescTxt.Name = "PlusDescTxt";
@@ -832,7 +832,7 @@ namespace PELOSCALVO
             // 
             // Desc2Text
             // 
-            this.Desc2Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc2", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc2Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc2", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.Desc2Text.Location = new System.Drawing.Point(4, 131);
             this.Desc2Text.MaxLength = 3;
             this.Desc2Text.Name = "Desc2Text";
@@ -856,7 +856,7 @@ namespace PELOSCALVO
             // 
             // Desc3Txt
             // 
-            this.Desc3Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc3", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc3Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc3", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.Desc3Txt.Location = new System.Drawing.Point(2, 8);
             this.Desc3Txt.MaxLength = 3;
             this.Desc3Txt.Name = "Desc3Txt";
@@ -870,7 +870,7 @@ namespace PELOSCALVO
             // 
             // Desc6Txt
             // 
-            this.Desc6Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc6", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc6Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc6", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.Desc6Txt.Location = new System.Drawing.Point(2, 89);
             this.Desc6Txt.MaxLength = 3;
             this.Desc6Txt.Name = "Desc6Txt";
@@ -894,7 +894,7 @@ namespace PELOSCALVO
             // 
             // Desc5Text
             // 
-            this.Desc5Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc5Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.Desc5Text.Location = new System.Drawing.Point(2, 62);
             this.Desc5Text.MaxLength = 3;
             this.Desc5Text.Name = "Desc5Text";
@@ -908,7 +908,7 @@ namespace PELOSCALVO
             // 
             // Desc4Txt
             // 
-            this.Desc4Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc4", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc4Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc4", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.Desc4Txt.Location = new System.Drawing.Point(2, 35);
             this.Desc4Txt.MaxLength = 3;
             this.Desc4Txt.Name = "Desc4Txt";
@@ -922,7 +922,7 @@ namespace PELOSCALVO
             // 
             // Pvp3Txt
             // 
-            this.Pvp3Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp3", true));
+            this.Pvp3Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp3", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "00,0 €", "C3"));
             this.Pvp3Txt.Location = new System.Drawing.Point(104, 6);
             this.Pvp3Txt.Name = "Pvp3Txt";
             this.Pvp3Txt.Size = new System.Drawing.Size(100, 23);
@@ -932,7 +932,7 @@ namespace PELOSCALVO
             // 
             // Pvp4Txt
             // 
-            this.Pvp4Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp4", true));
+            this.Pvp4Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp4", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "00,0 €", "C3"));
             this.Pvp4Txt.Location = new System.Drawing.Point(104, 33);
             this.Pvp4Txt.Name = "Pvp4Txt";
             this.Pvp4Txt.Size = new System.Drawing.Size(100, 23);
@@ -942,7 +942,7 @@ namespace PELOSCALVO
             // 
             // Pvp6Txt
             // 
-            this.Pvp6Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp6", true));
+            this.Pvp6Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp6", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "00,0 €", "C3"));
             this.Pvp6Txt.Location = new System.Drawing.Point(104, 87);
             this.Pvp6Txt.Name = "Pvp6Txt";
             this.Pvp6Txt.Size = new System.Drawing.Size(100, 23);
@@ -952,7 +952,7 @@ namespace PELOSCALVO
             // 
             // Pvp5Txt
             // 
-            this.Pvp5Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp5", true));
+            this.Pvp5Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "00,0 €", "C3"));
             this.Pvp5Txt.Location = new System.Drawing.Point(104, 60);
             this.Pvp5Txt.Name = "Pvp5Txt";
             this.Pvp5Txt.Size = new System.Drawing.Size(100, 23);
