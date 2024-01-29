@@ -66,7 +66,7 @@ namespace PELOSCALVO
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(20, 23);
+            label10.Location = new System.Drawing.Point(20, 11);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(19, 13);
             label10.TabIndex = 54;
@@ -75,7 +75,7 @@ namespace PELOSCALVO
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(9, 55);
+            label11.Location = new System.Drawing.Point(9, 43);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(33, 13);
             label11.TabIndex = 55;
@@ -105,7 +105,7 @@ namespace PELOSCALVO
             // ObraTxt
             // 
             this.ObraTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtObrasBindingSource, "Obras", true));
-            this.ObraTxt.Location = new System.Drawing.Point(52, 52);
+            this.ObraTxt.Location = new System.Drawing.Point(52, 40);
             this.ObraTxt.MaxLength = 40;
             this.ObraTxt.Name = "ObraTxt";
             this.ObraTxt.ReadOnly = true;
@@ -138,7 +138,7 @@ namespace PELOSCALVO
             // 
             this.Id_obra.AutoSize = true;
             this.Id_obra.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtObrasBindingSource, "Id", true));
-            this.Id_obra.Location = new System.Drawing.Point(52, 23);
+            this.Id_obra.Location = new System.Drawing.Point(52, 11);
             this.Id_obra.Name = "Id_obra";
             this.Id_obra.Size = new System.Drawing.Size(13, 13);
             this.Id_obra.TabIndex = 58;

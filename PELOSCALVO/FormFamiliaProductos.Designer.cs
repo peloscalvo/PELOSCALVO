@@ -51,7 +51,7 @@ namespace PELOSCALVO
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.FamiliaTex = new System.Windows.Forms.TextBox();
             this.panelFamilia = new System.Windows.Forms.Panel();
-            this.DtGridFamilia = new System.Windows.Forms.DataGridView();
+            this.DataGridFamilia = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.familiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             id_almacenesLabel = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@ namespace PELOSCALVO
             this.BotonesFamilia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelFamilia.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DtGridFamilia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridFamilia)).BeginInit();
             this.SuspendLayout();
             // 
             // id_almacenesLabel
@@ -180,6 +180,7 @@ namespace PELOSCALVO
             this.BtnBuscarFamilia.Text = "Buscar";
             this.BtnBuscarFamilia.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnBuscarFamilia.UseVisualStyleBackColor = false;
+            this.BtnBuscarFamilia.Click += new System.EventHandler(this.BtnBuscarFamilia_Click);
             // 
             // BtnNuevoFamilia
             // 
@@ -293,17 +294,17 @@ namespace PELOSCALVO
             this.panelFamilia.TabIndex = 125;
             this.panelFamilia.Tag = "NO";
             // 
-            // DtGridFamilia
+            // DataGridFamilia
             // 
-            this.DtGridFamilia.AllowDrop = true;
-            this.DtGridFamilia.AllowUserToAddRows = false;
-            this.DtGridFamilia.AllowUserToDeleteRows = false;
-            this.DtGridFamilia.AllowUserToResizeRows = false;
-            this.DtGridFamilia.AutoGenerateColumns = false;
-            this.DtGridFamilia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DtGridFamilia.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(102)))));
-            this.DtGridFamilia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DtGridFamilia.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.DataGridFamilia.AllowDrop = true;
+            this.DataGridFamilia.AllowUserToAddRows = false;
+            this.DataGridFamilia.AllowUserToDeleteRows = false;
+            this.DataGridFamilia.AllowUserToResizeRows = false;
+            this.DataGridFamilia.AutoGenerateColumns = false;
+            this.DataGridFamilia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataGridFamilia.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(102)))));
+            this.DataGridFamilia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DataGridFamilia.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -311,12 +312,12 @@ namespace PELOSCALVO
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DtGridFamilia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DtGridFamilia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtGridFamilia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DataGridFamilia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataGridFamilia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridFamilia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.familiaDataGridViewTextBoxColumn});
-            this.DtGridFamilia.DataSource = this.dtFamiliaProductosBindingSource;
+            this.DataGridFamilia.DataSource = this.dtFamiliaProductosBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -324,17 +325,17 @@ namespace PELOSCALVO
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DtGridFamilia.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DtGridFamilia.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DtGridFamilia.Enabled = false;
-            this.DtGridFamilia.Location = new System.Drawing.Point(0, 0);
-            this.DtGridFamilia.MultiSelect = false;
-            this.DtGridFamilia.Name = "DtGridFamilia";
-            this.DtGridFamilia.ReadOnly = true;
-            this.DtGridFamilia.RowHeadersVisible = false;
-            this.DtGridFamilia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DtGridFamilia.Size = new System.Drawing.Size(956, 261);
-            this.DtGridFamilia.TabIndex = 122;
+            this.DataGridFamilia.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DataGridFamilia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DataGridFamilia.Enabled = false;
+            this.DataGridFamilia.Location = new System.Drawing.Point(0, 0);
+            this.DataGridFamilia.MultiSelect = false;
+            this.DataGridFamilia.Name = "DataGridFamilia";
+            this.DataGridFamilia.ReadOnly = true;
+            this.DataGridFamilia.RowHeadersVisible = false;
+            this.DataGridFamilia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridFamilia.Size = new System.Drawing.Size(956, 261);
+            this.DataGridFamilia.TabIndex = 122;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -342,7 +343,6 @@ namespace PELOSCALVO
             dataGridViewCellStyle2.Format = "N0";
             dataGridViewCellStyle2.NullValue = null;
             this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.idDataGridViewTextBoxColumn.FillWeight = 60F;
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
@@ -350,7 +350,7 @@ namespace PELOSCALVO
             // familiaDataGridViewTextBoxColumn
             // 
             this.familiaDataGridViewTextBoxColumn.DataPropertyName = "Familia";
-            this.familiaDataGridViewTextBoxColumn.FillWeight = 98.47716F;
+            this.familiaDataGridViewTextBoxColumn.FillWeight = 304.2704F;
             this.familiaDataGridViewTextBoxColumn.HeaderText = "Familia";
             this.familiaDataGridViewTextBoxColumn.Name = "familiaDataGridViewTextBoxColumn";
             this.familiaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -364,7 +364,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.BtnCancelarFamilia);
             this.Controls.Add(this.BtnGuardarFamillia);
             this.Controls.Add(this.panelFamilia);
-            this.Controls.Add(this.DtGridFamilia);
+            this.Controls.Add(this.DataGridFamilia);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormFamiliaProductos";
             this.Text = "Familia De Productos";
@@ -377,7 +377,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panelFamilia.ResumeLayout(false);
             this.panelFamilia.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DtGridFamilia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridFamilia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -397,10 +397,10 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnNuevoFamilia;
         private System.Windows.Forms.Button BtnModificarFAmilia;
         private System.Windows.Forms.TextBox FamiliaTex;
-        private System.Windows.Forms.DataGridView DtGridFamilia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn familiaDataGridViewTextBoxColumn;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DsMulti2 dsMulti2;
+        public System.Windows.Forms.DataGridView DataGridFamilia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn familiaDataGridViewTextBoxColumn;
     }
 }

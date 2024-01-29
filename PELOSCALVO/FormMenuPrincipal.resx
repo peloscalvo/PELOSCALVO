@@ -128,7 +128,7 @@
 </value>
   </data>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>265, 70</value>
+    <value>685, 18</value>
   </metadata>
   <data name="btnConfiguracion.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -148,23 +148,6 @@
         EhxHgOfGcSG3qBbKAjVTzkPkgy9UWEYwHsv+GYJKaJ+p0TzsL1iJoEpsTO4O2KfwOazFsgBiTR2MorP3
         rtEmScivi/YE1n4I9hZ8xsX0b8Apxj3+XQer2g5ePvpZCT+4tcTGFNeLA7bTewY8RzSmuFws0Gz4H6GT
         0JUA2RMr3B3icjmQ5WiyMcV0lZDL/QEO42F5QNnQwgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnListaClientes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAoNJREFUWEftlMFLVFEUxh/SUmKQcBX9CeK8GU2iRNoULVuISE2vaYIUGyJcibsW
-        0l8gES0kpHW0iBYRrkNCZiF2n9RWXIjIICHD+H3nft4c3ighzKr3gzvc833nnnPfu3delJOTk3MRXBLf
-        dJXhNYw/GmvUZPcWNT/C+OYeFWs2OOdGkviG0noHGn1lw1+z432Soi3MofGNfJHUO9DkkE+tMABtFt6+
-        wovhqiMFVymuolDTD8yr5YJsA3oLzR4oDECrcnMKDa7N1hvpqNcBElaQuGNP459oB9p72Qa0bXivFAag
-        vYa3qdDg2i71VmRnQcIeEusKWfQZtAOFBgq8g7auMACtAW9ZocG1rKGQ9ersoTALTJ5vVSEXTEM7Umjg
-        pt+G1nZJqSwJWmnMPaQWj0syuJY1FHY9pg5gfsdTvFGIuLgMraHQ2J6/xxv/A95HScz7BG09Xbwf/hmE
-        a0+/FdZmD4VZsMMFJOy52mi/ezJ6GfN9aIuyA9Cm4LXc07GCDX8xp2QHuNZqsBZr+iNekJ0Ft3YQSU0k
-        vcDgeTVxa6/IDsBL4LXT2vUBbGAAc2wgDkd3AteqXt1qWr3yoOzuIOkzxgeFATTqxxnfxWvkJeTZvpXF
-        DfHV4usIjznIlRVgTdZW2En68k6fe1waQqElFf97c5N4CBo/tfz8tjEa9NOZW5eUEnFOzTyf4z/VWKsU
-        bpI+ay+xF3ueNnbtFvv/7Pzv5xPhMkHbwGDTabzSa5LPBDlXLddvZkNyxJqsbT18r132ZoMDvLpV/q3S
-        uYnwVCfA5wWrKPxnsIb3pKUwwB7sZT35jcFPG8mT8jPQT8/xz+JnZXiSaxVmYM/z/JycnP+FKDoG2Bej
-        6M0UiGMAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnUsuarios.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -264,43 +247,43 @@
 </value>
   </data>
   <metadata name="tmExpandirMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>59, 13</value>
+    <value>654, 52</value>
   </metadata>
   <metadata name="tmContraerMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>252, 11</value>
+    <value>796, 16</value>
   </metadata>
   <metadata name="tmFechaHora.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>441, 13</value>
+    <value>518, 14</value>
   </metadata>
   <metadata name="dsMultidatos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>751, 13</value>
+    <value>13, 85</value>
   </metadata>
   <metadata name="dsClientes.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>874, 13</value>
+    <value>122, 47</value>
   </metadata>
   <metadata name="articulos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>393, 49</value>
+    <value>25, 46</value>
   </metadata>
   <metadata name="dsCONFIGURACCION.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 52</value>
+    <value>16, 13</value>
   </metadata>
   <metadata name="TimerCerrarPanel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>212, 36</value>
+    <value>789, 55</value>
   </metadata>
   <metadata name="dtConfiguracionPrincipalBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>513, 47</value>
+    <value>181, 13</value>
   </metadata>
   <metadata name="dsServidor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>869, 56</value>
+    <value>15, 125</value>
   </metadata>
   <metadata name="dsMulti2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>652, 13</value>
+    <value>152, 106</value>
   </metadata>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>36</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

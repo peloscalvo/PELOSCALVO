@@ -51,11 +51,6 @@
     </TableUISetting>
     <TableUISetting Name="DtConfiguracionPrincipal">
       <ColumnUISettings>
-        <ColumnUISetting Name="EmpresaConfi">
-          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-              <BindableControlInfo Name="[Ninguno]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
-            </ControlSetting></ControlSettings>
-        </ColumnUISetting>
         <ColumnUISetting Name="IdEmpresa">
           <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="[Ninguno]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />

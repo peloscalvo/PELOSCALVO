@@ -32,16 +32,27 @@ namespace PELOSCALVO
                 {
                     this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti;
                 }
+                if(dtInicioMultiBindingSource.Count < 1)
+                {
+                    dtConfiBindingSource.AddNew();
+                }
+                foreach (var nombre in Enum.GetNames(typeof(BarcodeLib.TYPE)))
+                {
+                    this.CodigoBarras.Items.Add(nombre);
+
+                }
+                if (!string.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["CodigoBarras"].ToString()))
+                {
+                   // this.CodigoBarras.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["CodigoBarras"].ToString();
+                    this.CodigoBarras.Text = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Rows[0]["CodigoBarras"].ToString();
+                }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message.ToString());
             }
-            if (this.dtInicioMultiBindingSource.Count > 0)
-            {
-                this.BtnNuevoInicio.Enabled = false;
-            }
+ 
             if (ClsConexionSql.SibaseDatosSql)
             {
                 this.ArchivoArticuloTxt.DataSource = ObtenerTablasSql();
@@ -223,7 +234,7 @@ namespace PELOSCALVO
                     this.dtInicioMultiBindingSource.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR DATOS INICIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosInico();
-                    this.BtnNuevoInicio.Enabled = false;
+ 
                 }
             }
             catch (Exception ex)
@@ -289,7 +300,6 @@ namespace PELOSCALVO
                     this.dtInicioDataGridView.EndEdit();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR DATOS INICIO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosInico();
-                    this.BtnNuevoInicio.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -360,6 +370,11 @@ namespace PELOSCALVO
                     {
                         try
                         {
+                       
+                            if (!string.IsNullOrEmpty(CodigoBarras.Text))
+                            {
+                             FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["CodigoBarras"] =CodigoBarras.Text;
+                            }
                             FormMenuPrincipal.menu2principal.dsMultidatos.WriteXml(ClasDatos.RutaMultidatos);
                             MessageBox.Show("Se guardo Con Exito", "GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             RestaurarOjetosInico();
@@ -375,10 +390,7 @@ namespace PELOSCALVO
                         MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         this.PanelBotones_Inicio.Enabled = false;
                     }
-                    if (this.dtInicioMultiBindingSource.Count > 0)
-                    {
-                        this.BtnNuevoInicio.Enabled = false;
-                    }
+
                 }
 
             }
@@ -386,19 +398,7 @@ namespace PELOSCALVO
 
         private void BtnNuevoInicio_Click(object sender, EventArgs e)
         {
-            this.PanelBotones_Inicio.Tag = "Nuevo";
-            try
-            {
-                this.Id_Inicio.Text = "1";
-
-                ModificarOjetosInicio();
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
+    
         }
 
         private void BtnCancelarInicio_Click(object sender, EventArgs e)

@@ -10,6 +10,9 @@ namespace PELOSCALVO
 {
     public partial class FormEjercicios : Form
     {
+        string Ejercicio;
+        string Año;
+        string Descripcion;
         public FormEjercicios()
         {
             InitializeComponent();
@@ -58,6 +61,16 @@ namespace PELOSCALVO
                 ok = false;
             }
             return ok;
+        }
+        public void AñadirIdEjercicio()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfi)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
+
         }
         private bool ValidarBasica()
         {
@@ -120,19 +133,21 @@ namespace PELOSCALVO
             this.BtnCancelarEjercicio.Enabled = true;
             this.EmpresaEjercicioTxt.Enabled = false;
             this.panel1Ejercicio.Enabled = false;
+            // EmpresaEjercicioTxt.CausesValidation = false;
+
         }
         private void GuardarEjercicioBb()
         {
             string consulta = "";
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
-                consulta = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                consulta = "INSERT INTO [DtConfi] ([IdEnlace], [EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES(@IdEnlace,@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [IdEnlace]=[@IdEnlace] ,[EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
                    " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE IdEnlace = @IdEnlace";
             }
@@ -142,6 +157,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(this.IdEnlace.Text) ? (object)DBNull.Value : this.IdEnlace.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : this.IdEmpresa.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.DescripicionEjer.Text) ? (object)DBNull.Value : this.DescripicionEjer.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.IvaEjercicioTxt.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IvaEjercicioTxt.Text));
@@ -150,32 +166,6 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@AñoDeEjercicio", string.IsNullOrEmpty(this.AñoTxt.Text) ? (object)DBNull.Value : this.AñoTxt.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-
-                    if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-                    {
-                        consulta = "Select max(IdEnlace) from [DtConfi]";
-                        NuevaConexion = new ClsConexionDb(consulta);
-                        if (NuevaConexion.SiConexionDb)
-                        {
-                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
-                            if (reader.HasRows)
-                            {
-                                if (reader.Read())
-                                {
-                                    if (!string.IsNullOrEmpty((reader[0]).ToString()))
-                                    {
-                                        this.IdEnlace.Text = reader[0].ToString();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-
-                    }
                     this.dtConfiguracionPrincipalBindingSource.EndEdit();
                     this.dtConfiguracionPrincipalDtConfiBindingSource.EndEdit();
                     this.dtConfiDataGridView.EndEdit();
@@ -203,13 +193,13 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
             {
-                consulta = "INSERT INTO [DtConfi] ([EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
-                   "[AñoDeEjercicio]) VALUES(@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
+                consulta = "INSERT INTO [DtConfi] ([IdEnlace], [EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
+                   "[AñoDeEjercicio]) VALUES(@IdEnlace ,@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                    "  @AñoDeEjercicio)";
             }
             else
             {
-                consulta = "UPDATE [DtConfi] SET [EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
+                consulta = "UPDATE [DtConfi] SET [IdEnlace]=[@IdEnlace] ,[EmpresaENLACE] = @EmpresaENLACE, [ConfiguraccionBasica] = @ConfiguraccionBasica, [TipoInpuestoIVA] = @TipoInpuestoIVA, " +
                    " [EjerciciosDeAño] = @EjerciciosDeAño,  [IdConexionConfi] = @IdConexionConfi, " +
                    " [AñoDeEjercicio] = @AñoDeEjercicio  WHERE IdEnlace = @IdEnlace";
             }
@@ -219,6 +209,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@IdEnlace", string.IsNullOrEmpty(this.IdEnlace.Text) ? (object)DBNull.Value : this.IdEnlace.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaENLACE", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : this.IdEmpresa.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@ConfiguraccionBasica", string.IsNullOrEmpty(this.DescripicionEjer.Text) ? (object)DBNull.Value : this.DescripicionEjer.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoInpuestoIVA", string.IsNullOrEmpty(this.IvaEjercicioTxt.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IvaEjercicioTxt.Text));
@@ -233,27 +224,8 @@ namespace PELOSCALVO
                     Validate();
                     MessageBox.Show("Se Guardaron Datos con exito", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetos_Ej();
-
-                    if (this.BtnNuevoEjercicio.Tag.ToString() == "Nuevo")
-                    {
-                        consulta = "Select max(IdEnlace) from [DtConfi]";
-                        NuevaConexion = new ClsConexionSql(consulta);
-                        if (NuevaConexion.SiConexionSql)
-                        {
-                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-                            if (reader.HasRows)
-                            {
-                                if (reader.Read())
-                                {
-                                    if (!string.IsNullOrEmpty((reader["IdEnlace"]).ToString()))
-                                    {
-                                        this.IdEnlace.Text = Convert.ToInt32(reader["IdEnlace"].ToString() + 1).ToString();
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -362,18 +334,20 @@ namespace PELOSCALVO
         {
             try
             {
+                int Id_Enlace;
                 this.BtnNuevoEjercicio.Tag = "Nuevo";
                 if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)
                 {
                     MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                     return;
                 }
-                SqlDataReader reader;
+                // SqlDataReader reader;
+
+
+
                 Random r = new Random();
                 int VALORid = r.Next(500, 1000000);
                 int numeroFILA = this.dtConfiDataGridView.Rows.Count;
-                string DtConfi = "";
-                int I = 0;
                 this.dtConfiDataGridView.Sort(this.dtConfiDataGridView.Columns[0], ListSortDirection.Ascending);
                 this.dtConfiguracionPrincipalDtConfiBindingSource.AddNew();
                 if (this.dtConfiDataGridView.CurrentCell.RowIndex == 0)
@@ -413,6 +387,60 @@ namespace PELOSCALVO
                     this.AñoTxt.Text = String.Format("{0:yyyy}", DateTime.Now);
                 }
                 this.DescripicionEjer.Text = "Mi Configurarcion Nueva " + this.AñoTxt.Text;
+                if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 1)
+                {
+                    string consulta = "Select max(IdEnlace) from [DtConfi]";
+                    if (ClsConexionSql.SibaseDatosSql)
+                    {
+                        ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
+                        if (NuevaConexion.SiConexionSql)
+                        {
+                            SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                {
+
+                                    Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                    this.IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
+                                }
+                                else
+                                {
+
+                                    MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                        if (NuevaConexion.SiConexionDb)
+                        {
+                            OleDbDataReader reader = NuevaConexion.ComandoDb.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                if (!string.IsNullOrEmpty((reader[0]).ToString()))
+                                {
+                                    Id_Enlace = Convert.ToInt32(reader[0].ToString());
+                                    this.IdEnlace.Text = Convert.ToString(Id_Enlace + 1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    this.IdEnlace.Text = "1";
+                }
                 SiEjercicio();
                 ModificarOjetos_Ej();
             }
@@ -428,6 +456,18 @@ namespace PELOSCALVO
             this.BtnNuevoEjercicio.Tag = "Actualizar";
             if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count >= 1)
             {
+                if (!string.IsNullOrEmpty(this.EjercicioTxt.Text))
+                {
+                    this.Ejercicio = this.EjercicioTxt.Text;
+                }
+                if (!string.IsNullOrEmpty(this.AñoTxt.Text))
+                {
+                    this.Año = this.AñoTxt.Text;
+                }
+                if (!string.IsNullOrEmpty(this.DescripicionEjer.Text))
+                {
+                    this.Descripcion = this.DescripicionEjer.Text;
+                }
                 ModificarOjetos_Ej();
             }
             else
@@ -446,6 +486,33 @@ namespace PELOSCALVO
                     if (this.dtConfiDataGridView.RowCount > 0)
                     {
                         this.dtConfiDataGridView.Rows.RemoveAt(this.dtConfiDataGridView.CurrentCell.RowIndex);
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(this.Ejercicio))
+                    {
+                        this.EjercicioTxt.Text = this.Ejercicio;
+                    }
+                    else
+                    {
+                        this.EjercicioTxt.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Año))
+                    {
+                        this.AñoTxt.Text = this.Año;
+                    }
+                    else
+                    {
+                        this.AñoTxt.Text = "";
+                    }
+                    if (!string.IsNullOrEmpty(this.Descripcion))
+                    {
+                        this.DescripicionEjer.Text = this.Descripcion;
+                    }
+                    else
+                    {
+                        this.DescripicionEjer.Text = "";
                     }
                 }
 
@@ -470,7 +537,12 @@ namespace PELOSCALVO
 
             if (string.IsNullOrEmpty(this.IdConfi.Text))
             {
-                MessageBox.Show("Falta Id", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falta Id Empresa", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(this.IdEnlace.Text))
+            {
+                MessageBox.Show("Falta Id Reguistro", "ERROR APP", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (EspacioDiscosConfi(ClasDatos.RutaBaseDatosDb, 30))
@@ -582,6 +654,21 @@ namespace PELOSCALVO
             if (MessageBox.Show(" ¿Salir Ejercicios ? ", " SALIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Close();
+            }
+        }
+
+        private void BtnBuscarEjercicio_Click(object sender, EventArgs e)
+        {
+            if (this.dtConfiguracionPrincipalDtConfiBindingSource.Count > 0)
+            {
+
+                ClasDatos.OkFacturar = false;
+                ClasDatos.QUEform = "Ejercicio";
+                AñadirIdEjercicio();
+                FormBuscar frm = new FormBuscar();
+                frm.CargarDatos(5, "Ejercicios ", "EjerciciosDeAño", "IdEnlace", Convert.ToInt32(this.IdEmpresa.Text));
+                frm.BringToFront();
+                frm.ShowDialog();
             }
         }
     }

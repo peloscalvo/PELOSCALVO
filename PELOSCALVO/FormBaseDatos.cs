@@ -61,7 +61,7 @@ namespace PELOSCALVO
             }
             try
             {
-                if (FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Count < 4)
+                if (FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Count < 1)
                 {
                     FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add("(Local)");
                     FormMenuPrincipal.menu2principal.dsServidor.DtServidor.Rows.Add(".");
@@ -303,6 +303,7 @@ namespace PELOSCALVO
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
                     FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
                     FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Servidor";
+                    FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.LawnGreen;
                 }
             }
             else
@@ -316,6 +317,7 @@ namespace PELOSCALVO
                     this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
                     FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
                     FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Db Local";
+                    FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.LawnGreen;
                 }
             }
         }
@@ -587,53 +589,53 @@ namespace PELOSCALVO
                             {
                                 item.PvpIva = Convert.ToDouble(reader["PvpIva"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["Pvp2Desc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc2"]).ToString()))
                             {
-                                item.Pvp2Desc = Convert.ToDouble(reader["Pvp2Desc"]);
+                                item.Pvp2Desc = Convert.ToDouble(reader["Desc2"]);
                             }
                             if (!string.IsNullOrEmpty((reader["Pvp2"]).ToString()))
                             {
                                 item.Pvp2 = Convert.ToDouble(reader["Pvp2"]);
                             }
 
-                            if (!string.IsNullOrEmpty((reader["CastyDesc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc3"]).ToString()))
                             {
-                                item.CastyDesc = Convert.ToDouble(reader["CastyDesc"]);
+                                item.CastyDesc = Convert.ToDouble(reader["Desc3"]);
                             }
 
-                            if (!string.IsNullOrEmpty((reader["Casty"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Pvp3"]).ToString()))
                             {
-                                item.Casty = Convert.ToDouble(reader["Casty"]);
+                                item.Casty = Convert.ToDouble(reader["Pvp3"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["SuarezDesc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc4"]).ToString()))
                             {
-                                item.SuarezDesc = Convert.ToDouble(reader["SuarezDesc"]);
+                                item.SuarezDesc = Convert.ToDouble(reader["Desc4"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["Suarez"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Pvp4"]).ToString()))
                             {
-                                item.Suarez = Convert.ToDouble(reader["Suarez"]);
+                                item.Suarez = Convert.ToDouble(reader["Pvp4"]);
                             }
 
-                            if (!string.IsNullOrEmpty((reader["BenitoDesc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc5"]).ToString()))
                             {
-                                item.BenitoDesc = Convert.ToDouble(reader["BenitoDesc"]);
+                                item.BenitoDesc = Convert.ToDouble(reader["Desc5"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["Benito"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Pvp5"]).ToString()))
                             {
 
-                                item.Benito = Convert.ToDouble(reader["Benito"]);
+                                item.Benito = Convert.ToDouble(reader["Pvp5"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["ValenteDes"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Desc6"]).ToString()))
                             {
-                                item.ValenteDes = Convert.ToDouble(reader["ValenteDes"]);
+                                item.ValenteDes = Convert.ToDouble(reader["Desc6"]);
                             }
                             if (!string.IsNullOrEmpty((reader["Valente"]).ToString()))
                             {
                                 item.Valente = Convert.ToDouble(reader["Valente"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["PlusDesc"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["DescPlus"]).ToString()))
                             {
-                                item.PlusDesc = Convert.ToDouble(reader["PlusDesc"]);
+                                item.PlusDesc = Convert.ToDouble(reader["DescPlus"]);
                             }
                             if (!string.IsNullOrEmpty((reader["Plus"]).ToString()))
                             {
@@ -1359,7 +1361,7 @@ namespace PELOSCALVO
                         Extension = Path.GetExtension(BuscarArchivo.FileName.ToString());
                     }
 
-                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase))
+                    if (Extension.ToLower().ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase) | Extension.ToLower().ToString().Equals(".mdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
                         this.NombreArchivoDatos.Text = BuscarArchivo.FileName.ToString();
@@ -1413,10 +1415,10 @@ namespace PELOSCALVO
                 {
 
                     string TablaArticulos = this.SerieArticulosText.Text;
-                    string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                    string ConsultaArticulos = "CREATE TABLE [" + TablaArticulos + "] ( [Id] INTEGER  primary key , [Referencia] varchar, [Oem] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
-                        "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
-                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
+                        "[Desc2] DECIMAL ,[Pvp2] MONEY ,[Desc3] DECIMAL ,[Pvp3] MONEY ,[Desc4] DECIMAL " +
+                        ",[Pvp4] MONEY ,[Desc5] DECIMAL ,[Pvp5] MONEY ,[Desc6] DECIMAL ,[Pvp6] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
                     ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
@@ -1525,6 +1527,7 @@ namespace PELOSCALVO
                 this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
                 FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO1;
                 FormMenuPrincipal.menu2principal.InfoConectado.Text = "Desconectado";
+                FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.Goldenrod;
                 this.CheckAtivarServidor.Checked = false;
                 this.CheckActivarDb.Checked = false;
                 ClassCorreosDB.dsCorreos.Clear();
@@ -1554,55 +1557,6 @@ namespace PELOSCALVO
         private void TabArchivos_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void BtnLeer_Click(object sender, EventArgs e)
-        {
-            if (VALIDARcampos_Archivos())
-            {
-                ObtenerTablasBb();
-            }
-        }
-
-        private void BtnLeerSql_Click(object sender, EventArgs e)
-        {
-            if (ClsConexionSql.CadenaConexion != string.Empty)
-            {
-                // ObtenerTablasSql();
-                string consulta = "	    select TABLE_NAME from INFORMATION_SCHEMA.COLUMNS O where table_name" +
-               " not like 'Dt%'and O.COLUMN_NAME= 'APODOCLIEN'  order by ORDINAL_POSITION";
-                consulta = "SELECT  [name] FROM [PAIS].[sys].[tables]";
-                //  ClsConexionSql.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
-                ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
-
-                if (NuevaConexion.SiConexionSql)
-                {
-                    try
-                    {
-                        SqlDataReader reader = NuevaConexion.ComandoSql.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            this.SerieArticulosText.Items.Add(reader[0]).ToString();
-                            this.SerieClientesText2.Items.Add(reader[0]).ToString();
-                            this.ListaTablas.Items.Add(reader[0]).ToString();
-
-                        }
-
-
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message.ToString());
-                    }
-                }
-
-                if (NuevaConexion.CerrarConexionSql)
-                {
-
-                }
-                NuevaConexion.ComandoSql.Parameters.Clear();
-            }
         }
         public List<string> ObtenerInstanciasSql()
         {
@@ -1644,20 +1598,6 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
             return tableNames;
-        }
-        private void BtnActualizar_Servidor_Click(object sender, EventArgs e)
-        {
-            ObtenerInstanciasSql();
-
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (ClsConexionSql.CadenaConexion != string.Empty)
-            {
-                ObtenerTablasSql();
-            }
         }
 
         private void Servidor_Validating(object sender, System.ComponentModel.CancelEventArgs e)

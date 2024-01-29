@@ -2,7 +2,7 @@
 {
 
 
-    partial class Articulos
+    partial class DsArticulos
     {
         partial class DtArticulosDataTable
         {

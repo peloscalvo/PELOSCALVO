@@ -35,7 +35,6 @@ namespace PELOSCALVO
             this.DtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.DtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtfacturasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.printNota = new System.Drawing.Printing.PrintDocument();
             this.BtnImprimirVistaPre = new System.Windows.Forms.Button();
@@ -47,26 +46,23 @@ namespace PELOSCALVO
             this.printPresupuesto = new System.Drawing.Printing.PrintDocument();
             this.printNotaSimple = new System.Drawing.Printing.PrintDocument();
             this.printNotaDiseño = new System.Drawing.Printing.PrintDocument();
+            this.dsFacturas = new PELOSCALVO.DsFacturas();
             ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtNuevaFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtConfiguracionPrincipalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtfacturasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsFacturas)).BeginInit();
             this.SuspendLayout();
             // 
             // DtDetallesFacturaBindingSource
             // 
-            this.DtDetallesFacturaBindingSource.DataMember = "DtDetallesFactura";
-            // 
-            // Dtfacturas
-            // 
-            this.DsCONFIGURACCION.DataSetName = "Dtfacturas";
-            this.DsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.DtDetallesFacturaBindingSource.DataMember = "DtNuevaFactura_DtDetallesFactura";
+            this.DtDetallesFacturaBindingSource.DataSource = this.DtNuevaFacturaBindingSource;
             // 
             // DtNuevaFacturaBindingSource
             // 
             this.DtNuevaFacturaBindingSource.DataMember = "DtNuevaFactura";
-            this.DtNuevaFacturaBindingSource.DataSource = this.DsCONFIGURACCION;
+            this.DtNuevaFacturaBindingSource.DataSource = this.dsFacturas;
             // 
             // DsCONFIGURACCION
             // 
@@ -77,11 +73,6 @@ namespace PELOSCALVO
             // 
             this.DtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
             this.DtConfiguracionPrincipalBindingSource.DataSource = this.DsCONFIGURACCION;
-            // 
-            // dtfacturasBindingSource
-            // 
-            this.dtfacturasBindingSource.DataSource = this.DsCONFIGURACCION;
-            this.dtfacturasBindingSource.Position = 0;
             // 
             // printPreviewControl1
             // 
@@ -145,6 +136,11 @@ namespace PELOSCALVO
             // 
             this.printNotaSimple.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printNotaSimple_PrintPage);
             // 
+            // dsFacturas
+            // 
+            this.dsFacturas.DataSetName = "DsFacturas";
+            this.dsFacturas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FormVistaPreliminar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,7 +158,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.DtNuevaFacturaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsCONFIGURACCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtConfiguracionPrincipalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtfacturasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsFacturas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,7 +169,6 @@ namespace PELOSCALVO
         private DsCONFIGURACCION DsCONFIGURACCION;
         public Microsoft.Reporting.WinForms.ReportViewer ReportesVer;
         public System.Windows.Forms.BindingSource DtNuevaFacturaBindingSource;
-        private System.Windows.Forms.BindingSource dtfacturasBindingSource;
         private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
         private System.Drawing.Printing.PrintDocument printNota;
         private System.Windows.Forms.Button BtnImprimirVistaPre;
@@ -185,5 +180,6 @@ namespace PELOSCALVO
         private System.Drawing.Printing.PrintDocument printPresupuesto;
         private System.Drawing.Printing.PrintDocument printNotaSimple;
         private System.Drawing.Printing.PrintDocument printNotaDiseño;
+        private DsFacturas dsFacturas;
     }
 }

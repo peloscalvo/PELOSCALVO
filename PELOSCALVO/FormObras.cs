@@ -437,10 +437,11 @@ namespace PELOSCALVO
         {
             if (dtObrasBindingSource.Count > 0)
             {
+                ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "Obras";
                 AñadirIdObras();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Obras", "Obras");
+                frm.CargarDatos(1, " Obras", "Obras","Obr",1);
                 frm.BringToFront();
                 frm.ShowDialog();
             }

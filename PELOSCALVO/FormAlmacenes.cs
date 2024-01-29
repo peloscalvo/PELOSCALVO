@@ -33,6 +33,16 @@ namespace PELOSCALVO
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        public void AñadirIdAlmacen()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtAlmacenes)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
+
+        }
         private void ModificarOjetos_Alm()
         {
             this.almacenesTextBox.ReadOnly = false;
@@ -424,9 +434,11 @@ namespace PELOSCALVO
         {
             if (this.dtAlmacenesBindingSource.Count > 0)
             {
+                AñadirIdAlmacen();
+                ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "Almacen";
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Almacenes", "Almacenes");
+                frm.CargarDatos(1, " Almacenes", "Almacenes", "Enlace_Almacenes",Convert.ToInt32(IdEmpresaAlm.Text));
                 frm.BringToFront();
                 frm.ShowDialog();
             }

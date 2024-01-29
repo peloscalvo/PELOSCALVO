@@ -16,11 +16,11 @@ namespace PELOSCALVO
             InitializeComponent();
 
             ToolTip InfoEliminar = new ToolTip();
-            InfoEliminar.SetToolTip(BtnEliminarTabla, "Recuerda Que Si Eliminas No Se Podra Revertir");
+            InfoEliminar.SetToolTip(this.BtnEliminarTabla, "Recuerda Que Si Eliminas No Se Podra Revertir");
             InfoEliminar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             InfoEliminar.IsBalloon = true;
             ToolTip InfoSalir = new ToolTip();
-            InfoSalir.SetToolTip(BtnSalirT, "Salir De Crea Tablas");
+            InfoSalir.SetToolTip(this.BtnSalirT, "Salir De Crea Tablas");
             InfoSalir.IsBalloon = true;
             InfoSalir.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
         }
@@ -151,15 +151,15 @@ namespace PELOSCALVO
                     Random r = new Random();
                     int valor = r.Next(10, 900000);
 
-                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ([Id] INTEGER  primary key , [Referencia] varchar," +
+                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ( [Id] INTEGER  primary key , [Referencia] varchar, [Oem] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
-                        "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
-                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDesc] DECIMAL ,[Valente] MONEY" +
+                        "[Desc2] DECIMAL ,[Pvp2] MONEY ,[Desc3] DECIMAL ,[Pvp3] MONEY ,[Desc4] DECIMAL " +
+                        ",[Pvp4] MONEY ,[Desc5] DECIMAL ,[Pvp5] MONEY ,[Desc6] DECIMAL ,[Pvp6] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
 
 
-                    string ConsultaCliente = " CREATE TABLE [" + ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+                    string ConsultaCliente = " CREATE TABLE [" + this.ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
                 "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
                 "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
                 "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
@@ -172,7 +172,7 @@ namespace PELOSCALVO
                 " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
                 " [CifEmpresa] varchar   ,[ImagenEmpresa] IMAGE ) ";
 
-                    string TablaDtconfi = "CREATE TABLE[DtConfi] ([IdEnlace]  COUNTER (1,1) primary key ,[ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
+                    string TablaDtconfi = "CREATE TABLE[DtConfi] ([IdEnlace] INTEGER not null primary key ,[ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                         "[EmpresaENLACE] INTEGER not null ,[IdConexionConfi] INTEGER not null, [AñoDeEjercicio] varchar  ," +
                            " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
                     string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([Id] INTEGER not null, [TarifaTipo] varchar, [EnlaceTarifa] INTEGER not null," +
@@ -185,7 +185,7 @@ namespace PELOSCALVO
                     string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER not null,[Proveedores] varchar ,[Enlace_Proveedores] INTEGER not null, " +
                       " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 
-                    string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER primary key, [FamiliaProductos] varchar)";
+                    string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER primary key, [Familia] varchar)";
                     string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER primary key ,[Paises] varchar )";
                     string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER not null, [Provincias] varchar,[IdEnlace] INTEGER NOT NULL," +
                    " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (IdEnlace)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )";
@@ -465,19 +465,19 @@ namespace PELOSCALVO
                             valor = r.Next(10, 10000);
                             if (i != 3)
                             {
-                                ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] varchar primary key , [NumeroFactura] INTEGER not null,[Apodo] varchar ,[Nombre] varchar," +
+                                ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] INTEGER primary key , [NumeroFactura] INTEGER not null,[Apodo] varchar ,[Nombre] varchar," +
                              "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
-                              "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[FechaFactura] varchar," +
+                              "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[Marca] varchar,[FechaFactura] varchar," +
                              "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
                              "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-                            "[EjercicioTipo] varchar,[SerieTipo] varchar, [EmpresaEnlace] varchar not null,[EnlaceDtconfi] INTEGER not null," +
+                            "[EjercicioTipo] INTEGER not null,[SerieTipo] varchar, [EmpresaEnlace] INTEGER not null,[EnlaceDtconfi] INTEGER not null," +
                             "CONSTRAINT F_DtConfi" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )";
                             }
 
 
                             ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
                                    ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
-                                   ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] varchar not null" +
+                                   ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] INTEGER not null" +
                                    ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
                             using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
                             {
@@ -508,7 +508,7 @@ namespace PELOSCALVO
                                     catch (Exception ex)
                                     {
 
-                                        MessageBox.Show(ex.Message, "ERROR EN TABLA "+ Tabladetalle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show(ex.Message, "ERROR EN TABLA " + Tabladetalle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
 
@@ -539,7 +539,8 @@ namespace PELOSCALVO
                         Extension = Path.GetExtension(BuscarArchivo.FileName.ToString());
                     }
 
-                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase))
+
+                    if (Extension.ToString().Equals(".accdb".ToString(), StringComparison.OrdinalIgnoreCase) | Extension.ToString().Equals(".mdb".ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         FileInfo fi = new FileInfo(BuscarArchivo.FileName.ToString());
                         this.BaseDatosTxt1.Text = BuscarArchivo.FileName.ToString();
@@ -610,10 +611,10 @@ namespace PELOSCALVO
                 if (MessageBox.Show("\n" + " Crear Tabla  " + this.ArticulosTxt.Text, " CREAR? ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
 
-                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ( [Id] INTEGER  primary key , [Referencia] varchar," +
+                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ( [Id] INTEGER  primary key , [Referencia] varchar, [Oem] varchar," +
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
-                        "[Pvp2Desc] DECIMAL ,[Pvp2] MONEY ,[CastyDesc] DECIMAL ,[Casty] MONEY ,[SuarezDesc] DECIMAL " +
-                        ",[Suarez] MONEY ,[BenitoDesc] DECIMAL ,[Benito] MONEY ,[ValenteDes] DECIMAL ,[Valente] MONEY" +
+                        "[Desc2] DECIMAL ,[Pvp2] MONEY ,[Desc3] DECIMAL ,[Pvp3] MONEY ,[Desc4] DECIMAL " +
+                        ",[Pvp4] MONEY ,[Desc5] DECIMAL ,[Pvp5] MONEY ,[Desc6] DECIMAL ,[Pvp6] MONEY" +
                         " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
 
@@ -666,7 +667,7 @@ namespace PELOSCALVO
                     Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
                 }
 
-                string ConsultaCliente = " CREATE TABLE [" + ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+                string ConsultaCliente = " CREATE TABLE [" + this.ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
                    "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
                    "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
                    "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
@@ -865,7 +866,7 @@ namespace PELOSCALVO
                     using (OleDbCommand comando = new OleDbCommand(consulta, NuevaConexion))
                     {
                         NuevaConexion.Open();
-                     comando.ExecuteNonQuery();
+                        comando.ExecuteNonQuery();
 
                         MessageBox.Show("Copiaron Los Datos A Tabla Correctamente" + "\n" + this.TablaCopiarTxt.Text, "COPIA TABLA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1008,10 +1009,10 @@ namespace PELOSCALVO
             if (this.TablaBorrarTxt.Text == "DtConfiguracionPrincipal" && this.TablaBorrarTxt.Text == "DtConfi")
             {
                 MessageBox.Show("Si Borra Esta Tabla Perdera Datos Facturacion Asociados a Esta", "LIMPIAR", MessageBoxButtons.OK);
-          
+
             }
 
-            if (MessageBox.Show("Desea Borrar Datos a Tabla" + "\\" + TablaBorrarTxt.Text, "BORRAR DATOS", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Desea Borrar Datos a Tabla" + "\\" + this.TablaBorrarTxt.Text, "BORRAR DATOS", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
 
 
@@ -1069,13 +1070,13 @@ namespace PELOSCALVO
                 // TablanuevaTxt.Focus();
                 return;
             }
-            if (TablaBorrarTxt.Text.Contains("Dt"))
+            if (this.TablaBorrarTxt.Text.Contains("Dt"))
             {
                 MessageBox.Show("Esta Tabla No Se Puede Borrar ", "ELIMINAR", MessageBoxButtons.OK);
                 return;
             }
             MessageBox.Show("Recuerda Que Si Continua No Podra Revertir Datos ", "ELIMINAR", MessageBoxButtons.OK);
-            if (MessageBox.Show("Desea Eliminar Tabla" + "\\" + TablaBorrarTxt.Text, "ELIMINAR TABLA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Desea Eliminar Tabla" + "\\" + this.TablaBorrarTxt.Text, "ELIMINAR TABLA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
 
 

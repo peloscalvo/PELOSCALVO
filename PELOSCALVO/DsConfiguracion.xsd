@@ -15,6 +15,7 @@
         <xs:element name="Id" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
         <xs:element name="Almacenes" msprop:Generator_ColumnVarNameInTable="columnAlmacenes" msprop:Generator_ColumnPropNameInRow="Almacenes" msprop:Generator_ColumnPropNameInTable="AlmacenesColumn" msprop:Generator_UserColumnName="Almacenes" type="xs:string" minOccurs="0" />
         <xs:element name="Enlace_Almacenes" msprop:Generator_ColumnVarNameInTable="columnEnlace_Almacenes" msprop:Generator_ColumnPropNameInRow="Enlace_Almacenes" msprop:Generator_ColumnPropNameInTable="Enlace_AlmacenesColumn" msprop:Generator_UserColumnName="Enlace_Almacenes" type="xs:int" minOccurs="0" />
+        <xs:element name="IdFila" msprop:Generator_ColumnVarNameInTable="columnIdFila" msprop:Generator_ColumnPropNameInRow="IdFila" msprop:Generator_ColumnPropNameInTable="IdFilaColumn" msprop:Generator_UserColumnName="IdFila" type="xs:string" minOccurs="0" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -32,6 +33,7 @@
               <xs:element name="IdConexionConfi" msprop:Generator_ColumnVarNameInTable="columnIdConexionConfi" msprop:Generator_ColumnPropNameInRow="IdConexionConfi" msprop:Generator_ColumnPropNameInTable="IdConexionConfiColumn" msprop:Generator_UserColumnName="IdConexionConfi" type="xs:int" minOccurs="0" />
               <xs:element name="AñoDeEjercicio" msprop:Generator_ColumnVarNameInTable="columnAñoDeEjercicio" msprop:Generator_ColumnPropNameInRow="AñoDeEjercicio" msprop:Generator_ColumnPropNameInTable="AñoDeEjercicioColumn" msprop:Generator_UserColumnName="AñoDeEjercicio" type="xs:string" minOccurs="0" />
               <xs:element name="IdEnlace" msprop:Generator_ColumnVarNameInTable="columnIdEnlace" msprop:Generator_ColumnPropNameInRow="IdEnlace" msprop:Generator_ColumnPropNameInTable="IdEnlaceColumn" msprop:Generator_UserColumnName="IdEnlace" type="xs:int" minOccurs="0" />
+              <xs:element name="IdFila" msprop:Generator_ColumnVarNameInTable="columnIdFila" msprop:Generator_ColumnPropNameInRow="IdFila" msprop:Generator_ColumnPropNameInTable="IdFilaColumn" msprop:Generator_UserColumnName="IdFila" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -73,6 +75,7 @@
               <xs:element name="Id_Proveedores" msdata:AutoIncrementSeed="1" msdata:Caption="Id_almacenes" msprop:Generator_ColumnVarNameInTable="columnId_Proveedores" msprop:Generator_ColumnPropNameInRow="Id_Proveedores" msprop:Generator_ColumnPropNameInTable="Id_ProveedoresColumn" msprop:Generator_UserColumnName="Id_Proveedores" type="xs:int" minOccurs="0" />
               <xs:element name="Proveedores" msdata:Caption="Almacenes" msprop:Generator_ColumnVarNameInTable="columnProveedores" msprop:Generator_ColumnPropNameInRow="Proveedores" msprop:Generator_ColumnPropNameInTable="ProveedoresColumn" msprop:Generator_UserColumnName="Proveedores" type="xs:string" minOccurs="0" />
               <xs:element name="Enlace_Proveedores" msdata:Caption="Enlace_Almacenes" msprop:Generator_ColumnVarNameInTable="columnEnlace_Proveedores" msprop:Generator_ColumnPropNameInRow="Enlace_Proveedores" msprop:Generator_ColumnPropNameInTable="Enlace_ProveedoresColumn" msprop:Generator_UserColumnName="Enlace_Proveedores" type="xs:int" minOccurs="0" />
+              <xs:element name="IdFila" msprop:Generator_ColumnVarNameInTable="columnIdFila" msprop:Generator_ColumnPropNameInRow="IdFila" msprop:Generator_ColumnPropNameInTable="IdFilaColumn" msprop:Generator_UserColumnName="IdFila" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

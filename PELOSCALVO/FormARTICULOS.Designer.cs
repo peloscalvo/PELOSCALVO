@@ -51,18 +51,15 @@ namespace PELOSCALVO
             System.Windows.Forms.Label TipoInpuestoIVALabel1;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label oemLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArticulos));
             this.dtPreciosDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,17 +68,14 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Familia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdFILA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtArticulosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.articulos = new PELOSCALVO.Articulos();
+            this.articulos = new PELOSCALVO.DsArticulos();
             this.tabControl1Articulo = new System.Windows.Forms.TabControl();
             this.tabPage1Articulo = new System.Windows.Forms.TabPage();
+            this.OemText = new System.Windows.Forms.TextBox();
             this.idArticulo = new System.Windows.Forms.Label();
             this.BajaCheckBox = new System.Windows.Forms.CheckBox();
             this.FechaAlta = new System.Windows.Forms.DateTimePicker();
@@ -95,22 +89,22 @@ namespace PELOSCALVO
             this.GananciaTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2Articulo = new System.Windows.Forms.TabPage();
             this.panelDesc1 = new System.Windows.Forms.Panel();
-            this.PlusDescTextBox = new System.Windows.Forms.TextBox();
-            this.Pvp2DescTextBox = new System.Windows.Forms.TextBox();
+            this.PlusDescTxt = new System.Windows.Forms.TextBox();
+            this.Desc2Text = new System.Windows.Forms.TextBox();
             this.PlusLabel2 = new System.Windows.Forms.Label();
-            this.CastyDescTextBox = new System.Windows.Forms.TextBox();
-            this.ValenteDescTextBox = new System.Windows.Forms.TextBox();
-            this.Pvp2Label2 = new System.Windows.Forms.Label();
-            this.BenitoDescTextBox = new System.Windows.Forms.TextBox();
-            this.SuarezDescTextBox = new System.Windows.Forms.TextBox();
-            this.CastyLabel2 = new System.Windows.Forms.Label();
-            this.SuarezLabel2 = new System.Windows.Forms.Label();
-            this.ValenteLabel2 = new System.Windows.Forms.Label();
-            this.BenitoLabel2 = new System.Windows.Forms.Label();
-            this.ValenteLab = new System.Windows.Forms.Label();
-            this.BenitoLab = new System.Windows.Forms.Label();
-            this.SuarezLab = new System.Windows.Forms.Label();
-            this.CastyLab = new System.Windows.Forms.Label();
+            this.Desc3Txt = new System.Windows.Forms.TextBox();
+            this.Desc6Txt = new System.Windows.Forms.TextBox();
+            this.Pvp2Text = new System.Windows.Forms.Label();
+            this.Desc5Text = new System.Windows.Forms.TextBox();
+            this.Desc4Txt = new System.Windows.Forms.TextBox();
+            this.Pvp3Txt = new System.Windows.Forms.Label();
+            this.Pvp4Txt = new System.Windows.Forms.Label();
+            this.Pvp6Txt = new System.Windows.Forms.Label();
+            this.Pvp5Txt = new System.Windows.Forms.Label();
+            this.LabDes6 = new System.Windows.Forms.Label();
+            this.LabDes5 = new System.Windows.Forms.Label();
+            this.LabDesc4 = new System.Windows.Forms.Label();
+            this.LabDes3 = new System.Windows.Forms.Label();
             this.UnidadPaletTextBox = new System.Windows.Forms.TextBox();
             this.MinimosStockTextBox = new System.Windows.Forms.TextBox();
             this.StockTextBox = new System.Windows.Forms.TextBox();
@@ -119,7 +113,7 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TipoIVA_Up_Articulos = new System.Windows.Forms.NumericUpDown();
-            this.tarifaTipoArticulos = new System.Windows.Forms.ComboBox();
+            this.TipoTarifa = new System.Windows.Forms.ComboBox();
             this.dtConfiDtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
@@ -163,6 +157,7 @@ namespace PELOSCALVO
             TipoInpuestoIVALabel1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            oemLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtPreciosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
@@ -188,29 +183,31 @@ namespace PELOSCALVO
             Pvp2Label.AutoSize = true;
             Pvp2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             Pvp2Label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Pvp2Label.Location = new System.Drawing.Point(19, 146);
+            Pvp2Label.Location = new System.Drawing.Point(26, 160);
             Pvp2Label.Name = "Pvp2Label";
             Pvp2Label.Size = new System.Drawing.Size(42, 15);
             Pvp2Label.TabIndex = 16;
             Pvp2Label.Text = "Pvp2:";
+            Pvp2Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // PlusLabel
             // 
             PlusLabel.AutoSize = true;
             PlusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             PlusLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            PlusLabel.Location = new System.Drawing.Point(19, 171);
+            PlusLabel.Location = new System.Drawing.Point(26, 186);
             PlusLabel.Name = "PlusLabel";
             PlusLabel.Size = new System.Drawing.Size(39, 15);
             PlusLabel.TabIndex = 36;
             PlusLabel.Text = "Plus:";
+            PlusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // familiaLabel
             // 
             familiaLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             familiaLabel.AutoSize = true;
             familiaLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            familiaLabel.Location = new System.Drawing.Point(379, 23);
+            familiaLabel.Location = new System.Drawing.Point(612, 117);
             familiaLabel.Name = "familiaLabel";
             familiaLabel.Size = new System.Drawing.Size(42, 13);
             familiaLabel.TabIndex = 44;
@@ -263,7 +260,7 @@ namespace PELOSCALVO
             // 
             ReferenciaLabel.AutoSize = true;
             ReferenciaLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            ReferenciaLabel.Location = new System.Drawing.Point(19, 43);
+            ReferenciaLabel.Location = new System.Drawing.Point(19, 51);
             ReferenciaLabel.Name = "ReferenciaLabel";
             ReferenciaLabel.Size = new System.Drawing.Size(62, 13);
             ReferenciaLabel.TabIndex = 18;
@@ -273,7 +270,7 @@ namespace PELOSCALVO
             // 
             DescripccionLabel.AutoSize = true;
             DescripccionLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            DescripccionLabel.Location = new System.Drawing.Point(19, 69);
+            DescripccionLabel.Location = new System.Drawing.Point(19, 103);
             DescripccionLabel.Name = "DescripccionLabel";
             DescripccionLabel.Size = new System.Drawing.Size(72, 13);
             DescripccionLabel.TabIndex = 20;
@@ -283,7 +280,7 @@ namespace PELOSCALVO
             // 
             CosteLabel.AutoSize = true;
             CosteLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            CosteLabel.Location = new System.Drawing.Point(19, 95);
+            CosteLabel.Location = new System.Drawing.Point(19, 129);
             CosteLabel.Name = "CosteLabel";
             CosteLabel.Size = new System.Drawing.Size(37, 13);
             CosteLabel.TabIndex = 22;
@@ -293,7 +290,7 @@ namespace PELOSCALVO
             // 
             GananciaLabel.AutoSize = true;
             GananciaLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            GananciaLabel.Location = new System.Drawing.Point(19, 121);
+            GananciaLabel.Location = new System.Drawing.Point(19, 155);
             GananciaLabel.Name = "GananciaLabel";
             GananciaLabel.Size = new System.Drawing.Size(56, 13);
             GananciaLabel.TabIndex = 24;
@@ -303,7 +300,7 @@ namespace PELOSCALVO
             // 
             Pvp1Label.AutoSize = true;
             Pvp1Label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Pvp1Label.Location = new System.Drawing.Point(19, 147);
+            Pvp1Label.Location = new System.Drawing.Point(19, 181);
             Pvp1Label.Name = "Pvp1Label";
             Pvp1Label.Size = new System.Drawing.Size(35, 13);
             Pvp1Label.TabIndex = 26;
@@ -312,7 +309,7 @@ namespace PELOSCALVO
             // FechaRgLabel
             // 
             FechaRgLabel.AutoSize = true;
-            FechaRgLabel.Location = new System.Drawing.Point(614, 21);
+            FechaRgLabel.Location = new System.Drawing.Point(749, 127);
             FechaRgLabel.Name = "FechaRgLabel";
             FechaRgLabel.Size = new System.Drawing.Size(40, 13);
             FechaRgLabel.TabIndex = 50;
@@ -341,7 +338,7 @@ namespace PELOSCALVO
             Buscarlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             Buscarlabel.AutoSize = true;
             Buscarlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            Buscarlabel.Location = new System.Drawing.Point(492, 96);
+            Buscarlabel.Location = new System.Drawing.Point(481, 14);
             Buscarlabel.Name = "Buscarlabel";
             Buscarlabel.Size = new System.Drawing.Size(74, 16);
             Buscarlabel.TabIndex = 61;
@@ -351,7 +348,7 @@ namespace PELOSCALVO
             // 
             pvp1Label1.AutoSize = true;
             pvp1Label1.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            pvp1Label1.Location = new System.Drawing.Point(251, 5);
+            pvp1Label1.Location = new System.Drawing.Point(335, 3);
             pvp1Label1.Name = "pvp1Label1";
             pvp1Label1.Size = new System.Drawing.Size(68, 19);
             pvp1Label1.TabIndex = 60;
@@ -361,7 +358,7 @@ namespace PELOSCALVO
             // pvpIvaLabel1
             // 
             pvpIvaLabel1.AutoSize = true;
-            pvpIvaLabel1.Location = new System.Drawing.Point(262, 152);
+            pvpIvaLabel1.Location = new System.Drawing.Point(262, 186);
             pvpIvaLabel1.Name = "pvpIvaLabel1";
             pvpIvaLabel1.Size = new System.Drawing.Size(47, 13);
             pvpIvaLabel1.TabIndex = 62;
@@ -390,12 +387,21 @@ namespace PELOSCALVO
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.Location = new System.Drawing.Point(113, 3);
+            label1.Location = new System.Drawing.Point(197, 1);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(100, 19);
             label1.TabIndex = 61;
             label1.Text = "Descuentos";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // oemLabel
+            // 
+            oemLabel.AutoSize = true;
+            oemLabel.Location = new System.Drawing.Point(19, 77);
+            oemLabel.Name = "oemLabel";
+            oemLabel.Size = new System.Drawing.Size(32, 13);
+            oemLabel.TabIndex = 67;
+            oemLabel.Text = "Oem:";
             // 
             // dtPreciosDataGridView
             // 
@@ -423,22 +429,18 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn19,
             this.Familia,
             this.IdFILA});
             this.dtPreciosDataGridView.DataSource = this.dtArticulosBindingSource;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtPreciosDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtPreciosDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtPreciosDataGridView.Location = new System.Drawing.Point(9, 32);
             this.dtPreciosDataGridView.MultiSelect = false;
             this.dtPreciosDataGridView.Name = "dtPreciosDataGridView";
@@ -523,65 +525,13 @@ namespace PELOSCALVO
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 90;
             // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Casty";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle6.Format = "C3";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn11.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn11.HeaderText = "Casty";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "Suarez";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle7.Format = "C3";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn13.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn13.HeaderText = "Suarez";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "Benito";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle8.Format = "C3";
-            dataGridViewCellStyle8.NullValue = null;
-            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn15.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn15.HeaderText = "Benito";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "Valente";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle9.Format = "C3";
-            dataGridViewCellStyle9.NullValue = null;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewTextBoxColumn17.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn17.HeaderText = "Valente";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Width = 38;
-            // 
             // dataGridViewTextBoxColumn19
             // 
             this.dataGridViewTextBoxColumn19.DataPropertyName = "Plus";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle10.Format = "C3";
-            dataGridViewCellStyle10.NullValue = null;
-            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle6.Format = "C3";
+            dataGridViewCellStyle6.NullValue = null;
+            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn19.FillWeight = 90F;
             this.dataGridViewTextBoxColumn19.HeaderText = "Plus";
             this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
@@ -600,11 +550,11 @@ namespace PELOSCALVO
             // IdFILA
             // 
             this.IdFILA.DataPropertyName = "IdFILA";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle11.Format = "N0";
-            dataGridViewCellStyle11.NullValue = null;
-            this.IdFILA.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle7.Format = "N0";
+            dataGridViewCellStyle7.NullValue = null;
+            this.IdFILA.DefaultCellStyle = dataGridViewCellStyle7;
             this.IdFILA.FillWeight = 52.97979F;
             this.IdFILA.HeaderText = "Id";
             this.IdFILA.Name = "IdFILA";
@@ -638,6 +588,8 @@ namespace PELOSCALVO
             // tabPage1Articulo
             // 
             this.tabPage1Articulo.AutoScroll = true;
+            this.tabPage1Articulo.Controls.Add(oemLabel);
+            this.tabPage1Articulo.Controls.Add(this.OemText);
             this.tabPage1Articulo.Controls.Add(this.idArticulo);
             this.tabPage1Articulo.Controls.Add(this.BajaCheckBox);
             this.tabPage1Articulo.Controls.Add(this.FechaAlta);
@@ -666,6 +618,14 @@ namespace PELOSCALVO
             this.tabPage1Articulo.Text = "General";
             this.tabPage1Articulo.UseVisualStyleBackColor = true;
             // 
+            // OemText
+            // 
+            this.OemText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Oem", true));
+            this.OemText.Location = new System.Drawing.Point(101, 74);
+            this.OemText.Name = "OemText";
+            this.OemText.Size = new System.Drawing.Size(333, 20);
+            this.OemText.TabIndex = 68;
+            // 
             // idArticulo
             // 
             this.idArticulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -687,7 +647,7 @@ namespace PELOSCALVO
             this.BajaCheckBox.Enabled = false;
             this.BajaCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BajaCheckBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BajaCheckBox.Location = new System.Drawing.Point(737, 150);
+            this.BajaCheckBox.Location = new System.Drawing.Point(784, 147);
             this.BajaCheckBox.Name = "BajaCheckBox";
             this.BajaCheckBox.Size = new System.Drawing.Size(211, 50);
             this.BajaCheckBox.TabIndex = 66;
@@ -698,7 +658,7 @@ namespace PELOSCALVO
             // 
             this.FechaAlta.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dtArticulosBindingSource, "Fecha", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.FechaAlta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaAlta.Location = new System.Drawing.Point(660, 15);
+            this.FechaAlta.Location = new System.Drawing.Point(795, 121);
             this.FechaAlta.Name = "FechaAlta";
             this.FechaAlta.Size = new System.Drawing.Size(200, 20);
             this.FechaAlta.TabIndex = 65;
@@ -708,7 +668,7 @@ namespace PELOSCALVO
             // 
             this.Pvp1Text.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Pvp1Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "00,0 €", "C3"));
-            this.Pvp1Text.Location = new System.Drawing.Point(101, 146);
+            this.Pvp1Text.Location = new System.Drawing.Point(101, 180);
             this.Pvp1Text.Name = "Pvp1Text";
             this.Pvp1Text.Size = new System.Drawing.Size(152, 23);
             this.Pvp1Text.TabIndex = 64;
@@ -720,7 +680,7 @@ namespace PELOSCALVO
             this.PvpIvaLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.PvpIvaLabel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PvpIvaLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "PvpIva", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0,00 €", "C3"));
-            this.PvpIvaLabel2.Location = new System.Drawing.Point(327, 147);
+            this.PvpIvaLabel2.Location = new System.Drawing.Point(327, 181);
             this.PvpIvaLabel2.Name = "PvpIvaLabel2";
             this.PvpIvaLabel2.Size = new System.Drawing.Size(135, 23);
             this.PvpIvaLabel2.TabIndex = 63;
@@ -736,7 +696,7 @@ namespace PELOSCALVO
             this.ReferenciaBuscarArt.DataSource = this.dtArticulosBindingSource;
             this.ReferenciaBuscarArt.DisplayMember = "Referencia";
             this.ReferenciaBuscarArt.FormattingEnabled = true;
-            this.ReferenciaBuscarArt.Location = new System.Drawing.Point(580, 95);
+            this.ReferenciaBuscarArt.Location = new System.Drawing.Point(569, 13);
             this.ReferenciaBuscarArt.Name = "ReferenciaBuscarArt";
             this.ReferenciaBuscarArt.Size = new System.Drawing.Size(332, 21);
             this.ReferenciaBuscarArt.TabIndex = 60;
@@ -750,7 +710,7 @@ namespace PELOSCALVO
             this.DescripcionBuscarArt.DataSource = this.dtArticulosBindingSource;
             this.DescripcionBuscarArt.DisplayMember = "Descripcci";
             this.DescripcionBuscarArt.FormattingEnabled = true;
-            this.DescripcionBuscarArt.Location = new System.Drawing.Point(580, 120);
+            this.DescripcionBuscarArt.Location = new System.Drawing.Point(569, 38);
             this.DescripcionBuscarArt.Name = "DescripcionBuscarArt";
             this.DescripcionBuscarArt.Size = new System.Drawing.Size(427, 21);
             this.DescripcionBuscarArt.TabIndex = 58;
@@ -761,7 +721,7 @@ namespace PELOSCALVO
             this.ReferenciaTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.ReferenciaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Referencia", true));
             this.ReferenciaTextBox.Enabled = false;
-            this.ReferenciaTextBox.Location = new System.Drawing.Point(101, 40);
+            this.ReferenciaTextBox.Location = new System.Drawing.Point(101, 48);
             this.ReferenciaTextBox.MaxLength = 40;
             this.ReferenciaTextBox.Name = "ReferenciaTextBox";
             this.ReferenciaTextBox.Size = new System.Drawing.Size(333, 20);
@@ -771,7 +731,7 @@ namespace PELOSCALVO
             // 
             this.DescripccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Descripcci", true));
             this.DescripccionTextBox.Enabled = false;
-            this.DescripccionTextBox.Location = new System.Drawing.Point(101, 66);
+            this.DescripccionTextBox.Location = new System.Drawing.Point(101, 100);
             this.DescripccionTextBox.Name = "DescripccionTextBox";
             this.DescripccionTextBox.Size = new System.Drawing.Size(411, 20);
             this.DescripccionTextBox.TabIndex = 21;
@@ -781,7 +741,7 @@ namespace PELOSCALVO
             // 
             this.CosteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Coste", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C3"));
             this.CosteTextBox.Enabled = false;
-            this.CosteTextBox.Location = new System.Drawing.Point(101, 92);
+            this.CosteTextBox.Location = new System.Drawing.Point(101, 126);
             this.CosteTextBox.Name = "CosteTextBox";
             this.CosteTextBox.Size = new System.Drawing.Size(121, 20);
             this.CosteTextBox.TabIndex = 23;
@@ -794,7 +754,7 @@ namespace PELOSCALVO
             // 
             this.GananciaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Ganancia", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
             this.GananciaTextBox.Enabled = false;
-            this.GananciaTextBox.Location = new System.Drawing.Point(101, 118);
+            this.GananciaTextBox.Location = new System.Drawing.Point(101, 152);
             this.GananciaTextBox.MaxLength = 3;
             this.GananciaTextBox.Name = "GananciaTextBox";
             this.GananciaTextBox.Size = new System.Drawing.Size(121, 20);
@@ -811,10 +771,10 @@ namespace PELOSCALVO
             this.tabPage2Articulo.Controls.Add(this.panelDesc1);
             this.tabPage2Articulo.Controls.Add(label1);
             this.tabPage2Articulo.Controls.Add(pvp1Label1);
-            this.tabPage2Articulo.Controls.Add(this.ValenteLab);
-            this.tabPage2Articulo.Controls.Add(this.BenitoLab);
-            this.tabPage2Articulo.Controls.Add(this.SuarezLab);
-            this.tabPage2Articulo.Controls.Add(this.CastyLab);
+            this.tabPage2Articulo.Controls.Add(this.LabDes6);
+            this.tabPage2Articulo.Controls.Add(this.LabDes5);
+            this.tabPage2Articulo.Controls.Add(this.LabDesc4);
+            this.tabPage2Articulo.Controls.Add(this.LabDes3);
             this.tabPage2Articulo.Controls.Add(Pvp2Label);
             this.tabPage2Articulo.Controls.Add(PlusLabel);
             this.tabPage2Articulo.Controls.Add(UnidadPaletLabel);
@@ -837,212 +797,212 @@ namespace PELOSCALVO
             // 
             this.panelDesc1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelDesc1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelDesc1.Controls.Add(this.PlusDescTextBox);
-            this.panelDesc1.Controls.Add(this.Pvp2DescTextBox);
+            this.panelDesc1.Controls.Add(this.PlusDescTxt);
+            this.panelDesc1.Controls.Add(this.Desc2Text);
             this.panelDesc1.Controls.Add(this.PlusLabel2);
-            this.panelDesc1.Controls.Add(this.CastyDescTextBox);
-            this.panelDesc1.Controls.Add(this.ValenteDescTextBox);
-            this.panelDesc1.Controls.Add(this.Pvp2Label2);
-            this.panelDesc1.Controls.Add(this.BenitoDescTextBox);
-            this.panelDesc1.Controls.Add(this.SuarezDescTextBox);
-            this.panelDesc1.Controls.Add(this.CastyLabel2);
-            this.panelDesc1.Controls.Add(this.SuarezLabel2);
-            this.panelDesc1.Controls.Add(this.ValenteLabel2);
-            this.panelDesc1.Controls.Add(this.BenitoLabel2);
+            this.panelDesc1.Controls.Add(this.Desc3Txt);
+            this.panelDesc1.Controls.Add(this.Desc6Txt);
+            this.panelDesc1.Controls.Add(this.Pvp2Text);
+            this.panelDesc1.Controls.Add(this.Desc5Text);
+            this.panelDesc1.Controls.Add(this.Desc4Txt);
+            this.panelDesc1.Controls.Add(this.Pvp3Txt);
+            this.panelDesc1.Controls.Add(this.Pvp4Txt);
+            this.panelDesc1.Controls.Add(this.Pvp6Txt);
+            this.panelDesc1.Controls.Add(this.Pvp5Txt);
             this.panelDesc1.Enabled = false;
-            this.panelDesc1.Location = new System.Drawing.Point(114, 29);
+            this.panelDesc1.Location = new System.Drawing.Point(198, 27);
             this.panelDesc1.Name = "panelDesc1";
-            this.panelDesc1.Size = new System.Drawing.Size(238, 179);
+            this.panelDesc1.Size = new System.Drawing.Size(238, 194);
             this.panelDesc1.TabIndex = 62;
             // 
-            // PlusDescTextBox
+            // PlusDescTxt
             // 
-            this.PlusDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "PlusDesc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
-            this.PlusDescTextBox.Location = new System.Drawing.Point(2, 141);
-            this.PlusDescTextBox.MaxLength = 3;
-            this.PlusDescTextBox.Name = "PlusDescTextBox";
-            this.PlusDescTextBox.Size = new System.Drawing.Size(90, 20);
-            this.PlusDescTextBox.TabIndex = 35;
-            this.PlusDescTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.PlusDescTextBox.Enter += new System.EventHandler(this.PlusDescTextBox_Enter);
-            this.PlusDescTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PlusDescTextBox_KeyPress);
-            this.PlusDescTextBox.Leave += new System.EventHandler(this.PlusDescTextBox_Leave);
-            this.PlusDescTextBox.MouseLeave += new System.EventHandler(this.PlusDescTextBox_MouseLeave);
-            this.PlusDescTextBox.Validated += new System.EventHandler(this.PlusDescTextBox_Validated);
+            this.PlusDescTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "DescPlus", true));
+            this.PlusDescTxt.Location = new System.Drawing.Point(4, 157);
+            this.PlusDescTxt.MaxLength = 3;
+            this.PlusDescTxt.Name = "PlusDescTxt";
+            this.PlusDescTxt.Size = new System.Drawing.Size(90, 20);
+            this.PlusDescTxt.TabIndex = 35;
+            this.PlusDescTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.PlusDescTxt.Enter += new System.EventHandler(this.PlusDescTextBox_Enter);
+            this.PlusDescTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PlusDescTextBox_KeyPress);
+            this.PlusDescTxt.Leave += new System.EventHandler(this.PlusDescTextBox_Leave);
+            this.PlusDescTxt.MouseLeave += new System.EventHandler(this.PlusDescTextBox_MouseLeave);
+            this.PlusDescTxt.Validated += new System.EventHandler(this.PlusDescTextBox_Validated);
             // 
-            // Pvp2DescTextBox
+            // Desc2Text
             // 
-            this.Pvp2DescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp2Desc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
-            this.Pvp2DescTextBox.Location = new System.Drawing.Point(2, 115);
-            this.Pvp2DescTextBox.MaxLength = 3;
-            this.Pvp2DescTextBox.Name = "Pvp2DescTextBox";
-            this.Pvp2DescTextBox.Size = new System.Drawing.Size(90, 20);
-            this.Pvp2DescTextBox.TabIndex = 47;
-            this.Pvp2DescTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Pvp2DescTextBox.Enter += new System.EventHandler(this.Pvp2DescTextBox_Enter);
-            this.Pvp2DescTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Pvp2DescTextBox_KeyPress);
-            this.Pvp2DescTextBox.Leave += new System.EventHandler(this.Pvp2DescTextBox_Leave);
-            this.Pvp2DescTextBox.Validated += new System.EventHandler(this.Pvp2DescTextBox_Validated);
+            this.Desc2Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc2", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc2Text.Location = new System.Drawing.Point(4, 131);
+            this.Desc2Text.MaxLength = 3;
+            this.Desc2Text.Name = "Desc2Text";
+            this.Desc2Text.Size = new System.Drawing.Size(90, 20);
+            this.Desc2Text.TabIndex = 47;
+            this.Desc2Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Desc2Text.Enter += new System.EventHandler(this.Pvp2DescTextBox_Enter);
+            this.Desc2Text.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Pvp2DescTextBox_KeyPress);
+            this.Desc2Text.Leave += new System.EventHandler(this.Pvp2DescTextBox_Leave);
+            this.Desc2Text.Validated += new System.EventHandler(this.Pvp2DescTextBox_Validated);
             // 
             // PlusLabel2
             // 
             this.PlusLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Plus", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "00,0 €", "C3"));
-            this.PlusLabel2.Location = new System.Drawing.Point(104, 142);
+            this.PlusLabel2.Location = new System.Drawing.Point(106, 158);
             this.PlusLabel2.Name = "PlusLabel2";
             this.PlusLabel2.Size = new System.Drawing.Size(100, 23);
             this.PlusLabel2.TabIndex = 54;
             this.PlusLabel2.Text = "00,0 €";
             this.PlusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // CastyDescTextBox
+            // Desc3Txt
             // 
-            this.CastyDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "CastyDesc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
-            this.CastyDescTextBox.Location = new System.Drawing.Point(2, 8);
-            this.CastyDescTextBox.MaxLength = 3;
-            this.CastyDescTextBox.Name = "CastyDescTextBox";
-            this.CastyDescTextBox.Size = new System.Drawing.Size(90, 20);
-            this.CastyDescTextBox.TabIndex = 19;
-            this.CastyDescTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.CastyDescTextBox.Enter += new System.EventHandler(this.CastyDescTextBox_Enter);
-            this.CastyDescTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CastyDescTextBox_KeyPress);
-            this.CastyDescTextBox.Leave += new System.EventHandler(this.CastyDescTextBox_Leave);
-            this.CastyDescTextBox.Validated += new System.EventHandler(this.CastyDescTextBox_Validated);
+            this.Desc3Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc3", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc3Txt.Location = new System.Drawing.Point(2, 8);
+            this.Desc3Txt.MaxLength = 3;
+            this.Desc3Txt.Name = "Desc3Txt";
+            this.Desc3Txt.Size = new System.Drawing.Size(90, 20);
+            this.Desc3Txt.TabIndex = 19;
+            this.Desc3Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Desc3Txt.Enter += new System.EventHandler(this.CastyDescTextBox_Enter);
+            this.Desc3Txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CastyDescTextBox_KeyPress);
+            this.Desc3Txt.Leave += new System.EventHandler(this.CastyDescTextBox_Leave);
+            this.Desc3Txt.Validated += new System.EventHandler(this.CastyDescTextBox_Validated);
             // 
-            // ValenteDescTextBox
+            // Desc6Txt
             // 
-            this.ValenteDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "ValenteDes", true));
-            this.ValenteDescTextBox.Location = new System.Drawing.Point(2, 89);
-            this.ValenteDescTextBox.MaxLength = 3;
-            this.ValenteDescTextBox.Name = "ValenteDescTextBox";
-            this.ValenteDescTextBox.Size = new System.Drawing.Size(90, 20);
-            this.ValenteDescTextBox.TabIndex = 31;
-            this.ValenteDescTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ValenteDescTextBox.Enter += new System.EventHandler(this.ValenteDescTextBox_Enter);
-            this.ValenteDescTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValenteDescTextBox_KeyPress);
-            this.ValenteDescTextBox.Leave += new System.EventHandler(this.ValenteDescTextBox_Leave);
-            this.ValenteDescTextBox.Validated += new System.EventHandler(this.ValenteDescTextBox_Validated);
+            this.Desc6Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc6", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc6Txt.Location = new System.Drawing.Point(2, 89);
+            this.Desc6Txt.MaxLength = 3;
+            this.Desc6Txt.Name = "Desc6Txt";
+            this.Desc6Txt.Size = new System.Drawing.Size(90, 20);
+            this.Desc6Txt.TabIndex = 31;
+            this.Desc6Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Desc6Txt.Enter += new System.EventHandler(this.ValenteDescTextBox_Enter);
+            this.Desc6Txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValenteDescTextBox_KeyPress);
+            this.Desc6Txt.Leave += new System.EventHandler(this.ValenteDescTextBox_Leave);
+            this.Desc6Txt.Validated += new System.EventHandler(this.ValenteDescTextBox_Validated);
             // 
-            // Pvp2Label2
+            // Pvp2Text
             // 
-            this.Pvp2Label2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "00,0 €", "C3"));
-            this.Pvp2Label2.Location = new System.Drawing.Point(104, 116);
-            this.Pvp2Label2.Name = "Pvp2Label2";
-            this.Pvp2Label2.Size = new System.Drawing.Size(100, 23);
-            this.Pvp2Label2.TabIndex = 55;
-            this.Pvp2Label2.Text = "00,0 €";
-            this.Pvp2Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Pvp2Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "00,0 €", "C3"));
+            this.Pvp2Text.Location = new System.Drawing.Point(106, 132);
+            this.Pvp2Text.Name = "Pvp2Text";
+            this.Pvp2Text.Size = new System.Drawing.Size(100, 23);
+            this.Pvp2Text.TabIndex = 55;
+            this.Pvp2Text.Text = "00,0 €";
+            this.Pvp2Text.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // BenitoDescTextBox
+            // Desc5Text
             // 
-            this.BenitoDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "BenitoDesc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
-            this.BenitoDescTextBox.Location = new System.Drawing.Point(2, 62);
-            this.BenitoDescTextBox.MaxLength = 3;
-            this.BenitoDescTextBox.Name = "BenitoDescTextBox";
-            this.BenitoDescTextBox.Size = new System.Drawing.Size(90, 20);
-            this.BenitoDescTextBox.TabIndex = 27;
-            this.BenitoDescTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.BenitoDescTextBox.Enter += new System.EventHandler(this.BenitoDescTextBox_Enter);
-            this.BenitoDescTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BenitoDescTextBox_KeyPress);
-            this.BenitoDescTextBox.Leave += new System.EventHandler(this.BenitoDescTextBox_Leave);
-            this.BenitoDescTextBox.Validated += new System.EventHandler(this.BenitoDescTextBox_Validated);
+            this.Desc5Text.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc5Text.Location = new System.Drawing.Point(2, 62);
+            this.Desc5Text.MaxLength = 3;
+            this.Desc5Text.Name = "Desc5Text";
+            this.Desc5Text.Size = new System.Drawing.Size(90, 20);
+            this.Desc5Text.TabIndex = 27;
+            this.Desc5Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Desc5Text.Enter += new System.EventHandler(this.BenitoDescTextBox_Enter);
+            this.Desc5Text.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BenitoDescTextBox_KeyPress);
+            this.Desc5Text.Leave += new System.EventHandler(this.BenitoDescTextBox_Leave);
+            this.Desc5Text.Validated += new System.EventHandler(this.BenitoDescTextBox_Validated);
             // 
-            // SuarezDescTextBox
+            // Desc4Txt
             // 
-            this.SuarezDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "SuarezDesc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0 %", "P0"));
-            this.SuarezDescTextBox.Location = new System.Drawing.Point(2, 35);
-            this.SuarezDescTextBox.MaxLength = 3;
-            this.SuarezDescTextBox.Name = "SuarezDescTextBox";
-            this.SuarezDescTextBox.Size = new System.Drawing.Size(90, 20);
-            this.SuarezDescTextBox.TabIndex = 23;
-            this.SuarezDescTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.SuarezDescTextBox.Enter += new System.EventHandler(this.SuarezDescTextBox_Enter);
-            this.SuarezDescTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SuarezDescTextBox_KeyPress);
-            this.SuarezDescTextBox.Leave += new System.EventHandler(this.SuarezDescTextBox_Leave);
-            this.SuarezDescTextBox.Validated += new System.EventHandler(this.SuarezDescTextBox_Validated);
+            this.Desc4Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Desc4", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "P0"));
+            this.Desc4Txt.Location = new System.Drawing.Point(2, 35);
+            this.Desc4Txt.MaxLength = 3;
+            this.Desc4Txt.Name = "Desc4Txt";
+            this.Desc4Txt.Size = new System.Drawing.Size(90, 20);
+            this.Desc4Txt.TabIndex = 23;
+            this.Desc4Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Desc4Txt.Enter += new System.EventHandler(this.SuarezDescTextBox_Enter);
+            this.Desc4Txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SuarezDescTextBox_KeyPress);
+            this.Desc4Txt.Leave += new System.EventHandler(this.SuarezDescTextBox_Leave);
+            this.Desc4Txt.Validated += new System.EventHandler(this.SuarezDescTextBox_Validated);
             // 
-            // CastyLabel2
+            // Pvp3Txt
             // 
-            this.CastyLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Casty", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "00,0 €", "C3"));
-            this.CastyLabel2.Location = new System.Drawing.Point(104, 6);
-            this.CastyLabel2.Name = "CastyLabel2";
-            this.CastyLabel2.Size = new System.Drawing.Size(100, 23);
-            this.CastyLabel2.TabIndex = 50;
-            this.CastyLabel2.Text = "00,0 €";
-            this.CastyLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Pvp3Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp3", true));
+            this.Pvp3Txt.Location = new System.Drawing.Point(104, 6);
+            this.Pvp3Txt.Name = "Pvp3Txt";
+            this.Pvp3Txt.Size = new System.Drawing.Size(100, 23);
+            this.Pvp3Txt.TabIndex = 50;
+            this.Pvp3Txt.Text = "00,0 €";
+            this.Pvp3Txt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // SuarezLabel2
+            // Pvp4Txt
             // 
-            this.SuarezLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Suarez", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0,00 €", "C3"));
-            this.SuarezLabel2.Location = new System.Drawing.Point(104, 33);
-            this.SuarezLabel2.Name = "SuarezLabel2";
-            this.SuarezLabel2.Size = new System.Drawing.Size(100, 23);
-            this.SuarezLabel2.TabIndex = 51;
-            this.SuarezLabel2.Text = "00,0 €";
-            this.SuarezLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Pvp4Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp4", true));
+            this.Pvp4Txt.Location = new System.Drawing.Point(104, 33);
+            this.Pvp4Txt.Name = "Pvp4Txt";
+            this.Pvp4Txt.Size = new System.Drawing.Size(100, 23);
+            this.Pvp4Txt.TabIndex = 51;
+            this.Pvp4Txt.Text = "00,0 €";
+            this.Pvp4Txt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ValenteLabel2
+            // Pvp6Txt
             // 
-            this.ValenteLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Valente", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "00,0 €", "C3"));
-            this.ValenteLabel2.Location = new System.Drawing.Point(104, 87);
-            this.ValenteLabel2.Name = "ValenteLabel2";
-            this.ValenteLabel2.Size = new System.Drawing.Size(100, 23);
-            this.ValenteLabel2.TabIndex = 53;
-            this.ValenteLabel2.Text = "00,0 €";
-            this.ValenteLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Pvp6Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp6", true));
+            this.Pvp6Txt.Location = new System.Drawing.Point(104, 87);
+            this.Pvp6Txt.Name = "Pvp6Txt";
+            this.Pvp6Txt.Size = new System.Drawing.Size(100, 23);
+            this.Pvp6Txt.TabIndex = 53;
+            this.Pvp6Txt.Text = "00,0 €";
+            this.Pvp6Txt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // BenitoLabel2
+            // Pvp5Txt
             // 
-            this.BenitoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Benito", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "00,0 €", "C3"));
-            this.BenitoLabel2.Location = new System.Drawing.Point(104, 60);
-            this.BenitoLabel2.Name = "BenitoLabel2";
-            this.BenitoLabel2.Size = new System.Drawing.Size(100, 23);
-            this.BenitoLabel2.TabIndex = 52;
-            this.BenitoLabel2.Text = "00,0 €";
-            this.BenitoLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Pvp5Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtArticulosBindingSource, "Pvp5", true));
+            this.Pvp5Txt.Location = new System.Drawing.Point(104, 60);
+            this.Pvp5Txt.Name = "Pvp5Txt";
+            this.Pvp5Txt.Size = new System.Drawing.Size(100, 23);
+            this.Pvp5Txt.TabIndex = 52;
+            this.Pvp5Txt.Text = "00,0 €";
+            this.Pvp5Txt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ValenteLab
+            // LabDes6
             // 
-            this.ValenteLab.AutoSize = true;
-            this.ValenteLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ValenteLab.Location = new System.Drawing.Point(19, 120);
-            this.ValenteLab.Name = "ValenteLab";
-            this.ValenteLab.Size = new System.Drawing.Size(42, 15);
-            this.ValenteLab.TabIndex = 59;
-            this.ValenteLab.Text = "Pvp6:";
-            this.ValenteLab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LabDes6.AutoSize = true;
+            this.LabDes6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabDes6.Location = new System.Drawing.Point(26, 117);
+            this.LabDes6.Name = "LabDes6";
+            this.LabDes6.Size = new System.Drawing.Size(42, 15);
+            this.LabDes6.TabIndex = 59;
+            this.LabDes6.Text = "Pvp6:";
+            this.LabDes6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // BenitoLab
+            // LabDes5
             // 
-            this.BenitoLab.AutoSize = true;
-            this.BenitoLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BenitoLab.Location = new System.Drawing.Point(19, 93);
-            this.BenitoLab.Name = "BenitoLab";
-            this.BenitoLab.Size = new System.Drawing.Size(46, 15);
-            this.BenitoLab.TabIndex = 58;
-            this.BenitoLab.Text = " Pvp5:";
-            this.BenitoLab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LabDes5.AutoSize = true;
+            this.LabDes5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabDes5.Location = new System.Drawing.Point(26, 90);
+            this.LabDes5.Name = "LabDes5";
+            this.LabDes5.Size = new System.Drawing.Size(42, 15);
+            this.LabDes5.TabIndex = 58;
+            this.LabDes5.Text = "Pvp5:";
+            this.LabDes5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // SuarezLab
+            // LabDesc4
             // 
-            this.SuarezLab.AutoSize = true;
-            this.SuarezLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuarezLab.Location = new System.Drawing.Point(19, 66);
-            this.SuarezLab.Name = "SuarezLab";
-            this.SuarezLab.Size = new System.Drawing.Size(42, 15);
-            this.SuarezLab.TabIndex = 57;
-            this.SuarezLab.Text = "Pvp4:";
-            this.SuarezLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LabDesc4.AutoSize = true;
+            this.LabDesc4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabDesc4.Location = new System.Drawing.Point(26, 63);
+            this.LabDesc4.Name = "LabDesc4";
+            this.LabDesc4.Size = new System.Drawing.Size(42, 15);
+            this.LabDesc4.TabIndex = 57;
+            this.LabDesc4.Text = "Pvp4:";
+            this.LabDesc4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // CastyLab
+            // LabDes3
             // 
-            this.CastyLab.AutoSize = true;
-            this.CastyLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CastyLab.Location = new System.Drawing.Point(19, 39);
-            this.CastyLab.Name = "CastyLab";
-            this.CastyLab.Size = new System.Drawing.Size(42, 15);
-            this.CastyLab.TabIndex = 56;
-            this.CastyLab.Text = "Pvp3:";
-            this.CastyLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LabDes3.AutoSize = true;
+            this.LabDes3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabDes3.Location = new System.Drawing.Point(26, 36);
+            this.LabDes3.Name = "LabDes3";
+            this.LabDes3.Size = new System.Drawing.Size(42, 15);
+            this.LabDes3.TabIndex = 56;
+            this.LabDes3.Text = "Pvp3:";
+            this.LabDes3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // UnidadPaletTextBox
             // 
@@ -1091,7 +1051,7 @@ namespace PELOSCALVO
             this.familiaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.familiaComboBox.Enabled = false;
             this.familiaComboBox.FormattingEnabled = true;
-            this.familiaComboBox.Location = new System.Drawing.Point(427, 20);
+            this.familiaComboBox.Location = new System.Drawing.Point(660, 114);
             this.familiaComboBox.MaxDropDownItems = 30;
             this.familiaComboBox.MaxLength = 50;
             this.familiaComboBox.Name = "familiaComboBox";
@@ -1115,7 +1075,7 @@ namespace PELOSCALVO
             this.tabPage1.Controls.Add(this.TipoIVA_Up_Articulos);
             this.tabPage1.Controls.Add(TipoInpuestoIVALabel1);
             this.tabPage1.Controls.Add(DescueLabel1);
-            this.tabPage1.Controls.Add(this.tarifaTipoArticulos);
+            this.tabPage1.Controls.Add(this.TipoTarifa);
             this.tabPage1.Controls.Add(EmpresaENLACELabel);
             this.tabPage1.Controls.Add(this.EmpresaArticulos);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -1140,17 +1100,17 @@ namespace PELOSCALVO
             0,
             0});
             // 
-            // tarifaTipoArticulos
+            // TipoTarifa
             // 
-            this.tarifaTipoArticulos.DataSource = this.dtConfiDtTarifaTipoBindingSource;
-            this.tarifaTipoArticulos.DisplayMember = "TarifaTipo";
-            this.tarifaTipoArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tarifaTipoArticulos.FormattingEnabled = true;
-            this.tarifaTipoArticulos.Location = new System.Drawing.Point(112, 68);
-            this.tarifaTipoArticulos.Name = "tarifaTipoArticulos";
-            this.tarifaTipoArticulos.Size = new System.Drawing.Size(202, 21);
-            this.tarifaTipoArticulos.TabIndex = 30;
-            this.tarifaTipoArticulos.SelectedIndexChanged += new System.EventHandler(this.tarifaTipoArticulos_SelectedIndexChanged);
+            this.TipoTarifa.DataSource = this.dtConfiDtTarifaTipoBindingSource;
+            this.TipoTarifa.DisplayMember = "TarifaTipo";
+            this.TipoTarifa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TipoTarifa.FormattingEnabled = true;
+            this.TipoTarifa.Location = new System.Drawing.Point(112, 68);
+            this.TipoTarifa.Name = "TipoTarifa";
+            this.TipoTarifa.Size = new System.Drawing.Size(202, 21);
+            this.TipoTarifa.TabIndex = 30;
+            this.TipoTarifa.SelectedIndexChanged += new System.EventHandler(this.tarifaTipoArticulos_SelectedIndexChanged);
             // 
             // dtConfiDtTarifaTipoBindingSource
             // 
@@ -1169,7 +1129,6 @@ namespace PELOSCALVO
             // 
             // EmpresaArticulos
             // 
-            this.EmpresaArticulos.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "EmpresaConfi", true));
             this.EmpresaArticulos.DataSource = this.dtConfiguracionPrincipalBindingSource;
             this.EmpresaArticulos.DisplayMember = "EmpresaConfi";
             this.EmpresaArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1534,11 +1493,11 @@ namespace PELOSCALVO
         private System.Windows.Forms.TabControl tabControl1Articulo;
         private System.Windows.Forms.TabPage tabPage1Articulo;
         private System.Windows.Forms.TabPage tabPage2Articulo;
-        private System.Windows.Forms.TextBox CastyDescTextBox;
-        private System.Windows.Forms.TextBox SuarezDescTextBox;
-        private System.Windows.Forms.TextBox BenitoDescTextBox;
-        private System.Windows.Forms.TextBox ValenteDescTextBox;
-        private System.Windows.Forms.TextBox PlusDescTextBox;
+        private System.Windows.Forms.TextBox Desc3Txt;
+        private System.Windows.Forms.TextBox Desc4Txt;
+        private System.Windows.Forms.TextBox Desc5Text;
+        private System.Windows.Forms.TextBox Desc6Txt;
+        private System.Windows.Forms.TextBox PlusDescTxt;
         private System.Windows.Forms.TextBox UnidadPaletTextBox;
         private System.Windows.Forms.TextBox MinimosStockTextBox;
         private System.Windows.Forms.TextBox StockTextBox;
@@ -1561,20 +1520,20 @@ namespace PELOSCALVO
         public System.Windows.Forms.DataGridView dtPreciosDataGridView;
         private System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
-        private System.Windows.Forms.Label Pvp2Label2;
+        private System.Windows.Forms.Label Pvp2Text;
         private System.Windows.Forms.Label PlusLabel2;
-        private System.Windows.Forms.Label ValenteLabel2;
-        private System.Windows.Forms.Label BenitoLabel2;
-        private System.Windows.Forms.Label SuarezLabel2;
-        private System.Windows.Forms.Label CastyLabel2;
-        private System.Windows.Forms.TextBox Pvp2DescTextBox;
+        private System.Windows.Forms.Label Pvp6Txt;
+        private System.Windows.Forms.Label Pvp5Txt;
+        private System.Windows.Forms.Label Pvp4Txt;
+        private System.Windows.Forms.Label Pvp3Txt;
+        private System.Windows.Forms.TextBox Desc2Text;
         public System.Windows.Forms.ComboBox EmpresaArticulos;
-        private System.Windows.Forms.Label CastyLab;
-        private System.Windows.Forms.Label ValenteLab;
-        private System.Windows.Forms.Label BenitoLab;
-        private System.Windows.Forms.Label SuarezLab;
+        private System.Windows.Forms.Label LabDes3;
+        private System.Windows.Forms.Label LabDes6;
+        private System.Windows.Forms.Label LabDes5;
+        private System.Windows.Forms.Label LabDesc4;
         private System.Windows.Forms.BindingSource dtConfiDtTarifaTipoBindingSource;
-        private System.Windows.Forms.ComboBox tarifaTipoArticulos;
+        private System.Windows.Forms.ComboBox TipoTarifa;
         private DsMultidatos dsMultidatos;
         private System.Windows.Forms.ComboBox DescripcionBuscarArt;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
@@ -1589,7 +1548,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtFamiliaProductosBindingSource;
         private System.Windows.Forms.CheckBox BajaCheckBox;
         public System.Windows.Forms.BindingSource dtArticulosBindingSource;
-        public Articulos articulos;
+        public DsArticulos articulos;
         public System.Windows.Forms.ComboBox FiltrarBajas;
         private System.Windows.Forms.ComboBox FiltrarFamiliaArt;
         private System.Windows.Forms.RadioButton CheckFamiliaArt;
@@ -1601,13 +1560,10 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Familia;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFILA;
         private DsMulti2 dsMulti2;
+        private System.Windows.Forms.TextBox OemText;
     }
 }

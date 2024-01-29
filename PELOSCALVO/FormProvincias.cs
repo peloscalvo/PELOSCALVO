@@ -468,10 +468,12 @@ namespace PELOSCALVO
         {
             if (dtPaisesBindingSource.Count > 0)
             {
+    
+                ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "Provincias";
                 AñadirIdProvincia();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Provincias", "Provincias");
+                frm.CargarDatos(1, " Provincias", "Provincias", "IdEnlace", Convert.ToInt32(Id_pais.Text));
                 frm.BringToFront();
                 frm.ShowDialog();
             }
