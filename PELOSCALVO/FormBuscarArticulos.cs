@@ -160,8 +160,8 @@ namespace PELOSCALVO
                     }
                     if (this.TIPObuscarArticulos.SelectedIndex == 2)//oem fabrica
                     {
-                      //  NumeroValidar = 2;
-                      //  fieldName = string.Concat("[", this.articulos.DtArticulos.Columns[NumeroValidar].ColumnName, "]");
+                        //  NumeroValidar = 2;
+                        //  fieldName = string.Concat("[", this.articulos.DtArticulos.Columns[NumeroValidar].ColumnName, "]");
                         this.articulos.DtArticulos.DefaultView.Sort = Oem;
 
                         this.verViev.RowFilter = Oem + " LIKE '%" + this.BuscarArticulosText.Text + "%'" + "and " + "[baja]" + "=" + this.SiBaja;
@@ -534,7 +534,7 @@ namespace PELOSCALVO
                 else
                 {
                     BarcodeWriter br = new BarcodeWriter();
-                    int indice2 = this.ListaQr2.SelectedIndex+1;           
+                    int indice2 = this.ListaQr2.SelectedIndex + 1;
                     if (indice2 > 2)
                     {
                         foreach (string item in this.ListaQr2.Items)
@@ -545,7 +545,7 @@ namespace PELOSCALVO
                             }
                             Nvi = Nvi * 2;
                         }
-                        indice2= Nvi/2;
+                        indice2 = Nvi / 2;
                     }
                     BarcodeFormat FormatoBr = (ZXing.BarcodeFormat)indice2;
                     br.Format = FormatoBr;
@@ -687,9 +687,9 @@ namespace PELOSCALVO
                         {
                             imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
                             codigo.Alignment = AlignmentPositions.CENTER;
-    
+
                             codigo.IncludeLabel = true;
-                           
+
 
                             codigo.LabelPosition = LabelPositions.BOTTOMCENTER;
                             // imagenTitulo = convertirTextoImagen(this.TituloText.Text.Trim(), Ancho, Color.White);
@@ -750,14 +750,14 @@ namespace PELOSCALVO
 
                     if (this.FormatoText.SelectedIndex == 4)
                     {
-
+                        ClasDatos.count = 25;
                         PrintDocument PD = new PrintDocument();
                         PD.PrintPage += new PrintPageEventHandler(PrintBarras_PrintPage);
                         PD.DocumentName = string.Format("{0}", "codigos Barras App");
                         int Filas = FormBuscarArticulos.listas.lista.Count;
                         int AltoPage = Alto * Filas;
                         int Hojas = (AltoPage / 1118) + 1;
-                        PD.PrinterSettings.PrintRange = (PrintRange)Hojas;
+                        PD.PrinterSettings.ToPage = Hojas;
                         PD.Print();
 
                     }
@@ -844,8 +844,8 @@ namespace PELOSCALVO
 
         private void PrintBarras_PrintPage(object sender, PrintPageEventArgs e)
         {
-            int BB = 25;
-            bool Si = false;
+            // int BB = 25;
+            // bool Si = false;
             Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
             Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
             Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
@@ -862,24 +862,36 @@ namespace PELOSCALVO
             Single YposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo 
             Single yPos = Arial24.GetHeight(e.Graphics); // la posición superior
 
-            if (Si == false)
-            {
-              //  e.HasMorePages = true;
-            }
+
             try
             {
                 e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos + 40, 6);
+                for (int i = 0; i < FormBuscarArticulos.listas.lista.Count; i++)
+                {
+                    // ClasDatos.count
+                    ;
+                    e.Graphics.DrawImage(FormBuscarArticulos.listas.lista[1].Valor, new Point(0, ClasDatos.count));
+                    // BB = BB + item.Valor.Height + 14;
+                    ClasDatos.count = ClasDatos.count + FormBuscarArticulos.listas.lista[1].Valor.Height + 14;
+                }
                 foreach (var item in FormBuscarArticulos.listas.lista)
                 {
                     // e.Graphics.DrawString("---------------------------", Arial10, Brushes.Black, new Point(BB, BB));
-                    e.Graphics.DrawImage(item.Valor, new Point(0, BB));
-                    BB = BB + item.Valor.Height + 14;
 
-                    
+
+
                 }
-                Si = true;
-                e.HasMorePages = BB >= e.PageBounds.Bottom ;
-               // e.HasMorePages = false;
+                // Si = true        ClasDatos.count = ClasDatos.count + 40;
+                if (ClasDatos.count <= FormBuscarArticulos.listas.lista.Count)
+                {
+                    e.HasMorePages = true;
+                }
+                else
+                {
+                    e.HasMorePages = false;
+                }
+               // e.HasMorePages = ClasDatos.count >= e.PageBounds.Bottom;
+                // e.HasMorePages = false;
                 // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
             }
             catch (Exception ex)
