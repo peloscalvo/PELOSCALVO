@@ -306,6 +306,7 @@ namespace PELOSCALVO
                             this.ListaBaseDatos.Items.Add(this.NombreBaseDatos.Text);
                             MessageBox.Show("Se Creo Base Datos Correctamente" + "\n" + this.NombreBaseDatos.Text, "CREAR BASE DATOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                            CrearTablasSql();
                         }
                     }
                 }
@@ -366,6 +367,207 @@ namespace PELOSCALVO
                 this.ServidorCrear.Tag = "SEGUIR";
             }
         }
+        private void CrearTablasSql()
+        {
+            string ConsultaFacturacion = "";
+            string Resultado = "Se Crearon Nuevas Tablas" + "\n" + "\n";
+            string NombreBaseDatos = this.NombreBaseTablas.Text;
+            /// ARTICULOS ARTICULOS
+            string TablaArticulos = this.SerieArticulosTabla.Text;
+            string TablaClientes = this.SerieClientesTabla.Text;
+            string ConsutaArticulos = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaArticulos + "]') AND type in (N'U'))" +
+            "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] primary key NOT NULL, [Referencia] [varchar](50)NULL, [Oem] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
+            "[Ganancia] [numeric](19, 3) NULL,[Pvp1] [numeric](19, 3) NULL,[PvpIva] [numeric](19, 3) NULL,[Desc2] [numeric](19, 3) NULL,[Pvp2] [numeric](19, 3) NULL," +
+            "[Desc3] [numeric](19, 3) NULL,[Pvp3] [numeric](19, 3) NULL,[Desc4] [numeric](19, 3) NULL,[Pvp4] [numeric](19, 3) NULL,[Desc5] [numeric](19, 3) NULL," +
+            "[Pvp5] [numeric](19, 3) NULL,[Desc6] [numeric](19, 3) NULL,[Pvp6] [numeric](19, 3) NULL,[PlusDesc] [numeric](19, 3) NULL,[Plus] [numeric](19, 3) NULL," +
+            "[UnidadPale] [numeric](19, 3) NULL,[MinimosSto] [numeric](19, 3) NULL,[Stock] [numeric](19, 3) NULL,[Familia] [varchar](50) NULL,[Fecha] [date] NULL," +
+            "[BAJA] [bit]DEFAULT 0 NOT NULL, [Fatu] [bit]DEFAULT 0 NOT NULL)";
+            /////consulta  CLIENTES           CLIENTES   /////////////////
+            string ConsultaClientes = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaClientes + "]') AND type in (N'U'))" +
+                " CREATE TABLE [" + TablaClientes + "]( [IDCLIENTE][int]primary key NOT NULL,[APODOCLIEN] [varchar](255) NULL,[NOMBRECLIE] [varchar](255) NULL,[DIRECCIONC] [varchar](255) NULL," +
+                "[TELEFONOCL] [varchar](30) NULL,[MOVILCLIEN] [varchar](50) NULL,[CORREOCLIE] [varchar](255) NULL,[DNICLIENTE] [varchar](30) NULL,[LOCALIDADC] [varchar](255) NULL," +
+                "[CODIGOPOST] [varchar](50) NULL,[PAISCLIENT] [varchar](255) NULL,[FECHAALTAC] [date] NULL,[CALLECLIEN] [varchar](255) NULL,[NUMEROCALL] [varchar](40) NULL," +
+                "[PROVINCIAC] [varchar](100) NULL,[TARIFATIPO] [varchar](50) NULL,[TIPODNI] [varchar](50) NULL,[TIPOCLIENT] [varchar](50) NULL,[DESCUENTOC] [numeric](19, 3) NULL," +
+                "[NUMEROCUEN] [varchar](100) NULL,[PORTES] [varchar](100) NULL,[BANCOOFICI] [varchar](100) NULL,[BANCOPROVI] [varchar](100) NULL,[BANCODIREC] [varchar](150) NULL," +
+                "[BANCOLOCAL] [varchar](100) NULL,[BANCOIBAN] [varchar](100) NULL,[BANCOCODIG] [varchar](100) NULL,[BANCOENTID] [varchar](100) NULL,[BANCOOFIC2] [varchar](100) NULL," +
+                "[BANCODC] [varchar](100) NULL,[BANCON_CUE] [varchar](100) NULL,[BAJA] [bit]default(0) NOT NULL)";
+            //////consulta  FACTURANCION         FACTURACION   /////////////////
+            ///
+            string TablaFactu = "DtNota";
+            string Tabladetalle = "DtDetalles_Nota";
+
+
+            string ConsultaEmpresas = "IF not EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfiguracionPrincipal]') AND type in (N'U'))" +
+          "CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] [int] primary key Not NULL, [EmpresaConfi][varchar](60) NULL, [NombreEmpresa] [varchar](60) NULL," +
+           "[DireccionEmpresa] [varchar](60) NULL,[LocalidadEmpresa] [varchar](50) NULL,[CodigoPostalEmpresa] [varchar](25) NULL,[ProvinciaEmpresa] [varchar](30) NULL," +
+           "[TelefonoEmpresa] [varchar](20) NULL,[CorreoEmpresa] [varchar](30) NULL,[WepEmpresa] [varchar](40) NULL,[RegimenIvaEmpresa] [varchar](30) NULL," +
+           " [PaisEmpresa] [varchar](40) NULL,[SerieDeFacturacionEmpresa] [varchar](10) NULL,[Telefono2Empresa] [varchar](25) NULL,[MovilEmpresa] [varchar](25) NULL," +
+            " [CifEmpresa] [varchar](20) NULL,[ImagenEmpresa] [image] NULL) " +
+
+            "IF NOT  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfi]') AND type in (N'U')) " +
+            "CREATE TABLE[DtConfi]([IdEnlace][int] primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
+           "[EmpresaENLACE] [int] NOT NULL,[IdConexionConfi] [int] NULL, [AñoDeEjercicio] [varchar](60) NULL," +
+            " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
+
+            string ConsultaTablas = "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProveedores]') AND type in (N'U'))" +
+                  "   CREATE TABLE [DtProveedores]( [Id_Proveedores][int] not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [int] Not NULL, " +
+                  " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
+
+                  "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +
+                  "   CREATE TABLE [DtTarifaTipo]( [Id]int null,[TarifaTipo][varchar](60) NULL ,[EnlaceTarifa] [int] Not NULL, " +
+                  " CONSTRAINT F_DtTarifaTipo FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
+
+            "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
+           " CREATE TABLE [DtAlmacenes]( [Id][int] NOT NULL,[Almacenes] varchar(80) NULL ,[Enlace_Almacenes] [int] not  NULL, " +
+                 " CONSTRAINT F_DtALMACENES FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
+
+                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtFamiliaProductos]') AND type in (N'U'))" +
+          " CREATE TABLE [DtFamiliaProductos]( [Id][int] NOT NULL,[Familia] varchar(80) NULL)" +
+
+            "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtPaises]') AND type in (N'U'))" +
+        " CREATE TABLE [DtPaises]( [Id][int] primary key NOT NULL,[Paises] varchar(80)  NULL)" +
+
+            "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProvincias]') AND type in (N'U'))" +
+             " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[Provincias] varchar(80) NULL,[IdEnlace][int] NOT NULL ," +
+          " CONSTRAINT F_DtProvincias FOREIGN KEY (IdEnlace)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )" +
+
+          "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
+               " CREATE TABLE [DtObras]( [Id][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
+
+                 "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtInicioMulti]') AND type in (N'U'))" +
+               " CREATE TABLE [DtInicioMulti]( [Id][int]primary key NOT NULL,[EmpresaInicio] varchar(200) NULL" +
+               ",[EjercicioInicio] varchar(80) NULL,[SerieInicio] varchar(5) NULL,[NombreArchivoDatos] varchar(80) NULL" +
+               ",[RutaArchivoDatos] varchar(200) NULL,[SerieProvinciaInicio] varchar(80) NULL,[SeriePaisInicio] varchar(80) NULL," +
+               "[ArchivoArticulos] varchar(80) NULL,[TipoExtensionArticulos] varchar(3) NULL,[ArchivoClientes] varchar(80) NULL)" +
+
+                  "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtCorreos]') AND type in (N'U'))" +
+               " CREATE TABLE [DtCorreos]( [Id][int] NOT NULL,[NombreEmpresa] varchar(150) NULL,[CorreoEletronico] varchar(150) NULL" +
+               ",[Usuario] varchar(150) NULL,[Contraseña] varchar(150) NULL,[smtp] varchar(150) NULL,[Puerto] [int] NULL" +
+               ",[Timeof] [int] NULL)" +
+
+            "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtCorreosCliente]') AND type in (N'U'))" +
+              " CREATE TABLE [DtCorreosCliente]( [Id][int]primary key NOT NULL,[RazonSocial] varchar(200) NULL,[EmpresaNombre] varchar(200) NULL" +
+             ",[Direcion] varchar(150) NULL,[CorreoEletronico_cli] varchar(200) NULL)" +
+
+            "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtUsuario]') AND type in (N'U'))" +
+       " CREATE TABLE [DtUsuario]( [Id][int]primary key NOT NULL,[Usuario] varchar(200) NULL,[Nombre] varchar(200) NULL" +
+      ",[Direcion] varchar(150) NULL,[Cargo] varchar(200) NULL,[Varios] varchar(150) NULL,[CorreoEletronico] varchar(200) NULL)" +
+       "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtMovimientos]') AND type in (N'U'))" +
+         "CREATE TABLE [DtMovimientos]([Id][int] IDENTITY(1,1) primary key,[Referencia] varchar(250) null, [Stock] [int] default 0, [Enlace] varchar(250) not null," +
+               "[Id_Empresa] [int] null, [Id_Almacen] [int] null, [Varios] varchar(250) null,[contar] varchar(250) null)";
+            string cadenaConexion = "Data Source=" + this.ServidorCrear.Text + ";Initial Catalog=" + NombreBaseDatos + ";Integrated Security=True";
+            try
+            {
+                using (SqlConnection NuevaConexion = new SqlConnection(cadenaConexion))
+                {
+                    NuevaConexion.Open();
+                    if (this.checkEmpresas.Checked == true)
+                    {
+                        using (SqlCommand comando3 = new SqlCommand(ConsultaEmpresas, NuevaConexion))
+                        {
+                            comando3.ExecuteNonQuery();
+                            comando3.Parameters.Clear();
+                            Resultado += "EMPRESAS" + "\n";
+                        }
+
+                    }
+                    if (this.checkTablas.Checked == true)
+                    {
+                        using (SqlCommand comando3 = new SqlCommand(ConsultaTablas, NuevaConexion))
+                        {
+                            comando3.ExecuteNonQuery();
+                            comando3.Parameters.Clear();
+                            Resultado += "DTCONFI" + "\n"; Resultado += "DTPROVEEDORES" + "\n"; Resultado += "DTALMACENES" + "\n";
+                        }
+
+                    }
+                    if (this.CheckTablaArticulos.Checked == true)
+                    {
+                        using (SqlCommand comando = new SqlCommand(ConsutaArticulos, NuevaConexion))
+                        {
+                            comando.ExecuteNonQuery();
+                            Resultado += "ARTICULOS" + "\n";
+                        }
+                    }
+
+                    if (this.CheckClientes.Checked == true)
+                    {
+                        using (SqlCommand comando2 = new SqlCommand(ConsultaClientes, NuevaConexion))
+                        {
+                            comando2.ExecuteNonQuery();
+                            comando2.Parameters.Clear();
+                            Resultado += "CLIENTES" + "\n";
+                        }
+
+                    }
+                    if (this.CheckFacturacion.Checked == true)
+                    {
+                        Random r = new Random();
+                        int VALORid = r.Next(10000, 900000);
+                        for (int i = 1; i <= 7; i++)
+                        {
+                            VALORid = r.Next(500, 90000);
+                            ConsultaFacturacion = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaFactu + "]') AND type in (N'U')) " +
+                            "CREATE TABLE [" + TablaFactu + "]([EnlaceFactura] [int] primary key Not NULL, [NumeroFactura] int NOT NULL,[Apodo] [varchar](50) NULL,[Nombre] [varchar](60) NULL," +
+                            "[Direccion] [varchar](50) NULL,[Calle] [varchar](30) NULL,[NumeroCalle] [varchar](20) NULL,[Dni] [Varchar](16) NULL,[Localidad] [varchar](50) NULL," +
+                            "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[Marca] [varchar](50) NULL,[FechaFactura] [date] NULL," +
+                            "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
+                            "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
+                            "[EjercicioTipo] [int]Not NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [int] NULL,[EnlaceDtconfi][int] NOT NULL," +
+                            "CONSTRAINT F_" + TablaFactu + VALORid.ToString() + " FOREIGN KEY(EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )" +
+
+                            "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +
+                           "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle][varchar](50) NULL,[CantidadDetalle] [numeric](13, 3) NULL,[DescripccionDetalle] [varchar](60) NULL," +
+                           "[DescuentoDetalle] [numeric](19, 3) NULL,[PrecioDetalle] [numeric](19, 3) NULL,[IvaDetalle] [numeric](10, 3) NULL,[ImporteDetalle] [numeric](19, 3) NULL," +
+                           "[EnlaceDetalle] [int] not NULL, CONSTRAINT FK_" + i + TablaFactu + VALORid + " FOREIGN KEY(EnlaceDetalle)REFERENCES " + TablaFactu + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE" + ")";
+
+
+                            using (SqlCommand comando3 = new SqlCommand(ConsultaFacturacion, NuevaConexion))
+                            {
+                                if (i == 2)
+                                {
+                                    TablaFactu = "DtNota2";
+                                    Tabladetalle = "DtDetalles_Nota2";
+                                }
+                                if (i == 3)
+                                {
+
+                                    Tabladetalle = "DtDetalles2_Nota2";
+                                }
+                                if (i == 4)
+                                {
+                                    TablaFactu = "DtAlbaran";
+                                    Tabladetalle = "DtDetalles_Albaran";
+                                }
+                                if (i == 5)
+                                {
+                                    TablaFactu = "DtPresupuesto";
+                                    Tabladetalle = "DtDetalles_Presupuesto";
+                                }
+                                if (i == 6)
+                                {
+                                    TablaFactu = "DtFactura";
+                                    Tabladetalle = "DtDetalles_Fatura";
+                                }
+
+                                comando3.ExecuteNonQuery();
+                                comando3.Parameters.Clear();
+                            }
+
+
+                        }
+                        Resultado += "FACTURACION" + "\n";
+                    }
+
+                }
+                MessageBox.Show(Resultado, "TABLAS CREADAS BASE DATOS LISTA PARA USAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
         private void BtnCrearTablas_Click(object sender, EventArgs e)
         {
             if (this.NombreBaseTablas.Text == string.Empty)
@@ -394,205 +596,8 @@ namespace PELOSCALVO
             Application.DoEvents();
             if (this.ServidorCrear.Text != string.Empty)
             {
-                string ConsultaFacturacion = "";
-                string Resultado = "Se Crearon Nuevas Tablas" + "\n" + "\n";
-                string NombreBaseDatos = this.NombreBaseTablas.Text;
-                /// ARTICULOS ARTICULOS
-                string TablaArticulos = this.SerieArticulosTabla.Text;
-                string TablaClientes = this.SerieClientesTabla.Text;
-                string ConsutaArticulos = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaArticulos + "]') AND type in (N'U'))" +
-                "CREATE TABLE [" + TablaArticulos + "] ( [Id][int] primary key NOT NULL, [Referencia] [varchar](50)NULL, [Oem] [varchar](50)NULL,[Descripcci] [varchar](60)NULL,[Coste] [numeric](19, 3) NULL," +
-                "[Ganancia] [numeric](19, 3) NULL,[Pvp1] [numeric](19, 3) NULL,[PvpIva] [numeric](19, 3) NULL,[Desc2] [numeric](19, 3) NULL,[Pvp2] [numeric](19, 3) NULL," +
-                "[Desc3] [numeric](19, 3) NULL,[Pvp3] [numeric](19, 3) NULL,[Desc4] [numeric](19, 3) NULL,[Pvp4] [numeric](19, 3) NULL,[Desc5] [numeric](19, 3) NULL," +
-                "[Pvp5] [numeric](19, 3) NULL,[Desc6] [numeric](19, 3) NULL,[Pvp6] [numeric](19, 3) NULL,[PlusDesc] [numeric](19, 3) NULL,[Plus] [numeric](19, 3) NULL," +
-                "[UnidadPale] [numeric](19, 3) NULL,[MinimosSto] [numeric](19, 3) NULL,[Stock] [numeric](19, 3) NULL,[Familia] [varchar](50) NULL,[Fecha] [date] NULL," +
-                "[BAJA] [bit]DEFAULT 0 NOT NULL, [Fatu] [bit]DEFAULT 0 NOT NULL)";
-                /////consulta  CLIENTES           CLIENTES   /////////////////
-                string ConsultaClientes = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaClientes + "]') AND type in (N'U'))" +
-                    " CREATE TABLE [" + TablaClientes + "]( [IDCLIENTE][int]primary key NOT NULL,[APODOCLIEN] [varchar](255) NULL,[NOMBRECLIE] [varchar](255) NULL,[DIRECCIONC] [varchar](255) NULL," +
-                    "[TELEFONOCL] [varchar](30) NULL,[MOVILCLIEN] [varchar](50) NULL,[CORREOCLIE] [varchar](255) NULL,[DNICLIENTE] [varchar](30) NULL,[LOCALIDADC] [varchar](255) NULL," +
-                    "[CODIGOPOST] [varchar](50) NULL,[PAISCLIENT] [varchar](255) NULL,[FECHAALTAC] [date] NULL,[CALLECLIEN] [varchar](255) NULL,[NUMEROCALL] [varchar](40) NULL," +
-                    "[PROVINCIAC] [varchar](100) NULL,[TARIFATIPO] [varchar](50) NULL,[TIPODNI] [varchar](50) NULL,[TIPOCLIENT] [varchar](50) NULL,[DESCUENTOC] [numeric](19, 3) NULL," +
-                    "[NUMEROCUEN] [varchar](100) NULL,[PORTES] [varchar](100) NULL,[BANCOOFICI] [varchar](100) NULL,[BANCOPROVI] [varchar](100) NULL,[BANCODIREC] [varchar](150) NULL," +
-                    "[BANCOLOCAL] [varchar](100) NULL,[BANCOIBAN] [varchar](100) NULL,[BANCOCODIG] [varchar](100) NULL,[BANCOENTID] [varchar](100) NULL,[BANCOOFIC2] [varchar](100) NULL," +
-                    "[BANCODC] [varchar](100) NULL,[BANCON_CUE] [varchar](100) NULL,[BAJA] [bit]default(0) NOT NULL)";
-                //////consulta  FACTURANCION         FACTURACION   /////////////////
-                ///
-                string TablaFactu = "DtNota";
-                string Tabladetalle = "DtDetalles_Nota";
 
-
-                string ConsultaEmpresas = "IF not EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfiguracionPrincipal]') AND type in (N'U'))" +
-              "CREATE TABLE [DtConfiguracionPrincipal]( [IdEmpresa] [int] primary key Not NULL, [EmpresaConfi][varchar](60) NULL, [NombreEmpresa] [varchar](60) NULL," +
-               "[DireccionEmpresa] [varchar](60) NULL,[LocalidadEmpresa] [varchar](50) NULL,[CodigoPostalEmpresa] [varchar](25) NULL,[ProvinciaEmpresa] [varchar](30) NULL," +
-               "[TelefonoEmpresa] [varchar](20) NULL,[CorreoEmpresa] [varchar](30) NULL,[WepEmpresa] [varchar](40) NULL,[RegimenIvaEmpresa] [varchar](30) NULL," +
-               " [PaisEmpresa] [varchar](40) NULL,[SerieDeFacturacionEmpresa] [varchar](10) NULL,[Telefono2Empresa] [varchar](25) NULL,[MovilEmpresa] [varchar](25) NULL," +
-                " [CifEmpresa] [varchar](20) NULL,[ImagenEmpresa] [image] NULL) " +
-
-                "IF NOT  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtConfi]') AND type in (N'U')) " +
-                "CREATE TABLE[DtConfi]([IdEnlace][int] primary key Not NULL, [ConfiguraccionBasica][varchar](60) NULL, [TipoInpuestoIVA] INT NULL, [EjerciciosDeAño] [varchar](60) NULL," +
-               "[EmpresaENLACE] [int] NOT NULL,[IdConexionConfi] [int] NULL, [AñoDeEjercicio] [varchar](60) NULL," +
-                " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
-
-                string ConsultaTablas = "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProveedores]') AND type in (N'U'))" +
-                      "   CREATE TABLE [DtProveedores]( [Id_Proveedores][int] not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [int] Not NULL, " +
-                      " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
-
-                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +
-                      "   CREATE TABLE [DtTarifaTipo]( [Id]int null,[TarifaTipo][varchar](60) NULL ,[EnlaceTarifa] [int] Not NULL, " +
-                      " CONSTRAINT F_DtTarifaTipo FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
-
-                "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
-               " CREATE TABLE [DtAlmacenes]( [Id][int] NOT NULL,[Almacenes] varchar(80) NULL ,[Enlace_Almacenes] [int] not  NULL, " +
-                     " CONSTRAINT F_DtALMACENES FOREIGN KEY(Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
-
-                     "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtFamiliaProductos]') AND type in (N'U'))" +
-              " CREATE TABLE [DtFamiliaProductos]( [Id][int] NOT NULL,[Familia] varchar(80) NULL)" +
-
-                "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtPaises]') AND type in (N'U'))" +
-            " CREATE TABLE [DtPaises]( [Id][int] primary key NOT NULL,[Paises] varchar(80)  NULL)" +
-
-                "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProvincias]') AND type in (N'U'))" +
-                 " CREATE TABLE [DtProvincias]( [Id][int] NOT NULL,[Provincias] varchar(80) NULL,[IdEnlace][int] NOT NULL ," +
-              " CONSTRAINT F_DtProvincias FOREIGN KEY (IdEnlace)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )" +
-
-              "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtObras]') AND type in (N'U'))" +
-                   " CREATE TABLE [DtObras]( [Id][int] primary key NOT NULL,[Obras] varchar(80) NULL)" +
-
-                     "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtInicioMulti]') AND type in (N'U'))" +
-                   " CREATE TABLE [DtInicioMulti]( [Id][int]primary key NOT NULL,[EmpresaInicio] varchar(200) NULL" +
-                   ",[EjercicioInicio] varchar(80) NULL,[SerieInicio] varchar(5) NULL,[NombreArchivoDatos] varchar(80) NULL" +
-                   ",[RutaArchivoDatos] varchar(200) NULL,[SerieProvinciaInicio] varchar(80) NULL,[SeriePaisInicio] varchar(80) NULL," +
-                   "[ArchivoArticulos] varchar(80) NULL,[TipoExtensionArticulos] varchar(3) NULL,[ArchivoClientes] varchar(80) NULL)" +
-
-                      "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtCorreos]') AND type in (N'U'))" +
-                   " CREATE TABLE [DtCorreos]( [Id][int] NOT NULL,[NombreEmpresa] varchar(150) NULL,[CorreoEletronico] varchar(150) NULL" +
-                   ",[Usuario] varchar(150) NULL,[Contraseña] varchar(150) NULL,[smtp] varchar(150) NULL,[Puerto] [int] NULL" +
-                   ",[Timeof] [int] NULL)" +
-
-                "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtCorreosCliente]') AND type in (N'U'))" +
-                  " CREATE TABLE [DtCorreosCliente]( [Id][int]primary key NOT NULL,[RazonSocial] varchar(200) NULL,[EmpresaNombre] varchar(200) NULL" +
-                 ",[Direcion] varchar(150) NULL,[CorreoEletronico_cli] varchar(200) NULL)" +
-
-                "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtUsuario]') AND type in (N'U'))" +
-           " CREATE TABLE [DtUsuario]( [Id][int]primary key NOT NULL,[Usuario] varchar(200) NULL,[Nombre] varchar(200) NULL" +
-          ",[Direcion] varchar(150) NULL,[Cargo] varchar(200) NULL,[Varios] varchar(150) NULL,[CorreoEletronico] varchar(200) NULL)"+
-           "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtMovimientos]') AND type in (N'U'))" +
-             "CREATE TABLE [DtMovimientos]([Id][int] IDENTITY(1,1) primary key,[Referencia] varchar(250) null, [Stock] [int] default 0, [Enlace] varchar(250) not null," +
-                   "[Id_Empresa] [int] null, [Id_Almacen] [int] null, [Varios] varchar(250) null,[contar] varchar(250) null)"; 
-                string cadenaConexion = "Data Source=" + this.ServidorCrear.Text + ";Initial Catalog=" + NombreBaseDatos + ";Integrated Security=True";
-                try
-                {
-                    using (SqlConnection NuevaConexion = new SqlConnection(cadenaConexion))
-                    {
-                        NuevaConexion.Open();
-
-                        if (this.CheckTablaArticulos.Checked == true)
-                        {
-                            using (SqlCommand comando = new SqlCommand(ConsutaArticulos, NuevaConexion))
-                            {
-                                comando.ExecuteNonQuery();
-                                Resultado += "ARTICULOS" + "\n";
-                            }
-                        }
-
-                        if (this.CheckClientes.Checked == true)
-                        {
-                            using (SqlCommand comando2 = new SqlCommand(ConsultaClientes, NuevaConexion))
-                            {
-                                comando2.ExecuteNonQuery();
-                                comando2.Parameters.Clear();
-                                Resultado += "CLIENTES" + "\n";
-                            }
-
-                        }
-                        if (this.CheckFacturacion.Checked == true)
-                        {
-                            Random r = new Random();
-                            int VALORid = r.Next(10000, 900000);
-                            for (int i = 1; i <= 7; i++)
-                            {
-                                VALORid = r.Next(500, 90000);
-                                ConsultaFacturacion = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaFactu + "]') AND type in (N'U')) " +
-                                "CREATE TABLE [" + TablaFactu + "]([EnlaceFactura] [int] primary key Not NULL, [NumeroFactura] int NOT NULL,[Apodo] [varchar](50) NULL,[Nombre] [varchar](60) NULL," +
-                                "[Direccion] [varchar](50) NULL,[Calle] [varchar](30) NULL,[NumeroCalle] [varchar](20) NULL,[Dni] [Varchar](16) NULL,[Localidad] [varchar](50) NULL," +
-                                "[Provincia] [varchar](50) NULL,[CodigoPostal] [varchar](20) NULL,[NonbreAlmacen] [varchar](30) NULL,[Marca] [varchar](50) NULL,[FechaFactura] [date] NULL," +
-                                "[IvaImpuesto] [int] NULL,[SubTotal] [numeric](19, 3) NULL,[BaseIva] [numeric](19, 3) NULL,[TotalFactura] [numeric](19, 3) NULL,[CobradaFactura] [varchar](20) NULL," +
-                                "[FechaCobro] [date] NULL,[Pais_Fact] [varchar](50) NULL,[TotalFactura2] [numeric](19, 3) NULL,[TipoNOTA] [varchar](30) NULL,[Obra_factu] [varchar](50) NULL," +
-                                "[EjercicioTipo] [int]Not NULL,[SerieTipo] [varchar](4) NULL,[EmpresaEnlace] [int] NULL,[EnlaceDtconfi][int] NOT NULL," +
-                                "CONSTRAINT F_" + TablaFactu + VALORid.ToString() +" FOREIGN KEY(EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )" +
-
-                                "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + Tabladetalle + "]') AND type in (N'U')) " +
-                               "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle][varchar](50) NULL,[CantidadDetalle] [numeric](13, 3) NULL,[DescripccionDetalle] [varchar](60) NULL," +
-                               "[DescuentoDetalle] [numeric](19, 3) NULL,[PrecioDetalle] [numeric](19, 3) NULL,[IvaDetalle] [numeric](10, 3) NULL,[ImporteDetalle] [numeric](19, 3) NULL," +
-                               "[EnlaceDetalle] [int] not NULL, CONSTRAINT FK_" + i + TablaFactu + VALORid + " FOREIGN KEY(EnlaceDetalle)REFERENCES " + TablaFactu + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE" + ")";
-
-
-                                using (SqlCommand comando3 = new SqlCommand(ConsultaFacturacion, NuevaConexion))
-                                {
-                                    if (i == 2)
-                                    {
-                                        TablaFactu = "DtNota2";
-                                        Tabladetalle = "DtDetalles_Nota2";
-                                    }
-                                    if (i == 3)
-                                    {
-
-                                        Tabladetalle = "DtDetalles2_Nota2";
-                                    }
-                                    if (i == 4)
-                                    {
-                                        TablaFactu = "DtAlbaran";
-                                        Tabladetalle = "DtDetalles_Albaran";
-                                    }
-                                    if (i == 5)
-                                    {
-                                        TablaFactu = "DtPresupuesto";
-                                        Tabladetalle = "DtDetalles_Presupuesto";
-                                    }
-                                    if (i == 6)
-                                    {
-                                        TablaFactu = "DtFactura";
-                                        Tabladetalle = "DtDetalles_Fatura";
-                                    }
-
-                                    comando3.ExecuteNonQuery();
-                                    comando3.Parameters.Clear();
-                                }
-
-
-                            }
-                            Resultado += "FACTURACION" + "\n";
-                        }
-                        if (this.checkEmpresas.Checked == true)
-                        {
-                            using (SqlCommand comando3 = new SqlCommand(ConsultaEmpresas, NuevaConexion))
-                            {
-                                comando3.ExecuteNonQuery();
-                                comando3.Parameters.Clear();
-                                Resultado += "EMPRESAS" + "\n";
-                            }
-
-                        }
-                        if (this.checkTablas.Checked == true)
-                        {
-                            using (SqlCommand comando3 = new SqlCommand(ConsultaTablas, NuevaConexion))
-                            {
-                                comando3.ExecuteNonQuery();
-                                comando3.Parameters.Clear();
-                                Resultado += "DTCONFI" + "\n"; Resultado += "DTPROVEEDORES" + "\n"; Resultado += "DTALMACENES" + "\n";
-                            }
-
-                        }
-                    }
-                    MessageBox.Show(Resultado, "CREAR TABLAS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message.ToString());
-                }
-
+                CrearTablasSql();
 
             }
             else

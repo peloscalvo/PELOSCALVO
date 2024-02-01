@@ -137,7 +137,380 @@ namespace PELOSCALVO
             return tableNames;
         }
 
+        private void CrearTablasDb()
+        {
 
+            Random r = new Random();
+            int valor = r.Next(10, 900000);
+
+            string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ( [Id] INTEGER  primary key , [Referencia] varchar, [Oem] varchar," +
+                "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
+                "[Desc2] DECIMAL ,[Pvp2] MONEY ,[Desc3] DECIMAL ,[Pvp3] MONEY ,[Desc4] DECIMAL " +
+                ",[Pvp4] MONEY ,[Desc5] DECIMAL ,[Pvp5] MONEY ,[Desc6] DECIMAL ,[Pvp6] MONEY" +
+                " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
+                ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
+
+
+            string ConsultaCliente = " CREATE TABLE [" + this.ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
+        "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
+        "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
+        "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
+        "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100),[BANCODIREC] varchar(150) ," +
+        "[BANCOLOCAL] varchar(100) ,[BANCOIBAN] varchar(100) ,[BANCOCODIG] varchar(100) ,[BANCOENTID] varchar(100) ,[BANCOOFIC2] varchar(100) ," +
+        "[BANCODC] varchar(100) NULL,[BANCON_CUE] varchar(100) ,[BAJA] bit default 0 )";
+            string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal] ([IdEmpresa] INTEGER  primary key , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
+            "[DireccionEmpresa] varchar  ,[LocalidadEmpresa] varchar  ,[CodigoPostalEmpresa] varchar  ,[ProvinciaEmpresa] varchar ," +
+          "[TelefonoEmpresa] varchar  ,[CorreoEmpresa] varchar  ,[WepEmpresa] varchar  ,[RegimenIvaEmpresa] varchar  ," +
+        " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
+        " [CifEmpresa] varchar   ,[ImagenEmpresa] IMAGE ) ";
+
+            string TablaDtconfi = "CREATE TABLE[DtConfi] ([IdEnlace] INTEGER not null primary key ,[ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
+                "[EmpresaENLACE] INTEGER not null ,[IdConexionConfi] INTEGER not null, [AñoDeEjercicio] varchar  ," +
+                   " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
+            string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([Id] INTEGER not null, [TarifaTipo] varchar, [EnlaceTarifa] INTEGER not null," +
+                "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY (EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
+
+
+            string ConsultaAlmacen = "CREATE TABLE [DtAlmacenes]( [Id] INTEGER not null,[Almacenes] varchar,[Enlace_Almacenes] INTEGER not null, " +
+               " CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY (Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
+
+            string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER not null,[Proveedores] varchar ,[Enlace_Proveedores] INTEGER not null, " +
+              " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
+
+            string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER primary key, [Familia] varchar)";
+            string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER primary key ,[Paises] varchar )";
+            string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER not null, [Provincias] varchar,[IdEnlace] INTEGER NOT NULL," +
+           " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (IdEnlace)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )";
+            string TablaObra = "CREATE TABLE[DtObras] ([Id] INTEGER primary key,[Obras] varchar)";
+            string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER primary key," +
+                "[EmpresaInicio] varchar,[EjercicioInicio] varchar,[SerieInicio] varchar,[NombreArchivoDatos] varchar," +
+               "[RutaArchivoDatos] varchar,[SerieProvinciaInicio] varchar, [SeriePaisInicio] varchar,[ArchivoArticulos] varchar," +
+               "[TipoExtensionArticulos] varchar,[ArchivoClientes] varchar)";
+
+            string TablaCorreo_E = "   CREATE TABLE [DtCorreos]([Id] INTEGER primary key, [NombreEmpresa] varchar, [CorreoEletronico] varchar" +
+                ", [Usuario] varchar, [Contraseña] varchar, [smtp] varchar, [Puerto] INTEGER, [Timeof] INTEGER)";
+            string TablaCorreo_Cli = "   CREATE TABLE [DtCorreosCliente]([Id] INTEGER primary key, [RazonSocial] varchar, [EmpresaNombre] varchar" +
+               ", [Direcion] varchar, [CorreoEletronico_cli] varchar)";
+            string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER primary key, [Usuario] varchar, [Nombre] varchar," +
+                  "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
+            string TablaMovimientos = "   CREATE TABLE [DtMovimientos]([Id] COUNTER (1,1) primary key,[Referencia] varchar , [Stock] INTEGER default 0, [Enlace] varchar," +
+           "[Id_Empresa] INTEGER, [Id_Almacen] INTEGER, [Varios] varchar ,[contar] varchar)";
+            string Ruta2 = "";
+            if (this.TabInicio.Tag.ToString() == "SI")
+            {
+                Ruta2 = this.BaseDatosTxt1.Text;
+            }
+            else
+            {
+                Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
+            }
+            string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
+            string TipoNota = "DtNota";
+            string Tabladetalle = "DtDetalles_Nota";
+            string ConsultaFacturacion = "";
+            String ConsultaDetalles = "";
+
+
+            using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
+            {
+
+                NuevaConexion.Open();
+                using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR " + "ConsultaArticulos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+
+
+                using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaEmpresas, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  EMPRESAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaInicio, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  INICIO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaAlmacen, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaProvedores, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaDtconfi, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  DTCONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaTarifa, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFamilia, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  FAMILIA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaPais, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  PAISES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaObra, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message, "ERROR  OBRAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaProvincia, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR  PROVINCIAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message, "ERROR  CORREO DE EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_Cli, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message, "ERROR  CORREO CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaUser, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message, "ERROR  USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                using (OleDbCommand ComandoDb = new OleDbCommand(TablaMovimientos, NuevaConexion))
+                {
+                    try
+                    {
+                        ComandoDb.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR " + "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                for (int i = 1; i < 7; i++)
+                {
+                    if (i == 2)
+                    {
+                        TipoNota = "DtNota2";
+                        Tabladetalle = "DtDetalles_Nota2";
+                    }
+                    if (i == 3)
+                    {
+                        //TipoNota = "DtNota2";
+                        Tabladetalle = "DtDetalles2_Nota2";
+                    }
+                    if (i == 4)
+                    {
+                        TipoNota = "DtAlbaran";
+                        Tabladetalle = "DtDetalles_Albaran";
+                    }
+                    if (i == 5)
+                    {
+                        TipoNota = "DtPresupuesto";
+                        Tabladetalle = "DtDetalles_Presupuesto";
+                    }
+                    if (i == 6)
+                    {
+                        TipoNota = "DtFactura";
+                        Tabladetalle = "DtDetalles_Fatura";
+                    }
+                    valor = r.Next(10, 10000);
+                    if (i != 3)
+                    {
+                        ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] INTEGER primary key , [NumeroFactura] INTEGER not null,[Apodo] varchar ,[Nombre] varchar," +
+                     "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
+                      "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[Marca] varchar,[FechaFactura] varchar," +
+                     "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
+                     "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
+                    "[EjercicioTipo] INTEGER not null,[SerieTipo] varchar, [EmpresaEnlace] INTEGER not null,[EnlaceDtconfi] INTEGER not null," +
+                    "CONSTRAINT F_DtConfi" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )";
+                    }
+
+
+                    ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
+                           ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
+                           ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] INTEGER not null" +
+                           ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
+                    using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
+                    {
+
+
+                        if (i != 3)
+                        {
+                            try
+                            {
+                                ComandoDb.ExecuteNonQuery();
+                                ComandoDb.Parameters.Clear();
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message, "ERROR EN TABLA " + TipoNota, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                        }
+                        using (OleDbCommand ComandoDbDetalle = new OleDbCommand(ConsultaDetalles, NuevaConexion))
+                        {
+
+                            try
+                            {
+                                ComandoDbDetalle.ExecuteNonQuery();
+                                ComandoDbDetalle.Parameters.Clear();
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message, "ERROR EN TABLA " + Tabladetalle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+
+                    }
+
+                }
+                MessageBox.Show("Se Termino De crar Tablas");
+            }
+        }          
         private void BtnTablasCrear_Click(object sender, EventArgs e)
         {
             BORRARerror_ArchivosT();
@@ -147,377 +520,7 @@ namespace PELOSCALVO
                 if (MessageBox.Show("Desea Crear Las Tablas Para Nueva Base Datos ", "CREAR TABLAS NUEVAS", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
 
-
-                    Random r = new Random();
-                    int valor = r.Next(10, 900000);
-
-                    string ConsultaArticulos = "CREATE TABLE [" + this.ArticulosTxt.Text + "] ( [Id] INTEGER  primary key , [Referencia] varchar, [Oem] varchar," +
-                        "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
-                        "[Desc2] DECIMAL ,[Pvp2] MONEY ,[Desc3] DECIMAL ,[Pvp3] MONEY ,[Desc4] DECIMAL " +
-                        ",[Pvp4] MONEY ,[Desc5] DECIMAL ,[Pvp5] MONEY ,[Desc6] DECIMAL ,[Pvp6] MONEY" +
-                        " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
-                        ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
-
-
-                    string ConsultaCliente = " CREATE TABLE [" + this.ClientesTxt.Text + "]( [Id] INTEGER primary key ,[APODOCLIEN] varchar(255) ,[NOMBRECLIE] varchar(255) ,DIRECCIONC varchar(255)," +
-                "[TELEFONOCL] varchar(30) ,[MOVILCLIEN] varchar(50) ,[CORREOCLIE] varchar(255) ,[DNICLIENTE] varchar(30) ,[LOCALIDADC] varchar(255) ," +
-                "[CODIGOPOST] varchar(50) ,[PAISCLIENT] varchar(255) ,[FECHAALTAC] DATETIME ,[CALLECLIEN] varchar(255) ,[NUMEROCALL] varchar(40) ," +
-                "[PROVINCIAC] varchar(100) ,[TARIFATIPO] varchar(50) ,[TIPODNI] varchar(50) ,[TIPOCLIENT] varchar(50) ,[DESCUENTOC] DECIMAL ," +
-                "[NUMEROCUEN] varchar(100) ,[PORTES] varchar(100) ,[BANCOOFICI] varchar(100) ,[BANCOPROVI] varchar(100),[BANCODIREC] varchar(150) ," +
-                "[BANCOLOCAL] varchar(100) ,[BANCOIBAN] varchar(100) ,[BANCOCODIG] varchar(100) ,[BANCOENTID] varchar(100) ,[BANCOOFIC2] varchar(100) ," +
-                "[BANCODC] varchar(100) NULL,[BANCON_CUE] varchar(100) ,[BAJA] bit default 0 )";
-                    string ConsultaEmpresas = " CREATE TABLE [DtConfiguracionPrincipal] ([IdEmpresa] INTEGER  primary key , [EmpresaConfi] varchar , [NombreEmpresa] varchar  ," +
-                    "[DireccionEmpresa] varchar  ,[LocalidadEmpresa] varchar  ,[CodigoPostalEmpresa] varchar  ,[ProvinciaEmpresa] varchar ," +
-                  "[TelefonoEmpresa] varchar  ,[CorreoEmpresa] varchar  ,[WepEmpresa] varchar  ,[RegimenIvaEmpresa] varchar  ," +
-                " [PaisEmpresa] varchar  ,[SerieDeFacturacionEmpresa] varchar  ,[Telefono2Empresa] varchar  ,[MovilEmpresa] varchar  ," +
-                " [CifEmpresa] varchar   ,[ImagenEmpresa] IMAGE ) ";
-
-                    string TablaDtconfi = "CREATE TABLE[DtConfi] ([IdEnlace] INTEGER not null primary key ,[ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
-                        "[EmpresaENLACE] INTEGER not null ,[IdConexionConfi] INTEGER not null, [AñoDeEjercicio] varchar  ," +
-                           " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
-                    string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([Id] INTEGER not null, [TarifaTipo] varchar, [EnlaceTarifa] INTEGER not null," +
-                        "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY (EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
-
-
-                    string ConsultaAlmacen = "CREATE TABLE [DtAlmacenes]( [Id] INTEGER not null,[Almacenes] varchar,[Enlace_Almacenes] INTEGER not null, " +
-                       " CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY (Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
-
-                    string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER not null,[Proveedores] varchar ,[Enlace_Proveedores] INTEGER not null, " +
-                      " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
-
-                    string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER primary key, [Familia] varchar)";
-                    string TablaPais = "CREATE TABLE[DtPaises] ([Id] INTEGER primary key ,[Paises] varchar )";
-                    string TablaProvincia = "CREATE TABLE[DtProvincias] ([Id] INTEGER not null, [Provincias] varchar,[IdEnlace] INTEGER NOT NULL," +
-                   " CONSTRAINT F_DtProvincias" + valor.ToString() + " FOREIGN KEY (IdEnlace)REFERENCES DtPaises(Id) ON UPDATE CASCADE ON DELETE CASCADE )";
-                    string TablaObra = "CREATE TABLE[DtObras] ([Id] INTEGER primary key,[Obras] varchar)";
-                    string TablaInicio = "CREATE TABLE[DtInicioMulti] ([Id] INTEGER primary key," +
-                        "[EmpresaInicio] varchar,[EjercicioInicio] varchar,[SerieInicio] varchar,[NombreArchivoDatos] varchar," +
-                       "[RutaArchivoDatos] varchar,[SerieProvinciaInicio] varchar, [SeriePaisInicio] varchar,[ArchivoArticulos] varchar," +
-                       "[TipoExtensionArticulos] varchar,[ArchivoClientes] varchar)";
-
-                    string TablaCorreo_E = "   CREATE TABLE [DtCorreos]([Id] INTEGER primary key, [NombreEmpresa] varchar, [CorreoEletronico] varchar" +
-                        ", [Usuario] varchar, [Contraseña] varchar, [smtp] varchar, [Puerto] INTEGER, [Timeof] INTEGER)";
-                    string TablaCorreo_Cli = "   CREATE TABLE [DtCorreosCliente]([Id] INTEGER primary key, [RazonSocial] varchar, [EmpresaNombre] varchar" +
-                       ", [Direcion] varchar, [CorreoEletronico_cli] varchar)";
-                    string TablaUser = "   CREATE TABLE [DtUsuario]([Id] INTEGER primary key, [Usuario] varchar, [Nombre] varchar," +
-                          "[Direcion] varchar, [Cargo] varchar, [Varios] varchar ,[CorreoEletronico] varchar)";
-                    string TablaMovimientos = "   CREATE TABLE [DtMovimientos]([Id] COUNTER (1,1) primary key,[Referencia] varchar , [Stock] INTEGER default 0, [Enlace] varchar," +
-                   "[Id_Empresa] INTEGER, [Id_Almacen] INTEGER, [Varios] varchar ,[contar] varchar)";
-                    string Ruta2 = "";
-                    if (this.TabInicio.Tag.ToString() == "SI")
-                    {
-                        Ruta2 = this.BaseDatosTxt1.Text;
-                    }
-                    else
-                    {
-                        Ruta2 = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + this.BaseDatosTxt1.Text + "." + this.ExtensionTxt.Text;
-                    }
-                    string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Ruta2;
-                    string TipoNota = "DtNota";
-                    string Tabladetalle = "DtDetalles_Nota";
-                    string ConsultaFacturacion = "";
-                    String ConsultaDetalles = "";
-
-
-                    using (OleDbConnection NuevaConexion = new OleDbConnection(CadenaConexion))
-                    {
-
-                        NuevaConexion.Open();
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaArticulos, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR " + "ConsultaArticulos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaCliente, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-
-
-
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaEmpresas, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  EMPRESAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaInicio, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  INICIO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaAlmacen, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  ALMACEN", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaProvedores, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  PROVEEDORES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaDtconfi, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  DTCONFI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaTarifa, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFamilia, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  FAMILIA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaPais, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  PAISES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaObra, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message, "ERROR  OBRAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaProvincia, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR  PROVINCIAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_E, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message, "ERROR  CORREO DE EMPRESA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaCorreo_Cli, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message, "ERROR  CORREO CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaUser, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message, "ERROR  USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        using (OleDbCommand ComandoDb = new OleDbCommand(TablaMovimientos, NuevaConexion))
-                        {
-                            try
-                            {
-                                ComandoDb.ExecuteNonQuery();
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                                MessageBox.Show(ex.Message, "ERROR " + "Movimientos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        for (int i = 1; i < 7; i++)
-                        {
-                            if (i == 2)
-                            {
-                                TipoNota = "DtNota2";
-                                Tabladetalle = "DtDetalles_Nota2";
-                            }
-                            if (i == 3)
-                            {
-                                //TipoNota = "DtNota2";
-                                Tabladetalle = "DtDetalles2_Nota2";
-                            }
-                            if (i == 4)
-                            {
-                                TipoNota = "DtAlbaran";
-                                Tabladetalle = "DtDetalles_Albaran";
-                            }
-                            if (i == 5)
-                            {
-                                TipoNota = "DtPresupuesto";
-                                Tabladetalle = "DtDetalles_Presupuesto";
-                            }
-                            if (i == 6)
-                            {
-                                TipoNota = "DtFactura";
-                                Tabladetalle = "DtDetalles_Fatura";
-                            }
-                            valor = r.Next(10, 10000);
-                            if (i != 3)
-                            {
-                                ConsultaFacturacion = "CREATE TABLE [" + TipoNota + "] ([EnlaceFactura] INTEGER primary key , [NumeroFactura] INTEGER not null,[Apodo] varchar ,[Nombre] varchar," +
-                             "[Direccion] varchar,[Calle] varchar,[NumeroCalle] varchar,[Dni] varchar,[Localidad] varchar," +
-                              "[Provincia] varchar,[CodigoPostal] varchar,[NonbreAlmacen] varchar,[Marca] varchar,[FechaFactura] varchar," +
-                             "[IvaImpuesto] INTEGER,[SubTotal] DECIMAL,[BaseIva] DECIMAL,[TotalFactura] DECIMAL,[CobradaFactura] varchar," +
-                             "[FechaCobro] varchar,[Pais_Fact] varchar,[TotalFactura2] DECIMAL,[TipoNOTA] varchar,[Obra_factu] varchar," +
-                            "[EjercicioTipo] INTEGER not null,[SerieTipo] varchar, [EmpresaEnlace] INTEGER not null,[EnlaceDtconfi] INTEGER not null," +
-                            "CONSTRAINT F_DtConfi" + TipoNota + valor.ToString() + " FOREIGN KEY (EnlaceDtconfi)REFERENCES DtConfi(IdEnlace) ON UPDATE CASCADE ON DELETE CASCADE )";
-                            }
-
-
-                            ConsultaDetalles = "CREATE TABLE [" + Tabladetalle + "]( [ReferenciaDetalle] varchar" +
-                                   ",[CantidadDetalle] DECIMAL,[DescripccionDetalle] varchar, [DescuentoDetalle] DECIMAL" +
-                                   ",[PrecioDetalle]   MONEY,[IvaDetalle] DECIMAL,[ImporteDetalle]   MONEY,[EnlaceDetalle] INTEGER not null" +
-                                   ", CONSTRAINT FK_" + Tabladetalle + valor.ToString() + " FOREIGN KEY (EnlaceDetalle)REFERENCES " + TipoNota + "(EnlaceFactura) ON UPDATE CASCADE ON DELETE CASCADE )";
-                            using (OleDbCommand ComandoDb = new OleDbCommand(ConsultaFacturacion, NuevaConexion))
-                            {
-
-
-                                if (i != 3)
-                                {
-                                    try
-                                    {
-                                        ComandoDb.ExecuteNonQuery();
-                                        ComandoDb.Parameters.Clear();
-                                    }
-                                    catch (Exception ex)
-                                    {
-
-                                        MessageBox.Show(ex.Message, "ERROR EN TABLA " + TipoNota, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-
-                                }
-                                using (OleDbCommand ComandoDbDetalle = new OleDbCommand(ConsultaDetalles, NuevaConexion))
-                                {
-
-                                    try
-                                    {
-                                        ComandoDbDetalle.ExecuteNonQuery();
-                                        ComandoDbDetalle.Parameters.Clear();
-                                    }
-                                    catch (Exception ex)
-                                    {
-
-                                        MessageBox.Show(ex.Message, "ERROR EN TABLA " + Tabladetalle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-
-
-                            }
-
-                        }
-                        MessageBox.Show("Se Termino De crar Tablas");
-                    }
+                    CrearTablasDb();
 
                 }
             }

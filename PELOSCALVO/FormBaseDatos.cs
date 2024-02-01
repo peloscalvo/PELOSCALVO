@@ -431,7 +431,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR CARGAR DATOS PRINCIPAL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -491,7 +491,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR CARGAR DATOS PRINCIPAL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -516,10 +516,6 @@ namespace PELOSCALVO
                         SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                         AdactaPelos.Fill(FormMenuPrincipal.menu2principal.articulos.DtArticulos);
 
-                        if (NuevaConexion.CerrarConexionSql)
-                        {
-
-                        }
                         // AñadirId();
                         // ValidarCalculosPrecios();
                     }
@@ -527,7 +523,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "ERROR");
+                    MessageBox.Show(ex.Message, "ERROR CARGAR ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
 
@@ -683,7 +679,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ERROR");
+                MessageBox.Show(ex.Message, "ERROR CARGAR ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -728,7 +724,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "ERROR");
+                    MessageBox.Show(ex.Message, "ERROR CARGAR CLIENTES",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -753,16 +749,13 @@ namespace PELOSCALVO
 
                     SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsClientes.DtClientes);
-                    if (NuevaConexion.CerrarConexionSql)
-                    {
-
-                    }
+      
                 }
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ERROR");
+                MessageBox.Show(ex.Message, "ERROR CARGAR CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
 

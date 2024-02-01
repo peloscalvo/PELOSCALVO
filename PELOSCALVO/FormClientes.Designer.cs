@@ -93,6 +93,7 @@ namespace PELOSCALVO
             this.NombreCliente = new System.Windows.Forms.TextBox();
             this.DirecionCliente = new System.Windows.Forms.TextBox();
             this.CalleClienteTextBox = new System.Windows.Forms.TextBox();
+            this.numeroCalleClienteTextBox = new System.Windows.Forms.TextBox();
             this.TelefonoClienteTextBox = new System.Windows.Forms.TextBox();
             this.MovilClienteText = new System.Windows.Forms.TextBox();
             this.CorreoClienteText = new System.Windows.Forms.TextBox();
@@ -109,7 +110,6 @@ namespace PELOSCALVO
             this.provinciaClienteComboBox1 = new System.Windows.Forms.ComboBox();
             this.dtProvinciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TipoDocumento = new System.Windows.Forms.ComboBox();
-            this.numeroCalleClienteTextBox = new System.Windows.Forms.TextBox();
             this.TipoTarifa = new System.Windows.Forms.ComboBox();
             this.dtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -825,6 +825,16 @@ namespace PELOSCALVO
             this.CalleClienteTextBox.Size = new System.Drawing.Size(121, 20);
             this.CalleClienteTextBox.TabIndex = 5;
             // 
+            // numeroCalleClienteTextBox
+            // 
+            this.numeroCalleClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "NUMEROCALL", true));
+            this.numeroCalleClienteTextBox.Location = new System.Drawing.Point(513, 82);
+            this.numeroCalleClienteTextBox.MaxLength = 4;
+            this.numeroCalleClienteTextBox.Name = "numeroCalleClienteTextBox";
+            this.numeroCalleClienteTextBox.Size = new System.Drawing.Size(73, 20);
+            this.numeroCalleClienteTextBox.TabIndex = 9;
+            this.numeroCalleClienteTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // TelefonoClienteTextBox
             // 
             this.TelefonoClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "TELEFONOCL", true));
@@ -916,7 +926,6 @@ namespace PELOSCALVO
             this.DescuentoCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "DESCUENTOC", true));
             this.DescuentoCliente.Location = new System.Drawing.Point(529, 111);
             this.DescuentoCliente.Name = "DescuentoCliente";
-            this.DescuentoCliente.ReadOnly = true;
             this.DescuentoCliente.Size = new System.Drawing.Size(95, 20);
             this.DescuentoCliente.TabIndex = 67;
             this.DescuentoCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dESCUENTOCTextBox_KeyPress);
@@ -1020,16 +1029,6 @@ namespace PELOSCALVO
             this.TipoDocumento.Size = new System.Drawing.Size(179, 21);
             this.TipoDocumento.TabIndex = 13;
             this.TipoDocumento.Tag = "";
-            // 
-            // numeroCalleClienteTextBox
-            // 
-            this.numeroCalleClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "NUMEROCALL", true));
-            this.numeroCalleClienteTextBox.Location = new System.Drawing.Point(513, 82);
-            this.numeroCalleClienteTextBox.MaxLength = 4;
-            this.numeroCalleClienteTextBox.Name = "numeroCalleClienteTextBox";
-            this.numeroCalleClienteTextBox.Size = new System.Drawing.Size(73, 20);
-            this.numeroCalleClienteTextBox.TabIndex = 9;
-            this.numeroCalleClienteTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TipoTarifa
             // 

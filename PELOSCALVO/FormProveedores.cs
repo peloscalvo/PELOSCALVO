@@ -21,7 +21,7 @@ namespace PELOSCALVO
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
 
-                    this.DtProveedoresBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
+                   // this.DtProveedoresBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores;
                 }
 
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
@@ -115,7 +115,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-                    this.dataGridProveedores.EndEdit();
+                   // this.dataGridProveedores.EndEdit();
                     this.DtProveedoresBindingSource.EndEdit();
                     Validate();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -159,7 +159,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     this.DtProveedoresBindingSource.EndEdit();
-                    this.dataGridProveedores.EndEdit();
+                   // this.dataGridProveedores.EndEdit();
                     Validate();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();

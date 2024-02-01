@@ -130,6 +130,7 @@ namespace PELOSCALVO
 
                 }
             }
+
             foreach (Control ctrl in this.tabDatos2.Controls)
             {
                 if (ctrl is TextBox)
