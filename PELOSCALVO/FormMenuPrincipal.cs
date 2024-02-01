@@ -356,11 +356,7 @@ namespace PELOSCALVO
             }
             if (this.SiOpenArti == 0)
             {
-                if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
-                {
-                    MessageBox.Show("Debe Cerrar Formulario (( CODIGO BARRAS )))", "CERRAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+
                 FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;

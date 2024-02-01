@@ -635,7 +635,6 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnEnlace_Almacenes);
                 this.columnIdFila = new global::System.Data.DataColumn("IdFila", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdFila);
-                this.columnId.AutoIncrementSeed = 1;
                 this.columnId.AllowDBNull = false;
             }
             
@@ -2051,10 +2050,6 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnEnlace_Proveedores);
                 this.columnIdFila = new global::System.Data.DataColumn("IdFila", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdFila);
-                this.columnId.AutoIncrementSeed = 1;
-                this.columnId.Caption = "Id_almacenes";
-                this.columnProveedores.Caption = "Almacenes";
-                this.columnEnlace_Proveedores.Caption = "Enlace_Almacenes";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -750,14 +750,14 @@ namespace PELOSCALVO
 
                     if (this.FormatoText.SelectedIndex == 4)
                     {
-                        ClasDatos.count = 25;
+                        ClasDatos.count = 0;
                         PrintDocument PD = new PrintDocument();
                         PD.PrintPage += new PrintPageEventHandler(PrintBarras_PrintPage);
                         PD.DocumentName = string.Format("{0}", "codigos Barras App");
                         int Filas = FormBuscarArticulos.listas.lista.Count;
                         int AltoPage = Alto * Filas;
                         int Hojas = (AltoPage / 1118) + 1;
-                        PD.PrinterSettings.ToPage = Hojas;
+                       // PD.PrinterSettings.ToPage = Hojas;
                         PD.Print();
 
                     }
@@ -844,8 +844,9 @@ namespace PELOSCALVO
 
         private void PrintBarras_PrintPage(object sender, PrintPageEventArgs e)
         {
-            // int BB = 25;
+            int Dato1 = 0;
             // bool Si = false;
+            //e.HasMorePages = true;
             Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
             Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
             Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
@@ -866,25 +867,20 @@ namespace PELOSCALVO
             try
             {
                 e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos + 40, 6);
-                for (int i = 0; i < FormBuscarArticulos.listas.lista.Count; i++)
+                for (int i = ClasDatos.count; i <= FormBuscarArticulos.listas.lista.Count; i++)
                 {
                     // ClasDatos.count
                     ;
-                    e.Graphics.DrawImage(FormBuscarArticulos.listas.lista[1].Valor, new Point(0, ClasDatos.count));
+                    e.Graphics.DrawImage(FormBuscarArticulos.listas.lista[i].Valor, new Point(0, Dato1));
                     // BB = BB + item.Valor.Height + 14;
-                    ClasDatos.count = ClasDatos.count + FormBuscarArticulos.listas.lista[1].Valor.Height + 14;
+                   Dato1 = Dato1 + FormBuscarArticulos.listas.lista[1].Valor.Height + 14;
                 }
-                foreach (var item in FormBuscarArticulos.listas.lista)
-                {
-                    // e.Graphics.DrawString("---------------------------", Arial10, Brushes.Black, new Point(BB, BB));
 
-
-
-                }
                 // Si = true        ClasDatos.count = ClasDatos.count + 40;
                 if (ClasDatos.count <= FormBuscarArticulos.listas.lista.Count)
                 {
                     e.HasMorePages = true;
+                    ClasDatos.count++;
                 }
                 else
                 {

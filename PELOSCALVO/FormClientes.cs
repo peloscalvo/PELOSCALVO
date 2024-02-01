@@ -185,7 +185,6 @@ namespace PELOSCALVO
                     ctrl.Enabled = false;
                 }
             }
-            this.panelCuenta.Enabled = true;
             foreach (Control ctrl in this.tabDatos2.Controls)
             {
                 if (ctrl is ComboBox)
@@ -193,7 +192,7 @@ namespace PELOSCALVO
                     ctrl.Enabled = false;
                 }
             }
-            this.panelCuenta.Enabled = true;
+            this.panelCuenta.Enabled = false;
             // this.Id_Clientes.Enabled = false;
             this.BtnGuardarCliente.Enabled = false;
             this.BtnCancelarCliente.Enabled = false;
@@ -214,7 +213,7 @@ namespace PELOSCALVO
                 if (Texbox2 is TextBox | Texbox2 is ComboBox)
                 {
                     Texbox2.Text = string.Empty;
-                    MessageBox.Show(Texbox2.Name);
+                    //MessageBox.Show(Texbox2.Name);
                 }
 
             }

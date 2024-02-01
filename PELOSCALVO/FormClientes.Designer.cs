@@ -1095,7 +1095,7 @@ namespace PELOSCALVO
             // 
             this.BancoProvincia.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "BANCOPROVI", true));
             this.BancoProvincia.DataSource = this.dtProvinciasBindingSource;
-            this.BancoProvincia.DisplayMember = "ProvinciasProvincias";
+            this.BancoProvincia.DisplayMember = "Provincias";
             this.BancoProvincia.FormattingEnabled = true;
             this.BancoProvincia.Location = new System.Drawing.Point(406, 64);
             this.BancoProvincia.Name = "BancoProvincia";
