@@ -199,16 +199,10 @@ namespace PELOSCALVO
                 {
                     this.dtArticulosBindingSource.DataSource = FormMenuPrincipal.menu2principal.articulos;
                 }
-                if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION != null)
-                {
-                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-                    this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
-
-                }
 
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
                 {
-                    this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos;
+                    this.dtInicioMultiBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti;
                     this.dtFamiliaProductosBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsMulti2.DtFamiliaProductos;
                 }
             }
@@ -233,15 +227,15 @@ namespace PELOSCALVO
             this.ContadorDatos3.Text = this.dtPreciosDataGridView.RowCount.ToString();
             ValidarCalculosPrecios();
             this.dtArticulosBindingSource.EndEdit();
-            Validate();
+          //  Validate();
             RetocarArticulos();
         }
-        public void AñadirId()
+        public void AñadirIdArticulos()
         {
             int ii = 0;
-            foreach (DataGridViewRow fila in this.dtPreciosDataGridView.Rows)
+            foreach (var fila in FormMenuPrincipal.menu2principal.articulos.DtArticulos)
             {
-                fila.Cells["IdFila"].Value = ii.ToString();
+                fila["IdFila"] = ii.ToString();
                 ii++;
             }
 
@@ -271,7 +265,7 @@ namespace PELOSCALVO
             this.Pvp5Txt.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.BenitoDesc / 100)));
             this.Pvp6Txt.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.ValenteDesc / 100)));
             this.PlusLabel2.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.PlusDesc / 100)));
-            Validate();
+         //   Validate();
         }
 
 
@@ -479,11 +473,12 @@ namespace PELOSCALVO
                     {
                         if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
                         {
-                            FormBuscarArticulos.MenuB.Close();
-                            FormBuscarArticulos.MenuB.Dispose();
+                            MessageBox.Show("Debe Cerrar Formulario (( CODIGO BARRAS )))", "CERRAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
                         }
                         ClasDatos.OkFacturar = false;
                         ClasDatos.QUEform = "Articulos";
+                        AñadirIdArticulos();
                         // dtPreciosDataGridView.CurrentCell.Selected = false;
                         FormBuscarArticulos frm = new FormBuscarArticulos();
                         //m.FormClosed += (o, args) => numeroFILA = 1;
@@ -965,7 +960,7 @@ namespace PELOSCALVO
                 this.ContadorDatos3.Text = this.dtPreciosDataGridView.Rows.Count.ToString();
                 ValidarCalculosPrecios();
                 Validate();
-                AñadirId();
+               // AñadirId();
             }
 
         }
@@ -1122,7 +1117,7 @@ namespace PELOSCALVO
                 {
                     this.dtPreciosDataGridView.CurrentCell = this.dtPreciosDataGridView.Rows[0].Cells[0];
                 }
-                AñadirId();
+               // AñadirId();
             }
             catch (Exception)
             {

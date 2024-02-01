@@ -97,12 +97,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProveedores] ([Id_Proveedores],[Proveedores],[Enlace_Proveedores]) VALUES( @Id_Proveedores,@Proveedores,@Enlace_Proveedores)";
+                consulta = "  INSERT INTO [DtProveedores] ([Id],[Proveedores],[Enlace_Proveedores]) VALUES( @Id,@Proveedores,@Enlace_Proveedores)";
 
             }
             else
             {
-                consulta = "UPDATE [DtProveedores] SET [Id_Proveedores] = @Id_Proveedores,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
+                consulta = "UPDATE [DtProveedores] SET [Id] = @Id,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
                 " WHERE Id_Proveedores = @Id_Proveedores";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -110,7 +110,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.EmpresaSelect.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
@@ -140,12 +140,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProveedores] VALUES([@Id_Proveedores],[@Proveedores],[@Enlace_Proveedores])";
+                consulta = "  INSERT INTO [DtProveedores] VALUES([@Id],[@Proveedores],[@Enlace_Proveedores])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProveedores] SET [Id_Proveedores] = @Id_Proveedores,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
+                consulta = "UPDATE [DtProveedores] SET [Id] = @Id,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
                 " WHERE Id_Proveedores = @Id_Proveedores";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -153,7 +153,7 @@ namespace PELOSCALVO
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.NombreProveedor.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
@@ -182,14 +182,14 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores and Enlace_Proveedores= @Enlace_Proveedores";
+                string consulta = "Delete from  [DtProveedores]   WHERE Id= @Id and Enlace_Proveedores= @Enlace_Proveedores";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_proveedor.Text));
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Enlace_Proveedor.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
@@ -224,14 +224,14 @@ namespace PELOSCALVO
         private void EliminarProveedorSql()
         {
 
-            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores and Enlace_Proveedores= @Enlace_Proveedores";
+            string consulta = "Delete from  [DtProveedores]   WHERE Id= @Id and Enlace_Proveedores= @Enlace_Proveedores";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_proveedor.Text));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Enlace_Proveedor.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);

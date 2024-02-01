@@ -3,6 +3,7 @@ using Conexiones;
 using System;
 using System.ComponentModel;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -208,39 +209,52 @@ namespace PELOSCALVO
         }
         private void CargarCliente()
         {
-            foreach (TextBox Texbox2 in tabControl1.TabPages)
+            foreach (Control Texbox2 in tabPage1Clientes.Controls)
             {
-                Texbox2.Text = string.Empty;
-                
+                if (Texbox2 is TextBox | Texbox2 is ComboBox)
+                {
+                    Texbox2.Text = string.Empty;
+                    MessageBox.Show(Texbox2.Name);
+                }
+
             }
-            foreach (ComboBox Conbobox2 in tabControl1.TabPages)
+            foreach (Control Texbox2 in tabPage2Clientes.Controls)
             {
-                Conbobox2.Text = string.Empty;
+                if (Texbox2 is TextBox | Texbox2 is ComboBox)
+                {
+                    Texbox2.Text = string.Empty;
+ 
+                }
+
+            }
+            foreach (Control Texbox2 in tabDatos2.Controls)
+            {
+                if (Texbox2 is TextBox | Texbox2 is ComboBox)
+                {
+                    Texbox2.Text = string.Empty;
+
+                }
 
             }
             FechaAltaCliente.Text = string.Empty;
             string Tabla = FormMenuPrincipal.menu2principal.InfoClientes.Text;
-            string ConsultaCli = "SELECT [IDCLIENTE],[APODOCLIEN],[NOMBRECLIE] ,[DIRECCIONC],[TELEFONOCL],[MOVILCLIEN]" +
+            string ConsultaCli = "SELECT [Id],[APODOCLIEN],[NOMBRECLIE] ,[DIRECCIONC],[TELEFONOCL],[MOVILCLIEN]" +
                 ",[CORREOCLIE],[DNICLIENTE],[LOCALIDADC],[CODIGOPOST],[PAISCLIENT],[FECHAALTAC],[CALLECLIEN]" +
                 ",[NUMEROCALL],[PROVINCIAC],[TARIFATIPO],[TIPODNI],[TIPOCLIENT],[DESCUENTOC],[NUMEROCUEN]" +
                 ",[PORTES],[BANCOOFICI],[BANCOPROVI],[BANCODIREC],[BANCOLOCAL],[BANCOIBAN],[BANCOCODIG]" +
-                ",[BANCOENTID],[BANCOOFIC2],[BANCODC],[BANCON_CUE],[BAJA] FROM[" + Tabla + "]  WHERE IDCLIENTE=" + Convert.ToInt32(this.Id_Clientes.Text);
+                ",[BANCOENTID],[BANCOOFIC2],[BANCODC],[BANCON_CUE],[BAJA] FROM[" + Tabla + "]  WHERE Id=" + Convert.ToInt32(this.Id_Clientes.Text);
 
             if (ClsConexionSql.SibaseDatosSql)
             {
-
-            }
-            else
-            {
-                ClsConexionDb NuevaConexion = new ClsConexionDb(ConsultaCli);
-                if (NuevaConexion.SiConexionDb)
+                ClsConexionSql NuevaConexion = new ClsConexionSql(ConsultaCli);
+                if (NuevaConexion.SiConexionSql)
                 {
-                    OleDbDataReader leer = NuevaConexion.ComandoDb.ExecuteReader();
+                    SqlDataReader leer = NuevaConexion.ComandoSql.ExecuteReader();
                     if (leer.HasRows)
                     {
                         if (leer.Read())
                         {
-                          //  dtClientesBindingSource.Current. = leer.ToString();
+                            //  dtClientesBindingSource.Current. = leer.ToString();
                             if (!string.IsNullOrEmpty((leer["APODOCLIEN"]).ToString()))
                             {
                                 ApodoClienteTex.Text = Convert.ToString(leer["APODOCLIEN"]);
@@ -363,12 +377,161 @@ namespace PELOSCALVO
                             }
                             if (!string.IsNullOrEmpty((leer["BAJA"]).ToString()))
                             {
-                               // ApodoClienteTex.Text = Convert.ToBoolean(leer["BAJA"]);
+                                // ApodoClienteTex.Text = Convert.ToBoolean(leer["BAJA"]);
                             }
                             leer.Close();
                         }
                     }
-                    
+
+                }
+            }
+            else
+            {
+                if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                {
+                    ClsConexionDb NuevaConexion = new ClsConexionDb(ConsultaCli);
+                    if (NuevaConexion.SiConexionDb)
+                    {
+                        OleDbDataReader leer = NuevaConexion.ComandoDb.ExecuteReader();
+                        if (leer.HasRows)
+                        {
+                            if (leer.Read())
+                            {
+                                //  dtClientesBindingSource.Current. = leer.ToString();
+                                if (!string.IsNullOrEmpty((leer["APODOCLIEN"]).ToString()))
+                                {
+                                    ApodoClienteTex.Text = Convert.ToString(leer["APODOCLIEN"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["NOMBRECLIE"]).ToString()))
+                                {
+                                    NombreCliente.Text = Convert.ToString(leer["NOMBRECLIE"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["DIRECCIONC"]).ToString()))
+                                {
+                                    DirecionCliente.Text = Convert.ToString(leer["DIRECCIONC"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["TELEFONOCL"]).ToString()))
+                                {
+                                    TelefonoClienteTextBox.Text = Convert.ToString(leer["TELEFONOCL"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["MOVILCLIEN"]).ToString()))
+                                {
+                                    MovilClienteText.Text = Convert.ToString(leer["MOVILCLIEN"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["CORREOCLIE"]).ToString()))
+                                {
+                                    CorreoClienteText.Text = Convert.ToString(leer["CORREOCLIE"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["DNICLIENTE"]).ToString()))
+                                {
+                                    dniClienteTextBox.Text = Convert.ToString(leer["DNICLIENTE"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["LOCALIDADC"]).ToString()))
+                                {
+                                    LocalidadClienteTxt.Text = Convert.ToString(leer["LOCALIDADC"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["CODIGOPOST"]).ToString()))
+                                {
+                                    codigoPostalClienteTextBox.Text = Convert.ToString(leer["CODIGOPOST"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["PAISCLIENT"]).ToString()))
+                                {
+                                    paisClienteComboBox1.Text = Convert.ToString(leer["PAISCLIENT"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["FECHAALTAC"]).ToString()))
+                                {
+                                    FechaAltaCliente.Text = Convert.ToString(leer["FECHAALTAC"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["CALLECLIEN"]).ToString()))
+                                {
+                                    CalleClienteTextBox.Text = Convert.ToString(leer["CALLECLIEN"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["NUMEROCALL"]).ToString()))
+                                {
+                                    numeroCalleClienteTextBox.Text = Convert.ToString(leer["NUMEROCALL"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["PROVINCIAC"]).ToString()))
+                                {
+                                    provinciaClienteComboBox1.Text = Convert.ToString(leer["PROVINCIAC"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["TARIFATIPO"]).ToString()))
+                                {
+                                    TipoTarifa.Text = Convert.ToString(leer["TARIFATIPO"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["TIPODNI"]).ToString()))
+                                {
+                                    TipoDocumento.Text = Convert.ToString(leer["TIPODNI"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["TIPOCLIENT"]).ToString()))
+                                {
+                                    TipoCliente.Text = Convert.ToString(leer["TIPOCLIENT"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["DESCUENTOC"]).ToString()))
+                                {
+                                    DescuentoCliente.Text = Convert.ToString(leer["DESCUENTOC"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["NUMEROCUEN"]).ToString()))
+                                {
+                                    NUMEROCUENTextBox.Text = Convert.ToString(leer["NUMEROCUEN"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["PORTES"]).ToString()))
+                                {
+                                    PortesTxt.Text = Convert.ToString(leer["PORTES"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCOOFICI"]).ToString()))
+                                {
+                                    bANCOOFICITextBox.Text = Convert.ToString(leer["BANCOOFICI"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCOPROVI"]).ToString()))
+                                {
+                                    BancoProvincia.Text = Convert.ToString(leer["BANCOPROVI"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCODIREC"]).ToString()))
+                                {
+                                    bANCODIRECTextBox.Text = Convert.ToString(leer["BANCODIREC"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCOLOCAL"]).ToString()))
+                                {
+                                    bANCOLOCALTextBox.Text = Convert.ToString(leer["BANCOLOCAL"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCOIBAN"]).ToString()))
+                                {
+                                    bANCOIBANTextBox.Text = Convert.ToString(leer["BANCOIBAN"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCOCODIG"]).ToString()))
+                                {
+                                    bANCOCODIGTextBox.Text = Convert.ToString(leer["BANCOCODIG"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCOENTID"]).ToString()))
+                                {
+                                    bANCOENTIDTextBox.Text = Convert.ToString(leer["BANCOENTID"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCOOFIC2"]).ToString()))
+                                {
+                                    BANCOOFIC2TextBox.Text = Convert.ToString(leer["BANCOOFIC2"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCODC"]).ToString()))
+                                {
+                                    bANCODCTextBox.Text = Convert.ToString(leer["BANCODC"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BANCON_CUE"]).ToString()))
+                                {
+                                    bANCON_CUETextBox.Text = Convert.ToString(leer["BANCON_CUE"]);
+                                }
+                                if (!string.IsNullOrEmpty((leer["BAJA"]).ToString()))
+                                {
+                                    // ApodoClienteTex.Text = Convert.ToBoolean(leer["BAJA"]);
+                                }
+                                leer.Close();
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                   // this.panelBotonesClientes.Enabled = false;
                 }
             }
         }
@@ -644,7 +807,15 @@ namespace PELOSCALVO
                         }
                         else
                         {
-                            GuardarClientesDb();
+                            if (File.Exists(ClasDatos.RutaBaseDatosDb))
+                            {
+                                GuardarClientesDb();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.panelBotonesClientes.Enabled = false;
+                            }
                         }
 
                     }
@@ -817,34 +988,42 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                        if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
+                        if (File.Exists(ClasDatos.RutaBaseDatosDb))
                         {
-                            try
+                            if (FormMenuPrincipal.menu2principal.InfoClientes.Text != string.Empty)
                             {
-                                String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
-                                string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @Id";
-                                ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
+                                try
                                 {
-                                    if (NuevaConexion.SiConexionDb)
+                                    String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoClientes.Text + "]";
+                                    string consulta = "Delete * from " + TipoTabla + "  WHERE ID= @Id";
+                                    ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                                     {
-                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@ID", this.Id_Clientes.Text);
-                                        NuevaConexion.ComandoDb.ExecuteNonQuery();
-                                        this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
-                                        this.dtClientesDataGridView.Refresh();
-                                        MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        if (NuevaConexion.SiConexionDb)
+                                        {
+                                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@ID", this.Id_Clientes.Text);
+                                            NuevaConexion.ComandoDb.ExecuteNonQuery();
+                                            this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
+                                            this.dtClientesDataGridView.Refresh();
+                                            MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+
                                     }
-
                                 }
+                                catch (Exception ex)
+                                {
+
+                                    MessageBox.Show(ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+
                             }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-
-
+                            MessageBox.Show("Eliminado con exito", "ELIMINAR");
                         }
-                        MessageBox.Show("Eliminado con exito", "ELIMINAR");
+                        else
+                        {
+                            MessageBox.Show("Archivo No Se Encuentra", " FALLO AL GUARDAR ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.panelBotonesClientes.Enabled = false;
+                        }
                     }
 
 

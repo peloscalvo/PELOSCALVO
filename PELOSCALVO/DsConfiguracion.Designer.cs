@@ -1892,7 +1892,7 @@ namespace PELOSCALVO {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DtProveedoresDataTable : global::System.Data.TypedTableBase<DtProveedoresRow> {
             
-            private global::System.Data.DataColumn columnId_Proveedores;
+            private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnProveedores;
             
@@ -1935,9 +1935,9 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Id_ProveedoresColumn {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnId_Proveedores;
+                    return this.columnId;
                 }
             }
             
@@ -2002,10 +2002,10 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtProveedoresRow AddDtProveedoresRow(int Id_Proveedores, string Proveedores, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtProveedores, string IdFila) {
+            public DtProveedoresRow AddDtProveedoresRow(int Id, string Proveedores, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtProveedores, string IdFila) {
                 DtProveedoresRow rowDtProveedoresRow = ((DtProveedoresRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Id_Proveedores,
+                        Id,
                         Proveedores,
                         null,
                         IdFila};
@@ -2034,7 +2034,7 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnId_Proveedores = base.Columns["Id_Proveedores"];
+                this.columnId = base.Columns["Id"];
                 this.columnProveedores = base.Columns["Proveedores"];
                 this.columnEnlace_Proveedores = base.Columns["Enlace_Proveedores"];
                 this.columnIdFila = base.Columns["IdFila"];
@@ -2043,16 +2043,16 @@ namespace PELOSCALVO {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnId_Proveedores = new global::System.Data.DataColumn("Id_Proveedores", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_Proveedores);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columnProveedores = new global::System.Data.DataColumn("Proveedores", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProveedores);
                 this.columnEnlace_Proveedores = new global::System.Data.DataColumn("Enlace_Proveedores", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlace_Proveedores);
                 this.columnIdFila = new global::System.Data.DataColumn("IdFila", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdFila);
-                this.columnId_Proveedores.AutoIncrementSeed = 1;
-                this.columnId_Proveedores.Caption = "Id_almacenes";
+                this.columnId.AutoIncrementSeed = 1;
+                this.columnId.Caption = "Id_almacenes";
                 this.columnProveedores.Caption = "Almacenes";
                 this.columnEnlace_Proveedores.Caption = "Enlace_Almacenes";
             }
@@ -3196,17 +3196,17 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id_Proveedores {
+            public int Id {
                 get {
                     try {
-                        return ((int)(this[this.tableDtProveedores.Id_ProveedoresColumn]));
+                        return ((int)(this[this.tableDtProveedores.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id_Proveedores\' de la tabla \'DtProveedores\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DtProveedores\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDtProveedores.Id_ProveedoresColumn] = value;
+                    this[this.tableDtProveedores.IdColumn] = value;
                 }
             }
             
@@ -3272,14 +3272,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsId_ProveedoresNull() {
-                return this.IsNull(this.tableDtProveedores.Id_ProveedoresColumn);
+            public bool IsIdNull() {
+                return this.IsNull(this.tableDtProveedores.IdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetId_ProveedoresNull() {
-                this[this.tableDtProveedores.Id_ProveedoresColumn] = global::System.Convert.DBNull;
+            public void SetIdNull() {
+                this[this.tableDtProveedores.IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

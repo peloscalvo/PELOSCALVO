@@ -384,7 +384,7 @@ namespace PELOSCALVO
             "[BAJA] [bit]DEFAULT 0 NOT NULL, [Fatu] [bit]DEFAULT 0 NOT NULL)";
             /////consulta  CLIENTES           CLIENTES   /////////////////
             string ConsultaClientes = "IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[" + TablaClientes + "]') AND type in (N'U'))" +
-                " CREATE TABLE [" + TablaClientes + "]( [IDCLIENTE][int]primary key NOT NULL,[APODOCLIEN] [varchar](255) NULL,[NOMBRECLIE] [varchar](255) NULL,[DIRECCIONC] [varchar](255) NULL," +
+                " CREATE TABLE [" + TablaClientes + "]( [Id][int]primary key NOT NULL,[APODOCLIEN] [varchar](255) NULL,[NOMBRECLIE] [varchar](255) NULL,[DIRECCIONC] [varchar](255) NULL," +
                 "[TELEFONOCL] [varchar](30) NULL,[MOVILCLIEN] [varchar](50) NULL,[CORREOCLIE] [varchar](255) NULL,[DNICLIENTE] [varchar](30) NULL,[LOCALIDADC] [varchar](255) NULL," +
                 "[CODIGOPOST] [varchar](50) NULL,[PAISCLIENT] [varchar](255) NULL,[FECHAALTAC] [date] NULL,[CALLECLIEN] [varchar](255) NULL,[NUMEROCALL] [varchar](40) NULL," +
                 "[PROVINCIAC] [varchar](100) NULL,[TARIFATIPO] [varchar](50) NULL,[TIPODNI] [varchar](50) NULL,[TIPOCLIENT] [varchar](50) NULL,[DESCUENTOC] [numeric](19, 3) NULL," +
@@ -410,7 +410,7 @@ namespace PELOSCALVO
             " CONSTRAINT FK_DTCONFI FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 
             string ConsultaTablas = "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtProveedores]') AND type in (N'U'))" +
-                  "   CREATE TABLE [DtProveedores]( [Id_Proveedores][int] not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [int] Not NULL, " +
+                  "   CREATE TABLE [DtProveedores]( [Id][int] not null,[Proveedores][varchar](60) NULL ,[Enlace_Proveedores] [int] Not NULL, " +
                   " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                   "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +

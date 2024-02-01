@@ -174,7 +174,7 @@ namespace PELOSCALVO
             string ConsultaAlmacen = "CREATE TABLE [DtAlmacenes]( [Id] INTEGER not null,[Almacenes] varchar,[Enlace_Almacenes] INTEGER not null, " +
                " CONSTRAINT F_DtAlmacenes" + valor.ToString() + " FOREIGN KEY (Enlace_Almacenes)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 
-            string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id_Proveedores] INTEGER not null,[Proveedores] varchar ,[Enlace_Proveedores] INTEGER not null, " +
+            string ConsultaProvedores = "   CREATE TABLE [DtProveedores]( [Id] INTEGER not null,[Proveedores] varchar ,[Enlace_Proveedores] INTEGER not null, " +
               " CONSTRAINT F_DtProveedores" + valor.ToString() + " FOREIGN KEY (Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 
             string ConsultaFamilia = "   CREATE TABLE [DtFamiliaProductos]([Id] INTEGER primary key, [Familia] varchar)";

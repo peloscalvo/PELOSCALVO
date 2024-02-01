@@ -55,9 +55,9 @@ namespace PELOSCALVO
             this.BtnSalir_Provincias = new System.Windows.Forms.Button();
             this.ErrorProve = new System.Windows.Forms.ErrorProvider(this.components);
             this.dataGridProvincias = new System.Windows.Forms.DataGridView();
-            this.PaisTxt = new System.Windows.Forms.ComboBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaisTxt = new System.Windows.Forms.ComboBox();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             Label4 = new System.Windows.Forms.Label();
@@ -368,16 +368,6 @@ namespace PELOSCALVO
             this.dataGridProvincias.Size = new System.Drawing.Size(923, 257);
             this.dataGridProvincias.TabIndex = 74;
             // 
-            // PaisTxt
-            // 
-            this.PaisTxt.DataSource = this.dtPaisesBindingSource;
-            this.PaisTxt.DisplayMember = "Paises";
-            this.PaisTxt.FormattingEnabled = true;
-            this.PaisTxt.Location = new System.Drawing.Point(570, 290);
-            this.PaisTxt.Name = "PaisTxt";
-            this.PaisTxt.Size = new System.Drawing.Size(330, 21);
-            this.PaisTxt.TabIndex = 81;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -396,6 +386,16 @@ namespace PELOSCALVO
             this.Column1.HeaderText = "Provincias";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // PaisTxt
+            // 
+            this.PaisTxt.DataSource = this.dtPaisesBindingSource;
+            this.PaisTxt.DisplayMember = "Paises";
+            this.PaisTxt.FormattingEnabled = true;
+            this.PaisTxt.Location = new System.Drawing.Point(570, 290);
+            this.PaisTxt.Name = "PaisTxt";
+            this.PaisTxt.Size = new System.Drawing.Size(330, 21);
+            this.PaisTxt.TabIndex = 81;
             // 
             // FormProvincias
             // 

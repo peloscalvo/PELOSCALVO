@@ -324,7 +324,7 @@ namespace PELOSCALVO
             {
                 if (FormClientes.menu2CLIENTES2.WindowState == FormWindowState.Minimized)
                 {
-                    FormClientes.menu2CLIENTES2.WindowState = FormWindowState.Maximized;
+                    FormClientes.menu2CLIENTES2.WindowState = FormWindowState.Normal;
                     FormClientes.menu2CLIENTES2.BringToFront();
                 }
             }
@@ -358,8 +358,8 @@ namespace PELOSCALVO
             {
                 if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
                 {
-                    FormBuscarArticulos.MenuB.Close();
-                    FormBuscarArticulos.MenuB.Dispose();
+                    MessageBox.Show("Debe Cerrar Formulario (( CODIGO BARRAS )))", "CERRAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
                 FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
@@ -377,7 +377,7 @@ namespace PELOSCALVO
 
                 if (FormArticulos.menu2Articulos.WindowState == FormWindowState.Minimized)
                 {
-                    FormArticulos.menu2Articulos.WindowState = FormWindowState.Maximized;
+                    FormArticulos.menu2Articulos.WindowState = FormWindowState.Normal;
                     FormArticulos.menu2Articulos.BringToFront();
                 }
             }

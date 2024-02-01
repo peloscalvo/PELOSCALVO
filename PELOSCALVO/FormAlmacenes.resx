@@ -130,22 +130,22 @@
     <value>False</value>
   </metadata>
   <metadata name="dtConfiguracionPrincipalBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>237, 55</value>
+    <value>172, 8</value>
   </metadata>
   <metadata name="dsCONFIGURACCION.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>20, 57</value>
+    <value>19, 10</value>
   </metadata>
   <metadata name="dsMultidatos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>56, 94</value>
+    <value>28, 43</value>
   </metadata>
   <metadata name="errorProvider1Confi.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>497, 92</value>
+    <value>823, 16</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>41</value>
   </metadata>
   <metadata name="dtAlmacenesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>769, 93</value>
+    <value>457, 2</value>
   </metadata>
   <metadata name="Enlace_Almacenes.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1724,6 +1724,6 @@
 </value>
   </data>
   <metadata name="dtInicioMultiBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>233, 95</value>
+    <value>164, 47</value>
   </metadata>
 </root>

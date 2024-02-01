@@ -35,7 +35,6 @@ namespace PELOSCALVO
             System.Windows.Forms.Label label11;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProveedores));
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -54,9 +53,8 @@ namespace PELOSCALVO
             this.Enlace_Proveedor = new System.Windows.Forms.Label();
             this.EmpresaSelect = new System.Windows.Forms.ComboBox();
             this.dataGridProveedores = new System.Windows.Forms.DataGridView();
-            this.idProveedoresDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnSalir_pro = new System.Windows.Forms.Button();
             this.BtnCancelarProve = new System.Windows.Forms.Button();
             this.BtnGuardarProve = new System.Windows.Forms.Button();
@@ -134,6 +132,7 @@ namespace PELOSCALVO
             // 
             // DtProveedoresBindingSource
             // 
+            this.DtProveedoresBindingSource.AllowNew = false;
             this.DtProveedoresBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtProveedores";
             this.DtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
@@ -152,7 +151,7 @@ namespace PELOSCALVO
             // Id_proveedor
             // 
             this.Id_proveedor.AutoSize = true;
-            this.Id_proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.DtProveedoresBindingSource, "Id_Proveedores", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.Id_proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.DtProveedoresBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.Id_proveedor.Location = new System.Drawing.Point(74, 14);
             this.Id_proveedor.Name = "Id_proveedor";
             this.Id_proveedor.Size = new System.Drawing.Size(13, 13);
@@ -304,19 +303,18 @@ namespace PELOSCALVO
             this.dataGridProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idProveedoresDataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn11});
-            this.dataGridProveedores.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.DtProveedoresBindingSource, "Id_Proveedores", true));
+            this.Id,
+            this.dataGridViewTextBoxColumn5});
+            this.dataGridProveedores.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.DtProveedoresBindingSource, "Id_Proveedores", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.dataGridProveedores.DataSource = this.DtProveedoresBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridProveedores.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridProveedores.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridProveedores.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridProveedores.Location = new System.Drawing.Point(0, 0);
             this.dataGridProveedores.MultiSelect = false;
@@ -327,33 +325,22 @@ namespace PELOSCALVO
             this.dataGridProveedores.Size = new System.Drawing.Size(952, 282);
             this.dataGridProveedores.TabIndex = 60;
             // 
-            // idProveedoresDataGridViewTextBoxColumn1
+            // Id
             // 
-            this.idProveedoresDataGridViewTextBoxColumn1.DataPropertyName = "Id_Proveedores";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.idProveedoresDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.idProveedoresDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idProveedoresDataGridViewTextBoxColumn1.Name = "idProveedoresDataGridViewTextBoxColumn1";
-            this.idProveedoresDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.Id.DataPropertyName = "Id";
+            this.Id.FillWeight = 150F;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Proveedores";
-            this.dataGridViewTextBoxColumn5.FillWeight = 250F;
+            this.dataGridViewTextBoxColumn5.FillWeight = 350F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Proveedores";
             this.dataGridViewTextBoxColumn5.MaxInputLength = 100;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Enlace_Proveedores";
-            this.dataGridViewTextBoxColumn11.FillWeight = 40F;
-            this.dataGridViewTextBoxColumn11.HeaderText = "Enlace";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Visible = false;
             // 
             // BtnSalir_pro
             // 
@@ -481,9 +468,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.Button BtnCancelarProve;
         public System.Windows.Forms.Button BtnGuardarProve;
         private System.Windows.Forms.ErrorProvider ErrorProve;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProveedoresDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         public System.Windows.Forms.DataGridView dataGridProveedores;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

@@ -162,16 +162,6 @@ namespace PELOSCALVO
             }
 
         }
-        public void AñadirIdPaisFactu()
-        {
-            int ii = 0;
-            foreach (var fila in FormMenuPrincipal.menu2principal.dsMulti2.DtPaises)
-            {
-                fila["IdFila"] = ii.ToString();
-                ii++;
-            }
-
-        }
         private void LlenarGrid(DataGridView dataGrid, int valor)
         {
             int II = 0;
@@ -3408,7 +3398,16 @@ namespace PELOSCALVO
         {
             this.Id_Empresa.Width = 0;
         }
+        public void AñadirIdProvinciaFatu()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsMulti2.DtProvincias)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
 
+        }
         private void BtnBuscarProvi_Click(object sender, EventArgs e)
         {
             if (this.fKDtPaisesDtProvinciasBindingSource.Count > 0)
@@ -3421,7 +3420,7 @@ namespace PELOSCALVO
                 }
                 ClasDatos.OkFacturar = true;
                 ClasDatos.QUEform = "Provincias";
-                AñadirIdPaisFactu();
+                AñadirIdProvinciaFatu();
                 FormBuscar frm = new FormBuscar();
                 frm.CargarDatos(1, " Provincias", "Provincias", "IdEnlace", IdPais);
                 frm.BringToFront();
@@ -3429,7 +3428,16 @@ namespace PELOSCALVO
 
             }
         }
+        public void AñadirIdPaisFatu()
+        {
+            int ii = 0;
+            foreach (var fila in FormMenuPrincipal.menu2principal.dsMulti2.DtPaises)
+            {
+                fila["IdFila"] = ii.ToString();
+                ii++;
+            }
 
+        }
         private void BtnBuscarPais_Click(object sender, EventArgs e)
         {
             if (this.dtPaisesBindingSource.Count > 0)
@@ -3440,9 +3448,9 @@ namespace PELOSCALVO
                 {
                     IdPais = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsMulti2.Tables["DtPaises"].Rows[Id2]["Id"].ToString());
                 }
+                AñadirIdPaisFatu();
                 ClasDatos.OkFacturar = true;
                 ClasDatos.QUEform = "Paises";
-                AñadirIdPaisFactu();
                 FormBuscar frm = new FormBuscar();
                 frm.CargarDatos(1, " Paises", "Paises", "Paises", IdPais);
                 frm.BringToFront();
