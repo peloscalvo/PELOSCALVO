@@ -274,6 +274,7 @@ namespace PELOSCALVO
             // 
             // FamiliaTex
             // 
+            this.FamiliaTex.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.FamiliaTex.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtFamiliaProductosBindingSource, "Familia", true));
             this.FamiliaTex.Location = new System.Drawing.Point(74, 43);
             this.FamiliaTex.Name = "FamiliaTex";
@@ -292,7 +293,7 @@ namespace PELOSCALVO
             this.panelFamilia.Name = "panelFamilia";
             this.panelFamilia.Size = new System.Drawing.Size(478, 178);
             this.panelFamilia.TabIndex = 125;
-            this.panelFamilia.Tag = "NO";
+            this.panelFamilia.Tag = "";
             // 
             // DataGridFamilia
             // 

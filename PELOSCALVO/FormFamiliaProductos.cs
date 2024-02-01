@@ -15,6 +15,7 @@ namespace PELOSCALVO
     public partial class FormFamiliaProductos : Form
     {
         public static FormFamiliaProductos MenuB;
+        private bool SiNuevaFami = false;
         public FormFamiliaProductos()
         {
             InitializeComponent();
@@ -95,14 +96,14 @@ namespace PELOSCALVO
         private void GuardarFamiliaDb()
         {
             string consulta = "";
-            if (this.panelFamilia.Tag.ToString() == "Nuevo")
+            if (SiNuevaFami==true)
             {
                 consulta = "  INSERT INTO [DtFamiliaProductos]  VALUES( @Id,@Familia)";
 
             }
             else
             {
-                consulta = "UPDATE [DtFamiliaProductos] SET [Id] = @Id_almacenes,[Familia] = @Familia, " +
+                consulta = "UPDATE [DtFamiliaProductos] SET [Id] = @Id,[Familia] = @Familia, " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
@@ -137,14 +138,14 @@ namespace PELOSCALVO
         private void GuardarFamiliaSql()
         {
             string consulta = "";
-            if (this.panelFamilia.Tag.ToString() == "Nuevo")
+            if (SiNuevaFami == true)
             {
                 consulta = "  INSERT INTO [DtFamiliaProductos] VALUES( @Id,@Familia)";
 
             }
             else
             {
-                consulta = "UPDATE [DtFamiliaProductos] SET [Id] = @Id_almacenes,[Familia] = @Familia, " +
+                consulta = "UPDATE [DtFamiliaProductos] SET [Id] = @Id,[Familia] = @Familia, " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -250,7 +251,7 @@ namespace PELOSCALVO
         }
         private void BtnNuevoFamilia_Click(object sender, EventArgs e)
         {
-            this.panelFamilia.Tag = "Nuevo";
+            SiNuevaFami = true;
             try
             {
                 int numeroFILA = this.DataGridFamilia.Rows.Count;
@@ -291,13 +292,13 @@ namespace PELOSCALVO
         private void BtnCancelarFamilia_Click(object sender, EventArgs e)
         {
             BorrarErrorFami();
-            if (this.DataGridFamilia.RowCount >= 0)
+            if (dtFamiliaProductosBindingSource.Count > 0)
             {
                 try
                 {
-                    if (this.panelFamilia.Tag.ToString() == "Nuevo")
+                    if (SiNuevaFami == true)
                     {
-                        if (this.DataGridFamilia.RowCount > 0)
+                        if (this.DataGridFamilia.RowCount >= 0)
                         {
                             this.DataGridFamilia.Rows.RemoveAt(this.DataGridFamilia.CurrentCell.RowIndex);
                         }
@@ -308,9 +309,9 @@ namespace PELOSCALVO
 
                     //  throw;
                 }
-
+                RestaurarOjetos_Fami();
             }
-            RestaurarOjetos_Fami();
+        
         }
 
         private void BtnSalirFamilia_Click(object sender, EventArgs e)
@@ -333,7 +334,7 @@ namespace PELOSCALVO
         {
             if (dtFamiliaProductosBindingSource.Count > 0)
             {
-                this.panelFamilia.Tag = "Nuevo";
+                SiNuevaFami = false;
                 ModificarOjetos_Fami();
             }
         }

@@ -499,6 +499,21 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceDtconfi", string.IsNullOrEmpty(EnlaceDtconfi.ToString()) ? (object)DBNull.Value : EnlaceDtconfi);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     this.dtNuevaFacturaBindingSource.EndEdit();
+                    if (dtNuevaFacturaBindingSource.Count > 0)
+                    {
+
+                        int FILAcelda = dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
+                        if (this.cobradaFacturaCheckBox.Checked == true)
+                        {
+                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                        }
+                        else
+                        {
+                            //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
+                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+
+                        }
+                    }
                     if (NuevaConexion.CerrarConexionDB)
                     {
 
@@ -615,17 +630,7 @@ namespace PELOSCALVO
                     this.dtDetallesFacturaBindingSource.EndEdit();
                     this.dtDetallesFactura2BindingSource.EndEdit();
                     Validate();
-                    int FILAcelda = dtNuevaFacturaBindingSource.Count - 1;
-                    if (this.cobradaFacturaCheckBox.Checked == true)
-                    {
-                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
-                    }
-                    else
-                    {
-                        //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
-                        this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
-
-                    }
+   
                     MessageBox.Show("Guardado Correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaraurarOjetosFatu();
 
@@ -770,6 +775,22 @@ namespace PELOSCALVO
                 try
                 {
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
+                    this.dtNuevaFacturaBindingSource.EndEdit();
+                    if (dtNuevaFacturaBindingSource.Count > 0)
+                    {
+
+                        int FILAcelda = dtNuevaFacturaDataGridView.CurrentCell.RowIndex;
+                        if (this.cobradaFacturaCheckBox.Checked == true)
+                        {
+                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["CobradaFactura"] = "Cobrado";
+                        }
+                        else
+                        {
+                            //this.dtNuevaFacturaDataGridView.Rows[FILAcelda].Cells[13].Value = "";
+                            this.dsFacturas.DtNuevaFactura.Rows[FILAcelda]["FechaCobro"] = "";
+
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -952,7 +973,6 @@ namespace PELOSCALVO
             else
             {
                 this.dtDetallesFacturaBindingSource.EndEdit();
-                this.dtNuevaFacturaBindingSource.EndEdit();
                 this.dtDetallesFactura2BindingSource.EndEdit();
                 Validate();
                 int FILAcelda = dtNuevaFacturaBindingSource.Count - 1;
