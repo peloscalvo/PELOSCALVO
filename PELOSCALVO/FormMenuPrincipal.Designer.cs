@@ -494,7 +494,7 @@ namespace PELOSCALVO
             this.menuStrip.Location = new System.Drawing.Point(25, 2);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip.Size = new System.Drawing.Size(739, 24);
+            this.menuStrip.Size = new System.Drawing.Size(859, 24);
             this.menuStrip.TabIndex = 46;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -550,27 +550,27 @@ namespace PELOSCALVO
             // empresasToolStripMenuItem
             // 
             this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
-            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empresasToolStripMenuItem.Text = "Empresas";
             this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
             // 
             // crearEjercioNuevoToolStripMenuItem
             // 
             this.crearEjercioNuevoToolStripMenuItem.Name = "crearEjercioNuevoToolStripMenuItem";
-            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.crearEjercioNuevoToolStripMenuItem.Text = "Crear Ejercio Nuevo";
             this.crearEjercioNuevoToolStripMenuItem.Click += new System.EventHandler(this.crearEjercioNuevoToolStripMenuItem_Click);
             // 
             // consultaEmpresasToolStripMenuItem
             // 
             this.consultaEmpresasToolStripMenuItem.Name = "consultaEmpresasToolStripMenuItem";
-            this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultaEmpresasToolStripMenuItem.Text = "&Consulta Empresas";
             // 
             // consultaEjerciciosToolStripMenuItem
             // 
             this.consultaEjerciciosToolStripMenuItem.Name = "consultaEjerciciosToolStripMenuItem";
-            this.consultaEjerciciosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.consultaEjerciciosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultaEjerciciosToolStripMenuItem.Text = "&Consulta Ejercicios";
             // 
             // toolDescuentos
@@ -654,15 +654,16 @@ namespace PELOSCALVO
             // AbrirAlmacenes
             // 
             this.AbrirAlmacenes.Name = "AbrirAlmacenes";
-            this.AbrirAlmacenes.Size = new System.Drawing.Size(125, 22);
+            this.AbrirAlmacenes.Size = new System.Drawing.Size(180, 22);
             this.AbrirAlmacenes.Text = "&Abrir";
             this.AbrirAlmacenes.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // consultarToolStripMenuItem1
             // 
             this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.consultarToolStripMenuItem1.Text = "&Consultar";
+            this.consultarToolStripMenuItem1.Click += new System.EventHandler(this.consultarToolStripMenuItem1_Click);
             // 
             // obrasToolStripMenuItem1
             // 

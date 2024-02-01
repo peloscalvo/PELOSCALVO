@@ -382,6 +382,16 @@ namespace PELOSCALVO
         {
             if (this.DtProveedoresBindingSource.Count > 0)
             {
+                if(string.IsNullOrEmpty(Id_proveedor.Text))
+                {
+                    MessageBox.Show(" Falta Id", "ERROR DATOS",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
+                if (string.IsNullOrEmpty(Enlace_Proveedor.Text))
+                {
+                    MessageBox.Show(" Falta Datos", "ERROR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
 

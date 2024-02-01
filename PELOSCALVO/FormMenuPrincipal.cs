@@ -1038,6 +1038,14 @@ namespace PELOSCALVO
 
         }
 
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsCONFIGURACCION.DtAlmacenes.DefaultView;
+            frm.Show();
+            frm.BringToFront();
+        }
+
         private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormDatosInicio frm = new FormDatosInicio();

@@ -409,6 +409,12 @@
     <Compile Include="FormImprimirTodo.Designer.cs">
       <DependentUpon>FormImprimirTodo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormListarDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListarDatos.Designer.cs">
+      <DependentUpon>FormListarDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -527,6 +533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormImprimirTodo.resx">
       <DependentUpon>FormImprimirTodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListarDatos.resx">
+      <DependentUpon>FormListarDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenuPrincipal.resx">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
