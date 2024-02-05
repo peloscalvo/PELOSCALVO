@@ -1552,63 +1552,75 @@ namespace PELOSCALVO
                 this.RazonSocialFatu.Focus();
             }
         }
-        public void ActualizarArticuloFatu(int Fila, string Referencia, DataGridView Datagri)
+        public bool ActualizarArticuloFatu(int Fila, string Referencia, DataGridView Datagri)
         {
+            bool ok = false;
             string ColumnaPvp = "Pvp1";
             string ColumnaDesc = "";
             string ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "],[" + ColumnaDesc + "]" +
                  "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
-            if (CheckDescuentos.Checked)
+            try
             {
-                 ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "],[" + ColumnaDesc + "]" +
-                     "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
-  
-                    ColumnaPvp = "Pvp" + TipoTarifaFactu.SelectedItem + 1;
-               
-            }
-            else
-            {
-                if (TipoTarifaFactu.SelectedItem.ToString() == "Pvp1" | TipoTarifaFactu.SelectedItem.ToString() == "PvpIva" | TipoTarifaFactu.SelectedItem.ToString() == "Plus")
+                if (this.CheckDescuentos.Checked)
                 {
-                   // ColumnaPvp = ;
+                    ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "],[" + ColumnaDesc + "]" +
+                        "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
+
+                    ColumnaPvp = "Pvp" + this.TipoTarifaFactu.SelectedItem + 1;
+
                 }
                 else
                 {
-                    ColumnaDesc = "Desc" + TipoTarifaFactu.SelectedItem + 1;
-                }
-            }
-
-            if (ClsConexionSql.SibaseDatosSql)
-            {
-
-            }
-            else
-            {
-                ClsConexionDb NuevaConexion = new ClsConexionDb(ConsultaArtiFatu);
-                if (NuevaConexion.SiConexionDb)
-                {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Referencia) ? (object)DBNull.Value : Referencia);
-                    OleDbDataReader Leer = NuevaConexion.ComandoDb.ExecuteReader();
-                    if (Leer.HasRows)
+                    if (this.TipoTarifaFactu.SelectedItem.ToString() == "Pvp1" | this.TipoTarifaFactu.SelectedItem.ToString() == "PvpIva" | this.TipoTarifaFactu.SelectedItem.ToString() == "Plus")
                     {
-                        if (Leer.Read())
-                        {
-                            Datagri.Rows[Fila].Cells[2].Value = Leer["Descripcci"];
-  
-                            if (CheckDescuentos.Checked)
-                            {
-                                Datagri.Rows[Fila].Cells[3].Value = Leer[ColumnaPvp];
-                                Datagri.Rows[Fila].Cells[4].Value = "0";
-                            }
-                            else
-                            {
-                                Datagri.Rows[Fila].Cells[3].Value = Leer[ColumnaPvp];
-                                Datagri.Rows[Fila].Cells[4].Value = Leer[ColumnaDesc];
-                            }
-                        }
+                        // ColumnaPvp = ;
+                    }
+                    else
+                    {
+                        ColumnaDesc = "Desc" + this.TipoTarifaFactu.SelectedItem + 1;
                     }
                 }
 
+                if (ClsConexionSql.SibaseDatosSql)
+                {
+
+                }
+                else
+                {
+                    ClsConexionDb NuevaConexion = new ClsConexionDb(ConsultaArtiFatu);
+                    if (NuevaConexion.SiConexionDb)
+                    {
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@Referencia", string.IsNullOrEmpty(Referencia) ? (object)DBNull.Value : Referencia);
+                        OleDbDataReader Leer = NuevaConexion.ComandoDb.ExecuteReader();
+                        if (Leer.HasRows)
+                        {
+                            if (Leer.Read())
+                            {
+                                Datagri.Rows[Fila].Cells[2].Value = Leer["Descripcci"];
+
+                                if (this.CheckDescuentos.Checked)
+                                {
+                                    Datagri.Rows[Fila].Cells[3].Value = Leer[ColumnaPvp];
+                                    Datagri.Rows[Fila].Cells[4].Value = "0";
+                                }
+                                else
+                                {
+                                    Datagri.Rows[Fila].Cells[3].Value = Leer[ColumnaPvp];
+                                    Datagri.Rows[Fila].Cells[4].Value = Leer[ColumnaDesc];
+                                }
+                                ok = true;
+                            }
+                        }
+                    }
+
+                }
+                return ok;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString(), "ERROR AL BUSCAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return ok;
             }
 
         }
@@ -1655,7 +1667,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show(ex.Message.ToString(), "ERROR AL CARGAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -1747,11 +1759,11 @@ namespace PELOSCALVO
             }
 
             if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Count > 0)
-            { 
-            
+            {
+
             }
 
-                if (this.dtConfiBindingSource.Count < 1)
+            if (this.dtConfiBindingSource.Count < 1)
             {
 
                 this.panelBotones.Enabled = false;
@@ -2389,6 +2401,7 @@ namespace PELOSCALVO
                         {
                             if (string.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
                             {
+                                // dtDetallesFacturaDataGridView.CurrentCell.EditedFormattedValue.ToString();
                                 this.SoloNumerosText = this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString();
                             }
 
@@ -2432,7 +2445,7 @@ namespace PELOSCALVO
 
                 return;
             }
-            if (this.dtDetallesFacturaDataGridView.Rows.Count > 0)
+            if (this.dtDetallesFacturaDataGridView.Rows.Count > 0 | this.dtArticulosBindingSource.Count > 0)
             {
                 if (e.RowIndex > -1)
                 {
@@ -2444,14 +2457,21 @@ namespace PELOSCALVO
                             string Referencia = this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].EditedFormattedValue.ToString();
                             Referencia = Referencia.ToUpper();
                             this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value = Referencia.ToUpper();
-
+                            if (! ActualizarArticuloFatu(e.RowIndex, Referencia, this.dtDetallesFacturaDataGridView))
+                            {
+                                MessageBox.Show(this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString(), "NO SE ENCONTRO ARTICULO");
+                                this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value = string.Empty;
+                                return;
+                            }
                         }
 
                     }
 
                 }
+                return;
                 if (e.ColumnIndex == 0)
                 {
+
                     int FilaDescuentos = this.TipoTarifaFactu.SelectedIndex * 2 + 5;
                     if (FilaDescuentos > 6)
                     {
