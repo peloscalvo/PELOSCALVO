@@ -1557,7 +1557,7 @@ namespace PELOSCALVO
             bool ok = false;
             string ColumnaPvp = "Pvp1";
             string ColumnaDesc = "";
-            string ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "],[" + ColumnaDesc + "]" +
+            string ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "]" +
                  "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
             try
             {
@@ -1566,19 +1566,22 @@ namespace PELOSCALVO
                     ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "],[" + ColumnaDesc + "]" +
                         "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
 
-                    ColumnaPvp = "Pvp" + this.TipoTarifaFactu.SelectedItem + 1;
-
+                    //ColumnaPvp = "Pvp" + this.TipoTarifaFactu.SelectedItem + 1;
+                    ColumnaPvp = TarifaRealTxt.Text;
                 }
                 else
                 {
-                    if (this.TipoTarifaFactu.SelectedItem.ToString() == "Pvp1" | this.TipoTarifaFactu.SelectedItem.ToString() == "PvpIva" | this.TipoTarifaFactu.SelectedItem.ToString() == "Plus")
+                    if (TarifaRealTxt.Text.ToString() != "PVP1" | this.TarifaRealTxt.Text.ToString() != "PVPIVA" | this.TarifaRealTxt.Text.ToString() != "PLUS" | this.TarifaRealTxt.Text.ToString() != "IVA")
                     {
-                        // ColumnaPvp = ;
-                    }
-                    else
-                    {
+
                         ColumnaDesc = "Desc" + this.TipoTarifaFactu.SelectedItem + 1;
+
                     }
+                    if (this.TarifaRealTxt.Text.ToString() == "PLUS")
+                    {
+                        ColumnaDesc = "DescPlus";
+                    }
+                
                 }
 
                 if (ClsConexionSql.SibaseDatosSql)
@@ -1601,12 +1604,12 @@ namespace PELOSCALVO
                                 if (this.CheckDescuentos.Checked)
                                 {
                                     Datagri.Rows[Fila].Cells[3].Value = Leer[ColumnaPvp];
-                                    Datagri.Rows[Fila].Cells[4].Value = "0";
+                                    Datagri.Rows[Fila].Cells[4].Value = Leer[ColumnaDesc];
                                 }
                                 else
                                 {
                                     Datagri.Rows[Fila].Cells[3].Value = Leer[ColumnaPvp];
-                                    Datagri.Rows[Fila].Cells[4].Value = Leer[ColumnaDesc];
+                                    Datagri.Rows[Fila].Cells[4].Value ="0";
                                 }
                                 ok = true;
                             }
@@ -2451,7 +2454,11 @@ namespace PELOSCALVO
                 {
                     if (e.ColumnIndex == 0)
                     {
-
+                        if (string.IsNullOrEmpty(TarifaRealTxt.Text.ToString()))
+                        {
+                            MessageBox.Show("Falta Tipo Tarifa", "ELEGUIR TARIFA");
+                            return;
+                        }
                         if (this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].EditedFormattedValue.ToString() != string.Empty)
                         {
                             string Referencia = this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].EditedFormattedValue.ToString();
@@ -3112,7 +3119,7 @@ namespace PELOSCALVO
         {
             if (this.TipoTarifaFactu.SelectedIndex < 2 || this.TipoTarifaFactu.SelectedIndex > 5)
             {
-                this.CheckDescuentos.Checked = false;
+              //  this.CheckDescuentos.Checked = false;
             }
         }
 
@@ -3541,7 +3548,14 @@ namespace PELOSCALVO
             }
         }
 
-
+        private void TarifaRealTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (TarifaRealTxt.Text.ToString() == "PVP1" | this.TarifaRealTxt.Text.ToString() == "PVPIVA" | this.TarifaRealTxt.Text.ToString() == "PLUS" | this.TarifaRealTxt.Text.ToString() == "IVA")
+            {
+                  this.CheckDescuentos.Checked = false;
+                MessageBox.Show("Tarifa No Valida", "ELEGIR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
 
