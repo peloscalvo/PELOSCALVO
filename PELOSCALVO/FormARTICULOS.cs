@@ -122,25 +122,27 @@ namespace PELOSCALVO
                 int Fila2 = 0;
                 if (this.dtConfiDtTarifaTipoBindingSource.Count > 0)
                 {
+                    string item2 =  TipoTarifa.Items.ToString();
+                 string aaaa=    item2[1].ToString();
                     foreach (DataRowView item in this.TipoTarifa.Items)
                     {
-                        if (!string.IsNullOrEmpty(item.Row.Table.ToString()))
+                        if (!string.IsNullOrEmpty(item.ToString()))
                         {
-                            if (Fila2 == 1)
-                            {
-                                LabDes3.Text = item.ToString();
-                            }
                             if (Fila2 == 2)
                             {
-                                LabDesc4.Text = item.ToString();
+                                LabDes3.Text = item[2].ToString();
                             }
                             if (Fila2 == 3)
                             {
-                                LabDes5.Text = item.ToString();
+                                LabDesc4.Text = item[3].ToString();
                             }
                             if (Fila2 == 4)
                             {
-                                LabDes6.Text = item.ToString();
+                                LabDes5.Text = item[4].ToString();
+                            }
+                            if (Fila2 == 5)
+                            {
+                                LabDes6.Text = item[5].ToString();
                             }
    
                         }

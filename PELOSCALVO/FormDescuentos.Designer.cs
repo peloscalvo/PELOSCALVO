@@ -47,7 +47,7 @@ namespace PELOSCALVO
             this.idTarifaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tarifaTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enlaceTarifaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarifaTipoTextBox = new System.Windows.Forms.TextBox();
+            this.NombreTarifaTxt = new System.Windows.Forms.TextBox();
             this.empresaConfiComboBox1 = new System.Windows.Forms.ComboBox();
             this.BtnCancelarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnGuardarDescuentos = new System.Windows.Forms.Button();
@@ -208,14 +208,16 @@ namespace PELOSCALVO
             this.enlaceTarifaDataGridViewTextBoxColumn.ReadOnly = true;
             this.enlaceTarifaDataGridViewTextBoxColumn.Visible = false;
             // 
-            // tarifaTipoTextBox
+            // NombreTarifaTxt
             // 
-            this.tarifaTipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "TarifaTipo", true));
-            this.tarifaTipoTextBox.Location = new System.Drawing.Point(80, 331);
-            this.tarifaTipoTextBox.Name = "tarifaTipoTextBox";
-            this.tarifaTipoTextBox.ReadOnly = true;
-            this.tarifaTipoTextBox.Size = new System.Drawing.Size(283, 20);
-            this.tarifaTipoTextBox.TabIndex = 60;
+            this.NombreTarifaTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.NombreTarifaTxt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.NombreTarifaTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "TarifaTipo", true));
+            this.NombreTarifaTxt.Location = new System.Drawing.Point(80, 331);
+            this.NombreTarifaTxt.Name = "NombreTarifaTxt";
+            this.NombreTarifaTxt.ReadOnly = true;
+            this.NombreTarifaTxt.Size = new System.Drawing.Size(283, 20);
+            this.NombreTarifaTxt.TabIndex = 60;
             // 
             // empresaConfiComboBox1
             // 
@@ -360,7 +362,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.dtTarifaTipoDataGridView);
             this.Controls.Add(idTarifaLabel);
             this.Controls.Add(tarifaTipoLabel);
-            this.Controls.Add(this.tarifaTipoTextBox);
+            this.Controls.Add(this.NombreTarifaTxt);
             this.Controls.Add(ConfiLabel1);
             this.Controls.Add(this.empresaConfiComboBox1);
             this.Controls.Add(idEmpresaLabel1);
@@ -392,7 +394,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label IdEmpresa;
         private System.Windows.Forms.Label IdTarifa;
         private System.Windows.Forms.DataGridView dtTarifaTipoDataGridView;
-        private System.Windows.Forms.TextBox tarifaTipoTextBox;
+        private System.Windows.Forms.TextBox NombreTarifaTxt;
         private System.Windows.Forms.ComboBox empresaConfiComboBox1;
         private System.Windows.Forms.Button BtnCancelarTipoTarifa;
         public System.Windows.Forms.Button BtnGuardarDescuentos;

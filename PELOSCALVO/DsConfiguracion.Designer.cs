@@ -1617,6 +1617,8 @@ namespace PELOSCALVO {
             
             private global::System.Data.DataColumn columnEnlaceTarifa;
             
+            private global::System.Data.DataColumn columnTarifaReal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtTarifaTipoDataTable() {
@@ -1676,6 +1678,14 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TarifaRealColumn {
+                get {
+                    return this.columnTarifaReal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1711,12 +1721,13 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtTarifaTipoRow AddDtTarifaTipoRow(int Id, string TarifaTipo, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtTarifaTipo) {
+            public DtTarifaTipoRow AddDtTarifaTipoRow(int Id, string TarifaTipo, DtConfiguracionPrincipalRow parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtTarifaTipo, string TarifaReal) {
                 DtTarifaTipoRow rowDtTarifaTipoRow = ((DtTarifaTipoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
                         TarifaTipo,
-                        null};
+                        null,
+                        TarifaReal};
                 if ((parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtTarifaTipo != null)) {
                     columnValuesArray[2] = parentDtConfiguracionPrincipalRowByFK_DtConfiguracionPrincipal_DtTarifaTipo[1];
                 }
@@ -1745,6 +1756,7 @@ namespace PELOSCALVO {
                 this.columnId = base.Columns["Id"];
                 this.columnTarifaTipo = base.Columns["TarifaTipo"];
                 this.columnEnlaceTarifa = base.Columns["EnlaceTarifa"];
+                this.columnTarifaReal = base.Columns["TarifaReal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1756,6 +1768,8 @@ namespace PELOSCALVO {
                 base.Columns.Add(this.columnTarifaTipo);
                 this.columnEnlaceTarifa = new global::System.Data.DataColumn("EnlaceTarifa", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnlaceTarifa);
+                this.columnTarifaReal = new global::System.Data.DataColumn("TarifaReal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTarifaReal);
                 this.columnId.AllowDBNull = false;
                 this.columnTarifaTipo.AllowDBNull = false;
             }
@@ -3153,6 +3167,22 @@ namespace PELOSCALVO {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TarifaReal {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtTarifaTipo.TarifaRealColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TarifaReal\' de la tabla \'DtTarifaTipo\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtTarifaTipo.TarifaRealColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtConfiguracionPrincipalRow DtConfiguracionPrincipalRow {
                 get {
                     return ((DtConfiguracionPrincipalRow)(this.GetParentRow(this.Table.ParentRelations["FK_DtConfiguracionPrincipal_DtTarifaTipo"])));
@@ -3172,6 +3202,18 @@ namespace PELOSCALVO {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEnlaceTarifaNull() {
                 this[this.tableDtTarifaTipo.EnlaceTarifaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTarifaRealNull() {
+                return this.IsNull(this.tableDtTarifaTipo.TarifaRealColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTarifaRealNull() {
+                this[this.tableDtTarifaTipo.TarifaRealColumn] = global::System.Convert.DBNull;
             }
         }
         

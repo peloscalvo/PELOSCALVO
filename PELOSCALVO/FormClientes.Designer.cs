@@ -794,6 +794,7 @@ namespace PELOSCALVO
             // 
             // NombreCliente
             // 
+            this.NombreCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.NombreCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "NOMBRECLIE", true));
             this.NombreCliente.Enabled = false;
             this.NombreCliente.Location = new System.Drawing.Point(88, 82);

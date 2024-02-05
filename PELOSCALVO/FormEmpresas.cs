@@ -563,7 +563,7 @@ namespace PELOSCALVO
                         Validate();
                         if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                         {
-                            string ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
+                            string ConsultaDescuetos = " INSERT INTO [DtTarifa]([Id],[TarifaTipo],[TarifaReal],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo,@TarifaReal, @EnlaceTarifa)";
                             string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
                             string Ejercicio = "EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
                             String ConsultaEjercios = "INSERT INTO [DtConfi] ([IdEnlace],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
@@ -574,9 +574,9 @@ namespace PELOSCALVO
                             if (NuevaConexion.SiConexionDb)
                             {
 
-                                string Tarifa = "Pvp";
+                                string Tarifa = "PVP";
 
-                                for (int Fila = 1; Fila < 8; Fila++)
+                                for (int Fila = 1; Fila < 9; Fila++)
                                 {
 
 
@@ -584,13 +584,26 @@ namespace PELOSCALVO
                                     if (Fila == 7)
                                     {
 
-                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", "IVA");
-                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "IVA", this.idEmpresa.Text);
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", "PLUS");
+
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", "PLUS");
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "PLUS", this.idEmpresa.Text,"PLUS");
                                     }
+                                    else 
+                                    if (Fila == 8)
+                                    {
+
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", "IVA");
+
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", "IVA");
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "IVA", this.idEmpresa.Text,"IVA");
+                                    }
+               
                                     else
                                     {
                                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.idEmpresa.Text);
                                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", Tarifa + Fila.ToString());
                                     }
 
                                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));

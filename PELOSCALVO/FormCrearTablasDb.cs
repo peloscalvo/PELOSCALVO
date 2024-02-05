@@ -167,7 +167,7 @@ namespace PELOSCALVO
             string TablaDtconfi = "CREATE TABLE[DtConfi] ([IdEnlace] INTEGER not null primary key ,[ConfiguraccionBasica] varchar , [TipoInpuestoIVA] INTEGER, [EjerciciosDeAño] varchar  ," +
                 "[EmpresaENLACE] INTEGER not null ,[IdConexionConfi] INTEGER not null, [AñoDeEjercicio] varchar  ," +
                    " CONSTRAINT FK_DTCONFI" + valor + " FOREIGN KEY(EmpresaENLACE)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
-            string TablaTarifa = "CREATE TABLE[DtTarifaTipo] ([Id] INTEGER not null, [TarifaTipo] varchar, [EnlaceTarifa] INTEGER not null," +
+            string TablaTarifa = "CREATE TABLE[DtTarifa] ([Id] INTEGER not null, [TarifaTipo] varchar(50),[TarifaReal] varchar(50), [EnlaceTarifa] INTEGER not null," +
                 "CONSTRAINT F_DtTipoTarifa" + valor.ToString() + " FOREIGN KEY (EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )";
 
 

@@ -149,7 +149,6 @@ namespace PELOSCALVO
             this.tabPage3Factura = new System.Windows.Forms.TabPage();
             this.CheckDescuentos = new System.Windows.Forms.RadioButton();
             this.IdDescuento = new System.Windows.Forms.Label();
-            this.dtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.NumTotales = new System.Windows.Forms.NumericUpDown();
             this.Numimporte = new System.Windows.Forms.NumericUpDown();
@@ -187,6 +186,7 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsClientes = new PELOSCALVO.DsClientes();
+            this.TarifaRealTxt = new System.Windows.Forms.Label();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -244,7 +244,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFacturaDataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFactura2BindingSource)).BeginInit();
             this.tabPage3Factura.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumTotales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Numimporte)).BeginInit();
@@ -458,7 +457,7 @@ namespace PELOSCALVO
             // idTarifaLabel
             // 
             idTarifaLabel.AutoSize = true;
-            idTarifaLabel.Location = new System.Drawing.Point(42, 29);
+            idTarifaLabel.Location = new System.Drawing.Point(45, 26);
             idTarifaLabel.Name = "idTarifaLabel";
             idTarifaLabel.Size = new System.Drawing.Size(22, 13);
             idTarifaLabel.TabIndex = 6;
@@ -467,7 +466,7 @@ namespace PELOSCALVO
             // tarifaTipoLabel1
             // 
             tarifaTipoLabel1.AutoSize = true;
-            tarifaTipoLabel1.Location = new System.Drawing.Point(3, 55);
+            tarifaTipoLabel1.Location = new System.Drawing.Point(5, 74);
             tarifaTipoLabel1.Name = "tarifaTipoLabel1";
             tarifaTipoLabel1.Size = new System.Drawing.Size(62, 13);
             tarifaTipoLabel1.TabIndex = 8;
@@ -1316,6 +1315,7 @@ namespace PELOSCALVO
             // tabPage3Factura
             // 
             this.tabPage3Factura.AutoScroll = true;
+            this.tabPage3Factura.Controls.Add(this.TarifaRealTxt);
             this.tabPage3Factura.Controls.Add(nombreEmpresaReguistroLabel);
             this.tabPage3Factura.Controls.Add(this.CheckDescuentos);
             this.tabPage3Factura.Controls.Add(this.IdDescuento);
@@ -1336,7 +1336,7 @@ namespace PELOSCALVO
             // 
             this.CheckDescuentos.AutoCheck = false;
             this.CheckDescuentos.AutoSize = true;
-            this.CheckDescuentos.Location = new System.Drawing.Point(71, 91);
+            this.CheckDescuentos.Location = new System.Drawing.Point(73, 110);
             this.CheckDescuentos.Name = "CheckDescuentos";
             this.CheckDescuentos.Size = new System.Drawing.Size(109, 17);
             this.CheckDescuentos.TabIndex = 71;
@@ -1348,18 +1348,13 @@ namespace PELOSCALVO
             // IdDescuento
             // 
             this.IdDescuento.AutoSize = true;
-            this.IdDescuento.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtTarifaTipoBindingSource, "Id", true));
+            this.IdDescuento.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "Id", true));
             this.IdDescuento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.IdDescuento.Location = new System.Drawing.Point(71, 28);
+            this.IdDescuento.Location = new System.Drawing.Point(74, 25);
             this.IdDescuento.Name = "IdDescuento";
             this.IdDescuento.Size = new System.Drawing.Size(13, 13);
             this.IdDescuento.TabIndex = 70;
             this.IdDescuento.Text = "0";
-            // 
-            // dtTarifaTipoBindingSource
-            // 
-            this.dtTarifaTipoBindingSource.DataMember = "DtTarifaTipo";
-            this.dtTarifaTipoBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // panel2
             // 
@@ -1466,10 +1461,11 @@ namespace PELOSCALVO
             this.TipoTarifaFactu.DisplayMember = "TarifaTipo";
             this.TipoTarifaFactu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipoTarifaFactu.FormattingEnabled = true;
-            this.TipoTarifaFactu.Location = new System.Drawing.Point(71, 52);
+            this.TipoTarifaFactu.Location = new System.Drawing.Point(73, 71);
             this.TipoTarifaFactu.Name = "TipoTarifaFactu";
             this.TipoTarifaFactu.Size = new System.Drawing.Size(246, 21);
             this.TipoTarifaFactu.TabIndex = 9;
+            this.TipoTarifaFactu.ValueMember = "TarifaReal";
             this.TipoTarifaFactu.SelectedIndexChanged += new System.EventHandler(this.TarifaTipoComboBox_SelectedIndexChanged);
             // 
             // dtConfiDtTarifaTipoBindingSource
@@ -1901,6 +1897,16 @@ namespace PELOSCALVO
             this.dsClientes.DataSetName = "DsClientes";
             this.dsClientes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // TarifaRealTxt
+            // 
+            this.TarifaRealTxt.AutoSize = true;
+            this.TarifaRealTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "TarifaReal", true));
+            this.TarifaRealTxt.Location = new System.Drawing.Point(74, 50);
+            this.TarifaRealTxt.Name = "TarifaRealTxt";
+            this.TarifaRealTxt.Size = new System.Drawing.Size(13, 13);
+            this.TarifaRealTxt.TabIndex = 72;
+            this.TarifaRealTxt.Text = "0";
+            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1956,7 +1962,6 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFactura2BindingSource)).EndInit();
             this.tabPage3Factura.ResumeLayout(false);
             this.tabPage3Factura.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtTarifaTipoBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumTotales)).EndInit();
@@ -2004,7 +2009,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.NumericUpDown IvaFactuTxt;
         public System.Windows.Forms.DataGridView dtDetallesFacturaDataGridView;
         private System.Windows.Forms.TabControl tabControl1Factura;
-        private System.Windows.Forms.BindingSource dtTarifaTipoBindingSource;
         private System.Windows.Forms.BindingSource dtConfiDtTarifaTipoBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtConfiBindingSource;
         public System.Windows.Forms.BindingSource dtDetallesFacturaBindingSource;
@@ -2087,5 +2091,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoDetalleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         public DsFacturas dsFacturas;
+        private System.Windows.Forms.Label TarifaRealTxt;
     }
 }

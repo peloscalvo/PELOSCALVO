@@ -414,7 +414,7 @@ namespace PELOSCALVO
                   " CONSTRAINT F_DtProveedores FOREIGN KEY(Enlace_Proveedores)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
                   "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtTarifaTipo]') AND type in (N'U'))" +
-                  "   CREATE TABLE [DtTarifaTipo]( [Id]int null,[TarifaTipo][varchar](60) NULL ,[EnlaceTarifa] [int] Not NULL, " +
+                  "   CREATE TABLE [DtTarifa]( [Id]int null,[TarifaTipo][varchar](60) NULL ,[TarifaReal][varchar](60) NULL,[EnlaceTarifa] [int] Not NULL, " +
                   " CONSTRAINT F_DtTarifaTipo FOREIGN KEY(EnlaceTarifa)REFERENCES DtConfiguracionPrincipal(IdEmpresa) ON UPDATE CASCADE ON DELETE CASCADE )" +
 
             "IF not EXISTS(SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DtAlmacenes]') AND type in (N'U'))" +
