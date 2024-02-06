@@ -155,12 +155,12 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelBotonesTipoTarifa.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtTarifaTipo] VALUES([@Id],[@TarifaTipo],[@EnlaceTarifa])";
+                consulta = "  INSERT INTO [DtTarifa] VALUES([@Id],[@TarifaTipo],@TarifaReal,[@EnlaceTarifa])";
 
             }
             else
             {
-                consulta = "UPDATE [DtTarifaTipo] SET [Id] = @Id,[TarifaTipo] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
+                consulta = "UPDATE [DtTarifa] SET [Id] = @Id,[TarifaTipo] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
                 " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
@@ -171,6 +171,27 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.IdTarifa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdTarifa.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(this.NombreTarifaTxt.Text) ? (object)DBNull.Value : this.NombreTarifaTxt.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdEmpresa.Text));
+                    if (this.panelBotonesTipoTarifa.Tag.ToString() == "Nuevo")
+                    {
+                        int FilaDesc = this.dtTarifaTipoDataGridView.CurrentCell.RowIndex;
+                        string NombreTarifa = "PVP1";
+                        if (FilaDesc > 6)
+                        {
+                            NombreTarifa = "PVP" + FilaDesc + 1;
+                        }
+                        if (FilaDesc == 6)
+                        {
+                            NombreTarifa = "PLUS";
+                        }
+                        if (FilaDesc == 7)
+                        {
+                            NombreTarifa = "IVA";
+                        }
+
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaReal", string.IsNullOrEmpty(NombreTarifa) ? (object)DBNull.Value : NombreTarifa);
+
+                    }
+
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();

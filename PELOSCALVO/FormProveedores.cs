@@ -103,7 +103,7 @@ namespace PELOSCALVO
             else
             {
                 consulta = "UPDATE [DtProveedores] SET [Id] = @Id,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
-                " WHERE Id_Proveedores = @Id_Proveedores";
+                " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
@@ -146,7 +146,7 @@ namespace PELOSCALVO
             else
             {
                 consulta = "UPDATE [DtProveedores] SET [Id] = @Id,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
-                " WHERE Id_Proveedores = @Id_Proveedores";
+                " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try

@@ -405,7 +405,7 @@ namespace PELOSCALVO
             // proveedoresDataGridViewTextBoxColumn
             // 
             this.proveedoresDataGridViewTextBoxColumn.DataPropertyName = "Proveedores";
-            this.proveedoresDataGridViewTextBoxColumn.FillWeight = 350F;
+            this.proveedoresDataGridViewTextBoxColumn.FillWeight = 400F;
             this.proveedoresDataGridViewTextBoxColumn.HeaderText = "Proveedores";
             this.proveedoresDataGridViewTextBoxColumn.Name = "proveedoresDataGridViewTextBoxColumn";
             this.proveedoresDataGridViewTextBoxColumn.ReadOnly = true;

@@ -984,6 +984,11 @@ namespace PELOSCALVO
 
         private void BtnNuevoFactura_Click(object sender, EventArgs e)
         {
+            if (TipoTarifaFactu.Items.Count > 8)
+            {
+
+                MessageBox.Show("Debe Verificar Listado de Clientes", "FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); ;
+            }
             int VALORid = 1;
             int VALOR_MAS = 1;
             this.panelBotones.Tag = "Nuevo";
@@ -1539,6 +1544,12 @@ namespace PELOSCALVO
         {
             if (this.dtNuevaFacturaBindingSource.Count > 0)
             {
+                if (TipoTarifaFactu.Items.Count > 8)
+                {
+
+                    MessageBox.Show("Debe Verificar Listado de Clientes", "FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); ;
+                }
+
                 this.panelBotones.Tag = "Modificar";
                 this.tabControl1Factura.SelectedIndex = 0;
                 ModificarOjetosFatu();
@@ -1563,11 +1574,8 @@ namespace PELOSCALVO
                  "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
             try
             {
-
                 if (this.CheckDescuentos.Checked)
                 {
-
-
                     if (this.TarifaRealTxt.Text.ToString() != "PVP1" | this.TarifaRealTxt.Text.ToString() != "PVPIVA" | this.TarifaRealTxt.Text.ToString() != "PLUS" | this.TarifaRealTxt.Text.ToString() != "IVA")
                     {
 
@@ -1580,11 +1588,6 @@ namespace PELOSCALVO
                     }
                     ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "],[" + ColumnaDesc + "]" +
                   "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
-                }
-                else
-                {
-
-
                 }
 
                 if (ClsConexionSql.SibaseDatosSql)
@@ -2455,7 +2458,7 @@ namespace PELOSCALVO
 
                 return;
             }
-            if (this.dtDetallesFacturaDataGridView.Rows.Count > 0 | this.dtArticulosBindingSource.Count > 0)
+            if ( this.dtArticulosBindingSource.Count > 0)
             {
                 if (e.RowIndex > -1)
                 {
@@ -2482,113 +2485,18 @@ namespace PELOSCALVO
                     }
 
                 }
-                return;
-                if (e.ColumnIndex == 0)
-                {
-
-                    int FilaDescuentos = this.TipoTarifaFactu.SelectedIndex * 2 + 5;
-                    if (FilaDescuentos > 6)
-                    {
-                        // FilaDescuentos=FilaDescuentos +2;
-                    }
-                    if (this.TipoTarifaFactu.SelectedIndex > 6)
-                    {
-                        FilaDescuentos = 6;
-                    }
-
-                    byte SIexiste = 0;
-                    int I;
-                    try
-                    {
-                        if (this.dtArticulosBindingSource.Count > 0)
-                        {
-                            I = 0;
-                            if (this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString() != string.Empty)
-                            {
-                                foreach (DataRow fila in FormMenuPrincipal.menu2principal.articulos.DtArticulos.Rows)
-                                {
-                                    if (this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString().Equals(fila["Referencia"].ToString(), StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        if (FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I]["Referencia"].ToString() == this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
-                                        {
-                                            SIexiste = 1;
-                                            if (FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I]["Descripcci"].ToString() != String.Empty)
-                                            {
-                                                this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[3].Value = FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I]["Descripcci"].ToString();
-                                            }
-                                            if (this.CheckDescuentos.Checked == false)
-                                            {
-                                                if (FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I][FilaDescuentos] != DBNull.Value && FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I][FilaDescuentos].ToString() != string.Empty)
-                                                {
-                                                    this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[4].Value = FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I][FilaDescuentos].ToString();
-                                                    this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[5].Value = DBNull.Value;
-                                                }
-
-
-
-                                            }
-
-                                            if (this.CheckDescuentos.Checked == true)
-                                            {
-                                                if (FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I]["Pvp1"] != DBNull.Value && FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I]["Pvp1"].ToString() != string.Empty)
-                                                {
-                                                    this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[4].Value = FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I]["Pvp1"].ToString();
-                                                }
-                                                else
-                                                {
-                                                    this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[4].Value = DBNull.Value;
-                                                }
-
-                                                if (FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I][FilaDescuentos].ToString() != String.Empty && FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I][FilaDescuentos] != DBNull.Value)
-                                                {
-                                                    this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[5].Value = FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[I][FilaDescuentos].ToString();
-                                                }
-                                                else
-                                                {
-                                                    this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[5].Value = DBNull.Value;
-                                                }
-
-
-
-
-                                            }
-
-                                        }
-
-
-
-
-
-                                    }
-
-                                    I++;
-                                }
-
-                                if (SIexiste == 0)
-                                {
-                                    MessageBox.Show(this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString(), "NO SE ENCONTRO ARTICULO");
-                                    this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[0].Value = string.Empty;
-                                }
-                                if (this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString() == string.Empty || this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[2].Value == DBNull.Value)
-                                {
-                                    this.dtDetallesFacturaDataGridView.Rows[e.RowIndex].Cells[2].Value = 0;
-
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-
-                }
 
                 try
                 {
                     if (e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 5)
                     {
+                        if (dtDetallesFacturaDataGridView.AllowUserToAddRows == true)
+                        {
+                            if (e.RowIndex == dtDetallesFacturaDataGridView.Rows.Count)
+                            {
+                                return;
+                            }
+                        }
                         if (this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString() == "0")
                         {
                             this.dtDetallesFacturaDataGridView.CurrentCell.Value = DBNull.Value;
@@ -3105,10 +3013,14 @@ namespace PELOSCALVO
         }
         private void CheckDescuentos_Click(object sender, EventArgs e)
         {
-            if (this.TipoTarifaFactu.SelectedIndex < 2 || this.TipoTarifaFactu.SelectedIndex > 5)
+            if (this.CheckDescuentos.Checked)
             {
-                // MessageBox.Show("Pvp1" + "\n" + "Pvp2" + "\n" + "Plus" + "\n" + "Iva", "NO VALIDO", MessageBoxButtons.OK);
-                return;
+                if (this.TarifaRealTxt.Text.ToString() == "PVP1" | this.TarifaRealTxt.Text.ToString() == "PVPIVA" | this.TarifaRealTxt.Text.ToString() == "PLUS" | this.TarifaRealTxt.Text.ToString() == "IVA")
+                {
+                    this.CheckDescuentos.Checked = false;
+                    MessageBox.Show("Tarifa No Valida", "ELEGIR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
             }
             if (this.CheckDescuentos.Checked == false)
             {
@@ -3557,11 +3469,21 @@ namespace PELOSCALVO
 
         private void TarifaRealTxt_TextChanged(object sender, EventArgs e)
         {
-            if (this.TarifaRealTxt.Text.ToString() == "PVP1" | this.TarifaRealTxt.Text.ToString() == "PVPIVA" | this.TarifaRealTxt.Text.ToString() == "PLUS" | this.TarifaRealTxt.Text.ToString() == "IVA")
+            if (this.CheckDescuentos.Checked)
             {
-                this.CheckDescuentos.Checked = false;
-                MessageBox.Show("Tarifa No Valida", "ELEGIR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                if (this.TarifaRealTxt.Text.ToString() == "PVP1" | this.TarifaRealTxt.Text.ToString() == "PVPIVA" | this.TarifaRealTxt.Text.ToString() == "PLUS" | this.TarifaRealTxt.Text.ToString() == "IVA")
+                {
+                    this.CheckDescuentos.Checked = false;
+                    MessageBox.Show("Tarifa No Valida", "ELEGIR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+        }
+
+        private void TarifaRealTxt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

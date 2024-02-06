@@ -1097,6 +1097,7 @@ namespace PELOSCALVO
             // referenciaDetalleDataGridViewTextBoxColumn
             // 
             this.referenciaDetalleDataGridViewTextBoxColumn.DataPropertyName = "ReferenciaDetalle";
+            this.referenciaDetalleDataGridViewTextBoxColumn.FillWeight = 170F;
             this.referenciaDetalleDataGridViewTextBoxColumn.HeaderText = "Referencia";
             this.referenciaDetalleDataGridViewTextBoxColumn.Name = "referenciaDetalleDataGridViewTextBoxColumn";
             this.referenciaDetalleDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1107,7 +1108,7 @@ namespace PELOSCALVO
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.BusquedaArticulo.DefaultCellStyle = dataGridViewCellStyle6;
-            this.BusquedaArticulo.FillWeight = 34.1035F;
+            this.BusquedaArticulo.FillWeight = 50F;
             this.BusquedaArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BusquedaArticulo.HeaderText = "";
             this.BusquedaArticulo.Name = "BusquedaArticulo";
@@ -1120,6 +1121,7 @@ namespace PELOSCALVO
             dataGridViewCellStyle7.Format = "N2";
             dataGridViewCellStyle7.NullValue = null;
             this.cantidadDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.cantidadDetalleDataGridViewTextBoxColumn.FillWeight = 120F;
             this.cantidadDetalleDataGridViewTextBoxColumn.HeaderText = "Cantidad";
             this.cantidadDetalleDataGridViewTextBoxColumn.Name = "cantidadDetalleDataGridViewTextBoxColumn";
             this.cantidadDetalleDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1127,6 +1129,7 @@ namespace PELOSCALVO
             // descripccionDetalleDataGridViewTextBoxColumn
             // 
             this.descripccionDetalleDataGridViewTextBoxColumn.DataPropertyName = "DescripccionDetalle";
+            this.descripccionDetalleDataGridViewTextBoxColumn.FillWeight = 280F;
             this.descripccionDetalleDataGridViewTextBoxColumn.HeaderText = "Descripccion";
             this.descripccionDetalleDataGridViewTextBoxColumn.Name = "descripccionDetalleDataGridViewTextBoxColumn";
             this.descripccionDetalleDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1137,6 +1140,7 @@ namespace PELOSCALVO
             dataGridViewCellStyle8.Format = "C2";
             dataGridViewCellStyle8.NullValue = null;
             this.precioDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.precioDetalleDataGridViewTextBoxColumn.FillWeight = 120F;
             this.precioDetalleDataGridViewTextBoxColumn.HeaderText = "Precio";
             this.precioDetalleDataGridViewTextBoxColumn.Name = "precioDetalleDataGridViewTextBoxColumn";
             this.precioDetalleDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1156,6 +1160,7 @@ namespace PELOSCALVO
             dataGridViewCellStyle10.Format = "N0";
             dataGridViewCellStyle10.NullValue = null;
             this.ivaDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            this.ivaDetalleDataGridViewTextBoxColumn.FillWeight = 80F;
             this.ivaDetalleDataGridViewTextBoxColumn.HeaderText = "Iva";
             this.ivaDetalleDataGridViewTextBoxColumn.Name = "ivaDetalleDataGridViewTextBoxColumn";
             this.ivaDetalleDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1167,7 +1172,7 @@ namespace PELOSCALVO
             dataGridViewCellStyle11.Format = "C2";
             dataGridViewCellStyle11.NullValue = null;
             this.ImporteDetalle.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ImporteDetalle.FillWeight = 102.3105F;
+            this.ImporteDetalle.FillWeight = 130F;
             this.ImporteDetalle.HeaderText = "Importe";
             this.ImporteDetalle.Name = "ImporteDetalle";
             this.ImporteDetalle.ReadOnly = true;
@@ -1238,7 +1243,7 @@ namespace PELOSCALVO
             // referenciaDetalleDataGridViewTextBoxColumn1
             // 
             this.referenciaDetalleDataGridViewTextBoxColumn1.DataPropertyName = "ReferenciaDetalle";
-            this.referenciaDetalleDataGridViewTextBoxColumn1.FillWeight = 120F;
+            this.referenciaDetalleDataGridViewTextBoxColumn1.FillWeight = 140F;
             this.referenciaDetalleDataGridViewTextBoxColumn1.HeaderText = "Referencia";
             this.referenciaDetalleDataGridViewTextBoxColumn1.Name = "referenciaDetalleDataGridViewTextBoxColumn1";
             this.referenciaDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1263,6 +1268,7 @@ namespace PELOSCALVO
             dataGridViewCellStyle15.Format = "N2";
             dataGridViewCellStyle15.NullValue = null;
             this.cantidadDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle15;
+            this.cantidadDetalleDataGridViewTextBoxColumn1.FillWeight = 120F;
             this.cantidadDetalleDataGridViewTextBoxColumn1.HeaderText = "Cantidad";
             this.cantidadDetalleDataGridViewTextBoxColumn1.Name = "cantidadDetalleDataGridViewTextBoxColumn1";
             this.cantidadDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1270,7 +1276,7 @@ namespace PELOSCALVO
             // descripccionDetalleDataGridViewTextBoxColumn1
             // 
             this.descripccionDetalleDataGridViewTextBoxColumn1.DataPropertyName = "DescripccionDetalle";
-            this.descripccionDetalleDataGridViewTextBoxColumn1.FillWeight = 250F;
+            this.descripccionDetalleDataGridViewTextBoxColumn1.FillWeight = 300F;
             this.descripccionDetalleDataGridViewTextBoxColumn1.HeaderText = "Descripccion";
             this.descripccionDetalleDataGridViewTextBoxColumn1.Name = "descripccionDetalleDataGridViewTextBoxColumn1";
             this.descripccionDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1281,6 +1287,7 @@ namespace PELOSCALVO
             dataGridViewCellStyle16.Format = "C2";
             dataGridViewCellStyle16.NullValue = null;
             this.precioDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle16;
+            this.precioDetalleDataGridViewTextBoxColumn1.FillWeight = 120F;
             this.precioDetalleDataGridViewTextBoxColumn1.HeaderText = "Precio";
             this.precioDetalleDataGridViewTextBoxColumn1.Name = "precioDetalleDataGridViewTextBoxColumn1";
             this.precioDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1342,6 +1349,7 @@ namespace PELOSCALVO
             this.TarifaRealTxt.TabIndex = 72;
             this.TarifaRealTxt.Text = "0";
             this.TarifaRealTxt.TextChanged += new System.EventHandler(this.TarifaRealTxt_TextChanged);
+            this.TarifaRealTxt.Click += new System.EventHandler(this.TarifaRealTxt_Click);
             // 
             // dtConfiDtTarifaTipoBindingSource
             // 
@@ -2076,6 +2084,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label Id_Empresa;
         private System.Windows.Forms.Button BtnBuscarProvi;
         private System.Windows.Forms.Button BtnBuscarPais;
+        public DsFacturas dsFacturas;
+        private System.Windows.Forms.Label TarifaRealTxt;
         private System.Windows.Forms.DataGridViewTextBoxColumn referenciaDetalleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn BusquedaArticulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDetalleDataGridViewTextBoxColumn;
@@ -2091,7 +2101,5 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn precioDetalleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoDetalleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
-        public DsFacturas dsFacturas;
-        private System.Windows.Forms.Label TarifaRealTxt;
     }
 }

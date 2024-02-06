@@ -74,7 +74,7 @@ namespace PELOSCALVO
             this.dtArticulosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.articulos = new PELOSCALVO.DsArticulos();
             this.tabControl1Articulo = new System.Windows.Forms.TabControl();
-            this.tabPage1Articulo = new System.Windows.Forms.TabPage();
+            this.TabPageArti1 = new System.Windows.Forms.TabPage();
             this.OemText = new System.Windows.Forms.TextBox();
             this.idArticulo = new System.Windows.Forms.Label();
             this.BajaCheckBox = new System.Windows.Forms.CheckBox();
@@ -87,7 +87,7 @@ namespace PELOSCALVO
             this.DescripccionTextBox = new System.Windows.Forms.TextBox();
             this.CosteTextBox = new System.Windows.Forms.TextBox();
             this.GananciaTextBox = new System.Windows.Forms.TextBox();
-            this.tabPage2Articulo = new System.Windows.Forms.TabPage();
+            this.TabPageArti2 = new System.Windows.Forms.TabPage();
             this.panelDesc1 = new System.Windows.Forms.Panel();
             this.PlusDescTxt = new System.Windows.Forms.TextBox();
             this.Desc2Text = new System.Windows.Forms.TextBox();
@@ -162,8 +162,8 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
             this.tabControl1Articulo.SuspendLayout();
-            this.tabPage1Articulo.SuspendLayout();
-            this.tabPage2Articulo.SuspendLayout();
+            this.TabPageArti1.SuspendLayout();
+            this.TabPageArti2.SuspendLayout();
             this.panelDesc1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtFamiliaProductosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMulti2)).BeginInit();
@@ -576,8 +576,8 @@ namespace PELOSCALVO
             // 
             this.tabControl1Articulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1Articulo.Controls.Add(this.tabPage1Articulo);
-            this.tabControl1Articulo.Controls.Add(this.tabPage2Articulo);
+            this.tabControl1Articulo.Controls.Add(this.TabPageArti1);
+            this.tabControl1Articulo.Controls.Add(this.TabPageArti2);
             this.tabControl1Articulo.Controls.Add(this.tabPage1);
             this.tabControl1Articulo.Location = new System.Drawing.Point(9, 258);
             this.tabControl1Articulo.Name = "tabControl1Articulo";
@@ -585,38 +585,38 @@ namespace PELOSCALVO
             this.tabControl1Articulo.Size = new System.Drawing.Size(1023, 255);
             this.tabControl1Articulo.TabIndex = 2;
             // 
-            // tabPage1Articulo
+            // TabPageArti1
             // 
-            this.tabPage1Articulo.AutoScroll = true;
-            this.tabPage1Articulo.Controls.Add(oemLabel);
-            this.tabPage1Articulo.Controls.Add(this.OemText);
-            this.tabPage1Articulo.Controls.Add(this.idArticulo);
-            this.tabPage1Articulo.Controls.Add(this.BajaCheckBox);
-            this.tabPage1Articulo.Controls.Add(this.FechaAlta);
-            this.tabPage1Articulo.Controls.Add(this.Pvp1Text);
-            this.tabPage1Articulo.Controls.Add(pvpIvaLabel1);
-            this.tabPage1Articulo.Controls.Add(this.PvpIvaLabel2);
-            this.tabPage1Articulo.Controls.Add(Buscarlabel);
-            this.tabPage1Articulo.Controls.Add(this.ReferenciaBuscarArt);
-            this.tabPage1Articulo.Controls.Add(this.DescripcionBuscarArt);
-            this.tabPage1Articulo.Controls.Add(FechaRgLabel);
-            this.tabPage1Articulo.Controls.Add(IdLabel);
-            this.tabPage1Articulo.Controls.Add(ReferenciaLabel);
-            this.tabPage1Articulo.Controls.Add(this.ReferenciaTextBox);
-            this.tabPage1Articulo.Controls.Add(DescripccionLabel);
-            this.tabPage1Articulo.Controls.Add(this.DescripccionTextBox);
-            this.tabPage1Articulo.Controls.Add(CosteLabel);
-            this.tabPage1Articulo.Controls.Add(this.CosteTextBox);
-            this.tabPage1Articulo.Controls.Add(GananciaLabel);
-            this.tabPage1Articulo.Controls.Add(this.GananciaTextBox);
-            this.tabPage1Articulo.Controls.Add(Pvp1Label);
-            this.tabPage1Articulo.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1Articulo.Name = "tabPage1Articulo";
-            this.tabPage1Articulo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1Articulo.Size = new System.Drawing.Size(1015, 229);
-            this.tabPage1Articulo.TabIndex = 0;
-            this.tabPage1Articulo.Text = "General";
-            this.tabPage1Articulo.UseVisualStyleBackColor = true;
+            this.TabPageArti1.AutoScroll = true;
+            this.TabPageArti1.Controls.Add(oemLabel);
+            this.TabPageArti1.Controls.Add(this.OemText);
+            this.TabPageArti1.Controls.Add(this.idArticulo);
+            this.TabPageArti1.Controls.Add(this.BajaCheckBox);
+            this.TabPageArti1.Controls.Add(this.FechaAlta);
+            this.TabPageArti1.Controls.Add(this.Pvp1Text);
+            this.TabPageArti1.Controls.Add(pvpIvaLabel1);
+            this.TabPageArti1.Controls.Add(this.PvpIvaLabel2);
+            this.TabPageArti1.Controls.Add(Buscarlabel);
+            this.TabPageArti1.Controls.Add(this.ReferenciaBuscarArt);
+            this.TabPageArti1.Controls.Add(this.DescripcionBuscarArt);
+            this.TabPageArti1.Controls.Add(FechaRgLabel);
+            this.TabPageArti1.Controls.Add(IdLabel);
+            this.TabPageArti1.Controls.Add(ReferenciaLabel);
+            this.TabPageArti1.Controls.Add(this.ReferenciaTextBox);
+            this.TabPageArti1.Controls.Add(DescripccionLabel);
+            this.TabPageArti1.Controls.Add(this.DescripccionTextBox);
+            this.TabPageArti1.Controls.Add(CosteLabel);
+            this.TabPageArti1.Controls.Add(this.CosteTextBox);
+            this.TabPageArti1.Controls.Add(GananciaLabel);
+            this.TabPageArti1.Controls.Add(this.GananciaTextBox);
+            this.TabPageArti1.Controls.Add(Pvp1Label);
+            this.TabPageArti1.Location = new System.Drawing.Point(4, 22);
+            this.TabPageArti1.Name = "TabPageArti1";
+            this.TabPageArti1.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPageArti1.Size = new System.Drawing.Size(1015, 229);
+            this.TabPageArti1.TabIndex = 0;
+            this.TabPageArti1.Text = "General";
+            this.TabPageArti1.UseVisualStyleBackColor = true;
             // 
             // OemText
             // 
@@ -765,33 +765,33 @@ namespace PELOSCALVO
             this.GananciaTextBox.Leave += new System.EventHandler(this.GananciaTextBox_Leave);
             this.GananciaTextBox.Validated += new System.EventHandler(this.GananciaTextBox_Validated);
             // 
-            // tabPage2Articulo
+            // TabPageArti2
             // 
-            this.tabPage2Articulo.AutoScroll = true;
-            this.tabPage2Articulo.Controls.Add(this.panelDesc1);
-            this.tabPage2Articulo.Controls.Add(label1);
-            this.tabPage2Articulo.Controls.Add(pvp1Label1);
-            this.tabPage2Articulo.Controls.Add(this.LabDes6);
-            this.tabPage2Articulo.Controls.Add(this.LabDes5);
-            this.tabPage2Articulo.Controls.Add(this.LabDesc4);
-            this.tabPage2Articulo.Controls.Add(this.LabDes3);
-            this.tabPage2Articulo.Controls.Add(Pvp2Label);
-            this.tabPage2Articulo.Controls.Add(PlusLabel);
-            this.tabPage2Articulo.Controls.Add(UnidadPaletLabel);
-            this.tabPage2Articulo.Controls.Add(this.UnidadPaletTextBox);
-            this.tabPage2Articulo.Controls.Add(MinimosStockLabel);
-            this.tabPage2Articulo.Controls.Add(this.MinimosStockTextBox);
-            this.tabPage2Articulo.Controls.Add(StockLabel);
-            this.tabPage2Articulo.Controls.Add(this.StockTextBox);
-            this.tabPage2Articulo.Controls.Add(familiaLabel);
-            this.tabPage2Articulo.Controls.Add(this.familiaComboBox);
-            this.tabPage2Articulo.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2Articulo.Name = "tabPage2Articulo";
-            this.tabPage2Articulo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2Articulo.Size = new System.Drawing.Size(1015, 229);
-            this.tabPage2Articulo.TabIndex = 1;
-            this.tabPage2Articulo.Text = "Datos";
-            this.tabPage2Articulo.UseVisualStyleBackColor = true;
+            this.TabPageArti2.AutoScroll = true;
+            this.TabPageArti2.Controls.Add(this.panelDesc1);
+            this.TabPageArti2.Controls.Add(label1);
+            this.TabPageArti2.Controls.Add(pvp1Label1);
+            this.TabPageArti2.Controls.Add(this.LabDes6);
+            this.TabPageArti2.Controls.Add(this.LabDes5);
+            this.TabPageArti2.Controls.Add(this.LabDesc4);
+            this.TabPageArti2.Controls.Add(this.LabDes3);
+            this.TabPageArti2.Controls.Add(Pvp2Label);
+            this.TabPageArti2.Controls.Add(PlusLabel);
+            this.TabPageArti2.Controls.Add(UnidadPaletLabel);
+            this.TabPageArti2.Controls.Add(this.UnidadPaletTextBox);
+            this.TabPageArti2.Controls.Add(MinimosStockLabel);
+            this.TabPageArti2.Controls.Add(this.MinimosStockTextBox);
+            this.TabPageArti2.Controls.Add(StockLabel);
+            this.TabPageArti2.Controls.Add(this.StockTextBox);
+            this.TabPageArti2.Controls.Add(familiaLabel);
+            this.TabPageArti2.Controls.Add(this.familiaComboBox);
+            this.TabPageArti2.Location = new System.Drawing.Point(4, 22);
+            this.TabPageArti2.Name = "TabPageArti2";
+            this.TabPageArti2.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPageArti2.Size = new System.Drawing.Size(1015, 229);
+            this.TabPageArti2.TabIndex = 1;
+            this.TabPageArti2.Text = "Datos";
+            this.TabPageArti2.UseVisualStyleBackColor = true;
             // 
             // panelDesc1
             // 
@@ -1466,10 +1466,10 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();
             this.tabControl1Articulo.ResumeLayout(false);
-            this.tabPage1Articulo.ResumeLayout(false);
-            this.tabPage1Articulo.PerformLayout();
-            this.tabPage2Articulo.ResumeLayout(false);
-            this.tabPage2Articulo.PerformLayout();
+            this.TabPageArti1.ResumeLayout(false);
+            this.TabPageArti1.PerformLayout();
+            this.TabPageArti2.ResumeLayout(false);
+            this.TabPageArti2.PerformLayout();
             this.panelDesc1.ResumeLayout(false);
             this.panelDesc1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtFamiliaProductosBindingSource)).EndInit();
@@ -1491,8 +1491,8 @@ namespace PELOSCALVO
 
         #endregion
         private System.Windows.Forms.TabControl tabControl1Articulo;
-        private System.Windows.Forms.TabPage tabPage1Articulo;
-        private System.Windows.Forms.TabPage tabPage2Articulo;
+        private System.Windows.Forms.TabPage TabPageArti1;
+        private System.Windows.Forms.TabPage TabPageArti2;
         private System.Windows.Forms.TextBox Desc3Txt;
         private System.Windows.Forms.TextBox Desc4Txt;
         private System.Windows.Forms.TextBox Desc5Text;

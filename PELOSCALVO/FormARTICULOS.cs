@@ -3,6 +3,7 @@ using Conexiones;
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -74,6 +75,148 @@ namespace PELOSCALVO
                 // throw;
             }
         }
+        private void cargarArticulo()
+        {
+            string ConsultaArticulo = "SELECT [Id],[Referencia],[Oem],[Descripcci],[Coste],[Ganancia],[Pvp1]" +
+                ",[PvpIva],[Desc2],[Pvp2],[Desc3],[Pvp3],[Desc4],[Pvp4],[Desc5],[Pvp5],[Desc6],[Pvp6],[PlusDesc]" +
+                ",[Plus],[UnidadPale],[MinimosSto],[Stock],[Familia],[Fecha],[BAJA],[Fatu]" +
+                "FROM[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "]";
+
+            foreach (Control Ctr in this.TabPageArti1.Controls)
+            {
+                if (Ctr is ComboBox | Ctr is TextBox)
+                {
+                    Ctr.Text = string.Empty;
+                }
+            }
+            foreach (Control Ctr in this.TabPageArti2.Controls)
+            {
+                if (Ctr is ComboBox | Ctr is TextBox)
+                {
+                    Ctr.Text = string.Empty;
+                }
+            }
+            if (ClsConexionSql.SibaseDatosSql)
+            {
+
+            }
+            else
+            {
+                ClsConexionDb NuevaConexion = new ClsConexionDb(ConsultaArticulo);
+                if (NuevaConexion.SiConexionDb)
+                {
+                    OleDbDataReader Leer = NuevaConexion.ComandoDb.ExecuteReader();
+                    if (Leer.HasRows)
+                    {
+                        if (Leer.Read())
+                        {
+                            if (!string.IsNullOrEmpty(Leer["Referencia"].ToString()))
+                            {
+                                this.ReferenciaTextBox.Text = Leer["Referencia"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Oem"].ToString()))
+                            {
+                                this.OemText.Text = Leer["Oem"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Descripcci"].ToString()))
+                            {
+                                this.DescripccionTextBox.Text = Leer["Descripcci"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Coste"].ToString()))
+                            {
+                                this.CosteTextBox.Text = Leer["Coste"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Ganancia"].ToString()))
+                            {
+                                this.GananciaTextBox.Text = Leer["Ganancia"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Pvp1"].ToString()))
+                            {
+                                this.Pvp1Text.Text = Leer["Pvp1"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Pvp2"].ToString()))
+                            {
+                                this.Pvp2Text.Text = Leer["Pvp2"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Pvp3"].ToString()))
+                            {
+                                this.Pvp3Txt.Text = Leer["Pvp3"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Pvp4"].ToString()))
+                            {
+                                this.Pvp4Txt.Text = Leer["Pvp4"].ToString();
+                            }
+
+                            if (!string.IsNullOrEmpty(Leer["Pvp5"].ToString()))
+                            {
+                                this.Pvp5Txt.Text = Leer["Pvp5"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Pvp6"].ToString()))
+                            {
+                                this.Pvp6Txt.Text = Leer["Pvp6"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["PvpIva"].ToString()))
+                            {
+                                this.PvpIvaLabel2.Text = Leer["PvpIva"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Desc2"].ToString()))
+                            {
+                                this.Desc2Text.Text = Leer["Desc2"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Desc3"].ToString()))
+                            {
+                                this.Desc3Txt.Text = Leer["Desc3"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Desc4"].ToString()))
+                            {
+                                this.Desc4Txt.Text = Leer["Desc4"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Desc4"].ToString()))
+                            {
+                                this.Desc5Text.Text = Leer["Desc5"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Desc6"].ToString()))
+                            {
+                                this.Desc6Txt.Text = Leer["Desc6"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["PlusDesc"].ToString()))
+                            {
+                                this.PlusDescTxt.Text = Leer["PlusDesc"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Plus"].ToString()))
+                            {
+                                this.PlusLabel2.Text = Leer["Plus"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["UnidadPale"].ToString()))
+                            {
+                                this.UnidadPaletTextBox.Text = Leer["UnidadPale"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["MinimosSto"].ToString()))
+                            {
+                                this.MinimosStockTextBox.Text = Leer["MinimosSto"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Stock"].ToString()))
+                            {
+                                this.StockTextBox.Text = Leer["Stock"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Familia"].ToString()))
+                            {
+                                this.familiaComboBox.Text = Leer["Familia"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["Fecha"].ToString()))
+                            {
+                                this.FechaAlta.Text = Leer["Fecha"].ToString();
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+
+
         private void EliminarArticuloBb()
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
@@ -122,29 +265,29 @@ namespace PELOSCALVO
                 int Fila2 = 0;
                 if (this.dtConfiDtTarifaTipoBindingSource.Count > 0)
                 {
-                    string item2 =  TipoTarifa.Items.ToString();
-                 string aaaa=    item2[1].ToString();
+                    string item2 = this.TipoTarifa.Items.ToString();
+                    string aaaa = item2[1].ToString();
                     foreach (DataRowView item in this.TipoTarifa.Items)
                     {
                         if (!string.IsNullOrEmpty(item.ToString()))
                         {
                             if (Fila2 == 2)
                             {
-                                LabDes3.Text = item[2].ToString();
+                                this.LabDes3.Text = item[2].ToString();
                             }
                             if (Fila2 == 3)
                             {
-                                LabDesc4.Text = item[3].ToString();
+                                this.LabDesc4.Text = item[3].ToString();
                             }
                             if (Fila2 == 4)
                             {
-                                LabDes5.Text = item[4].ToString();
+                                this.LabDes5.Text = item[4].ToString();
                             }
                             if (Fila2 == 5)
                             {
-                                LabDes6.Text = item[5].ToString();
+                                this.LabDes6.Text = item[5].ToString();
                             }
-   
+
                         }
                         Fila2++;
                     }
@@ -229,7 +372,7 @@ namespace PELOSCALVO
             this.ContadorDatos3.Text = this.dtPreciosDataGridView.RowCount.ToString();
             ValidarCalculosPrecios();
             this.dtArticulosBindingSource.EndEdit();
-          //  Validate();
+            //  Validate();
             RetocarArticulos();
         }
         public void AñadirIdArticulos()
@@ -267,7 +410,7 @@ namespace PELOSCALVO
             this.Pvp5Txt.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.BenitoDesc / 100)));
             this.Pvp6Txt.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.ValenteDesc / 100)));
             this.PlusLabel2.Text = string.Format("{0:C3" + "}", this.pvp1 - (this.pvp1 * (this.PlusDesc / 100)));
-         //   Validate();
+            //   Validate();
         }
 
 
@@ -451,16 +594,21 @@ namespace PELOSCALVO
             {
                 if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
                 {
-                    if (this.dtPreciosDataGridView.RowCount >= 0)
+                    if (this.dtArticulosBindingSource.Count > 0)
                     {
                         this.dtPreciosDataGridView.Rows.RemoveAt(this.dtPreciosDataGridView.CurrentCell.RowIndex);
                     }
                 }
+                else
+                {
+                    cargarArticulo();
+
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                // throw;
+                MessageBox.Show(ex.Message.ToString(), "ERROR  ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.dtPreciosDataGridView.Focus();
         }
@@ -962,7 +1110,7 @@ namespace PELOSCALVO
                 this.ContadorDatos3.Text = this.dtPreciosDataGridView.Rows.Count.ToString();
                 ValidarCalculosPrecios();
                 Validate();
-               // AñadirId();
+                // AñadirId();
             }
 
         }
@@ -1004,7 +1152,7 @@ namespace PELOSCALVO
         private void LimpiarTextox()
         {
 
-            foreach (Control ctrl in this.tabPage1Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti1.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -1013,14 +1161,14 @@ namespace PELOSCALVO
 
                 }
             }
-            foreach (Control ctrl in this.tabPage2Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti2.Controls)
             {
                 if (ctrl is TextBox)
                 {
                     ctrl.Text = string.Empty;
                 }
             }
-            foreach (Control ctrl in this.tabPage1Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti1.Controls)
             {
                 if (ctrl is ComboBox)
                 {
@@ -1041,7 +1189,7 @@ namespace PELOSCALVO
             this.BajaCheckBox.Enabled = true;
             this.TipoIVA_Up_Articulos.Enabled = true;
 
-            foreach (Control ctrl in this.tabPage1Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti1.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -1049,7 +1197,7 @@ namespace PELOSCALVO
                     ctrl.ForeColor = Color.FromArgb(153, 40, 7);
                 }
             }
-            foreach (Control ctrl in this.tabPage2Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti2.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -1057,7 +1205,7 @@ namespace PELOSCALVO
                     ctrl.ForeColor = Color.FromArgb(153, 40, 7);
                 }
             }
-            foreach (Control ctrl in this.tabPage2Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti2.Controls)
             {
                 if (ctrl is ComboBox)
                 {
@@ -1069,7 +1217,7 @@ namespace PELOSCALVO
         }
         private void RestaurarOjetosArticulos()
         {
-            foreach (Control ctrl in this.tabPage1Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti1.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -1077,7 +1225,7 @@ namespace PELOSCALVO
                     ctrl.ForeColor = Color.Black;
                 }
             }
-            foreach (Control ctrl in this.tabPage2Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti2.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -1085,7 +1233,7 @@ namespace PELOSCALVO
                     ctrl.ForeColor = Color.Black;
                 }
             }
-            foreach (Control ctrl in this.tabPage2Articulo.Controls)
+            foreach (Control ctrl in this.TabPageArti2.Controls)
             {
                 if (ctrl is ComboBox)
                 {
@@ -1119,7 +1267,7 @@ namespace PELOSCALVO
                 {
                     this.dtPreciosDataGridView.CurrentCell = this.dtPreciosDataGridView.Rows[0].Cells[0];
                 }
-               // AñadirId();
+                // AñadirId();
             }
             catch (Exception)
             {

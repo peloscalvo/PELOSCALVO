@@ -310,6 +310,8 @@ namespace PELOSCALVO
                 {
                     try
                     {
+      
+
                         int FilaDescuentosBuscar = FormFacturar.menu2FACTURAR.TipoTarifaFactu.SelectedIndex * 2 + 5;
                         if (FilaDescuentosBuscar > 6)
                         {
@@ -322,11 +324,15 @@ namespace PELOSCALVO
                         if (ClasDatos.Datos1Datos2 != "Nota2")///todas las notas menos la 2
                         {
 
-                            if (FormFacturar.menu2FACTURAR.dtDetallesFacturaBindingSource.Count < 0)
+                            if (FormFacturar.menu2FACTURAR.dtDetallesFacturaBindingSource.Count <= 0)
                             {
                                 FormFacturar.menu2FACTURAR.dtDetallesFacturaBindingSource.AddNew();
                             }
                             // MessageBox.Show(FormFACTURAR.menu2FACTURAR.dtDetallesFacturaBindingSource.Count.ToString());
+
+                            string RefeBuscar = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();//referencia
+                            FormFacturar.menu2FACTURAR.ActualizarArticuloFatu(ClasDatos.ValorBuscado, RefeBuscar, FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView);
+                            goto salto;
 
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[0].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();//referencia
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[3].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();//descripcion
@@ -364,6 +370,7 @@ namespace PELOSCALVO
                                     FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[2].Value = 0;
                                 }
                             }
+                            salto:
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Focus();
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.CurrentCell = FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[2];
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.BeginEdit(true);
@@ -413,7 +420,7 @@ namespace PELOSCALVO
                     {
 
 
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message.ToString(), "ERROR AL BUSCAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -430,7 +437,7 @@ namespace PELOSCALVO
                     catch (Exception ex)
                     {
 
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message.ToString(), "ERROR AL BUSCAR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
 
