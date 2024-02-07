@@ -92,7 +92,7 @@ namespace PELOSCALVO
             // Label4
             // 
             Label4.AutoSize = true;
-            Label4.Location = new System.Drawing.Point(534, 292);
+            Label4.Location = new System.Drawing.Point(534, 317);
             Label4.Name = "Label4";
             Label4.Size = new System.Drawing.Size(30, 13);
             Label4.TabIndex = 80;
@@ -101,7 +101,7 @@ namespace PELOSCALVO
             // enlaceLabel
             // 
             enlaceLabel.AutoSize = true;
-            enlaceLabel.Location = new System.Drawing.Point(545, 327);
+            enlaceLabel.Location = new System.Drawing.Point(545, 291);
             enlaceLabel.Name = "enlaceLabel";
             enlaceLabel.Size = new System.Drawing.Size(19, 13);
             enlaceLabel.TabIndex = 58;
@@ -173,7 +173,7 @@ namespace PELOSCALVO
             this.Id_Provincias.Name = "Id_Provincias";
             this.Id_Provincias.Size = new System.Drawing.Size(13, 13);
             this.Id_Provincias.TabIndex = 58;
-            this.Id_Provincias.Text = "0";
+            this.Id_Provincias.Text = "1";
             this.Id_Provincias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // PanelBotones_Provincia
@@ -275,7 +275,7 @@ namespace PELOSCALVO
             // 
             this.Id_pais.AutoSize = true;
             this.Id_pais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.Id_pais.Location = new System.Drawing.Point(582, 323);
+            this.Id_pais.Location = new System.Drawing.Point(591, 287);
             this.Id_pais.Name = "Id_pais";
             this.Id_pais.Size = new System.Drawing.Size(0, 13);
             this.Id_pais.TabIndex = 59;
@@ -392,7 +392,7 @@ namespace PELOSCALVO
             this.PaisTxt.DataSource = this.dtPaisesBindingSource;
             this.PaisTxt.DisplayMember = "Paises";
             this.PaisTxt.FormattingEnabled = true;
-            this.PaisTxt.Location = new System.Drawing.Point(570, 290);
+            this.PaisTxt.Location = new System.Drawing.Point(570, 315);
             this.PaisTxt.Name = "PaisTxt";
             this.PaisTxt.Size = new System.Drawing.Size(330, 21);
             this.PaisTxt.TabIndex = 81;

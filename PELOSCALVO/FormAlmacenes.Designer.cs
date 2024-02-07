@@ -98,7 +98,7 @@ namespace PELOSCALVO
             // enlace_AlmacenesLabel
             // 
             enlace_AlmacenesLabel.AutoSize = true;
-            enlace_AlmacenesLabel.Location = new System.Drawing.Point(513, 321);
+            enlace_AlmacenesLabel.Location = new System.Drawing.Point(574, 336);
             enlace_AlmacenesLabel.Name = "enlace_AlmacenesLabel";
             enlace_AlmacenesLabel.Size = new System.Drawing.Size(51, 13);
             enlace_AlmacenesLabel.TabIndex = 60;
@@ -107,7 +107,7 @@ namespace PELOSCALVO
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(545, 351);
+            label1.Location = new System.Drawing.Point(606, 308);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(19, 13);
             label1.TabIndex = 122;
@@ -159,7 +159,7 @@ namespace PELOSCALVO
             // id_almacenes
             // 
             this.id_almacenes.AutoSize = true;
-            this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id", true));
+            this.id_almacenes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtAlmacenesBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.id_almacenes.Location = new System.Drawing.Point(74, 14);
             this.id_almacenes.Name = "id_almacenes";
             this.id_almacenes.Size = new System.Drawing.Size(13, 13);
@@ -273,8 +273,8 @@ namespace PELOSCALVO
             // IdEmpresaAlm
             // 
             this.IdEmpresaAlm.AutoSize = true;
-            this.IdEmpresaAlm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true));
-            this.IdEmpresaAlm.Location = new System.Drawing.Point(586, 351);
+            this.IdEmpresaAlm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.IdEmpresaAlm.Location = new System.Drawing.Point(647, 308);
             this.IdEmpresaAlm.Name = "IdEmpresaAlm";
             this.IdEmpresaAlm.Size = new System.Drawing.Size(0, 13);
             this.IdEmpresaAlm.TabIndex = 59;
@@ -285,7 +285,7 @@ namespace PELOSCALVO
             this.SelecionarEmpresa2.DisplayMember = "EmpresaConfi";
             this.SelecionarEmpresa2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelecionarEmpresa2.FormattingEnabled = true;
-            this.SelecionarEmpresa2.Location = new System.Drawing.Point(580, 318);
+            this.SelecionarEmpresa2.Location = new System.Drawing.Point(641, 333);
             this.SelecionarEmpresa2.Name = "SelecionarEmpresa2";
             this.SelecionarEmpresa2.Size = new System.Drawing.Size(294, 21);
             this.SelecionarEmpresa2.TabIndex = 61;

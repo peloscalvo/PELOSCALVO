@@ -82,6 +82,7 @@ namespace PELOSCALVO
             this.BtnCancelarProve.Enabled = true;
             this.BtnGuardarProve.Enabled = true;
             this.dataGridProveedores.Enabled = false;
+            EmpresaSelect.Enabled = false;
         }
         private void RestaurarOjetosProv()
         {
@@ -90,7 +91,7 @@ namespace PELOSCALVO
             this.PanelBotones_pro.Enabled = true;
             this.BtnCancelarProve.Enabled = false;
             this.BtnGuardarProve.Enabled = false;
-
+            EmpresaSelect.Enabled = true;
         }
         private void GuardarProveedoresDb()
         {
