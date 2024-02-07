@@ -329,48 +329,17 @@ namespace PELOSCALVO
                                 FormFacturar.menu2FACTURAR.dtDetallesFacturaBindingSource.AddNew();
                             }
                             // MessageBox.Show(FormFACTURAR.menu2FACTURAR.dtDetallesFacturaBindingSource.Count.ToString());
-
+                            if (string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].Value.ToString()))
+                            {
+                                MessageBox.Show("Falta Referencia A Buscar", "REFERENCIA VACIA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[0].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].Value.ToString();//referencia
                             string RefeBuscar = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();//referencia
                             FormFacturar.menu2FACTURAR.ActualizarArticuloFatu(ClasDatos.ValorBuscado, RefeBuscar, FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView);
-                            goto salto;
 
-                            FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[0].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();//referencia
-                            FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[3].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();//descripcion
-                            if (FormFacturar.menu2FACTURAR.CheckDescuentos.Checked == false)
-                            {
-                                if (FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId][FilaDescuentosBuscar].ToString() != string.Empty && FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId][FilaDescuentosBuscar] != DBNull.Value)
-                                {
-                                    FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[4].Value = FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId][FilaDescuentosBuscar].ToString();//precio Buscado
-                                    FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[5].Value = DBNull.Value;//DESCUENTO
-                                }
+                           // FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[3].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();//descripcion
 
-                            }
-                            if (FormFacturar.menu2FACTURAR.CheckDescuentos.Checked == true)
-                            {
-                                if (FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId]["Pvp1"].ToString() != string.Empty && FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId]["Pvp1"] != DBNull.Value)
-                                {
-                                    FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[4].Value = FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId]["Pvp1"].ToString();//pvp1
-                                }
-                                else
-                                {
-                                    FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[4].Value = DBNull.Value;//PVP1 VACIO
-                                }
-
-                                if (FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId][FilaDescuentosBuscar].ToString() != String.Empty && FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId][FilaDescuentosBuscar] != DBNull.Value)
-                                {
-                                    FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[5].Value = FormMenuPrincipal.menu2principal.articulos.Tables["DtArticulos"].Rows[filaId][FilaDescuentosBuscar].ToString();//DESCUENETO SI TRUE
-                                }
-                                else
-                                {
-                                    FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[5].Value = DBNull.Value;//DESCUENTO SI VACIO
-                                }
-
-                                if (FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[2].Value.ToString() == string.Empty)
-                                {
-                                    FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[2].Value = 0;
-                                }
-                            }
-                            salto:
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Focus();
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.CurrentCell = FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[2];
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.BeginEdit(true);

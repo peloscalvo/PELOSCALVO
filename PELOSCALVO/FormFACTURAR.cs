@@ -1693,7 +1693,7 @@ namespace PELOSCALVO
         }
         private void FormFACTURAR_Load(object sender, EventArgs e)
         {
-
+           // dtNuevaFacturaDataGridView.SortModeDataGridViewColumnSortMode = false ;
             this.TipoNota.Text = ClasDatos.NombreFactura;
             this.Text = ClasDatos.NombreFactura;
             // ClasDatos.ArchivoInicioFacturas = Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + ClasDatos.NombreFactura + FormMenuPrincipal.menu2principal.InfoExtension.Text;
