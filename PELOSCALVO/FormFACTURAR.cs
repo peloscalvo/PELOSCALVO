@@ -81,15 +81,20 @@ namespace PELOSCALVO
                     double Importe = 0;
                     double TTotalSuma = 0;
                    // int I = DatagriCalcular.CurrentCell.RowIndex;
-                    foreach (DataGridView Fila in DatagriCalcular.Rows)
+                    foreach (DataGridViewRow Fila in DatagriCalcular.Rows)
                     {
-                        Importe = (Double)Fila.Rows[Fila.CurrentCell.RowIndex].Cells[4].Value;
-                        TTotalSuma =+ (Double)Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna].Value;
-                        Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna].Value = Importe.ToString();
-                        if (Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna2].Value != DBNull.Value && Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna2].Value != null && Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna2].Value.ToString() != string.Empty)
+                        if (Fila.Cells[4].Value != DBNull.Value && Fila.Cells[4].Value != null && Fila.Cells[4].Value.ToString() != string.Empty)
+                        {
+                            Importe = (Double)Fila.Cells[4].Value;
+                            TTotalSuma = +(Double)Fila.Cells[columna].Value;
+                            Fila.Cells[columna].Value = Importe.ToString();
+                        }
+
+          
+                        if (Fila.Cells[columna2].Value != DBNull.Value && Fila.Cells[columna2].Value != null && Fila.Cells[columna2].Value.ToString() != string.Empty)
                         {
 
-                            sumaIva += (Double)Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna].Value - ((Double)Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna].Value * (Convert.ToDouble(Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna2].Value) / 100));
+                            sumaIva += (Double)Fila.Cells[columna].Value - ((Double)Fila.Cells[columna].Value * (Convert.ToDouble(Fila.Cells[columna2].Value) / 100));
                         }
 
                     }
@@ -3595,18 +3600,33 @@ namespace PELOSCALVO
                         bool SiSalto = false;
                         double TTotalSuma = 0;
                         int I = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex;
-                        foreach (DataGridView Fila in this.dtDetallesFacturaDataGridView.Rows)
+                        foreach (DataGridViewRow Fila in this.dtDetallesFacturaDataGridView.Rows)
                         {
                             if (SiSalto)
                             {
-                                if (MessageBox.Show(" Modificar \n" + Fila.Rows[I].Cells[4].Value.ToString(), " Modifcar ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                if (MessageBox.Show(" Modificar \n" + Fila.Cells[4].Value.ToString(), " Modifcar ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                                 {
                                     SiSalto = true;
                                 }
                             }
-                            TTotalSuma = (Double)Fila.Rows[I].Cells[4].Value;
-                            TTotalSuma = TTotalSuma + (TTotalSuma * Convert.ToInt32(this.IvaFactuTxt.Value) / 100);
-                            Fila.Rows[I].Cells[4].Value = TTotalSuma.ToString();
+                            if (dtDetallesFacturaDataGridView.AllowUserToAddRows == true)
+                            {
+                                if (Fila.Index== dtDetallesFacturaDataGridView.RowCount-1)
+                                {
+                                    goto saltoAbajo;
+                                }
+                            }
+                            if (Fila.Cells[4].Value.ToString() != string.Empty && Fila.Cells[4].Value != DBNull.Value && Fila.Cells[4].Value.ToString() != null)
+                            {
+
+
+                                TTotalSuma = (Double)Fila.Cells[4].Value;
+                                TTotalSuma = TTotalSuma + (TTotalSuma * Convert.ToInt32(this.IvaFactuTxt.Value) / 100);
+                                Fila.Cells[4].Value = TTotalSuma.ToString();
+                            }
+                            saltoAbajo:
+                            CalcularTotales(dtDetallesFacturaDataGridView);
+                        
                         }
                     }
                     catch (Exception ex)
