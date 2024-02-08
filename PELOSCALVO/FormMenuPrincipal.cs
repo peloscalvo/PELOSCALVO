@@ -1038,6 +1038,35 @@ namespace PELOSCALVO
         {
             FormListarDatos frm = new FormListarDatos();
             frm.ListadoDatos2.DataSource = dsCONFIGURACCION.DtAlmacenes;
+            frm.ListadoDatos2.DisplayMember = "Almacenes";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void consultarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consultaEmpresasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsCONFIGURACCION.DtConfiguracionPrincipal;
+            frm.ListadoDatos2.DisplayMember = "EmpresaConfi";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsMulti2.DtFamiliaProductos;
+            frm.ListadoDatos2.DisplayMember = "Familia";
             frm.ShowDialog();
             frm.BringToFront();
         }

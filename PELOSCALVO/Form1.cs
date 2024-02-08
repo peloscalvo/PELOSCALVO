@@ -16,5 +16,10 @@ namespace PELOSCALVO
         {
             InitializeComponent();
         }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

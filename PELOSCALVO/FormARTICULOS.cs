@@ -78,7 +78,7 @@ namespace PELOSCALVO
         private void cargarArticulo()
         {
             string ConsultaArticulo = "SELECT [Id],[Referencia],[Oem],[Descripcci],[Coste],[Ganancia],[Pvp1]" +
-                ",[PvpIva],[Desc2],[Pvp2],[Desc3],[Pvp3],[Desc4],[Pvp4],[Desc5],[Pvp5],[Desc6],[Pvp6],[PlusDesc]" +
+                ",[Desc2],[Pvp2],[Desc3],[Pvp3],[Desc4],[Pvp4],[Desc5],[Pvp5],[Desc6],[Pvp6],[DescPlus]" +
                 ",[Plus],[UnidadPale],[MinimosSto],[Stock],[Familia],[Fecha],[BAJA],[Fatu]" +
                 "FROM[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] WHERE Id = " + Convert.ToInt32(this.Id_Articulo.Text);
 
@@ -155,10 +155,7 @@ namespace PELOSCALVO
                             {
                                 this.Pvp6Txt.Text = Leer["Pvp6"].ToString();
                             }
-                            if (!string.IsNullOrEmpty(Leer["PvpIva"].ToString()))
-                            {
-                                this.PvpIva2.Text = Leer["PvpIva"].ToString();
-                            }
+ 
                             if (!string.IsNullOrEmpty(Leer["Desc2"].ToString()))
                             {
                                 this.Desc2Text.Text = Leer["Desc2"].ToString();
@@ -179,9 +176,9 @@ namespace PELOSCALVO
                             {
                                 this.Desc6Txt.Text = Leer["Desc6"].ToString();
                             }
-                            if (!string.IsNullOrEmpty(Leer["PlusDesc"].ToString()))
+                            if (!string.IsNullOrEmpty(Leer["DescPlus"].ToString()))
                             {
-                                this.PlusDescTxt.Text = Leer["PlusDesc"].ToString();
+                                this.PlusDescTxt.Text = Leer["DescPlus"].ToString();
                             }
                             if (!string.IsNullOrEmpty(Leer["Plus"].ToString()))
                             {
@@ -206,6 +203,10 @@ namespace PELOSCALVO
                             if (!string.IsNullOrEmpty(Leer["Fecha"].ToString()))
                             {
                                 this.FechaAlta.Text = Leer["Fecha"].ToString();
+                            }
+                            if (!string.IsNullOrEmpty(Leer["BAJA"].ToString()))
+                            {
+                                BajaCheckBox.Checked = Convert.ToBoolean( Leer["BAJA"]);
                             }
                         }
                     }
@@ -267,25 +268,25 @@ namespace PELOSCALVO
                 {
                     string item2 = this.TipoTarifa.Items.ToString();
                     string aaaa = item2[1].ToString();
-                    foreach (DataRowView item in this.TipoTarifa.Items)
+                    foreach (ComboBox item in this.TipoTarifa.Items)
                     {
                         if (!string.IsNullOrEmpty(item.ToString()))
                         {
-                            if (Fila2 == 2)
+                            if (Fila2 == 0)
                             {
-                                this.LabDes3.Text = item[2].ToString();
+                                this.LabDes3.Text = item.ToString();
                             }
                             if (Fila2 == 3)
                             {
-                                this.LabDesc4.Text = item[3].ToString();
+                             //   this.LabDesc4.Text = item[3].ToString();
                             }
                             if (Fila2 == 4)
                             {
-                                this.LabDes5.Text = item[4].ToString();
+                               // this.LabDes5.Text = item[4].ToString();
                             }
                             if (Fila2 == 5)
                             {
-                                this.LabDes6.Text = item[5].ToString();
+                             //   this.LabDes6.Text = item[5].ToString();
                             }
 
                         }
@@ -393,8 +394,10 @@ namespace PELOSCALVO
                 {
                     this.iva = Convert.ToDouble(this.TipoIVA_Up_Articulos.Text);
                 }
-
-                this.pvp1 = (this.Coste + (this.Coste * this.Ganancia / 100));
+                {
+                    this.pvp1 = Convert.ToDouble(this.Pvp1Text.Text.Replace("€", ""));
+                }
+               // this.pvp1 = (this.Coste + (this.Coste * this.Ganancia / 100));
                 this.PvpIva2.Text = string.Format("{0:C3" + "}", this.pvp1 + (this.pvp1 * this.iva / 100));
             }
             catch (Exception)
@@ -1136,7 +1139,7 @@ namespace PELOSCALVO
         }
         private void DtPreciosDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // CargarTexbox();
+            CalculosIva();
         }
         private void CargarTexbox()
         {
@@ -1305,16 +1308,16 @@ namespace PELOSCALVO
             if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
             {
                 consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA,@Oem, @DESCRIPCCI, @COSTE, @GANANCIA," +
-               " @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES," +
-               " @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
+               " @PVP1, @DESC2, @PVP2, @DESC3, @PVP3, @DESC4, @PVP4, @DESC5, @PVP5, @DESC6," +
+               " @PVP6,@DESCPLUS, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
 
             }
             else
             {
                 consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA,Oem=@Oem, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
-              ",GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY" +
-              ",SUAREZDESC = @SUAREZDESC, SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES," +
-              "VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO," +
+              ",GANANCIA = @GANANCIA,PVP1 = @PVP1,DESC2 = @DESC2,PVP2 = @PVP2,DESC3 = @DESC3,PVP3 = @PVP3" +
+              ",DESC4 = @DESC4, PVP4 = @PVP4,DESC5 = @DESC5,PVP5 = @PVP5,DESC6 = @DESC6," +
+              "PVP6= @PVP6,DESCPLUS = @DESPLUS,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO," +
               "STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
 
             }
@@ -1333,18 +1336,17 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@COSTE", this.CosteTextBox.Text.Replace("€", ""));
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@GANANCIA", string.IsNullOrEmpty(this.GananciaTextBox.Text) ? (object)DBNull.Value : this.Ganancia / 100);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP1", string.IsNullOrEmpty(this.Pvp1Text.Text) ? (object)DBNull.Value : this.Pvp1Text.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVPIVA", string.IsNullOrEmpty(this.PvpIva2.Text) ? (object)DBNull.Value : this.PvpIva2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP2DESC", string.IsNullOrEmpty(this.Desc2Text.Text) ? (object)DBNull.Value : this.Pvp2Desc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESC2", string.IsNullOrEmpty(this.Desc2Text.Text) ? (object)DBNull.Value : this.Pvp2Desc / 100);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP2", string.IsNullOrEmpty(this.Pvp2Text.Text) ? (object)DBNull.Value : this.Pvp2Text.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CASTYDESC", string.IsNullOrEmpty(this.Desc3Txt.Text) ? (object)DBNull.Value : this.CastiDesc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@CASTY", string.IsNullOrEmpty(this.Pvp3Txt.Text) ? (object)DBNull.Value : this.Pvp3Txt.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SUAREZDESC", string.IsNullOrEmpty(this.Desc4Txt.Text) ? (object)DBNull.Value : this.SuarezDesc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@SUAREZ", string.IsNullOrEmpty(this.Pvp4Txt.Text) ? (object)DBNull.Value : this.Pvp4Txt.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@BENITODESC", string.IsNullOrEmpty(this.Desc5Text.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@BENITO", string.IsNullOrEmpty(this.Pvp5Txt.Text) ? (object)DBNull.Value : this.Pvp5Txt.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTEDES", string.IsNullOrEmpty(this.Desc6Txt.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@VALENTE", string.IsNullOrEmpty(this.Pvp6Txt.Text) ? (object)DBNull.Value : this.Pvp6Txt.Text.Replace("€", ""));
-                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PLUSDESC", string.IsNullOrEmpty(this.PlusDescTxt.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESC3", string.IsNullOrEmpty(this.Desc3Txt.Text) ? (object)DBNull.Value : this.CastiDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP3", string.IsNullOrEmpty(this.Pvp3Txt.Text) ? (object)DBNull.Value : this.Pvp3Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESC4", string.IsNullOrEmpty(this.Desc4Txt.Text) ? (object)DBNull.Value : this.SuarezDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP4", string.IsNullOrEmpty(this.Pvp4Txt.Text) ? (object)DBNull.Value : this.Pvp4Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESC5", string.IsNullOrEmpty(this.Desc5Text.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP5", string.IsNullOrEmpty(this.Pvp5Txt.Text) ? (object)DBNull.Value : this.Pvp5Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESC6", string.IsNullOrEmpty(this.Desc6Txt.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@PVP6", string.IsNullOrEmpty(this.Pvp6Txt.Text) ? (object)DBNull.Value : this.Pvp6Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@DESCPLUS", string.IsNullOrEmpty(this.PlusDescTxt.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@PLUS", string.IsNullOrEmpty(this.PlusLabel2.Text) ? (object)DBNull.Value : this.PlusLabel2.Text.Replace("€", ""));
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@UNIDADPALE", string.IsNullOrEmpty(this.UnidadPaletTextBox.Text) ? (object)DBNull.Value : this.UnidadPaletTextBox.Text);
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@MINIMOSSTO", string.IsNullOrEmpty(this.MinimosStockTextBox.Text) ? (object)DBNull.Value : this.MinimosStockTextBox.Text);
@@ -1384,24 +1386,24 @@ namespace PELOSCALVO
         private void GuardarArticulosSQL()
         {
             String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "]";
-            string Consulta = "";
+            string consulta = "";
             if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
             {
-                Consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA,@Oem, @DESCRIPCCI, @COSTE, @GANANCIA," +
-               " @PVP1, @PVPIVA, @PVP2DESC, @PVP2, @CASTYDESC, @CASTY, @SUAREZDESC, @SUAREZ, @BENITODESC, @BENITO, @VALENTEDES," +
-               " @VALENTE,@PLUSDESC, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
+                consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA,@Oem, @DESCRIPCCI, @COSTE, @GANANCIA," +
+               " @PVP1, @DESC2, @PVP2, @DESC3, @PVP3, @DESC4, @PVP4, @DESC5, @PVP5, @DESC6," +
+               " @PVP6,@DESCPLUS, @PLUS, @UNIDADPALE, @MINIMOSSTO, @STOCK , @FAMILIA, @FECHA, @Baja)";
 
             }
             else
             {
-                Consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA,Oem=@Oem, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
-              ",GANANCIA = @GANANCIA,PVP1 = @PVP1,PVPIVA = @PVPIVA,PVP2DESC = @PVP2DESC,PVP2 = @PVP2,CASTYDESC = @CASTYDESC,CASTY = @CASTY" +
-              ",SUAREZDESC = @SUAREZDESC, SUAREZ = @SUAREZ,BENITODESC = @BENITODESC,BENITO = @BENITO,VALENTEDES = @VALENTEDES," +
-              "VALENTE= @VALENTE,PLUSDESC = @PLUSDESC,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO," +
+                consulta = "UPDATE " + "[" + TipoTabla + "]" + " SET Id = @Id,REFERENCIA = @REFERENCIA,Oem=@Oem, DESCRIPCCI = @DESCRIPCCI,COSTE = @COSTE" +
+              ",GANANCIA = @GANANCIA,PVP1 = @PVP1,DESC2 = @DESC2,PVP2 = @PVP2,DESC3 = @DESC3,PVP3 = @PVP3" +
+              ",DESC4 = @DESC4, PVP4 = @PVP4,DESC5 = @DESC5,PVP5 = @PVP5,DESC6 = @DESC6," +
+              "PVP6= @PVP6,DESCPLUS = @DESPLUS,PLUS = @PLUS,UNIDADPALE= @UNIDADPALE,MINIMOSSTO = @MINIMOSSTO," +
               "STOCK= @STOCK,FAMILIA= @FAMILIA,FECHA = @FECHA,Baja = @Baja WHERE Id = @Id";
 
             }
-            ClsConexionSql NuevaConexion = new ClsConexionSql(Consulta);
+            ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             {
                 NuevaConexion.ComandoSql.CommandType = CommandType.Text;
                 if (NuevaConexion.SiConexionSql)
@@ -1415,18 +1417,17 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@COSTE", Convert.ToDouble(this.CosteTextBox.Text.Replace("€", "")));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@GANANCIA", string.IsNullOrEmpty(this.GananciaTextBox.Text) ? (object)DBNull.Value : this.Ganancia / 100);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP1", string.IsNullOrEmpty(this.Pvp1Text.Text) ? (object)DBNull.Value : this.Pvp1Text.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVPIVA", string.IsNullOrEmpty(this.PvpIva2.Text) ? (object)DBNull.Value : this.PvpIva2.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP2DESC", string.IsNullOrEmpty(this.Desc2Text.Text) ? (object)DBNull.Value : this.Pvp2Desc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESC2", string.IsNullOrEmpty(this.Desc2Text.Text) ? (object)DBNull.Value : this.Pvp2Desc / 100);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP2", string.IsNullOrEmpty(this.Pvp2Text.Text) ? (object)DBNull.Value : this.Pvp2Text.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@CASTYDESC", string.IsNullOrEmpty(this.Desc3Txt.Text) ? (object)DBNull.Value : this.CastiDesc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@CASTY", string.IsNullOrEmpty(this.Pvp3Txt.Text) ? (object)DBNull.Value : this.Pvp3Txt.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@SUAREZDESC", string.IsNullOrEmpty(this.Desc4Txt.Text) ? (object)DBNull.Value : this.SuarezDesc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@SUAREZ", string.IsNullOrEmpty(this.Pvp4Txt.Text) ? (object)DBNull.Value : this.Pvp4Txt.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@BENITODESC", string.IsNullOrEmpty(this.Desc5Text.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@BENITO", string.IsNullOrEmpty(this.Pvp5Txt.Text) ? (object)DBNull.Value : this.Pvp5Txt.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTEDES", string.IsNullOrEmpty(this.Desc6Txt.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@VALENTE", string.IsNullOrEmpty(this.Pvp6Txt.Text) ? (object)DBNull.Value : this.Pvp6Txt.Text.Replace("€", ""));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PLUSDESC", string.IsNullOrEmpty(this.PlusDescTxt.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESC3", string.IsNullOrEmpty(this.Desc3Txt.Text) ? (object)DBNull.Value : this.CastiDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP3", string.IsNullOrEmpty(this.Pvp3Txt.Text) ? (object)DBNull.Value : this.Pvp3Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESC4", string.IsNullOrEmpty(this.Desc4Txt.Text) ? (object)DBNull.Value : this.SuarezDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP4", string.IsNullOrEmpty(this.Pvp4Txt.Text) ? (object)DBNull.Value : this.Pvp4Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESC5", string.IsNullOrEmpty(this.Desc5Text.Text) ? (object)DBNull.Value : this.BenitoDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP5", string.IsNullOrEmpty(this.Pvp5Txt.Text) ? (object)DBNull.Value : this.Pvp5Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESC6", string.IsNullOrEmpty(this.Desc6Txt.Text) ? (object)DBNull.Value : this.ValenteDesc / 100);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@PVP6", string.IsNullOrEmpty(this.Pvp6Txt.Text) ? (object)DBNull.Value : this.Pvp6Txt.Text.Replace("€", ""));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@DESCPLUS", string.IsNullOrEmpty(this.PlusDescTxt.Text) ? (object)DBNull.Value : this.PlusDesc / 100);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@PLUS", string.IsNullOrEmpty(this.PlusLabel2.Text) ? (object)DBNull.Value : this.PlusLabel2.Text.Replace("€", ""));
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@UNIDADPALE", string.IsNullOrEmpty(this.UnidadPaletTextBox.Text) ? (object)DBNull.Value : this.UnidadPaletTextBox.Text);
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@MINIMOSSTO", string.IsNullOrEmpty(this.MinimosStockTextBox.Text) ? (object)DBNull.Value : this.MinimosStockTextBox.Text);
@@ -1614,12 +1615,12 @@ namespace PELOSCALVO
 
         private void dtPreciosDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            CalculosIva();
+            //CalculosIva();
         }
 
         private void dtPreciosDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            CalculosIva();
+            //CalculosIva();
             //CargarTexbox();
         }
 

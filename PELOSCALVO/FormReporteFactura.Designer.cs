@@ -37,41 +37,31 @@ namespace PELOSCALVO
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.DtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtfacturasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.dsFacturas = new PELOSCALVO.DsFacturas();
+            this.DtDetallesFactura2BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtNuevaFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtfacturasBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsFacturas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFactura2BindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // DtDetallesFacturaBindingSource
             // 
-            this.DtDetallesFacturaBindingSource.DataMember = "DtDetallesFactura";
-            this.DtDetallesFacturaBindingSource.DataSource = this.dsCONFIGURACCION;
-            // 
-            // Dtfacturas
-            // 
-            this.dsCONFIGURACCION.DataSetName = "Dtfacturas";
-            this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // DtNuevaFacturaBindingSource
-            // 
-            this.DtNuevaFacturaBindingSource.DataMember = "DtNuevaFactura";
-            this.DtNuevaFacturaBindingSource.DataSource = this.dsCONFIGURACCION;
-            // 
-            // dtfacturasBindingSource
-            // 
-            this.dtfacturasBindingSource.DataSource = this.dsCONFIGURACCION;
-            this.dtfacturasBindingSource.Position = 0;
+            this.DtDetallesFacturaBindingSource.DataMember = "DtNuevaFactura_DtDetallesFactura";
+            this.DtDetallesFacturaBindingSource.DataSource = this.DtNuevaFacturaBindingSource;
             // 
             // dsCONFIGURACCION
             // 
             this.dsCONFIGURACCION.DataSetName = "DsCONFIGURACCION";
             this.dsCONFIGURACCION.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // DtNuevaFacturaBindingSource
+            // 
+            this.DtNuevaFacturaBindingSource.DataMember = "DtNuevaFactura";
+            this.DtNuevaFacturaBindingSource.DataSource = this.dsFacturas;
             // 
             // reportViewer1
             // 
@@ -94,6 +84,16 @@ namespace PELOSCALVO
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
+            // dsFacturas
+            // 
+            this.dsFacturas.DataSetName = "DsFacturas";
+            this.dsFacturas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // DtDetallesFactura2BindingSource2
+            // 
+            this.DtDetallesFactura2BindingSource2.DataMember = "DtNuevaFactura_DtDetallesFactura2";
+            this.DtDetallesFactura2BindingSource2.DataSource = this.DtNuevaFacturaBindingSource;
+            // 
             // FormReporteFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,20 +108,22 @@ namespace PELOSCALVO
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormReporteFactura_FormClosed);
             this.Load += new System.EventHandler(this.FormReporteFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFacturaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtNuevaFacturaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtfacturasBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsFacturas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtDetallesFactura2BindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.BindingSource DtNuevaFacturaBindingSource;
-        private System.Windows.Forms.BindingSource dtfacturasBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalBindingSource;
         private DsCONFIGURACCION dsCONFIGURACCION;
         public System.Windows.Forms.BindingSource DtDetallesFacturaBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private DsFacturas dsFacturas;
+        public System.Windows.Forms.BindingSource DtDetallesFactura2BindingSource2;
     }
 }

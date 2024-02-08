@@ -147,7 +147,7 @@ namespace PELOSCALVO
                 "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                 "[Desc2] DECIMAL ,[Pvp2] MONEY ,[Desc3] DECIMAL ,[Pvp3] MONEY ,[Desc4] DECIMAL " +
                 ",[Pvp4] MONEY ,[Desc5] DECIMAL ,[Pvp5] MONEY ,[Desc6] DECIMAL ,[Pvp6] MONEY" +
-                " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
+                " ,[DecPlus] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                 ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
 
 
@@ -618,7 +618,7 @@ namespace PELOSCALVO
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Desc2] DECIMAL ,[Pvp2] MONEY ,[Desc3] DECIMAL ,[Pvp3] MONEY ,[Desc4] DECIMAL " +
                         ",[Pvp4] MONEY ,[Desc5] DECIMAL ,[Pvp5] MONEY ,[Desc6] DECIMAL ,[Pvp6] MONEY" +
-                        " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
+                        " ,[DescPlus] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
 
 

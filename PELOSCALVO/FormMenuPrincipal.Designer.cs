@@ -480,7 +480,6 @@ namespace PELOSCALVO
             // 
             // menuStrip
             // 
-            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolArchivo,
             this.toolEmpresas,
@@ -491,10 +490,10 @@ namespace PELOSCALVO
             this.obrasToolStripMenuItem1,
             this.provinciasToolStripMenuItem,
             this.ayudaToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(25, 2);
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip.Size = new System.Drawing.Size(859, 24);
+            this.menuStrip.Size = new System.Drawing.Size(866, 24);
             this.menuStrip.TabIndex = 46;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -544,7 +543,7 @@ namespace PELOSCALVO
             this.consultaEjerciciosToolStripMenuItem});
             this.toolEmpresas.Name = "toolEmpresas";
             this.toolEmpresas.Size = new System.Drawing.Size(69, 20);
-            this.toolEmpresas.Text = "Empresas";
+            this.toolEmpresas.Text = "&Empresas";
             this.toolEmpresas.Click += new System.EventHandler(this.toolEmpresas_Click);
             // 
             // empresasToolStripMenuItem
@@ -566,6 +565,7 @@ namespace PELOSCALVO
             this.consultaEmpresasToolStripMenuItem.Name = "consultaEmpresasToolStripMenuItem";
             this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultaEmpresasToolStripMenuItem.Text = "&Consulta Empresas";
+            this.consultaEmpresasToolStripMenuItem.Click += new System.EventHandler(this.consultaEmpresasToolStripMenuItem_Click);
             // 
             // consultaEjerciciosToolStripMenuItem
             // 
@@ -615,8 +615,9 @@ namespace PELOSCALVO
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(121, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "&Consulta";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // proveedoresToolStripMenuItem1
             // 
@@ -640,6 +641,7 @@ namespace PELOSCALVO
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
             this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem.Text = "&Consultar";
+            this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
             // almacenesToolStripMenuItem1
             // 
@@ -686,6 +688,7 @@ namespace PELOSCALVO
             this.consultarToolStripMenuItem2.Name = "consultarToolStripMenuItem2";
             this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem2.Text = "&Consultar";
+            this.consultarToolStripMenuItem2.Click += new System.EventHandler(this.consultarToolStripMenuItem2_Click);
             // 
             // provinciasToolStripMenuItem
             // 
@@ -738,9 +741,9 @@ namespace PELOSCALVO
             this.PanelInfo_P.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PanelInfo_P.Controls.Add(this.Panel_info2);
             this.PanelInfo_P.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PanelInfo_P.Location = new System.Drawing.Point(6, 43);
+            this.PanelInfo_P.Location = new System.Drawing.Point(6, 57);
             this.PanelInfo_P.Name = "PanelInfo_P";
-            this.PanelInfo_P.Size = new System.Drawing.Size(865, 293);
+            this.PanelInfo_P.Size = new System.Drawing.Size(865, 279);
             this.PanelInfo_P.TabIndex = 2;
             this.PanelInfo_P.Tag = "ABRIR";
             this.PanelInfo_P.Visible = false;

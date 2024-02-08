@@ -50,7 +50,6 @@ namespace PELOSCALVO
             System.Windows.Forms.Label fechaCobroLabel;
             System.Windows.Forms.Label Label77;
             System.Windows.Forms.Label pais_FactLabel;
-            System.Windows.Forms.Label idTarifaLabel;
             System.Windows.Forms.Label tarifaTipoLabel1;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label fechaFacturaLabel;
@@ -63,10 +62,6 @@ namespace PELOSCALVO
             System.Windows.Forms.Label Label11;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -75,6 +70,8 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -82,6 +79,8 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -135,15 +134,29 @@ namespace PELOSCALVO
             this.tabControl1Factura = new System.Windows.Forms.TabControl();
             this.tabPage2Factura = new System.Windows.Forms.TabPage();
             this.dtDetallesFacturaDataGridView = new System.Windows.Forms.DataGridView();
+            this.referenciaDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BusquedaArticulo = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cantidadDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripccionDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuentoDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ivaDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImporteDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtDetallesFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4Factura = new System.Windows.Forms.TabPage();
             this.dtDetallesFacturaDataGridView2 = new System.Windows.Forms.DataGridView();
+            this.referenciaDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cantidadDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripccionDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuentoDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtDetallesFactura2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3Factura = new System.Windows.Forms.TabPage();
             this.TarifaRealTxt = new System.Windows.Forms.Label();
             this.dtConfiDtTarifaTipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CheckDescuentos = new System.Windows.Forms.RadioButton();
-            this.IdDescuento = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.NumTotales = new System.Windows.Forms.NumericUpDown();
             this.Numimporte = new System.Windows.Forms.NumericUpDown();
@@ -165,6 +178,12 @@ namespace PELOSCALVO
             this.BtnGuardarFactura = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtNuevaFacturaDataGridView = new System.Windows.Forms.DataGridView();
+            this.numeroFacturaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apodoDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.direccionDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CobradaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaFacturaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IvaFactuTxt = new System.Windows.Forms.NumericUpDown();
             this.subTotal = new System.Windows.Forms.Label();
             this.baseIva = new System.Windows.Forms.Label();
@@ -174,27 +193,6 @@ namespace PELOSCALVO
             this.TotalFactura2 = new System.Windows.Forms.Label();
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsClientes = new PELOSCALVO.DsClientes();
-            this.referenciaDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BusquedaArticulo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cantidadDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripccionDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descuentoDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ivaDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImporteDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referenciaDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cantidadDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripccionDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descuentoDetalleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroFacturaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apodoDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccionDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CobradaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaFacturaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -215,7 +213,6 @@ namespace PELOSCALVO
             fechaCobroLabel = new System.Windows.Forms.Label();
             Label77 = new System.Windows.Forms.Label();
             pais_FactLabel = new System.Windows.Forms.Label();
-            idTarifaLabel = new System.Windows.Forms.Label();
             tarifaTipoLabel1 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             fechaFacturaLabel = new System.Windows.Forms.Label();
@@ -461,15 +458,6 @@ namespace PELOSCALVO
             pais_FactLabel.Size = new System.Drawing.Size(30, 13);
             pais_FactLabel.TabIndex = 27;
             pais_FactLabel.Text = "Pais:";
-            // 
-            // idTarifaLabel
-            // 
-            idTarifaLabel.AutoSize = true;
-            idTarifaLabel.Location = new System.Drawing.Point(45, 26);
-            idTarifaLabel.Name = "idTarifaLabel";
-            idTarifaLabel.Size = new System.Drawing.Size(22, 13);
-            idTarifaLabel.TabIndex = 6;
-            idTarifaLabel.Text = "Id :";
             // 
             // tarifaTipoLabel1
             // 
@@ -1102,6 +1090,104 @@ namespace PELOSCALVO
             this.dtDetallesFacturaDataGridView.Validating += new System.ComponentModel.CancelEventHandler(this.dtDetallesFacturaDataGridView_Validating);
             this.dtDetallesFacturaDataGridView.Validated += new System.EventHandler(this.dtDetallesFacturaDataGridView_Validated);
             // 
+            // referenciaDetalleDataGridViewTextBoxColumn
+            // 
+            this.referenciaDetalleDataGridViewTextBoxColumn.DataPropertyName = "ReferenciaDetalle";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.referenciaDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            this.referenciaDetalleDataGridViewTextBoxColumn.FillWeight = 170F;
+            this.referenciaDetalleDataGridViewTextBoxColumn.HeaderText = "Referencia";
+            this.referenciaDetalleDataGridViewTextBoxColumn.Name = "referenciaDetalleDataGridViewTextBoxColumn";
+            this.referenciaDetalleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.referenciaDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // BusquedaArticulo
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.BusquedaArticulo.DefaultCellStyle = dataGridViewCellStyle11;
+            this.BusquedaArticulo.FillWeight = 50F;
+            this.BusquedaArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BusquedaArticulo.HeaderText = "";
+            this.BusquedaArticulo.Name = "BusquedaArticulo";
+            this.BusquedaArticulo.ReadOnly = true;
+            this.BusquedaArticulo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // cantidadDetalleDataGridViewTextBoxColumn
+            // 
+            this.cantidadDetalleDataGridViewTextBoxColumn.DataPropertyName = "CantidadDetalle";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.cantidadDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            this.cantidadDetalleDataGridViewTextBoxColumn.FillWeight = 120F;
+            this.cantidadDetalleDataGridViewTextBoxColumn.HeaderText = "Cantidad";
+            this.cantidadDetalleDataGridViewTextBoxColumn.Name = "cantidadDetalleDataGridViewTextBoxColumn";
+            this.cantidadDetalleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cantidadDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // descripccionDetalleDataGridViewTextBoxColumn
+            // 
+            this.descripccionDetalleDataGridViewTextBoxColumn.DataPropertyName = "DescripccionDetalle";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.descripccionDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            this.descripccionDetalleDataGridViewTextBoxColumn.FillWeight = 280F;
+            this.descripccionDetalleDataGridViewTextBoxColumn.HeaderText = "Descripccion";
+            this.descripccionDetalleDataGridViewTextBoxColumn.Name = "descripccionDetalleDataGridViewTextBoxColumn";
+            this.descripccionDetalleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripccionDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // precioDetalleDataGridViewTextBoxColumn
+            // 
+            this.precioDetalleDataGridViewTextBoxColumn.DataPropertyName = "PrecioDetalle";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "C2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.precioDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            this.precioDetalleDataGridViewTextBoxColumn.FillWeight = 120F;
+            this.precioDetalleDataGridViewTextBoxColumn.HeaderText = "Precio";
+            this.precioDetalleDataGridViewTextBoxColumn.Name = "precioDetalleDataGridViewTextBoxColumn";
+            this.precioDetalleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.precioDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // descuentoDetalleDataGridViewTextBoxColumn
+            // 
+            this.descuentoDetalleDataGridViewTextBoxColumn.DataPropertyName = "DescuentoDetalle";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "P0";
+            this.descuentoDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            this.descuentoDetalleDataGridViewTextBoxColumn.HeaderText = "Descuento";
+            this.descuentoDetalleDataGridViewTextBoxColumn.Name = "descuentoDetalleDataGridViewTextBoxColumn";
+            this.descuentoDetalleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descuentoDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ivaDetalleDataGridViewTextBoxColumn
+            // 
+            this.ivaDetalleDataGridViewTextBoxColumn.DataPropertyName = "IvaDetalle";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.ivaDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
+            this.ivaDetalleDataGridViewTextBoxColumn.FillWeight = 80F;
+            this.ivaDetalleDataGridViewTextBoxColumn.HeaderText = "Iva";
+            this.ivaDetalleDataGridViewTextBoxColumn.Name = "ivaDetalleDataGridViewTextBoxColumn";
+            this.ivaDetalleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ivaDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ImporteDetalle
+            // 
+            this.ImporteDetalle.DataPropertyName = "ImporteDetalle";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "C2";
+            dataGridViewCellStyle17.NullValue = null;
+            this.ImporteDetalle.DefaultCellStyle = dataGridViewCellStyle17;
+            this.ImporteDetalle.FillWeight = 130F;
+            this.ImporteDetalle.HeaderText = "Importe";
+            this.ImporteDetalle.Name = "ImporteDetalle";
+            this.ImporteDetalle.ReadOnly = true;
+            this.ImporteDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // dtDetallesFacturaBindingSource
             // 
             this.dtDetallesFacturaBindingSource.DataMember = "DtNuevaFactura_DtDetallesFactura";
@@ -1164,6 +1250,92 @@ namespace PELOSCALVO
             this.dtDetallesFacturaDataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DtDetallesFacturaDataGridView2_KeyPress);
             this.dtDetallesFacturaDataGridView2.Validated += new System.EventHandler(this.dtDetallesFacturaDataGridView2_Validated);
             // 
+            // referenciaDetalleDataGridViewTextBoxColumn1
+            // 
+            this.referenciaDetalleDataGridViewTextBoxColumn1.DataPropertyName = "ReferenciaDetalle";
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.referenciaDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle20;
+            this.referenciaDetalleDataGridViewTextBoxColumn1.FillWeight = 140F;
+            this.referenciaDetalleDataGridViewTextBoxColumn1.HeaderText = "Referencia";
+            this.referenciaDetalleDataGridViewTextBoxColumn1.Name = "referenciaDetalleDataGridViewTextBoxColumn1";
+            this.referenciaDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.referenciaDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.dataGridViewButtonColumn1.DefaultCellStyle = dataGridViewCellStyle21;
+            this.dataGridViewButtonColumn1.FillWeight = 50F;
+            this.dataGridViewButtonColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.dataGridViewButtonColumn1.HeaderText = "";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.ReadOnly = true;
+            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // cantidadDetalleDataGridViewTextBoxColumn1
+            // 
+            this.cantidadDetalleDataGridViewTextBoxColumn1.DataPropertyName = "CantidadDetalle";
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "N2";
+            dataGridViewCellStyle22.NullValue = null;
+            this.cantidadDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle22;
+            this.cantidadDetalleDataGridViewTextBoxColumn1.FillWeight = 120F;
+            this.cantidadDetalleDataGridViewTextBoxColumn1.HeaderText = "Cantidad";
+            this.cantidadDetalleDataGridViewTextBoxColumn1.Name = "cantidadDetalleDataGridViewTextBoxColumn1";
+            this.cantidadDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.cantidadDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // descripccionDetalleDataGridViewTextBoxColumn1
+            // 
+            this.descripccionDetalleDataGridViewTextBoxColumn1.DataPropertyName = "DescripccionDetalle";
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.descripccionDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle23;
+            this.descripccionDetalleDataGridViewTextBoxColumn1.FillWeight = 300F;
+            this.descripccionDetalleDataGridViewTextBoxColumn1.HeaderText = "Descripccion";
+            this.descripccionDetalleDataGridViewTextBoxColumn1.Name = "descripccionDetalleDataGridViewTextBoxColumn1";
+            this.descripccionDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.descripccionDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // precioDetalleDataGridViewTextBoxColumn1
+            // 
+            this.precioDetalleDataGridViewTextBoxColumn1.DataPropertyName = "PrecioDetalle";
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle24.Format = "C2";
+            dataGridViewCellStyle24.NullValue = null;
+            this.precioDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle24;
+            this.precioDetalleDataGridViewTextBoxColumn1.FillWeight = 120F;
+            this.precioDetalleDataGridViewTextBoxColumn1.HeaderText = "Precio";
+            this.precioDetalleDataGridViewTextBoxColumn1.Name = "precioDetalleDataGridViewTextBoxColumn1";
+            this.precioDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.precioDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // descuentoDetalleDataGridViewTextBoxColumn1
+            // 
+            this.descuentoDetalleDataGridViewTextBoxColumn1.DataPropertyName = "DescuentoDetalle";
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "PO";
+            this.descuentoDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle25;
+            this.descuentoDetalleDataGridViewTextBoxColumn1.HeaderText = "Descuento";
+            this.descuentoDetalleDataGridViewTextBoxColumn1.Name = "descuentoDetalleDataGridViewTextBoxColumn1";
+            this.descuentoDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.descuentoDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.DataPropertyName = "ImporteDetalle";
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle26.Format = "C2";
+            dataGridViewCellStyle26.NullValue = null;
+            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle26;
+            this.dataGridViewTextBoxColumn27.FillWeight = 140F;
+            this.dataGridViewTextBoxColumn27.HeaderText = "Importe";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            this.dataGridViewTextBoxColumn27.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // dtDetallesFactura2BindingSource
             // 
             this.dtDetallesFactura2BindingSource.DataMember = "DtNuevaFactura_DtDetallesFactura2";
@@ -1175,10 +1347,8 @@ namespace PELOSCALVO
             this.tabPage3Factura.Controls.Add(this.TarifaRealTxt);
             this.tabPage3Factura.Controls.Add(nombreEmpresaReguistroLabel);
             this.tabPage3Factura.Controls.Add(this.CheckDescuentos);
-            this.tabPage3Factura.Controls.Add(this.IdDescuento);
             this.tabPage3Factura.Controls.Add(this.panel2);
             this.tabPage3Factura.Controls.Add(this.imagenEmpresaPicture2);
-            this.tabPage3Factura.Controls.Add(idTarifaLabel);
             this.tabPage3Factura.Controls.Add(tarifaTipoLabel1);
             this.tabPage3Factura.Controls.Add(this.TipoTarifaFactu);
             this.tabPage3Factura.Location = new System.Drawing.Point(4, 22);
@@ -1220,17 +1390,6 @@ namespace PELOSCALVO
             this.CheckDescuentos.UseVisualStyleBackColor = true;
             this.CheckDescuentos.CheckedChanged += new System.EventHandler(this.CheckDescuentos_CheckedChanged);
             this.CheckDescuentos.Click += new System.EventHandler(this.CheckDescuentos_Click);
-            // 
-            // IdDescuento
-            // 
-            this.IdDescuento.AutoSize = true;
-            this.IdDescuento.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "Id", true));
-            this.IdDescuento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.IdDescuento.Location = new System.Drawing.Point(74, 25);
-            this.IdDescuento.Name = "IdDescuento";
-            this.IdDescuento.Size = new System.Drawing.Size(13, 13);
-            this.IdDescuento.TabIndex = 70;
-            this.IdDescuento.Text = "0";
             // 
             // panel2
             // 
@@ -1614,6 +1773,70 @@ namespace PELOSCALVO
             this.dtNuevaFacturaDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtNuevaFacturaDataGridView_CellContentClick);
             this.dtNuevaFacturaDataGridView.MouseEnter += new System.EventHandler(this.DtNuevaFacturaDataGridView_MouseEnter);
             // 
+            // numeroFacturaDataGridViewTextBoxColumn2
+            // 
+            this.numeroFacturaDataGridViewTextBoxColumn2.DataPropertyName = "NumeroFactura";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.numeroFacturaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.numeroFacturaDataGridViewTextBoxColumn2.FillWeight = 120F;
+            this.numeroFacturaDataGridViewTextBoxColumn2.HeaderText = "Numero";
+            this.numeroFacturaDataGridViewTextBoxColumn2.Name = "numeroFacturaDataGridViewTextBoxColumn2";
+            this.numeroFacturaDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // apodoDataGridViewTextBoxColumn2
+            // 
+            this.apodoDataGridViewTextBoxColumn2.DataPropertyName = "Apodo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.apodoDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.apodoDataGridViewTextBoxColumn2.FillWeight = 220F;
+            this.apodoDataGridViewTextBoxColumn2.HeaderText = "Razon Social";
+            this.apodoDataGridViewTextBoxColumn2.Name = "apodoDataGridViewTextBoxColumn2";
+            this.apodoDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // nombreDataGridViewTextBoxColumn2
+            // 
+            this.nombreDataGridViewTextBoxColumn2.DataPropertyName = "Nombre";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.nombreDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.nombreDataGridViewTextBoxColumn2.FillWeight = 220F;
+            this.nombreDataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn2.Name = "nombreDataGridViewTextBoxColumn2";
+            this.nombreDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // direccionDataGridViewTextBoxColumn2
+            // 
+            this.direccionDataGridViewTextBoxColumn2.DataPropertyName = "Direccion";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.direccionDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle5;
+            this.direccionDataGridViewTextBoxColumn2.FillWeight = 200F;
+            this.direccionDataGridViewTextBoxColumn2.HeaderText = "Direccion";
+            this.direccionDataGridViewTextBoxColumn2.Name = "direccionDataGridViewTextBoxColumn2";
+            this.direccionDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // CobradaFactura
+            // 
+            this.CobradaFactura.DataPropertyName = "CobradaFactura";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CobradaFactura.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CobradaFactura.FillWeight = 80F;
+            this.CobradaFactura.HeaderText = "Cobrado";
+            this.CobradaFactura.Name = "CobradaFactura";
+            this.CobradaFactura.ReadOnly = true;
+            // 
+            // fechaFacturaDataGridViewTextBoxColumn2
+            // 
+            this.fechaFacturaDataGridViewTextBoxColumn2.DataPropertyName = "FechaFactura";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.NullValue = null;
+            this.fechaFacturaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle7;
+            this.fechaFacturaDataGridViewTextBoxColumn2.FillWeight = 60F;
+            this.fechaFacturaDataGridViewTextBoxColumn2.HeaderText = "Fecha";
+            this.fechaFacturaDataGridViewTextBoxColumn2.Name = "fechaFacturaDataGridViewTextBoxColumn2";
+            this.fechaFacturaDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
             // IvaFactuTxt
             // 
             this.IvaFactuTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1714,254 +1937,6 @@ namespace PELOSCALVO
             // 
             this.dsClientes.DataSetName = "DsClientes";
             this.dsClientes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // referenciaDetalleDataGridViewTextBoxColumn
-            // 
-            this.referenciaDetalleDataGridViewTextBoxColumn.DataPropertyName = "ReferenciaDetalle";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.referenciaDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
-            this.referenciaDetalleDataGridViewTextBoxColumn.FillWeight = 170F;
-            this.referenciaDetalleDataGridViewTextBoxColumn.HeaderText = "Referencia";
-            this.referenciaDetalleDataGridViewTextBoxColumn.Name = "referenciaDetalleDataGridViewTextBoxColumn";
-            this.referenciaDetalleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.referenciaDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // BusquedaArticulo
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.BusquedaArticulo.DefaultCellStyle = dataGridViewCellStyle11;
-            this.BusquedaArticulo.FillWeight = 50F;
-            this.BusquedaArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BusquedaArticulo.HeaderText = "";
-            this.BusquedaArticulo.Name = "BusquedaArticulo";
-            this.BusquedaArticulo.ReadOnly = true;
-            this.BusquedaArticulo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // cantidadDetalleDataGridViewTextBoxColumn
-            // 
-            this.cantidadDetalleDataGridViewTextBoxColumn.DataPropertyName = "CantidadDetalle";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = null;
-            this.cantidadDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
-            this.cantidadDetalleDataGridViewTextBoxColumn.FillWeight = 120F;
-            this.cantidadDetalleDataGridViewTextBoxColumn.HeaderText = "Cantidad";
-            this.cantidadDetalleDataGridViewTextBoxColumn.Name = "cantidadDetalleDataGridViewTextBoxColumn";
-            this.cantidadDetalleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cantidadDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // descripccionDetalleDataGridViewTextBoxColumn
-            // 
-            this.descripccionDetalleDataGridViewTextBoxColumn.DataPropertyName = "DescripccionDetalle";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.descripccionDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
-            this.descripccionDetalleDataGridViewTextBoxColumn.FillWeight = 280F;
-            this.descripccionDetalleDataGridViewTextBoxColumn.HeaderText = "Descripccion";
-            this.descripccionDetalleDataGridViewTextBoxColumn.Name = "descripccionDetalleDataGridViewTextBoxColumn";
-            this.descripccionDetalleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripccionDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // precioDetalleDataGridViewTextBoxColumn
-            // 
-            this.precioDetalleDataGridViewTextBoxColumn.DataPropertyName = "PrecioDetalle";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "C2";
-            dataGridViewCellStyle14.NullValue = null;
-            this.precioDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
-            this.precioDetalleDataGridViewTextBoxColumn.FillWeight = 120F;
-            this.precioDetalleDataGridViewTextBoxColumn.HeaderText = "Precio";
-            this.precioDetalleDataGridViewTextBoxColumn.Name = "precioDetalleDataGridViewTextBoxColumn";
-            this.precioDetalleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.precioDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // descuentoDetalleDataGridViewTextBoxColumn
-            // 
-            this.descuentoDetalleDataGridViewTextBoxColumn.DataPropertyName = "DescuentoDetalle";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "P0";
-            this.descuentoDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
-            this.descuentoDetalleDataGridViewTextBoxColumn.HeaderText = "Descuento";
-            this.descuentoDetalleDataGridViewTextBoxColumn.Name = "descuentoDetalleDataGridViewTextBoxColumn";
-            this.descuentoDetalleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descuentoDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ivaDetalleDataGridViewTextBoxColumn
-            // 
-            this.ivaDetalleDataGridViewTextBoxColumn.DataPropertyName = "IvaDetalle";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "N0";
-            dataGridViewCellStyle16.NullValue = null;
-            this.ivaDetalleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
-            this.ivaDetalleDataGridViewTextBoxColumn.FillWeight = 80F;
-            this.ivaDetalleDataGridViewTextBoxColumn.HeaderText = "Iva";
-            this.ivaDetalleDataGridViewTextBoxColumn.Name = "ivaDetalleDataGridViewTextBoxColumn";
-            this.ivaDetalleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ivaDetalleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ImporteDetalle
-            // 
-            this.ImporteDetalle.DataPropertyName = "ImporteDetalle";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "C2";
-            dataGridViewCellStyle17.NullValue = null;
-            this.ImporteDetalle.DefaultCellStyle = dataGridViewCellStyle17;
-            this.ImporteDetalle.FillWeight = 130F;
-            this.ImporteDetalle.HeaderText = "Importe";
-            this.ImporteDetalle.Name = "ImporteDetalle";
-            this.ImporteDetalle.ReadOnly = true;
-            this.ImporteDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // referenciaDetalleDataGridViewTextBoxColumn1
-            // 
-            this.referenciaDetalleDataGridViewTextBoxColumn1.DataPropertyName = "ReferenciaDetalle";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.referenciaDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle20;
-            this.referenciaDetalleDataGridViewTextBoxColumn1.FillWeight = 140F;
-            this.referenciaDetalleDataGridViewTextBoxColumn1.HeaderText = "Referencia";
-            this.referenciaDetalleDataGridViewTextBoxColumn1.Name = "referenciaDetalleDataGridViewTextBoxColumn1";
-            this.referenciaDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.referenciaDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dataGridViewButtonColumn1.DefaultCellStyle = dataGridViewCellStyle21;
-            this.dataGridViewButtonColumn1.FillWeight = 50F;
-            this.dataGridViewButtonColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dataGridViewButtonColumn1.HeaderText = "";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.ReadOnly = true;
-            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // cantidadDetalleDataGridViewTextBoxColumn1
-            // 
-            this.cantidadDetalleDataGridViewTextBoxColumn1.DataPropertyName = "CantidadDetalle";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle22.Format = "N2";
-            dataGridViewCellStyle22.NullValue = null;
-            this.cantidadDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle22;
-            this.cantidadDetalleDataGridViewTextBoxColumn1.FillWeight = 120F;
-            this.cantidadDetalleDataGridViewTextBoxColumn1.HeaderText = "Cantidad";
-            this.cantidadDetalleDataGridViewTextBoxColumn1.Name = "cantidadDetalleDataGridViewTextBoxColumn1";
-            this.cantidadDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.cantidadDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // descripccionDetalleDataGridViewTextBoxColumn1
-            // 
-            this.descripccionDetalleDataGridViewTextBoxColumn1.DataPropertyName = "DescripccionDetalle";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.descripccionDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle23;
-            this.descripccionDetalleDataGridViewTextBoxColumn1.FillWeight = 300F;
-            this.descripccionDetalleDataGridViewTextBoxColumn1.HeaderText = "Descripccion";
-            this.descripccionDetalleDataGridViewTextBoxColumn1.Name = "descripccionDetalleDataGridViewTextBoxColumn1";
-            this.descripccionDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.descripccionDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // precioDetalleDataGridViewTextBoxColumn1
-            // 
-            this.precioDetalleDataGridViewTextBoxColumn1.DataPropertyName = "PrecioDetalle";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle24.Format = "C2";
-            dataGridViewCellStyle24.NullValue = null;
-            this.precioDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle24;
-            this.precioDetalleDataGridViewTextBoxColumn1.FillWeight = 120F;
-            this.precioDetalleDataGridViewTextBoxColumn1.HeaderText = "Precio";
-            this.precioDetalleDataGridViewTextBoxColumn1.Name = "precioDetalleDataGridViewTextBoxColumn1";
-            this.precioDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.precioDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // descuentoDetalleDataGridViewTextBoxColumn1
-            // 
-            this.descuentoDetalleDataGridViewTextBoxColumn1.DataPropertyName = "DescuentoDetalle";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Format = "PO";
-            this.descuentoDetalleDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle25;
-            this.descuentoDetalleDataGridViewTextBoxColumn1.HeaderText = "Descuento";
-            this.descuentoDetalleDataGridViewTextBoxColumn1.Name = "descuentoDetalleDataGridViewTextBoxColumn1";
-            this.descuentoDetalleDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.descuentoDetalleDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn27
-            // 
-            this.dataGridViewTextBoxColumn27.DataPropertyName = "ImporteDetalle";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "C2";
-            dataGridViewCellStyle26.NullValue = null;
-            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle26;
-            this.dataGridViewTextBoxColumn27.FillWeight = 140F;
-            this.dataGridViewTextBoxColumn27.HeaderText = "Importe";
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
-            this.dataGridViewTextBoxColumn27.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // numeroFacturaDataGridViewTextBoxColumn2
-            // 
-            this.numeroFacturaDataGridViewTextBoxColumn2.DataPropertyName = "NumeroFactura";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.numeroFacturaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.numeroFacturaDataGridViewTextBoxColumn2.FillWeight = 120F;
-            this.numeroFacturaDataGridViewTextBoxColumn2.HeaderText = "Numero";
-            this.numeroFacturaDataGridViewTextBoxColumn2.Name = "numeroFacturaDataGridViewTextBoxColumn2";
-            this.numeroFacturaDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // apodoDataGridViewTextBoxColumn2
-            // 
-            this.apodoDataGridViewTextBoxColumn2.DataPropertyName = "Apodo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.apodoDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.apodoDataGridViewTextBoxColumn2.FillWeight = 220F;
-            this.apodoDataGridViewTextBoxColumn2.HeaderText = "Razon Social";
-            this.apodoDataGridViewTextBoxColumn2.Name = "apodoDataGridViewTextBoxColumn2";
-            this.apodoDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // nombreDataGridViewTextBoxColumn2
-            // 
-            this.nombreDataGridViewTextBoxColumn2.DataPropertyName = "Nombre";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.nombreDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.nombreDataGridViewTextBoxColumn2.FillWeight = 220F;
-            this.nombreDataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn2.Name = "nombreDataGridViewTextBoxColumn2";
-            this.nombreDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // direccionDataGridViewTextBoxColumn2
-            // 
-            this.direccionDataGridViewTextBoxColumn2.DataPropertyName = "Direccion";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.direccionDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle5;
-            this.direccionDataGridViewTextBoxColumn2.FillWeight = 200F;
-            this.direccionDataGridViewTextBoxColumn2.HeaderText = "Direccion";
-            this.direccionDataGridViewTextBoxColumn2.Name = "direccionDataGridViewTextBoxColumn2";
-            this.direccionDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // CobradaFactura
-            // 
-            this.CobradaFactura.DataPropertyName = "CobradaFactura";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CobradaFactura.DefaultCellStyle = dataGridViewCellStyle6;
-            this.CobradaFactura.FillWeight = 80F;
-            this.CobradaFactura.HeaderText = "Cobrado";
-            this.CobradaFactura.Name = "CobradaFactura";
-            this.CobradaFactura.ReadOnly = true;
-            // 
-            // fechaFacturaDataGridViewTextBoxColumn2
-            // 
-            this.fechaFacturaDataGridViewTextBoxColumn2.DataPropertyName = "FechaFactura";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.fechaFacturaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle7;
-            this.fechaFacturaDataGridViewTextBoxColumn2.FillWeight = 60F;
-            this.fechaFacturaDataGridViewTextBoxColumn2.HeaderText = "Fecha";
-            this.fechaFacturaDataGridViewTextBoxColumn2.Name = "fechaFacturaDataGridViewTextBoxColumn2";
-            this.fechaFacturaDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // FormFacturar
             // 
@@ -2102,7 +2077,6 @@ namespace PELOSCALVO
         public DsArticulos articulos;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.DateTimePicker FechaFactura;
-        private System.Windows.Forms.Label IdDescuento;
         private System.Windows.Forms.NumericUpDown NumTotales;
         private System.Windows.Forms.NumericUpDown Numimporte;
         public System.Windows.Forms.RadioButton CheckDescuentos;

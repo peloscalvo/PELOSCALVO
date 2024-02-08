@@ -34,7 +34,7 @@ namespace PELOSCALVO
         string Proveedor;
         string Fecha;
         bool Cobrado;
-        string[] ListaTarifas = new string[] { "PVP1", "PVP2", "PVP3", "PVP4", "PVP5", "PVP6", "PLUS", "IVA" };
+        string[] ListaTarifas = new string[] { "PVP1", "PVP2", "PVP3", "PVP4", "PVP5", "PVP6", "PLUS", "IVA","salto" };
         public FormFacturar()
         {
             InitializeComponent();
@@ -1584,14 +1584,16 @@ namespace PELOSCALVO
             string ColumnaDesc = "";
             int FilaDesc = Convert.ToInt32(this.TipoTarifaFactu.SelectedIndex) + 1;
             // ColumnaPvp = this.ListaTarifas[FilaDesc].ToString();
-            ColumnaPvp = this.TarifaRealTxt.Text;
+           
             string ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "]" +
                  "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
             try
             {
                 if (this.CheckDescuentos.Checked)
                 {
-                    if (this.TarifaRealTxt.Text.ToString() != "PVP1" | this.TarifaRealTxt.Text.ToString() != "IVA" | this.TarifaRealTxt.Text.ToString() != "PLUS")
+                    ColumnaPvp = this.TarifaRealTxt.Text;
+
+                    if (this.TarifaRealTxt.Text.ToString() != "PVP1" || this.TarifaRealTxt.Text.ToString() != "IVA" || this.TarifaRealTxt.Text.ToString() != "PLUS")
                     {
 
                         ColumnaDesc = "Desc" + FilaDesc.ToString();
@@ -1634,9 +1636,9 @@ namespace PELOSCALVO
                                 else
                                 {
                                     Datagri.Rows[Fila].Cells[4].Value = Leer[ColumnaPvp];
-                                    Datagri.Rows[Fila].Cells[5].Value = "";
+                                    Datagri.Rows[Fila].Cells[5].Value = DBNull.Value;
                                 }
-                                Datagri.Focus();
+                               // Datagri.Focus();
                                 // Datagri.CurrentCell.Value
                                 ok = true;
                             }
@@ -1644,7 +1646,7 @@ namespace PELOSCALVO
                     }
 
                 }
-                Salto:
+
                 return ok;
             }
             catch (Exception ex)
