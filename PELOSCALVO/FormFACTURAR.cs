@@ -34,7 +34,7 @@ namespace PELOSCALVO
         string Proveedor;
         string Fecha;
         bool Cobrado;
-        string[] ListaTarifas = new string[] { "PVP1", "PVP2", "PVP3", "PVP4", "PVP5", "PVP6", "PLUS", "IVA","salto" };
+        string[] ListaTarifas = new string[] { "PVP1", "PVP2", "PVP3", "PVP4", "PVP5", "PVP6", "PLUS", "IVA", "salto" };
         public FormFacturar()
         {
             InitializeComponent();
@@ -61,12 +61,68 @@ namespace PELOSCALVO
             }
 
         }
+        private void CalcularTotales(DataGridView DatagriCalcular)
+        {
+            if (this.dtDetallesFacturaBindingSource.Count > 0)
+            {
+
+
+                try
+                {
+                    double sumaIva = 0;
+                    int columna = 7;
+                    int columna2 = 6;
+
+                    if (this.tabControl1Factura.SelectedIndex == 2)
+                    {
+                        columna = 6;
+                        columna2 = 6;
+                    }
+                    double Importe = 0;
+                    double TTotalSuma = 0;
+                   // int I = DatagriCalcular.CurrentCell.RowIndex;
+                    foreach (DataGridView Fila in DatagriCalcular.Rows)
+                    {
+                        Importe = (Double)Fila.Rows[Fila.CurrentCell.RowIndex].Cells[4].Value;
+                        TTotalSuma =+ (Double)Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna].Value;
+                        Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna].Value = Importe.ToString();
+                        if (Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna2].Value != DBNull.Value && Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna2].Value != null && Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna2].Value.ToString() != string.Empty)
+                        {
+
+                            sumaIva += (Double)Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna].Value - ((Double)Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna].Value * (Convert.ToDouble(Fila.Rows[Fila.CurrentCell.RowIndex].Cells[columna2].Value) / 100));
+                        }
+
+                    }
+
+                    if (TTotalSuma == 0)
+                    {
+                        this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                        this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                        this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (0));
+                    }
+                    else
+                    {
+                        this.subTotal.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma));
+                        this.baseIva.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma - sumaIva));
+                        this.TotalFactura1.Text = string.Format("{0:C" + this.NumPrecio.Value + "}", (TTotalSuma + (TTotalSuma - sumaIva)));
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+
+                    MessageBox.Show(ex.Message, "ERROR CALCULAR TOTALES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
         private void CalcularImportes(DataGridView DatagriCalcular)
         {
             try
             {
                 int FILAcelda = DatagriCalcular.CurrentCell.RowIndex;
-                if (string.IsNullOrEmpty(DatagriCalcular.Rows[FILAcelda].Cells[2].Value.ToString()))
+                if (string.IsNullOrEmpty(DatagriCalcular.Rows[FILAcelda].Cells[2].Value.ToString()) | string.IsNullOrEmpty(DatagriCalcular.Rows[FILAcelda].Cells[4].Value.ToString()))
                 {
                     return;
                 }
@@ -1346,7 +1402,9 @@ namespace PELOSCALVO
                         if (ClasDatos.NombreFactura == "Nota2")
                         {
                             LlenarGrid(this.dtDetallesFacturaDataGridView2, 2);
+                            CalcularTotales(dtDetallesFacturaDataGridView2);
                         }
+                        CalcularTotales(dtDetallesFacturaDataGridView);
                     }
                 }
                 this.dtDetallesFacturaDataGridView.Refresh();
@@ -1584,7 +1642,7 @@ namespace PELOSCALVO
             string ColumnaDesc = "";
             int FilaDesc = Convert.ToInt32(this.TipoTarifaFactu.SelectedIndex) + 1;
             // ColumnaPvp = this.ListaTarifas[FilaDesc].ToString();
-           
+
             string ConsultaArtiFatu = "SELECT [Referencia],[Descripcci],[" + ColumnaPvp + "]" +
                  "FROM [" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "] where [Referencia] = @Referencia";
             try
@@ -1638,7 +1696,7 @@ namespace PELOSCALVO
                                     Datagri.Rows[Fila].Cells[4].Value = Leer[ColumnaPvp];
                                     Datagri.Rows[Fila].Cells[5].Value = DBNull.Value;
                                 }
-                               // Datagri.Focus();
+                                // Datagri.Focus();
                                 // Datagri.CurrentCell.Value
                                 ok = true;
                             }
@@ -2671,7 +2729,8 @@ namespace PELOSCALVO
             }
             else
             {
-                MessageBox.Show(" No Validos ", " ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // MessageBox.Show(" No Validos ", " ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
 
@@ -2850,7 +2909,7 @@ namespace PELOSCALVO
 
             else
             {
-                MessageBox.Show(" No Validos ", " ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // MessageBox.Show(" No Validos ", " ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -3197,7 +3256,7 @@ namespace PELOSCALVO
                                 catch (Exception ex)
                                 {
 
-                                    MessageBox.Show(ex.Message, "ERROR ELIMINAR FACTURA");
+                                    MessageBox.Show(ex.Message, "ERROR ELIMINAR FACTURA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                                 finally
                                 {
@@ -3522,6 +3581,42 @@ namespace PELOSCALVO
         private void CheckDescuentos_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Btn_Iva_Click(object sender, EventArgs e)
+        {
+            if (this.dtDetallesFacturaBindingSource.Count > 0)
+            {
+                if (MessageBox.Show(" Añadir Iva A Listado ", " AÑADIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        bool SiSalto = false;
+                        double TTotalSuma = 0;
+                        int I = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex;
+                        foreach (DataGridView Fila in this.dtDetallesFacturaDataGridView.Rows)
+                        {
+                            if (SiSalto)
+                            {
+                                if (MessageBox.Show(" Modificar \n" + Fila.Rows[I].Cells[4].Value.ToString(), " Modifcar ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                {
+                                    SiSalto = true;
+                                }
+                            }
+                            TTotalSuma = (Double)Fila.Rows[I].Cells[4].Value;
+                            TTotalSuma = TTotalSuma + (TTotalSuma * Convert.ToInt32(this.IvaFactuTxt.Value) / 100);
+                            Fila.Rows[I].Cells[4].Value = TTotalSuma.ToString();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                        MessageBox.Show(ex.Message, "ERROR AL LISTAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
