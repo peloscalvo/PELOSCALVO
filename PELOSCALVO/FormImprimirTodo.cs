@@ -19,7 +19,7 @@ namespace PELOSCALVO
         }
         private void FormImprimirTodo_Load(object sender, EventArgs e)
         {
-            this.Formatoimpresion.Text = "Impresora";
+            this.TipoImpresion.Text = "Impresora";
             this.TipoDocumento.Text = "Documento";
             this.FormatoDocumento.Text = "Formato Simple";
             if (ClasDatos.OkFacturar == true)
@@ -75,7 +75,7 @@ namespace PELOSCALVO
         {
             Close();
         }
-
+        
         private void BtnImprimirTodo_Click(object sender, EventArgs e)
         {
             string NombreArchivo = "";
@@ -125,7 +125,7 @@ namespace PELOSCALVO
             if (this.TipoDocumento.SelectedIndex == 0)
             {
 
-                if (this.Formatoimpresion.SelectedIndex == 0)
+                if (this.TipoImpresion.SelectedIndex == 0)
                 {
 
                     DialogResult result = this.printDialog1.ShowDialog();
@@ -142,7 +142,7 @@ namespace PELOSCALVO
 
                     }
                 }
-                if (this.Formatoimpresion.SelectedIndex == 1)
+                if (this.TipoImpresion.SelectedIndex == 1)
                 {
 
                     if (this.Continuar2 == "1")
@@ -155,7 +155,7 @@ namespace PELOSCALVO
 
                     }
                 }
-                if (this.Formatoimpresion.SelectedIndex == 2)///formato pdf
+                if (this.TipoImpresion.SelectedIndex == 2)///formato pdf
                 {
                     string VariableDt = "Archivos Pdf Del Año ";
                     string VariableDtPASS = "Archivos Pdf Encriptados Del Año ";
@@ -214,32 +214,8 @@ namespace PELOSCALVO
                     }
 
                 }
-                if (this.Formatoimpresion.SelectedIndex == 3)
-                {
 
-                    this.printPreviewDialog1.ShowDialog();
-                }
-                if (this.Formatoimpresion.SelectedIndex == 4)
-                {
-                    this.printPreviewDialog1.Document = this.printDocument1;
-                    this.printPreviewDialog1.ShowDialog();
-                }
-                if (this.Formatoimpresion.SelectedIndex == 5)
-                {
-
-                }
-                if (this.Formatoimpresion.SelectedIndex == 6)
-                {
-                    //printPreviewDialog1.Document = printDocument1;
-
-                }
-                if (this.Formatoimpresion.SelectedIndex == 7)
-                {
-
-                    // printPreviewDialog1.ShowDialog();
-                }
-
-                if (this.FormatoDocumento.SelectedIndex == 1)
+                if (this.FormatoDocumento.SelectedIndex == 3)
                 {
 
                     FormReporteFactura frm = new FormReporteFactura();
@@ -253,6 +229,26 @@ namespace PELOSCALVO
                     }
 
                 }
+                if (this.TipoImpresion.SelectedIndex == 4)
+                {
+                    this.printPreviewDialog1.Document = this.printDocument1;
+                    this.printPreviewDialog1.ShowDialog();
+                }
+                if (this.TipoImpresion.SelectedIndex == 5)
+                {
+
+                }
+                if (this.TipoImpresion.SelectedIndex == 6)
+                {
+                    //printPreviewDialog1.Document = printDocument1;
+
+                }
+                if (this.TipoImpresion.SelectedIndex == 7)
+                {
+
+                    // printPreviewDialog1.ShowDialog();
+                }
+
 
             }
 
@@ -265,44 +261,44 @@ namespace PELOSCALVO
 
         private void Formatoimpresion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.Formatoimpresion.SelectedIndex > -1)
+            if (this.TipoImpresion.SelectedIndex > -1)
             {
-                if (this.Formatoimpresion.SelectedIndex == 0)
+                if (this.TipoImpresion.SelectedIndex == 0)
                 {
                     this.BtnImprimirTodo.Text = "Imprimir";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.IMPRSORA32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 1)
+                if (this.TipoImpresion.SelectedIndex == 1)
                 {
                     this.BtnImprimirTodo.Text = "Preliminar";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.VistaPrevia32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 2)
+                if (this.TipoImpresion.SelectedIndex == 2)
                 {
                     this.BtnImprimirTodo.Text = "P.D.F";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.PDF32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 3)
+                if (this.TipoImpresion.SelectedIndex == 3)
                 {
                     this.BtnImprimirTodo.Text = "W.O.R.D";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.Word32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 4)
+                if (this.TipoImpresion.SelectedIndex == 4)
                 {
                     this.BtnImprimirTodo.Text = "H.T.M.L";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.Html32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 5)
+                if (this.TipoImpresion.SelectedIndex == 5)
                 {
 
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.Excel32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 6)
+                if (this.TipoImpresion.SelectedIndex == 6)
                 {
                     this.BtnImprimirTodo.Text = "EXCEL";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.PowerPoint32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 7)
+                if (this.TipoImpresion.SelectedIndex == 7)
                 {
                     this.BtnImprimirTodo.Text = "X.M.L";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.Xml32;
@@ -335,16 +331,16 @@ namespace PELOSCALVO
             {
                 if (this.FormatoDocumento.SelectedIndex == 1)
                 {
-                    this.Formatoimpresion.Text = "Impresora";
+                    this.TipoImpresion.Text = "Impresora";
                     this.TipoDocumento.Text = "Documento";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.IMPRSORA32;
-                    this.Formatoimpresion.Enabled = false;
+                    this.TipoImpresion.Enabled = false;
                     this.TipoDocumento.Enabled = false;
                     this.listFormatoImpresiones.Enabled = false;
                 }
                 else
                 {
-                    this.Formatoimpresion.Enabled = true;
+                    this.TipoImpresion.Enabled = true;
                     this.TipoDocumento.Enabled = true;
                     this.listFormatoImpresiones.Enabled = false;
                     this.listFormatoImpresiones.Enabled = true;

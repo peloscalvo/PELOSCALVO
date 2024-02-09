@@ -37,7 +37,7 @@ namespace PELOSCALVO
             this.BtnImprimirTodo = new System.Windows.Forms.Button();
             this.TipoDocumento = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Formatoimpresion = new System.Windows.Forms.ComboBox();
+            this.TipoImpresion = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.FormatoDocumento = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@ namespace PELOSCALVO
             tabPageInicioImpri.Controls.Add(this.BtnImprimirTodo);
             tabPageInicioImpri.Controls.Add(this.TipoDocumento);
             tabPageInicioImpri.Controls.Add(this.label3);
-            tabPageInicioImpri.Controls.Add(this.Formatoimpresion);
+            tabPageInicioImpri.Controls.Add(this.TipoImpresion);
             tabPageInicioImpri.Controls.Add(this.label2);
             tabPageInicioImpri.Controls.Add(this.FormatoDocumento);
             tabPageInicioImpri.Controls.Add(this.label1);
@@ -199,11 +199,11 @@ namespace PELOSCALVO
             this.label3.TabIndex = 20;
             this.label3.Text = "Imprimir en:";
             // 
-            // Formatoimpresion
+            // TipoImpresion
             // 
-            this.Formatoimpresion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Formatoimpresion.FormattingEnabled = true;
-            this.Formatoimpresion.Items.AddRange(new object[] {
+            this.TipoImpresion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TipoImpresion.FormattingEnabled = true;
+            this.TipoImpresion.Items.AddRange(new object[] {
             "Impresora",
             "Preliminar",
             "PDF",
@@ -212,11 +212,11 @@ namespace PELOSCALVO
             "EXCEL",
             "XPS",
             "XML"});
-            this.Formatoimpresion.Location = new System.Drawing.Point(235, 284);
-            this.Formatoimpresion.Name = "Formatoimpresion";
-            this.Formatoimpresion.Size = new System.Drawing.Size(179, 21);
-            this.Formatoimpresion.TabIndex = 16;
-            this.Formatoimpresion.SelectedIndexChanged += new System.EventHandler(this.Formatoimpresion_SelectedIndexChanged);
+            this.TipoImpresion.Location = new System.Drawing.Point(235, 284);
+            this.TipoImpresion.Name = "TipoImpresion";
+            this.TipoImpresion.Size = new System.Drawing.Size(179, 21);
+            this.TipoImpresion.TabIndex = 16;
+            this.TipoImpresion.SelectedIndexChanged += new System.EventHandler(this.Formatoimpresion_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -619,7 +619,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox TipoDocumento;
-        private System.Windows.Forms.ComboBox Formatoimpresion;
+        private System.Windows.Forms.ComboBox TipoImpresion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

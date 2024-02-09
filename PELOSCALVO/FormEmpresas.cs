@@ -354,7 +354,7 @@ namespace PELOSCALVO
                             string Tarifa = "Pvp";
                             if (NuevaConexion.SiConexionSql)
                             {
-                                for (int Fila = 1; Fila < 9; Fila++)
+                                for (int Fila = 1; Fila < 8; Fila++)
                                 {
 
                                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Fila);
@@ -372,16 +372,8 @@ namespace PELOSCALVO
                                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaReal", "PLUS");
                                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "PLUS", this.idEmpresa.Text, "PLUS");
                                     }
-                    
-                                    if (Fila == 8)
-                                    {
-
-                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", "IVA");
-                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaReal", "IVA");
-                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "IVA", this.idEmpresa.Text, "IVA");
-                                    }
-                        
-
+                   
+                     
                                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                                     NuevaConexion.ComandoSql.Parameters.Clear();
@@ -590,16 +582,17 @@ namespace PELOSCALVO
 
                                 string Tarifa = "PVP";
 
-                                for (int Fila = 1; Fila < 9; Fila++)
+                                for (int Fila = 1; Fila <= 8; Fila++)
                                 {
 
 
                                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Fila);
-                                    if (Fila > 8)
+                                    if (Fila < 7)
                                     {
-                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.idEmpresa.Text, Tarifa + Fila.ToString());
+                                       
                                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
                                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", Tarifa + Fila.ToString());
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.idEmpresa.Text, Tarifa + Fila.ToString());
                                     }
                                     if (Fila == 7)
                                     {
@@ -608,18 +601,7 @@ namespace PELOSCALVO
                                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", "PLUS");
                                         FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "PLUS", this.idEmpresa.Text, "PLUS");
                                     }
-
-                                    if (Fila == 8)
-                                    {
-
-                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", "IVA");
-
-                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", "IVA");
-                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "IVA", this.idEmpresa.Text, "IVA");
-                                    }
-
-                      
-
+                    
                                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                                     NuevaConexion.ComandoDb.Parameters.Clear();

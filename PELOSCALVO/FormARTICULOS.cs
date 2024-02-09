@@ -155,7 +155,7 @@ namespace PELOSCALVO
                             {
                                 this.Pvp6Txt.Text = Leer["Pvp6"].ToString();
                             }
- 
+
                             if (!string.IsNullOrEmpty(Leer["Desc2"].ToString()))
                             {
                                 this.Desc2Text.Text = Leer["Desc2"].ToString();
@@ -206,7 +206,7 @@ namespace PELOSCALVO
                             }
                             if (!string.IsNullOrEmpty(Leer["BAJA"].ToString()))
                             {
-                                BajaCheckBox.Checked = Convert.ToBoolean( Leer["BAJA"]);
+                                this.BajaCheckBox.Checked = Convert.ToBoolean(Leer["BAJA"]);
                             }
                         }
                     }
@@ -278,15 +278,15 @@ namespace PELOSCALVO
                             }
                             if (Fila2 == 3)
                             {
-                             //   this.LabDesc4.Text = item[3].ToString();
+                                //   this.LabDesc4.Text = item[3].ToString();
                             }
                             if (Fila2 == 4)
                             {
-                               // this.LabDes5.Text = item[4].ToString();
+                                // this.LabDes5.Text = item[4].ToString();
                             }
                             if (Fila2 == 5)
                             {
-                             //   this.LabDes6.Text = item[5].ToString();
+                                //   this.LabDes6.Text = item[5].ToString();
                             }
 
                         }
@@ -386,7 +386,7 @@ namespace PELOSCALVO
             }
 
         }
-        private void  CalculosIva()
+        private void CalculosIva()
         {
             try
             {
@@ -397,18 +397,18 @@ namespace PELOSCALVO
                 {
                     this.pvp1 = Convert.ToDouble(this.Pvp1Text.Text.Replace("€", ""));
                 }
-               // this.pvp1 = (this.Coste + (this.Coste * this.Ganancia / 100));
+                // this.pvp1 = (this.Coste + (this.Coste * this.Ganancia / 100));
                 this.PvpIva2.Text = string.Format("{0:C3" + "}", this.pvp1 + (this.pvp1 * this.iva / 100));
             }
             catch (Exception)
             {
 
-               // throw;
+                // throw;
             }
         }
         private void CalculosPrecios()
         {
-            if (!string.IsNullOrEmpty(this.CosteTextBox.Text ))
+            if (!string.IsNullOrEmpty(this.CosteTextBox.Text))
                 try
                 {
                     {
@@ -432,7 +432,7 @@ namespace PELOSCALVO
                 catch (Exception)
                 {
 
-                   // throw;
+                    // throw;
                 }
         }
 
@@ -850,17 +850,21 @@ namespace PELOSCALVO
 
         private void GananciaTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar))
+            if (e.KeyChar == 46)
+            {
+                e.KeyChar = ',';
+            }
+            if (Convert.ToDouble(this.GananciaTextBox.Text) <= 0 & Convert.ToDouble(this.GananciaTextBox.Text) >= 100)
+            {
+                e.Handled = true;
+            }
+            else if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
             else if (char.IsControl(e.KeyChar))
             {
                 e.Handled = false;
-            }
-            else if (Convert.ToInt32(this.GananciaTextBox.Text) < 0 & Convert.ToInt32(this.GananciaTextBox.Text) > 100)
-            {
-                e.Handled = true;
             }
             else
             {
@@ -871,6 +875,10 @@ namespace PELOSCALVO
 
         private void CastyDescTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 46)
+            {
+                e.KeyChar = ',';
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -888,6 +896,10 @@ namespace PELOSCALVO
 
         private void SuarezDescTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 46)
+            {
+                e.KeyChar = ',';
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -904,6 +916,10 @@ namespace PELOSCALVO
 
         private void BenitoDescTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 46)
+            {
+                e.KeyChar = ',';
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -920,6 +936,10 @@ namespace PELOSCALVO
 
         private void ValenteDescTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 46)
+            {
+                e.KeyChar = ',';
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -936,6 +956,10 @@ namespace PELOSCALVO
 
         private void Pvp2DescTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 46)
+            {
+                e.KeyChar = ',';
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -952,6 +976,10 @@ namespace PELOSCALVO
 
         private void PlusDescTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 46)
+            {
+                e.KeyChar = ',';
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;

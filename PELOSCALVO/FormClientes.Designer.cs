@@ -829,6 +829,7 @@ namespace PELOSCALVO
             // numeroCalleClienteTextBox
             // 
             this.numeroCalleClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtClientesBindingSource, "NUMEROCALL", true));
+            this.numeroCalleClienteTextBox.Enabled = false;
             this.numeroCalleClienteTextBox.Location = new System.Drawing.Point(513, 82);
             this.numeroCalleClienteTextBox.MaxLength = 4;
             this.numeroCalleClienteTextBox.Name = "numeroCalleClienteTextBox";

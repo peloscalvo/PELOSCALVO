@@ -1321,6 +1321,7 @@ namespace PELOSCALVO
             this.cobradaFacturaCheckBox.Enabled = false;
             this.FechaFactura.Enabled = false;
             this.AlmacenTxt.Enabled = false;
+            Btn_Iva.Visible = false;
             foreach (Control ctrl in this.tabPage1Factura.Controls)
             {
                 if (ctrl is TextBox)
@@ -1362,7 +1363,7 @@ namespace PELOSCALVO
             this.AlmacenTxt.Enabled = true;
             this.BtnBuscarPais.Enabled = true;
             this.BtnBuscarProvi.Enabled = true;
-            this.dtNuevaFacturaDataGridView.Focus();
+            Btn_Iva.Visible = true;
             foreach (Control ctrl in this.tabPage1Factura.Controls)
             {
                 if (ctrl is TextBox)
@@ -1385,7 +1386,7 @@ namespace PELOSCALVO
 
                 }
             }
-
+            this.dtNuevaFacturaDataGridView.Focus();
         }
         private void BtnCancelarfactura_Click(object sender, EventArgs e)
         {
@@ -2493,6 +2494,10 @@ namespace PELOSCALVO
                     }
                     try
                     {
+                        if (e.ColumnIndex == 5)
+                        {
+                            this.dtDetallesFacturaDataGridView.CurrentCell.Value = this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString().Replace("%", "");
+                        }
                         if (e.ColumnIndex == 0 || e.ColumnIndex == 2 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 6)
                         {
                             if (string.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
@@ -3149,7 +3154,10 @@ namespace PELOSCALVO
                     }
 
                 }
-
+                if (e.ColumnIndex == 5)
+                {
+                    this.dtDetallesFacturaDataGridView.CurrentCell.Value =Convert.ToDouble(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString())/100;
+                }
             }
         }
 
@@ -3324,7 +3332,9 @@ namespace PELOSCALVO
                     // this.dtDetallesFacturaBindingSource.Insert(Fila, this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value.ToString());
                     //dtDetallesFacturaDataGridView.Rows.Insert(0, dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value );
                     // borrar(int.Parse(id));
-
+                    DataGridViewRow row = this.dtDetallesFacturaDataGridView.CurrentRow;
+                    // this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
+                    this.dtDetallesFacturaDataGridView.Rows.Insert(Fila, row);
                 }
                 if (NombreItem.Contains("Lineablanco"))
                 {
@@ -3332,7 +3342,7 @@ namespace PELOSCALVO
                     Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex + 1;
                     // DataTable dt = (DataTable)dsFacturas.DtDetallesFactura;
                     // DataTable dt = new DataTable();
-                    var row = this.dsFacturas.DtDetallesFactura.NewRow();
+                    DataGridViewRow row = this.dtDetallesFacturaDataGridView.CurrentRow;
                     // this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
                     this.dtDetallesFacturaBindingSource.Insert(Fila, row);
                 }
@@ -3592,7 +3602,12 @@ namespace PELOSCALVO
         {
             if (this.dtDetallesFacturaBindingSource.Count > 0)
             {
-                if (MessageBox.Show(" Añadir Iva A Listado ", " AÑADIR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                string InfoMas = "Sumar Iva A Precios";
+                if (MasMenosTxt.Text == "+")
+                {
+                    InfoMas = "Restar Iva A Precios";
+                }
+                if (MessageBox.Show(InfoMas, " MODIFICAR ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     try
@@ -3602,7 +3617,7 @@ namespace PELOSCALVO
                         int I = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex;
                         foreach (DataGridViewRow Fila in this.dtDetallesFacturaDataGridView.Rows)
                         {
-                            if (SiSalto)
+                            if (SiSalto == false )
                             {
                                 if (MessageBox.Show(" Modificar \n" + Fila.Cells[4].Value.ToString(), " Modifcar ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                                 {
@@ -3618,10 +3633,16 @@ namespace PELOSCALVO
                             }
                             if (Fila.Cells[4].Value.ToString() != string.Empty && Fila.Cells[4].Value != DBNull.Value && Fila.Cells[4].Value.ToString() != null)
                             {
-
-
                                 TTotalSuma = (Double)Fila.Cells[4].Value;
-                                TTotalSuma = TTotalSuma + (TTotalSuma * Convert.ToInt32(this.IvaFactuTxt.Value) / 100);
+                                if (MasMenosTxt.Text == "+")
+                                {
+                                    TTotalSuma = TTotalSuma + (TTotalSuma * Convert.ToInt32(this.IvaFactuTxt.Value) / 100);
+                                }
+                                else
+                                {
+                                    TTotalSuma = TTotalSuma - (TTotalSuma * Convert.ToInt32(this.IvaFactuTxt.Value) / 100);
+                                }
+                             
                                 Fila.Cells[4].Value = TTotalSuma.ToString();
                             }
                             saltoAbajo:
@@ -3636,6 +3657,18 @@ namespace PELOSCALVO
                         MessageBox.Show(ex.Message, "ERROR AL LISTAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void MasMenosTxt_Click(object sender, EventArgs e)
+        {
+            if (MasMenosTxt.Text == "+")
+            {
+                MasMenosTxt.Text = "-";
+            }
+            else
+            {
+                MasMenosTxt.Text = "+";
             }
         }
     }

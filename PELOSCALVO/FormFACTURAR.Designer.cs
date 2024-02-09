@@ -194,6 +194,7 @@ namespace PELOSCALVO
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsClientes = new PELOSCALVO.DsClientes();
             this.Btn_Iva = new System.Windows.Forms.Button();
+            this.MasMenosTxt = new System.Windows.Forms.Label();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -1947,7 +1948,18 @@ namespace PELOSCALVO
             this.Btn_Iva.TabIndex = 56;
             this.Btn_Iva.Text = " ++**++";
             this.Btn_Iva.UseVisualStyleBackColor = true;
+            this.Btn_Iva.Visible = false;
             this.Btn_Iva.Click += new System.EventHandler(this.Btn_Iva_Click);
+            // 
+            // MasMenosTxt
+            // 
+            this.MasMenosTxt.AutoSize = true;
+            this.MasMenosTxt.Location = new System.Drawing.Point(892, 589);
+            this.MasMenosTxt.Name = "MasMenosTxt";
+            this.MasMenosTxt.Size = new System.Drawing.Size(13, 13);
+            this.MasMenosTxt.TabIndex = 57;
+            this.MasMenosTxt.Text = "+";
+            this.MasMenosTxt.Click += new System.EventHandler(this.MasMenosTxt_Click);
             // 
             // FormFacturar
             // 
@@ -1956,6 +1968,7 @@ namespace PELOSCALVO
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1319, 712);
+            this.Controls.Add(this.MasMenosTxt);
             this.Controls.Add(this.Btn_Iva);
             this.Controls.Add(this.TotalFactura2);
             this.Controls.Add(this.panelTotales);
@@ -2135,5 +2148,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoDetalleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.Button Btn_Iva;
+        private System.Windows.Forms.Label MasMenosTxt;
     }
 }

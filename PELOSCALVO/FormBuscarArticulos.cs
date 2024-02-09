@@ -777,63 +777,63 @@ namespace PELOSCALVO
 
             int Ancho = Convert.ToInt32(this.Anchotext.Text);
             int Alto = Convert.ToInt32(this.AltoText.Text);
-            if (this.ListOpcion.SelectedIndex == 0)
+            try
             {
-                Image imagenCodigo = null;
-                int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
-                BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
-                Barcode codigo = new Barcode();
-                if (this.FormatoText.SelectedIndex == 4)
+                if (this.ListOpcion.SelectedIndex == 0)
                 {
-                    foreach (ListViewItem item2 in this.ListCodigos.Items)
+                    Image imagenCodigo = null;
+                    int indice = (this.ListaQr.SelectedItem as OpcionCombo).Valor;
+                    BarcodeLib.TYPE tipoCodigo = (BarcodeLib.TYPE)indice;
+                    Barcode codigo = new Barcode();
+
+                    e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos + 40, 6);
+                    for (int i = ClasDatos.count; i <= this.ListCodigos.Items.Count; i++)
                     {
-                        imagenCodigo = codigo.Encode(tipoCodigo, item2.SubItems[1].Text, Color.Black, Color.White, Ancho, Alto);
+                        // ClasDatos.count
+                        imagenCodigo = codigo.Encode(tipoCodigo, ListCodigos.Items[1].SubItems[i].Text, Color.Black, Color.White, Ancho, Alto);
                         codigo.Alignment = AlignmentPositions.CENTER;
                         codigo.IncludeLabel = true;
-                       // Opcionimagen ImagenPdf = new Opcionimagen();
-                       // ImagenPdf.Valor = imagenCodigo;
-                      //  FormBuscarArticulos.listas.lista.Add(ImagenPdf);
-
+                        e.Graphics.DrawImage(imagenCodigo, new Point(0, Dato1));
+                        ClasDatos.count++;
+                        //  Dato1 = Dato1 + FormBuscarArticulos.listas.lista[1].Valor.Height + 14;
                     }
+
+                    // Si = true        ClasDatos.count = ClasDatos.count + 40;
+
+                    e.HasMorePages = ClasDatos.count < this.ListCodigos.Items.Count;
+                    // e.HasMorePages = false;
+                    // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
+
+
                 }
                 else
                 {
-                  //  imagenCodigo = codigo.Encode(tipoCodigo, this.TituloText.Text.Trim(), Color.Black, Color.White, Ancho, Alto);
-                  //  codigo.Alignment = AlignmentPositions.CENTER;
-                   // codigo.IncludeLabel = true;
-                   // codigo.LabelPosition = LabelPositions.BOTTOMCENTER;
-                }
-
-            }
-            else
-            {
-                Bitmap bm = null;
-                int indice2 = this.ListaQr2.SelectedIndex + 1;
-                int Nvi = 2;
-                if (indice2 > 2)
-                {
-                    foreach (string item in this.ListaQr2.Items)
+                    Bitmap bm = null;
+                    int indice2 = this.ListaQr2.SelectedIndex + 1;
+                    int Nvi = 2;
+                    if (indice2 > 2)
                     {
-                        if (item.ToString() == this.ListaQr2.SelectedItem.ToString())
+                        foreach (string item in this.ListaQr2.Items)
                         {
-                            break;
+                            if (item.ToString() == this.ListaQr2.SelectedItem.ToString())
+                            {
+                                break;
+                            }
+                            Nvi = Nvi * 2;
                         }
-                        Nvi = Nvi * 2;
+                        indice2 = Nvi / 2;
                     }
-                    indice2 = Nvi / 2;
-                }
-                // int indice = (this.ListaQr2.SelectedItem as OpcionCombo2).Valor;
-                BarcodeWriter br = new BarcodeWriter();
-                BarcodeFormat FormatoBr = (BarcodeFormat)indice2;
-                br.Format = FormatoBr;
-                if (this.FormatoText.SelectedIndex == 4)
-                {
-                   // ListViewItem  Item2  = this.ListCodigos;
+                    // int indice = (this.ListaQr2.SelectedItem as OpcionCombo2).Valor;
+                    BarcodeWriter br = new BarcodeWriter();
+                    BarcodeFormat FormatoBr = (BarcodeFormat)indice2;
+                    br.Format = FormatoBr;
+
+                    // ListViewItem  Item2  = this.ListCodigos;
                     e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos + 40, 6);
-                    foreach (ListViewItem item2 in this.ListCodigos.Items)
+                    for (int i = ClasDatos.count; i <= this.ListCodigos.Items.Count; i++)
                     {
-                      //  item2.Index = ClasDatos.count;
-                        bm = new Bitmap(br.Write(item2.SubItems[1].Text), Ancho, Alto);
+                        //  item2.Index = ClasDatos.count;
+                        bm = new Bitmap(br.Write(ListCodigos.Items[1].SubItems[i].Text), Ancho, Alto);
                         e.Graphics.DrawImage(bm, new Point(0, Dato1));
                         // BB = BB + item.Valor.Height + 14;
                         Dato1 = Dato1 + bm.Height + 14;
@@ -847,42 +847,16 @@ namespace PELOSCALVO
                             e.HasMorePages = false;
                         }
                     }
-                    foreach (ListViewItem item2 in this.ListCodigos.Items)
-                    {
-                       //  bm = new Bitmap(br.Write(item2.SubItems[1].Text), Ancho, Alto);
-                      //  Opcionimagen ImagenPdf = new Opcionimagen();
-                      //  ImagenPdf.Valor = bm;
-                      //  FormBuscarArticulos.listas.lista.Add(ImagenPdf);
-                    }
+    
+
                 }
-
-
-            }
-            try
-            {
-               // e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos + 40, 6);
-                for (int i = ClasDatos.count; i <= this.ListCodigos.Items.Count; i++)
-                {
-                    // ClasDatos.count
-                    ;
-                 //   e.Graphics.DrawImage(FormBuscarArticulos.listas.lista[i].Valor, new Point(0, Dato1));
-                    // BB = BB + item.Valor.Height + 14;
-                 //  Dato1 = Dato1 + FormBuscarArticulos.listas.lista[1].Valor.Height + 14;
-                }
-
-                // Si = true        ClasDatos.count = ClasDatos.count + 40;
-
-               // e.HasMorePages = ClasDatos.count >= e.PageBounds.Bottom;
-                // e.HasMorePages = false;
-                // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ERROR PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERROR IMPRIMIR PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
+ 
         }
         private void MenuListaClick(object sender, ToolStripItemClickedEventArgs e)
         {
