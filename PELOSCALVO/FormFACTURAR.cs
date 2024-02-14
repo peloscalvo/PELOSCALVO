@@ -541,7 +541,7 @@ namespace PELOSCALVO
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@TipoNOTA", string.IsNullOrEmpty(this.TipoNota.Text) ? (object)DBNull.Value : this.TipoNota.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(EnlaceDtconfi.ToString()) ? (object)DBNull.Value : EnlaceDtconfi);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieFatu.Text) ? (object)DBNull.Value : this.SerieFatu.Text);
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
                     if (this.cobradaFacturaCheckBox.Checked)
@@ -814,7 +814,7 @@ namespace PELOSCALVO
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@TipoNOTA", string.IsNullOrEmpty(this.TipoNota.Text) ? (object)DBNull.Value : this.TipoNota.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@Obra_factu", string.IsNullOrEmpty(this.obrasComboBox.Text) ? (object)DBNull.Value : this.obrasComboBox.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EjercicioTipo", string.IsNullOrEmpty(Id_Ejercicio.ToString()) ? (object)DBNull.Value : Id_Ejercicio);
-                NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieText.Text) ? (object)DBNull.Value : this.SerieText.Text);
+                NuevaConexion.ComandoSql.Parameters.AddWithValue("@SerieTipo", string.IsNullOrEmpty(this.SerieFatu.Text) ? (object)DBNull.Value : this.SerieFatu.Text);
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@EmpresaEnlace", string.IsNullOrEmpty(this.Id_Empresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_Empresa.Text));
                 NuevaConexion.ComandoSql.Parameters.AddWithValue("@FechaFactura", string.IsNullOrEmpty(this.FechaFactura.Text) ? (object)DBNull.Value : this.FechaFactura.Text);
 
@@ -1105,36 +1105,8 @@ namespace PELOSCALVO
 
                         }
                     }
-                    // Salto_Atras:
-                    Random r = new Random();
-                    VALOR_MAS = r.Next(5, 10000);
-                    //  this.EnlaceFactu.Text = this.Id_Empresa.Text + "/" + this.ejerciciosDeAñoComboBox.Text + "/" + this.SerieText.Text + VALORid + " / " + VALOR_MAS;
-                    this.FechaFactura.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
-                    this.dtNuevaFacturaDataGridView.Rows[this.dtNuevaFacturaDataGridView.Rows.Count - 1].Selected = true;
-                    // this.dtNuevaFacturaDataGridView.UseWaitCursor = true;
 
 
-                    //  this.dtNuevaFacturaBindingSource.EndEdit();
-
-                    if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
-                    {
-                        if (FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"].ToString() != string.Empty)
-                        {
-                            this.ProvinciaTxt.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"].ToString();
-                        }
-                        if (FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString() != string.Empty)
-                        {
-                            this.PaisFatuTxt.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString();
-                        }
-                    }
-                    if (this.AlmacenTxt.Items.Count > 0)
-                    {
-                        this.AlmacenTxt.SelectedIndex = 0;
-                    }
-                    if (this.obrasComboBox.Items.Count > 0)
-                    {
-                        this.obrasComboBox.SelectedIndex = 0;
-                    }
                     ModificarOjetosFatu();
                     BORRARerrores();
                     Int32 Id_Enlace = 0;
@@ -1211,6 +1183,30 @@ namespace PELOSCALVO
                         this.EnlaceFactu.Text = "1";
 
                     }
+
+                    this.FechaFactura.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now);
+                    this.dtNuevaFacturaDataGridView.Rows[this.dtNuevaFacturaDataGridView.Rows.Count - 1].Selected = true;
+
+                    if (FormMenuPrincipal.menu2principal.dsMultidatos.DtInicioMulti.Count > 0)
+                    {
+                        if (FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"].ToString() != string.Empty)
+                        {
+                            this.ProvinciaTxt.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SerieProvinciaInicio"].ToString();
+                        }
+                        if (FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString() != string.Empty)
+                        {
+                            this.PaisFatuTxt.Text = FormMenuPrincipal.menu2principal.dsMultidatos.Tables["DtInicioMulti"].Rows[0]["SeriePaisInicio"].ToString();
+                        }
+                    }
+                    if (this.AlmacenTxt.Items.Count > 0)
+                    {
+                        this.AlmacenTxt.SelectedIndex = 0;
+                    }
+                    if (this.obrasComboBox.Items.Count > 0)
+                    {
+                        this.obrasComboBox.SelectedIndex = 0;
+                    }
+                    SerieFatu.Text = SerieText.Text;
                 }
                 this.RazonSocialFatu.Focus();
 
@@ -3332,9 +3328,10 @@ namespace PELOSCALVO
                     // this.dtDetallesFacturaBindingSource.Insert(Fila, this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value.ToString());
                     //dtDetallesFacturaDataGridView.Rows.Insert(0, dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value );
                     // borrar(int.Parse(id));
-                    DataGridViewRow row = this.dtDetallesFacturaDataGridView.CurrentRow;
+                    DataTable Dt2 = (DataTable) this.dtDetallesFacturaDataGridView.DataSource;
                     // this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
-                    this.dtDetallesFacturaDataGridView.Rows.Insert(Fila, row);
+                    DataRow row = Dt2.NewRow();
+                    this.dtDetallesFacturaBindingSource.Insert(Fila, row);
                 }
                 if (NombreItem.Contains("Lineablanco"))
                 {

@@ -108,7 +108,7 @@ namespace PELOSCALVO
             this.BtnCancelarCliente.Enabled = true;
             this.dtClientesDataGridView.Enabled = false;
             this.panelCuenta.Enabled = true;
-            foreach (Control ctrl in this.tabPage1Clientes.Controls)
+            foreach (Control ctrl in this.PageCliente1.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -116,7 +116,7 @@ namespace PELOSCALVO
 
                 }
             }
-            foreach (Control ctrl in this.tabPage2Clientes.Controls)
+            foreach (Control ctrl in this.PageCliente2.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -124,7 +124,7 @@ namespace PELOSCALVO
 
                 }
             }
-            foreach (Control ctrl in this.tabPage2Clientes.Controls)
+            foreach (Control ctrl in this.PageCliente2.Controls)
             {
                 if (ctrl is ComboBox)
                 {
@@ -133,7 +133,7 @@ namespace PELOSCALVO
                 }
             }
 
-            foreach (Control ctrl in this.tabDatos2.Controls)
+            foreach (Control ctrl in this.PageCliente3.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -141,7 +141,7 @@ namespace PELOSCALVO
                 }
             }
             this.panelCuenta.Enabled = true;
-            foreach (Control ctrl in this.tabDatos2.Controls)
+            foreach (Control ctrl in this.PageCliente3.Controls)
             {
                 if (ctrl is ComboBox)
                 {
@@ -154,7 +154,7 @@ namespace PELOSCALVO
         private void RestaurarControlesForm()
         {
             this.dtClientesDataGridView.Refresh();
-            foreach (Control ctrl in this.tabPage1Clientes.Controls)
+            foreach (Control ctrl in this.PageCliente1.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -162,7 +162,7 @@ namespace PELOSCALVO
 
                 }
             }
-            foreach (Control ctrl in this.tabPage2Clientes.Controls)
+            foreach (Control ctrl in this.PageCliente2.Controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -170,7 +170,7 @@ namespace PELOSCALVO
 
                 }
             }
-            foreach (Control ctrl in this.tabPage2Clientes.Controls)
+            foreach (Control ctrl in this.PageCliente2.Controls)
             {
                 if (ctrl is ComboBox)
                 {
@@ -178,14 +178,14 @@ namespace PELOSCALVO
 
                 }
             }
-            foreach (Control ctrl in this.tabDatos2.Controls)
+            foreach (Control ctrl in this.PageCliente3.Controls)
             {
                 if (ctrl is TextBox)
                 {
                     ctrl.Enabled = false;
                 }
             }
-            foreach (Control ctrl in this.tabDatos2.Controls)
+            foreach (Control ctrl in this.PageCliente3.Controls)
             {
                 if (ctrl is ComboBox)
                 {
@@ -208,7 +208,7 @@ namespace PELOSCALVO
         }
         private void CargarCliente()
         {
-            foreach (Control Texbox2 in tabPage1Clientes.Controls)
+            foreach (Control Texbox2 in PageCliente1.Controls)
             {
                 if (Texbox2 is TextBox | Texbox2 is ComboBox)
                 {
@@ -217,7 +217,7 @@ namespace PELOSCALVO
                 }
 
             }
-            foreach (Control Texbox2 in tabPage2Clientes.Controls)
+            foreach (Control Texbox2 in PageCliente2.Controls)
             {
                 if (Texbox2 is TextBox | Texbox2 is ComboBox)
                 {
@@ -226,7 +226,7 @@ namespace PELOSCALVO
                 }
 
             }
-            foreach (Control Texbox2 in tabDatos2.Controls)
+            foreach (Control Texbox2 in PageCliente3.Controls)
             {
                 if (Texbox2 is TextBox | Texbox2 is ComboBox)
                 {
@@ -874,10 +874,11 @@ namespace PELOSCALVO
                         this.paisClienteComboBox1.Text = "España";
                     }
                 }
+                PageCliente2.Focus();
                 TipoDocumento.Text = "DNI";
                 TipoTarifa.Text = "Pvp1";
                 PortesTxt.Text = "Portes Pagados";
-                TipoCliente.Text = "Particular";
+               TipoCliente.Text = "Particular";
                 ModificarControlesForm();
                 BORRARerrores();
             }

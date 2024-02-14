@@ -87,6 +87,7 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label label2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFacturar));
             this.dtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsFacturas = new PELOSCALVO.DsFacturas();
@@ -195,6 +196,7 @@ namespace PELOSCALVO
             this.dsClientes = new PELOSCALVO.DsClientes();
             this.Btn_Iva = new System.Windows.Forms.Button();
             this.MasMenosTxt = new System.Windows.Forms.Label();
+            this.SerieFatu = new System.Windows.Forms.TextBox();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -225,6 +227,7 @@ namespace PELOSCALVO
             proveedoresLabel = new System.Windows.Forms.Label();
             nombreEmpresaReguistroLabel = new System.Windows.Forms.Label();
             Label11 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtNuevaFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsFacturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtConfiBindingSource)).BeginInit();
@@ -281,16 +284,16 @@ namespace PELOSCALVO
             // numeroFacturaLabel
             // 
             numeroFacturaLabel.AutoSize = true;
-            numeroFacturaLabel.Location = new System.Drawing.Point(44, 40);
+            numeroFacturaLabel.Location = new System.Drawing.Point(35, 64);
             numeroFacturaLabel.Name = "numeroFacturaLabel";
-            numeroFacturaLabel.Size = new System.Drawing.Size(44, 13);
+            numeroFacturaLabel.Size = new System.Drawing.Size(47, 13);
             numeroFacturaLabel.TabIndex = 0;
-            numeroFacturaLabel.Text = "Numero";
+            numeroFacturaLabel.Text = "Numero:";
             // 
             // apodoLabel
             // 
             apodoLabel.AutoSize = true;
-            apodoLabel.Location = new System.Drawing.Point(15, 70);
+            apodoLabel.Location = new System.Drawing.Point(9, 96);
             apodoLabel.Name = "apodoLabel";
             apodoLabel.Size = new System.Drawing.Size(73, 13);
             apodoLabel.TabIndex = 2;
@@ -299,7 +302,7 @@ namespace PELOSCALVO
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(41, 102);
+            nombreLabel.Location = new System.Drawing.Point(35, 128);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(47, 13);
             nombreLabel.TabIndex = 4;
@@ -308,7 +311,7 @@ namespace PELOSCALVO
             // direccionLabel
             // 
             direccionLabel.AutoSize = true;
-            direccionLabel.Location = new System.Drawing.Point(33, 128);
+            direccionLabel.Location = new System.Drawing.Point(27, 154);
             direccionLabel.Name = "direccionLabel";
             direccionLabel.Size = new System.Drawing.Size(55, 13);
             direccionLabel.TabIndex = 6;
@@ -317,7 +320,7 @@ namespace PELOSCALVO
             // calleLabel
             // 
             calleLabel.AutoSize = true;
-            calleLabel.Location = new System.Drawing.Point(55, 154);
+            calleLabel.Location = new System.Drawing.Point(49, 180);
             calleLabel.Name = "calleLabel";
             calleLabel.Size = new System.Drawing.Size(33, 13);
             calleLabel.TabIndex = 8;
@@ -326,7 +329,7 @@ namespace PELOSCALVO
             // numeroCalleLabel
             // 
             numeroCalleLabel.AutoSize = true;
-            numeroCalleLabel.Location = new System.Drawing.Point(15, 183);
+            numeroCalleLabel.Location = new System.Drawing.Point(229, 180);
             numeroCalleLabel.Name = "numeroCalleLabel";
             numeroCalleLabel.Size = new System.Drawing.Size(73, 13);
             numeroCalleLabel.TabIndex = 10;
@@ -344,7 +347,7 @@ namespace PELOSCALVO
             // localidadLabel
             // 
             localidadLabel.AutoSize = true;
-            localidadLabel.Location = new System.Drawing.Point(454, 99);
+            localidadLabel.Location = new System.Drawing.Point(494, 98);
             localidadLabel.Name = "localidadLabel";
             localidadLabel.Size = new System.Drawing.Size(56, 13);
             localidadLabel.TabIndex = 14;
@@ -353,7 +356,7 @@ namespace PELOSCALVO
             // provinciaLabel
             // 
             provinciaLabel.AutoSize = true;
-            provinciaLabel.Location = new System.Drawing.Point(456, 125);
+            provinciaLabel.Location = new System.Drawing.Point(496, 124);
             provinciaLabel.Name = "provinciaLabel";
             provinciaLabel.Size = new System.Drawing.Size(54, 13);
             provinciaLabel.TabIndex = 16;
@@ -455,7 +458,7 @@ namespace PELOSCALVO
             // pais_FactLabel
             // 
             pais_FactLabel.AutoSize = true;
-            pais_FactLabel.Location = new System.Drawing.Point(480, 153);
+            pais_FactLabel.Location = new System.Drawing.Point(520, 152);
             pais_FactLabel.Name = "pais_FactLabel";
             pais_FactLabel.Size = new System.Drawing.Size(30, 13);
             pais_FactLabel.TabIndex = 27;
@@ -529,7 +532,7 @@ namespace PELOSCALVO
             // proveedoresLabel
             // 
             proveedoresLabel.AutoSize = true;
-            proveedoresLabel.Location = new System.Drawing.Point(409, 180);
+            proveedoresLabel.Location = new System.Drawing.Point(449, 179);
             proveedoresLabel.Name = "proveedoresLabel";
             proveedoresLabel.Size = new System.Drawing.Size(101, 13);
             proveedoresLabel.TabIndex = 71;
@@ -547,7 +550,7 @@ namespace PELOSCALVO
             // Label11
             // 
             Label11.AutoSize = true;
-            Label11.Location = new System.Drawing.Point(33, 10);
+            Label11.Location = new System.Drawing.Point(27, 14);
             Label11.Name = "Label11";
             Label11.Size = new System.Drawing.Size(19, 13);
             Label11.TabIndex = 72;
@@ -680,6 +683,8 @@ namespace PELOSCALVO
             // tabPage1Factura
             // 
             this.tabPage1Factura.AutoScroll = true;
+            this.tabPage1Factura.Controls.Add(label2);
+            this.tabPage1Factura.Controls.Add(this.SerieFatu);
             this.tabPage1Factura.Controls.Add(this.BtnBuscarPais);
             this.tabPage1Factura.Controls.Add(this.BtnBuscarProvi);
             this.tabPage1Factura.Controls.Add(Label11);
@@ -731,7 +736,7 @@ namespace PELOSCALVO
             // 
             this.BtnBuscarPais.Enabled = false;
             this.BtnBuscarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
-            this.BtnBuscarPais.Location = new System.Drawing.Point(777, 154);
+            this.BtnBuscarPais.Location = new System.Drawing.Point(817, 153);
             this.BtnBuscarPais.Name = "BtnBuscarPais";
             this.BtnBuscarPais.Size = new System.Drawing.Size(39, 23);
             this.BtnBuscarPais.TabIndex = 75;
@@ -742,7 +747,7 @@ namespace PELOSCALVO
             // 
             this.BtnBuscarProvi.Enabled = false;
             this.BtnBuscarProvi.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
-            this.BtnBuscarProvi.Location = new System.Drawing.Point(777, 120);
+            this.BtnBuscarProvi.Location = new System.Drawing.Point(817, 119);
             this.BtnBuscarProvi.Name = "BtnBuscarProvi";
             this.BtnBuscarProvi.Size = new System.Drawing.Size(39, 23);
             this.BtnBuscarProvi.TabIndex = 74;
@@ -753,7 +758,7 @@ namespace PELOSCALVO
             // 
             this.EnlaceFactu.AutoSize = true;
             this.EnlaceFactu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "EnlaceFactura", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.EnlaceFactu.Location = new System.Drawing.Point(91, 10);
+            this.EnlaceFactu.Location = new System.Drawing.Point(85, 14);
             this.EnlaceFactu.Name = "EnlaceFactu";
             this.EnlaceFactu.Size = new System.Drawing.Size(0, 13);
             this.EnlaceFactu.TabIndex = 73;
@@ -764,7 +769,7 @@ namespace PELOSCALVO
             this.ProveedorTxt.DataSource = this.dtConfiguracionPrincipalDtProveedoresBindingSource;
             this.ProveedorTxt.DisplayMember = "Proveedores";
             this.ProveedorTxt.FormattingEnabled = true;
-            this.ProveedorTxt.Location = new System.Drawing.Point(514, 177);
+            this.ProveedorTxt.Location = new System.Drawing.Point(554, 176);
             this.ProveedorTxt.MaxLength = 60;
             this.ProveedorTxt.Name = "ProveedorTxt";
             this.ProveedorTxt.Size = new System.Drawing.Size(257, 21);
@@ -818,7 +823,7 @@ namespace PELOSCALVO
             // 
             this.BtnBuscarClientesFact.Enabled = false;
             this.BtnBuscarClientesFact.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
-            this.BtnBuscarClientesFact.Location = new System.Drawing.Point(368, 67);
+            this.BtnBuscarClientesFact.Location = new System.Drawing.Point(362, 93);
             this.BtnBuscarClientesFact.Name = "BtnBuscarClientesFact";
             this.BtnBuscarClientesFact.Size = new System.Drawing.Size(39, 23);
             this.BtnBuscarClientesFact.TabIndex = 69;
@@ -832,7 +837,7 @@ namespace PELOSCALVO
             this.PaisFatuTxt.DisplayMember = "Paises";
             this.PaisFatuTxt.Enabled = false;
             this.PaisFatuTxt.FormattingEnabled = true;
-            this.PaisFatuTxt.Location = new System.Drawing.Point(514, 150);
+            this.PaisFatuTxt.Location = new System.Drawing.Point(554, 149);
             this.PaisFatuTxt.MaxLength = 60;
             this.PaisFatuTxt.Name = "PaisFatuTxt";
             this.PaisFatuTxt.Size = new System.Drawing.Size(257, 21);
@@ -876,7 +881,7 @@ namespace PELOSCALVO
             // 
             this.NumeroFactura.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NumeroFactura", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.NumeroFactura.Enabled = false;
-            this.NumeroFactura.Location = new System.Drawing.Point(94, 38);
+            this.NumeroFactura.Location = new System.Drawing.Point(88, 64);
             this.NumeroFactura.Name = "NumeroFactura";
             this.NumeroFactura.Size = new System.Drawing.Size(203, 20);
             this.NumeroFactura.TabIndex = 1;
@@ -886,7 +891,7 @@ namespace PELOSCALVO
             this.RazonSocialFatu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.RazonSocialFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Apodo", true));
             this.RazonSocialFatu.Enabled = false;
-            this.RazonSocialFatu.Location = new System.Drawing.Point(94, 67);
+            this.RazonSocialFatu.Location = new System.Drawing.Point(88, 93);
             this.RazonSocialFatu.MaxLength = 34;
             this.RazonSocialFatu.Name = "RazonSocialFatu";
             this.RazonSocialFatu.Size = new System.Drawing.Size(253, 20);
@@ -896,7 +901,7 @@ namespace PELOSCALVO
             // 
             this.NombreClienteFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Nombre", true));
             this.NombreClienteFatu.Enabled = false;
-            this.NombreClienteFatu.Location = new System.Drawing.Point(94, 99);
+            this.NombreClienteFatu.Location = new System.Drawing.Point(88, 125);
             this.NombreClienteFatu.MaxLength = 50;
             this.NombreClienteFatu.Name = "NombreClienteFatu";
             this.NombreClienteFatu.Size = new System.Drawing.Size(333, 20);
@@ -906,7 +911,7 @@ namespace PELOSCALVO
             // 
             this.DirecionClienteFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Direccion", true));
             this.DirecionClienteFatu.Enabled = false;
-            this.DirecionClienteFatu.Location = new System.Drawing.Point(94, 125);
+            this.DirecionClienteFatu.Location = new System.Drawing.Point(88, 151);
             this.DirecionClienteFatu.MaxLength = 45;
             this.DirecionClienteFatu.Name = "DirecionClienteFatu";
             this.DirecionClienteFatu.Size = new System.Drawing.Size(313, 20);
@@ -916,7 +921,7 @@ namespace PELOSCALVO
             // 
             this.CalleTex.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Calle", true));
             this.CalleTex.Enabled = false;
-            this.CalleTex.Location = new System.Drawing.Point(94, 151);
+            this.CalleTex.Location = new System.Drawing.Point(88, 177);
             this.CalleTex.MaxLength = 24;
             this.CalleTex.Name = "CalleTex";
             this.CalleTex.Size = new System.Drawing.Size(121, 20);
@@ -926,7 +931,7 @@ namespace PELOSCALVO
             // 
             this.NumeroCalleTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "NumeroCalle", true));
             this.NumeroCalleTxt.Enabled = false;
-            this.NumeroCalleTxt.Location = new System.Drawing.Point(94, 180);
+            this.NumeroCalleTxt.Location = new System.Drawing.Point(308, 177);
             this.NumeroCalleTxt.MaxLength = 5;
             this.NumeroCalleTxt.Name = "NumeroCalleTxt";
             this.NumeroCalleTxt.Size = new System.Drawing.Size(121, 20);
@@ -947,7 +952,7 @@ namespace PELOSCALVO
             // 
             this.LocalidadTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Localidad", true));
             this.LocalidadTxt.Enabled = false;
-            this.LocalidadTxt.Location = new System.Drawing.Point(514, 96);
+            this.LocalidadTxt.Location = new System.Drawing.Point(554, 95);
             this.LocalidadTxt.MaxLength = 25;
             this.LocalidadTxt.Name = "LocalidadTxt";
             this.LocalidadTxt.Size = new System.Drawing.Size(257, 20);
@@ -960,7 +965,7 @@ namespace PELOSCALVO
             this.ProvinciaTxt.DisplayMember = "Provincias";
             this.ProvinciaTxt.Enabled = false;
             this.ProvinciaTxt.FormattingEnabled = true;
-            this.ProvinciaTxt.Location = new System.Drawing.Point(514, 122);
+            this.ProvinciaTxt.Location = new System.Drawing.Point(554, 121);
             this.ProvinciaTxt.MaxLength = 60;
             this.ProvinciaTxt.Name = "ProvinciaTxt";
             this.ProvinciaTxt.Size = new System.Drawing.Size(257, 21);
@@ -1961,6 +1966,24 @@ namespace PELOSCALVO
             this.MasMenosTxt.Text = "+";
             this.MasMenosTxt.Click += new System.EventHandler(this.MasMenosTxt_Click);
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(48, 40);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(34, 13);
+            label2.TabIndex = 76;
+            label2.Text = "Serie:";
+            // 
+            // SerieFatu
+            // 
+            this.SerieFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "SerieTipo", true));
+            this.SerieFatu.Enabled = false;
+            this.SerieFatu.Location = new System.Drawing.Point(88, 38);
+            this.SerieFatu.Name = "SerieFatu";
+            this.SerieFatu.Size = new System.Drawing.Size(49, 20);
+            this.SerieFatu.TabIndex = 77;
+            // 
             // FormFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2149,5 +2172,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.Button Btn_Iva;
         private System.Windows.Forms.Label MasMenosTxt;
+        public System.Windows.Forms.TextBox SerieFatu;
     }
 }
