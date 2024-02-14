@@ -60,6 +60,7 @@ namespace PELOSCALVO
             System.Windows.Forms.Label proveedoresLabel;
             System.Windows.Forms.Label nombreEmpresaReguistroLabel;
             System.Windows.Forms.Label Label11;
+            System.Windows.Forms.Label label2;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -87,7 +88,6 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Label label2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFacturar));
             this.dtNuevaFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsFacturas = new PELOSCALVO.DsFacturas();
@@ -103,6 +103,7 @@ namespace PELOSCALVO
             this.Id_Empresa = new System.Windows.Forms.Label();
             this.dtConfiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage1Factura = new System.Windows.Forms.TabPage();
+            this.SerieFatu = new System.Windows.Forms.TextBox();
             this.BtnBuscarPais = new System.Windows.Forms.Button();
             this.BtnBuscarProvi = new System.Windows.Forms.Button();
             this.EnlaceFactu = new System.Windows.Forms.Label();
@@ -196,7 +197,6 @@ namespace PELOSCALVO
             this.dsClientes = new PELOSCALVO.DsClientes();
             this.Btn_Iva = new System.Windows.Forms.Button();
             this.MasMenosTxt = new System.Windows.Forms.Label();
-            this.SerieFatu = new System.Windows.Forms.TextBox();
             empresaENLACELabel = new System.Windows.Forms.Label();
             numeroFacturaLabel = new System.Windows.Forms.Label();
             apodoLabel = new System.Windows.Forms.Label();
@@ -556,6 +556,15 @@ namespace PELOSCALVO
             Label11.TabIndex = 72;
             Label11.Text = "Id:";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(48, 40);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(34, 13);
+            label2.TabIndex = 76;
+            label2.Text = "Serie:";
+            // 
             // dtNuevaFacturaBindingSource
             // 
             this.dtNuevaFacturaBindingSource.DataMember = "DtNuevaFactura";
@@ -732,6 +741,15 @@ namespace PELOSCALVO
             this.tabPage1Factura.UseVisualStyleBackColor = true;
             this.tabPage1Factura.MouseEnter += new System.EventHandler(this.TabPage1_MouseEnter);
             // 
+            // SerieFatu
+            // 
+            this.SerieFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "SerieTipo", true));
+            this.SerieFatu.Enabled = false;
+            this.SerieFatu.Location = new System.Drawing.Point(88, 38);
+            this.SerieFatu.Name = "SerieFatu";
+            this.SerieFatu.Size = new System.Drawing.Size(49, 20);
+            this.SerieFatu.TabIndex = 77;
+            // 
             // BtnBuscarPais
             // 
             this.BtnBuscarPais.Enabled = false;
@@ -885,6 +903,7 @@ namespace PELOSCALVO
             this.NumeroFactura.Name = "NumeroFactura";
             this.NumeroFactura.Size = new System.Drawing.Size(203, 20);
             this.NumeroFactura.TabIndex = 1;
+            this.NumeroFactura.TextChanged += new System.EventHandler(this.NumeroFactura_TextChanged);
             // 
             // RazonSocialFatu
             // 
@@ -1965,24 +1984,6 @@ namespace PELOSCALVO
             this.MasMenosTxt.TabIndex = 57;
             this.MasMenosTxt.Text = "+";
             this.MasMenosTxt.Click += new System.EventHandler(this.MasMenosTxt_Click);
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(48, 40);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(34, 13);
-            label2.TabIndex = 76;
-            label2.Text = "Serie:";
-            // 
-            // SerieFatu
-            // 
-            this.SerieFatu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "SerieTipo", true));
-            this.SerieFatu.Enabled = false;
-            this.SerieFatu.Location = new System.Drawing.Point(88, 38);
-            this.SerieFatu.Name = "SerieFatu";
-            this.SerieFatu.Size = new System.Drawing.Size(49, 20);
-            this.SerieFatu.TabIndex = 77;
             // 
             // FormFacturar
             // 
