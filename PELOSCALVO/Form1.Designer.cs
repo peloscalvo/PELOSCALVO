@@ -35,13 +35,14 @@ namespace PELOSCALVO
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Pass");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fafdasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.USER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Passs = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Ccc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fafdasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +63,20 @@ namespace PELOSCALVO
             this.menuStrip.TabIndex = 46;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
+            // 
+            // nuevoToolStripMenuItem
+            // 
+            this.nuevoToolStripMenuItem.AutoSize = false;
+            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
+            this.nuevoToolStripMenuItem.Text = "&Nuevo";
+            // 
+            // fafdasToolStripMenuItem
+            // 
+            this.fafdasToolStripMenuItem.AutoSize = false;
+            this.fafdasToolStripMenuItem.Name = "fafdasToolStripMenuItem";
+            this.fafdasToolStripMenuItem.Size = new System.Drawing.Size(105, 19);
+            this.fafdasToolStripMenuItem.Text = "fafdas";
             // 
             // listView1
             // 
@@ -112,31 +127,29 @@ namespace PELOSCALVO
             this.Ccc.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Ccc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // nuevoToolStripMenuItem
+            // button1
             // 
-            this.nuevoToolStripMenuItem.AutoSize = false;
-            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
-            this.nuevoToolStripMenuItem.Text = "&Nuevo";
-            // 
-            // fafdasToolStripMenuItem
-            // 
-            this.fafdasToolStripMenuItem.AutoSize = false;
-            this.fafdasToolStripMenuItem.Name = "fafdasToolStripMenuItem";
-            this.fafdasToolStripMenuItem.Size = new System.Drawing.Size(105, 19);
-            this.fafdasToolStripMenuItem.Text = "fafdas";
+            this.button1.Location = new System.Drawing.Point(518, 89);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 49;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 504);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -154,5 +167,6 @@ namespace PELOSCALVO
         private System.Windows.Forms.DataGridViewCheckBoxColumn Ccc;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fafdasToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }

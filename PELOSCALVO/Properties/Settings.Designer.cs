@@ -22,5 +22,17 @@ namespace PELOSCALVO.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ADMINISTRADORVICTOR")]
+        public string UserVictor {
+            get {
+                return ((string)(this["UserVictor"]));
+            }
+            set {
+                this["UserVictor"] = value;
+            }
+        }
     }
 }

@@ -136,7 +136,7 @@ namespace PELOSCALVO
 
                 if (ClasDatos.OkFacturar == true)
                 {
-
+                   // FormClientes.menu2CLIENTES2.CargarCliente(Convert.ToInt32(FormClientes.menu2CLIENTES2.dtClientesDataGridView.Rows[e.RowIndex].Cells[0]));
                     ClasDatos.ValorBuscado = Convert.ToInt32(e.RowIndex);
 
                     if (ClasDatos.ValorBuscado >= 0)

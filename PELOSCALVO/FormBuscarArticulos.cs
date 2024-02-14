@@ -267,9 +267,9 @@ namespace PELOSCALVO
                             if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
                             {
                                 lvi = this.ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
-                                if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
+                                if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString()))
                                 {
-                                    lvi.SubItems.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                                    lvi.SubItems.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString());
 
                                 }
 

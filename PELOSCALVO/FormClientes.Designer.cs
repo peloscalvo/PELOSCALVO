@@ -768,7 +768,6 @@ namespace PELOSCALVO
             this.PageCliente1.TabIndex = 0;
             this.PageCliente1.Text = "General";
             this.PageCliente1.UseVisualStyleBackColor = true;
-            // 
             // Id_Clientes
             // 
             this.Id_Clientes.AutoSize = true;
@@ -879,7 +878,6 @@ namespace PELOSCALVO
             this.dniClienteTextBox.Size = new System.Drawing.Size(163, 20);
             this.dniClienteTextBox.TabIndex = 6;
             this.dniClienteTextBox.Click += new System.EventHandler(this.dniClienteTextBox_Click);
-            this.dniClienteTextBox.TextChanged += new System.EventHandler(this.dniClienteTextBox_TextChanged);
             this.dniClienteTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dniClienteTextBox_KeyPress);
             this.dniClienteTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dniClienteTextBox_Validating);
             // 

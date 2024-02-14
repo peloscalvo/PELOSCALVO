@@ -206,7 +206,7 @@ namespace PELOSCALVO
                 this.dtClientesDataGridView.Rows[0].Selected = true;
             }
         }
-        private void CargarCliente()
+        private void CargarCliente( int IdCliente)
         {
             foreach (Control Texbox2 in PageCliente1.Controls)
             {
@@ -237,11 +237,12 @@ namespace PELOSCALVO
             }
             FechaAltaCliente.Text = string.Empty;
             string Tabla = FormMenuPrincipal.menu2principal.InfoClientes.Text;
+          
             string ConsultaCli = "SELECT [Id],[APODOCLIEN],[NOMBRECLIE] ,[DIRECCIONC],[TELEFONOCL],[MOVILCLIEN]" +
                 ",[CORREOCLIE],[DNICLIENTE],[LOCALIDADC],[CODIGOPOST],[PAISCLIENT],[FECHAALTAC],[CALLECLIEN]" +
                 ",[NUMEROCALL],[PROVINCIAC],[TARIFATIPO],[TIPODNI],[TIPOCLIENT],[DESCUENTOC],[NUMEROCUEN]" +
                 ",[PORTES],[BANCOOFICI],[BANCOPROVI],[BANCODIREC],[BANCOLOCAL],[BANCOIBAN],[BANCOCODIG]" +
-                ",[BANCOENTID],[BANCOOFIC2],[BANCODC],[BANCON_CUE],[BAJA] FROM[" + Tabla + "]  WHERE Id=" + Convert.ToInt32(this.Id_Clientes.Text);
+                ",[BANCOENTID],[BANCOOFIC2],[BANCODC],[BANCON_CUE],[BAJA] FROM[" + Tabla + "]  WHERE Id=" + IdCliente;
 
             if (ClsConexionSql.SibaseDatosSql)
             {
@@ -902,7 +903,7 @@ namespace PELOSCALVO
                     }
                     else
                     {
-                        CargarCliente();
+                        CargarCliente(Convert.ToInt32(Id_Clientes.Text));
                     }
                 }
                 catch (Exception ex)
@@ -1297,10 +1298,7 @@ namespace PELOSCALVO
             }
         }
 
-        private void dniClienteTextBox_TextChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }
 

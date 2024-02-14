@@ -155,6 +155,7 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pruebaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedorPrincipal.SuspendLayout();
             this.PanelForms.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
@@ -502,7 +503,8 @@ namespace PELOSCALVO
             this.toolArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.verToolStripMenuItem,
             this.abrirPdfToolStripMenuItem,
-            this.editarModificarToolStripMenuItem});
+            this.editarModificarToolStripMenuItem,
+            this.pruebaToolStripMenuItem});
             this.toolArchivo.Name = "toolArchivo";
             this.toolArchivo.Size = new System.Drawing.Size(60, 20);
             this.toolArchivo.Text = "Archivo";
@@ -510,13 +512,13 @@ namespace PELOSCALVO
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verToolStripMenuItem.Text = "&Ver";
             // 
             // abrirPdfToolStripMenuItem
             // 
             this.abrirPdfToolStripMenuItem.Name = "abrirPdfToolStripMenuItem";
-            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.abrirPdfToolStripMenuItem.Text = "&Abrir P.d.f";
             // 
             // editarModificarToolStripMenuItem
@@ -524,7 +526,7 @@ namespace PELOSCALVO
             this.editarModificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.codigosDeBarrasToolStripMenuItem});
             this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
-            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
             // 
             // codigosDeBarrasToolStripMenuItem
@@ -549,28 +551,28 @@ namespace PELOSCALVO
             // empresasToolStripMenuItem
             // 
             this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
-            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.empresasToolStripMenuItem.Text = "Empresas";
             this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
             // 
             // crearEjercioNuevoToolStripMenuItem
             // 
             this.crearEjercioNuevoToolStripMenuItem.Name = "crearEjercioNuevoToolStripMenuItem";
-            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.crearEjercioNuevoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.crearEjercioNuevoToolStripMenuItem.Text = "Crear Ejercio Nuevo";
             this.crearEjercioNuevoToolStripMenuItem.Click += new System.EventHandler(this.crearEjercioNuevoToolStripMenuItem_Click);
             // 
             // consultaEmpresasToolStripMenuItem
             // 
             this.consultaEmpresasToolStripMenuItem.Name = "consultaEmpresasToolStripMenuItem";
-            this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultaEmpresasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.consultaEmpresasToolStripMenuItem.Text = "&Consulta Empresas";
             this.consultaEmpresasToolStripMenuItem.Click += new System.EventHandler(this.consultaEmpresasToolStripMenuItem_Click);
             // 
             // consultaEjerciciosToolStripMenuItem
             // 
             this.consultaEjerciciosToolStripMenuItem.Name = "consultaEjerciciosToolStripMenuItem";
-            this.consultaEjerciciosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultaEjerciciosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.consultaEjerciciosToolStripMenuItem.Text = "&Consulta Ejercicios";
             // 
             // toolDescuentos
@@ -615,7 +617,7 @@ namespace PELOSCALVO
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(121, 22);
             this.toolStripMenuItem2.Text = "&Consulta";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -1663,6 +1665,13 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
             // 
+            // pruebaToolStripMenuItem
+            // 
+            this.pruebaToolStripMenuItem.Name = "pruebaToolStripMenuItem";
+            this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pruebaToolStripMenuItem.Text = "Prueba";
+            this.pruebaToolStripMenuItem.Click += new System.EventHandler(this.pruebaToolStripMenuItem_Click);
+            // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1847,6 +1856,7 @@ namespace PELOSCALVO
         public System.Windows.Forms.PictureBox Conectado;
         public System.Windows.Forms.Label InfoConectado;
         private System.Windows.Forms.ToolStripMenuItem codigosDeBarrasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pruebaToolStripMenuItem;
     }
 }
 

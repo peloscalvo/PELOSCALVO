@@ -1071,6 +1071,16 @@ namespace PELOSCALVO
             frm.BringToFront();
         }
 
+        private void pruebaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 frm = new Form1();
+            frm.TopLevel = false;
+            //frm.WindowState = FormWindowState.Maximized;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
         private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormDatosInicio frm = new FormDatosInicio();
