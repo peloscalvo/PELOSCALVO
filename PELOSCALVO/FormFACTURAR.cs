@@ -2401,10 +2401,7 @@ namespace PELOSCALVO
                 {
                     e.KeyChar = ',';
                 }
-                if (e.KeyChar == (char)46)
-                {
-                    e.KeyChar = ',';
-                }
+
                 if (char.IsDigit(e.KeyChar))
                 {
                     e.Handled = false;
@@ -3328,10 +3325,19 @@ namespace PELOSCALVO
                     // this.dtDetallesFacturaBindingSource.Insert(Fila, this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value.ToString());
                     //dtDetallesFacturaDataGridView.Rows.Insert(0, dtDetallesFacturaDataGridView.Rows[Fila].Cells[2].Value );
                     // borrar(int.Parse(id));
-                    DataTable Dt2 = (DataTable) this.dtDetallesFacturaDataGridView.DataSource;
+                  //  DataTable Dt2 = (DataTable) this.dtDetallesFacturaBindingSource.DataSource;
                     // this.dtDetallesFacturaDataGridView.Rows.Add(Fila, row);
-                    DataRow row = Dt2.NewRow();
-                    this.dtDetallesFacturaBindingSource.Insert(Fila, row);
+                   // DataRow row = Dt2.NewRow();
+
+                    DataTable dt2 = new DataTable();
+                    dt2 = dtDetallesFacturaDataGridView.DataSource as DataTable;
+
+                    DataRow datarow;
+                    datarow = this. dsFacturas.DtDetallesFactura.NewRow(); //Con esto le indica que es una nueva fila.
+                    datarow["DescripccionDetalle"] = NumeroFactura.Text;
+                    //datarow["Direccion"] = Direcion.Text;
+                    dsFacturas.DtDetallesFactura.Rows.InsertAt(datarow, Fila);
+                  //  this.dtDetallesFacturaBindingSource.Insert(Fila, datarow);
                 }
                 if (NombreItem.Contains("Lineablanco"))
                 {
@@ -3348,15 +3354,26 @@ namespace PELOSCALVO
                     // NombreItem = NombreItem.Replace("EliminarLinea", "");
                     Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex;
                     // dtDetallesFacturaBindingSource.RemoveCurrent();
-                    this.dtDetallesFacturaDataGridView.Rows.RemoveAt(Fila);
+                   // this.dtDetallesFacturaDataGridView.Rows.RemoveAt(Fila);
+                    DataTable dt = dtDetallesFacturaDataGridView.DataSource as DataTable;
+                    dt.Rows.Add(new object[] {"222" });
                 }
                 if (NombreItem.Contains("DuplicarArticulo"))
                 {
                     NombreItem = NombreItem.Replace("DuplicarArticulo", "");
                     Fila = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex + 1;
-                    var row = this.dsFacturas.DtDetallesFactura.NewRow();
+                   // var row = this.dsFacturas.DtDetallesFactura.NewRow();
+                    DataTable dt = dtDetallesFacturaDataGridView.DataSource as DataTable;
+
+                    var row = dt.NewRow();
+                    row["DescripccionDetalle"] = NumeroFactura.Text;
+                   // row["Nombres"] = dgvr.Cells["Nombres"].Value;
+                    //resto
+                    dt.Rows.Add(row);
+
+                    dtDetallesFacturaDataGridView.DataSource = dt;
                     //this.dtDetallesFacturaBindingSource.Insert(Fila, row);
-                    this.dtDetallesFacturaDataGridView.Rows.Insert(Fila, row);
+                    this.dtDetallesFacturaBindingSource.Insert(Fila, row);
                     if (!string.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[3].Value.ToString()))
                     {
                         //  this.dtDetallesFacturaDataGridView.Rows[Fila + 1].Cells[3].Value = this.dtDetallesFacturaDataGridView.Rows[Fila].Cells[3].Value;

@@ -566,6 +566,7 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                        dtConfiguracionPrincipalDataGridView.EndEdit();
                         Validate();
                         if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                         {

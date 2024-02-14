@@ -95,7 +95,7 @@ namespace PELOSCALVO
             }
             else
             {
-                consulta = "UPDATE [DtTarifa] SET [Id] = @Id,[TarifaTipo] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
+                consulta = "UPDATE [DtTarifa] SET [Id] = @Id,[Tarifa] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
                 " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);

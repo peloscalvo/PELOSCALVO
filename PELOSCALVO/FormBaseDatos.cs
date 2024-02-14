@@ -386,7 +386,7 @@ namespace PELOSCALVO
 
             string consulta = "SELECT * from [DtConfiguracionPrincipal]  ";
             string consultaConfi = "SELECT * from [DtConfi]";
-            string consultaTarifa = "SELECT * from[DtTarifaTipo]";
+            string consultaTarifa = "SELECT * from[DtTarifa]";
             string ConsultaAlmacenes = "SELECT * from [DtAlmacenes]";
             string ConsultaProveedores = "SELECT * from [DtProveedores]";
             string ConsultaOBRA = "SELECT * from [DtObras]";
@@ -448,7 +448,7 @@ namespace PELOSCALVO
             string ConsultaAlmacenes = "SELECT * from [DtAlmacenes]";
             string ConsultaProveedores = "SELECT * from [DtProveedores]";
             string consultaConfi = "SELECT * from [DtConfi]";
-            string consultaTarifa = "SELECT * from[DtTarifaTipo]";
+            string consultaTarifa = "SELECT * from[DtTarifa]";
             string ConsultaOBRA = "SELECT * from [DtObras]";
             string ConsultaProvincia = "SELECT * from [DtProvincias]";
             string ConsultaPais = "SELECT * from [DtPaises]";
