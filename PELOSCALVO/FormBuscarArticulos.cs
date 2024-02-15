@@ -266,10 +266,11 @@ namespace PELOSCALVO
                             // ListViewItem lvi = new ListViewItem();
                             if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
                             {
-                               string data1=  this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString();
+                              // string data1=  this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString();
                                 string data2 = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
                                 string data3 = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                                string[] datos = new  string [] { data1, data2, data3};
+                                string[] datos = new  string [] { data2, data3};
+                                ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString());
                                 ListCodigos.Items[0].SubItems.AddRange(datos);
                             }
                         }

@@ -748,7 +748,7 @@ namespace PELOSCALVO
                 this.panelBotonesClientes.Enabled = false;
                 return;
             }
-
+            ContadorDatosClientes.Text = dtClientesBindingSource.Count.ToString();
             this.FechaAltaCliente.Text = String.Format("{0:d/M/yyyy}", DateTime.Now);
 
         }
@@ -817,7 +817,7 @@ namespace PELOSCALVO
                                 this.panelBotonesClientes.Enabled = false;
                             }
                         }
-
+                        ContadorDatosClientes.Text = dtClientesBindingSource.Count.ToString();
                     }
 
                 }
@@ -973,6 +973,7 @@ namespace PELOSCALVO
                                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                                         this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
                                         this.dtClientesDataGridView.Refresh();
+                                        ContadorDatosClientes.Text = dtClientesBindingSource.Count.ToString();
                                         MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
 
@@ -1005,6 +1006,7 @@ namespace PELOSCALVO
                                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                                             this.dtClientesDataGridView.Rows.RemoveAt(this.dtClientesDataGridView.CurrentCell.RowIndex);
                                             this.dtClientesDataGridView.Refresh();
+                                            ContadorDatosClientes.Text = dtClientesBindingSource.Count.ToString();
                                             MessageBox.Show("Se Elimino Correctamente", "ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         }
 

@@ -109,7 +109,7 @@ namespace PELOSCALVO
             this.EnlaceFactu = new System.Windows.Forms.Label();
             this.ProveedorTxt = new System.Windows.Forms.ComboBox();
             this.dtConfiguracionPrincipalDtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.obrasComboBox = new System.Windows.Forms.ComboBox();
+            this.ObraFactuTxt = new System.Windows.Forms.ComboBox();
             this.dtObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.FechaFactura = new System.Windows.Forms.DateTimePicker();
@@ -133,7 +133,7 @@ namespace PELOSCALVO
             this.dtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtConfiguracionPrincipalDtAlmacenesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabControl1Factura = new System.Windows.Forms.TabControl();
+            this.TabControlFactura = new System.Windows.Forms.TabControl();
             this.tabPage2Factura = new System.Windows.Forms.TabPage();
             this.dtDetallesFacturaDataGridView = new System.Windows.Forms.DataGridView();
             this.referenciaDetalleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -246,7 +246,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).BeginInit();
-            this.tabControl1Factura.SuspendLayout();
+            this.TabControlFactura.SuspendLayout();
             this.tabPage2Factura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFacturaDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFacturaBindingSource)).BeginInit();
@@ -701,7 +701,7 @@ namespace PELOSCALVO
             this.tabPage1Factura.Controls.Add(proveedoresLabel);
             this.tabPage1Factura.Controls.Add(this.ProveedorTxt);
             this.tabPage1Factura.Controls.Add(obrasLabel);
-            this.tabPage1Factura.Controls.Add(this.obrasComboBox);
+            this.tabPage1Factura.Controls.Add(this.ObraFactuTxt);
             this.tabPage1Factura.Controls.Add(fechaFacturaLabel);
             this.tabPage1Factura.Controls.Add(this.FechaFactura);
             this.tabPage1Factura.Controls.Add(this.BtnBuscarClientesFact);
@@ -798,21 +798,21 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalDtProveedoresBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtProveedores";
             this.dtConfiguracionPrincipalDtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
-            // obrasComboBox
+            // ObraFactuTxt
             // 
-            this.obrasComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.obrasComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.obrasComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Obra_factu", true));
-            this.obrasComboBox.DataSource = this.dtObrasBindingSource;
-            this.obrasComboBox.DisplayMember = "Obras";
-            this.obrasComboBox.Enabled = false;
-            this.obrasComboBox.FormattingEnabled = true;
-            this.obrasComboBox.Location = new System.Drawing.Point(1025, 38);
-            this.obrasComboBox.MaxLength = 60;
-            this.obrasComboBox.Name = "obrasComboBox";
-            this.obrasComboBox.Size = new System.Drawing.Size(236, 21);
-            this.obrasComboBox.TabIndex = 71;
-            this.obrasComboBox.Click += new System.EventHandler(this.obrasComboBox_Click);
+            this.ObraFactuTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ObraFactuTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ObraFactuTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtNuevaFacturaBindingSource, "Obra_factu", true));
+            this.ObraFactuTxt.DataSource = this.dtObrasBindingSource;
+            this.ObraFactuTxt.DisplayMember = "Obras";
+            this.ObraFactuTxt.Enabled = false;
+            this.ObraFactuTxt.FormattingEnabled = true;
+            this.ObraFactuTxt.Location = new System.Drawing.Point(1025, 38);
+            this.ObraFactuTxt.MaxLength = 60;
+            this.ObraFactuTxt.Name = "ObraFactuTxt";
+            this.ObraFactuTxt.Size = new System.Drawing.Size(236, 21);
+            this.ObraFactuTxt.TabIndex = 71;
+            this.ObraFactuTxt.Click += new System.EventHandler(this.obrasComboBox_Click);
             // 
             // dtObrasBindingSource
             // 
@@ -1035,20 +1035,20 @@ namespace PELOSCALVO
             this.dtConfiguracionPrincipalDtAlmacenesBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtAlmacenes";
             this.dtConfiguracionPrincipalDtAlmacenesBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
             // 
-            // tabControl1Factura
+            // TabControlFactura
             // 
-            this.tabControl1Factura.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TabControlFactura.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1Factura.Controls.Add(this.tabPage1Factura);
-            this.tabControl1Factura.Controls.Add(this.tabPage2Factura);
-            this.tabControl1Factura.Controls.Add(this.tabPage4Factura);
-            this.tabControl1Factura.Controls.Add(this.tabPage3Factura);
-            this.tabControl1Factura.Location = new System.Drawing.Point(0, 278);
-            this.tabControl1Factura.Name = "tabControl1Factura";
-            this.tabControl1Factura.SelectedIndex = 0;
-            this.tabControl1Factura.Size = new System.Drawing.Size(1291, 245);
-            this.tabControl1Factura.TabIndex = 29;
-            this.tabControl1Factura.SelectedIndexChanged += new System.EventHandler(this.TabControl1Factura_SelectedIndexChanged);
+            this.TabControlFactura.Controls.Add(this.tabPage1Factura);
+            this.TabControlFactura.Controls.Add(this.tabPage2Factura);
+            this.TabControlFactura.Controls.Add(this.tabPage4Factura);
+            this.TabControlFactura.Controls.Add(this.tabPage3Factura);
+            this.TabControlFactura.Location = new System.Drawing.Point(0, 278);
+            this.TabControlFactura.Name = "TabControlFactura";
+            this.TabControlFactura.SelectedIndex = 0;
+            this.TabControlFactura.Size = new System.Drawing.Size(1291, 245);
+            this.TabControlFactura.TabIndex = 29;
+            this.TabControlFactura.SelectedIndexChanged += new System.EventHandler(this.TabControl1Factura_SelectedIndexChanged);
             // 
             // tabPage2Factura
             // 
@@ -1113,7 +1113,6 @@ namespace PELOSCALVO
             this.dtDetallesFacturaDataGridView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DtDetallesFacturaDataGridView_KeyPress);
             this.dtDetallesFacturaDataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dtDetallesFacturaDataGridView_MouseClick);
             this.dtDetallesFacturaDataGridView.MouseEnter += new System.EventHandler(this.DtDetallesFacturaDataGridView_MouseEnter);
-            this.dtDetallesFacturaDataGridView.Validating += new System.ComponentModel.CancelEventHandler(this.dtDetallesFacturaDataGridView_Validating);
             this.dtDetallesFacturaDataGridView.Validated += new System.EventHandler(this.dtDetallesFacturaDataGridView_Validated);
             // 
             // referenciaDetalleDataGridViewTextBoxColumn
@@ -2005,7 +2004,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.BtnCancelarfactura);
             this.Controls.Add(this.BtnGuardarFactura);
             this.Controls.Add(this.panelBotones);
-            this.Controls.Add(this.tabControl1Factura);
+            this.Controls.Add(this.TabControlFactura);
             this.Controls.Add(this.PanelArriba);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormFacturar";
@@ -2033,7 +2032,7 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dtAlmacenesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalDtAlmacenesBindingSource)).EndInit();
-            this.tabControl1Factura.ResumeLayout(false);
+            this.TabControlFactura.ResumeLayout(false);
             this.tabPage2Factura.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFacturaDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDetallesFacturaBindingSource)).EndInit();
@@ -2088,7 +2087,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.MaskedTextBox fechaCobroText;
         private System.Windows.Forms.NumericUpDown IvaFactuTxt;
         public System.Windows.Forms.DataGridView dtDetallesFacturaDataGridView;
-        private System.Windows.Forms.TabControl tabControl1Factura;
+        private System.Windows.Forms.TabControl TabControlFactura;
         private System.Windows.Forms.BindingSource dtConfiDtTarifaTipoBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtConfiBindingSource;
         public System.Windows.Forms.BindingSource dtDetallesFacturaBindingSource;
@@ -2134,7 +2133,7 @@ namespace PELOSCALVO
         public System.Windows.Forms.NumericUpDown NumDescuento;
         private System.Windows.Forms.BindingSource dtObrasBindingSource;
         private DsMulti2 dsMulti2;
-        public System.Windows.Forms.ComboBox obrasComboBox;
+        public System.Windows.Forms.ComboBox ObraFactuTxt;
         private System.Windows.Forms.ComboBox ProveedorTxt;
         private System.Windows.Forms.BindingSource dtProveedoresBindingSource;
         private System.Windows.Forms.BindingSource dtConfiguracionPrincipalDtProveedoresBindingSource;
