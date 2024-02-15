@@ -510,6 +510,7 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 20))
             {
+                string InfoEmpresa = "EMPRESA";
                 int Id_Confi = 1;
                 string Almacenes = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
                 string consulta = "";
@@ -564,8 +565,10 @@ namespace PELOSCALVO
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
                         this.dtConfiguracionPrincipalDataGridView.EndEdit();
                         Validate();
+              
                         if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                         {
+                            InfoEmpresa = "TARIFAS";
                             string ConsultaDescuetos = " INSERT INTO [DtTarifa]([Id],[TarifaTipo],[TarifaReal],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo,@TarifaReal, @EnlaceTarifa)";
                             string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
                             string Ejercicio = "EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
@@ -603,7 +606,7 @@ namespace PELOSCALVO
 
                                 }
                             }
-
+                            InfoEmpresa = "ALMACENES";
                             NuevaConexion = new ClsConexionDb(Almacenes);////Guarda almacen
                             if (NuevaConexion.SiConexionDb)
                             {
@@ -643,6 +646,7 @@ namespace PELOSCALVO
 
                                 }
                             }
+                            InfoEmpresa = "EJERCICIOS";
                             NuevaConexion = new ClsConexionDb(ConsultaEjercios);//
                             if (NuevaConexion.SiConexionDb)
                             {
@@ -671,7 +675,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "EMPRESAS CREAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "EMPRESAS CREAR " + InfoEmpresa, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {

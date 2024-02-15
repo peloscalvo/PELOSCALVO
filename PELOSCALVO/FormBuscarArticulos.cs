@@ -2,7 +2,6 @@
 //using SkiaSharp;
 using BarcodeLib;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -15,6 +14,7 @@ namespace PELOSCALVO
 {
     public partial class FormBuscarArticulos : Form
     {
+        Font Arial10 = new Font("Arial", 10, FontStyle.Regular);//Cuerpo de texto
         Boolean SiBaja = false;
         DataView verViev = default;
         public static FormBuscarArticulos MenuB;
@@ -263,23 +263,21 @@ namespace PELOSCALVO
                         {
 
 
-                            ListViewItem lvi = new ListViewItem();
-                            if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
+                            // ListViewItem lvi = new ListViewItem();
+                            if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
                             {
-                                lvi = this.ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString());
-                                if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString()))
-                                {
-                                    lvi.SubItems.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString());
-
-                                }
-
+                               string data1=  this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString();
+                                string data2 = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+                                string data3 = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                                string[] datos = new  string [] { data1, data2, data3};
+                                ListCodigos.Items[0].SubItems.AddRange(datos);
                             }
                         }
                         else
                         {
-                            if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString()))
+                            if (!string.IsNullOrEmpty(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString()))
                             {
-                                this.TituloText.Text = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[6].FormattedValue.ToString();
+                                this.TituloText.Text = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
                             }
                         }
                     }
@@ -303,9 +301,9 @@ namespace PELOSCALVO
                 {
                     try
                     {
-      
 
-    
+
+
                         if (ClasDatos.Datos1Datos2 != "Nota2")///todas las notas menos la 2
                         {
 
@@ -324,9 +322,9 @@ namespace PELOSCALVO
                             string RefeBuscar = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();//referencia
                             FormFacturar.menu2FACTURAR.ActualizarArticuloFatu(ClasDatos.ValorBuscado, RefeBuscar, FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView);
 
-                           // FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[3].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();//descripcion
+                            // FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[3].Value = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();//descripcion
 
-                           // FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Focus();
+                            // FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Focus();
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.CurrentCell = FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows[ClasDatos.ValorBuscado].Cells[2];
                             FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.BeginEdit(true);
                         }
@@ -604,9 +602,9 @@ namespace PELOSCALVO
                                 imagenCodigo = codigo.Encode(tipoCodigo, item2.SubItems[1].Text, Color.Black, Color.White, Ancho, Alto);
                                 codigo.Alignment = AlignmentPositions.CENTER;
                                 codigo.IncludeLabel = true;
-                              //  Opcionimagen ImagenPdf = new Opcionimagen();
-                              //  ImagenPdf.Valor = imagenCodigo;
-                              //  FormBuscarArticulos.listas.lista.Add(ImagenPdf);
+                                //  Opcionimagen ImagenPdf = new Opcionimagen();
+                                //  ImagenPdf.Valor = imagenCodigo;
+                                //  FormBuscarArticulos.listas.lista.Add(ImagenPdf);
 
                             }
                         }
@@ -645,9 +643,9 @@ namespace PELOSCALVO
                             foreach (ListViewItem item2 in this.ListCodigos.Items)
                             {
                                 bm = new Bitmap(br.Write(item2.SubItems[1].Text), Ancho, Alto);
-                              //  Opcionimagen ImagenPdf = new Opcionimagen();
-                              //  ImagenPdf.Valor = bm;
-                              //  FormBuscarArticulos.listas.lista.Add(ImagenPdf);
+                                //  Opcionimagen ImagenPdf = new Opcionimagen();
+                                //  ImagenPdf.Valor = bm;
+                                //  FormBuscarArticulos.listas.lista.Add(ImagenPdf);
                             }
                             this.PitureQr.Image = bm;
                         }
@@ -669,7 +667,7 @@ namespace PELOSCALVO
                         int Filas = this.ListCodigos.Items.Count;
                         int AltoPage = Alto * Filas;
                         int Hojas = (AltoPage / 1118) + 1;
-                       // PD.PrinterSettings.ToPage = Hojas;
+                        // PD.PrinterSettings.ToPage = Hojas;
                         PD.Print();
 
                     }
@@ -759,10 +757,11 @@ namespace PELOSCALVO
             int Dato1 = 0;
             // bool Si = false;
             //e.HasMorePages = true;
+            Arial10 = new Font("Arial", 10, FontStyle.Regular);//Cuerpo de texto
             Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
             Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
             Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
-            Font Arial10 = new Font("Arial", 10, FontStyle.Regular);//Cuerpo de texto
+            
             Font ArialNegrita12 = new Font("Arial", 12, FontStyle.Bold);//Cuerpo de texto
             Font ArialNegrita10 = new Font("Arial", 10, FontStyle.Bold);//Cuerpo de texto
             Font BookAntiqua = new Font("Book Antiqua", 12, FontStyle.Regular);//Cuerpo de texto                                           
@@ -790,7 +789,7 @@ namespace PELOSCALVO
                     for (int i = ClasDatos.count; i <= this.ListCodigos.Items.Count; i++)
                     {
                         // ClasDatos.count
-                        imagenCodigo = codigo.Encode(tipoCodigo, ListCodigos.Items[1].SubItems[i].Text, Color.Black, Color.White, Ancho, Alto);
+                        imagenCodigo = codigo.Encode(tipoCodigo, this.ListCodigos.Items[1].SubItems[i].Text, Color.Black, Color.White, Ancho, Alto);
                         codigo.Alignment = AlignmentPositions.CENTER;
                         codigo.IncludeLabel = true;
                         e.Graphics.DrawImage(imagenCodigo, new Point(0, Dato1));
@@ -833,7 +832,7 @@ namespace PELOSCALVO
                     for (int i = ClasDatos.count; i <= this.ListCodigos.Items.Count; i++)
                     {
                         //  item2.Index = ClasDatos.count;
-                        bm = new Bitmap(br.Write(ListCodigos.Items[1].SubItems[i].Text), Ancho, Alto);
+                        bm = new Bitmap(br.Write(this.ListCodigos.Items[1].SubItems[i].Text), Ancho, Alto);
                         e.Graphics.DrawImage(bm, new Point(0, Dato1));
                         // BB = BB + item.Valor.Height + 14;
                         Dato1 = Dato1 + bm.Height + 14;
@@ -847,7 +846,7 @@ namespace PELOSCALVO
                             e.HasMorePages = false;
                         }
                     }
-    
+
 
                 }
             }
@@ -856,7 +855,7 @@ namespace PELOSCALVO
 
                 MessageBox.Show(ex.Message, "ERROR IMPRIMIR PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
- 
+
         }
         private void MenuListaClick(object sender, ToolStripItemClickedEventArgs e)
         {

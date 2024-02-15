@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -19,16 +12,29 @@ namespace PELOSCALVO
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            try
+            {
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.UserVictor))
+                {
+
+                   this.InfoTxt.Text=  Properties.Settings.Default.UserVictor;
+
+                }
+            }
+            catch (Exception)
+            {
+
+               // throw;
+            }
         }
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-              string CadenaConexion = ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
-            Properties.Settings leer = new Properties.Settings() ;
+            string CadenaConexion = ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
+            Properties.Settings leer = new Properties.Settings();
             // leer.UserVictor=""
             if (Properties.Settings.Default.UserVictor == "" || Properties.Settings.Default.UserVictor == "")
             {
-               // loginForm.Show();
+                // loginForm.Show();
                 //if (loginForm.IBContinue == true)
                 //{
                 //    //continue;
@@ -36,7 +42,7 @@ namespace PELOSCALVO
             }
             Properties.Settings.Default.UserVictor = "fsdfdsffdsffsd";
             Properties.Settings.Default.Save();
-          // string aa=UserVictor
+            // string aa=UserVictor
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,13 +60,36 @@ namespace PELOSCALVO
                     //    //continue;
                     //}
                 }
-                Properties.Settings.Default.UserVictor = "fsdfdsffdsffsd";
-                Properties.Settings.Default.Save();
+                if (!string.IsNullOrEmpty(this.textBox1.Text))
+                {
+
+                    Properties.Settings.Default.UserVictor = this.textBox1.Text;
+
+                    Properties.Settings.Default.Save();
+                }
             }
             catch (Exception)
             {
 
-               // throw;
+                // throw;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.UserVictor))
+                {
+
+                    this.InfoTxt.Text = Properties.Settings.Default.UserVictor;
+
+                }
+            }
+            catch (Exception)
+            {
+
+                // throw;
             }
         }
     }

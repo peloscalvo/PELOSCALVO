@@ -43,6 +43,9 @@ namespace PELOSCALVO
             this.Passs = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Ccc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.InfoTxt = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -137,11 +140,40 @@ namespace PELOSCALVO
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(203, 33);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(364, 20);
+            this.textBox1.TabIndex = 50;
+            // 
+            // InfoTxt
+            // 
+            this.InfoTxt.AutoSize = true;
+            this.InfoTxt.Location = new System.Drawing.Point(203, 73);
+            this.InfoTxt.Name = "InfoTxt";
+            this.InfoTxt.Size = new System.Drawing.Size(35, 13);
+            this.InfoTxt.TabIndex = 51;
+            this.InfoTxt.Text = "label1";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(518, 118);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 52;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 504);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.InfoTxt);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.listView1);
@@ -154,6 +186,7 @@ namespace PELOSCALVO
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -168,5 +201,8 @@ namespace PELOSCALVO
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fafdasToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label InfoTxt;
+        private System.Windows.Forms.Button button2;
     }
 }
