@@ -266,15 +266,23 @@ namespace PELOSCALVO
                 int Fila2 = 0;
                 if (this.dtConfiDtTarifaTipoBindingSource.Count > 0)
                 {
-                    string item2 = this.TipoTarifa.Items.ToString();
-                    string aaaa = item2[1].ToString();
-                    foreach (ComboBox item in this.TipoTarifa.Items)
+                    for (int i = 0; i < TipoTarifa.Items.Count; i++)
+                    {
+                        //  string value = TipoTarifa.GetItemText(TipoTarifa.Items[i]);
+
+                        this.LabDes3.Text = TipoTarifa.GetItemText(TipoTarifa.Items[2]);
+                        this.LabDesc4.Text = TipoTarifa.GetItemText(TipoTarifa.Items[3]);
+                        this.LabDes5.Text = TipoTarifa.GetItemText(TipoTarifa.Items[4]);
+                        this.LabDes6.Text = TipoTarifa.GetItemText(TipoTarifa.Items[5]);
+                    }
+
+                    foreach (ListView item in this.TipoTarifa.Items)
                     {
                         if (!string.IsNullOrEmpty(item.ToString()))
                         {
                             if (Fila2 == 0)
                             {
-                                this.LabDes3.Text = item.ToString();
+                                // this.LabDes3.Text = item.ToString();
                             }
                             if (Fila2 == 3)
                             {
@@ -292,27 +300,7 @@ namespace PELOSCALVO
                         }
                         Fila2++;
                     }
-                    return;
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString() != string.Empty)
-                    {
-                        this.LabDes3.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString();
-                        // this.dtPreciosDataGridView.Columns[6].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[1 + Fila]["TarifaTipo"].ToString();
-                    }
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString() != string.Empty)
-                    {
-                        this.LabDesc4.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString();
-                        //  this.dtPreciosDataGridView.Columns[7].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[2 + Fila]["TarifaTipo"].ToString();
-                    }
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString() != string.Empty)
-                    {
-                        this.LabDes5.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString();
-                        // this.dtPreciosDataGridView.Columns[8].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[3 + Fila]["TarifaTipo"].ToString();
-                    }
-                    if (FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4]["TarifaTipo"].ToString() != string.Empty)
-                    {
-                        this.LabDes6.Text = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
-                        // this.dtPreciosDataGridView.Columns[9].HeaderText = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtTarifaTipo"].Rows[4 + Fila]["TarifaTipo"].ToString();
-                    }
+
                 }
             }
             catch (Exception ex)

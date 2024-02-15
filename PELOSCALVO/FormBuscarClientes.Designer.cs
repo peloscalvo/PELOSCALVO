@@ -97,7 +97,7 @@ namespace PELOSCALVO
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtClientes2DataGridView.AutoGenerateColumns = false;
             this.dtClientes2DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtClientes2DataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dtClientes2DataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dtClientes2DataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtClientes2DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtClientes2DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

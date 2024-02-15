@@ -2900,7 +2900,7 @@ namespace PELOSCALVO
                     {
                         if (!String.IsNullOrEmpty(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()))
                         {
-                            // this.dtDetallesFacturaDataGridView.CurrentCell.Value = Convert.ToDouble(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()) / 100;
+                             this.dtDetallesFacturaDataGridView.CurrentCell.Value = Convert.ToDouble(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()) / 100;
                         }
 
                     }
@@ -3459,7 +3459,7 @@ namespace PELOSCALVO
                         }
                         if (e.ColumnIndex == 5)
                         {
-                            this.dtDetallesFacturaDataGridView.CurrentCell.Value = Convert.ToDouble(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()) / 100;
+                           // this.dtDetallesFacturaDataGridView.CurrentCell.Value = Convert.ToDouble(this.dtDetallesFacturaDataGridView.CurrentCell.Value.ToString()) / 100;
 
                         }
                     }
@@ -3961,8 +3961,13 @@ namespace PELOSCALVO
                         {
                             if (SiSalto == false)
                             {
+                                dtDetallesFacturaDataGridView.CurrentCell = dtDetallesFacturaDataGridView.Rows[Fila.Index].Cells[4];
+                                // dtDetallesFacturaDataGridView.BeginEdit(true);
+                                // dtDetallesFacturaDataGridView.Rows[Fila.Index].DefaultCellStyle.BackColor = Color.Red;
+                                dtDetallesFacturaDataGridView.Rows[Fila.Index].Cells[4].Style.BackColor = Color.Red;
                                 if (MessageBox.Show(" Modificar \n" + Fila.Cells[4].Value.ToString(), " Modifcar ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                                 {
+                       
                                     SiSalto = true;
                                 }
                             }
@@ -3975,10 +3980,7 @@ namespace PELOSCALVO
                             }
                             if (Fila.Cells[4].Value.ToString() != string.Empty && Fila.Cells[4].Value != DBNull.Value && Fila.Cells[4].Value.ToString() != null)
                             {
-                                dtDetallesFacturaDataGridView.CurrentCell = dtDetallesFacturaDataGridView.Rows[Fila.Index].Cells[4];
-                               // dtDetallesFacturaDataGridView.BeginEdit(true);
-                               // dtDetallesFacturaDataGridView.Rows[Fila.Index].DefaultCellStyle.BackColor = Color.Red;
-                                dtDetallesFacturaDataGridView.Rows[Fila.Index].Cells[4].Style.BackColor = Color.Red;
+     
                                 TTotalSuma = (Double)Fila.Cells[4].Value;
                                 if (this.MasMenosTxt.Text == "+")
                                 {
@@ -3988,7 +3990,7 @@ namespace PELOSCALVO
                                 {
                                     TTotalSuma = TTotalSuma - (TTotalSuma * Convert.ToInt32(this.IvaFactuTxt.Value) / 100);
                                 }
-
+                                dtDetallesFacturaDataGridView.Rows[Fila.Index].Cells[4].Style.BackColor = SystemColors.Control;
                                 Fila.Cells[4].Value = TTotalSuma.ToString();
                             }
                             saltoAbajo:
@@ -4004,7 +4006,9 @@ namespace PELOSCALVO
                     }
                     finally
                     {
-                        dtDetallesFacturaDataGridView.Columns[4].DefaultCellStyle.BackColor = Color.Beige;
+                        int II = this.dtDetallesFacturaDataGridView.CurrentCell.RowIndex;
+                        dtDetallesFacturaDataGridView.Rows[II].Cells[4].Style.BackColor = SystemColors.Control;
+                        // dtDetallesFacturaDataGridView.Columns[4].DefaultCellStyle.BackColor = Color.Beige;
                     }
                 }
             }

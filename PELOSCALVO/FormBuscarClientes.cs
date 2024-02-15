@@ -136,7 +136,12 @@ namespace PELOSCALVO
 
                 if (ClasDatos.OkFacturar == true)
                 {
-                    FormFacturar.menu2FACTURAR.CargarClienteFatu(Convert.ToInt32(FormClientes.menu2CLIENTES2.dtClientesDataGridView.Rows[e.RowIndex].Cells[0].Value));
+                    if (string.IsNullOrEmpty(dtClientes2DataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()))
+                    {
+                        MessageBox.Show("Falta Id De Cliente", "ERROR ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                    FormFacturar.menu2FACTURAR.CargarClienteFatu(Convert.ToInt32(dtClientes2DataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()));
                     Close();
                     return;
                     ClasDatos.ValorBuscado = Convert.ToInt32(e.RowIndex);

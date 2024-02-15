@@ -96,7 +96,7 @@ namespace PELOSCALVO
             else
             {
                 consulta = "UPDATE [DtTarifa] SET [Id] = @Id,[Tarifa] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
-                " WHERE Id = @Id";
+                " WHERE EnlaceTarifa = @EnlaceTarifa";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
@@ -110,17 +110,13 @@ namespace PELOSCALVO
                     {
                         int FilaDesc = this.dtTarifaTipoDataGridView.CurrentCell.RowIndex;
                         string NombreTarifa = "PVP1";
-                        if (FilaDesc > 6)
+                        if (FilaDesc <= 6)
                         {
                             NombreTarifa = "PVP" + FilaDesc + 1;
                         }
                         if (FilaDesc == 6)
                         {
                             NombreTarifa = "PLUS";
-                        }
-                        if (FilaDesc == 7)
-                        {
-                            NombreTarifa = "IVA";
                         }
 
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", string.IsNullOrEmpty(NombreTarifa) ? (object)DBNull.Value : NombreTarifa);
@@ -140,7 +136,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "TARIFAS");
+                MessageBox.Show(ex.Message, "TARIFAS",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
@@ -161,7 +157,7 @@ namespace PELOSCALVO
             else
             {
                 consulta = "UPDATE [DtTarifa] SET [Id] = @Id,[TarifaTipo] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
-                " WHERE Id = @Id";
+                " WHERE EnlaceTarifa = @EnlaceTarifa";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
@@ -175,23 +171,17 @@ namespace PELOSCALVO
                     {
                         int FilaDesc = this.dtTarifaTipoDataGridView.CurrentCell.RowIndex;
                         string NombreTarifa = "PVP1";
-                        if (FilaDesc > 6)
+                        if (FilaDesc <= 6)
                         {
                             NombreTarifa = "PVP" + FilaDesc + 1;
                         }
                         if (FilaDesc == 6)
                         {
                             NombreTarifa = "PLUS";
-                        }
-                        if (FilaDesc == 7)
-                        {
-                            NombreTarifa = "IVA";
-                        }
-
+                        }     
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaReal", string.IsNullOrEmpty(NombreTarifa) ? (object)DBNull.Value : NombreTarifa);
 
                     }
-
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
