@@ -271,7 +271,8 @@ namespace PELOSCALVO
                                 string data3 = this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
                                 string[] datos = new  string [] { data2, data3};
                                 ListCodigos.Items.Add(this.DataGridViewBuscarArticulos.Rows[e.RowIndex].Cells["IdFILA"].FormattedValue.ToString());
-                                ListCodigos.Items[0].SubItems.AddRange(datos);
+                                ListCodigos.Items[ListCodigos.Items.Count-1].SubItems.AddRange(datos);
+
                             }
                         }
                         else
@@ -755,7 +756,7 @@ namespace PELOSCALVO
 
         private void PrintBarras_PrintPage(object sender, PrintPageEventArgs e)
         {
-            int Dato1 = 0;
+            int Dato1 = 25;
             // bool Si = false;
             //e.HasMorePages = true;
             Arial10 = new Font("Arial", 10, FontStyle.Regular);//Cuerpo de texto
@@ -787,20 +788,21 @@ namespace PELOSCALVO
                     Barcode codigo = new Barcode();
 
                     e.Graphics.DrawString("lISTADO DE CODIGO BARRAS ", titleFont, Brushes.Black, xPos + 40, 6);
-                    for (int i = ClasDatos.count; i <= this.ListCodigos.Items.Count; i++)
+                    for (int i = ClasDatos.count; i <= this.ListCodigos.Items.Count-1; i++)
                     {
                         // ClasDatos.count
-                        imagenCodigo = codigo.Encode(tipoCodigo, this.ListCodigos.Items[1].SubItems[i].Text, Color.Black, Color.White, Ancho, Alto);
+                        imagenCodigo = codigo.Encode(tipoCodigo, this.ListCodigos.Items[i].SubItems[1].Text, Color.Black, Color.White, Ancho, Alto);
                         codigo.Alignment = AlignmentPositions.CENTER;
                         codigo.IncludeLabel = true;
                         e.Graphics.DrawImage(imagenCodigo, new Point(0, Dato1));
                         ClasDatos.count++;
-                        //  Dato1 = Dato1 + FormBuscarArticulos.listas.lista[1].Valor.Height + 14;
+                        Dato1 = Dato1 + imagenCodigo.Height + 14;
+                        e.HasMorePages = ClasDatos.count <= this.ListCodigos.Items.Count+2;
                     }
 
                     // Si = true        ClasDatos.count = ClasDatos.count + 40;
 
-                    e.HasMorePages = ClasDatos.count < this.ListCodigos.Items.Count;
+                    //e.HasMorePages = ClasDatos.count < this.ListCodigos.Items.Count;
                     // e.HasMorePages = false;
                     // e.Graphics.DrawImage(this.PitureQr.Image, e.PageBounds);
 

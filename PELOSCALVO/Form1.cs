@@ -49,7 +49,7 @@ namespace PELOSCALVO
         {
             try
             {
-                string CadenaConexion = ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
+                //string CadenaConexion = ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
                 Properties.Settings leer = new Properties.Settings();
                 // leer.UserVictor=""
                 if (Properties.Settings.Default.UserVictor == "" || Properties.Settings.Default.UserVictor == "")
