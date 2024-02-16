@@ -97,7 +97,7 @@ namespace PELOSCALVO
             this.BtnCancelarPais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarPais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarPais.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarPais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarPais.Location = new System.Drawing.Point(697, 393);
             this.BtnCancelarPais.Name = "BtnCancelarPais";
@@ -118,7 +118,7 @@ namespace PELOSCALVO
             this.BtnSalir_Pais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalir_Pais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalir_Pais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir_Pais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalir_Pais.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalir_Pais.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalir_Pais.Location = new System.Drawing.Point(836, 372);
             this.BtnSalir_Pais.Name = "BtnSalir_Pais";
@@ -148,7 +148,7 @@ namespace PELOSCALVO
             this.BtnEliminarPais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarPais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarPais.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarPais.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarPais.Location = new System.Drawing.Point(238, 3);
             this.BtnEliminarPais.Name = "BtnEliminarPais";
@@ -168,7 +168,7 @@ namespace PELOSCALVO
             this.BtnBuscarPais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarPais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarPais.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarPais.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarPais.Location = new System.Drawing.Point(161, 3);
             this.BtnBuscarPais.Name = "BtnBuscarPais";
@@ -188,7 +188,7 @@ namespace PELOSCALVO
             this.BtnNuevoPais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoPais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoPais.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoPais.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoPais.Location = new System.Drawing.Point(7, 3);
             this.BtnNuevoPais.Name = "BtnNuevoPais";
@@ -209,7 +209,7 @@ namespace PELOSCALVO
             this.BtnModificarPais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarPais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarPais.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarPais.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarPais.Location = new System.Drawing.Point(84, 3);
             this.BtnModificarPais.Name = "BtnModificarPais";
@@ -277,7 +277,7 @@ namespace PELOSCALVO
             this.BtnGuardarPais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarPais.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarPais.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarPais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarPais.Location = new System.Drawing.Point(542, 393);
             this.BtnGuardarPais.Name = "BtnGuardarPais";

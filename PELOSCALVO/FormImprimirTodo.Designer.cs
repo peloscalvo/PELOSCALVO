@@ -127,7 +127,7 @@ namespace PELOSCALVO
             this.BtnSalirImprimirTodo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirImprimirTodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirImprimirTodo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirImprimirTodo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirImprimirTodo.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirImprimirTodo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirImprimirTodo.Location = new System.Drawing.Point(550, 287);
             this.BtnSalirImprimirTodo.Name = "BtnSalirImprimirTodo";

@@ -471,7 +471,7 @@ namespace PELOSCALVO
             this.BtnCancelarBCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarBCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarBCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarBCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarBCliente.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarBCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarBCliente.Location = new System.Drawing.Point(886, 407);
             this.BtnCancelarBCliente.Name = "BtnCancelarBCliente";

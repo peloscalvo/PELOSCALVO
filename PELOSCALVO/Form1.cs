@@ -66,12 +66,13 @@ namespace PELOSCALVO
                     Properties.Settings.Default.UserVictor = this.textBox1.Text;
 
                     Properties.Settings.Default.Save();
+                    MessageBox.Show("guardado");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                // throw;
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
@@ -83,13 +84,13 @@ namespace PELOSCALVO
                 {
 
                     this.InfoTxt.Text = Properties.Settings.Default.UserVictor;
-
+                    MessageBox.Show("leido");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                // throw;
+                MessageBox.Show(ex.Message.ToString());
             }
         }
     }

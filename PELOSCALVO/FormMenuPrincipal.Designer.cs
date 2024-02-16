@@ -56,6 +56,7 @@ namespace PELOSCALVO
             this.abrirPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarModificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codigosDeBarrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pruebaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolEmpresas = new System.Windows.Forms.ToolStripMenuItem();
             this.empresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearEjercioNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -155,7 +156,6 @@ namespace PELOSCALVO
             this.dsMulti2 = new PELOSCALVO.DsMulti2();
             this.índiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pruebaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedorPrincipal.SuspendLayout();
             this.PanelForms.SuspendLayout();
             this.panelSUBventas.SuspendLayout();
@@ -512,13 +512,13 @@ namespace PELOSCALVO
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.verToolStripMenuItem.Text = "&Ver";
             // 
             // abrirPdfToolStripMenuItem
             // 
             this.abrirPdfToolStripMenuItem.Name = "abrirPdfToolStripMenuItem";
-            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirPdfToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.abrirPdfToolStripMenuItem.Text = "&Abrir P.d.f";
             // 
             // editarModificarToolStripMenuItem
@@ -526,7 +526,7 @@ namespace PELOSCALVO
             this.editarModificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.codigosDeBarrasToolStripMenuItem});
             this.editarModificarToolStripMenuItem.Name = "editarModificarToolStripMenuItem";
-            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarModificarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.editarModificarToolStripMenuItem.Text = "&Editar Modificar";
             // 
             // codigosDeBarrasToolStripMenuItem
@@ -535,6 +535,13 @@ namespace PELOSCALVO
             this.codigosDeBarrasToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.codigosDeBarrasToolStripMenuItem.Text = "&Codigos De Barras";
             this.codigosDeBarrasToolStripMenuItem.Click += new System.EventHandler(this.codigosDeBarrasToolStripMenuItem_Click);
+            // 
+            // pruebaToolStripMenuItem
+            // 
+            this.pruebaToolStripMenuItem.Name = "pruebaToolStripMenuItem";
+            this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.pruebaToolStripMenuItem.Text = "Prueba";
+            this.pruebaToolStripMenuItem.Click += new System.EventHandler(this.pruebaToolStripMenuItem_Click);
             // 
             // toolEmpresas
             // 
@@ -658,14 +665,14 @@ namespace PELOSCALVO
             // AbrirAlmacenes
             // 
             this.AbrirAlmacenes.Name = "AbrirAlmacenes";
-            this.AbrirAlmacenes.Size = new System.Drawing.Size(180, 22);
+            this.AbrirAlmacenes.Size = new System.Drawing.Size(125, 22);
             this.AbrirAlmacenes.Text = "&Abrir";
             this.AbrirAlmacenes.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // consultarToolStripMenuItem1
             // 
             this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem1.Text = "&Consultar";
             this.consultarToolStripMenuItem1.Click += new System.EventHandler(this.consultarToolStripMenuItem1_Click);
             // 
@@ -1123,7 +1130,7 @@ namespace PELOSCALVO
             this.BtnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVentas.ForeColor = System.Drawing.Color.Silver;
-            this.BtnVentas.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_coin_6_32;
+            this.BtnVentas.Image = global::PELOSCALVO.Properties.Resources.Ventas;
             this.BtnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnVentas.Location = new System.Drawing.Point(3, 264);
             this.BtnVentas.Name = "BtnVentas";
@@ -1143,7 +1150,7 @@ namespace PELOSCALVO
             this.BtnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCompras.ForeColor = System.Drawing.Color.Silver;
-            this.BtnCompras.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_shopping_bag_17_32;
+            this.BtnCompras.Image = global::PELOSCALVO.Properties.Resources.Compras;
             this.BtnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCompras.Location = new System.Drawing.Point(3, 218);
             this.BtnCompras.Name = "BtnCompras";
@@ -1163,7 +1170,7 @@ namespace PELOSCALVO
             this.btnListaClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListaClientes.ForeColor = System.Drawing.Color.Silver;
-            this.btnListaClientes.Image = global::PELOSCALVO.Properties.Resources.Clientes3;
+            this.btnListaClientes.Image = global::PELOSCALVO.Properties.Resources.Clientes;
             this.btnListaClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnListaClientes.Location = new System.Drawing.Point(3, 126);
             this.btnListaClientes.Name = "btnListaClientes";
@@ -1184,7 +1191,7 @@ namespace PELOSCALVO
             this.btnARTICULOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnARTICULOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnARTICULOS.ForeColor = System.Drawing.Color.Silver;
-            this.btnARTICULOS.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_cube_18_32;
+            this.btnARTICULOS.Image = global::PELOSCALVO.Properties.Resources.Articulo;
             this.btnARTICULOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnARTICULOS.Location = new System.Drawing.Point(3, 172);
             this.btnARTICULOS.Name = "btnARTICULOS";
@@ -1514,7 +1521,7 @@ namespace PELOSCALVO
             // btnMinimizar
             // 
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.BackgroundImage = global::PELOSCALVO.Properties.Resources.Minimize1;
+            this.btnMinimizar.BackgroundImage = global::PELOSCALVO.Properties.Resources.Minimizar1;
             this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.FlatAppearance.BorderSize = 0;
@@ -1664,13 +1671,6 @@ namespace PELOSCALVO
             this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarToolStripMenuItem.Text = "&Buscar";
-            // 
-            // pruebaToolStripMenuItem
-            // 
-            this.pruebaToolStripMenuItem.Name = "pruebaToolStripMenuItem";
-            this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pruebaToolStripMenuItem.Text = "Prueba";
-            this.pruebaToolStripMenuItem.Click += new System.EventHandler(this.pruebaToolStripMenuItem_Click);
             // 
             // FormMenuPrincipal
             // 

@@ -61,6 +61,14 @@ namespace PELOSCALVO
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArticulos));
             this.dtPreciosDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcci = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Familia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtArticulosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.articulos = new PELOSCALVO.DsArticulos();
             this.tabControl1Articulo = new System.Windows.Forms.TabControl();
@@ -126,14 +134,6 @@ namespace PELOSCALVO
             this.FiltrarBajas = new System.Windows.Forms.ComboBox();
             this.FiltrarFamiliaArt = new System.Windows.Forms.ComboBox();
             this.CheckFamiliaArt = new System.Windows.Forms.RadioButton();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcci = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Familia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Pvp2Label = new System.Windows.Forms.Label();
             PlusLabel = new System.Windows.Forms.Label();
             familiaLabel = new System.Windows.Forms.Label();
@@ -447,8 +447,100 @@ namespace PELOSCALVO
             this.dtPreciosDataGridView.Size = new System.Drawing.Size(1014, 220);
             this.dtPreciosDataGridView.TabIndex = 1;
             this.dtPreciosDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtPreciosDataGridView_CellClick);
-            this.dtPreciosDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtPreciosDataGridView_CellContentClick);
-            this.dtPreciosDataGridView.SelectionChanged += new System.EventHandler(this.dtPreciosDataGridView_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn1.FillWeight = 174.3626F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Referencia";
+            this.dataGridViewTextBoxColumn2.FillWeight = 379.3742F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Referencia";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 218;
+            // 
+            // Descripcci
+            // 
+            this.Descripcci.DataPropertyName = "Descripcci";
+            this.Descripcci.FillWeight = 428.141F;
+            this.Descripcci.HeaderText = "Descripccion";
+            this.Descripcci.Name = "Descripcci";
+            this.Descripcci.ReadOnly = true;
+            this.Descripcci.Width = 245;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Coste";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.Format = "C3";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn4.FillWeight = 90F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Coste";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Pvp1";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle4.Format = "C3";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn6.FillWeight = 90F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Pvp1";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Pvp2";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle5.Format = "C3";
+            dataGridViewCellStyle5.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn9.FillWeight = 90F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Pvp2";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Plus";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle6.Format = "C3";
+            dataGridViewCellStyle6.NullValue = null;
+            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewTextBoxColumn19.FillWeight = 90F;
+            this.dataGridViewTextBoxColumn19.HeaderText = "Plus";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.Width = 90;
+            // 
+            // Familia
+            // 
+            this.Familia.DataPropertyName = "Familia";
+            this.Familia.FillWeight = 140F;
+            this.Familia.HeaderText = "Familia";
+            this.Familia.Name = "Familia";
+            this.Familia.ReadOnly = true;
+            this.Familia.Width = 140;
             // 
             // dtArticulosBindingSource
             // 
@@ -1026,7 +1118,6 @@ namespace PELOSCALVO
             this.EmpresaArticulos.TabIndex = 29;
             this.EmpresaArticulos.SelectedIndexChanged += new System.EventHandler(this.EmpresaArticulos_SelectedIndexChanged);
             this.EmpresaArticulos.SelectionChangeCommitted += new System.EventHandler(this.EmpresaArticulos_SelectionChangeCommitted);
-            this.EmpresaArticulos.Validated += new System.EventHandler(this.EmpresaArticulos_Validated);
             // 
             // dtInicioMultiBindingSource
             // 
@@ -1064,7 +1155,7 @@ namespace PELOSCALVO
             this.BtnImprimirArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnImprimirArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnImprimirArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnImprimirArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_printer_5_32;
+            this.BtnImprimirArticulo.Image = global::PELOSCALVO.Properties.Resources.Impresora;
             this.BtnImprimirArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnImprimirArticulo.Location = new System.Drawing.Point(304, -3);
             this.BtnImprimirArticulo.Name = "BtnImprimirArticulo";
@@ -1105,7 +1196,7 @@ namespace PELOSCALVO
             this.BtnEliminarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnEliminarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarArticulo.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarArticulo.Location = new System.Drawing.Point(227, -3);
             this.BtnEliminarArticulo.Name = "BtnEliminarArticulo";
@@ -1126,7 +1217,7 @@ namespace PELOSCALVO
             this.BtnBuscarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscarArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnBuscarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarArticulo.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarArticulo.Location = new System.Drawing.Point(150, -3);
             this.BtnBuscarArticulo.Name = "BtnBuscarArticulo";
@@ -1147,7 +1238,7 @@ namespace PELOSCALVO
             this.BtnNuevoArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnNuevoArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnNuevoArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoArticulo.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoArticulo.Location = new System.Drawing.Point(-4, -3);
             this.BtnNuevoArticulo.Name = "BtnNuevoArticulo";
@@ -1168,7 +1259,7 @@ namespace PELOSCALVO
             this.BtnModificarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnModificarArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnModificarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarArticulo.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarArticulo.Location = new System.Drawing.Point(73, -3);
             this.BtnModificarArticulo.Name = "BtnModificarArticulo";
@@ -1190,7 +1281,7 @@ namespace PELOSCALVO
             this.BtnSalirArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSalirArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnSalirArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirArticulo.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirArticulo.Location = new System.Drawing.Point(931, 579);
             this.BtnSalirArticulo.Name = "BtnSalirArticulo";
@@ -1213,7 +1304,7 @@ namespace PELOSCALVO
             this.BtnCancelarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnCancelarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarArticulo.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarArticulo.Location = new System.Drawing.Point(673, 597);
             this.BtnCancelarArticulo.Name = "BtnCancelarArticulo";
@@ -1235,7 +1326,7 @@ namespace PELOSCALVO
             this.BtnGuardarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnGuardarArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarArticulo.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarArticulo.Location = new System.Drawing.Point(503, 597);
             this.BtnGuardarArticulo.Name = "BtnGuardarArticulo";
@@ -1256,7 +1347,7 @@ namespace PELOSCALVO
             this.RegistLbel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RegistLbel.AutoSize = true;
             this.RegistLbel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegistLbel.Location = new System.Drawing.Point(781, 528);
+            this.RegistLbel.Location = new System.Drawing.Point(718, 528);
             this.RegistLbel.Name = "RegistLbel";
             this.RegistLbel.Size = new System.Drawing.Size(99, 20);
             this.RegistLbel.TabIndex = 36;
@@ -1268,7 +1359,7 @@ namespace PELOSCALVO
             this.ContadorDatos3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ContadorDatos3.AutoSize = true;
             this.ContadorDatos3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContadorDatos3.Location = new System.Drawing.Point(891, 528);
+            this.ContadorDatos3.Location = new System.Drawing.Point(828, 528);
             this.ContadorDatos3.Name = "ContadorDatos3";
             this.ContadorDatos3.Size = new System.Drawing.Size(19, 20);
             this.ContadorDatos3.TabIndex = 35;
@@ -1293,7 +1384,6 @@ namespace PELOSCALVO
             this.FiltrarBajas.Tag = "";
             this.FiltrarBajas.ValueMember = "Articulos De Alta";
             this.FiltrarBajas.SelectedIndexChanged += new System.EventHandler(this.FiltrarBajas_SelectedIndexChanged);
-            this.FiltrarBajas.Enter += new System.EventHandler(this.FiltrarBajas_Enter);
             // 
             // FiltrarFamiliaArt
             // 
@@ -1309,7 +1399,6 @@ namespace PELOSCALVO
             this.FiltrarFamiliaArt.TabIndex = 47;
             this.FiltrarFamiliaArt.Visible = false;
             this.FiltrarFamiliaArt.SelectedIndexChanged += new System.EventHandler(this.FiltrarFamiliaArt_SelectedIndexChanged);
-            this.FiltrarFamiliaArt.Enter += new System.EventHandler(this.FiltrarFamiliaArt_Enter);
             // 
             // CheckFamiliaArt
             // 
@@ -1323,100 +1412,6 @@ namespace PELOSCALVO
             this.CheckFamiliaArt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CheckFamiliaArt.UseVisualStyleBackColor = true;
             this.CheckFamiliaArt.Click += new System.EventHandler(this.CheckFamiliaArt_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn1.FillWeight = 174.3626F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Referencia";
-            this.dataGridViewTextBoxColumn2.FillWeight = 379.3742F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Referencia";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 218;
-            // 
-            // Descripcci
-            // 
-            this.Descripcci.DataPropertyName = "Descripcci";
-            this.Descripcci.FillWeight = 428.141F;
-            this.Descripcci.HeaderText = "Descripccion";
-            this.Descripcci.Name = "Descripcci";
-            this.Descripcci.ReadOnly = true;
-            this.Descripcci.Width = 245;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Coste";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle3.Format = "C3";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn4.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Coste";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Pvp1";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle4.Format = "C3";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn6.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Pvp1";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Pvp2";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle5.Format = "C3";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn9.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn9.HeaderText = "Pvp2";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "Plus";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle6.Format = "C3";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn19.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn19.HeaderText = "Plus";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            this.dataGridViewTextBoxColumn19.Width = 90;
-            // 
-            // Familia
-            // 
-            this.Familia.DataPropertyName = "Familia";
-            this.Familia.FillWeight = 140F;
-            this.Familia.HeaderText = "Familia";
-            this.Familia.Name = "Familia";
-            this.Familia.ReadOnly = true;
-            this.Familia.Width = 140;
             // 
             // FormArticulos
             // 

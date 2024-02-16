@@ -27,6 +27,7 @@ namespace PELOSCALVO
         string articulos2 = "1";
         public static FormArticulos menu2Articulos;
         Boolean SiBajaarti = false;
+        bool Sifiltrar = false;
         public FormArticulos()
         {
             InitializeComponent();
@@ -518,6 +519,7 @@ namespace PELOSCALVO
                 this.ReferenciaTextBox.Focus();
                 this.tabControl1Articulo.SelectedIndex = 0;
                 ModificarOjetosArticulos();
+                Sifiltrar = true;
             }
             catch (Exception ex)
             {
@@ -1121,7 +1123,7 @@ namespace PELOSCALVO
 
         private void FiltrarBajas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.RegistLbel.Tag.ToString() != "stop" && this.FiltrarBajas.SelectedIndex >= 0)
+            if (Sifiltrar == true && this.FiltrarBajas.SelectedIndex >= 0)
             {
                 string concepto = @"[Descripcci]";
                 string fieldName = string.Concat("[", this.articulos.DtArticulos.Columns["Baja"].ColumnName, "]");
@@ -1484,7 +1486,7 @@ namespace PELOSCALVO
         }
         private void FiltrarFamiliaArt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.RegistLbel.Tag.ToString() != "stop" && this.BtnGuardarArticulo.Enabled == false)
+            if (Sifiltrar == true && this.BtnGuardarArticulo.Enabled == false)
             {
                 try
                 {
@@ -1607,10 +1609,6 @@ namespace PELOSCALVO
             this.familiaComboBox.DroppedDown = true;
         }
 
-        private void EmpresaArticulos_Validated(object sender, EventArgs e)
-        {
-            //LlenarDescuentos();
-        }
 
         private void tarifaTipoArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1629,26 +1627,7 @@ namespace PELOSCALVO
             }
         }
 
-        private void dtPreciosDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //CalculosIva();
-        }
 
-        private void dtPreciosDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            //CalculosIva();
-            //CargarTexbox();
-        }
-
-        private void FiltrarBajas_Enter(object sender, EventArgs e)
-        {
-            this.RegistLbel.Tag = "SI";
-        }
-
-        private void FiltrarFamiliaArt_Enter(object sender, EventArgs e)
-        {
-            this.RegistLbel.Tag = "stop";
-        }
 
         private void EmpresaArticulos_SelectionChangeCommitted(object sender, EventArgs e)
         {

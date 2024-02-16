@@ -753,7 +753,7 @@ namespace PELOSCALVO
             // BtnBuscarPais
             // 
             this.BtnBuscarPais.Enabled = false;
-            this.BtnBuscarPais.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
+            this.BtnBuscarPais.Image = global::PELOSCALVO.Properties.Resources.Lupa_Pequeña;
             this.BtnBuscarPais.Location = new System.Drawing.Point(817, 153);
             this.BtnBuscarPais.Name = "BtnBuscarPais";
             this.BtnBuscarPais.Size = new System.Drawing.Size(39, 23);
@@ -764,7 +764,7 @@ namespace PELOSCALVO
             // BtnBuscarProvi
             // 
             this.BtnBuscarProvi.Enabled = false;
-            this.BtnBuscarProvi.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
+            this.BtnBuscarProvi.Image = global::PELOSCALVO.Properties.Resources.Lupa_Pequeña;
             this.BtnBuscarProvi.Location = new System.Drawing.Point(817, 119);
             this.BtnBuscarProvi.Name = "BtnBuscarProvi";
             this.BtnBuscarProvi.Size = new System.Drawing.Size(39, 23);
@@ -840,7 +840,7 @@ namespace PELOSCALVO
             // BtnBuscarClientesFact
             // 
             this.BtnBuscarClientesFact.Enabled = false;
-            this.BtnBuscarClientesFact.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
+            this.BtnBuscarClientesFact.Image = global::PELOSCALVO.Properties.Resources.Lupa_Pequeña;
             this.BtnBuscarClientesFact.Location = new System.Drawing.Point(362, 93);
             this.BtnBuscarClientesFact.Name = "BtnBuscarClientesFact";
             this.BtnBuscarClientesFact.Size = new System.Drawing.Size(39, 23);
@@ -1565,7 +1565,7 @@ namespace PELOSCALVO
             this.BtnSalirFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirFactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirFactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirFactura.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirFactura.Location = new System.Drawing.Point(458, 0);
             this.BtnSalirFactura.Name = "BtnSalirFactura";
@@ -1585,7 +1585,7 @@ namespace PELOSCALVO
             this.BtnImprimirFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnImprimirFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnImprimirFactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnImprimirFactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_printer_5_32;
+            this.BtnImprimirFactura.Image = global::PELOSCALVO.Properties.Resources.Impresora;
             this.BtnImprimirFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnImprimirFactura.Location = new System.Drawing.Point(311, 0);
             this.BtnImprimirFactura.Name = "BtnImprimirFactura";
@@ -1625,7 +1625,7 @@ namespace PELOSCALVO
             this.BtnEliminarFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarFactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarFactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarFactura.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarFactura.Location = new System.Drawing.Point(234, 0);
             this.BtnEliminarFactura.Name = "BtnEliminarFactura";
@@ -1645,7 +1645,7 @@ namespace PELOSCALVO
             this.BtnBuscarFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarFactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarFactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarFactura.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarFactura.Location = new System.Drawing.Point(157, 0);
             this.BtnBuscarFactura.Name = "BtnBuscarFactura";
@@ -1665,7 +1665,7 @@ namespace PELOSCALVO
             this.BtnNuevoFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoFactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoFactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoFactura.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoFactura.Location = new System.Drawing.Point(3, 0);
             this.BtnNuevoFactura.Name = "BtnNuevoFactura";
@@ -1685,7 +1685,7 @@ namespace PELOSCALVO
             this.BtnModificarFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarFactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarFactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarFactura.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarFactura.Location = new System.Drawing.Point(80, 0);
             this.BtnModificarFactura.Name = "BtnModificarFactura";
@@ -1707,7 +1707,7 @@ namespace PELOSCALVO
             this.BtnCancelarfactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarfactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarfactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarfactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarfactura.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarfactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarfactura.Location = new System.Drawing.Point(950, 647);
             this.BtnCancelarfactura.Name = "BtnCancelarfactura";
@@ -1728,7 +1728,7 @@ namespace PELOSCALVO
             this.BtnGuardarFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarFactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarFactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarFactura.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarFactura.Location = new System.Drawing.Point(747, 647);
             this.BtnGuardarFactura.Name = "BtnGuardarFactura";

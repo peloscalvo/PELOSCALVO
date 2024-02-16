@@ -177,7 +177,7 @@ namespace PELOSCALVO
                 this.btnMaximizar.Tag = "MAX";
                 this.Size = new Size(this.sw, this.sh);
                 this.Location = new Point(this.lx, this.ly);
-                this.btnMaximizar.Image = Properties.Resources.maximize2;
+                this.btnMaximizar.Image = Properties.Resources.maximizar2;
             }
             else
             {

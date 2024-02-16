@@ -217,7 +217,7 @@ namespace PELOSCALVO
             this.BtnCancelarTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarTipoTarifa.Location = new System.Drawing.Point(629, 411);
             this.BtnCancelarTipoTarifa.Name = "BtnCancelarTipoTarifa";
@@ -238,7 +238,7 @@ namespace PELOSCALVO
             this.BtnGuardarDescuentos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarDescuentos.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarDescuentos.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarDescuentos.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarDescuentos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarDescuentos.Location = new System.Drawing.Point(452, 411);
             this.BtnGuardarDescuentos.Name = "BtnGuardarDescuentos";
@@ -269,7 +269,7 @@ namespace PELOSCALVO
             this.BtnNuevoTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoTipoTarifa.Location = new System.Drawing.Point(12, 3);
             this.BtnNuevoTipoTarifa.Name = "BtnNuevoTipoTarifa";
@@ -290,7 +290,7 @@ namespace PELOSCALVO
             this.BtnModificarTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarTipoTarifa.Location = new System.Drawing.Point(89, 3);
             this.BtnModificarTipoTarifa.Name = "BtnModificarTipoTarifa";
@@ -311,7 +311,7 @@ namespace PELOSCALVO
             this.BtnSalirTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirTipoTarifa.Location = new System.Drawing.Point(773, 390);
             this.BtnSalirTipoTarifa.Name = "BtnSalirTipoTarifa";

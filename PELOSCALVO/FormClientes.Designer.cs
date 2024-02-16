@@ -712,7 +712,7 @@ namespace PELOSCALVO
             this.BtnBuscarClientes2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarClientes2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarClientes2.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarClientes2.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_24;
+            this.BtnBuscarClientes2.Image = global::PELOSCALVO.Properties.Resources.Lupa_Mediana;
             this.BtnBuscarClientes2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarClientes2.Location = new System.Drawing.Point(460, 21);
             this.BtnBuscarClientes2.Name = "BtnBuscarClientes2";
@@ -1241,7 +1241,7 @@ namespace PELOSCALVO
             this.BtnGuardarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarCliente.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarCliente.Location = new System.Drawing.Point(570, 599);
             this.BtnGuardarCliente.Name = "BtnGuardarCliente";
@@ -1263,7 +1263,7 @@ namespace PELOSCALVO
             this.BtnCancelarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarCliente.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarCliente.Location = new System.Drawing.Point(730, 599);
             this.BtnCancelarCliente.Name = "BtnCancelarCliente";
@@ -1283,7 +1283,7 @@ namespace PELOSCALVO
             this.BtnNuevoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoCliente.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoCliente.Location = new System.Drawing.Point(-8, 0);
             this.BtnNuevoCliente.Name = "BtnNuevoCliente";
@@ -1303,7 +1303,7 @@ namespace PELOSCALVO
             this.BtnModificarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarCliente.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarCliente.Location = new System.Drawing.Point(69, 0);
             this.BtnModificarCliente.Name = "BtnModificarCliente";
@@ -1340,7 +1340,7 @@ namespace PELOSCALVO
             this.BtnImprimirCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnImprimirCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnImprimirCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnImprimirCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_printer_5_32;
+            this.BtnImprimirCliente.Image = global::PELOSCALVO.Properties.Resources.Impresora;
             this.BtnImprimirCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnImprimirCliente.Location = new System.Drawing.Point(300, 0);
             this.BtnImprimirCliente.Name = "BtnImprimirCliente";
@@ -1379,7 +1379,7 @@ namespace PELOSCALVO
             this.BtnEliminarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarCliente.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarCliente.Location = new System.Drawing.Point(223, 0);
             this.BtnEliminarCliente.Name = "BtnEliminarCliente";
@@ -1399,7 +1399,7 @@ namespace PELOSCALVO
             this.BtnBuscarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarCliente.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarCliente.Location = new System.Drawing.Point(146, 0);
             this.BtnBuscarCliente.Name = "BtnBuscarCliente";
@@ -1420,7 +1420,7 @@ namespace PELOSCALVO
             this.BtnSalirCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirCliente.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirCliente.Location = new System.Drawing.Point(1025, 578);
             this.BtnSalirCliente.Name = "BtnSalirCliente";

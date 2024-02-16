@@ -25,7 +25,7 @@ namespace PELOSCALVO.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ADMINISTRADORVICTOR")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string UserVictor {
             get {
                 return ((string)(this["UserVictor"]));

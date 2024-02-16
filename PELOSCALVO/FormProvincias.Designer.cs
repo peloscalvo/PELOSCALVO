@@ -117,7 +117,7 @@ namespace PELOSCALVO
             this.BtnGuardarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarProvincia.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarProvincia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarProvincia.Location = new System.Drawing.Point(516, 395);
             this.BtnGuardarProvincia.Name = "BtnGuardarProvincia";
@@ -199,7 +199,7 @@ namespace PELOSCALVO
             this.BtnEliminarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarProvincia.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarProvincia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarProvincia.Location = new System.Drawing.Point(238, 3);
             this.BtnEliminarProvincia.Name = "BtnEliminarProvincia";
@@ -219,7 +219,7 @@ namespace PELOSCALVO
             this.BtnBuscarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarProvincia.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarProvincia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarProvincia.Location = new System.Drawing.Point(161, 3);
             this.BtnBuscarProvincia.Name = "BtnBuscarProvincia";
@@ -239,7 +239,7 @@ namespace PELOSCALVO
             this.BtnNuevoProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoProvincia.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoProvincia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoProvincia.Location = new System.Drawing.Point(7, 3);
             this.BtnNuevoProvincia.Name = "BtnNuevoProvincia";
@@ -260,7 +260,7 @@ namespace PELOSCALVO
             this.BtnModificarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarProvincia.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarProvincia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarProvincia.Location = new System.Drawing.Point(84, 3);
             this.BtnModificarProvincia.Name = "BtnModificarProvincia";
@@ -291,7 +291,7 @@ namespace PELOSCALVO
             this.BtnCancelarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarProvincia.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarProvincia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarProvincia.Location = new System.Drawing.Point(673, 395);
             this.BtnCancelarProvincia.Name = "BtnCancelarProvincia";
@@ -312,7 +312,7 @@ namespace PELOSCALVO
             this.BtnSalir_Provincias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalir_Provincias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalir_Provincias.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir_Provincias.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalir_Provincias.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalir_Provincias.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalir_Provincias.Location = new System.Drawing.Point(823, 384);
             this.BtnSalir_Provincias.Name = "BtnSalir_Provincias";

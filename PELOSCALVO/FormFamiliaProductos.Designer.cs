@@ -109,7 +109,7 @@ namespace PELOSCALVO
             this.BtnSalirFamilia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirFamilia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirFamilia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirFamilia.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirFamilia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirFamilia.Location = new System.Drawing.Point(849, 391);
             this.BtnSalirFamilia.Name = "BtnSalirFamilia";
@@ -131,7 +131,7 @@ namespace PELOSCALVO
             this.BtnCancelarFamilia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarFamilia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarFamilia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarFamilia.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarFamilia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarFamilia.Location = new System.Drawing.Point(693, 416);
             this.BtnCancelarFamilia.Name = "BtnCancelarFamilia";
@@ -151,7 +151,7 @@ namespace PELOSCALVO
             this.BtnEliminarFamilia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarFamilia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarFamilia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarFamilia.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarFamilia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarFamilia.Location = new System.Drawing.Point(238, 3);
             this.BtnEliminarFamilia.Name = "BtnEliminarFamilia";
@@ -171,7 +171,7 @@ namespace PELOSCALVO
             this.BtnBuscarFamilia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarFamilia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarFamilia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarFamilia.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarFamilia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarFamilia.Location = new System.Drawing.Point(161, 3);
             this.BtnBuscarFamilia.Name = "BtnBuscarFamilia";
@@ -191,7 +191,7 @@ namespace PELOSCALVO
             this.BtnNuevoFamilia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoFamilia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoFamilia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoFamilia.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoFamilia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoFamilia.Location = new System.Drawing.Point(7, 3);
             this.BtnNuevoFamilia.Name = "BtnNuevoFamilia";
@@ -212,7 +212,7 @@ namespace PELOSCALVO
             this.BtnModificarFAmilia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarFAmilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarFAmilia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarFAmilia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarFAmilia.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarFAmilia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarFAmilia.Location = new System.Drawing.Point(84, 3);
             this.BtnModificarFAmilia.Name = "BtnModificarFAmilia";
@@ -233,7 +233,7 @@ namespace PELOSCALVO
             this.BtnGuardarFamillia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarFamillia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarFamillia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarFamillia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarFamillia.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarFamillia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarFamillia.Location = new System.Drawing.Point(559, 416);
             this.BtnGuardarFamillia.Name = "BtnGuardarFamillia";

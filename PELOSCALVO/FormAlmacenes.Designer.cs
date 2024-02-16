@@ -189,7 +189,7 @@ namespace PELOSCALVO
             this.BtnEliminarAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarAlmacen.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarAlmacen.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarAlmacen.Location = new System.Drawing.Point(238, 3);
             this.BtnEliminarAlmacen.Name = "BtnEliminarAlmacen";
@@ -209,7 +209,7 @@ namespace PELOSCALVO
             this.BtnBuscarAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarAlmacen.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarAlmacen.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarAlmacen.Location = new System.Drawing.Point(161, 3);
             this.BtnBuscarAlmacen.Name = "BtnBuscarAlmacen";
@@ -229,7 +229,7 @@ namespace PELOSCALVO
             this.BtnNuevoAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoAlmacen.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoAlmacen.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoAlmacen.Location = new System.Drawing.Point(7, 3);
             this.BtnNuevoAlmacen.Name = "BtnNuevoAlmacen";
@@ -250,7 +250,7 @@ namespace PELOSCALVO
             this.BtnModificarAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarAlmacen.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarAlmacen.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarAlmacen.Location = new System.Drawing.Point(84, 3);
             this.BtnModificarAlmacen.Name = "BtnModificarAlmacen";
@@ -378,7 +378,7 @@ namespace PELOSCALVO
             this.BtnCancelarAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarAlmacen.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarAlmacen.Location = new System.Drawing.Point(714, 447);
             this.BtnCancelarAlmacen.Name = "BtnCancelarAlmacen";
@@ -399,7 +399,7 @@ namespace PELOSCALVO
             this.BtnGuardarAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarAlmacen.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarAlmacen.Location = new System.Drawing.Point(580, 447);
             this.BtnGuardarAlmacen.Name = "BtnGuardarAlmacen";
@@ -420,7 +420,7 @@ namespace PELOSCALVO
             this.BtnSalirAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirAlmacen.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirAlmacen.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirAlmacen.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirAlmacen.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirAlmacen.Location = new System.Drawing.Point(858, 423);
             this.BtnSalirAlmacen.Name = "BtnSalirAlmacen";

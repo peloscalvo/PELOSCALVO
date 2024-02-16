@@ -208,7 +208,7 @@ namespace PELOSCALVO
             this.BtnCrearBaseDatos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCrearBaseDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearBaseDatos.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCrearBaseDatos.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCrearBaseDatos.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnCrearBaseDatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCrearBaseDatos.Location = new System.Drawing.Point(488, 216);
             this.BtnCrearBaseDatos.Name = "BtnCrearBaseDatos";
@@ -468,7 +468,7 @@ namespace PELOSCALVO
             this.BtnCrearTablas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCrearTablas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearTablas.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCrearTablas.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCrearTablas.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnCrearTablas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCrearTablas.Location = new System.Drawing.Point(474, 230);
             this.BtnCrearTablas.Name = "BtnCrearTablas";
@@ -556,7 +556,7 @@ namespace PELOSCALVO
             this.BtnCrearBackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCrearBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearBackup.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCrearBackup.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCrearBackup.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnCrearBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCrearBackup.Location = new System.Drawing.Point(437, 217);
             this.BtnCrearBackup.Name = "BtnCrearBackup";
@@ -633,7 +633,7 @@ namespace PELOSCALVO
             this.BtnEliminarInstancia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarInstancia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarInstancia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarInstancia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnEliminarInstancia.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnEliminarInstancia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnEliminarInstancia.Location = new System.Drawing.Point(223, 163);
             this.BtnEliminarInstancia.Name = "BtnEliminarInstancia";
@@ -653,7 +653,7 @@ namespace PELOSCALVO
             this.BtnCrearInstancia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCrearInstancia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearInstancia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCrearInstancia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCrearInstancia.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnCrearInstancia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCrearInstancia.Location = new System.Drawing.Point(373, 163);
             this.BtnCrearInstancia.Name = "BtnCrearInstancia";
@@ -722,7 +722,7 @@ namespace PELOSCALVO
             this.BtnRestaurarBases.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnRestaurarBases.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRestaurarBases.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnRestaurarBases.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnRestaurarBases.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnRestaurarBases.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnRestaurarBases.Location = new System.Drawing.Point(341, 160);
             this.BtnRestaurarBases.Name = "BtnRestaurarBases";

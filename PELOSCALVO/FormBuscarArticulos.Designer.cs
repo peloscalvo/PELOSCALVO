@@ -430,7 +430,7 @@ namespace PELOSCALVO
             this.BtnCodifiCar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCodifiCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCodifiCar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnCodifiCar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnCodifiCar.Location = new System.Drawing.Point(1177, 402);
             this.BtnCodifiCar.Name = "BtnCodifiCar";
@@ -451,7 +451,7 @@ namespace PELOSCALVO
             this.BtnCancelarBArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarBArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarBArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarBArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarBArticulo.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarBArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarBArticulo.Location = new System.Drawing.Point(668, 404);
             this.BtnCancelarBArticulo.Name = "BtnCancelarBArticulo";

@@ -923,7 +923,7 @@ namespace PELOSCALVO
                 this.ListCodigos.Enabled = false;
                 this.BtnLimpiar.Visible = false;
                 this.TituloText.Visible = true;
-                this.BtnCodifiCar.Image = PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+                this.BtnCodifiCar.Image = PELOSCALVO.Properties.Resources.Aceptar;
             }
 
         }

@@ -376,7 +376,7 @@ namespace PELOSCALVO
             this.BtnSalirT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirT.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirT.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirT.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirT.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirT.Location = new System.Drawing.Point(757, 336);
             this.BtnSalirT.Name = "BtnSalirT";
@@ -402,7 +402,7 @@ namespace PELOSCALVO
             this.BtnConectar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnConectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnConectar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConectar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnConectar.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnConectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnConectar.Location = new System.Drawing.Point(699, 215);
             this.BtnConectar.Name = "BtnConectar";
@@ -506,7 +506,7 @@ namespace PELOSCALVO
             this.BtnCrearBackupDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCrearBackupDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearBackupDb.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCrearBackupDb.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCrearBackupDb.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnCrearBackupDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCrearBackupDb.Location = new System.Drawing.Point(638, 249);
             this.BtnCrearBackupDb.Name = "BtnCrearBackupDb";
