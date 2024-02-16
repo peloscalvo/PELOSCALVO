@@ -113,7 +113,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.EmpresaSelect.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Id_empresa.Text) ? (object)DBNull.Value : this.Id_empresa.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                    // this.dataGridProveedores.EndEdit();
@@ -156,7 +156,7 @@ namespace PELOSCALVO
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.NombreProveedor.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Id_empresa.Text) ? (object)DBNull.Value : this.Id_empresa.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     this.DtProveedoresBindingSource.EndEdit();
@@ -191,7 +191,7 @@ namespace PELOSCALVO
                         if (NuevaConexion.SiConexionDb)
                         {
                             NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_proveedor.Text));
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Enlace_Proveedor.Text));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Id_empresa.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                             this.DtProveedoresBindingSource.EndEdit();
@@ -233,7 +233,7 @@ namespace PELOSCALVO
                     if (NuevaConexion.SiConexionSql)
                     {
                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_proveedor.Text));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Enlace_Proveedor.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Id_empresa.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         this.DtProveedoresBindingSource.EndEdit();
@@ -311,7 +311,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (this.Id_proveedor.Text == string.Empty & this.Enlace_Proveedor.Text == string.Empty)
+            if (this.Id_proveedor.Text == string.Empty & this.Id_empresa.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -388,7 +388,7 @@ namespace PELOSCALVO
                     MessageBox.Show(" Falta Id", "ERROR DATOS",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     return;
                 }
-                if (string.IsNullOrEmpty(Enlace_Proveedor.Text))
+                if (string.IsNullOrEmpty(Id_empresa.Text))
                 {
                     MessageBox.Show(" Falta Datos", "ERROR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -468,15 +468,15 @@ namespace PELOSCALVO
             {
                 int Id2 = EmpresaSelect.SelectedIndex;
                 int IdEmpresa3 = 1;
-                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtPaises"].Rows[Id2]["Id"].ToString()))
+                if (!String.IsNullOrEmpty(Id_empresa.Text.ToString()))
                 {
-                    IdEmpresa3 = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtPaises"].Rows[Id2]["Id"].ToString());
+                    IdEmpresa3 = Convert.ToInt32(Id_empresa.Text.ToString());
                 }
                 ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "Proveedores";
                 AñadirIdProveedor();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Proveedores", "Proveedores", "Enlace_Proveedores",IdEmpresa3);
+                frm.CargarDatos(1, "Proveedores", "Proveedores", "Enlace_Proveedores",IdEmpresa3);
                 frm.BringToFront();
                 frm.ShowDialog();
             }

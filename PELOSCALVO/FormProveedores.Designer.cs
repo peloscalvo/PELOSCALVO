@@ -42,6 +42,7 @@ namespace PELOSCALVO
             this.PanelProveedores = new System.Windows.Forms.Panel();
             this.Id_proveedor = new System.Windows.Forms.Label();
             this.DtProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.PanelBotones_pro = new System.Windows.Forms.Panel();
             this.BtnEliminarProveedor = new System.Windows.Forms.Button();
@@ -49,16 +50,15 @@ namespace PELOSCALVO
             this.BtnNuevoProveedor = new System.Windows.Forms.Button();
             this.BtnModificarProveedor = new System.Windows.Forms.Button();
             this.NombreProveedor = new System.Windows.Forms.TextBox();
-            this.Enlace_Proveedor = new System.Windows.Forms.Label();
-            this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Id_empresa = new System.Windows.Forms.Label();
             this.EmpresaSelect = new System.Windows.Forms.ComboBox();
             this.dataGridProveedores = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnSalir_pro = new System.Windows.Forms.Button();
             this.BtnCancelarProve = new System.Windows.Forms.Button();
             this.BtnGuardarProve = new System.Windows.Forms.Button();
             this.ErrorProve = new System.Windows.Forms.ErrorProvider(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.proveedoresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label9 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
@@ -67,9 +67,9 @@ namespace PELOSCALVO
             ((System.ComponentModel.ISupportInitialize)(this.dsMultidatos)).BeginInit();
             this.PanelProveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtProveedoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).BeginInit();
             this.PanelBotones_pro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProveedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).BeginInit();
             this.SuspendLayout();
@@ -147,6 +147,11 @@ namespace PELOSCALVO
             // 
             this.DtProveedoresBindingSource.DataMember = "FK_DtConfiguracionPrincipal_DtProveedores";
             this.DtProveedoresBindingSource.DataSource = this.dtConfiguracionPrincipalBindingSource;
+            // 
+            // dtConfiguracionPrincipalBindingSource
+            // 
+            this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
+            this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
             // 
             // dsCONFIGURACCION
             // 
@@ -258,19 +263,14 @@ namespace PELOSCALVO
             this.NombreProveedor.Size = new System.Drawing.Size(385, 20);
             this.NombreProveedor.TabIndex = 56;
             // 
-            // Enlace_Proveedor
+            // Id_empresa
             // 
-            this.Enlace_Proveedor.AutoSize = true;
-            this.Enlace_Proveedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.Enlace_Proveedor.Location = new System.Drawing.Point(597, 324);
-            this.Enlace_Proveedor.Name = "Enlace_Proveedor";
-            this.Enlace_Proveedor.Size = new System.Drawing.Size(0, 13);
-            this.Enlace_Proveedor.TabIndex = 59;
-            // 
-            // dtConfiguracionPrincipalBindingSource
-            // 
-            this.dtConfiguracionPrincipalBindingSource.DataMember = "DtConfiguracionPrincipal";
-            this.dtConfiguracionPrincipalBindingSource.DataSource = this.dsCONFIGURACCION;
+            this.Id_empresa.AutoSize = true;
+            this.Id_empresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiguracionPrincipalBindingSource, "IdEmpresa", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.Id_empresa.Location = new System.Drawing.Point(597, 324);
+            this.Id_empresa.Name = "Id_empresa";
+            this.Id_empresa.Size = new System.Drawing.Size(0, 13);
+            this.Id_empresa.TabIndex = 59;
             // 
             // EmpresaSelect
             // 
@@ -322,6 +322,22 @@ namespace PELOSCALVO
             this.dataGridProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridProveedores.Size = new System.Drawing.Size(952, 282);
             this.dataGridProveedores.TabIndex = 60;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.FillWeight = 160F;
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // proveedoresDataGridViewTextBoxColumn
+            // 
+            this.proveedoresDataGridViewTextBoxColumn.DataPropertyName = "Proveedores";
+            this.proveedoresDataGridViewTextBoxColumn.FillWeight = 600F;
+            this.proveedoresDataGridViewTextBoxColumn.HeaderText = "Proveedores";
+            this.proveedoresDataGridViewTextBoxColumn.Name = "proveedoresDataGridViewTextBoxColumn";
+            this.proveedoresDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // BtnSalir_pro
             // 
@@ -392,28 +408,12 @@ namespace PELOSCALVO
             this.ErrorProve.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.ErrorProve.ContainerControl = this;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.FillWeight = 160F;
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // proveedoresDataGridViewTextBoxColumn
-            // 
-            this.proveedoresDataGridViewTextBoxColumn.DataPropertyName = "Proveedores";
-            this.proveedoresDataGridViewTextBoxColumn.FillWeight = 600F;
-            this.proveedoresDataGridViewTextBoxColumn.HeaderText = "Proveedores";
-            this.proveedoresDataGridViewTextBoxColumn.Name = "proveedoresDataGridViewTextBoxColumn";
-            this.proveedoresDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // FormProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 497);
-            this.Controls.Add(this.Enlace_Proveedor);
+            this.Controls.Add(this.Id_empresa);
             this.Controls.Add(this.BtnCancelarProve);
             this.Controls.Add(this.BtnGuardarProve);
             this.Controls.Add(label9);
@@ -434,9 +434,9 @@ namespace PELOSCALVO
             this.PanelProveedores.ResumeLayout(false);
             this.PanelProveedores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtProveedoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCONFIGURACCION)).EndInit();
             this.PanelBotones_pro.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtConfiguracionPrincipalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProveedores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProve)).EndInit();
             this.ResumeLayout(false);
@@ -449,7 +449,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private DsMultidatos dsMultidatos;
         private System.Windows.Forms.Panel PanelProveedores;
-        private System.Windows.Forms.Label Enlace_Proveedor;
+        private System.Windows.Forms.Label Id_empresa;
         private System.Windows.Forms.Label Id_proveedor;
         private System.Windows.Forms.Panel PanelBotones_pro;
         private System.Windows.Forms.Button BtnEliminarProveedor;

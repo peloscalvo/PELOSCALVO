@@ -24,7 +24,8 @@ namespace PELOSCALVO
             InfoRestablecer.SetToolTip(this.BtnGuardarArchivo_Sql, "Guarda Configuracion Servidor");
             InfoRestablecer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             InfoRestablecer.IsBalloon = true;
-
+            TabArchivoSql.SelectedIndex = 1;
+            TabArchivoSql.SelectedIndex = 0;
         }
         private void FormBaseDatos_Load(object sender, EventArgs e)
         {

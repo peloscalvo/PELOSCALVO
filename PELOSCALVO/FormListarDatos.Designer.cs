@@ -66,6 +66,8 @@ namespace PELOSCALVO
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ListadoDatos2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormListarDatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos";

@@ -689,6 +689,8 @@ namespace PELOSCALVO
             this.Controls.Add(this.InfoProcesoText);
             this.Controls.Add(this.TabControlPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCrearTablasDb";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Tablas Db";

@@ -792,6 +792,8 @@ namespace PELOSCALVO
             this.Controls.Add(this.ListaBaseDatos);
             this.Controls.Add(this.TabCrear);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCrearBaseDatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Bases De Datos";
