@@ -623,7 +623,7 @@ namespace PELOSCALVO
             // BtnImagenEmpresa
             // 
             this.BtnImagenEmpresa.Enabled = false;
-            this.BtnImagenEmpresa.Image = global::PELOSCALVO.Properties.Resources.Lupa_Pequeña;
+            this.BtnImagenEmpresa.Image = global::PELOSCALVO.Properties.Resources.Lupa_Mediana;
             this.BtnImagenEmpresa.Location = new System.Drawing.Point(960, 57);
             this.BtnImagenEmpresa.Name = "BtnImagenEmpresa";
             this.BtnImagenEmpresa.Size = new System.Drawing.Size(39, 23);

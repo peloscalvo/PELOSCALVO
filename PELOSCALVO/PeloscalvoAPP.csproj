@@ -672,19 +672,7 @@
     <None Include="Resources\maximize.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\maximize2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\maximize3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\menu2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Minimize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Minimize1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Normal.png" />
@@ -702,10 +690,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\ArchivoFile.png" />
+    <None Include="Resources\BotonMenu.bmp" />
+    <None Include="Resources\MenuBarras.png" />
+    <Content Include="Resources\Papelera.png" />
+    <Content Include="Resources\Salir.png" />
+    <Content Include="Resources\Ventas.png" />
     <None Include="Resources\Pdf.png" />
     <None Include="Resources\FlechaD.png" />
-    <None Include="Resources\iconmonstr-undo-4-24.png" />
-    <None Include="Resources\iconmonstr-magnifier-4-16.png" />
     <None Include="Resources\PDF32.png" />
     <None Include="Resources\IMPRSORA32.png" />
     <None Include="Resources\VistaPrevia32.png" />
@@ -721,33 +713,22 @@
     <None Include="Resources\CarpetaDatos.png" />
     <None Include="Resources\CarpetaDatos1.png" />
     <None Include="Resources\BaseDatos.png" />
-    <None Include="Resources\Calculadora2.png" />
     <None Include="Resources\Carpeta1.png" />
-    <None Include="Resources\Carpeta11.png" />
     <None Include="Resources\BaseDatos1.png" />
     <None Include="Resources\INFO.png" />
-    <None Include="Resources\CIRCULO VERDE1 .png" />
-    <None Include="Resources\CIRCULO ROJO1.png" />
     <None Include="Resources\Archivo.png" />
+    <Content Include="Resources\Cancelar.png" />
+    <Content Include="Resources\CIRCULO_ROJO.png" />
+    <Content Include="Resources\CIRCULO_VERDE.png" />
     <Content Include="Resources\Clientes2.png" />
     <Content Include="Resources\Close.png" />
+    <None Include="Resources\CorreoEletronico.png" />
+    <None Include="Resources\CorreoEletronico2.png" />
     <Content Include="Resources\LogoPeloscalvo.ico" />
     <None Include="Resources\LogoPeloscalvo.png" />
-    <None Include="Resources\lupa pequeña.png" />
-    <None Include="Resources\iconmonstr-calculator-7-32.png" />
-    <None Include="Resources\iconmonstr-magnifier-4-24.png" />
-    <None Include="Resources\iconmonstr-door-5-32.png" />
-    <None Include="Resources\iconmonstr-email-9-32.png" />
-    <None Include="Resources\iconmonstr-printer-5-32.png" />
-    <None Include="Resources\iconmonstr-trash-can-17-32.png" />
-    <None Include="Resources\iconmonstr-magnifier-4-32.png" />
-    <None Include="Resources\iconmonstr-pen-8-32.png" />
-    <None Include="Resources\iconmonstr-file-14-32.png" />
     <None Include="Resources\Cerrar.png" />
     <None Include="Resources\Aceptar.png" />
     <None Include="Resources\Articulos.png" />
-    <None Include="Resources\iconmonstr-coin-6-32.png" />
-    <None Include="Resources\iconmonstr-shopping-bag-17-32.png" />
     <None Include="Resources\flecha.png" />
   </ItemGroup>
   <ItemGroup>

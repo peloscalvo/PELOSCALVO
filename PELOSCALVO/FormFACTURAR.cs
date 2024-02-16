@@ -25,7 +25,9 @@ namespace PELOSCALVO
         string Calle;
         string NumeroCalle;
         string Dni;
-        string Poblacion;
+        string Poblacion;/// <summary>
+        /// /
+        /// </summary>
         string Localidad;
         string Provincia;
         string Pais;
@@ -1374,7 +1376,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe Verificar Listado de Clientes", "FALTAN DATOS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); ;
             }
             int VALORid = 1;
-            int VALOR_MAS = 1;
+           // int VALOR_MAS = 1;
             this.panelBotones.Tag = "Nuevo";
             this.TabControlFactura.SelectedIndex = 0;
             if (this.dtConfiguracionPrincipalBindingSource.Count <= 0)

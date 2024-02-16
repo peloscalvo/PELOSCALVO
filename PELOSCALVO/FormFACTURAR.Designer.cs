@@ -753,7 +753,7 @@ namespace PELOSCALVO
             // BtnBuscarPais
             // 
             this.BtnBuscarPais.Enabled = false;
-            this.BtnBuscarPais.Image = global::PELOSCALVO.Properties.Resources.Lupa_Pequeña;
+            this.BtnBuscarPais.Image = global::PELOSCALVO.Properties.Resources.Lupa_Mediana;
             this.BtnBuscarPais.Location = new System.Drawing.Point(817, 153);
             this.BtnBuscarPais.Name = "BtnBuscarPais";
             this.BtnBuscarPais.Size = new System.Drawing.Size(39, 23);
@@ -764,7 +764,7 @@ namespace PELOSCALVO
             // BtnBuscarProvi
             // 
             this.BtnBuscarProvi.Enabled = false;
-            this.BtnBuscarProvi.Image = global::PELOSCALVO.Properties.Resources.Lupa_Pequeña;
+            this.BtnBuscarProvi.Image = global::PELOSCALVO.Properties.Resources.Lupa_Mediana;
             this.BtnBuscarProvi.Location = new System.Drawing.Point(817, 119);
             this.BtnBuscarProvi.Name = "BtnBuscarProvi";
             this.BtnBuscarProvi.Size = new System.Drawing.Size(39, 23);
@@ -840,7 +840,7 @@ namespace PELOSCALVO
             // BtnBuscarClientesFact
             // 
             this.BtnBuscarClientesFact.Enabled = false;
-            this.BtnBuscarClientesFact.Image = global::PELOSCALVO.Properties.Resources.Lupa_Pequeña;
+            this.BtnBuscarClientesFact.Image = global::PELOSCALVO.Properties.Resources.Lupa_Mediana;
             this.BtnBuscarClientesFact.Location = new System.Drawing.Point(362, 93);
             this.BtnBuscarClientesFact.Name = "BtnBuscarClientesFact";
             this.BtnBuscarClientesFact.Size = new System.Drawing.Size(39, 23);
@@ -1605,7 +1605,7 @@ namespace PELOSCALVO
             this.BtnEnviarMailFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEnviarMailFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEnviarMailFactura.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEnviarMailFactura.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_email_9_32;
+            this.BtnEnviarMailFactura.Image = global::PELOSCALVO.Properties.Resources.CorreoEletronico2;
             this.BtnEnviarMailFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEnviarMailFactura.Location = new System.Drawing.Point(388, 0);
             this.BtnEnviarMailFactura.Name = "BtnEnviarMailFactura";

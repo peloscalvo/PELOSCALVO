@@ -1176,7 +1176,7 @@ namespace PELOSCALVO
             this.BtnEnviarMailArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEnviarMailArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEnviarMailArticulo.ForeColor = System.Drawing.Color.Black;
-            this.BtnEnviarMailArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_email_9_32;
+            this.BtnEnviarMailArticulo.Image = global::PELOSCALVO.Properties.Resources.CorreoEletronico2;
             this.BtnEnviarMailArticulo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEnviarMailArticulo.Location = new System.Drawing.Point(381, -3);
             this.BtnEnviarMailArticulo.Name = "BtnEnviarMailArticulo";

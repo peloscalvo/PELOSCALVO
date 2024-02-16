@@ -257,7 +257,7 @@ namespace PELOSCALVO
             // PictureServidor
             // 
             this.PictureServidor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PictureServidor.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
+            this.PictureServidor.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO;
             this.PictureServidor.Location = new System.Drawing.Point(10, 51);
             this.PictureServidor.Name = "PictureServidor";
             this.PictureServidor.Size = new System.Drawing.Size(22, 22);
@@ -268,7 +268,7 @@ namespace PELOSCALVO
             // PictureArchivo
             // 
             this.PictureArchivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PictureArchivo.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
+            this.PictureArchivo.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO;
             this.PictureArchivo.Location = new System.Drawing.Point(10, 13);
             this.PictureArchivo.Name = "PictureArchivo";
             this.PictureArchivo.Size = new System.Drawing.Size(22, 22);

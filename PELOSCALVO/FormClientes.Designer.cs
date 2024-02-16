@@ -768,6 +768,7 @@ namespace PELOSCALVO
             this.PageCliente1.TabIndex = 0;
             this.PageCliente1.Text = "General";
             this.PageCliente1.UseVisualStyleBackColor = true;
+            // 
             // Id_Clientes
             // 
             this.Id_Clientes.AutoSize = true;
@@ -1360,7 +1361,7 @@ namespace PELOSCALVO
             this.BtnEnviarMailCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEnviarMailCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEnviarMailCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEnviarMailCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_email_9_32;
+            this.BtnEnviarMailCliente.Image = global::PELOSCALVO.Properties.Resources.CorreoEletronico2;
             this.BtnEnviarMailCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEnviarMailCliente.Location = new System.Drawing.Point(377, 0);
             this.BtnEnviarMailCliente.Name = "BtnEnviarMailCliente";

@@ -1322,7 +1322,7 @@ namespace PELOSCALVO
         private void GuardarArticulosDB()
         {
             String TipoTabla = FormMenuPrincipal.menu2principal.InfoArticulo.Text;
-            string consulta = "";
+            string consulta;
             if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
             {
                 consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA,@Oem, @DESCRIPCCI, @COSTE, @GANANCIA," +
@@ -1404,7 +1404,7 @@ namespace PELOSCALVO
         private void GuardarArticulosSQL()
         {
             String TipoTabla = "[" + FormMenuPrincipal.menu2principal.InfoArticulo.Text + "]";
-            string consulta = "";
+            string consulta;
             if (this.panelBotonesArticulo.Tag.ToString() == "NUEVO")
             {
                 consulta = "INSERT INTO " + "[" + TipoTabla + "]" + " VALUES (@Id, @REFERENCIA,@Oem, @DESCRIPCCI, @COSTE, @GANANCIA," +

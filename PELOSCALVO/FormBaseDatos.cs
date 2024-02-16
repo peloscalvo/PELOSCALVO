@@ -299,9 +299,9 @@ namespace PELOSCALVO
 
                     this.CheckAtivarServidor.Checked = true;
                     this.CheckActivarDb.Checked = false;
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
-                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE;
+                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE;
                     FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Servidor";
                     FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.LawnGreen;
                 }
@@ -313,9 +313,9 @@ namespace PELOSCALVO
 
                     this.CheckAtivarServidor.Checked = false;
                     this.CheckActivarDb.Checked = true;
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
-                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO;
+                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE;
                     FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Db Local";
                     FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.LawnGreen;
                 }
@@ -788,8 +788,8 @@ namespace PELOSCALVO
                     this.CheckAtivarServidor.Checked = true;
                     ClsConexionSql.SibaseDatosSql = true;
                     MessageBox.Show("Activo Conexion Base Datos ((servidor ))", "Sql Server", MessageBoxButtons.OK);
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE;
                 }
             }
         }
@@ -1032,8 +1032,8 @@ namespace PELOSCALVO
             {
                 if (VALIDARcampos_Archivos())
                 {
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO;
                     this.CheckAtivarServidor.Checked = false;
                     if (this.CheckActivarDb.Checked == false)
                     {
@@ -1516,9 +1516,9 @@ namespace PELOSCALVO
                 //  this.TabArchivos.Tag = "NO";
                 this.NombreArchivoDatos.BackColor = SystemColors.Control;
                 Conexiones.ClsConexionSql.SibaseDatosSql = false;
-                this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
-                FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO1;
+                this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO;
+                this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO;
+                FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO;
                 FormMenuPrincipal.menu2principal.InfoConectado.Text = "Desconectado";
                 FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.Goldenrod;
                 this.CheckAtivarServidor.Checked = false;

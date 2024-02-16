@@ -128,7 +128,7 @@ namespace PELOSCALVO
         }
         private void GuardarAlmacenesDb()
         {
-            string consulta = "";
+            string consulta;
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
                 consulta = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
@@ -171,7 +171,7 @@ namespace PELOSCALVO
         }
         private void GuardarAlmacenesSql()
         {
-            string consulta = "";
+            string consulta;
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
                 consulta = "  INSERT INTO [DtAlmacenes] VALUES ([@Id],[@Almacenes],[@Enlace_Almacenes])";

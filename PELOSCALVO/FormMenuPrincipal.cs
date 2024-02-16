@@ -177,7 +177,7 @@ namespace PELOSCALVO
                 this.btnMaximizar.Tag = "MAX";
                 this.Size = new Size(this.sw, this.sh);
                 this.Location = new Point(this.lx, this.ly);
-                this.btnMaximizar.Image = Properties.Resources.maximizar2;
+                this.btnMaximizar.Image = Properties.Resources.maximizar;
             }
             else
             {
@@ -1079,6 +1079,11 @@ namespace PELOSCALVO
             this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
+        }
+
+        private void Conectado_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
