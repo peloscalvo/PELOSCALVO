@@ -93,7 +93,7 @@ namespace PELOSCALVO
 
         }
 
-        public void CargarDatos(int IdFila, string Nombrefila, string colunma, string colunma2 ,int IdB)
+        public void CargarDatos(int IdFila, string Nombrefila, string colunma, string colunma2, int IdB)
         {
             try
             {
@@ -123,7 +123,7 @@ namespace PELOSCALVO
             {
                 if (ClasDatos.QUEform == "Provincias" | ClasDatos.QUEform == "Almacen" | ClasDatos.QUEform == "Proveedores" | ClasDatos.QUEform == "Ejercicio")
                 {
-                    this.verViev.RowFilter = "["+ColumnaPrincipal+ "]"+ " LIKE '%" + this.Buscador2.Text + "%'" +"and "+ "[" + ColumnaSecundaria + "] ="+IdBuscar;
+                    this.verViev.RowFilter = "[" + ColumnaPrincipal + "]" + " LIKE '%" + this.Buscador2.Text + "%'" + "and " + "[" + ColumnaSecundaria + "] =" + IdBuscar;
                 }
                 else
                 {
@@ -132,14 +132,14 @@ namespace PELOSCALVO
                 //this.DataGridBuscar.Columns[Fila].HeaderText = Columna;
                 if (this.TipoBuscar2.SelectedIndex == 0)
                 {
-                  //  this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
+                    //  this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
                 }
 
                 if (this.TipoBuscar2.SelectedIndex == 1)//referencia
                 {
 
 
-                   // this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
+                    // this.verViev.RowFilter = ColumnaB + " LIKE '%" + this.Buscador2.Text + "%'";
 
                 }
                 this.DataGridBuscar.DataSource = this.verViev;
@@ -213,7 +213,7 @@ namespace PELOSCALVO
 
 
                     }
-
+                  // this.Close();
                 }
                 catch (Exception ex)
                 {

@@ -271,7 +271,7 @@ namespace PELOSCALVO
             // 
             this.dataGridViewImageColumn1.FillWeight = 90F;
             this.dataGridViewImageColumn1.HeaderText = "Editar";
-            this.dataGridViewImageColumn1.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.dataGridViewImageColumn1.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ReadOnly = true;
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -282,7 +282,7 @@ namespace PELOSCALVO
             // 
             this.dataGridViewImageColumn2.FillWeight = 98F;
             this.dataGridViewImageColumn2.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn2.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.dataGridViewImageColumn2.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
@@ -324,7 +324,7 @@ namespace PELOSCALVO
             this.BtnSalirCorreoEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirCorreoEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirCorreoEmpresa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirCorreoEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirCorreoEmpresa.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirCorreoEmpresa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirCorreoEmpresa.Location = new System.Drawing.Point(778, 361);
             this.BtnSalirCorreoEmpresa.Name = "BtnSalirCorreoEmpresa";
@@ -455,7 +455,7 @@ namespace PELOSCALVO
             this.BtnCancelarCorreo_E.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarCorreo_E.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarCorreo_E.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarCorreo_E.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarCorreo_E.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarCorreo_E.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarCorreo_E.Location = new System.Drawing.Point(764, 421);
             this.BtnCancelarCorreo_E.Name = "BtnCancelarCorreo_E";
@@ -489,7 +489,7 @@ namespace PELOSCALVO
             this.BtnEliminarCorreoEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarCorreoEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarCorreoEmpresa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarCorreoEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarCorreoEmpresa.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarCorreoEmpresa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarCorreoEmpresa.Location = new System.Drawing.Point(238, 3);
             this.BtnEliminarCorreoEmpresa.Name = "BtnEliminarCorreoEmpresa";
@@ -509,7 +509,7 @@ namespace PELOSCALVO
             this.BtnBuscarCorreo_empr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarCorreo_empr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarCorreo_empr.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarCorreo_empr.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarCorreo_empr.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarCorreo_empr.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarCorreo_empr.Location = new System.Drawing.Point(161, 3);
             this.BtnBuscarCorreo_empr.Name = "BtnBuscarCorreo_empr";
@@ -528,7 +528,7 @@ namespace PELOSCALVO
             this.BtnNuevoCorreoEmpr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoCorreoEmpr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoCorreoEmpr.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoCorreoEmpr.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoCorreoEmpr.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoCorreoEmpr.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoCorreoEmpr.Location = new System.Drawing.Point(7, 3);
             this.BtnNuevoCorreoEmpr.Name = "BtnNuevoCorreoEmpr";
@@ -549,7 +549,7 @@ namespace PELOSCALVO
             this.BtnModificarCorreoEmpr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarCorreoEmpr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarCorreoEmpr.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarCorreoEmpr.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarCorreoEmpr.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarCorreoEmpr.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarCorreoEmpr.Location = new System.Drawing.Point(84, 3);
             this.BtnModificarCorreoEmpr.Name = "BtnModificarCorreoEmpr";
@@ -570,7 +570,7 @@ namespace PELOSCALVO
             this.BtnGuardarCorreo_E.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarCorreo_E.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarCorreo_E.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarCorreo_E.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarCorreo_E.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarCorreo_E.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarCorreo_E.Location = new System.Drawing.Point(485, 421);
             this.BtnGuardarCorreo_E.Name = "BtnGuardarCorreo_E";
@@ -662,7 +662,7 @@ namespace PELOSCALVO
             this.BtnCancelarCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarCli.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarCli.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarCli.Location = new System.Drawing.Point(721, 427);
             this.BtnCancelarCli.Name = "BtnCancelarCli";
@@ -696,7 +696,7 @@ namespace PELOSCALVO
             this.BtnEliminarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarCorreoCli.Location = new System.Drawing.Point(238, 3);
             this.BtnEliminarCorreoCli.Name = "BtnEliminarCorreoCli";
@@ -716,7 +716,7 @@ namespace PELOSCALVO
             this.BtnBuscarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarCorreoCli.Location = new System.Drawing.Point(161, 3);
             this.BtnBuscarCorreoCli.Name = "BtnBuscarCorreoCli";
@@ -735,7 +735,7 @@ namespace PELOSCALVO
             this.BtnNuevoCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoCorreoCli.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoCorreoCli.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoCorreoCli.Location = new System.Drawing.Point(7, 3);
             this.BtnNuevoCorreoCli.Name = "BtnNuevoCorreoCli";
@@ -756,7 +756,7 @@ namespace PELOSCALVO
             this.BtnModificarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarCorreoCli.Location = new System.Drawing.Point(84, 3);
             this.BtnModificarCorreoCli.Name = "BtnModificarCorreoCli";
@@ -777,7 +777,7 @@ namespace PELOSCALVO
             this.BtnGuardarCorreoCli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarCorreoCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarCorreoCli.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarCorreoCli.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarCorreoCli.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarCorreoCli.Location = new System.Drawing.Point(486, 423);
             this.BtnGuardarCorreoCli.Name = "BtnGuardarCorreoCli";

@@ -63,6 +63,16 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Aceptar {
+            get {
+                object obj = ResourceManager.GetObject("Aceptar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Apagar {
             get {
                 object obj = ResourceManager.GetObject("Apagar", resourceCulture);
@@ -76,6 +86,26 @@ namespace PELOSCALVO.Properties {
         internal static System.Drawing.Bitmap Archivo {
             get {
                 object obj = ResourceManager.GetObject("Archivo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ArchivoFile {
+            get {
+                object obj = ResourceManager.GetObject("ArchivoFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Articulos {
+            get {
+                object obj = ResourceManager.GetObject("Articulos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +143,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Carpeta1 {
+        internal static System.Drawing.Bitmap Cancelar {
             get {
-                object obj = ResourceManager.GetObject("Carpeta1", resourceCulture);
+                object obj = ResourceManager.GetObject("Cancelar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +153,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CIRCULO_ROJO1 {
+        internal static System.Drawing.Bitmap Carpeta {
             get {
-                object obj = ResourceManager.GetObject("CIRCULO ROJO1", resourceCulture);
+                object obj = ResourceManager.GetObject("Carpeta", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +163,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CIRCULO_VERDE1_ {
+        internal static System.Drawing.Bitmap CIRCULO_ROJO {
             get {
-                object obj = ResourceManager.GetObject("CIRCULO VERDE1 ", resourceCulture);
+                object obj = ResourceManager.GetObject("CIRCULO_ROJO", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +173,19 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Clientes3 {
+        internal static System.Drawing.Bitmap CIRCULO_VERDE {
             get {
-                object obj = ResourceManager.GetObject("Clientes3", resourceCulture);
+                object obj = ResourceManager.GetObject("CIRCULO_VERDE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Clientes {
+            get {
+                object obj = ResourceManager.GetObject("Clientes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +203,59 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Compras {
+            get {
+                object obj = ResourceManager.GetObject("Compras", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CorreoEletronico {
+            get {
+                object obj = ResourceManager.GetObject("CorreoEletronico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CorreoEletronico2 {
+            get {
+                object obj = ResourceManager.GetObject("CorreoEletronico2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Editar {
+            get {
+                object obj = ResourceManager.GetObject("Editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Excel32 {
             get {
                 object obj = ResourceManager.GetObject("Excel32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlechaD {
+            get {
+                object obj = ResourceManager.GetObject("FlechaD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,169 +273,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_arrow_35_24 {
+        internal static System.Drawing.Bitmap Impresora {
             get {
-                object obj = ResourceManager.GetObject("iconmonstr-arrow-35-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_calculator_7_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-calculator-7-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_check_mark_9_24 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-check-mark-9-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_coin_6_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-coin-6-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_cube_18_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-cube-18-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_door_5_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-door-5-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_email_9_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-email-9-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_file_14_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-file-14-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_magnifier_4_16 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-magnifier-4-16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_magnifier_4_24 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-magnifier-4-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_magnifier_4_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-magnifier-4-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_pen_8_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-pen-8-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_printer_5_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-printer-5-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_shopping_bag_17_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-shopping-bag-17-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_trash_can_17_32 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-trash-can-17-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_undo_4_24 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-undo-4-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconmonstr_x_mark_8_24 {
-            get {
-                object obj = ResourceManager.GetObject("iconmonstr-x-mark-8-24", resourceCulture);
+                object obj = ResourceManager.GetObject("Impresora", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -383,9 +313,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap lupa_pequeña {
+        internal static System.Drawing.Bitmap Lupa_Grande {
             get {
-                object obj = ResourceManager.GetObject("lupa pequeña", resourceCulture);
+                object obj = ResourceManager.GetObject("Lupa_Grande", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -393,9 +323,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap maximize {
+        internal static System.Drawing.Bitmap Lupa_Mediana {
             get {
-                object obj = ResourceManager.GetObject("maximize", resourceCulture);
+                object obj = ResourceManager.GetObject("Lupa_Mediana", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -403,9 +333,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap maximize2 {
+        internal static System.Drawing.Bitmap Lupa_Pequeña {
             get {
-                object obj = ResourceManager.GetObject("maximize2", resourceCulture);
+                object obj = ResourceManager.GetObject("Lupa_Pequeña", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -413,9 +343,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap maximize3 {
+        internal static System.Drawing.Bitmap maximizar {
             get {
-                object obj = ResourceManager.GetObject("maximize3", resourceCulture);
+                object obj = ResourceManager.GetObject("maximizar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -423,9 +353,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap menu2 {
+        internal static System.Drawing.Bitmap MenuBarras {
             get {
-                object obj = ResourceManager.GetObject("menu2", resourceCulture);
+                object obj = ResourceManager.GetObject("MenuBarras", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,19 +363,9 @@ namespace PELOSCALVO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Minimize {
+        internal static System.Drawing.Bitmap Minimizar {
             get {
-                object obj = ResourceManager.GetObject("Minimize", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Minimize1 {
-            get {
-                object obj = ResourceManager.GetObject("Minimize1", resourceCulture);
+                object obj = ResourceManager.GetObject("Minimizar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -456,6 +376,16 @@ namespace PELOSCALVO.Properties {
         internal static System.Drawing.Bitmap Normal {
             get {
                 object obj = ResourceManager.GetObject("Normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Papelera {
+            get {
+                object obj = ResourceManager.GetObject("Papelera", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -486,6 +416,36 @@ namespace PELOSCALVO.Properties {
         internal static System.Drawing.Bitmap PowerPoint32 {
             get {
                 object obj = ResourceManager.GetObject("PowerPoint32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Regresar {
+            get {
+                object obj = ResourceManager.GetObject("Regresar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Salir {
+            get {
+                object obj = ResourceManager.GetObject("Salir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ventas {
+            get {
+                object obj = ResourceManager.GetObject("Ventas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

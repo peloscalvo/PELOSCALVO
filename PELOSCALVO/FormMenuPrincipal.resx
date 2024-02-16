@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>124, 125</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnFacturar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -127,9 +130,6 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>685, 18</value>
-  </metadata>
   <data name="btnConfiguracion.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -166,21 +166,6 @@
         nAS3+VaMgt+o+Amq9O5fOdkNHpQcAPeSE8dUQT24MoqMfjGzVn1+Itu97QH0/qhThUb98dSITP41J6uX
         tN03IEYya/LAQZBcOv2OSIFAjOluvDh8Lh8en7oC8xHyfl+X/Uwz8T5KAj+7goNemDlJIHlwDnpFQecf
         XnQvVMyzGlQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnCorreo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAjNJREFUWEftVk1rE1EUHUIXUkp5k48aaBWRLlxJ6ULEH+DCxbxp2khVaEV3Lkvp
-        orvqQiQUhC5ciL8glNBVF12UIiLSmQwlSJDgUqR0JeIiSNBzw53hJfNmEtMkXZgDh7zcd+69Z+7Mm8QY
-        YYQLh7uUmXRs84UjRfHYGg6pF/V0FzOThiPNEoJ/fGLzky/sN1Hbw6fSyyzBgGi0BsUPx06uVF+vJnhI
-        58bJ0xsJ1HyG2r/aejUMNaASIypiRGmu0TPcXDqLK93X9SBGGiDC4TdnIXmXa/0zkGujxpmuts9YA0QU
-        oGnsuPnL41y3I9ylqQnkvKNcXU2VLQaQdICkr2os2JOi6iyk5rlHJHDVt6GtRdSo4XYcqrF2A9twT8fy
-        rc49Yr+xt+k9mBnjfgHKy9Nj2NsijSaPar9pTkaaO+peyADXoyuxkHiq7gc6KT64udR1lhpOLjWL2McI
-        7XfUusdSOvbdGSC4i+kpJOypmkArxU8crSdNYq3V2OZu+0mKNXBsmwXWBaiu3aEzHNlER2jpXfL483Mr
-        9C6JNyBFyIAPGjkKv2/RawjNEbTXOC2E+FsgxSvWaeE9vEIP2gZ0dTWPc+vYW/ceXQ09oCrOZcAHjuMc
-        tBUlr4LYTd6ORbwB2+zKAKGcz16ihxYs0JrDHdE3A71iZCDWAN4DL1k3MMQbkGL4BnCEgi9YD9UA9SYD
-        X5RAybHE/YFSiuDfEfWmX71btACDSQya1KvZE715MCP8tzCMv9QDWmXbDoVzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="BtnAbrirChrome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -231,19 +216,6 @@
         GjZEEsNEgMj2qu7JKIY0CRXAthKic1nDXYc04W02Xgsfxx5/L0jWF5DXwp2GcBWACMciuAwE0CV3DVcB
         cRLJl8P1iwLWr0jnI/vuEumlgIZlPESi5tMzlRanM69XV4CPflBD9HLQqHNax8gvRb4JJi1E/O4R7u9C
         iBB5EngjuGzBce6yqqkuXhoTqQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="BtnCalculadora.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAbRJREFUWEftlbFLw0AUxjuIgxQpvTR0cOggDg5SJDiXDg7ObRKLQ+dO/gEiODg5
-        SgdxcHDu4ODs0FmcxOEMUpydxaHo915f5JBgrzYtRfLBj+Rd37335e6S5jJlWkjpZvFzCrpS5u+SQu/g
-        cQJeQKoGqGgB1Czw5Jq6gbjoOMzczMD/MuCChgW7IH0DElppJgYAvV50JTrgyIjXQV/ub8DMz8AJ6Brx
-        JtDaV+egDXYQD0GqBpYBnQNiBeSNeEnSv6V9J8T4/FaAc0dP39OBs8Vx4NTpOpWkARmogjuhDQ6NuMK5
-        vurrsOTpfXeDJ6chFI8NmK8h7fm2Ea9ybuhWYYIMRbgfjbXKeWxHQwelOn7r0NhEQrHYwNgtINGyIx6i
-        2TW4YJrFAa73nOs7B5JqJ2lABirgWCAze0bsSjoLzc4wRvPiv2UDFUmanWTiG6An/p3QLdCc51YZb4x6
-        wNiP5kLgeFzcRokFElFPnB84+AaoCAyS84CvLrm4jTCBltsCxU+Fw7aGBrcY+wBJBuh8nHLxWQrb4aIR
-        fa5p++Lmr1ihmqTMRzBShJEr0KN7Gc6UaRGVy30BQpmDL4AcTdwAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="tmExpandirMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -257,7 +257,7 @@ namespace PELOSCALVO
             // PictureServidor
             // 
             this.PictureServidor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PictureServidor.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
+            this.PictureServidor.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO;
             this.PictureServidor.Location = new System.Drawing.Point(10, 51);
             this.PictureServidor.Name = "PictureServidor";
             this.PictureServidor.Size = new System.Drawing.Size(22, 22);
@@ -268,7 +268,7 @@ namespace PELOSCALVO
             // PictureArchivo
             // 
             this.PictureArchivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PictureArchivo.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO1;
+            this.PictureArchivo.Image = global::PELOSCALVO.Properties.Resources.CIRCULO_ROJO;
             this.PictureArchivo.Location = new System.Drawing.Point(10, 13);
             this.PictureArchivo.Name = "PictureArchivo";
             this.PictureArchivo.Size = new System.Drawing.Size(22, 22);
@@ -519,7 +519,7 @@ namespace PELOSCALVO
             this.BtnGuardarArchivo_Sql.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarArchivo_Sql.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarArchivo_Sql.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarArchivo_Sql.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarArchivo_Sql.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarArchivo_Sql.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarArchivo_Sql.Location = new System.Drawing.Point(637, 265);
             this.BtnGuardarArchivo_Sql.Name = "BtnGuardarArchivo_Sql";
@@ -540,7 +540,7 @@ namespace PELOSCALVO
             this.BtnGuardarDatosArchivos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarDatosArchivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarDatosArchivos.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarDatosArchivos.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarDatosArchivos.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarDatosArchivos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarDatosArchivos.Location = new System.Drawing.Point(637, 217);
             this.BtnGuardarDatosArchivos.Name = "BtnGuardarDatosArchivos";
@@ -600,7 +600,7 @@ namespace PELOSCALVO
             this.BtnGuardarServidores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarServidores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarServidores.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarServidores.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarServidores.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarServidores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarServidores.Location = new System.Drawing.Point(613, 259);
             this.BtnGuardarServidores.Name = "BtnGuardarServidores";
@@ -788,6 +788,8 @@ namespace PELOSCALVO
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TabArchivoSql);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormBaseDatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conectar Base Datos";

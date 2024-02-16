@@ -201,7 +201,7 @@ namespace PELOSCALVO
             this.BtnCancelarEjercicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarEjercicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarEjercicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarEjercicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarEjercicio.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarEjercicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarEjercicio.Location = new System.Drawing.Point(675, 458);
             this.BtnCancelarEjercicio.Name = "BtnCancelarEjercicio";
@@ -222,7 +222,7 @@ namespace PELOSCALVO
             this.BtnGuardarEjercicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarEjercicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarEjercicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarEjercicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarEjercicio.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarEjercicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarEjercicio.Location = new System.Drawing.Point(460, 458);
             this.BtnGuardarEjercicio.Name = "BtnGuardarEjercicio";
@@ -255,7 +255,7 @@ namespace PELOSCALVO
             this.BtnEliminarEjercicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarEjercicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarEjercicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarEjercicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarEjercicio.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarEjercicio.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarEjercicio.Location = new System.Drawing.Point(238, 3);
             this.BtnEliminarEjercicio.Name = "BtnEliminarEjercicio";
@@ -275,7 +275,7 @@ namespace PELOSCALVO
             this.BtnBuscarEjercicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarEjercicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarEjercicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarEjercicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarEjercicio.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarEjercicio.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarEjercicio.Location = new System.Drawing.Point(161, 3);
             this.BtnBuscarEjercicio.Name = "BtnBuscarEjercicio";
@@ -295,7 +295,7 @@ namespace PELOSCALVO
             this.BtnNuevoEjercicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoEjercicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoEjercicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoEjercicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoEjercicio.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoEjercicio.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoEjercicio.Location = new System.Drawing.Point(7, 3);
             this.BtnNuevoEjercicio.Name = "BtnNuevoEjercicio";
@@ -316,7 +316,7 @@ namespace PELOSCALVO
             this.BtnModificarEjercicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarEjercicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarEjercicio.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarEjercicio.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarEjercicio.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarEjercicio.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarEjercicio.Location = new System.Drawing.Point(84, 3);
             this.BtnModificarEjercicio.Name = "BtnModificarEjercicio";
@@ -460,7 +460,7 @@ namespace PELOSCALVO
             this.BtnSalirEjerc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirEjerc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirEjerc.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirEjerc.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirEjerc.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirEjerc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirEjerc.Location = new System.Drawing.Point(825, 430);
             this.BtnSalirEjerc.Name = "BtnSalirEjerc";

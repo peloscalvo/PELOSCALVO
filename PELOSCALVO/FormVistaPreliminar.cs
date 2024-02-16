@@ -148,19 +148,19 @@ namespace PELOSCALVO
             printPreviewControl1.ResetText();
             if (ClasDatos.OkFacturar == true)
             {
-                if (FormImprimirTodo.Menu2Imprimirtodo.MultiFormatoImprimir.SelectedIndex == 0)
+                if (FormImprimirTodo.Menu2Imprimirtodo.FormatoDocumento.SelectedIndex == 0)
                 {
                     printPreviewControl1.Document = printNotaSimple;
                 }
-                if (FormImprimirTodo.Menu2Imprimirtodo.MultiFormatoImprimir.SelectedIndex ==1)
+                if (FormImprimirTodo.Menu2Imprimirtodo.FormatoDocumento.SelectedIndex ==1)
                 {
                     printPreviewControl1.Document = printNota2;
                 }
-                if (FormImprimirTodo.Menu2Imprimirtodo.MultiFormatoImprimir.SelectedIndex == 2)
+                if (FormImprimirTodo.Menu2Imprimirtodo.FormatoDocumento.SelectedIndex == 2)
                 {
                     printPreviewControl1.Document = printNota;
                 }
-                if (FormImprimirTodo.Menu2Imprimirtodo.MultiFormatoImprimir.Text == "Albaranes")
+                if (FormImprimirTodo.Menu2Imprimirtodo.FormatoDocumento.Text == "Albaranes")
                 {
                     printPreviewControl1.Document = printAlbaran;
                 }

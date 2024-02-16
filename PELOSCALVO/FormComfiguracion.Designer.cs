@@ -209,7 +209,7 @@ namespace PELOSCALVO
             this.BtnRestructurar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(0)))));
             this.BtnRestructurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRestructurar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnRestructurar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_arrow_35_24;
+            this.BtnRestructurar.Image = global::PELOSCALVO.Properties.Resources.FlechaD;
             this.BtnRestructurar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnRestructurar.Location = new System.Drawing.Point(680, 297);
             this.BtnRestructurar.Name = "BtnRestructurar";
@@ -355,7 +355,7 @@ namespace PELOSCALVO
             this.BtnSalirConfi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirConfi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirConfi.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirConfi.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirConfi.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirConfi.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirConfi.Location = new System.Drawing.Point(915, 465);
             this.BtnSalirConfi.Name = "BtnSalirConfi";

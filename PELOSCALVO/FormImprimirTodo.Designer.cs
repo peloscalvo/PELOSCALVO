@@ -37,9 +37,9 @@ namespace PELOSCALVO
             this.BtnImprimirTodo = new System.Windows.Forms.Button();
             this.TipoDocumento = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Formatoimpresion = new System.Windows.Forms.ComboBox();
+            this.TipoImpresion = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.MultiFormatoImprimir = new System.Windows.Forms.ComboBox();
+            this.FormatoDocumento = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -67,11 +67,11 @@ namespace PELOSCALVO
             this.checkPreciosValenteImpri = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkArticulosCoste = new System.Windows.Forms.CheckBox();
-            this.printNotaFull = new System.Drawing.Printing.PrintDocument();
-            this.printNota2Full = new System.Drawing.Printing.PrintDocument();
+            this.printNotaCuadrados = new System.Drawing.Printing.PrintDocument();
+            this.printNotaBordes = new System.Drawing.Printing.PrintDocument();
             this.printAlbaranFull = new System.Drawing.Printing.PrintDocument();
             this.printPresupuestoFull = new System.Drawing.Printing.PrintDocument();
-            this.printNotaSimpleFull = new System.Drawing.Printing.PrintDocument();
+            this.printNotaSimple = new System.Drawing.Printing.PrintDocument();
             this.printArticulosFull = new System.Drawing.Printing.PrintDocument();
             this.printClientesFull = new System.Drawing.Printing.PrintDocument();
             tabPageInicioImpri = new System.Windows.Forms.TabPage();
@@ -96,9 +96,9 @@ namespace PELOSCALVO
             tabPageInicioImpri.Controls.Add(this.BtnImprimirTodo);
             tabPageInicioImpri.Controls.Add(this.TipoDocumento);
             tabPageInicioImpri.Controls.Add(this.label3);
-            tabPageInicioImpri.Controls.Add(this.Formatoimpresion);
+            tabPageInicioImpri.Controls.Add(this.TipoImpresion);
             tabPageInicioImpri.Controls.Add(this.label2);
-            tabPageInicioImpri.Controls.Add(this.MultiFormatoImprimir);
+            tabPageInicioImpri.Controls.Add(this.FormatoDocumento);
             tabPageInicioImpri.Controls.Add(this.label1);
             tabPageInicioImpri.Location = new System.Drawing.Point(4, 22);
             tabPageInicioImpri.Name = "tabPageInicioImpri";
@@ -127,7 +127,7 @@ namespace PELOSCALVO
             this.BtnSalirImprimirTodo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirImprimirTodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirImprimirTodo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirImprimirTodo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirImprimirTodo.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirImprimirTodo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirImprimirTodo.Location = new System.Drawing.Point(550, 287);
             this.BtnSalirImprimirTodo.Name = "BtnSalirImprimirTodo";
@@ -145,12 +145,14 @@ namespace PELOSCALVO
             this.listFormatoImpresiones.FormattingEnabled = true;
             this.listFormatoImpresiones.ItemHeight = 16;
             this.listFormatoImpresiones.Items.AddRange(new object[] {
-            "Imprimir Factura",
-            "Imprimir Nota",
-            "Imprimir Varios"});
-            this.listFormatoImpresiones.Location = new System.Drawing.Point(233, 106);
+            "1-Formato Simple",
+            "2-Formato Con Bordes",
+            "3-Formato Con Bordes y Rectangulos",
+            "4-Formato Diseño(( ESPECIAL ))",
+            "5-Formato Variado"});
+            this.listFormatoImpresiones.Location = new System.Drawing.Point(233, 80);
             this.listFormatoImpresiones.Name = "listFormatoImpresiones";
-            this.listFormatoImpresiones.Size = new System.Drawing.Size(179, 132);
+            this.listFormatoImpresiones.Size = new System.Drawing.Size(249, 132);
             this.listFormatoImpresiones.TabIndex = 21;
             // 
             // BtnImprimirTodo
@@ -197,11 +199,11 @@ namespace PELOSCALVO
             this.label3.TabIndex = 20;
             this.label3.Text = "Imprimir en:";
             // 
-            // Formatoimpresion
+            // TipoImpresion
             // 
-            this.Formatoimpresion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Formatoimpresion.FormattingEnabled = true;
-            this.Formatoimpresion.Items.AddRange(new object[] {
+            this.TipoImpresion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TipoImpresion.FormattingEnabled = true;
+            this.TipoImpresion.Items.AddRange(new object[] {
             "Impresora",
             "Preliminar",
             "PDF",
@@ -210,11 +212,11 @@ namespace PELOSCALVO
             "EXCEL",
             "XPS",
             "XML"});
-            this.Formatoimpresion.Location = new System.Drawing.Point(235, 284);
-            this.Formatoimpresion.Name = "Formatoimpresion";
-            this.Formatoimpresion.Size = new System.Drawing.Size(179, 21);
-            this.Formatoimpresion.TabIndex = 16;
-            this.Formatoimpresion.SelectedIndexChanged += new System.EventHandler(this.Formatoimpresion_SelectedIndexChanged);
+            this.TipoImpresion.Location = new System.Drawing.Point(235, 284);
+            this.TipoImpresion.Name = "TipoImpresion";
+            this.TipoImpresion.Size = new System.Drawing.Size(179, 21);
+            this.TipoImpresion.TabIndex = 16;
+            this.TipoImpresion.SelectedIndexChanged += new System.EventHandler(this.Formatoimpresion_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -225,21 +227,21 @@ namespace PELOSCALVO
             this.label2.TabIndex = 19;
             this.label2.Text = "Formato:";
             // 
-            // MultiFormatoImprimir
+            // FormatoDocumento
             // 
-            this.MultiFormatoImprimir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.MultiFormatoImprimir.FormattingEnabled = true;
-            this.MultiFormatoImprimir.Items.AddRange(new object[] {
+            this.FormatoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FormatoDocumento.FormattingEnabled = true;
+            this.FormatoDocumento.Items.AddRange(new object[] {
             "Formato Simple",
-            "Formato Factura",
-            "Formato Con Rectangulos",
-            "Formato Diseño",
+            "Formato Con Bordes",
+            "Formato Con Bordes y Rectangulos",
+            "Formato Diseño(( ESPECIAL ))",
             "Formato Variado"});
-            this.MultiFormatoImprimir.Location = new System.Drawing.Point(233, 44);
-            this.MultiFormatoImprimir.Name = "MultiFormatoImprimir";
-            this.MultiFormatoImprimir.Size = new System.Drawing.Size(179, 21);
-            this.MultiFormatoImprimir.TabIndex = 17;
-            this.MultiFormatoImprimir.SelectedIndexChanged += new System.EventHandler(this.MultiFormatoImprimir_SelectedIndexChanged);
+            this.FormatoDocumento.Location = new System.Drawing.Point(233, 44);
+            this.FormatoDocumento.Name = "FormatoDocumento";
+            this.FormatoDocumento.Size = new System.Drawing.Size(179, 21);
+            this.FormatoDocumento.TabIndex = 17;
+            this.FormatoDocumento.SelectedIndexChanged += new System.EventHandler(this.MultiFormatoImprimir_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -548,14 +550,14 @@ namespace PELOSCALVO
             this.checkArticulosCoste.Text = "Valorado";
             this.checkArticulosCoste.UseVisualStyleBackColor = true;
             // 
-            // printNotaFull
+            // printNotaCuadrados
             // 
-            this.printNotaFull.DocumentName = "docum";
-            this.printNotaFull.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printNotaFull_PrintPage);
+            this.printNotaCuadrados.DocumentName = "docum";
+            this.printNotaCuadrados.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printNotaCuadrados_PrintPage);
             // 
-            // printNota2Full
+            // printNotaBordes
             // 
-            this.printNota2Full.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printNota2Full_PrintPage);
+            this.printNotaBordes.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printNotaBordes_PrintPage);
             // 
             // printAlbaranFull
             // 
@@ -564,6 +566,10 @@ namespace PELOSCALVO
             // printPresupuestoFull
             // 
             this.printPresupuestoFull.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printPresupuestoFull_PrintPage);
+            // 
+            // printNotaSimple
+            // 
+            this.printNotaSimple.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printNotaSimple_PrintPage);
             // 
             // printArticulosFull
             // 
@@ -613,7 +619,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox TipoDocumento;
-        private System.Windows.Forms.ComboBox Formatoimpresion;
+        private System.Windows.Forms.ComboBox TipoImpresion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -640,12 +646,12 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label labelCasty;
         public System.Windows.Forms.CheckBox checkPreciosPlusImpri;
         public System.Windows.Forms.CheckBox checkPreciosValenteImpri;
-        public System.Windows.Forms.ComboBox MultiFormatoImprimir;
-        private System.Drawing.Printing.PrintDocument printNotaFull;
-        private System.Drawing.Printing.PrintDocument printNota2Full;
+        public System.Windows.Forms.ComboBox FormatoDocumento;
+        private System.Drawing.Printing.PrintDocument printNotaCuadrados;
+        private System.Drawing.Printing.PrintDocument printNotaBordes;
         private System.Drawing.Printing.PrintDocument printAlbaranFull;
         private System.Drawing.Printing.PrintDocument printPresupuestoFull;
-        private System.Drawing.Printing.PrintDocument printNotaSimpleFull;
+        private System.Drawing.Printing.PrintDocument printNotaSimple;
         private System.Drawing.Printing.PrintDocument printArticulosFull;
         private System.Drawing.Printing.PrintDocument printClientesFull;
     }

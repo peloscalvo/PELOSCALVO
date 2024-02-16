@@ -149,12 +149,14 @@ namespace PELOSCALVO
         }
         private void BtnImagenEmpresa_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            openFileDialog1.Title = "Nueva Imagen Empresa";
-            openFileDialog1.FileName = "Logo Empresa";
-            //openFileDialog1.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpg*.jpeg||All files (*.*)|*.*";
-            openFileDialog1.Filter = "Archivo De Imagenes|*.jpg;*.jpeg;*.png;*.gif;*.tif;...|All files (*.*)|*.*";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "Nueva Imagen Empresa",
+                FileName = "Logo Empresa",
+                //openFileDialog1.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpg*.jpeg||All files (*.*)|*.*";
+                Filter = "Archivo De Imagenes|*.jpg;*.jpeg;*.png;*.gif;*.tif;...|All files (*.*)|*.*"
+            };
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -270,7 +272,7 @@ namespace PELOSCALVO
                 }
                 if (!string.IsNullOrEmpty(this.correoEmpresaTextBox.Text))
                 {
-                    Correo = this.correoEmpresaTextBox.Text;
+                    this.Correo = this.correoEmpresaTextBox.Text;
                 }
                 if (!string.IsNullOrEmpty(this.movilEmpresaTextBox.Text))
                 {
@@ -278,7 +280,7 @@ namespace PELOSCALVO
                 }
                 if (!string.IsNullOrEmpty(this.Paistxt.Text))
                 {
-                    Pais = this.Paistxt.Text;
+                    this.Pais = this.Paistxt.Text;
                 }
                 if (!string.IsNullOrEmpty(this.ProvinciaTxt.Text))
                 {
@@ -292,15 +294,14 @@ namespace PELOSCALVO
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 25))
             {
                 int Id_Confi = 1;
-                String ConsultaDescuetos = "";
                 string consulta = "";
                 string Almacenes = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
                 if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                 {
-                    ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
+
                     consulta = "  INSERT INTO [DtConfiguracionPrincipal]([EmpresaConfi],[IdEmpresa],[NombreEmpresa],[DireccionEmpresa],[LocalidadEmpresa]" +
                  " ,[CodigoPostalEmpresa],[ProvinciaEmpresa],[TelefonoEmpresa],[CorreoEmpresa],[WepEmpresa] ,[RegimenIvaEmpresa]" +
-                     " ,[PaisEmpresa],[SerieDeFacturacionEmpresa],[Telefono2Empresa],[MovilEmpresa],[CifEmpresa],[NombreEmpresaReguistro]" +
+                     " ,[PaisEmpresa],[SerieDeFacturacionEmpresa],[Telefono2Empresa],[MovilEmpresa],[CifEmpresa]" +
                      "  ,[ImagenEmpresa])  VALUES( @EmpresaConfi, @IdEmpresa, @NombreEmpresa, @DireccionEmpresa, @LocalidadEmpresa," +
                        " @CodigoPostalEmpresa, @ProvinciaEmpresa, @TelefonoEmpresa, @CorreoEmpresa, @WepEmpresa, @RegimenIvaEmpresa," +
                        " @PaisEmpresa, @SerieDeFacturacionEmpresa, @Telefono2Empresa, @MovilEmpresa, @CifEmpresa, @ImagenEmpresa)";
@@ -309,7 +310,7 @@ namespace PELOSCALVO
                 }
                 else
                 {
-                    ConsultaDescuetos = " UPDATE [DtTarifaTipo] SET [Id] = @Id,[TarifaTipo] =@TarifaTipo,[EnlaceTarifa]= @EnlaceTarifa";
+
                     consulta = "UPDATE [DtConfiguracionPrincipal] SET [EmpresaConfi] = @EmpresaConfi,[IdEmpresa] = @IdEmpresa, [NombreEmpresa] = @NombreEmpresa, " +
                         "[DireccionEmpresa] = @DireccionEmpresa, [LocalidadEmpresa] = @LocalidadEmpresa,[CodigoPostalEmpresa] = @CodigoPostalEmpresa,  [ProvinciaEmpresa] = @ProvinciaEmpresa, " +
                         " [TelefonoEmpresa] = @TelefonoEmpresa, [CorreoEmpresa] = @CorreoEmpresa,  [WepEmpresa] = @WepEmpresa, [RegimenIvaEmpresa] = @RegimenIvaEmpresa, [PaisEmpresa] = @PaisEmpresa, " +
@@ -348,26 +349,27 @@ namespace PELOSCALVO
                         Validate();
                         if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                         {
+                            string ConsultaDescuetos = " INSERT INTO [DtTarifa]([Id],[TarifaTipo],[TarifaReal],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo,@TarifaReal, @EnlaceTarifa)";
                             NuevaConexion = new ClsConexionSql(ConsultaDescuetos);////Guarda Descuentos Clientes
                             string Tarifa = "Pvp";
                             if (NuevaConexion.SiConexionSql)
                             {
-                                for (int Fila = 1; Fila < 8; Fila++)
+                                for (int Fila = 1; Fila <= 8; Fila++)
                                 {
-
                                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Fila);
-                                    if (Fila == 6)
+                                    if (Fila == 7)
                                     {
 
-                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", "IVA");
-                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "IVA" + Fila.ToString(), this.idEmpresa.Text);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", "PLUS");
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaReal", "PLUS");
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "PLUS", this.idEmpresa.Text, "PLUS");
                                     }
-                                    else
+                                    else 
                                     {
                                         NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
-                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.idEmpresa.Text);
+                                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaReal", Tarifa + Fila.ToString());
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.idEmpresa.Text, Tarifa + Fila.ToString());
                                     }
-
                                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
                                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                                     NuevaConexion.ComandoSql.Parameters.Clear();
@@ -379,7 +381,7 @@ namespace PELOSCALVO
                                       "[AñoDeEjercicio]) VALUES(@IdEnlace,@EmpresaENLACE, @ConfiguraccionBasica, @TipoInpuestoIVA, @EjerciciosDeAño, @IdConexionConfi," +
                                          "  @AñoDeEjercicio)";
 
-              
+
                                 NuevaConexion = new ClsConexionSql(Almacenes);////Guarda almacen
                                 if (NuevaConexion.SiConexionSql)
                                 {
@@ -443,7 +445,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "EMPRESAS",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "EMPRESAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -508,6 +510,7 @@ namespace PELOSCALVO
         {
             if (EspacioDiscosConfi(Directory.GetCurrentDirectory(), 20))
             {
+                string InfoEmpresa = "EMPRESA";
                 int Id_Confi = 1;
                 string Almacenes = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
                 string consulta = "";
@@ -560,10 +563,13 @@ namespace PELOSCALVO
                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@ImagenEmpresa", IMAGENnUEVA);
                         NuevaConexion.ComandoDb.ExecuteNonQuery();
                         this.dtConfiguracionPrincipalBindingSource.EndEdit();
+                        this.dtConfiguracionPrincipalDataGridView.EndEdit();
                         Validate();
+              
                         if (this.BtnNuevaEmpresa.Tag.ToString() == "Nuevo")
                         {
-                            string ConsultaDescuetos = " INSERT INTO [DtTarifaTipo]([Id],[TarifaTipo],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo, @EnlaceTarifa)";
+                            InfoEmpresa = "TARIFAS";
+                            string ConsultaDescuetos = " INSERT INTO [DtTarifa]([Id],[TarifaTipo],[TarifaReal],[EnlaceTarifa]) VALUES( @Id, @TarifaTipo,@TarifaReal, @EnlaceTarifa)";
                             string Basica = "Mi Configurarcion Nueva  " + String.Format("{0:yyyy}", DateTime.Now);
                             string Ejercicio = "EJERCICIO " + String.Format("{0:yyyy}", DateTime.Now);
                             String ConsultaEjercios = "INSERT INTO [DtConfi] ([IdEnlace],[EmpresaENLACE],[ConfiguraccionBasica] ,[TipoInpuestoIVA],[EjerciciosDeAño],[IdConexionConfi]," +
@@ -574,23 +580,24 @@ namespace PELOSCALVO
                             if (NuevaConexion.SiConexionDb)
                             {
 
-                                string Tarifa = "Pvp";
+                                string Tarifa = "PVP";
 
-                                for (int Fila = 1; Fila < 8; Fila++)
+                                for (int Fila = 1; Fila <= 8; Fila++)
                                 {
-
-
                                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Fila);
                                     if (Fila == 7)
                                     {
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", "PLUS");
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", "PLUS");
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "PLUS", this.idEmpresa.Text, "PLUS");
 
-                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", "IVA");
-                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, "IVA", this.idEmpresa.Text);
                                     }
                                     else
                                     {
-                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.idEmpresa.Text);
                                         NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", Tarifa + Fila.ToString());
+                                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", Tarifa + Fila.ToString());
+                                        FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtTarifaTipo.Rows.Add(Fila, Tarifa + Fila.ToString(), this.idEmpresa.Text, Tarifa + Fila.ToString());
+
                                     }
 
                                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.idEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.idEmpresa.Text));
@@ -599,7 +606,7 @@ namespace PELOSCALVO
 
                                 }
                             }
-
+                            InfoEmpresa = "ALMACENES";
                             NuevaConexion = new ClsConexionDb(Almacenes);////Guarda almacen
                             if (NuevaConexion.SiConexionDb)
                             {
@@ -628,17 +635,18 @@ namespace PELOSCALVO
                                         else
                                         {
                                             MessageBox.Show("Falta Id Conexion", "ERROR CONFI 2", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                           // return;
+                                            // return;
                                         }
                                     }
                                     else
                                     {
                                         MessageBox.Show("Falta Id Conexion", "ERROR CONFI", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                       // return;
+                                        // return;
                                     }
 
                                 }
                             }
+                            InfoEmpresa = "EJERCICIOS";
                             NuevaConexion = new ClsConexionDb(ConsultaEjercios);//
                             if (NuevaConexion.SiConexionDb)
                             {
@@ -667,7 +675,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "EMPRESAS CREAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "EMPRESAS CREAR " + InfoEmpresa, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -853,7 +861,7 @@ namespace PELOSCALVO
                     }
                     if (!string.IsNullOrEmpty(this.Correo))
                     {
-                        correoEmpresaTextBox.Text = this.Correo;
+                        this.correoEmpresaTextBox.Text = this.Correo;
                     }
                     else
                     {
@@ -869,7 +877,7 @@ namespace PELOSCALVO
                     }
                     if (!string.IsNullOrEmpty(this.Pais))
                     {
-                        Paistxt.Text = this.Pais;
+                        this.Paistxt.Text = this.Pais;
                     }
                     else
                     {

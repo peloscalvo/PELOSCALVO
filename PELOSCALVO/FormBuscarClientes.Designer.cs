@@ -97,7 +97,7 @@ namespace PELOSCALVO
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtClientes2DataGridView.AutoGenerateColumns = false;
             this.dtClientes2DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtClientes2DataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dtClientes2DataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dtClientes2DataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtClientes2DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtClientes2DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -471,7 +471,7 @@ namespace PELOSCALVO
             this.BtnCancelarBCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarBCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarBCliente.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarBCliente.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarBCliente.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarBCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarBCliente.Location = new System.Drawing.Point(886, 407);
             this.BtnCancelarBCliente.Name = "BtnCancelarBCliente";

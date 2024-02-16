@@ -516,7 +516,7 @@ namespace PELOSCALVO
             this.BtnImprimirEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnImprimirEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnImprimirEmpresa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnImprimirEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_printer_5_32;
+            this.BtnImprimirEmpresa.Image = global::PELOSCALVO.Properties.Resources.Impresora;
             this.BtnImprimirEmpresa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnImprimirEmpresa.Location = new System.Drawing.Point(296, 0);
             this.BtnImprimirEmpresa.Name = "BtnImprimirEmpresa";
@@ -536,7 +536,7 @@ namespace PELOSCALVO
             this.BtnEliminarEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarEmpresa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarEmpresa.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarEmpresa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarEmpresa.Location = new System.Drawing.Point(219, 0);
             this.BtnEliminarEmpresa.Name = "BtnEliminarEmpresa";
@@ -556,7 +556,7 @@ namespace PELOSCALVO
             this.BtnBuscarEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarEmpresa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarEmpresa.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarEmpresa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarEmpresa.Location = new System.Drawing.Point(142, 0);
             this.BtnBuscarEmpresa.Name = "BtnBuscarEmpresa";
@@ -576,7 +576,7 @@ namespace PELOSCALVO
             this.BtnNuevaEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevaEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevaEmpresa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevaEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevaEmpresa.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevaEmpresa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevaEmpresa.Location = new System.Drawing.Point(-12, 0);
             this.BtnNuevaEmpresa.Name = "BtnNuevaEmpresa";
@@ -597,7 +597,7 @@ namespace PELOSCALVO
             this.BtnModificarEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarEmpresa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarEmpresa.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarEmpresa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarEmpresa.Location = new System.Drawing.Point(65, 0);
             this.BtnModificarEmpresa.Name = "BtnModificarEmpresa";
@@ -623,7 +623,7 @@ namespace PELOSCALVO
             // BtnImagenEmpresa
             // 
             this.BtnImagenEmpresa.Enabled = false;
-            this.BtnImagenEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_16;
+            this.BtnImagenEmpresa.Image = global::PELOSCALVO.Properties.Resources.Lupa_Mediana;
             this.BtnImagenEmpresa.Location = new System.Drawing.Point(960, 57);
             this.BtnImagenEmpresa.Name = "BtnImagenEmpresa";
             this.BtnImagenEmpresa.Size = new System.Drawing.Size(39, 23);
@@ -642,7 +642,7 @@ namespace PELOSCALVO
             this.BtnCancelarEmpresas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarEmpresas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarEmpresas.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarEmpresas.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarEmpresas.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarEmpresas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarEmpresas.Location = new System.Drawing.Point(642, 497);
             this.BtnCancelarEmpresas.Name = "BtnCancelarEmpresas";
@@ -663,7 +663,7 @@ namespace PELOSCALVO
             this.BtnGuardarEmpresas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarEmpresas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarEmpresas.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarEmpresas.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarEmpresas.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarEmpresas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarEmpresas.Location = new System.Drawing.Point(487, 497);
             this.BtnGuardarEmpresas.Name = "BtnGuardarEmpresas";
@@ -755,7 +755,7 @@ namespace PELOSCALVO
             this.BtnSalirEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirEmpresa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirEmpresa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirEmpresa.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirEmpresa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirEmpresa.Location = new System.Drawing.Point(922, 476);
             this.BtnSalirEmpresa.Name = "BtnSalirEmpresa";

@@ -3,7 +3,6 @@ using System;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace PELOSCALVO
@@ -20,22 +19,22 @@ namespace PELOSCALVO
         }
         private void FormImprimirTodo_Load(object sender, EventArgs e)
         {
-            this.Formatoimpresion.Text = "Impresora";
+            this.TipoImpresion.Text = "Impresora";
             this.TipoDocumento.Text = "Documento";
-            this.MultiFormatoImprimir.Text = "Formato Simple";
+            this.FormatoDocumento.Text = "Formato Simple";
             if (ClasDatos.OkFacturar == true)
             {
                 if (ClasDatos.NombreFactura == "Albaran")
                 {
-                    this.MultiFormatoImprimir.Items.Add("Albaran");
-                    this.MultiFormatoImprimir.Text = "Albaran";
-                    this.MultiFormatoImprimir.Enabled = false;
+                    this.FormatoDocumento.Items.Add("Albaran");
+                    this.FormatoDocumento.Text = "Albaran";
+                    this.FormatoDocumento.Enabled = false;
                 }
                 if (ClasDatos.NombreFactura == "Nota2")
                 {
-                    this.MultiFormatoImprimir.Items.Add("Nota 2");
-                    this.MultiFormatoImprimir.Text = "Nota 2";
-                    this.MultiFormatoImprimir.Enabled = false;
+                    this.FormatoDocumento.Items.Add("Nota 2");
+                    this.FormatoDocumento.Text = "Nota 2";
+                    this.FormatoDocumento.Enabled = false;
                 }
                 this.tabPageControlArticulos.Parent = null;
             }
@@ -76,13 +75,13 @@ namespace PELOSCALVO
         {
             Close();
         }
-
+        
         private void BtnImprimirTodo_Click(object sender, EventArgs e)
         {
             string NombreArchivo = "";
             string ContraseñaPdf = "PAIS";
-            
-          
+
+
             PrintDocument pd = new PrintDocument();
             if (ClasDatos.OkFacturar == true)
             {
@@ -91,21 +90,21 @@ namespace PELOSCALVO
                     ContraseñaPdf = FormFacturar.menu2FACTURAR.RazonSocialFatu.Text;
                 }
                 NombreArchivo = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text + " (" + FormFacturar.menu2FACTURAR.RazonSocialFatu.Text + ") " + FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
-                if (MultiFormatoImprimir.SelectedIndex == 0)
+                if (FormatoDocumento.SelectedIndex == 0)
                 {
-                    pd.PrintPage += new PrintPageEventHandler(printNotaFull_PrintPage);
+                    pd.PrintPage += new PrintPageEventHandler(printNotaSimple_PrintPage);
                 }
-                if (MultiFormatoImprimir.SelectedIndex == 1)
+                if (FormatoDocumento.SelectedIndex == 1)
                 {
-                    pd.PrintPage += new PrintPageEventHandler(printNotaFull_PrintPage);
+                    pd.PrintPage += new PrintPageEventHandler(printNotaBordes_PrintPage);
                 }
-                if (MultiFormatoImprimir.SelectedIndex == 2)
+                if (FormatoDocumento.SelectedIndex == 2)
                 {
-                    pd.PrintPage += new PrintPageEventHandler(printNota2Full_PrintPage);
+                    pd.PrintPage += new PrintPageEventHandler(printNotaCuadrados_PrintPage);
                 }
-                if (MultiFormatoImprimir.Text == "Albaran")
+                if (ClasDatos.QUEform == "Albaran")
                 {
-                    pd.PrintPage += new PrintPageEventHandler(printPresupuestoFull_PrintPage);
+                    pd.PrintPage += new PrintPageEventHandler(printAlbaranFull_PrintPage);
                 }
 
             }
@@ -126,7 +125,7 @@ namespace PELOSCALVO
             if (this.TipoDocumento.SelectedIndex == 0)
             {
 
-                if (this.Formatoimpresion.SelectedIndex == 0)
+                if (this.TipoImpresion.SelectedIndex == 0)
                 {
 
                     DialogResult result = this.printDialog1.ShowDialog();
@@ -138,12 +137,12 @@ namespace PELOSCALVO
                         //pageSetupDialog1.PageSettings.Landscape,
                         //  pageSetupDialog1.PrinterSettings.PrinterName,
                         // pageSetupDialog1.PrinterSettings.PrintRange};
-                       // pd.PrintPage += new PrintPageEventHandler(PrintDocument1_PrintPage);
+                        // pd.PrintPage += new PrintPageEventHandler(PrintDocument1_PrintPage);
                         pd.Print();
 
                     }
                 }
-                if (this.Formatoimpresion.SelectedIndex == 1)
+                if (this.TipoImpresion.SelectedIndex == 1)
                 {
 
                     if (this.Continuar2 == "1")
@@ -156,7 +155,7 @@ namespace PELOSCALVO
 
                     }
                 }
-                if (this.Formatoimpresion.SelectedIndex == 2)
+                if (this.TipoImpresion.SelectedIndex == 2)///formato pdf
                 {
                     string VariableDt = "Archivos Pdf Del Año ";
                     string VariableDtPASS = "Archivos Pdf Encriptados Del Año ";
@@ -166,8 +165,8 @@ namespace PELOSCALVO
                     pd.PrinterSettings.PrintFileName = RutaArchivoSalidaPASS + ".Pdf";
                     pd.PrinterSettings.PrintToFile = true;
                     pd.Print();
- 
-                    if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" +VariableDt + DateTime.Now.Year))
+
+                    if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal + "\\" + VariableDt + DateTime.Now.Year))
                     {
                         DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\" + ClasDatos.RutaDatosPrincipal);
                         dir.CreateSubdirectory(VariableDt + DateTime.Now.Year);
@@ -182,20 +181,22 @@ namespace PELOSCALVO
                     {
                         if (File.Exists(RutaArchivoSalidaPASS + ".Pdf"))
                         {
-                            
+
                             PDF PdfEncriptar = new PDF();
-                            PDFEncryptor enc = new PDFEncryptor();
-                            enc.AllowAssembly = false;
-                            enc.AllowCopy = false;
-                            enc.AllowFillIn = false;
-                            enc.AllowModifyAnnotations = false;
-                            enc.AllowModifyContents = false;
-                            enc.AllowPrinting = true;
-                            enc.AllowPrintingHighResolution = false;
-                            enc.AllowScreenreaders = true;
-                            enc.EncryptionMethod = 2;
-                            enc.OwnerPassword = "PAISPDF";
-                            enc.UserPassword = ContraseñaPdf;
+                            PDFEncryptor enc = new PDFEncryptor
+                            {
+                                AllowAssembly = false,
+                                AllowCopy = false,
+                                AllowFillIn = false,
+                                AllowModifyAnnotations = false,
+                                AllowModifyContents = false,
+                                AllowPrinting = true,
+                                AllowPrintingHighResolution = false,
+                                AllowScreenreaders = true,
+                                EncryptionMethod = 2,
+                                OwnerPassword = "PAISPDF",
+                                UserPassword = ContraseñaPdf
+                            };
                             //Thread.Sleep(5000); //tiempo de pausa
                             PdfEncriptar.EncryptPDFFile(RutaArchivoSalidaPASS + ".Pdf", RutaArchivoSalida + ".Pdf", ref enc);
                             //File.Delete(Ruta_Y_Archi_Temp + ".Pdf");
@@ -203,7 +204,7 @@ namespace PELOSCALVO
                         }
                     }
 
-                    if (File.Exists(RutaArchivoSalida+".Pdf"))
+                    if (File.Exists(RutaArchivoSalida + ".Pdf"))
                     {
                         MessageBox.Show("Archivo Guardado", "GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -213,47 +214,41 @@ namespace PELOSCALVO
                     }
 
                 }
-                if (this.Formatoimpresion.SelectedIndex == 3)
+
+                if (this.FormatoDocumento.SelectedIndex == 3)
                 {
 
-                    this.printPreviewDialog1.ShowDialog();
+                    FormReporteFactura frm = new FormReporteFactura();
+                    if (this.Continuar1 == "1")
+                    {
+                        this.Continuar1 = "2";
+                        frm.FormClosed += (o, args) => this.Continuar1 = "1";
+                        frm.Show();
+                        frm.BringToFront();
+
+                    }
+
                 }
-                if (this.Formatoimpresion.SelectedIndex == 4)
+                if (this.TipoImpresion.SelectedIndex == 4)
                 {
                     this.printPreviewDialog1.Document = this.printDocument1;
                     this.printPreviewDialog1.ShowDialog();
                 }
-                if (this.Formatoimpresion.SelectedIndex == 5)
+                if (this.TipoImpresion.SelectedIndex == 5)
                 {
 
                 }
-                if (this.Formatoimpresion.SelectedIndex == 6)
+                if (this.TipoImpresion.SelectedIndex == 6)
                 {
                     //printPreviewDialog1.Document = printDocument1;
 
                 }
-                if (this.Formatoimpresion.SelectedIndex == 7)
+                if (this.TipoImpresion.SelectedIndex == 7)
                 {
 
                     // printPreviewDialog1.ShowDialog();
                 }
 
-                if (this.MultiFormatoImprimir.SelectedIndex == 1)
-                {
-                    if (this.listFormatoImpresiones.SelectedIndex == 1)
-                    {
-                        FormReporteFactura frm = new FormReporteFactura();
-                        if (this.Continuar1 == "1")
-                        {
-                            this.Continuar1 = "2";
-                            frm.FormClosed += (o, args) => this.Continuar1 = "1";
-                            frm.Show();
-                            frm.BringToFront();
-
-                        }
-                    }
-
-                }
 
             }
 
@@ -266,44 +261,44 @@ namespace PELOSCALVO
 
         private void Formatoimpresion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.Formatoimpresion.SelectedIndex > -1)
+            if (this.TipoImpresion.SelectedIndex > -1)
             {
-                if (this.Formatoimpresion.SelectedIndex == 0)
+                if (this.TipoImpresion.SelectedIndex == 0)
                 {
                     this.BtnImprimirTodo.Text = "Imprimir";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.IMPRSORA32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 1)
+                if (this.TipoImpresion.SelectedIndex == 1)
                 {
                     this.BtnImprimirTodo.Text = "Preliminar";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.VistaPrevia32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 2)
+                if (this.TipoImpresion.SelectedIndex == 2)
                 {
                     this.BtnImprimirTodo.Text = "P.D.F";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.PDF32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 3)
+                if (this.TipoImpresion.SelectedIndex == 3)
                 {
                     this.BtnImprimirTodo.Text = "W.O.R.D";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.Word32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 4)
+                if (this.TipoImpresion.SelectedIndex == 4)
                 {
                     this.BtnImprimirTodo.Text = "H.T.M.L";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.Html32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 5)
+                if (this.TipoImpresion.SelectedIndex == 5)
                 {
 
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.Excel32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 6)
+                if (this.TipoImpresion.SelectedIndex == 6)
                 {
                     this.BtnImprimirTodo.Text = "EXCEL";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.PowerPoint32;
                 }
-                if (this.Formatoimpresion.SelectedIndex == 7)
+                if (this.TipoImpresion.SelectedIndex == 7)
                 {
                     this.BtnImprimirTodo.Text = "X.M.L";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.Xml32;
@@ -319,12 +314,12 @@ namespace PELOSCALVO
                 if (this.TipoDocumento.SelectedIndex == 2)
                 {
                     this.listFormatoImpresiones.Enabled = true;
-                    this.MultiFormatoImprimir.Enabled = false;
+                    this.FormatoDocumento.Enabled = false;
                 }
                 else
                 {
                     this.listFormatoImpresiones.Enabled = false;
-                    this.MultiFormatoImprimir.Enabled = true;
+                    this.FormatoDocumento.Enabled = true;
                 }
             }
 
@@ -332,20 +327,20 @@ namespace PELOSCALVO
 
         private void MultiFormatoImprimir_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.MultiFormatoImprimir.SelectedIndex > -1)
+            if (this.FormatoDocumento.SelectedIndex > -1)
             {
-                if (this.MultiFormatoImprimir.SelectedIndex == 1)
+                if (this.FormatoDocumento.SelectedIndex == 1)
                 {
-                    this.Formatoimpresion.Text = "Impresora";
+                    this.TipoImpresion.Text = "Impresora";
                     this.TipoDocumento.Text = "Documento";
                     this.BtnImprimirTodo.Image = PELOSCALVO.Properties.Resources.IMPRSORA32;
-                    this.Formatoimpresion.Enabled = false;
+                    this.TipoImpresion.Enabled = false;
                     this.TipoDocumento.Enabled = false;
                     this.listFormatoImpresiones.Enabled = false;
                 }
                 else
                 {
-                    this.Formatoimpresion.Enabled = true;
+                    this.TipoImpresion.Enabled = true;
                     this.TipoDocumento.Enabled = true;
                     this.listFormatoImpresiones.Enabled = false;
                     this.listFormatoImpresiones.Enabled = true;
@@ -393,132 +388,6 @@ namespace PELOSCALVO
                 this.checkBoxLogoEmpsa.ThreeState = true;
                 this.checkBoxLogoEmpsa.Text = "Visible";
             }
-        }
-
-        private void printNotaFull_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            PictureBox logo = new PictureBox();
-            logo.Image = FormFacturar.menu2FACTURAR.imagenEmpresaPicture2.Image;
-            //StringFormat stringFormat = new StringFormat();
-            //stringFormat.Alignment = StringAlignment.Center;
-            //stringFormat.LineAlignment = StringAlignment.Center;
-            //var format = new StringFormat() { Alignment = StringAlignment.Far };
-            //var rect = new RectangleF(1,1000,790,870);
-            // StringFormat flags = new StringFormat(StringFormatFlags.DirectionRightToLeft);
-            StringFormat formato = new StringFormat
-            {
-                Alignment = StringAlignment.Far,
-                LineAlignment = StringAlignment.Near
-            };
-            int margenIzqu = e.MarginBounds.Left;
-            int margenDere = e.MarginBounds.Right;
-            int NumeroEmpresa1 = FormFacturar.menu2FACTURAR.EmpresaPrincipal.SelectedIndex;
-            string ApodoImpr = "";
-            string nombreCliente = "";
-            string EmpresaImpri = FormFacturar.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["EmpresaConfi"].ToString();
-            // Bitmap logo1 = PELOSCALVO.Properties.Resources.logo;
-            string Empresadire = FormFacturar.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["DireccionEmpresa"].ToString();
-            // Bitmap aa   = con(FormFACTURAR.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["ImagenEmpresa"].ToString());
-            if (FormFacturar.menu2FACTURAR.RazonSocialFatu.Text != string.Empty)
-            {
-                ApodoImpr = FormFacturar.menu2FACTURAR.RazonSocialFatu.Text;
-            }
-            if (FormFacturar.menu2FACTURAR.NombreClienteFatu.Text != string.Empty)
-            {
-                nombreCliente = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text;
-            }
-            Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
-            Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
-            Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
-            Font Arial10 = new Font("Arial", 10, FontStyle.Regular);//Cuerpo de texto
-            Font ArialNegrita12 = new Font("Arial", 12, FontStyle.Bold);//Cuerpo de texto
-            Font ArialNegrita10 = new Font("Arial", 10, FontStyle.Bold);//Cuerpo de texto
-            Font BookAntiqua = new Font("Book Antiqua", 12, FontStyle.Regular);//Cuerpo de texto                                           
-            Pen pen = new Pen(Color.Black);           //Color de linea   
-            Font Arial24 = new Font("Arial", 24, FontStyle.Bold);
-            // printDocument1 pd = new PrintDocument1();         
-            Single xPos = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo
-            Single YPosText = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo
-            Single XposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo                                  
-            Single YposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo 
-            Single yPos = Arial24.GetHeight(e.Graphics); // la posición superior
-            Pen TñLinea = new Pen(Color.Black, 1);
-            Pen TñLinea2 = new Pen(Color.Black, 2);
-            int saltoAbajo1 = 11;
-            int SaltoDetallesAbj = 17;
-            int saltoAbajo = 230;
-            //e.Graphics.FillRectangle(Brushes.Red, new Rectangle(100, 150, 600, 600));
-            if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxDtsEmpsa.ThreeState == true)
-            {
-                e.Graphics.DrawString(EmpresaImpri, titleFont, Brushes.Black, 600, 15);
-                e.Graphics.DrawString(Empresadire, BookAntiqua, Brushes.Black, 680, 25);
-            }
-            if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxLogoEmpsa.ThreeState == true)
-            {
-                e.Graphics.DrawImage(logo.Image, 22, 4, 430, 130);
-            }
-            //e.Graphics.DrawImage(LogoEmpresaImpr, 5, 5, 90, 80);
-
-            e.Graphics.DrawRectangle(TñLinea2, 25, 135, 595, 70);
-            e.Graphics.DrawRectangle(TñLinea2, 655, 135, 160, 70);
-            e.Graphics.DrawRectangle(TñLinea, 22, 240, 795, 814);
-            e.Graphics.DrawRectangle(TñLinea2, 655, 1080, 150, 70);
-            e.Graphics.DrawString(nombreCliente + " -- " + ApodoImpr, BookAntiqua, Brushes.Black, margenIzqu - 70, 135);
-            e.Graphics.DrawString("Fecha:" + FormFacturar.menu2FACTURAR.FechaFactura.Text, Arial10, Brushes.Black, 658, 135 + saltoAbajo1);
-            // e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.fechaFacturaTextBox.Text, Arial10, Brushes.Black, 740, 90 + saltoAbajo1,formato);
-            saltoAbajo1 = saltoAbajo1 + 13;
-            e.Graphics.DrawString("Numero:" + FormFacturar.menu2FACTURAR.NumeroFactura.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
-            //e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 740,112 + saltoAbajo1,formato);
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text, BookAntiqua, Brushes.Black, margenIzqu - 70, 135 + saltoAbajo1);
-            // saltoAbajo1 = saltoAbajo1 + saltoAbajo1;
-            int saltoref = 220;
-            int iab = 0;
-            e.Graphics.DrawString("Referencia", Arial10, Brushes.Black, 32, saltoref);
-            e.Graphics.DrawString("Cantidad", Arial10, Brushes.Black, 155, saltoref);
-            e.Graphics.DrawString("Descripccion", Arial10, Brushes.Black, 280, saltoref);
-            e.Graphics.DrawString("Precio", Arial10, Brushes.Black, 615, saltoref);
-            e.Graphics.DrawString("Desc/", Arial10, Brushes.Black, 664, saltoref);
-            e.Graphics.DrawString("Iva", Arial10, Brushes.Black, 708, saltoref);
-            e.Graphics.DrawString("Importe", Arial10, Brushes.Black, 760, saltoref);
-            foreach (DataGridViewRow row in FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows)
-            {
-                //Referencia
-                e.Graphics.DrawString(row.Cells[0].FormattedValue.ToString(), fntTxt, Brushes.Black, margenIzqu - 76, saltoAbajo + SaltoDetallesAbj);
-                // Cantidad
-                e.Graphics.DrawString(row.Cells[2].FormattedValue.ToString(), fntTxt, Brushes.Black, 215, SaltoDetallesAbj + saltoAbajo, formato);
-                //Descripcion
-                e.Graphics.DrawString(row.Cells[3].FormattedValue.ToString(), fntTxt, Brushes.Black, 220, saltoAbajo + SaltoDetallesAbj);
-                e.Graphics.DrawString(row.Cells[4].FormattedValue.ToString(), fntTxt, Brushes.Black, 660, SaltoDetallesAbj + saltoAbajo, formato);
-                //Descuento
-                //rect = new RectangleF(1, SaltoDetallesAbj + 195, 620, 870);
-                e.Graphics.DrawString(row.Cells[5].FormattedValue.ToString(), fntTxt, Brushes.Black, 700, SaltoDetallesAbj + saltoAbajo, formato);
-                //iva
-                e.Graphics.DrawString(row.Cells[6].FormattedValue.ToString(), fntTxt, Brushes.Black, 712, saltoAbajo + SaltoDetallesAbj);
-
-                if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxValorado.ThreeState == false)//Importe
-                {
-                    e.Graphics.DrawString((row.Cells[7].FormattedValue.ToString()), fntTxt, Brushes.Black, margenDere + 89, saltoAbajo + SaltoDetallesAbj, formato);
-                }
-                iab = iab + 1;
-                SaltoDetallesAbj = SaltoDetallesAbj + 18;
-            }
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.subTotal.Text, ArialNegrita10, Brushes.Black, 795, 1090, formato);
-            //rect = new RectangleF(1, 1110, 795, 870);
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.baseIva.Text, ArialNegrita10, Brushes.Black, 795, 1110, formato);
-            // rect = new RectangleF(1, 1130, 795, 870);
-            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.TotalFactura1.Text, ArialNegrita10, Brushes.Black, 795, 1130, formato);
-            e.Graphics.DrawString("Sub Total", ArialNegrita10, Brushes.Black, 588, 1090);
-            e.Graphics.DrawString("Iva", ArialNegrita10, Brushes.Black, 588, 1110);
-            e.Graphics.DrawString("Total", ArialNegrita10, Brushes.Black, 588, 1130);
-            e.HasMorePages = false;
-            String NombreArchivo = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text + " " + FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
-        }
-
-        private void printNota2Full_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            PaintEventArgs myPaintArgs = new PaintEventArgs(e.Graphics, new Rectangle(new Point(1, 1), this.Size));
-            InvokePaint(FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView, myPaintArgs);
-            e.HasMorePages = false;
         }
 
         private void printClientesFull_PrintPage(object sender, PrintPageEventArgs e)
@@ -669,6 +538,271 @@ namespace PELOSCALVO
         private void printPresupuestoFull_PrintPage(object sender, PrintPageEventArgs e)
         {
 
+        }
+
+        private void printNotaSimple_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            try
+            {
+                PictureBox logo = new PictureBox();
+                if (FormFacturar.menu2FACTURAR.imagenEmpresaPicture2.Image != null)
+                {
+                    logo.Image = FormFacturar.menu2FACTURAR.imagenEmpresaPicture2.Image;
+                }
+
+                //StringFormat stringFormat = new StringFormat();
+                //stringFormat.Alignment = StringAlignment.Center;
+                //stringFormat.LineAlignment = StringAlignment.Center;
+                //var format = new StringFormat() { Alignment = StringAlignment.Far };
+                //var rect = new RectangleF(1,1000,790,870);
+                // StringFormat flags = new StringFormat(StringFormatFlags.DirectionRightToLeft);
+                StringFormat formato = new StringFormat
+                {
+                    Alignment = StringAlignment.Far,
+                    LineAlignment = StringAlignment.Near
+                };
+                int margenIzqu = e.MarginBounds.Left;
+                int margenDere = e.MarginBounds.Right;
+                int NumeroEmpresa1 = FormFacturar.menu2FACTURAR.EmpresaPrincipal.SelectedIndex;
+                string ApodoImpr = "";
+                string nombreCliente = "";
+                string EmpresaImpri = FormFacturar.menu2FACTURAR.EmpresaPrincipal.Text;
+                // Bitmap logo1 = PELOSCALVO.Properties.Resources.logo;
+                string Empresadire = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["DireccionEmpresa"].ToString();
+                // Bitmap aa   = con(FormFACTURAR.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["ImagenEmpresa"].ToString());
+                if (FormFacturar.menu2FACTURAR.RazonSocialFatu.Text != string.Empty)
+                {
+                    ApodoImpr = FormFacturar.menu2FACTURAR.RazonSocialFatu.Text;
+                }
+                if (FormFacturar.menu2FACTURAR.NombreClienteFatu.Text != string.Empty)
+                {
+                    nombreCliente = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text;
+                }
+                Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
+                Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
+                Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
+                Font Arial10 = new Font("Arial", 10, FontStyle.Regular);//Cuerpo de texto
+                Font ArialNegrita12 = new Font("Arial", 12, FontStyle.Bold);//Cuerpo de texto
+                Font ArialNegrita10 = new Font("Arial", 10, FontStyle.Bold);//Cuerpo de texto
+                Font BookAntiqua = new Font("Book Antiqua", 12, FontStyle.Regular);//Cuerpo de texto                                           
+                Pen pen = new Pen(Color.Black);           //Color de linea   
+                Font Arial24 = new Font("Arial", 24, FontStyle.Bold);
+                // printDocument1 pd = new PrintDocument1();         
+                Single xPos = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo
+                Single YPosText = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo
+                Single XposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo                                  
+                Single YposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo 
+                Single yPos = Arial24.GetHeight(e.Graphics); // la posición superior
+                Pen TñLinea = new Pen(Color.Black, 1);
+                Pen TñLinea2 = new Pen(Color.Black, 2);
+                int saltoAbajo1 = 11;
+                int SaltoDetallesAbj = 17;
+                int saltoAbajo = 230;
+                //e.Graphics.FillRectangle(Brushes.Red, new Rectangle(100, 150, 600, 600));
+                if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxDtsEmpsa.ThreeState == true)
+                {
+                    e.Graphics.DrawString(EmpresaImpri, titleFont, Brushes.Black, 600, 15);
+                    e.Graphics.DrawString(Empresadire, BookAntiqua, Brushes.Black, 680, 25);
+                }
+                if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxLogoEmpsa.ThreeState == true)
+                {
+                    if (FormFacturar.menu2FACTURAR.imagenEmpresaPicture2.Image != null)
+                    {
+                        e.Graphics.DrawImage(logo.Image, 22, 4, 430, 130);
+                    }
+
+                }
+                //e.Graphics.DrawImage(LogoEmpresaImpr, 5, 5, 90, 80);
+
+                // e.Graphics.DrawRectangle(TñLinea2, 25, 135, 595, 80);
+                // e.Graphics.DrawRectangle(TñLinea2, 655, 135, 160, 80);
+                // e.Graphics.DrawRectangle(TñLinea, 22, 240, 795, 814);
+                e.Graphics.DrawRectangle(TñLinea2, 655, 1080, 150, 70);
+                e.Graphics.DrawString(nombreCliente, BookAntiqua, Brushes.Black, margenIzqu - 70, 135);
+                e.Graphics.DrawString(ApodoImpr, BookAntiqua, Brushes.Black, margenIzqu - 70, 135);
+                e.Graphics.DrawString("Fecha:" + FormFacturar.menu2FACTURAR.FechaFactura.Text, Arial10, Brushes.Black, 658, 135 + saltoAbajo1);
+                // e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.fechaFacturaTextBox.Text, Arial10, Brushes.Black, 740, 90 + saltoAbajo1,formato);
+                saltoAbajo1 = saltoAbajo1 + 13;
+                e.Graphics.DrawString("Numero:" + FormFacturar.menu2FACTURAR.NumeroFactura.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
+                //e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 740,112 + saltoAbajo1,formato);
+                e.Graphics.DrawString(FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text, BookAntiqua, Brushes.Black, margenIzqu - 70, 135 + saltoAbajo1);
+                // saltoAbajo1 = saltoAbajo1 + saltoAbajo1;
+                int saltoref = 220;
+                int iab = 0;
+                e.Graphics.DrawString("Referencia", Arial10, Brushes.Black, 32, saltoref);
+                e.Graphics.DrawString("Cantidad", Arial10, Brushes.Black, 155, saltoref);
+                e.Graphics.DrawString("Descripccion", Arial10, Brushes.Black, 280, saltoref);
+                e.Graphics.DrawString("Precio", Arial10, Brushes.Black, 615, saltoref);
+                e.Graphics.DrawString("Desc/", Arial10, Brushes.Black, 664, saltoref);
+                e.Graphics.DrawString("Iva", Arial10, Brushes.Black, 708, saltoref);
+                e.Graphics.DrawString("Importe", Arial10, Brushes.Black, 760, saltoref);
+                foreach (DataGridViewRow row in FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows)
+                {
+                    //Referencia
+                    e.Graphics.DrawString(row.Cells[0].FormattedValue.ToString(), fntTxt, Brushes.Black, margenIzqu - 76, saltoAbajo + SaltoDetallesAbj);
+                    // Cantidad
+                    e.Graphics.DrawString(row.Cells[2].FormattedValue.ToString(), fntTxt, Brushes.Black, 215, SaltoDetallesAbj + saltoAbajo, formato);
+                    //Descripcion
+                    e.Graphics.DrawString(row.Cells[3].FormattedValue.ToString(), fntTxt, Brushes.Black, 220, saltoAbajo + SaltoDetallesAbj);
+                    e.Graphics.DrawString(row.Cells[4].FormattedValue.ToString(), fntTxt, Brushes.Black, 660, SaltoDetallesAbj + saltoAbajo, formato);
+                    //Descuento
+                    //rect = new RectangleF(1, SaltoDetallesAbj + 195, 620, 870);
+                    e.Graphics.DrawString(row.Cells[5].FormattedValue.ToString(), fntTxt, Brushes.Black, 700, SaltoDetallesAbj + saltoAbajo, formato);
+                    //iva
+                    e.Graphics.DrawString(row.Cells[6].FormattedValue.ToString(), fntTxt, Brushes.Black, 712, saltoAbajo + SaltoDetallesAbj);
+
+                    if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxValorado.ThreeState == false)//Importe
+                    {
+                        e.Graphics.DrawString((row.Cells[7].FormattedValue.ToString()), fntTxt, Brushes.Black, margenDere + 89, saltoAbajo + SaltoDetallesAbj, formato);
+                    }
+                    iab = iab + 1;
+                    SaltoDetallesAbj = SaltoDetallesAbj + 18;
+                }
+                e.Graphics.DrawString(FormFacturar.menu2FACTURAR.subTotal.Text, ArialNegrita10, Brushes.Black, 795, 1090, formato);
+                //rect = new RectangleF(1, 1110, 795, 870);
+                e.Graphics.DrawString(FormFacturar.menu2FACTURAR.baseIva.Text, ArialNegrita10, Brushes.Black, 795, 1110, formato);
+                // rect = new RectangleF(1, 1130, 795, 870);
+                e.Graphics.DrawString(FormFacturar.menu2FACTURAR.TotalFactura1.Text, ArialNegrita10, Brushes.Black, 795, 1130, formato);
+                e.Graphics.DrawString("Sub Total", ArialNegrita10, Brushes.Black, 588, 1090);
+                e.Graphics.DrawString("Iva", ArialNegrita10, Brushes.Black, 588, 1110);
+                e.Graphics.DrawString("Total", ArialNegrita10, Brushes.Black, 588, 1130);
+                e.HasMorePages = false;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR AL IMPRIMIR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // String NombreArchivo = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text + " " + FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
+        }
+
+        private void printNotaCuadrados_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            PictureBox logo = new PictureBox
+            {
+                Image = FormFacturar.menu2FACTURAR.imagenEmpresaPicture2.Image
+            };
+            //StringFormat stringFormat = new StringFormat();
+            //stringFormat.Alignment = StringAlignment.Center;
+            //stringFormat.LineAlignment = StringAlignment.Center;
+            //var format = new StringFormat() { Alignment = StringAlignment.Far };
+            //var rect = new RectangleF(1,1000,790,870);
+            // StringFormat flags = new StringFormat(StringFormatFlags.DirectionRightToLeft);
+            StringFormat formato = new StringFormat
+            {
+                Alignment = StringAlignment.Far,
+                LineAlignment = StringAlignment.Near
+            };
+            int margenIzqu = e.MarginBounds.Left;
+            int margenDere = e.MarginBounds.Right;
+            int NumeroEmpresa1 = FormFacturar.menu2FACTURAR.EmpresaPrincipal.SelectedIndex;
+            string ApodoImpr = "";
+            string nombreCliente = "";
+            string EmpresaImpri = FormFacturar.menu2FACTURAR.EmpresaPrincipal.Text;
+            // Bitmap logo1 = PELOSCALVO.Properties.Resources.logo;
+            string Empresadire = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["DireccionEmpresa"].ToString();
+            // Bitmap aa   = con(FormFACTURAR.menu2FACTURAR.dsCONFIGURACCION.Tables["DtConfiguracionPrincipal"].Rows[NumeroEmpresa1]["ImagenEmpresa"].ToString());
+            if (FormFacturar.menu2FACTURAR.RazonSocialFatu.Text != string.Empty)
+            {
+                ApodoImpr = FormFacturar.menu2FACTURAR.RazonSocialFatu.Text;
+            }
+            if (FormFacturar.menu2FACTURAR.NombreClienteFatu.Text != string.Empty)
+            {
+                nombreCliente = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text;
+            }
+            Font titleFont = new Font("Cuerpo negro", 11, FontStyle.Bold);//Fuente del título           
+            Font fntTxt = new Font("Song Ti", 9, FontStyle.Regular);//Cuerpo de texto         
+            Font fntTxt1 = new Font("Song Ti", 10, FontStyle.Regular);//Cuerpo de texto
+            Font Arial10 = new Font("Arial", 10, FontStyle.Regular);//Cuerpo de texto
+            Font ArialNegrita12 = new Font("Arial", 12, FontStyle.Bold);//Cuerpo de texto
+            Font ArialNegrita10 = new Font("Arial", 10, FontStyle.Bold);//Cuerpo de texto
+            Font BookAntiqua = new Font("Book Antiqua", 12, FontStyle.Regular);//Cuerpo de texto                                           
+            Pen pen = new Pen(Color.Black);           //Color de linea   
+            Font Arial24 = new Font("Arial", 24, FontStyle.Bold);
+            // printDocument1 pd = new PrintDocument1();         
+            Single xPos = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo
+            Single YPosText = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo
+            Single XposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo                                  
+            Single YposRectang = e.MarginBounds.Left; // imprimimos la cadena en el margen izquierdo 
+            Single yPos = Arial24.GetHeight(e.Graphics); // la posición superior
+            Pen TñLinea = new Pen(Color.Black, 1);
+            Pen TñLinea2 = new Pen(Color.Black, 2);
+            int saltoAbajo1 = 11;
+            int SaltoDetallesAbj = 17;
+            int saltoAbajo = 230;
+            //e.Graphics.FillRectangle(Brushes.Red, new Rectangle(100, 150, 600, 600));
+            if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxDtsEmpsa.ThreeState == true)
+            {
+                e.Graphics.DrawString(EmpresaImpri, titleFont, Brushes.Black, 600, 15);
+                e.Graphics.DrawString(Empresadire, BookAntiqua, Brushes.Black, 680, 25);
+            }
+            if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxLogoEmpsa.ThreeState == true)
+            {
+                e.Graphics.DrawImage(logo.Image, 22, 4, 430, 130);
+            }
+            //e.Graphics.DrawImage(LogoEmpresaImpr, 5, 5, 90, 80);
+
+            e.Graphics.DrawRectangle(TñLinea2, 25, 135, 595, 80);
+            e.Graphics.DrawRectangle(TñLinea2, 655, 135, 160, 80);
+            e.Graphics.DrawRectangle(TñLinea, 22, 240, 795, 814);
+            e.Graphics.DrawRectangle(TñLinea2, 655, 1080, 150, 70);
+            e.Graphics.DrawString(nombreCliente, BookAntiqua, Brushes.Black, margenIzqu - 70, 135);
+            e.Graphics.DrawString(ApodoImpr, BookAntiqua, Brushes.Black, margenIzqu - 70, 135);
+            e.Graphics.DrawString("Fecha:" + FormFacturar.menu2FACTURAR.FechaFactura.Text, Arial10, Brushes.Black, 658, 135 + saltoAbajo1);
+            // e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.fechaFacturaTextBox.Text, Arial10, Brushes.Black, 740, 90 + saltoAbajo1,formato);
+            saltoAbajo1 = saltoAbajo1 + 13;
+            e.Graphics.DrawString("Numero:" + FormFacturar.menu2FACTURAR.NumeroFactura.Text, Arial10, Brushes.Black, 658, 141 + saltoAbajo1);
+            //e.Graphics.DrawString(FormFACTURAR.menu2FACTURAR.numeroFacturaTextBox.Text, Arial10, Brushes.Black, 740,112 + saltoAbajo1,formato);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text, BookAntiqua, Brushes.Black, margenIzqu - 70, 135 + saltoAbajo1);
+            // saltoAbajo1 = saltoAbajo1 + saltoAbajo1;
+            int saltoref = 220;
+            int iab = 0;
+            e.Graphics.DrawString("Referencia", Arial10, Brushes.Black, 32, saltoref);
+            e.Graphics.DrawString("Cantidad", Arial10, Brushes.Black, 155, saltoref);
+            e.Graphics.DrawString("Descripccion", Arial10, Brushes.Black, 280, saltoref);
+            e.Graphics.DrawString("Precio", Arial10, Brushes.Black, 615, saltoref);
+            e.Graphics.DrawString("Desc/", Arial10, Brushes.Black, 664, saltoref);
+            e.Graphics.DrawString("Iva", Arial10, Brushes.Black, 708, saltoref);
+            e.Graphics.DrawString("Importe", Arial10, Brushes.Black, 760, saltoref);
+            foreach (DataGridViewRow row in FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView.Rows)
+            {
+                //Referencia
+                e.Graphics.DrawString(row.Cells[0].FormattedValue.ToString(), fntTxt, Brushes.Black, margenIzqu - 76, saltoAbajo + SaltoDetallesAbj);
+                // Cantidad
+                e.Graphics.DrawString(row.Cells[2].FormattedValue.ToString(), fntTxt, Brushes.Black, 215, SaltoDetallesAbj + saltoAbajo, formato);
+                //Descripcion
+                e.Graphics.DrawString(row.Cells[3].FormattedValue.ToString(), fntTxt, Brushes.Black, 220, saltoAbajo + SaltoDetallesAbj);
+                e.Graphics.DrawString(row.Cells[4].FormattedValue.ToString(), fntTxt, Brushes.Black, 660, SaltoDetallesAbj + saltoAbajo, formato);
+                //Descuento
+                //rect = new RectangleF(1, SaltoDetallesAbj + 195, 620, 870);
+                e.Graphics.DrawString(row.Cells[5].FormattedValue.ToString(), fntTxt, Brushes.Black, 700, SaltoDetallesAbj + saltoAbajo, formato);
+                //iva
+                e.Graphics.DrawString(row.Cells[6].FormattedValue.ToString(), fntTxt, Brushes.Black, 712, saltoAbajo + SaltoDetallesAbj);
+
+                if (FormImprimirTodo.Menu2Imprimirtodo.checkBoxValorado.ThreeState == false)//Importe
+                {
+                    e.Graphics.DrawString((row.Cells[7].FormattedValue.ToString()), fntTxt, Brushes.Black, margenDere + 89, saltoAbajo + SaltoDetallesAbj, formato);
+                }
+                iab = iab + 1;
+                SaltoDetallesAbj = SaltoDetallesAbj + 18;
+            }
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.subTotal.Text, ArialNegrita10, Brushes.Black, 795, 1090, formato);
+            //rect = new RectangleF(1, 1110, 795, 870);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.baseIva.Text, ArialNegrita10, Brushes.Black, 795, 1110, formato);
+            // rect = new RectangleF(1, 1130, 795, 870);
+            e.Graphics.DrawString(FormFacturar.menu2FACTURAR.TotalFactura1.Text, ArialNegrita10, Brushes.Black, 795, 1130, formato);
+            e.Graphics.DrawString("Sub Total", ArialNegrita10, Brushes.Black, 588, 1090);
+            e.Graphics.DrawString("Iva", ArialNegrita10, Brushes.Black, 588, 1110);
+            e.Graphics.DrawString("Total", ArialNegrita10, Brushes.Black, 588, 1130);
+            e.HasMorePages = false;
+            String NombreArchivo = FormFacturar.menu2FACTURAR.NombreClienteFatu.Text + " " + FormFacturar.menu2FACTURAR.DirecionClienteFatu.Text + " Nº " + FormFacturar.menu2FACTURAR.NumeroFactura.Text;
+        }
+
+        private void printNotaBordes_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            PaintEventArgs myPaintArgs = new PaintEventArgs(e.Graphics, new Rectangle(new Point(1, 1), this.Size));
+            InvokePaint(FormFacturar.menu2FACTURAR.dtDetallesFacturaDataGridView, myPaintArgs);
+            e.HasMorePages = false;
         }
     }
 }

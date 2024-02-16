@@ -21,7 +21,7 @@ namespace PELOSCALVO
                 {
                     this.dtConfiguracionPrincipalBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION;
 
-                    this.DtProveedoresBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtConfiguracionPrincipal;
+                   // this.DtProveedoresBindingSource.DataSource = FormMenuPrincipal.menu2principal.dsCONFIGURACCION.DtProveedores;
                 }
 
                 if (FormMenuPrincipal.menu2principal.dsMultidatos != null)
@@ -82,41 +82,43 @@ namespace PELOSCALVO
             this.BtnCancelarProve.Enabled = true;
             this.BtnGuardarProve.Enabled = true;
             this.dataGridProveedores.Enabled = false;
+            EmpresaSelect.Enabled = false;
         }
         private void RestaurarOjetosProv()
         {
+            this.dataGridProveedores.Enabled = true;
             this.NombreProveedor.ReadOnly = true;
             this.PanelBotones_pro.Enabled = true;
             this.BtnCancelarProve.Enabled = false;
             this.BtnGuardarProve.Enabled = false;
-            this.dataGridProveedores.Enabled = true;
+            EmpresaSelect.Enabled = true;
         }
         private void GuardarProveedoresDb()
         {
             string consulta = "";
             if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProveedores] ([Id_Proveedores],[Proveedores],[Enlace_Proveedores]) VALUES( @Id_Proveedores,@Proveedores,@Enlace_Proveedores)";
+                consulta = "  INSERT INTO [DtProveedores] ([Id],[Proveedores],[Enlace_Proveedores]) VALUES( @Id,@Proveedores,@Enlace_Proveedores)";
 
             }
             else
             {
-                consulta = "UPDATE [DtProveedores] SET [Id_Proveedores] = @Id_Proveedores,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
-                " WHERE Id_Proveedores = @Id_Proveedores";
+                consulta = "UPDATE [DtProveedores] SET [Id] = @Id,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
+                " WHERE Id = @Id";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
                 if (NuevaConexion.SiConexionDb)
                 {
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.EmpresaSelect.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Id_empresa.Text) ? (object)DBNull.Value : this.Id_empresa.Text);
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
-                    Validate();
-                    this.dataGridProveedores.EndEdit();
+                   // this.dataGridProveedores.EndEdit();
                     this.DtProveedoresBindingSource.EndEdit();
+                    Validate();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();
                 }
@@ -139,27 +141,27 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.PanelBotones_pro.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtProveedores] VALUES([@Id_Proveedores],[@Proveedores],[@Enlace_Proveedores])";
+                consulta = "  INSERT INTO [DtProveedores] VALUES([@Id],[@Proveedores],[@Enlace_Proveedores])";
 
             }
             else
             {
-                consulta = "UPDATE [DtProveedores] SET [Id_Proveedores] = @Id_Proveedores,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
-                " WHERE Id_Proveedores = @Id_Proveedores";
+                consulta = "UPDATE [DtProveedores] SET [Id] = @Id,[Proveedores] = @Proveedores, [Enlace_Proveedores] = @Enlace_Proveedores, " +
+                " WHERE Id = @Id";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 if (NuevaConexion.SiConexionSql)
                 {
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.Id_proveedor.Text) ? (object)DBNull.Value : Convert.ToInt32(this.Id_proveedor.Text));
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Proveedores", string.IsNullOrEmpty(this.NombreProveedor.Text) ? (object)DBNull.Value : this.NombreProveedor.Text);
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Enlace_Proveedor.Text) ? (object)DBNull.Value : this.Enlace_Proveedor.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", string.IsNullOrEmpty(this.Id_empresa.Text) ? (object)DBNull.Value : this.Id_empresa.Text);
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
-                    Validate();
                     this.DtProveedoresBindingSource.EndEdit();
-                    this.dataGridProveedores.EndEdit();
+                   // this.dataGridProveedores.EndEdit();
+                    Validate();
                     MessageBox.Show("Se Guardo Correctamente", "GUARDAR PROVEEDOR ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarOjetosProv();
                 }
@@ -181,15 +183,15 @@ namespace PELOSCALVO
         {
             if (File.Exists(ClasDatos.RutaBaseDatosDb))
             {
-                string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= @Id_Proveedores WHERE Id= @Id and Enlace_Proveedores= @Enlace_Proveedores";
+                string consulta = "Delete from  [DtProveedores]   WHERE Id= @Id and Enlace_Proveedores= @Enlace_Proveedores";
                 ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
                 try
                 {
                     {
                         if (NuevaConexion.SiConexionDb)
                         {
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
-                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", this.Enlace_Proveedor.Text);
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_proveedor.Text));
+                            NuevaConexion.ComandoDb.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Id_empresa.Text));
                             NuevaConexion.ComandoDb.ExecuteNonQuery();
                             this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                             this.DtProveedoresBindingSource.EndEdit();
@@ -223,15 +225,15 @@ namespace PELOSCALVO
         private void EliminarProveedorSql()
         {
 
-            string consulta = "Delete from  [DtProveedores]   WHERE Id_Proveedores= '@Id_Proveedores and Enlace_Proveedores= @Enlace_Proveedores";
+            string consulta = "Delete from  [DtProveedores]   WHERE Id= @Id and Enlace_Proveedores= @Enlace_Proveedores";
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
             {
                 {
                     if (NuevaConexion.SiConexionSql)
                     {
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id_Proveedores", Convert.ToInt32(this.Id_proveedor.Text));
-                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", this.Enlace_Proveedor.Text);
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", Convert.ToInt32(this.Id_proveedor.Text));
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@Enlace_Proveedores", Convert.ToInt32(this.Id_empresa.Text));
                         NuevaConexion.ComandoSql.ExecuteNonQuery();
                         this.dataGridProveedores.Rows.RemoveAt(this.dataGridProveedores.CurrentCell.RowIndex);
                         this.DtProveedoresBindingSource.EndEdit();
@@ -309,7 +311,7 @@ namespace PELOSCALVO
                 MessageBox.Show("Debe al Menos Crear Una Empresa", "EMPRESA");
                 return;
             }
-            if (this.Id_proveedor.Text == string.Empty & this.Enlace_Proveedor.Text == string.Empty)
+            if (this.Id_proveedor.Text == string.Empty & this.Id_empresa.Text == string.Empty)
             {
                 MessageBox.Show("Falta (( id ))) o  ((Datos))", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -381,6 +383,16 @@ namespace PELOSCALVO
         {
             if (this.DtProveedoresBindingSource.Count > 0)
             {
+                if(string.IsNullOrEmpty(Id_proveedor.Text))
+                {
+                    MessageBox.Show(" Falta Id", "ERROR DATOS",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
+                if (string.IsNullOrEmpty(Id_empresa.Text))
+                {
+                    MessageBox.Show(" Falta Datos", "ERROR DATOS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (MessageBox.Show("Desea Eliminar Permanentemente ", "ELIMINAR ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
 
@@ -456,15 +468,15 @@ namespace PELOSCALVO
             {
                 int Id2 = EmpresaSelect.SelectedIndex;
                 int IdEmpresa3 = 1;
-                if (!String.IsNullOrEmpty(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtPaises"].Rows[Id2]["Id"].ToString()))
+                if (!String.IsNullOrEmpty(Id_empresa.Text.ToString()))
                 {
-                    IdEmpresa3 = Convert.ToInt32(FormMenuPrincipal.menu2principal.dsCONFIGURACCION.Tables["DtPaises"].Rows[Id2]["Id"].ToString());
+                    IdEmpresa3 = Convert.ToInt32(Id_empresa.Text.ToString());
                 }
                 ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "Proveedores";
                 AñadirIdProveedor();
                 FormBuscar frm = new FormBuscar();
-                frm.CargarDatos(1, " Proveedores", "Proveedores", "Enlace_Proveedores",IdEmpresa3);
+                frm.CargarDatos(1, "Proveedores", "Proveedores", "Enlace_Proveedores",IdEmpresa3);
                 frm.BringToFront();
                 frm.ShowDialog();
             }

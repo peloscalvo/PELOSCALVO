@@ -128,7 +128,7 @@ namespace PELOSCALVO
         }
         private void GuardarAlmacenesDb()
         {
-            string consulta = "";
+            string consulta;
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
                 consulta = "  INSERT INTO [DtAlmacenes]([Id],[Almacenes],[Enlace_Almacenes]) VALUES(@Id,@Almacenes,@Enlace_Almacenes)";
@@ -171,7 +171,7 @@ namespace PELOSCALVO
         }
         private void GuardarAlmacenesSql()
         {
-            string consulta = "";
+            string consulta;
             if (this.panelAlmacenes.Tag.ToString() == "Nuevo")
             {
                 consulta = "  INSERT INTO [DtAlmacenes] VALUES ([@Id],[@Almacenes],[@Enlace_Almacenes])";
@@ -264,7 +264,7 @@ namespace PELOSCALVO
                     if (this.dataGridAlmacenes.Rows[numeroFILA - 1].Cells[0].Value.ToString() == string.Empty)
                     {
                         Random r = new Random();
-                        int VALORid = r.Next(5000, 100000000);
+                        int VALORid = r.Next(50, 100000000);
                         this.dataGridAlmacenes.Rows[numeroFILA].Cells[0].Value = (VALORid);
                         this.id_almacenes.Text = VALORid.ToString();
                     }

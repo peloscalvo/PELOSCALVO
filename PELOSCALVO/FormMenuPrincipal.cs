@@ -177,7 +177,7 @@ namespace PELOSCALVO
                 this.btnMaximizar.Tag = "MAX";
                 this.Size = new Size(this.sw, this.sh);
                 this.Location = new Point(this.lx, this.ly);
-                this.btnMaximizar.Image = Properties.Resources.maximize2;
+                this.btnMaximizar.Image = Properties.Resources.maximizar;
             }
             else
             {
@@ -324,7 +324,7 @@ namespace PELOSCALVO
             {
                 if (FormClientes.menu2CLIENTES2.WindowState == FormWindowState.Minimized)
                 {
-                    FormClientes.menu2CLIENTES2.WindowState = FormWindowState.Maximized;
+                    FormClientes.menu2CLIENTES2.WindowState = FormWindowState.Normal;
                     FormClientes.menu2CLIENTES2.BringToFront();
                 }
             }
@@ -356,11 +356,7 @@ namespace PELOSCALVO
             }
             if (this.SiOpenArti == 0)
             {
-                if (FormMenuPrincipal.menu2principal.SiOpenBuscArti == 1)
-                {
-                    FormBuscarArticulos.MenuB.Close();
-                    FormBuscarArticulos.MenuB.Dispose();
-                }
+
                 FormArticulos frm = new FormArticulos();
                 frm.TopLevel = false;
                 // frm.Dock = DockStyle.Fill;
@@ -377,7 +373,7 @@ namespace PELOSCALVO
 
                 if (FormArticulos.menu2Articulos.WindowState == FormWindowState.Minimized)
                 {
-                    FormArticulos.menu2Articulos.WindowState = FormWindowState.Maximized;
+                    FormArticulos.menu2Articulos.WindowState = FormWindowState.Normal;
                     FormArticulos.menu2Articulos.BringToFront();
                 }
             }
@@ -857,39 +853,6 @@ namespace PELOSCALVO
             FormBienvenida.menu2.Close();
         }
 
-        private void empresasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //PanelAcesosDire.Visible = false;
-            FormEmpresas frm = new FormEmpresas();
-            frm.TopLevel = false;
-            // frm.Dock = DockStyle.Fill;
-            // frm.WindowState = FormWindowState.Maximized;
-            //frm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PanelForms.Controls.Add(frm);
-            frm.FormClosed += (o, args) => this.SiOpenArti = 0;
-            frm.Show();
-            frm.BringToFront();
-        }
-
-        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormProveedores frm = new FormProveedores();
-            frm.TopLevel = false;
-            this.PanelForms.Controls.Add(frm);
-            frm.Show();
-            frm.BringToFront();
-
-        }
-
-        private void crearEjercioNuevoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormEjercicios frm = new FormEjercicios();
-            frm.TopLevel = false;
-            this.PanelForms.Controls.Add(frm);
-            frm.Show();
-            frm.BringToFront();
-        }
-
         private void BtnArchivo_Click(object sender, EventArgs e)
         {
             try
@@ -910,25 +873,6 @@ namespace PELOSCALVO
                 // throw;
             }
 
-        }
-
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormAlmacenes frm = new FormAlmacenes();
-            frm.TopLevel = false;
-            //frm.WindowState = FormWindowState.Maximized;
-            this.PanelForms.Controls.Add(frm);
-            frm.Show();
-            frm.BringToFront();
-        }
-
-        private void familiasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormFamiliaProductos frm = new FormFamiliaProductos();
-            frm.TopLevel = false;
-            this.PanelForms.Controls.Add(frm);
-            frm.Show();
-            frm.BringToFront();
         }
 
         private void PanelInfo_P_MouseLeave(object sender, EventArgs e)
@@ -959,17 +903,89 @@ namespace PELOSCALVO
 
         }
 
-        private void paisesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PanelAcesosDire_MouseEnter(object sender, EventArgs e)
         {
-            FormPaises frm = new FormPaises();
+            this.panelventas.Visible = false;
+            this.panelSUBventas.Visible = false;
+        }
+
+        private void BotonConsultaEmpresa_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsCONFIGURACCION.DtConfiguracionPrincipal;
+            frm.ListadoDatos2.DisplayMember = "EmpresaConfi";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void BotonEmpresas_Click(object sender, EventArgs e)
+        {
+            FormEmpresas frm = new FormEmpresas();
             frm.TopLevel = false;
-            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            // frm.Dock = DockStyle.Fill;
+            // frm.WindowState = FormWindowState.Maximized;
+            //frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PanelForms.Controls.Add(frm);
+            frm.FormClosed += (o, args) => this.SiOpenArti = 0;
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void BotonConsultaAlmacenes_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsCONFIGURACCION.DtAlmacenes;
+            frm.ListadoDatos2.DisplayMember = "Almacenes";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void BotonDatosInicio_Click(object sender, EventArgs e)
+        {
+            FormDatosInicio frm = new FormDatosInicio();
+            frm.TopLevel = false;
             this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
 
-        private void provinciasToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void BotonConsultaFamilia_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsMulti2.DtFamiliaProductos;
+            frm.ListadoDatos2.DisplayMember = "Familia";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void BotonCorreosEletronicos_Click(object sender, EventArgs e)
+        {
+            FormCrearCorreos frm = new FormCrearCorreos();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void BotonDescuentos_Click(object sender, EventArgs e)
+        {
+            FormDescuentos frm = new FormDescuentos();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void BotonObras_Click(object sender, EventArgs e)
+        {
+            FormObras frm = new FormObras();
+            frm.TopLevel = false;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void BotonAbrirProvincias_Click(object sender, EventArgs e)
         {
             FormProvincias frm = new FormProvincias();
             frm.TopLevel = false;
@@ -980,91 +996,112 @@ namespace PELOSCALVO
             frm.BringToFront();
         }
 
-        private void AbrirObras_Click(object sender, EventArgs e)
+        private void BotonPaises_Click(object sender, EventArgs e)
         {
-            FormObras frm = new FormObras();
+            FormPaises frm = new FormPaises();
+            frm.TopLevel = false;
+            frm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void BotonFamilias_Click(object sender, EventArgs e)
+        {
+            FormFamiliaProductos frm = new FormFamiliaProductos();
             frm.TopLevel = false;
             this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
 
-        private void toolFamilia_Click(object sender, EventArgs e)
+        private void BotonEjecicios_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void editarDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormDescuentos frm = new FormDescuentos();
+            FormEjercicios frm = new FormEjercicios();
             frm.TopLevel = false;
             this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
 
-        private void almacenesToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BotonConsultasEjercicios_Click(object sender, EventArgs e)
         {
-
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsCONFIGURACCION.DtConfi;
+            frm.ListadoDatos2.DisplayMember = "EjerciciosDeAño";
+            frm.ShowDialog();
+            frm.BringToFront();
         }
 
-        private void PanelAcesosDire_MouseEnter(object sender, EventArgs e)
+        private void BotonProveedores_Click(object sender, EventArgs e)
         {
-            this.panelventas.Visible = false;
-            this.panelSUBventas.Visible = false;
-        }
-
-        private void toolEmpresas_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void correosEletronicosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormCrearCorreos frm = new FormCrearCorreos();
+            FormProveedores frm = new FormProveedores();
             frm.TopLevel = false;
             this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
 
-        private void PanelAcesosDire_Paint(object sender, PaintEventArgs e)
+        private void BotonConsultadescuentos_Click(object sender, EventArgs e)
         {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsCONFIGURACCION.DtTarifaTipo;
+            frm.ListadoDatos2.DisplayMember = "TarifaTipo";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void BotonConsultaProveedores_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsCONFIGURACCION.DtProveedores;
+            frm.ListadoDatos2.DisplayMember = "Proveedores";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void BotonConsultaObras_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsMulti2.DtObras;
+            frm.ListadoDatos2.DisplayMember = "Obras";
+            frm.ShowDialog();
+            frm.BringToFront();
 
         }
 
-        private void datosDeInicioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BotonconsultaPaises_Click(object sender, EventArgs e)
         {
-            FormDatosInicio frm = new FormDatosInicio();
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsMulti2.DtPaises;
+            frm.ListadoDatos2.DisplayMember = "Paises";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void BotonconsultaProvincias_Click(object sender, EventArgs e)
+        {
+            FormListarDatos frm = new FormListarDatos();
+            frm.ListadoDatos2.DataSource = dsMulti2.DtProvincias;
+            frm.ListadoDatos2.DisplayMember = "Provincias";
+            frm.ShowDialog();
+            frm.BringToFront();
+        }
+
+        private void BotonAlmacenes_Click(object sender, EventArgs e)
+        {
+            FormAlmacenes frm = new FormAlmacenes();
             frm.TopLevel = false;
+            //frm.WindowState = FormWindowState.Maximized;
             this.PanelForms.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
 
-        private void FormMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        private void BotonCodigoBarras_Click(object sender, EventArgs e)
         {
-            if (this.PanelForms.Controls.Count > 3)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        private void BtnInfo_MouseEnter(object sender, EventArgs e)
-        {
-            //MessageBox.Show(PanelForms.Controls.Count.ToString());
-        }
-
-        private void codigosDeBarrasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
             FormBuscarArticulos frm = new FormBuscarArticulos();
-            if (this.SiOpenBuscArti == 0 && this.SiOpenFatu == 0 && this.SiOpenArti == 0 )
+            if (this.SiOpenBuscArti == 0 && this.SiOpenFatu == 0 && this.SiOpenArti == 0)
             {
                 ClasDatos.OkFacturar = false;
                 ClasDatos.QUEform = "QR";
@@ -1084,6 +1121,25 @@ namespace PELOSCALVO
             }
         }
 
+        private void BotonPrueba_Click(object sender, EventArgs e)
+        {
+            Form1 frm = new Form1();
+            frm.TopLevel = false;
+            //frm.WindowState = FormWindowState.Maximized;
+            this.PanelForms.Controls.Add(frm);
+            frm.Show();
+            frm.BringToFront();
+
+        }
+
+
+        private void FormMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.PanelForms.Controls.Count > 3)
+            {
+                e.Cancel = true;
+            }
+        }
         private void BtnSql_Click(object sender, EventArgs e)
         {
 

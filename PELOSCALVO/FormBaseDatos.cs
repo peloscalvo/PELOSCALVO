@@ -24,7 +24,8 @@ namespace PELOSCALVO
             InfoRestablecer.SetToolTip(this.BtnGuardarArchivo_Sql, "Guarda Configuracion Servidor");
             InfoRestablecer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             InfoRestablecer.IsBalloon = true;
-
+            TabArchivoSql.SelectedIndex = 1;
+            TabArchivoSql.SelectedIndex = 0;
         }
         private void FormBaseDatos_Load(object sender, EventArgs e)
         {
@@ -299,9 +300,9 @@ namespace PELOSCALVO
 
                     this.CheckAtivarServidor.Checked = true;
                     this.CheckActivarDb.Checked = false;
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
-                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE;
+                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE;
                     FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Servidor";
                     FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.LawnGreen;
                 }
@@ -313,9 +314,9 @@ namespace PELOSCALVO
 
                     this.CheckAtivarServidor.Checked = false;
                     this.CheckActivarDb.Checked = true;
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
-                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO;
+                    FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_VERDE;
                     FormMenuPrincipal.menu2principal.InfoConectado.Text = "Conectado a Db Local";
                     FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.LawnGreen;
                 }
@@ -386,7 +387,7 @@ namespace PELOSCALVO
 
             string consulta = "SELECT * from [DtConfiguracionPrincipal]  ";
             string consultaConfi = "SELECT * from [DtConfi]";
-            string consultaTarifa = "SELECT * from[DtTarifaTipo]";
+            string consultaTarifa = "SELECT * from[DtTarifa]";
             string ConsultaAlmacenes = "SELECT * from [DtAlmacenes]";
             string ConsultaProveedores = "SELECT * from [DtProveedores]";
             string ConsultaOBRA = "SELECT * from [DtObras]";
@@ -431,7 +432,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR CARGAR DATOS PRINCIPAL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -448,7 +449,7 @@ namespace PELOSCALVO
             string ConsultaAlmacenes = "SELECT * from [DtAlmacenes]";
             string ConsultaProveedores = "SELECT * from [DtProveedores]";
             string consultaConfi = "SELECT * from [DtConfi]";
-            string consultaTarifa = "SELECT * from[DtTarifaTipo]";
+            string consultaTarifa = "SELECT * from[DtTarifa]";
             string ConsultaOBRA = "SELECT * from [DtObras]";
             string ConsultaProvincia = "SELECT * from [DtProvincias]";
             string ConsultaPais = "SELECT * from [DtPaises]";
@@ -491,7 +492,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message, "ERROR CARGAR DATOS PRINCIPAL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -516,10 +517,6 @@ namespace PELOSCALVO
                         SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                         AdactaPelos.Fill(FormMenuPrincipal.menu2principal.articulos.DtArticulos);
 
-                        if (NuevaConexion.CerrarConexionSql)
-                        {
-
-                        }
                         // AñadirId();
                         // ValidarCalculosPrecios();
                     }
@@ -527,7 +524,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "ERROR");
+                    MessageBox.Show(ex.Message, "ERROR CARGAR ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
 
@@ -629,9 +626,9 @@ namespace PELOSCALVO
                             {
                                 item.ValenteDes = Convert.ToDouble(reader["Desc6"]);
                             }
-                            if (!string.IsNullOrEmpty((reader["Valente"]).ToString()))
+                            if (!string.IsNullOrEmpty((reader["Pvp6"]).ToString()))
                             {
-                                item.Valente = Convert.ToDouble(reader["Valente"]);
+                                item.Valente = Convert.ToDouble(reader["Pvp6"]);
                             }
                             if (!string.IsNullOrEmpty((reader["DescPlus"]).ToString()))
                             {
@@ -683,7 +680,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ERROR");
+                MessageBox.Show(ex.Message, "ERROR CARGAR ARTICULOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -728,7 +725,7 @@ namespace PELOSCALVO
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "ERROR");
+                    MessageBox.Show(ex.Message, "ERROR CARGAR CLIENTES",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -753,16 +750,13 @@ namespace PELOSCALVO
 
                     SqlDataAdapter AdactaPelos = new SqlDataAdapter(consulta, ClsConexionSql.CadenaConexion);
                     AdactaPelos.Fill(FormMenuPrincipal.menu2principal.dsClientes.DtClientes);
-                    if (NuevaConexion.CerrarConexionSql)
-                    {
-
-                    }
+      
                 }
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "ERROR");
+                MessageBox.Show(ex.Message, "ERROR CARGAR CLIENTES", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
 
@@ -795,8 +789,8 @@ namespace PELOSCALVO
                     this.CheckAtivarServidor.Checked = true;
                     ClsConexionSql.SibaseDatosSql = true;
                     MessageBox.Show("Activo Conexion Base Datos ((servidor ))", "Sql Server", MessageBoxButtons.OK);
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE1_;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_VERDE;
                 }
             }
         }
@@ -1039,8 +1033,8 @@ namespace PELOSCALVO
             {
                 if (VALIDARcampos_Archivos())
                 {
-                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE1_;
-                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
+                    this.PictureArchivo.Image = Properties.Resources.CIRCULO_VERDE;
+                    this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO;
                     this.CheckAtivarServidor.Checked = false;
                     if (this.CheckActivarDb.Checked == false)
                     {
@@ -1419,7 +1413,7 @@ namespace PELOSCALVO
                         "[Descripcci] varchar,[Coste] MONEY , [Ganancia] DECIMAL ,[Pvp1] MONEY ,[PvpIva] MONEY ," +
                         "[Desc2] DECIMAL ,[Pvp2] MONEY ,[Desc3] DECIMAL ,[Pvp3] MONEY ,[Desc4] DECIMAL " +
                         ",[Pvp4] MONEY ,[Desc5] DECIMAL ,[Pvp5] MONEY ,[Desc6] DECIMAL ,[Pvp6] MONEY" +
-                        " ,[PlusDesc] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
+                        " ,[DescPlus] DECIMAL ,[Plus] MONEY ,[UnidadPale] DECIMAL,[MinimosSto] DECIMAL ,[Stock] DECIMAL " +
                         ",[Familia] varchar ,[Fecha] DATETIME ,[BAJA] bit default 0  , [Fatu] bit  default 0 )";
                     ClsConexionDb.CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ClasDatos.RutaBaseDatosDb;
                     ClsConexionDb NuevaConexion2 = new ClsConexionDb(ConsultaArticulos);
@@ -1523,9 +1517,9 @@ namespace PELOSCALVO
                 //  this.TabArchivos.Tag = "NO";
                 this.NombreArchivoDatos.BackColor = SystemColors.Control;
                 Conexiones.ClsConexionSql.SibaseDatosSql = false;
-                this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO1;
-                this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO1;
-                FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO1;
+                this.PictureArchivo.Image = Properties.Resources.CIRCULO_ROJO;
+                this.PictureServidor.Image = Properties.Resources.CIRCULO_ROJO;
+                FormMenuPrincipal.menu2principal.Conectado.Image = Properties.Resources.CIRCULO_ROJO;
                 FormMenuPrincipal.menu2principal.InfoConectado.Text = "Desconectado";
                 FormMenuPrincipal.menu2principal.InfoConectado.BackColor = Color.Goldenrod;
                 this.CheckAtivarServidor.Checked = false;

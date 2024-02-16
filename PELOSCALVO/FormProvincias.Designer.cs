@@ -55,9 +55,9 @@ namespace PELOSCALVO
             this.BtnSalir_Provincias = new System.Windows.Forms.Button();
             this.ErrorProve = new System.Windows.Forms.ErrorProvider(this.components);
             this.dataGridProvincias = new System.Windows.Forms.DataGridView();
-            this.PaisTxt = new System.Windows.Forms.ComboBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaisTxt = new System.Windows.Forms.ComboBox();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             Label4 = new System.Windows.Forms.Label();
@@ -92,7 +92,7 @@ namespace PELOSCALVO
             // Label4
             // 
             Label4.AutoSize = true;
-            Label4.Location = new System.Drawing.Point(534, 292);
+            Label4.Location = new System.Drawing.Point(534, 317);
             Label4.Name = "Label4";
             Label4.Size = new System.Drawing.Size(30, 13);
             Label4.TabIndex = 80;
@@ -101,7 +101,7 @@ namespace PELOSCALVO
             // enlaceLabel
             // 
             enlaceLabel.AutoSize = true;
-            enlaceLabel.Location = new System.Drawing.Point(545, 327);
+            enlaceLabel.Location = new System.Drawing.Point(545, 291);
             enlaceLabel.Name = "enlaceLabel";
             enlaceLabel.Size = new System.Drawing.Size(19, 13);
             enlaceLabel.TabIndex = 58;
@@ -117,7 +117,7 @@ namespace PELOSCALVO
             this.BtnGuardarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarProvincia.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarProvincia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarProvincia.Location = new System.Drawing.Point(516, 395);
             this.BtnGuardarProvincia.Name = "BtnGuardarProvincia";
@@ -173,7 +173,7 @@ namespace PELOSCALVO
             this.Id_Provincias.Name = "Id_Provincias";
             this.Id_Provincias.Size = new System.Drawing.Size(13, 13);
             this.Id_Provincias.TabIndex = 58;
-            this.Id_Provincias.Text = "0";
+            this.Id_Provincias.Text = "1";
             this.Id_Provincias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // PanelBotones_Provincia
@@ -199,7 +199,7 @@ namespace PELOSCALVO
             this.BtnEliminarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnEliminarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_trash_can_17_32;
+            this.BtnEliminarProvincia.Image = global::PELOSCALVO.Properties.Resources.Papelera;
             this.BtnEliminarProvincia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnEliminarProvincia.Location = new System.Drawing.Point(238, 3);
             this.BtnEliminarProvincia.Name = "BtnEliminarProvincia";
@@ -219,7 +219,7 @@ namespace PELOSCALVO
             this.BtnBuscarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnBuscarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_magnifier_4_32;
+            this.BtnBuscarProvincia.Image = global::PELOSCALVO.Properties.Resources.Lupa_Grande;
             this.BtnBuscarProvincia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnBuscarProvincia.Location = new System.Drawing.Point(161, 3);
             this.BtnBuscarProvincia.Name = "BtnBuscarProvincia";
@@ -239,7 +239,7 @@ namespace PELOSCALVO
             this.BtnNuevoProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoProvincia.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoProvincia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoProvincia.Location = new System.Drawing.Point(7, 3);
             this.BtnNuevoProvincia.Name = "BtnNuevoProvincia";
@@ -260,7 +260,7 @@ namespace PELOSCALVO
             this.BtnModificarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarProvincia.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarProvincia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarProvincia.Location = new System.Drawing.Point(84, 3);
             this.BtnModificarProvincia.Name = "BtnModificarProvincia";
@@ -275,7 +275,7 @@ namespace PELOSCALVO
             // 
             this.Id_pais.AutoSize = true;
             this.Id_pais.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtPaisesBindingSource, "Id", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.Id_pais.Location = new System.Drawing.Point(582, 323);
+            this.Id_pais.Location = new System.Drawing.Point(591, 287);
             this.Id_pais.Name = "Id_pais";
             this.Id_pais.Size = new System.Drawing.Size(0, 13);
             this.Id_pais.TabIndex = 59;
@@ -291,7 +291,7 @@ namespace PELOSCALVO
             this.BtnCancelarProvincia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarProvincia.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarProvincia.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarProvincia.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarProvincia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarProvincia.Location = new System.Drawing.Point(673, 395);
             this.BtnCancelarProvincia.Name = "BtnCancelarProvincia";
@@ -312,7 +312,7 @@ namespace PELOSCALVO
             this.BtnSalir_Provincias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalir_Provincias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalir_Provincias.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir_Provincias.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalir_Provincias.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalir_Provincias.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalir_Provincias.Location = new System.Drawing.Point(823, 384);
             this.BtnSalir_Provincias.Name = "BtnSalir_Provincias";
@@ -368,16 +368,6 @@ namespace PELOSCALVO
             this.dataGridProvincias.Size = new System.Drawing.Size(923, 257);
             this.dataGridProvincias.TabIndex = 74;
             // 
-            // PaisTxt
-            // 
-            this.PaisTxt.DataSource = this.dtPaisesBindingSource;
-            this.PaisTxt.DisplayMember = "Paises";
-            this.PaisTxt.FormattingEnabled = true;
-            this.PaisTxt.Location = new System.Drawing.Point(570, 290);
-            this.PaisTxt.Name = "PaisTxt";
-            this.PaisTxt.Size = new System.Drawing.Size(330, 21);
-            this.PaisTxt.TabIndex = 81;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -396,6 +386,16 @@ namespace PELOSCALVO
             this.Column1.HeaderText = "Provincias";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // PaisTxt
+            // 
+            this.PaisTxt.DataSource = this.dtPaisesBindingSource;
+            this.PaisTxt.DisplayMember = "Paises";
+            this.PaisTxt.FormattingEnabled = true;
+            this.PaisTxt.Location = new System.Drawing.Point(570, 315);
+            this.PaisTxt.Name = "PaisTxt";
+            this.PaisTxt.Size = new System.Drawing.Size(330, 21);
+            this.PaisTxt.TabIndex = 81;
             // 
             // FormProvincias
             // 

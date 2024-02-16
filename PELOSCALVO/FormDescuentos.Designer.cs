@@ -35,8 +35,10 @@ namespace PELOSCALVO
             System.Windows.Forms.Label ConfiLabel1;
             System.Windows.Forms.Label idEmpresaLabel1;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDescuentos));
             this.dsCONFIGURACCION = new PELOSCALVO.DsCONFIGURACCION();
             this.dtConfiguracionPrincipalBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -44,10 +46,7 @@ namespace PELOSCALVO
             this.IdEmpresa = new System.Windows.Forms.Label();
             this.IdTarifa = new System.Windows.Forms.Label();
             this.dtTarifaTipoDataGridView = new System.Windows.Forms.DataGridView();
-            this.idTarifaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarifaTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enlaceTarifaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarifaTipoTextBox = new System.Windows.Forms.TextBox();
+            this.NombreTarifaTxt = new System.Windows.Forms.TextBox();
             this.empresaConfiComboBox1 = new System.Windows.Forms.ComboBox();
             this.BtnCancelarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnGuardarDescuentos = new System.Windows.Forms.Button();
@@ -56,6 +55,9 @@ namespace PELOSCALVO
             this.BtnModificarTipoTarifa = new System.Windows.Forms.Button();
             this.BtnSalirTipoTarifa = new System.Windows.Forms.Button();
             this.ErrorDescuentos = new System.Windows.Forms.ErrorProvider(this.components);
+            this.idTarifaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tarifaTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enlaceTarifaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             idTarifaLabel = new System.Windows.Forms.Label();
             tarifaTipoLabel = new System.Windows.Forms.Label();
             ConfiLabel1 = new System.Windows.Forms.Label();
@@ -164,14 +166,14 @@ namespace PELOSCALVO
             this.tarifaTipoDataGridViewTextBoxColumn,
             this.enlaceTarifaDataGridViewTextBoxColumn});
             this.dtTarifaTipoDataGridView.DataSource = this.dtConfiDtTarifaTipoBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtTarifaTipoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(90)))), ((int)(((byte)(1)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtTarifaTipoDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtTarifaTipoDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtTarifaTipoDataGridView.EnableHeadersVisualStyles = false;
             this.dtTarifaTipoDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -182,40 +184,16 @@ namespace PELOSCALVO
             this.dtTarifaTipoDataGridView.Size = new System.Drawing.Size(882, 275);
             this.dtTarifaTipoDataGridView.TabIndex = 62;
             // 
-            // idTarifaDataGridViewTextBoxColumn
+            // NombreTarifaTxt
             // 
-            this.idTarifaDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.idTarifaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.idTarifaDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idTarifaDataGridViewTextBoxColumn.Name = "idTarifaDataGridViewTextBoxColumn";
-            this.idTarifaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tarifaTipoDataGridViewTextBoxColumn
-            // 
-            this.tarifaTipoDataGridViewTextBoxColumn.DataPropertyName = "TarifaTipo";
-            this.tarifaTipoDataGridViewTextBoxColumn.FillWeight = 350F;
-            this.tarifaTipoDataGridViewTextBoxColumn.HeaderText = "Tarifa";
-            this.tarifaTipoDataGridViewTextBoxColumn.Name = "tarifaTipoDataGridViewTextBoxColumn";
-            this.tarifaTipoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // enlaceTarifaDataGridViewTextBoxColumn
-            // 
-            this.enlaceTarifaDataGridViewTextBoxColumn.DataPropertyName = "EnlaceTarifa";
-            this.enlaceTarifaDataGridViewTextBoxColumn.HeaderText = "EnlaceTarifa";
-            this.enlaceTarifaDataGridViewTextBoxColumn.Name = "enlaceTarifaDataGridViewTextBoxColumn";
-            this.enlaceTarifaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.enlaceTarifaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // tarifaTipoTextBox
-            // 
-            this.tarifaTipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "TarifaTipo", true));
-            this.tarifaTipoTextBox.Location = new System.Drawing.Point(80, 331);
-            this.tarifaTipoTextBox.Name = "tarifaTipoTextBox";
-            this.tarifaTipoTextBox.ReadOnly = true;
-            this.tarifaTipoTextBox.Size = new System.Drawing.Size(283, 20);
-            this.tarifaTipoTextBox.TabIndex = 60;
+            this.NombreTarifaTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.NombreTarifaTxt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.NombreTarifaTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtConfiDtTarifaTipoBindingSource, "TarifaTipo", true));
+            this.NombreTarifaTxt.Location = new System.Drawing.Point(80, 331);
+            this.NombreTarifaTxt.Name = "NombreTarifaTxt";
+            this.NombreTarifaTxt.ReadOnly = true;
+            this.NombreTarifaTxt.Size = new System.Drawing.Size(283, 20);
+            this.NombreTarifaTxt.TabIndex = 60;
             // 
             // empresaConfiComboBox1
             // 
@@ -239,7 +217,7 @@ namespace PELOSCALVO
             this.BtnCancelarTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarTipoTarifa.Location = new System.Drawing.Point(629, 411);
             this.BtnCancelarTipoTarifa.Name = "BtnCancelarTipoTarifa";
@@ -260,7 +238,7 @@ namespace PELOSCALVO
             this.BtnGuardarDescuentos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnGuardarDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarDescuentos.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarDescuentos.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnGuardarDescuentos.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnGuardarDescuentos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGuardarDescuentos.Location = new System.Drawing.Point(452, 411);
             this.BtnGuardarDescuentos.Name = "BtnGuardarDescuentos";
@@ -291,7 +269,7 @@ namespace PELOSCALVO
             this.BtnNuevoTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnNuevoTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevoTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevoTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_file_14_32;
+            this.BtnNuevoTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.ArchivoFile;
             this.BtnNuevoTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnNuevoTipoTarifa.Location = new System.Drawing.Point(12, 3);
             this.BtnNuevoTipoTarifa.Name = "BtnNuevoTipoTarifa";
@@ -312,7 +290,7 @@ namespace PELOSCALVO
             this.BtnModificarTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnModificarTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModificarTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_pen_8_32;
+            this.BtnModificarTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.Editar;
             this.BtnModificarTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnModificarTipoTarifa.Location = new System.Drawing.Point(89, 3);
             this.BtnModificarTipoTarifa.Name = "BtnModificarTipoTarifa";
@@ -333,7 +311,7 @@ namespace PELOSCALVO
             this.BtnSalirTipoTarifa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnSalirTipoTarifa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalirTipoTarifa.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalirTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_door_5_32;
+            this.BtnSalirTipoTarifa.Image = global::PELOSCALVO.Properties.Resources.Salir;
             this.BtnSalirTipoTarifa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalirTipoTarifa.Location = new System.Drawing.Point(773, 390);
             this.BtnSalirTipoTarifa.Name = "BtnSalirTipoTarifa";
@@ -349,6 +327,40 @@ namespace PELOSCALVO
             this.ErrorDescuentos.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.ErrorDescuentos.ContainerControl = this;
             // 
+            // idTarifaDataGridViewTextBoxColumn
+            // 
+            this.idTarifaDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.idTarifaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.idTarifaDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idTarifaDataGridViewTextBoxColumn.Name = "idTarifaDataGridViewTextBoxColumn";
+            this.idTarifaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idTarifaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // tarifaTipoDataGridViewTextBoxColumn
+            // 
+            this.tarifaTipoDataGridViewTextBoxColumn.DataPropertyName = "TarifaTipo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.tarifaTipoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.tarifaTipoDataGridViewTextBoxColumn.FillWeight = 350F;
+            this.tarifaTipoDataGridViewTextBoxColumn.HeaderText = "Tarifa";
+            this.tarifaTipoDataGridViewTextBoxColumn.Name = "tarifaTipoDataGridViewTextBoxColumn";
+            this.tarifaTipoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tarifaTipoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // enlaceTarifaDataGridViewTextBoxColumn
+            // 
+            this.enlaceTarifaDataGridViewTextBoxColumn.DataPropertyName = "EnlaceTarifa";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.enlaceTarifaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.enlaceTarifaDataGridViewTextBoxColumn.HeaderText = "EnlaceTarifa";
+            this.enlaceTarifaDataGridViewTextBoxColumn.Name = "enlaceTarifaDataGridViewTextBoxColumn";
+            this.enlaceTarifaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.enlaceTarifaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.enlaceTarifaDataGridViewTextBoxColumn.Visible = false;
+            // 
             // FormDescuentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,7 +372,7 @@ namespace PELOSCALVO
             this.Controls.Add(this.dtTarifaTipoDataGridView);
             this.Controls.Add(idTarifaLabel);
             this.Controls.Add(tarifaTipoLabel);
-            this.Controls.Add(this.tarifaTipoTextBox);
+            this.Controls.Add(this.NombreTarifaTxt);
             this.Controls.Add(ConfiLabel1);
             this.Controls.Add(this.empresaConfiComboBox1);
             this.Controls.Add(idEmpresaLabel1);
@@ -392,7 +404,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.Label IdEmpresa;
         private System.Windows.Forms.Label IdTarifa;
         private System.Windows.Forms.DataGridView dtTarifaTipoDataGridView;
-        private System.Windows.Forms.TextBox tarifaTipoTextBox;
+        private System.Windows.Forms.TextBox NombreTarifaTxt;
         private System.Windows.Forms.ComboBox empresaConfiComboBox1;
         private System.Windows.Forms.Button BtnCancelarTipoTarifa;
         public System.Windows.Forms.Button BtnGuardarDescuentos;

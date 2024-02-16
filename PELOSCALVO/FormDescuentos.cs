@@ -1,6 +1,5 @@
 ﻿using Conexiones;
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -42,7 +41,7 @@ namespace PELOSCALVO
         }
         private void ModificarOjetosTari()
         {
-            this.tarifaTipoTextBox.ReadOnly = false;
+            this.NombreTarifaTxt.ReadOnly = false;
             this.panelBotonesTipoTarifa.Enabled = false;
             this.BtnCancelarTipoTarifa.Enabled = true;
             this.BtnGuardarDescuentos.Enabled = true;
@@ -50,7 +49,7 @@ namespace PELOSCALVO
         }
         private void RestaurarOjetosTari()
         {
-            this.tarifaTipoTextBox.ReadOnly = true;
+            this.NombreTarifaTxt.ReadOnly = true;
             this.panelBotonesTipoTarifa.Enabled = true;
             this.BtnCancelarTipoTarifa.Enabled = false;
             this.BtnGuardarDescuentos.Enabled = false;
@@ -72,10 +71,10 @@ namespace PELOSCALVO
         {
             bool ok = true;
 
-            if (this.tarifaTipoTextBox.Text.Length < 3)
+            if (this.NombreTarifaTxt.Text.Length < 3)
             {
                 ok = false;
-                this.ErrorDescuentos.SetError(this.tarifaTipoTextBox, "_ingresar Nonbre Tarifa valido (( minimo 4 Caracteres))");
+                this.ErrorDescuentos.SetError(this.NombreTarifaTxt, "_ingresar Nonbre Tarifa valido (( minimo 4 Caracteres))");
             }
 
 
@@ -83,7 +82,7 @@ namespace PELOSCALVO
         }
         private void BorrarErrorTari()
         {
-            this.ErrorDescuentos.SetError(this.tarifaTipoTextBox, "");
+            this.ErrorDescuentos.SetError(this.NombreTarifaTxt, "");
 
         }
         private void GuardarTarifaDb()
@@ -91,22 +90,40 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelBotonesTipoTarifa.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtTarifaTipo] VALUES([@Id],[@TarifaTipo],[@EnlaceTarifa])";
+                consulta = "  INSERT INTO [DtTarifa] VALUES([@Id],[@TarifaTipo],@TarifaReal,[@EnlaceTarifa])";
 
             }
             else
             {
-                consulta = "UPDATE [DtTarifaTipo] SET [Id] = @Id,[TarifaTipo] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
-                " WHERE Id = @Id";
+                consulta = "UPDATE [DtTarifa] SET [Id] = @Id,[Tarifa] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
+                " WHERE EnlaceTarifa = @EnlaceTarifa";
             }
             ClsConexionDb NuevaConexion = new ClsConexionDb(consulta);
             try
             {
                 if (NuevaConexion.SiConexionDb)
                 {
+
                     NuevaConexion.ComandoDb.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.IdTarifa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdTarifa.Text));
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(this.tarifaTipoTextBox.Text) ? (object)DBNull.Value : this.tarifaTipoTextBox.Text);
-                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value :Convert.ToInt32( this.IdEmpresa.Text));
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(this.NombreTarifaTxt.Text) ? (object)DBNull.Value : this.NombreTarifaTxt.Text);
+                    if (this.panelBotonesTipoTarifa.Tag.ToString() == "Nuevo")
+                    {
+                        int FilaDesc = this.dtTarifaTipoDataGridView.CurrentCell.RowIndex;
+                        string NombreTarifa = "PVP1";
+                        if (FilaDesc <= 6)
+                        {
+                            NombreTarifa = "PVP" + FilaDesc + 1;
+                        }
+                        if (FilaDesc == 6)
+                        {
+                            NombreTarifa = "PLUS";
+                        }
+
+                        NuevaConexion.ComandoDb.Parameters.AddWithValue("@TarifaReal", string.IsNullOrEmpty(NombreTarifa) ? (object)DBNull.Value : NombreTarifa);
+
+                    }
+
+                    NuevaConexion.ComandoDb.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdEmpresa.Text));
                     NuevaConexion.ComandoDb.ExecuteNonQuery();
                     NuevaConexion.ComandoDb.Parameters.Clear();
                     Validate();
@@ -119,7 +136,7 @@ namespace PELOSCALVO
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "TARIFAS");
+                MessageBox.Show(ex.Message, "TARIFAS",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
@@ -134,13 +151,13 @@ namespace PELOSCALVO
             string consulta = "";
             if (this.panelBotonesTipoTarifa.Tag.ToString() == "Nuevo")
             {
-                consulta = "  INSERT INTO [DtTarifaTipo] VALUES([@Id],[@TarifaTipo],[@EnlaceTarifa])";
+                consulta = "  INSERT INTO [DtTarifa] VALUES([@Id],[@TarifaTipo],@TarifaReal,[@EnlaceTarifa])";
 
             }
             else
             {
-                consulta = "UPDATE [DtTarifaTipo] SET [Id] = @Id,[TarifaTipo] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
-                " WHERE Id = @Id";
+                consulta = "UPDATE [DtTarifa] SET [Id] = @Id,[TarifaTipo] = @TarifaTipo ,[EnlaceTarifa] = @EnlaceTarifa " +
+                " WHERE EnlaceTarifa = @EnlaceTarifa";
             }
             ClsConexionSql NuevaConexion = new ClsConexionSql(consulta);
             try
@@ -148,8 +165,23 @@ namespace PELOSCALVO
                 if (NuevaConexion.SiConexionSql)
                 {
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(this.IdTarifa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdTarifa.Text));
-                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(this.tarifaTipoTextBox.Text) ? (object)DBNull.Value : this.tarifaTipoTextBox.Text);
+                    NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaTipo", string.IsNullOrEmpty(this.NombreTarifaTxt.Text) ? (object)DBNull.Value : this.NombreTarifaTxt.Text);
                     NuevaConexion.ComandoSql.Parameters.AddWithValue("@EnlaceTarifa", string.IsNullOrEmpty(this.IdEmpresa.Text) ? (object)DBNull.Value : Convert.ToInt32(this.IdEmpresa.Text));
+                    if (this.panelBotonesTipoTarifa.Tag.ToString() == "Nuevo")
+                    {
+                        int FilaDesc = this.dtTarifaTipoDataGridView.CurrentCell.RowIndex;
+                        string NombreTarifa = "PVP1";
+                        if (FilaDesc <= 6)
+                        {
+                            NombreTarifa = "PVP" + FilaDesc + 1;
+                        }
+                        if (FilaDesc == 6)
+                        {
+                            NombreTarifa = "PLUS";
+                        }     
+                        NuevaConexion.ComandoSql.Parameters.AddWithValue("@TarifaReal", string.IsNullOrEmpty(NombreTarifa) ? (object)DBNull.Value : NombreTarifa);
+
+                    }
                     NuevaConexion.ComandoSql.ExecuteNonQuery();
                     NuevaConexion.ComandoSql.Parameters.Clear();
                     Validate();
@@ -266,7 +298,7 @@ namespace PELOSCALVO
             try
             {
                 int VALORid = 0;
-               // this.dtTarifaTipoDataGridView.Sort(this.dtTarifaTipoDataGridView.Columns[0], ListSortDirection.Ascending);
+                // this.dtTarifaTipoDataGridView.Sort(this.dtTarifaTipoDataGridView.Columns[0], ListSortDirection.Ascending);
                 int numeroFILA = this.dtTarifaTipoDataGridView.Rows.Count;
                 this.dtConfiDtTarifaTipoBindingSource.AddNew();
                 if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == 0)
@@ -292,14 +324,14 @@ namespace PELOSCALVO
                 }
                 if (this.dtTarifaTipoDataGridView.RowCount < 7)
                 {
-                    this.tarifaTipoTextBox.Text = "Pvp" + this.IdTarifa.Text.ToString();
+                    this.NombreTarifaTxt.Text = "Pvp" + this.IdTarifa.Text.ToString();
                 }
                 if (this.dtTarifaTipoDataGridView.RowCount == 7)
                 {
-                    this.tarifaTipoTextBox.Text = "IVA";
+                    this.NombreTarifaTxt.Text = "IVA";
                 }
-                this.tarifaTipoTextBox.Focus();
-                this.tarifaTipoTextBox.SelectAll();
+                this.NombreTarifaTxt.Focus();
+                this.NombreTarifaTxt.SelectAll();
                 ModificarOjetosTari();
 
             }
@@ -375,15 +407,15 @@ namespace PELOSCALVO
                     {
                         foreach (DataGridViewRow fila in this.dtTarifaTipoDataGridView.Rows)
                         {
-                            if (fila.Cells[1].ToString() == this.tarifaTipoTextBox.Text)
+                            if (fila.Cells[1].ToString() == this.NombreTarifaTxt.Text)
                             {
                                 if (this.dtTarifaTipoDataGridView.CurrentCell.RowIndex == fila.Index)
                                 {
                                     break;
                                 }
-                                MessageBox.Show(this.tarifaTipoTextBox.Text.ToString(), "YA EXISTE ESTE TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.tarifaTipoTextBox.Focus();
-                                this.tarifaTipoTextBox.SelectAll();
+                                MessageBox.Show(this.NombreTarifaTxt.Text.ToString(), "YA EXISTE ESTE TARIFA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.NombreTarifaTxt.Focus();
+                                this.NombreTarifaTxt.SelectAll();
                                 return;
                             }
 

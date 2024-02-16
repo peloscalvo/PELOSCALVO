@@ -44,7 +44,6 @@ namespace PELOSCALVO
             this.referenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcciDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pvp1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PvpIva = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.familiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdFILA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +55,7 @@ namespace PELOSCALVO
             this.labelfiltrarBUSCAR = new System.Windows.Forms.Label();
             this.ListCodigos = new System.Windows.Forms.ListView();
             this.Id_Codigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Texto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Referencia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListaQr = new System.Windows.Forms.ComboBox();
             this.dtInicioMultiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMultidatos = new PELOSCALVO.DsMultidatos();
@@ -76,6 +75,7 @@ namespace PELOSCALVO
             this.PrintBarras = new System.Drawing.Printing.PrintDocument();
             this.ListaQr2 = new System.Windows.Forms.ComboBox();
             this.ListOpcion = new System.Windows.Forms.ComboBox();
+            this.Descripcion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBuscarArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtArticulosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
@@ -135,7 +135,6 @@ namespace PELOSCALVO
             this.referenciaDataGridViewTextBoxColumn,
             this.descripcciDataGridViewTextBoxColumn,
             this.pvp1DataGridViewTextBoxColumn,
-            this.PvpIva,
             this.familiaDataGridViewTextBoxColumn,
             this.fechaDataGridViewTextBoxColumn,
             this.IdFILA});
@@ -154,7 +153,7 @@ namespace PELOSCALVO
             // referenciaDataGridViewTextBoxColumn
             // 
             this.referenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.referenciaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.referenciaDataGridViewTextBoxColumn.FillWeight = 150F;
             this.referenciaDataGridViewTextBoxColumn.HeaderText = "Referencia";
@@ -165,7 +164,7 @@ namespace PELOSCALVO
             // descripcciDataGridViewTextBoxColumn
             // 
             this.descripcciDataGridViewTextBoxColumn.DataPropertyName = "Descripcci";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.descripcciDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.descripcciDataGridViewTextBoxColumn.FillWeight = 300F;
             this.descripcciDataGridViewTextBoxColumn.HeaderText = "Descripccion";
@@ -176,7 +175,7 @@ namespace PELOSCALVO
             // pvp1DataGridViewTextBoxColumn
             // 
             this.pvp1DataGridViewTextBoxColumn.DataPropertyName = "Pvp1";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle4.Format = "C2";
             dataGridViewCellStyle4.NullValue = null;
             this.pvp1DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
@@ -186,17 +185,11 @@ namespace PELOSCALVO
             this.pvp1DataGridViewTextBoxColumn.ReadOnly = true;
             this.pvp1DataGridViewTextBoxColumn.Width = 80;
             // 
-            // PvpIva
-            // 
-            this.PvpIva.DataPropertyName = "PvpIva";
-            this.PvpIva.HeaderText = "C/iIva";
-            this.PvpIva.Name = "PvpIva";
-            this.PvpIva.ReadOnly = true;
-            // 
             // familiaDataGridViewTextBoxColumn
             // 
             this.familiaDataGridViewTextBoxColumn.DataPropertyName = "Familia";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
             this.familiaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.familiaDataGridViewTextBoxColumn.FillWeight = 140F;
             this.familiaDataGridViewTextBoxColumn.HeaderText = "Familia";
@@ -207,7 +200,7 @@ namespace PELOSCALVO
             // fechaDataGridViewTextBoxColumn
             // 
             this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.Format = "d";
             dataGridViewCellStyle6.NullValue = null;
             this.fechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
@@ -220,7 +213,7 @@ namespace PELOSCALVO
             // IdFILA
             // 
             this.IdFILA.DataPropertyName = "IdFILA";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.DarkRed;
             dataGridViewCellStyle7.Format = "N0";
             dataGridViewCellStyle7.NullValue = null;
@@ -298,7 +291,8 @@ namespace PELOSCALVO
             // 
             this.ListCodigos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Id_Codigo,
-            this.Texto});
+            this.Referencia,
+            this.Descripcion});
             this.ListCodigos.Enabled = false;
             this.ListCodigos.FullRowSelect = true;
             this.ListCodigos.GridLines = true;
@@ -317,10 +311,10 @@ namespace PELOSCALVO
             this.Id_Codigo.Text = "Id";
             this.Id_Codigo.Width = 98;
             // 
-            // Texto
+            // Referencia
             // 
-            this.Texto.Text = "Texto";
-            this.Texto.Width = 335;
+            this.Referencia.Text = "Referencia";
+            this.Referencia.Width = 335;
             // 
             // ListaQr
             // 
@@ -436,7 +430,7 @@ namespace PELOSCALVO
             this.BtnCodifiCar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCodifiCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCodifiCar.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_check_mark_9_24;
+            this.BtnCodifiCar.Image = global::PELOSCALVO.Properties.Resources.Aceptar;
             this.BtnCodifiCar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnCodifiCar.Location = new System.Drawing.Point(1177, 402);
             this.BtnCodifiCar.Name = "BtnCodifiCar";
@@ -457,7 +451,7 @@ namespace PELOSCALVO
             this.BtnCancelarBArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.BtnCancelarBArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarBArticulo.Font = new System.Drawing.Font("Bodoni MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelarBArticulo.Image = global::PELOSCALVO.Properties.Resources.iconmonstr_x_mark_8_24;
+            this.BtnCancelarBArticulo.Image = global::PELOSCALVO.Properties.Resources.Cancelar;
             this.BtnCancelarBArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCancelarBArticulo.Location = new System.Drawing.Point(668, 404);
             this.BtnCancelarBArticulo.Name = "BtnCancelarBArticulo";
@@ -532,6 +526,10 @@ namespace PELOSCALVO
             this.ListOpcion.TabIndex = 89;
             this.ListOpcion.SelectedIndexChanged += new System.EventHandler(this.ListOpcion_SelectedIndexChanged);
             // 
+            // Descripcion
+            // 
+            this.Descripcion.Text = "Descripcion";
+            // 
             // FormBuscarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -592,13 +590,6 @@ namespace PELOSCALVO
         public System.Windows.Forms.BindingSource dtArticulosBindingSource;
         private System.Windows.Forms.ComboBox FiltrarBajasBuscar;
         private System.Windows.Forms.Label labelfiltrarBUSCAR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn referenciaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcciDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pvp1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PvpIva;
-        private System.Windows.Forms.DataGridViewTextBoxColumn familiaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdFILA;
         private System.Windows.Forms.ListView ListCodigos;
         public System.Windows.Forms.Button BtnCodifiCar;
         private System.Windows.Forms.ComboBox ListaQr;
@@ -606,7 +597,7 @@ namespace PELOSCALVO
         private System.Windows.Forms.TextBox TituloText;
         private System.Windows.Forms.PictureBox PitureQr;
         private System.Windows.Forms.ColumnHeader Id_Codigo;
-        private System.Windows.Forms.ColumnHeader Texto;
+        private System.Windows.Forms.ColumnHeader Referencia;
         private System.Windows.Forms.Button BtnLimpiar;
         private System.Windows.Forms.BindingSource dtInicioMultiBindingSource;
         private DsMultidatos dsMultidatos;
@@ -620,5 +611,12 @@ namespace PELOSCALVO
         private System.Drawing.Printing.PrintDocument PrintBarras;
         private System.Windows.Forms.ComboBox ListaQr2;
         private System.Windows.Forms.ComboBox ListOpcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn referenciaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcciDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pvp1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn familiaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFILA;
+        private System.Windows.Forms.ColumnHeader Descripcion;
     }
 }
